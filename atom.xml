@@ -46,4 +46,35 @@
     
   </entry>
   
+  <entry>
+    <title>spring的核心jar</title>
+    <link href="https://lywlefan.github.io/2018/05/30/spring/spring%E7%9A%84%E6%A0%B8%E5%BF%83jar/"/>
+    <id>https://lywlefan.github.io/2018/05/30/spring/spring的核心jar/</id>
+    <published>2018-05-29T16:00:00.000Z</published>
+    <updated>2019-05-13T05:49:03.199Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>&emsp;&emsp;实践一门技术的最好方式就是深入理解它的思想，然后造一个出来！</p><ul><li>Spring AOP：Spring的面向切面编程，提供AOP（面向切面编程）的实现</li><li>Spring Aspects：Spring提供的对AspectJ框架的整合</li><li>Spring Beans：Spring IOC的基础实现，包含访问配置文件、创建和管理bean等。</li><li>Spring Context：在基础IOC功能上提供扩展服务，此外还提供许多企业级服务的支持，有邮件服务、任务调度、JNDI定位，EJB集成、远程访问、缓存以及多种视图层框架的支持。</li><li>Spring Context Support：Spring context的扩展支持，用于MVC方面。</li><li>Spring Core：Spring的核心工具包</li><li>Spring expression：Spring表达式语言</li><li>Spring Framework Bom：</li><li>Spring Instrument：Spring对服务器的代理接口</li><li>Spring Instrument Tomcat：Spring对tomcat连接池的集成</li><li>Spring JDBC：对JDBC 的简单封装</li><li>Spring JMS：为简化jms api的使用而做的简单封装</li><li>Spring Messaging：</li><li>Spring orm：整合第三方的orm实现，如hibernate，ibatis，jdo以及spring 的jpa实现</li><li>Spring oxm：Spring对于object/xml映射的支持，可以让JAVA与XML之间来回切换</li><li>Spring test：对JUNIT等测试框架的简单封装</li><li>Spring tx：为JDBC、Hibernate、JDO、JPA等提供的一致的声明式和编程式事务管理。</li><li>Spring web：包含Web应用开发时，用到Spring框架时所需的核心类，包括自动载入WebApplicationContext特性的类、Struts与JSF集成类、文件上传的支持类、Filter类和大量工具辅助类。</li><li>Spring webmvc：包含SpringMVC框架相关的所有类。包含国际化、标签、Theme、视图展现的FreeMarker、JasperReports、Tiles、Velocity、XSLT相关类。当然，如果你的应用使用了独立的MVC框架，则无需这个JAR文件里的任何类。</li><li>Spring webmvc portlet：Spring MVC的增强</li></ul></blockquote><blockquote><p><a href="https://www.jianshu.com/u/354cc1548a33" target="_blank" rel="noopener">【1】简书主页·share猿</a>﻿<br><a href="https://juejin.im/user/5a8e759851882524d842d174" target="_blank" rel="noopener">【2】掘金主页·share猿</a>﻿﻿</p></blockquote><p>—﻿</p><p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong>﻿</p><p><img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt>﻿﻿</p><p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;blockquote&gt;
+&lt;p&gt;&amp;emsp;&amp;emsp;实践一门技术的最好方式就是深入理解它的思想，然后造一个出来！&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Spring AOP：Spring的面向切面编程，提供AOP（面向切面编程）的实现&lt;/li&gt;
+&lt;li&gt;Spring Aspects：Sp
+      
+    
+    </summary>
+    
+      <category term="spring" scheme="https://lywlefan.github.io/categories/spring/"/>
+    
+    
+      <category term="spring源码" scheme="https://lywlefan.github.io/tags/spring%E6%BA%90%E7%A0%81/"/>
+    
+      <category term="总汇" scheme="https://lywlefan.github.io/tags/%E6%80%BB%E6%B1%87/"/>
+    
+  </entry>
+  
 </feed>
