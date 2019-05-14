@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>不用spring如何实例化一个bean | share猿 | https://lywlefan.github.io/</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="spring,spring-base">
+    <meta name="description" content="问题源起&amp;emsp;&amp;emsp;为什么写这么一篇文章那？主要还是源自最近在写支付的starter的过程中遇到的一个问题，我们知道在支付的过程中需要去配置一些相关的参数，因为是starter我们一般是通过配置文件的方式进行配置，引用我们stater的工程会通过yml文件中配置的属性把这些值给我们。 &amp;emsp;&amp;emsp;那么我想在stater里面取到这些值该如何去做那？？我直接new一个配置类对象">
+<meta name="keywords" content="spring,spring-base">
+<meta property="og:type" content="article">
+<meta property="og:title" content="不用spring如何实例化一个bean">
+<meta property="og:url" content="https://lywlefan.github.io/2019/05/14/spring/spring-base/不用spring如何实例化一个bean/index.html">
+<meta property="og:site_name" content="share猿">
+<meta property="og:description" content="问题源起&amp;emsp;&amp;emsp;为什么写这么一篇文章那？主要还是源自最近在写支付的starter的过程中遇到的一个问题，我们知道在支付的过程中需要去配置一些相关的参数，因为是starter我们一般是通过配置文件的方式进行配置，引用我们stater的工程会通过yml文件中配置的属性把这些值给我们。 &amp;emsp;&amp;emsp;那么我想在stater里面取到这些值该如何去做那？？我直接new一个配置类对象">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-05-14T03:24:49.650Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="不用spring如何实例化一个bean">
+<meta name="twitter:description" content="问题源起&amp;emsp;&amp;emsp;为什么写这么一篇文章那？主要还是源自最近在写支付的starter的过程中遇到的一个问题，我们知道在支付的过程中需要去配置一些相关的参数，因为是starter我们一般是通过配置文件的方式进行配置，引用我们stater的工程会通过yml文件中配置的属性把这些值给我们。 &amp;emsp;&amp;emsp;那么我想在stater里面取到这些值该如何去做那？？我直接new一个配置类对象">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+    
+        <link rel="alternate" type="application/atom+xml" title="share猿" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">share猿</h5>
+          <a href="mailto:330334064@qq.com" title="330334064@qq.com" class="mail">330334064@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/lywlefan" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                GitHub
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/atom">
+                <i class="icon icon-lg icon-rss"></i>
+                订阅
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">不用spring如何实例化一个bean</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">不用spring如何实例化一个bean</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-05-13T16:00:00.000Z" itemprop="datePublished" class="page-time">
+  2019-05-14
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/spring/">spring</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#问题源起"><span class="post-toc-number">1.</span> <span class="post-toc-text">问题源起</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#问题深究"><span class="post-toc-number">2.</span> <span class="post-toc-text">问题深究</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#给自己新建一个问题"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">给自己新建一个问题</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#解决问题"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">解决问题</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#spring到底做了什么？？"><span class="post-toc-number">2.2.1.</span> <span class="post-toc-text">spring到底做了什么？？</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#我们假如不用这个注解如何去直接调这个接口那？？"><span class="post-toc-number">2.2.2.</span> <span class="post-toc-text">我们假如不用这个注解如何去直接调这个接口那？？</span></a></li></ol></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-spring/spring-base/不用spring如何实例化一个bean" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">不用spring如何实例化一个bean</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-05-14 00:00:00" datetime="2019-05-13T16:00:00.000Z" itemprop="datePublished">2019-05-14</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/spring/">spring</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h3 id="问题源起"><a href="#问题源起" class="headerlink" title="问题源起"></a>问题源起</h3><p>&emsp;&emsp;为什么写这么一篇文章那？主要还是源自最近在写支付的starter的过程中遇到的一个问题，我们知道在支付的过程中需要去配置一些相关的参数，因为是starter我们一般是通过配置文件的方式进行配置，引用我们stater的工程会通过yml文件中配置的属性把这些值给我们。</p>
+<p>&emsp;&emsp;那么我想在stater里面取到这些值该如何去做那？？我直接new一个配置类对象但是却取不到，因此我们就在思考spring到底是如何实例化bean的？？他对bean做了什么？？如果不用spring的注解我们又该如何去实例化我们的bean那？带着这些问题我开始了我的解惑之旅。。。</p>
+<h3 id="问题深究"><a href="#问题深究" class="headerlink" title="问题深究"></a>问题深究</h3><h4 id="给自己新建一个问题"><a href="#给自己新建一个问题" class="headerlink" title="给自己新建一个问题"></a>给自己新建一个问题</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@AllArgsConstructor</span></span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/api/v1/app/"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AppController</span> <span class="keyword">extends</span> <span class="title">BaseController</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    AppBannerService appBannerService;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping</span>(value = <span class="string">"index"</span>, method = RequestMethod.POST)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Result <span class="title">index</span><span class="params">(HttpServletRequest request,@RequestBody @Valid AppBannerAreaCode appBannerAreaCode)</span> </span>&#123;</span><br><span class="line">        Map&lt;String,Object&gt; appMessage=<span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        String appId=CommonUtils.getAppIdFromHeader(request);</span><br><span class="line">        List&lt;AppBanner&gt; banners=appBannerService.getBannersByAppIdAndCode(appId,appBannerAreaCode.getProvinceCode());</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Result(banners);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;上面的controller是我用日常开发常用的，AppBannerService是我们定义的业务接口，接口有实现类，我们只需要简单的注解就可以直接调用接口的方法了，spring到底做了什么？？我们假如不用这个注解如何去调这个接口那？？</p>
+<h4 id="解决问题"><a href="#解决问题" class="headerlink" title="解决问题"></a>解决问题</h4><h5 id="spring到底做了什么？？"><a href="#spring到底做了什么？？" class="headerlink" title="spring到底做了什么？？"></a>spring到底做了什么？？</h5><h5 id="我们假如不用这个注解如何去直接调这个接口那？？"><a href="#我们假如不用这个注解如何去直接调这个接口那？？" class="headerlink" title="我们假如不用这个注解如何去直接调这个接口那？？"></a>我们假如不用这个注解如何去直接调这个接口那？？</h5><blockquote>
+<p><a href="https://www.jianshu.com/u/354cc1548a33" target="_blank" rel="noopener">【1】简书主页·share猿</a><br><a href="https://juejin.im/user/5a8e759851882524d842d174" target="_blank" rel="noopener">【2】掘金主页·share猿</a></p>
+</blockquote>
+<hr>
+<p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
+<p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2019-05-14T03:24:49.650Z" itemprop="dateUpdated">2019-05-14 11:24:49</time>
+</span><br>
+
+
+        
+        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2019/05/14/spring/spring-base/不用spring如何实例化一个bean/" target="_blank" rel="external">https://lywlefan.github.io/2019/05/14/spring/spring-base/不用spring如何实例化一个bean/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://lywlefan.github.io">
+            <img src="/img/avatar.png" alt="share猿">
+            share猿
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/spring/">spring</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/spring-base/">spring-base</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://lywlefan.github.io/2019/05/14/spring/spring-base/不用spring如何实例化一个bean/&title=《不用spring如何实例化一个bean》 — share猿&pic=https://lywlefan.github.io/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://lywlefan.github.io/2019/05/14/spring/spring-base/不用spring如何实例化一个bean/&title=《不用spring如何实例化一个bean》 — share猿&source=分享有价值的内容,你我共同成长!" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://lywlefan.github.io/2019/05/14/spring/spring-base/不用spring如何实例化一个bean/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《不用spring如何实例化一个bean》 — share猿&url=https://lywlefan.github.io/2019/05/14/spring/spring-base/不用spring如何实例化一个bean/&via=https://lywlefan.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://lywlefan.github.io/2019/05/14/spring/spring-base/不用spring如何实例化一个bean/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/05/13/spring/spring-boot/如何写一个stater/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">如何写一个stater</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'true' == 'true',
+            verify: 'false' == 'true',
+            appId: "hQGVIAaJERVwyrWxj1uqgCqS-gzGzoHsz",
+            appKey: "l7FO5csTavNwXCGryJyOkkc1",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢赞赏!
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>share猿 &copy; 2015 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://lywlefan.github.io/2019/05/14/spring/spring-base/不用spring如何实例化一个bean/&title=《不用spring如何实例化一个bean》 — share猿&pic=https://lywlefan.github.io/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://lywlefan.github.io/2019/05/14/spring/spring-base/不用spring如何实例化一个bean/&title=《不用spring如何实例化一个bean》 — share猿&source=分享有价值的内容,你我共同成长!" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://lywlefan.github.io/2019/05/14/spring/spring-base/不用spring如何实例化一个bean/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《不用spring如何实例化一个bean》 — share猿&url=https://lywlefan.github.io/2019/05/14/spring/spring-base/不用spring如何实例化一个bean/&via=https://lywlefan.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://lywlefan.github.io/2019/05/14/spring/spring-base/不用spring如何实例化一个bean/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAADJElEQVR42u3aQW7jQAwEwPz/096rD2u7m6MAEV06GY4hTY2AENPkz098PZ6u5Jvkr8/fv/r8/E2yqosvbGxs7JuwH2+v98jkPgkvX2f+Ml6tBBsbG3sr+/1j8lufV9F8i/NNxMbGxsZOisdJMUtKJjY2Njb2tQXsZNGzw8ys1GFjY2N/DzsvObPy1rYNriqHF2Rp2NjY2H+e3Ubzf/nzr/S3sbGxsf8w+1FeJ6M8s/WcBFgvFdjY2NiL2Pmy2pGdPIo6L5+z9WNjY2PvYM/+9Z+MYCYhflvG2ogKGxsbex+7HXxpMe0Wtw2JuvGAjY2NvY7dHjDaQtUO1iR3i4Zy3p+9sLGxsVew25GdvA2QHxvy4tc2GI7avdjY2Ng3YecRf970nZWT8wipCJiwsbGxF7FPovnZ8SMvRXndyf9aHEiwsbGxb8I+4dX7Wm5uW6jyJgQ2Njb2VvYs7p/FPe0dTuKq//wGGxsbex37qiXmgc5vN5jrLA0bGxv75uw2+j9nz9q3+XM//BIbGxt7EbsIYkalZRYVnWxfvlpsbGzsTexZlJMcJ04iofaAkTQesLGxsfexkwZqfusclgzi5DFW3SrAxsbG/gJ2S0pKy6whMWvlfhBhY2NjL2Jfe+RImgRXlcykQEZlDBsbG3sRO4/Rrwrxr9rK4bARNjY29jp2frSYtXvbgZu2lLafsbGxsTexW8ys0Xt+51nbIOpsY2NjY69j58H9+SLaYZ1ZIcTGxsb+Bnby+Lb8zMZ92tZy/vKwsbGxd7PP46ST8Z1842ZNi5/kwsbGxr4te1aW8sXNfpO/nnzrP3RFsLGxsRexZ1F7m2DNfn9VRIWNjY29ld0O4rQhUb24uBVdFzxsbGzsFexHebUHlTqgv6jx8OG52NjY2IvYs0Xkj5wVs9lhKWnx1luAjY2NfRN2G/onYzSzIZvzJxavBBsbG3sdOy8Msw1qDzaz5m5RGrGxsbGxgxZCW8za7UhGOV+uGRsbG/vr2bNjRlLAih51GYRhY2Nj72bni2tbAslx5XyD2oKHjY2NvYk9C2hmy23Do/O75S8JGxsb+4bsfxHwupbkeV2zAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '欢迎回来！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '欢迎欢迎!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
