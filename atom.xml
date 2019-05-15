@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://lywlefan.github.io/"/>
-  <updated>2019-05-14T05:39:45.284Z</updated>
+  <updated>2019-05-15T10:38:01.006Z</updated>
   <id>https://lywlefan.github.io/</id>
   
   <author>
@@ -15,6 +15,62 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>RestTemplate常见问题的解决办法.md</title>
+    <link href="https://lywlefan.github.io/2019/05/15/spring/spring-base/RestTemplate%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/"/>
+    <id>https://lywlefan.github.io/2019/05/15/spring/spring-base/RestTemplate常见问题的解决办法/</id>
+    <published>2019-05-14T16:00:00.000Z</published>
+    <updated>2019-05-15T10:38:01.006Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="问题汇总"><a href="#问题汇总" class="headerlink" title="问题汇总"></a>问题汇总</h3><ul><li><p>用restTemplate请求域名或着ip一直报No instances available的错</p></li><li><p>restTemplate的post请求报415错</p></li></ul><h3 id="问题处理"><a href="#问题处理" class="headerlink" title="问题处理"></a>问题处理</h3><h4 id="用restTemplate请求域名或着ip一直报No-instances-available的错"><a href="#用restTemplate请求域名或着ip一直报No-instances-available的错" class="headerlink" title="用restTemplate请求域名或着ip一直报No instances available的错"></a>用restTemplate请求域名或着ip一直报No instances available的错</h4><ul><li>错误描述</li></ul><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">java.lang.IllegalStateException: No instances available <span class="keyword">for</span> www.baidu.com</span><br><span class="line">at org.springframework.cloud.netflix.ribbon.RibbonLoadBalancerClient.execute(RibbonLoadBalancerClient.java:<span class="number">79</span>) ~[spring-cloud-netflix-core-<span class="number">1.1</span>.0.RELEASE.jar:<span class="number">1.1</span>.0.RELEASE] at org.springframework.cloud.client.loadbalancer.LoadBalancerInterceptor.intercept(LoadBalancerInterceptor.java:<span class="number">46</span>) ~[spring-cloud-commons-<span class="number">1.1</span>.0.RELEASE.jar:<span class="number">1.1</span>.0.RELEASE] at org.springframework.http.client.InterceptingClientHttpRequest$InterceptingRequestExecution.execute(InterceptingClientHttpRequest.java:<span class="number">86</span>) ~[spring-web-<span class="number">4.3</span>.10.RELEASE.jar:<span class="number">4.3</span>.10.RELEASE] at org.springframework.http.client.InterceptingClientHttpRequest.executeInternal(InterceptingClientHttpRequest.java:<span class="number">70</span>) ~[spring-web-<span class="number">4.3</span>.10.RELEASE.jar:<span class="number">4.3</span>.10.RELEASE] at </span><br><span class="line">.....</span><br></pre></td></tr></table></figure><p>&emsp;&emsp;查看错误的跟踪链发现,自动注入的restTemplate中加入了cloud.netflix*包下面的interceptor,</p><p>&emsp;&emsp;所以默认会通过RibbonLoadBalancerClient去查找注册中心的instances,</p><p>&emsp;&emsp;如上面的代码，<a href="http://www.baidu.com肯定不存在，所以就报错了。" target="_blank" rel="noopener">www.baidu.com肯定不存在，所以就报错了。</a></p><ul><li>错误解决</li></ul><p>&emsp;&emsp;重新实例化一个RestTemplate。</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyConfiguration</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@LoadBalanced</span></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function">RestTemplate <span class="title">loadBalanced</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> RestTemplate();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Primary</span></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function">RestTemplate <span class="title">restTemplate</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> RestTemplate();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h5 id="restTemplate的post请求报415错"><a href="#restTemplate的post请求报415错" class="headerlink" title="restTemplate的post请求报415错"></a>restTemplate的post请求报415错</h5><ul><li>错误描述</li></ul><p>&emsp;&emsp;报错415</p><ul><li>问具体解决</li></ul><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">HttpHeaders headers = <span class="keyword">new</span> HttpHeaders();</span><br><span class="line">MediaType type = MediaType.parseMediaType(<span class="string">"application/json;"</span>);</span><br><span class="line">headers.setContentType(type);</span><br><span class="line">headers.add(<span class="string">"Accept"</span>, MediaType.APPLICATION_JSON.toString());</span><br><span class="line">JSONObject jsonObj = JSON.parseObject(JSON.toJSONString(payParams));</span><br><span class="line">HttpEntity&lt;String&gt; formEntity = <span class="keyword">new</span> HttpEntity&lt;String&gt;(jsonObj.toString(), headers);</span><br><span class="line">restTemplate.postForObject(bestPayProperties.getBestPayUrl(),formEntity,String.class);</span><br></pre></td></tr></table></figure><blockquote><p><a href="https://www.jianshu.com/u/354cc1548a33" target="_blank" rel="noopener">【1】简书主页·share猿</a><br><a href="https://juejin.im/user/5a8e759851882524d842d174" target="_blank" rel="noopener">【2】掘金主页·share猿</a></p></blockquote><hr><p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>                </div>                <div class="image-caption"></div>            </figure></p><p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;问题汇总&quot;&gt;&lt;a href=&quot;#问题汇总&quot; class=&quot;headerlink&quot; title=&quot;问题汇总&quot;&gt;&lt;/a&gt;问题汇总&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;用restTemplate请求域名或着ip一直报No instances available的错&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+      <category term="spring" scheme="https://lywlefan.github.io/categories/spring/"/>
+    
+    
+      <category term="spring" scheme="https://lywlefan.github.io/tags/spring/"/>
+    
+      <category term="RestTemplate" scheme="https://lywlefan.github.io/tags/RestTemplate/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JAR包如何取工程外部文件</title>
+    <link href="https://lywlefan.github.io/2019/05/15/spring/spring-base/JAR%E5%8C%85%E5%A6%82%E4%BD%95%E5%8F%96%E5%B7%A5%E7%A8%8B%E5%A4%96%E9%83%A8%E6%96%87%E4%BB%B6/"/>
+    <id>https://lywlefan.github.io/2019/05/15/spring/spring-base/JAR包如何取工程外部文件/</id>
+    <published>2019-05-14T16:00:00.000Z</published>
+    <updated>2019-05-15T06:29:45.751Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="问题起源"><a href="#问题起源" class="headerlink" title="问题起源"></a>问题起源</h3><p>&emsp;&emsp;在开发支付stater的过程中会用到证书，而证书我们一般配置在工程项目中，那么我们自己开发的stater如何才能取到工程项目中的证书文件那？？？</p><h3 id="问题深究"><a href="#问题深究" class="headerlink" title="问题深究"></a>问题深究</h3><h4 id="分解问题"><a href="#分解问题" class="headerlink" title="分解问题"></a>分解问题</h4><p>&emsp;&emsp;要想解决这个问题，我们要明确</p><blockquote><p><a href="https://www.jianshu.com/u/354cc1548a33" target="_blank" rel="noopener">【1】简书主页·share猿</a><br><a href="https://juejin.im/user/5a8e759851882524d842d174" target="_blank" rel="noopener">【2】掘金主页·share猿</a></p></blockquote><hr><p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>                </div>                <div class="image-caption"></div>            </figure></p><p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;问题起源&quot;&gt;&lt;a href=&quot;#问题起源&quot; class=&quot;headerlink&quot; title=&quot;问题起源&quot;&gt;&lt;/a&gt;问题起源&lt;/h3&gt;&lt;p&gt;&amp;emsp;&amp;emsp;在开发支付stater的过程中会用到证书，而证书我们一般配置在工程项目中，那么我们自己开发的stat
+      
+    
+    </summary>
+    
+      <category term="spring" scheme="https://lywlefan.github.io/categories/spring/"/>
+    
+    
+      <category term="spring" scheme="https://lywlefan.github.io/tags/spring/"/>
+    
+      <category term="疑难杂症" scheme="https://lywlefan.github.io/tags/%E7%96%91%E9%9A%BE%E6%9D%82%E7%97%87/"/>
+    
+  </entry>
   
   <entry>
     <title>不用spring如何实例化一个bean</title>
