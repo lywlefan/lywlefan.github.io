@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://lywlefan.github.io/"/>
-  <updated>2019-05-15T10:38:01.006Z</updated>
+  <updated>2019-05-15T06:29:45.751Z</updated>
   <id>https://lywlefan.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>JAR包如何取工程外部文件</title>
+    <link href="https://lywlefan.github.io/2019/05/15/spring/spring-base/JAR%E5%8C%85%E5%A6%82%E4%BD%95%E5%8F%96%E5%B7%A5%E7%A8%8B%E5%A4%96%E9%83%A8%E6%96%87%E4%BB%B6/"/>
+    <id>https://lywlefan.github.io/2019/05/15/spring/spring-base/JAR包如何取工程外部文件/</id>
+    <published>2019-05-14T16:00:00.000Z</published>
+    <updated>2019-05-15T06:29:45.751Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="问题起源"><a href="#问题起源" class="headerlink" title="问题起源"></a>问题起源</h3><p>&emsp;&emsp;在开发支付stater的过程中会用到证书，而证书我们一般配置在工程项目中，那么我们自己开发的stater如何才能取到工程项目中的证书文件那？？？</p><h3 id="问题深究"><a href="#问题深究" class="headerlink" title="问题深究"></a>问题深究</h3><h4 id="分解问题"><a href="#分解问题" class="headerlink" title="分解问题"></a>分解问题</h4><p>&emsp;&emsp;要想解决这个问题，我们要明确</p><blockquote><p><a href="https://www.jianshu.com/u/354cc1548a33" target="_blank" rel="noopener">【1】简书主页·share猿</a><br><a href="https://juejin.im/user/5a8e759851882524d842d174" target="_blank" rel="noopener">【2】掘金主页·share猿</a></p></blockquote><hr><p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>                </div>                <div class="image-caption"></div>            </figure></p><p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;问题起源&quot;&gt;&lt;a href=&quot;#问题起源&quot; class=&quot;headerlink&quot; title=&quot;问题起源&quot;&gt;&lt;/a&gt;问题起源&lt;/h3&gt;&lt;p&gt;&amp;emsp;&amp;emsp;在开发支付stater的过程中会用到证书，而证书我们一般配置在工程项目中，那么我们自己开发的stat
+      
+    
+    </summary>
+    
+      <category term="spring" scheme="https://lywlefan.github.io/categories/spring/"/>
+    
+    
+      <category term="spring" scheme="https://lywlefan.github.io/tags/spring/"/>
+    
+      <category term="疑难杂症" scheme="https://lywlefan.github.io/tags/%E7%96%91%E9%9A%BE%E6%9D%82%E7%97%87/"/>
+    
+  </entry>
   
   <entry>
     <title>RestTemplate常见问题的解决办法.md</title>
@@ -42,33 +69,6 @@
       <category term="spring" scheme="https://lywlefan.github.io/tags/spring/"/>
     
       <category term="RestTemplate" scheme="https://lywlefan.github.io/tags/RestTemplate/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>JAR包如何取工程外部文件</title>
-    <link href="https://lywlefan.github.io/2019/05/15/spring/spring-base/JAR%E5%8C%85%E5%A6%82%E4%BD%95%E5%8F%96%E5%B7%A5%E7%A8%8B%E5%A4%96%E9%83%A8%E6%96%87%E4%BB%B6/"/>
-    <id>https://lywlefan.github.io/2019/05/15/spring/spring-base/JAR包如何取工程外部文件/</id>
-    <published>2019-05-14T16:00:00.000Z</published>
-    <updated>2019-05-15T06:29:45.751Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="问题起源"><a href="#问题起源" class="headerlink" title="问题起源"></a>问题起源</h3><p>&emsp;&emsp;在开发支付stater的过程中会用到证书，而证书我们一般配置在工程项目中，那么我们自己开发的stater如何才能取到工程项目中的证书文件那？？？</p><h3 id="问题深究"><a href="#问题深究" class="headerlink" title="问题深究"></a>问题深究</h3><h4 id="分解问题"><a href="#分解问题" class="headerlink" title="分解问题"></a>分解问题</h4><p>&emsp;&emsp;要想解决这个问题，我们要明确</p><blockquote><p><a href="https://www.jianshu.com/u/354cc1548a33" target="_blank" rel="noopener">【1】简书主页·share猿</a><br><a href="https://juejin.im/user/5a8e759851882524d842d174" target="_blank" rel="noopener">【2】掘金主页·share猿</a></p></blockquote><hr><p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>                </div>                <div class="image-caption"></div>            </figure></p><p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h3 id=&quot;问题起源&quot;&gt;&lt;a href=&quot;#问题起源&quot; class=&quot;headerlink&quot; title=&quot;问题起源&quot;&gt;&lt;/a&gt;问题起源&lt;/h3&gt;&lt;p&gt;&amp;emsp;&amp;emsp;在开发支付stater的过程中会用到证书，而证书我们一般配置在工程项目中，那么我们自己开发的stat
-      
-    
-    </summary>
-    
-      <category term="spring" scheme="https://lywlefan.github.io/categories/spring/"/>
-    
-    
-      <category term="spring" scheme="https://lywlefan.github.io/tags/spring/"/>
-    
-      <category term="疑难杂症" scheme="https://lywlefan.github.io/tags/%E7%96%91%E9%9A%BE%E6%9D%82%E7%97%87/"/>
     
   </entry>
   
@@ -162,6 +162,36 @@
   </entry>
   
   <entry>
+    <title>我的文章收藏夹</title>
+    <link href="https://lywlefan.github.io/2012/01/01/%E6%96%87%E7%AB%A0%E6%94%B6%E8%97%8F/"/>
+    <id>https://lywlefan.github.io/2012/01/01/文章收藏/</id>
+    <published>2011-12-31T16:00:00.000Z</published>
+    <updated>2019-05-17T02:32:24.178Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>好记性不如烂笔头!</p></blockquote><h2 id="1-技术栈"><a href="#1-技术栈" class="headerlink" title="1.技术栈"></a>1.技术栈</h2><h3 id="WEB开发"><a href="#WEB开发" class="headerlink" title="WEB开发"></a>WEB开发</h3><h4 id="前端"><a href="#前端" class="headerlink" title="前端"></a>前端</h4><h4 id="后端"><a href="#后端" class="headerlink" title="后端"></a>后端</h4><h5 id="java"><a href="#java" class="headerlink" title="java"></a>java</h5><ul><li><p>基础</p></li><li><p>springboot</p><ul><li><p>监控</p><ul><li><a href="https://grafana.com" target="_blank" rel="noopener">grafana</a></li></ul></li></ul></li></ul><h5 id="python"><a href="#python" class="headerlink" title="python"></a>python</h5><ul><li><p>基础</p><ul><li><a href="https://github.com/jackfrued/Python-100-Days" target="_blank" rel="noopener">Python - 100天从新手到大师·骆昊</a></li></ul></li></ul><h3 id="1-2-高级技术"><a href="#1-2-高级技术" class="headerlink" title="1.2.高级技术"></a>1.2.高级技术</h3><h4 id="1-2-1-深度学习"><a href="#1-2-1-深度学习" class="headerlink" title="1.2.1.深度学习"></a>1.2.1.深度学习</h4><blockquote><p><a href="https://www.jianshu.com/u/354cc1548a33" target="_blank" rel="noopener">【1】简书主页·share猿</a><br><a href="https://juejin.im/user/5a8e759851882524d842d174" target="_blank" rel="noopener">【2】掘金主页·share猿</a></p></blockquote><hr><p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>                </div>                <div class="image-caption"></div>            </figure></p><p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;blockquote&gt;
+&lt;p&gt;好记性不如烂笔头!&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;1-技术栈&quot;&gt;&lt;a href=&quot;#1-技术栈&quot; class=&quot;headerlink&quot; title=&quot;1.技术栈&quot;&gt;&lt;/a&gt;1.技术栈&lt;/h2&gt;&lt;h3 id=&quot;WEB开发&quot;&gt;&lt;a
+      
+    
+    </summary>
+    
+      <category term="收藏夹" scheme="https://lywlefan.github.io/categories/%E6%94%B6%E8%97%8F%E5%A4%B9/"/>
+    
+    
+      <category term="文章" scheme="https://lywlefan.github.io/tags/%E6%96%87%E7%AB%A0/"/>
+    
+      <category term="收藏" scheme="https://lywlefan.github.io/tags/%E6%94%B6%E8%97%8F/"/>
+    
+  </entry>
+  
+  <entry>
     <title>如何快速寻找到一个问题的答案</title>
     <link href="https://lywlefan.github.io/2012/01/01/%E5%A6%82%E4%BD%95%E5%BF%AB%E9%80%9F%E5%AF%BB%E6%89%BE%E5%88%B0%E4%B8%80%E4%B8%AA%E9%97%AE%E9%A2%98%E7%9A%84%E7%AD%94%E6%A1%88/"/>
     <id>https://lywlefan.github.io/2012/01/01/如何快速寻找到一个问题的答案/</id>
@@ -223,32 +253,32 @@
   </entry>
   
   <entry>
-    <title>我的文章收藏夹</title>
-    <link href="https://lywlefan.github.io/2012/01/01/%E6%96%87%E7%AB%A0%E6%94%B6%E8%97%8F/"/>
-    <id>https://lywlefan.github.io/2012/01/01/文章收藏/</id>
+    <title>一代商圣范蠡-姜正成</title>
+    <link href="https://lywlefan.github.io/2012/01/01/%E8%AF%BB%E4%B9%A6/%E4%B8%80%E4%BB%A3%E5%95%86%E5%9C%A3%E8%8C%83%E8%A0%A1-%E5%A7%9C%E6%AD%A3%E6%88%90/"/>
+    <id>https://lywlefan.github.io/2012/01/01/读书/一代商圣范蠡-姜正成/</id>
     <published>2011-12-31T16:00:00.000Z</published>
-    <updated>2019-05-13T10:28:39.501Z</updated>
+    <updated>2019-05-17T02:32:56.239Z</updated>
     
-    <content type="html"><![CDATA[<blockquote></blockquote><blockquote><p><a href="https://www.jianshu.com/u/354cc1548a33" target="_blank" rel="noopener">【1】简书主页·share猿</a><br><a href="https://juejin.im/user/5a8e759851882524d842d174" target="_blank" rel="noopener">【2】掘金主页·share猿</a></p></blockquote><hr><p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>                </div>                <div class="image-caption"></div>            </figure></p><p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>]]></content>
+    <content type="html"><![CDATA[<blockquote><p>能治国能安民，灭吴霸越，堪称一代名相。知进退懂经营，三致千金，不愧千秋商圣。</p></blockquote><h2 id="名言摘录"><a href="#名言摘录" class="headerlink" title="名言摘录"></a>名言摘录</h2><h3 id="范蠡给文种的临别书信"><a href="#范蠡给文种的临别书信" class="headerlink" title="范蠡给文种的临别书信"></a>范蠡给文种的临别书信</h3><p>&emsp;&emsp;飞鸟尽，良弓藏；狡兔死，走狗烹；敌国灭，谋臣亡。越王为人长颈鸟喙，可与共患难，不可与共乐。子何不去？</p><h3 id="人生三不朽"><a href="#人生三不朽" class="headerlink" title="人生三不朽"></a>人生三不朽</h3><p>&emsp;&emsp;立德、立功、立言，取其一容易，得其三更难，而范蠡三者全取。范蠡有为政之德，为商之德，富而好行其德，有十年声息十年教训兴越之功，有父子戮力治产积居、赀（zi）累巨万经商之功，又有《致富奇书》《范蠡兵法》《养鱼经》《陶朱公商训》著书立说之言，三者兼得，可谓德炳炳，功赫赫，言昭昭，为世人尊为商圣，万古流芳。</p><h3 id="经济循环理论"><a href="#经济循环理论" class="headerlink" title="经济循环理论"></a>经济循环理论</h3><ul><li>六岁穰（rang）六岁旱，十二岁一大饥。</li></ul><h3 id="经商致富十二条"><a href="#经商致富十二条" class="headerlink" title="经商致富十二条"></a>经商致富十二条</h3><p>&emsp;&emsp;人无信不立。</p><p>&emsp;&emsp;勤快节俭，谨慎负责，规矩方正，价格讲明，不负于人，富行其德。</p><p>&emsp;&emsp;能接纳，礼文接待，交关者众，能整顿，货物整齐，夺人心目。能倡率，躬行以律，亲感而生。</p><h3 id="人谋"><a href="#人谋" class="headerlink" title="人谋"></a>人谋</h3><p>用人要正，忠奸定兴废。</p><p>大事要慎，妄托受大害。</p><p>待人忌躁，暴躁交易少。</p><p>处事宜静，浮躁误事多。</p><p>言行宜和，和气能生财。</p><p>做事宜勤，懒惰百事废。</p><h3 id="事谋"><a href="#事谋" class="headerlink" title="事谋"></a>事谋</h3><p>用度宜俭，奢华财源败。</p><p>做工宜精，粗糙出劣品。</p><p>期货要准，马虎失信用。</p><p>交易要速，拖延失良机。</p><p>进货要严，滥入货价减。</p><p>出纳要谨，潦草出差错。</p><h3 id="物谋"><a href="#物谋" class="headerlink" title="物谋"></a>物谋</h3><p>优劣要清，混淆损耗大。</p><p>存物要整，散漫难查点。</p><p>价格要明，含糊多争执。</p><p>赊欠要审，滥出亏血本。</p><p>账目要清，糊涂弊端生。</p><p>查账要勤，懈怠滞本金。</p><h3 id="经商之道"><a href="#经商之道" class="headerlink" title="经商之道"></a>经商之道</h3><p>&emsp;&emsp;一是对百姓只取十一利；遣物如遣兵。</p><h2 id="思考感悟"><a href="#思考感悟" class="headerlink" title="思考感悟"></a>思考感悟</h2><h3 id="以治大国之法，治理金口小家"><a href="#以治大国之法，治理金口小家" class="headerlink" title="以治大国之法，治理金口小家"></a>以治大国之法，治理金口小家</h3><p>&emsp;&emsp;商圣让偏远的海滨金口繁荣起来靠的是什么？范蠡充分利用本地的优势资源盐和劳动力，充分发挥本地特色，让大家看不到价值的东西有了价值，当自己富有依旧不忘造福乡里，取之于民，用之于民，把金口的经济贸易充分调动了起来。</p><p><strong>名词解释</strong></p><ul><li>鸱(chi)夷子皮:范蠡给自己起的经商的名字。著名政治家、军事家、经济学家、道家代表作品：《计然篇》、《陶朱公生意经》《卢氏本草经》</li></ul><hr><blockquote><p><a href="https://www.jianshu.com/u/354cc1548a33" target="_blank" rel="noopener">【1】简书主页·share猿</a><br><a href="https://juejin.im/user/5a8e759851882524d842d174" target="_blank" rel="noopener">【2】掘金主页·share猿</a></p></blockquote><hr><p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>                </div>                <div class="image-caption"></div>            </figure></p><p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>]]></content>
     
     <summary type="html">
     
       
       
         &lt;blockquote&gt;
+&lt;p&gt;能治国能安民，灭吴霸越，堪称一代名相。知进退懂经营，三致千金，不愧千秋商圣。&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;blockquote&gt;
-&lt;p&gt;&lt;a href=&quot;https://www.jianshu.com/u/354cc1548a33&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;【1】简书主页·share猿&lt;/a
+&lt;h2 id=&quot;名言摘录&quot;&gt;&lt;a href=&quot;#名言摘录&quot; class=&quot;headerlink&quot; title=&quot;名言摘录&quot;&gt;&lt;/a&gt;名
       
     
     </summary>
     
-      <category term="收藏夹" scheme="https://lywlefan.github.io/categories/%E6%94%B6%E8%97%8F%E5%A4%B9/"/>
+      <category term="读书" scheme="https://lywlefan.github.io/categories/%E8%AF%BB%E4%B9%A6/"/>
     
     
-      <category term="文章" scheme="https://lywlefan.github.io/tags/%E6%96%87%E7%AB%A0/"/>
+      <category term="历史" scheme="https://lywlefan.github.io/tags/%E5%8E%86%E5%8F%B2/"/>
     
-      <category term="收藏" scheme="https://lywlefan.github.io/tags/%E6%94%B6%E8%97%8F/"/>
+      <category term="传记" scheme="https://lywlefan.github.io/tags/%E4%BC%A0%E8%AE%B0/"/>
     
   </entry>
   
