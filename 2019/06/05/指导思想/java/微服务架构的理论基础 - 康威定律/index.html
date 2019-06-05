@@ -20,26 +20,26 @@
     <meta name="theme-color" content="#3F51B5">
     
     
-    <meta name="keywords" content="java,指导思想,java基础">
+    <meta name="keywords" content="java,指导思想,微服务">
     <meta name="description" content="概述&amp;emsp;&amp;emsp;关于微服务的介绍，可以参考微服务那点事。 &amp;emsp;&amp;emsp;微服务是最近非常火热的新概念，大家都在追，也都觉得很对，但是似乎没有很充足的理论基础说明这是正确的，给人的感觉是 不明觉厉 。前段时间看了Mike Amundsen 《远距离条件下的康威定律——分布式世界中实现团队构建》（是Design RESTful API的作者）在InfoQ上的一个分享，觉得很有帮助">
-<meta name="keywords" content="java,指导思想,java基础">
+<meta name="keywords" content="java,指导思想,微服务">
 <meta property="og:type" content="article">
 <meta property="og:title" content="微服务架构的理论基础 - 康威定律">
-<meta property="og:url" content="https://lywlefan.github.io/2000/01/01/指导思想/java/微服务架构的理论基础 - 康威定律/index.html">
+<meta property="og:url" content="https://lywlefan.github.io/2019/06/05/指导思想/java/微服务架构的理论基础 - 康威定律/index.html">
 <meta property="og:site_name" content="share猿">
 <meta property="og:description" content="概述&amp;emsp;&amp;emsp;关于微服务的介绍，可以参考微服务那点事。 &amp;emsp;&amp;emsp;微服务是最近非常火热的新概念，大家都在追，也都觉得很对，但是似乎没有很充足的理论基础说明这是正确的，给人的感觉是 不明觉厉 。前段时间看了Mike Amundsen 《远距离条件下的康威定律——分布式世界中实现团队构建》（是Design RESTful API的作者）在InfoQ上的一个分享，觉得很有帮助">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://lywlefan.github.io/2000/01/01/指导思想/java/微服务架构的理论基础%20-%20康威定律/img/1.png">
-<meta property="og:image" content="https://lywlefan.github.io/2000/01/01/指导思想/java/微服务架构的理论基础%20-%20康威定律/img/2.png">
-<meta property="og:image" content="https://lywlefan.github.io/2000/01/01/指导思想/java/微服务架构的理论基础%20-%20康威定律/img/3.png">
-<meta property="og:image" content="https://lywlefan.github.io/2000/01/01/指导思想/java/微服务架构的理论基础%20-%20康威定律/img/4.png">
-<meta property="og:image" content="https://lywlefan.github.io/2000/01/01/指导思想/java/微服务架构的理论基础%20-%20康威定律/img/5.png">
+<meta property="og:image" content="http://img2.tbcdn.cn/L1/461/1/74ab78cb5db601e5db68adf61e6dc58f437df4e0">
+<meta property="og:image" content="http://img1.tbcdn.cn/L1/461/1/a7fab1b350cd8c03d5e9ddded183c7bda114c326">
+<meta property="og:image" content="http://img1.tbcdn.cn/L1/461/1/3810f88633a55bdf59bb7757cedc827ab425538e">
+<meta property="og:image" content="http://img4.tbcdn.cn/L1/461/1/f4c2d4a8f8390ca6be19b54a524c8272aced3e34">
+<meta property="og:image" content="http://img3.tbcdn.cn/L1/461/1/c827db7a12d730140d4c0e6947535e168902a73e">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-06-05T08:15:32.767Z">
+<meta property="og:updated_time" content="2019-06-05T08:43:57.671Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="微服务架构的理论基础 - 康威定律">
 <meta name="twitter:description" content="概述&amp;emsp;&amp;emsp;关于微服务的介绍，可以参考微服务那点事。 &amp;emsp;&amp;emsp;微服务是最近非常火热的新概念，大家都在追，也都觉得很对，但是似乎没有很充足的理论基础说明这是正确的，给人的感觉是 不明觉厉 。前段时间看了Mike Amundsen 《远距离条件下的康威定律——分布式世界中实现团队构建》（是Design RESTful API的作者）在InfoQ上的一个分享，觉得很有帮助">
-<meta name="twitter:image" content="https://lywlefan.github.io/2000/01/01/指导思想/java/微服务架构的理论基础%20-%20康威定律/img/1.png">
+<meta name="twitter:image" content="http://img2.tbcdn.cn/L1/461/1/74ab78cb5db601e5db68adf61e6dc58f437df4e0">
     
         <link rel="alternate" type="application/atom+xml" title="share猿" href="/atom.xml">
     
@@ -133,7 +133,7 @@
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="検索">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
@@ -152,8 +152,8 @@
         <h1 class="title">微服务架构的理论基础 - 康威定律</h1>
         <h5 class="subtitle">
             
-                <time datetime="1999-12-31T16:00:00.000Z" itemprop="datePublished" class="page-time">
-  2000-01-01
+                <time datetime="2019-06-04T16:00:00.000Z" itemprop="datePublished" class="page-time">
+  2019-06-05
 </time>
 
 
@@ -184,7 +184,7 @@
     <div class="post-card">
         <h1 class="post-card-title">微服务架构的理论基础 - 康威定律</h1>
         <div class="post-meta">
-            <time class="post-time" title="2000-01-01 00:00:00" datetime="1999-12-31T16:00:00.000Z" itemprop="datePublished">2000-01-01</time>
+            <time class="post-time" title="2019-06-05 00:00:00" datetime="2019-06-04T16:00:00.000Z" itemprop="datePublished">2019-06-05</time>
 
             
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/指导思想/">指导思想</a></li></ul>
@@ -210,7 +210,7 @@
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="img/1.png" alt title>
+                    <img src="http://img2.tbcdn.cn/L1/461/1/74ab78cb5db601e5db68adf61e6dc58f437df4e0" alt title>
                 </div>
                 <div class="image-caption"></div>
             </figure>
@@ -264,19 +264,19 @@
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="img/2.png" alt title>
+                    <img src="http://img1.tbcdn.cn/L1/461/1/a7fab1b350cd8c03d5e9ddded183c7bda114c326" alt title>
                 </div>
                 <div class="image-caption"></div>
             </figure>
 <p>&emsp;&emsp;听着很耳熟不是吗？这不就是 持续集成 和敏捷开发吗？的确就是。</p>
 <p>&emsp;&emsp;另一方面，这和互联网公司维护的分布式系统的弹性设计也是一个道理。对于一个分布式系统，我们几乎永远不可能找到并修复所有的bug，单元测试覆盖1000%也没有用，错误流淌在分布式系统的血液里。解决方法不是消灭这些问题，而是容忍这些问题，在问题发生时，能自动回复，微服务组成的系统，每一个微服务都可能挂掉，这是常态，我们只有有足够的冗余和备份即可。即所谓的 弹性设计（Resilience） 或者叫高可用设计（High Availability）。</p>
 <h3 id="三-种瓜得瓜，做独立自治的字系统减少沟通成本"><a href="#三-种瓜得瓜，做独立自治的字系统减少沟通成本" class="headerlink" title="三.种瓜得瓜，做独立自治的字系统减少沟通成本"></a>三.种瓜得瓜，做独立自治的字系统减少沟通成本</h3><p>&emsp;&emsp;第三定律：There is a homomorphism from the linear graph of a system to the linear graph of its design organization（线型系统和线型组织架构间有潜在的异质同态特性）  </p>
-<p><img src="img/3.png" alt></p>
+<p><img src="http://img1.tbcdn.cn/L1/461/1/3810f88633a55bdf59bb7757cedc827ab425538e" alt></p>
 <p>&emsp;&emsp;这是康威第一定律组织和设计间内在关系的一个具体应用。更直白的说，你想要什么样的系统，就搭建什么样的团队。如果你的团队分成前端团队，Java后台开发团队，DBA团队，运维团队，你的系统就会长成下面的样子：</p>
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="img/4.png" alt title>
+                    <img src="http://img4.tbcdn.cn/L1/461/1/f4c2d4a8f8390ca6be19b54a524c8272aced3e34" alt title>
                 </div>
                 <div class="image-caption"></div>
             </figure>
@@ -284,7 +284,7 @@
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="img/5.png" alt title>
+                    <img src="http://img3.tbcdn.cn/L1/461/1/c827db7a12d730140d4c0e6947535e168902a73e" alt title>
                 </div>
                 <div class="image-caption"></div>
             </figure>
@@ -349,12 +349,12 @@
     <div class="content">
         
 <span class="post-time">
-    最終更新：<time datetime="2019-06-05T08:15:32.767Z" itemprop="dateUpdated">2019-06-05 16:15:32</time>
+    Last updated: <time datetime="2019-06-05T08:43:57.671Z" itemprop="dateUpdated">2019-06-05 16:43:57</time>
 </span><br>
 
 
         
-        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2000/01/01/指导思想/java/微服务架构的理论基础 - 康威定律/" target="_blank" rel="external">https://lywlefan.github.io/2000/01/01/指导思想/java/微服务架构的理论基础 - 康威定律/</a>
+        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2019/06/05/指导思想/java/微服务架构的理论基础 - 康威定律/" target="_blank" rel="external">https://lywlefan.github.io/2019/06/05/指导思想/java/微服务架构的理论基础 - 康威定律/</a>
         
     </div>
     
@@ -375,7 +375,7 @@
 
         <div class="post-footer">
             
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java基础/">java基础</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/指导思想/">指导思想</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/微服务/">微服务</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/指导思想/">指导思想</a></li></ul>
 
 
             
@@ -385,7 +385,7 @@
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://lywlefan.github.io/2000/01/01/指导思想/java/微服务架构的理论基础 - 康威定律/&title=《微服务架构的理论基础 - 康威定律》 — share猿&pic=https://lywlefan.github.io/img/avatar.png" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://lywlefan.github.io/2019/06/05/指导思想/java/微服务架构的理论基础 - 康威定律/&title=《微服务架构的理论基础 - 康威定律》 — share猿&pic=https://lywlefan.github.io/img/avatar.png" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -395,22 +395,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://lywlefan.github.io/2000/01/01/指导思想/java/微服务架构的理论基础 - 康威定律/&title=《微服务架构的理论基础 - 康威定律》 — share猿&source=分享有价值的内容,你我共同成长!" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://lywlefan.github.io/2019/06/05/指导思想/java/微服务架构的理论基础 - 康威定律/&title=《微服务架构的理论基础 - 康威定律》 — share猿&source=分享有价值的内容,你我共同成长!" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://lywlefan.github.io/2000/01/01/指导思想/java/微服务架构的理论基础 - 康威定律/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://lywlefan.github.io/2019/06/05/指导思想/java/微服务架构的理论基础 - 康威定律/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《微服务架构的理论基础 - 康威定律》 — share猿&url=https://lywlefan.github.io/2000/01/01/指导思想/java/微服务架构的理论基础 - 康威定律/&via=https://lywlefan.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《微服务架构的理论基础 - 康威定律》 — share猿&url=https://lywlefan.github.io/2019/06/05/指导思想/java/微服务架构的理论基础 - 康威定律/&via=https://lywlefan.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://lywlefan.github.io/2000/01/01/指导思想/java/微服务架构的理论基础 - 康威定律/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://lywlefan.github.io/2019/06/05/指导思想/java/微服务架构的理论基础 - 康威定律/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -433,13 +433,20 @@
 <nav class="post-nav flex-row flex-justify-between">
   
     <div class="waves-block waves-effect prev">
-      <a href="/2000/01/01/指导思想/java/java整体脉络总结/" id="post-prev" class="post-nav-link">
+      <a href="/2019/06/05/指导思想/java/java整体脉络总结/" id="post-prev" class="post-nav-link">
         <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">java整体脉络总结.mdjava整体脉络总结</h4>
+        <h4 class="title">java整体脉络总结</h4>
       </a>
     </div>
   
 
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/05/30/读书/2019/5月/成事-冯唐/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">成事-冯唐</h4>
+      </a>
+    </div>
   
 </nav>
 
@@ -538,7 +545,7 @@
             
                 <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
             
-            <span>このブログの内容物は<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja">クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際ライセンスの下に提供されています</a></span>
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
         </p>
     </div>
     <div class="bottom">
@@ -560,7 +567,7 @@
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://lywlefan.github.io/2000/01/01/指导思想/java/微服务架构的理论基础 - 康威定律/&title=《微服务架构的理论基础 - 康威定律》 — share猿&pic=https://lywlefan.github.io/img/avatar.png" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://lywlefan.github.io/2019/06/05/指导思想/java/微服务架构的理论基础 - 康威定律/&title=《微服务架构的理论基础 - 康威定律》 — share猿&pic=https://lywlefan.github.io/img/avatar.png" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -570,22 +577,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://lywlefan.github.io/2000/01/01/指导思想/java/微服务架构的理论基础 - 康威定律/&title=《微服务架构的理论基础 - 康威定律》 — share猿&source=分享有价值的内容,你我共同成长!" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://lywlefan.github.io/2019/06/05/指导思想/java/微服务架构的理论基础 - 康威定律/&title=《微服务架构的理论基础 - 康威定律》 — share猿&source=分享有价值的内容,你我共同成长!" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://lywlefan.github.io/2000/01/01/指导思想/java/微服务架构的理论基础 - 康威定律/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://lywlefan.github.io/2019/06/05/指导思想/java/微服务架构的理论基础 - 康威定律/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《微服务架构的理论基础 - 康威定律》 — share猿&url=https://lywlefan.github.io/2000/01/01/指导思想/java/微服务架构的理论基础 - 康威定律/&via=https://lywlefan.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《微服务架构的理论基础 - 康威定律》 — share猿&url=https://lywlefan.github.io/2019/06/05/指导思想/java/微服务架构的理论基础 - 康威定律/&via=https://lywlefan.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://lywlefan.github.io/2000/01/01/指导思想/java/微服务架构的理论基础 - 康威定律/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://lywlefan.github.io/2019/06/05/指导思想/java/微服务架构的理论基础 - 康威定律/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -596,7 +603,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAADIUlEQVR42u3ay24iMRAFUP7/p5ntjDTAvVUdKW1OryIIto+RUqnH4xE/z7+e2bvJ+u9X3qw/fLCxsbFvwn6+fVrY+3VaZMsuPouNjY19HDtZbha0cvzmonMLNjY2NnabMLQBJnm3PSc2NjY29vsANgszs3ffB1FsbGzsb2bnYSMv9ySpSxsaZ2fDxsbGPpudd0V//88/0t/GxsbG/sXsZ/lsik37AZ1Ne/ifNbGxsbEPYucBoB2gSYpQ+7LRKhHCxsbGPoJ9Veh6X9aJivXx1cxaztjY2Nhns2fBoNgm/s2ElDeeP/RDsLGxsQ9i/0TasLmChD1LV/4Tt7GxsbEPYiel+X342SQYyevJ+bGxsbHPZucN11nJfpNOtPtGqQg2Njb2cexNUWnT9N0UsOovAxsbG/s4drJBXiqajQFdW0KKAhg2Njb2Qew2jL0KHrMiUXJB+b5RsQkbGxv7IHZe3MmL8m2b4doBoCLhwcbGxj6C3ZbyN0M2s1LUJh16eQZsbGzsr2HP/sW/itTuWLQTsLGxsQ9iJ+3YpLifl5mick/ZKsiTHGxsbOzz2G3RZzgiM0pRZq3caPAIGxsb+zj25nB5uvKIn7yclO/4sr+NjY2NfRA7TxWS9kB7TTlvM1pURGlsbGzsW7HbYNMebnboWfGoCGDY2NjYR7DbsZv89TzAtMFs1nhu4hs2Njb2/djtlsVYzKJl22KSVgc2Njb22ew2AMzGdDaNhLyZUTcnsLGxsW/Obv/Fzy9lUwzKx4bypgU2Njb2qey8BD8bvsmvY1aW2lwcNjY29hnsfXBqD7G5uPwMH742bGxs7OPYeYDZlKLyTyVJCDY2NjZ2W45pxyU3w0CbRkK0IzY2NvYR7Gf5zELabP1ZIKz7IdjY2Ng3Z7d/+mdXs08nrmrx1peCjY2NfRN2G1TaDfLQcu2g54eVsbGxsY9j50GiDUV5yf6CYcr8/NjY2NhfzN6kHPlAZ5ve1CETGxsb+4vZG3AbqGYlp+gisLGxsY9jz8r9eRs4v9xZg7keEsLGxsY+iN0WaNogty9U5V/AvkWBjY2NfSv2H25ifLgkswLlAAAAAElFTkSuQmCC" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAADJElEQVR42u3awW4bMQwE0Pz/T7vXFmg2M+QG8MpvT4Edy3oK0ClJfX3Fz+uvZ/Zusv71ypv1hw82Njb2Q9ivy6eFXa/TIlt28VlsbGzs49jJcrPQyvGbg84t2NjY2Nh5wXD9SvKp795t94mNjY2NvQmwJJzyd6/3gI2Njf3J7Dw29u2evLl/196wsbGxz2bnU9H3//lX5tvY2NjYb8x+lc+sibMZ9N41Hv5nTWxsbOyD2HkA5P/FT16/q22UlxnY2NjYp7Jn0dW2daJmfXw0N4ycsbGxsY9jz8Igv5Qze30zeI7mIdjY2NgHsduyIR/Qzo4mWXNWrvwnt7GxsbEPYu8b+rPWfxtd169HrS5sbGzsj2HnW2yPaVZOtKOCqBTBxsbGPo6dN9+T+MlLnbakaY8+mopgY2NjP5Y9u6CTxEl9e+gXWkg/TEWwsbGxj2C3w4AiKkYj27y1lB96cVMJGxsb+7HstpDYJMK+mZUUM9/+DjY2NvYHsPM20Cyo2u3OyqFv94CNjY19HDsvAJIrMneR2m8sxgnY2NjYB7H3jaHNgGHWhMrHwFHQYmNjYz+cnTRrZgPXWSgmm86bTcWEGRsbG/sg9mxzeVsnP5TZIOG2QS82Njb2A9l5qdCGVrJCHl2bKz5feUpjY2NjP4rdhs3+2s0GcMNQARsbG/sgdnvt5jpIWlh7NHnZU89DsLGxsR/O3nxlG0htA+uu0BpWY9jY2NiPYrchsUmE/cqzA8XGxsY+ld3GQxs2m2/ZjKKH82RsbGzsB7KTizKbQULeSGpLiP3BYWNjY5/BnoVW3taZXbhJCoxNUYSNjY19KrttAw3Hq8GnkiKkDTBsbGzss9n7wJgFzG+MKKJvxMbGxj6C/SqffRmQrz8LwtU8BBsbG/uB7Paf/tnR7MuJu0a89aFgY2NjP4Tdhkr7BXm05BcoN5d7sLGxsU9l5yGRb7q9gnnDZcp8/9jY2NgfzE54swKmPbJVZGJjY2N/MDsvRfZBNWs5RQeBjY2NfRx71u7PjyM/3NmAub4khI2NjX0Qu23QbEYCbfzc9QcYXujBxsbGfnf2H5DYNQAWrEXFAAAAAElFTkSuQmCC" alt="微信分享二维码">
 </div>
 
 

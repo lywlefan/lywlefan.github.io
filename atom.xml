@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://lywlefan.github.io/"/>
-  <updated>2019-05-30T05:39:20.747Z</updated>
+  <updated>2019-06-05T08:41:40.147Z</updated>
   <id>https://lywlefan.github.io/</id>
   
   <author>
@@ -15,6 +15,76 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>java整体脉络总结</title>
+    <link href="https://lywlefan.github.io/2019/06/05/%E6%8C%87%E5%AF%BC%E6%80%9D%E6%83%B3/java/java%E6%95%B4%E4%BD%93%E8%84%89%E7%BB%9C%E6%80%BB%E7%BB%93/"/>
+    <id>https://lywlefan.github.io/2019/06/05/指导思想/java/java整体脉络总结/</id>
+    <published>2019-06-04T16:00:00.000Z</published>
+    <updated>2019-06-05T08:41:40.147Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>java学习指导战略。</p></blockquote><ul><li><p>基础</p><ul><li><p>Java基础知识</p><ul><li><p>阅读源代码</p><ul><li>String</li><li>Integer</li><li>Long</li><li>Enum</li><li>BigDecimal</li><li>ThreadLocal</li><li>ClassLoader&amp;URLClassLoader</li><li>ArrayList&amp;LinkedList</li><li>HashMap&amp;LinkedHashMap&amp;TreeMap&amp;CouncurrentHashMap</li><li>HashSet&amp;LinkedHashSet&amp;TreeSet</li></ul></li><li><p>Java中的各种变量类型</p><ul><li>熟悉Java String的使用，熟悉String的各种函数</li><li>JDK6和JDK7中substring的原理及区别</li><li>replaceFirst、replaceAll、replace区别</li><li>String对“+”的重载</li><li>String.valueOf和Integer.toString的区别</li><li>字符串的不可变性</li></ul></li><li><p>自动拆装箱</p><ul><li>Integer的缓存机制</li></ul></li><li>熟悉Java中各种关键字原理和用法<ul><li>transient</li><li>instanceof</li><li>volatile</li><li>synchronized</li><li>final</li><li>static</li><li>const</li></ul></li><li>集合类<ul><li>常用集合类的使用</li><li>ArrayList和LinkedList和Vector的区别</li><li>SynchronizedList和Vector的区别</li><li>HashMap、HashTable、ConcurrentHashMap区别</li><li>Java 8中stream相关用法</li><li>apache集合处理工具类的使用</li><li>不同版本的JDK中HashMap的实现的区别以及原因</li></ul></li><li>枚举<ul><li>枚举的用法</li><li>枚举与单例</li><li>Enum类</li></ul></li><li>Java IO&amp;Java NIO<ul><li>bio</li><li>nio</li><li>aio</li><li>三种IO的用法与原理</li><li>netty</li></ul></li><li>Java反射与javassist<ul><li>反射与工厂模式</li><li>java.lang.reflect.*</li></ul></li><li>Java序列化<ul><li>什么是序列化与反序列化、为什么序列化</li><li>序列化底层原理</li><li>序列化与单例模式</li><li>protobuf</li><li>为什么说序列化并不安全</li></ul></li><li>注解<ul><li>元注解</li><li>自定义注解</li><li>Java中常用注解使用</li><li>注解与反射的结合</li></ul></li><li>JMS<ul><li>什么是Java消息服务</li><li>JMS消息传送模型</li></ul></li><li>JMX<ul><li>java.lang.management.*</li><li>javax.management.*</li></ul></li><li>泛型<ul><li>泛型与继承</li><li>类型擦除</li><li>泛型中K T V E</li><li>object等的含义、泛型各种用法</li></ul></li><li>单元测试<ul><li>junit</li><li>mock</li><li>mockito</li><li>内存数据库（h2）</li></ul></li><li>正则表达式<ul><li>java.lang.util.regex.*</li></ul></li><li>常用的Java工具库<ul><li>commons.lang</li><li>commons.*…</li><li>guava-libraries</li><li>netty</li></ul></li><li>什么是API&amp;SPI</li><li>异常<ul><li>异常类型</li><li>正确处理异常</li><li>自定义异常</li></ul></li><li>时间处理<ul><li>时区</li><li>时令</li><li>Java中时间API</li></ul></li><li>编码方式<ul><li>解决乱码问题</li><li>常用编码方式</li></ul></li><li>语法糖<ul><li>Java中语法糖原理</li><li>解语法糖</li></ul></li></ul></li><li><p>Java并发编程</p><ul><li>什么是线程，与进程的区别</li><li>阅读相关源代码，并学会使用<ul><li>Thread</li><li>Runnable</li><li>Callable</li><li>ReentrantLock、ReentrantReadWriteLock、Atomic*、Semaphore、CountDownLatch、、ConcurrentHashMap、Executors</li></ul></li><li>线程池<ul><li>自己设计线程池、submit() 和 execute()</li></ul></li><li>线程安全<ul><li>死锁、死锁如何排查、Java线程调度、线程安全和内存模型的关系</li></ul></li><li>锁<ul><li>CAS、乐观锁与悲观锁、数据库相关锁机制、分布式锁、偏向锁、轻量级锁、重量级锁、monitor、锁优化、锁消除、锁粗化、自旋锁、可重入锁、阻塞锁、死锁</li></ul></li><li>死锁</li><li>volatile<ul><li>happens-before、编译器指令重排和CPU指令重</li></ul></li><li>synchronized<ul><li>synchronized是如何实现的？ synchronized和lock之间关系，不使用synchronized如何实现一个线程安全的单例</li></ul></li><li>sleep 和 wait</li><li>wait 和 notify</li><li>notify 和 notifyAll</li><li>ThreadLocal</li><li>写一个死锁的程序</li><li>写代码来解决生产者消费者问题</li><li>守护线程<ul><li>守护线程和非守护线程的区别以及用法</li></ul></li></ul></li><li>JVM<ul><li>JVM内存结构<ul><li>堆</li><li>栈</li><li>方法区</li><li>直接内存</li><li>堆和栈的区别</li></ul></li><li>Java内存模型<ul><li>内存可见性</li><li>重排序</li><li>顺序一致性</li><li>volatile</li><li>锁</li><li>final</li></ul></li><li>垃圾回收<ul><li>内存分配策略</li><li>垃圾收集器<ul><li>G1</li></ul></li><li>GC算法</li><li>GC参数</li><li>对象存活的判定</li></ul></li><li>JVM参数及调优</li><li>Java对象模型<ul><li>oop-klass</li><li>对象头</li></ul></li><li>HotSpot<ul><li>即时编译器</li><li>编译优化</li></ul></li><li>类加载机制<ul><li>classLoader</li><li>类加载过程</li><li>双亲委派（破坏双亲委派）</li><li>模块化<ul><li>jboss modules</li><li>osgi</li><li>jigsaw</li></ul></li></ul></li><li>虚拟机性能监控与故障处理工具<ul><li>jps</li><li>jstack</li><li>jmap</li><li>jstat</li><li>jconsole</li><li>jhat</li><li>javap</li><li>btrace</li><li>TProfiler</li></ul></li><li>编译与反编译<ul><li>javac</li><li>javap</li><li>jad</li><li>CRF</li></ul></li></ul></li></ul></li><li><p>进阶</p><ul><li>Java底层知识<ul><li>字节码、class文件格式</li><li>CPU缓存，L1，L2，L3和伪共享</li><li>尾递归</li><li>位运算<ul><li>位运算实现加、减、乘、除、取余</li></ul></li></ul></li><li><p>设计模式</p><ul><li>了解23种设计模式<ul><li>在软件工程中，设计模式（design pattern）是对软件设计中普遍存在的各种问题，所提出的解决方案。设计模式并不是固定的一套代码，而是针对某一特定问题的具体解决思路与方案。可以认为是一种最佳实践，因为他是无数软件开发人员经过长时间的实践总结出来的。</li></ul></li><li>设计模式的六大原则<ul><li>开闭原则</li><li>里氏代换原则</li><li>依赖倒转原则</li><li>接口隔离原则</li><li>迪米特法则（最少知道原则）</li><li>合成复用原则</li></ul></li><li><p>设计模式分类</p><ul><li><p>创建型模式</p><ul><li><p>单例模式</p><ul><li>保证一个类仅有一个实例，并提供一个访问它的全局访问点。</li><li>在内存里只有一个实例，减少了内存的开销，尤其是频繁的创建和销毁实例（比如网站首页页面缓存）。</li><li>避免对资源的多重占用（比如写文件操作）</li><li><p>饿汉式</p>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">public class Singleton &#123; </span><br><span class="line">//在类内部实例化一个实例 </span><br><span class="line">private static Singleton instance = new Singleton(); </span><br><span class="line">//私有的构造函数,外部无法访问 </span><br><span class="line">private Singleton() &#123; </span><br><span class="line">&#125; </span><br><span class="line">//对外提供获取实例的静态方法 </span><br><span class="line">public static Singleton getInstance() &#123; </span><br><span class="line">return instance; </span><br><span class="line">&#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><ul><li>饿汉式单例，在类被加载的时候对象就会实例化。这也许会造成不必要的消耗，因为有可能这个实例根本就不会被用到。而且，如果这个类被多次加载的话也会造成多次实例化。其实解决这个问题的方式有很多，下面提供两种解决方式，第一种是使用静态内部类的形式。第二种是使用懒汉式。</li></ul></li><li><p>静态内部类式</p><ul><li><p>饿汉式是只要Singleton类被装载了，那么instance就会被实例化（没有达到lazy loading效果），而这种方式是Singleton类被装载了，instance不一定被初始化。因为SingletonHolder类没有被主动使用，只有显示通过调用getInstance方法时，才会显示装载SingletonHolder类，从而实例化instance</p></li><li><p>想象一下，如果实例化instance很消耗资源，我想让他延迟加载，另外一方面，我不希望在Singleton类加载时就实例化，因为我不能确保Singleton类还可能在其他的地方被主动使用从而被加载，那么这个时候实例化instance显然是不合适的。这个时候，这种方式相比饿汉式更加合理。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public class StaticInnerClassSingleton &#123; </span><br><span class="line">//在静态内部类中初始化实例对象 </span><br><span class="line">private static class SingletonHolder &#123; </span><br><span class="line">private static final StaticInnerClassSingleton INSTANCE = new StaticInnerClassSingleton(); </span><br><span class="line">&#125; </span><br><span class="line">//私有的构造方法 </span><br><span class="line">private StaticInnerClassSingleton() &#123; </span><br><span class="line">&#125; </span><br><span class="line">//对外提供获取实例的静态方法 </span><br><span class="line">public static final StaticInnerClassSingleton getInstance() &#123; </span><br><span class="line">return SingletonHolder.INSTANCE; </span><br><span class="line">&#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li></ul></li><li><p>懒汉式</p>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">public class Singleton &#123; </span><br><span class="line">//定义实例 </span><br><span class="line">private static Singleton instance; </span><br><span class="line">//私有构造方法 </span><br><span class="line">private Singleton()&#123;&#125; </span><br><span class="line">//对外提供获取实例的静态方法 </span><br><span class="line">public static Singleton getInstance() &#123; </span><br><span class="line">//在对象被使用的时候才实例化 </span><br><span class="line">if (instance == null) &#123; </span><br><span class="line">instance = new Singleton(); </span><br><span class="line">&#125; </span><br><span class="line">return instance; </span><br><span class="line">&#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><ul><li><p>这种懒汉式单例其实还存在一个问题，那就是线程安全问题。在多线程情况下，有可能两个线程同时进入if语句中，这样，在两个线程都从if中退出的时候就创建了两个不一样的对象。</p></li><li><p>懒汉，就是不会提前把实例创建出来，将类对自己的实例化延迟到第一次被引用的时候。getInstance方法的作用是希望该对象在第一次被使用的时候被new出来。</p></li></ul></li><li><p>线程安全的懒汉式</p>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">public class SynchronizedSingleton &#123; </span><br><span class="line">//定义实例 </span><br><span class="line">private static SynchronizedSingleton instance; </span><br><span class="line">//私有构造方法 </span><br><span class="line">private SynchronizedSingleton()&#123;&#125; </span><br><span class="line">//对外提供获取实例的静态方法,对该方法加锁 </span><br><span class="line">public static synchronized SynchronizedSingleton getInstance() &#123; </span><br><span class="line">//在对象被使用的时候才实例化 </span><br><span class="line">if (instance == null) &#123; </span><br><span class="line">instance = new SynchronizedSingleton(); </span><br><span class="line">&#125; </span><br><span class="line">return instance; </span><br><span class="line">&#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><ul><li>遗憾的是，他效率很低，因为99%情况下不需要同步。（因为上面的synchronized的加锁范围是整个方法，该方法的所有操作都是同步进行的，但是对于非第一次创建对象的情况，也就是没有进入if语句中的情况，根本不需要同步操作，可以直接返回instance。）</li></ul></li><li><p>双重校验锁</p>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">public class Singleton &#123; </span><br><span class="line">private static Singleton singleton; </span><br><span class="line"></span><br><span class="line">private Singleton() &#123; </span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line">public static Singleton getSingleton() &#123; </span><br><span class="line">if (singleton == null) &#123; </span><br><span class="line">synchronized (Singleton.class) &#123; </span><br><span class="line">if (singleton == null) &#123; </span><br><span class="line">singleton = new Singleton(); </span><br><span class="line">&#125; </span><br><span class="line">&#125; </span><br><span class="line">&#125; </span><br><span class="line">return singleton; </span><br><span class="line">&#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><ul><li><p>线程A发现变量没有被初始化, 然后它获取锁并开始变量的初始化。 由于某些编程语言的语义，编译器生成的代码允许在线程A执行完变量的初始化之前，更新变量并将其指向部分初始化的对象。</p><p>线程B发现共享变量已经被初始化，并返回变量。由于线程B确信变量已被初始化，它没有获取锁。如果在A完成初始化之前共享变量对B可见（这是由于A没有完成初始化或者因为一些初始化的值还没有穿过B使用的内存(缓存一致性)），程序很可能会崩溃。</p></li><li><p>在J2SE 1.4或更早的版本中使用双重检查锁有潜在的危险，有时会正常工作（区分正确实现和有小问题的实现是很困难的。取决于编译器，线程的调度和其他并发系统活动，不正确的实现双重检查锁导致的异常结果可能会间歇性出现。重现异常是十分困难的。） 在J2SE 5.0中，这一问题被修正了。volatile关键字保证多个线程可以正确处理单件实例</p></li><li><p>子主题</p></li></ul></li><li><p>双重校验锁优化</p>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">public class VolatileSingleton &#123; private static volatile VolatileSingleton singleton; </span><br><span class="line"></span><br><span class="line">private VolatileSingleton() &#123; </span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line">public static VolatileSingleton getSingleton() &#123; </span><br><span class="line">if (singleton == null) &#123; </span><br><span class="line">synchronized (VolatileSingleton.class) &#123; </span><br><span class="line">if (singleton == null) &#123; </span><br><span class="line">singleton = new VolatileSingleton(); </span><br><span class="line">&#125; </span><br><span class="line">&#125; </span><br><span class="line">&#125; </span><br><span class="line">return singleton; </span><br><span class="line">&#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">class FinalWrapper&lt;T&gt; &#123; </span><br><span class="line">public final T value; </span><br><span class="line"></span><br><span class="line">public FinalWrapper(T value) &#123; </span><br><span class="line">this.value = value; </span><br><span class="line">&#125; </span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line">public class FinalSingleton &#123; </span><br><span class="line">private FinalWrapper&lt;FinalSingleton&gt; helperWrapper = null; </span><br><span class="line"></span><br><span class="line">public FinalSingleton getHelper() &#123; </span><br><span class="line">FinalWrapper&lt;FinalSingleton&gt; wrapper = helperWrapper; </span><br><span class="line"></span><br><span class="line">if (wrapper == null) &#123; </span><br><span class="line">synchronized (this) &#123; </span><br><span class="line">if (helperWrapper == null) &#123; </span><br><span class="line">helperWrapper = new FinalWrapper&lt;FinalSingleton&gt;(new FinalSingleton()); </span><br><span class="line">&#125; </span><br><span class="line">wrapper = helperWrapper; </span><br><span class="line">&#125; </span><br><span class="line">&#125; </span><br><span class="line">return wrapper.value; </span><br><span class="line">&#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li><li><p>防止序列化方式</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">package com.hollis; import java.io.Serializable; </span><br><span class="line">/** </span><br><span class="line">* Created by hollis on 16/2/5. </span><br><span class="line">* 使用双重校验锁方式实现单例 </span><br><span class="line">*/ </span><br><span class="line">public class Singleton implements Serializable&#123; </span><br><span class="line">private volatile static Singleton singleton; </span><br><span class="line">private Singleton ()&#123;&#125; </span><br><span class="line">public static Singleton getSingleton() &#123; </span><br><span class="line">if (singleton == null) &#123; </span><br><span class="line">synchronized (Singleton.class) &#123; </span><br><span class="line">if (singleton == null) &#123; </span><br><span class="line">singleton = new Singleton(); </span><br><span class="line">&#125; </span><br><span class="line">&#125; </span><br><span class="line">&#125; </span><br><span class="line">return singleton; </span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line">private Object readResolve() &#123; </span><br><span class="line">return singleton; </span><br><span class="line">&#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li></ul></li><li><p>抽象工厂模式</p></li><li><p>建造者模式</p></li><li>工厂模式</li><li>原型模式</li></ul></li><li>结构型模式<ul><li>适配器模式</li><li>桥接模式</li><li>组合模式</li><li>装饰模式</li><li>外观模式</li><li>享元模式</li><li>代理模式</li></ul></li><li>行为型模式<ul><li>模板方法模式</li><li>命令模式</li><li>迭代器模式</li><li>观察者模式</li><li>中介者模式</li><li>解析器模式（Interpreter模式）</li><li>状态模式</li><li>策略模式</li><li>责任链模式</li><li>访问者模式</li></ul></li></ul></li><li>使用常用设计模式<ul><li>单例</li><li>策略</li><li>工厂</li><li>适配器</li><li>责任链 </li></ul></li><li>实现AOP</li><li>实现IOC</li><li>不用synchronized和lock，实现线程安全的单例模式</li><li>nio和reactor设计模式</li></ul></li><li>网络编程<ul><li>tcp、udp、http、https等常用协议<ul><li>三次握手协议</li><li>四次关闭</li><li>流量控制和拥塞控制</li><li>OSI七层模型</li><li>tcp粘包和拆包</li></ul></li><li>http/1.0 http/1.1 http/2 之间的区别</li><li>Java RMI </li><li>Socket</li><li>HttpClient</li><li>cookie与session</li><li>cookie被禁用，如何实现session</li><li>用Java写一个简单的静态文件的HTTP服务器<ul><li>实现客户端缓存功能，支持返回304 实现可并发下载一个文件 使用线程池处理客户端请求 使用nio处理客户端请求 支持简单的rewrite规则 上述功能在实现的时候需要满足“开闭原则”</li></ul></li><li>了解nginx和apache服务器特性并搭建一个对应的服务器</li><li>用Java实现FTP、SMTP协议</li><li>进程间通讯的方式</li><li>什么是CDN？如果实现</li><li>什么是DNS</li><li>反向代理</li></ul></li><li>框架知识<ul><li>Servlet线程安全问题</li><li>Servlet中的filter和listener</li><li>Hibernate的缓存机制</li><li>Hibernate的懒加载</li><li>Spring Bean的初始化</li><li>Spring的AOP原理</li><li>自己实现Spring的IOC</li><li>Spring MVC</li><li>Spring Boot2.0<ul><li>Spring Boot的starter原理，自己实现一个starter</li></ul></li><li>Spring Security</li></ul></li><li>应用服务器<ul><li>JBoss</li><li>tomcat</li><li>jetty</li><li>Weblogic</li></ul></li><li>工具<ul><li>git&amp;svn</li><li>maven&amp;gradle</li></ul></li></ul></li><li><p>高级</p><ul><li><p>新技术</p><ul><li>Java8<ul><li>lambda表达式</li><li>Stream API</li></ul></li><li>Java9<ul><li>Jigsaw</li><li>Jshell</li><li>Reactive Streams</li></ul></li><li>Java10<ul><li>局部变量类型推断</li><li>G1的并行Full GC</li><li>ThreadLocal握手机制</li></ul></li><li><p>响应式编程</p></li><li><p>Spring Boot 2.0</p></li></ul></li><li>线上问题分析<ul><li>dump获取<ul><li>线程Dump</li><li>内存Dump</li><li>gc</li></ul></li><li>dump分析<ul><li>分析死锁</li><li>分析内存泄漏</li></ul></li><li>自己编写各种outofmemory,stackoverflow程序<ul><li>HeapOutOfMemory、 Young OutOfMemory、MethodArea OutOfMemory、ConstantPool OutOfMemory、DirectMemory OutOfMemory、Stack OutOfMemory Stack OverFlow</li></ul></li><li>常见问题解决思路<ul><li>内存溢出</li><li>线程死锁</li><li>类加载冲突</li></ul></li><li>使用工具尝试解决问题，并总结<ul><li>当一个Java程序响应很慢时如何查找问题</li><li>当一个Java程序频繁FullGC时如何解决问题</li><li>如何查看垃圾回收日志</li><li>当一个Java应用发生OutOfMemory时如何解决</li><li>如何判断是否出现死锁</li><li>如何判断是否存在内存泄漏</li></ul></li></ul></li><li>性能优化<ul><li>使用单例</li><li>使用Future模式</li><li>使用线程池</li><li>选择就绪</li><li>减少上下文切换</li><li>减小锁粒度</li><li>数据压缩</li><li>结果缓存</li></ul></li><li>编译原理知识<ul><li>编译与反编译</li><li>Java代码的编译与反编译</li><li>Java的反编译工具</li><li>词法分析，语法分析（LL算法，递归下降算法，LR算法），语义分析，运行时环境，中间代码，代码生成，代码优化</li></ul></li><li>操作系统知识<ul><li>Linux的常用命令</li><li>进程同步</li><li>缓冲区溢出 </li><li>分段和分页</li><li>虚拟内存与主存</li></ul></li><li>数据库知识<ul><li>MySql执行引擎</li><li>数据库建模三范式</li><li>Mysql执行计划<ul><li>如何查看执行计划</li><li>如何根据执行计划进行sql优化</li></ul></li><li>SQL优化</li><li>事务        <ul><li>事务的隔离级别</li><li>事务能不能实现锁的功能</li></ul></li><li>数据库锁<ul><li>行锁</li><li>表锁</li><li>使用数据库实现乐观锁</li></ul></li><li>数据库主备搭建</li><li>binlog</li><li>内存数据库</li><li>常用的nosql数据库<ul><li>redis</li><li>memcached        </li></ul></li><li>使用数据库锁、NoSql实现分布式锁</li><li>性能调优</li></ul></li><li>数据结构和算法知识<ul><li>简单的数据结构<ul><li>栈</li><li>队列</li><li>链表</li><li>数组</li><li>哈希表        </li></ul></li><li>树<ul><li>二叉树</li><li>字典树</li><li>平衡树</li><li>排序树</li><li>B树</li><li>B+树</li><li>R树</li><li>多路树</li><li>红黑树        </li></ul></li><li>排序算法<ul><li>各种排序算法和时间复杂度</li><li>深度优先和广度优先搜索</li><li>全排列</li><li>贪心算法</li><li>KMP算法</li><li>hash算法<ul><li>一致性hash算法</li></ul></li><li>海量数据处理    </li></ul></li></ul></li><li>大数据知识<ul><li>Zookeeper</li><li>Solr，Lucene，ElasticSearch</li><li>Storm，流式计算，了解Spark，S4</li><li>Hadoop，离线计算</li><li>分布式日志收集flume，kafka，logstash</li><li>数据挖掘，mahout</li></ul></li><li>网络安全<ul><li>什么是XSS</li><li>什么是CSRF</li><li>什么是注入攻击</li><li>什么是文件上传漏洞</li><li>加密与解密</li><li>什么是DOS攻击和DDOS攻击</li><li>SSL，TLS，HTTPS</li><li>如何通过Hash碰撞进行DOS攻击</li><li>用openssl签一个证书部署到apache或nginx</li></ul></li><li>架构<ul><li>分布式</li><li>分布式事务</li><li>rpc</li><li>分布式数据库</li><li>分布式文件系统</li><li>分布式缓存</li><li>微服务<ul><li>SOA</li><li>康威定律</li></ul></li><li>ServiceMesh</li><li>Docker &amp; Kubernets</li><li>Spring Boot</li><li>Spring Cloud</li><li>高并发</li><li>分库分表</li><li>CDN技术</li><li>消息队列<ul><li>ActiveMQ</li></ul></li><li>监控<ul><li>监控什么<ul><li>CPU</li><li>内存</li><li>磁盘IO</li><li>网络IO</li><li>服务监控</li></ul></li><li>监控手段<ul><li>进程监控</li><li>语义监控</li><li>机器资源监控</li><li>数据波动</li></ul></li><li>监控数据采集<ul><li>日志</li><li>埋点</li></ul></li><li>Dapper</li></ul></li><li>负载均衡</li><li>DNS</li><li>CDN<ul><li>数据一致性</li></ul></li></ul></li><li>扩展<ul><li>云计算<ul><li>IaaS</li><li>SaaS</li><li>PaaS</li><li>虚拟化技术</li><li>Serverlsess</li><li>openstack</li></ul></li><li>搜索引擎<ul><li>Solr</li><li>Lucene</li><li>Nutch</li><li>Elasticsearch</li></ul></li><li>权限管理-必须的<ul><li>Shiro</li></ul></li><li>区块链<ul><li>基础<ul><li>哈希算法</li><li>Merkle树</li><li>公钥密码算法</li><li>共识算法</li><li>Raft协议</li><li>Paxos 算法与 Raft 算法</li><li>拜占庭问题与算法</li><li>消息认证码与数字签名</li></ul></li><li>应用<ul><li>比特币</li><li>以太坊</li><li>超级账本</li></ul></li></ul></li><li>人工智能<ul><li>基础<ul><li>数学基础</li><li>机器学习</li><li>人工神经网络</li><li>深度学习</li><li>应用场景</li></ul></li><li>框架<ul><li>TensorFlow</li><li>DeepLearning4J        </li></ul></li></ul></li><li>其他语言<ul><li>Groovy</li><li>Python</li><li>Go</li><li>NodeJs</li><li>Swift</li><li>Rust</li></ul></li></ul></li></ul></li><li><p>书籍推荐</p><ul><li>《深入理解Java虚拟机》</li><li>《Effective Java》</li><li>《深入分析Java Web技术内幕》</li><li>《大型网站技术架构》 </li><li>《代码整洁之道》 </li><li>《Head First设计模式》 </li><li>《maven实战》 </li><li>《区块链原理、设计与应用》 </li><li>《Java并发编程实战》 </li><li>《鸟哥的Linux私房菜》</li><li>《从Paxos到Zookeeper》 </li><li>《架构即未来》</li></ul></li></ul><blockquote><p><a href="https://www.jianshu.com/u/354cc1548a33" target="_blank" rel="noopener">【1】简书主页·share猿</a><br><a href="https://juejin.im/user/5a8e759851882524d842d174" target="_blank" rel="noopener">【2】掘金主页·share猿</a></p></blockquote><hr><p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>                </div>                <div class="image-caption"></div>            </figure></p><p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;blockquote&gt;
+&lt;p&gt;java学习指导战略。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;基础&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Java基础知识&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;阅读源代码&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;String&lt;/li&gt;
+&lt;li&gt;Int
+      
+    
+    </summary>
+    
+      <category term="指导思想" scheme="https://lywlefan.github.io/categories/%E6%8C%87%E5%AF%BC%E6%80%9D%E6%83%B3/"/>
+    
+    
+      <category term="java" scheme="https://lywlefan.github.io/tags/java/"/>
+    
+      <category term="指导思想" scheme="https://lywlefan.github.io/tags/%E6%8C%87%E5%AF%BC%E6%80%9D%E6%83%B3/"/>
+    
+      <category term="java基础" scheme="https://lywlefan.github.io/tags/java%E5%9F%BA%E7%A1%80/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>微服务架构的理论基础 - 康威定律</title>
+    <link href="https://lywlefan.github.io/2019/06/05/%E6%8C%87%E5%AF%BC%E6%80%9D%E6%83%B3/java/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84%E7%9A%84%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80%20-%20%E5%BA%B7%E5%A8%81%E5%AE%9A%E5%BE%8B/"/>
+    <id>https://lywlefan.github.io/2019/06/05/指导思想/java/微服务架构的理论基础 - 康威定律/</id>
+    <published>2019-06-04T16:00:00.000Z</published>
+    <updated>2019-06-05T08:43:57.671Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>&emsp;&emsp;关于微服务的介绍，可以参考微服务那点事。</p><p>&emsp;&emsp;微服务是最近非常火热的新概念，大家都在追，也都觉得很对，但是似乎没有很充足的理论基础说明这是正确的，给人的感觉是 不明觉厉 。前段时间看了Mike Amundsen 《远距离条件下的康威定律——分布式世界中实现团队构建》（是Design RESTful API的作者）在InfoQ上的一个分享，觉得很有帮助，结合自己的一些思考，整理了该演讲的内容。</p><p>&emsp;&emsp;可能出乎很多人意料之外的一个事实是，微服务很多核心理念其实在半个世纪前的一篇文章中就被阐述过了，而且这篇文章中的很多论点在软件开发飞速发展的这半个世纪中竟然一再被验证，这就是康威定律（Conway’s Law）。</p><p>&emsp;&emsp;在康威的这篇文章中，最有名的一句话就是：</p><blockquote><p>Organizations which design systems are constrained to produce designs which are copies of the communication structures of these organizations. - Melvin Conway(1967)</p></blockquote><p>&emsp;&emsp;中文直译大概的意思就是：设计系统的组织，其产生的设计等同于组织之内、组织之间的沟通结构。看看下面的图片（来源于互联网，侵删），再想想Apple的产品、微软的产品设计，就能形象生动的理解这句话。</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://img2.tbcdn.cn/L1/461/1/74ab78cb5db601e5db68adf61e6dc58f437df4e0" alt title>                </div>                <div class="image-caption"></div>            </figure><p>&emsp;&emsp;用通俗的说法就是：组织形式等同系统设计。</p><p>&emsp;&emsp;这里的系统按原作者的意思并不局限于软件系统。据说这篇文章最初投的哈佛商业评论，结果程序员屌丝的文章不入商业人士的法眼，无情被拒，康威就投到了一个编程相关的杂志，所以被误解为是针对软件开发的。最初这篇文章显然不敢自称定律（law），只是描述了作者自己的发现和总结。后来，在Brooks Law著名的人月神话中，引用这个论点，并将其“吹捧”成了现在我们熟知“康威定律”。</p><h2 id="康威定律详细介绍"><a href="#康威定律详细介绍" class="headerlink" title="康威定律详细介绍"></a>康威定律详细介绍</h2><p>&emsp;&emsp;Mike从他的角度归纳这篇论文中的其他一些核心观点，如下：</p><ul><li><p><strong>第一定律</strong>：Communication dictates design（组织沟通方式会通过系统设计表达出来）</p></li><li><p><strong>第二定律</strong>：There is never enough time to do something right, but there is always enough time to do it over（时间再多一件事情也不可能做的完美，但总有时间做完一件事情）</p></li><li><p><strong>第三定律</strong>：There is a homomorphism from the linear graph of a system to the linear graph of its design organization（线型系统和线型组织架构间有潜在的异质同态特性）        </p></li><li><p><strong>第四定律</strong>： The structures of large systems tend to disintegrate during development, qualitatively more so than with small systems（大的系统组织总是比小系统更倾向于分解）</p></li></ul><h3 id="一-人是复杂社会动物"><a href="#一-人是复杂社会动物" class="headerlink" title="一.人是复杂社会动物"></a>一.人是复杂社会动物</h3><p>&emsp;&emsp;<strong>第一定律</strong>：Communication dictates design（组织沟通方式会通过系统设计表达出来）</p><p>&emsp;&emsp;组织的沟通和系统设计之间的紧密联系，在很多别的领域有类似的阐述。对于复杂的系统，聊设计就离不开聊人与人的沟通，解决好人与人的沟通问题，才能有一个好的系统设计。相信几乎每个程序员都读过的《人月神话》（1975年，感觉都是老古董了，经典的就是经得起时间考验）里面许多观点都和这句话有异曲同工之妙。</p><p>&emsp;&emsp;比如《人月神话》中最著名的一句话就是</p><blockquote><p>Adding manpower to a late software project makes it later –Fred Brooks, (1975)</p></blockquote><p>&emsp;&emsp;Boss们都听到了吗？为了赶进度加程序员就像用水去灭油锅里的火一样（无奈大家还是前赴后继）。</p><p>&emsp;&emsp;为什么？人月神话也给出了很简洁的答案：沟通成本 = n(n-1)/2，沟通成本随着项目或者组织的人员增加呈指数级增长。是的，项目管理这个算法的复杂度是O(n^2)。举个例子</p><ul><li>5个人的项目组，需要沟通的渠道是 5*(5–1)/2 = 10</li><li>15个人的项目组，需要沟通的渠道是15*(15–1)/2 = 105</li><li>50个人的项目组，需要沟通的渠道是50*(50–1)/2 = 1,225</li><li>150个人的项目组，需要沟通的渠道是150*(150–1)/2 = 11,175</li></ul><p>&emsp;&emsp;所以知道为什么互联网创业公司都这么小了吧，必须小啊，不然等CEO和所有人讲一遍创业的想法后，风投的钱都烧完了。</p><p>&emsp;&emsp;Mike还举了一个非常有意思的理论，叫“Dunbar Number”，这是一个叫Dunbar（废话）生物学家在1992年最早提出来的。最初，他发现灵长类的大脑容量和其对应的族群大小有一定关联，进而推断出人类的大脑能维系的关系的一些有趣估计。举例来说</p><ul><li>亲密（intimate）朋友: 5</li><li>信任（trusted）朋友: 15</li><li>酒肉（close）朋友: 35</li><li>照面（casual）朋友: 150</li></ul><p>&emsp;&emsp;是不是和上面的沟通成本的数字很貌似有关联？是的，我们的大脑智力只能支持我们维系这么多的关系。（大家都知道这不是程序猿擅长的领域，在开发团队里，这个值应该更小，估计和猿差不多 -_-凸 ）</p><p>&emsp;&emsp;沟通的问题，会带来系统设计的问题，进而影响整个系统的开发效率和最终产品结果。</p><h3 id="二-一口气吃不成胖子，先搞定能搞定的"><a href="#二-一口气吃不成胖子，先搞定能搞定的" class="headerlink" title="二.一口气吃不成胖子，先搞定能搞定的"></a>二.一口气吃不成胖子，先搞定能搞定的</h3><p>&emsp;&emsp;第二定律：There is never enough time to do something right, but there is always enough time to do it over（时间再多一件事情也不可能做的完美，但总有时间做完一件事情）       Eric Hollnagel是敏捷开发社区的泰斗之一，在他《Efficiency-Effectiveness Trade Offs》 一书中解释了类似的论点。</p><p>&emsp;&emsp;系统越做越复杂，功能越来越多，外部市场的竞争越来越剧烈，投资人的期待越来越高。但人的智力是有上限的，即使再牛逼的人，融到钱再多也不一定招到足够多合适的人。对于一个巨复杂的系统，我们永远无法考虑周全。Eric认为，这个时候最好的解决办法竟然是——“破罐子破摔”。</p><p>&emsp;&emsp;其实我们在日常开发中也经常碰到。产品经理的需求太复杂了？适当忽略一些细节，先抓主线。产品经理的需求太多了？放弃一些功能。</p><p>&emsp;&emsp;据说Eric被一家航空公司请去做安全咨询顾问，复杂保证飞机飞行系统的稳定性和安全性。Eric认为做到安全有两种方式：</p><ul><li>常规的安全指的是尽可能多的发现并消除错误的部分，达到绝对安全，这是理想。</li><li>另一种则是弹性安全，即使发生错误，只要及时恢复，也能正常工作，这是现实。</li></ul><p>&emsp;&emsp;对于飞机这样的复杂系统，再牛逼的人也无法考虑到漏洞的方方面面，所以Eric建议放弃打造完美系统的想法，而是通过不断的试飞，发现问题，确保问题发生时，系统能自动复原即可，而不追求飞行系统的绝对正确和安全。</p><p>&emsp;&emsp;下面的图很好的解释了这个过程：</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://img1.tbcdn.cn/L1/461/1/a7fab1b350cd8c03d5e9ddded183c7bda114c326" alt title>                </div>                <div class="image-caption"></div>            </figure><p>&emsp;&emsp;听着很耳熟不是吗？这不就是 持续集成 和敏捷开发吗？的确就是。</p><p>&emsp;&emsp;另一方面，这和互联网公司维护的分布式系统的弹性设计也是一个道理。对于一个分布式系统，我们几乎永远不可能找到并修复所有的bug，单元测试覆盖1000%也没有用，错误流淌在分布式系统的血液里。解决方法不是消灭这些问题，而是容忍这些问题，在问题发生时，能自动回复，微服务组成的系统，每一个微服务都可能挂掉，这是常态，我们只有有足够的冗余和备份即可。即所谓的 弹性设计（Resilience） 或者叫高可用设计（High Availability）。</p><h3 id="三-种瓜得瓜，做独立自治的字系统减少沟通成本"><a href="#三-种瓜得瓜，做独立自治的字系统减少沟通成本" class="headerlink" title="三.种瓜得瓜，做独立自治的字系统减少沟通成本"></a>三.种瓜得瓜，做独立自治的字系统减少沟通成本</h3><p>&emsp;&emsp;第三定律：There is a homomorphism from the linear graph of a system to the linear graph of its design organization（线型系统和线型组织架构间有潜在的异质同态特性）  </p><p><img src="http://img1.tbcdn.cn/L1/461/1/3810f88633a55bdf59bb7757cedc827ab425538e" alt></p><p>&emsp;&emsp;这是康威第一定律组织和设计间内在关系的一个具体应用。更直白的说，你想要什么样的系统，就搭建什么样的团队。如果你的团队分成前端团队，Java后台开发团队，DBA团队，运维团队，你的系统就会长成下面的样子：</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://img4.tbcdn.cn/L1/461/1/f4c2d4a8f8390ca6be19b54a524c8272aced3e34" alt title>                </div>                <div class="image-caption"></div>            </figure><p>&emsp;&emsp;相反，如果你的系统是按照业务边界划分的，大家按照一个业务目标去把自己的模块做出小系统，小产品的话，你的大系统就会长成下面的样子，即微服务的架构</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://img3.tbcdn.cn/L1/461/1/c827db7a12d730140d4c0e6947535e168902a73e" alt title>                </div>                <div class="image-caption"></div>            </figure><p>&emsp;&emsp;微服务的理念团队间应该是 inter-operate, not integrate 。inter-operate是定义好系统的边界和接口，在一个团队内全栈，让团队自治，原因就是因为如果团队按照这样的方式组建，将沟通的成本维持在系统内部，每个子系统就会更加内聚，彼此的依赖耦合能变弱，跨系统的沟通成本也就能降低。</p><h3 id="四-合久必分，分而治之"><a href="#四-合久必分，分而治之" class="headerlink" title="四.合久必分，分而治之"></a>四.合久必分，分而治之</h3><p>&emsp;&emsp;第四定律： The structures of large systems tend to disintegrate during development, qualitatively more so than with small systems（大的系统组织总是比小系统更倾向于分解）</p><p>&emsp;&emsp;前面说了，人是复杂的社会动物，人与人的通过非常复杂。但是当我们面对复杂系统时，又往往只能通过增加人力来解决。这时，我们的组织一般是如何解决这个沟通问题的呢？Divide and conquer,分而治之。大家看看自己的公司的组织，是不是一个一线经理一般都是管理15个人以下的？二线经理再管理更少的一线？三线再管理更少的，以此类推。（这里完全没有暗示开发经理比程序猿更难管理）</p><p>&emsp;&emsp;所以，一个大的组织因为沟通成本/管理问题，总为被拆分成一个个小团队。</p><ul><li>创业的想法太好了，反正风投钱多，多招点程序猿</li><li>人多管不过来啊，找几个经理帮我管，我管经理</li><li>最后， 康威定律 告诉我们组织沟通的方式会在系统设计上有所表达，每个经理都被赋予一定的职责去做大系统的某一小部分，他们和大系统便有了沟通的边界，所以大的系统也会因此被拆分成一个个小团队负责的小系统（微服务是一种好的模式）</li></ul><h2 id="康威定律如何解释微服务的合理性"><a href="#康威定律如何解释微服务的合理性" class="headerlink" title="康威定律如何解释微服务的合理性"></a>康威定律如何解释微服务的合理性</h2><p>&emsp;&emsp;了解了康威定律是什么，再来看看他如何在半个世纪前就奠定了微服务架构的理论基础。</p><ul><li><p>人与人的沟通是非常复杂的，一个人的沟通精力是有限的，所以当问题太复杂需要很多人解决的时候，我们需要做拆分组织来达成对沟通效率的管理</p></li><li><p>组织内人与人的沟通方式决定了他们参与的系统设计，管理者可以通过不同的拆分方式带来不同的团队间沟通方式，从而影响系统设计</p></li><li><p>如果子系统是内聚的，和外部的沟通边界是明确的，能降低沟通成本，对应的设计也会更合理高效</p></li><li><p>复杂的系统需要通过容错弹性的方式持续优化，不要指望一个大而全的设计或架构，好的架构和设计都是慢慢迭代出来的</p></li></ul><p>&emsp;&emsp;带来的具体的实践建议是：</p><ul><li><p>我们要用一切手段提升沟通效率，比如slack，github，wiki。能2个人讲清楚的事情，就不要拉更多人，每个人每个系统都有明确的分工，出了问题知道马上找谁，避免踢皮球的问题。</p></li><li><p>通过MVP的方式来设计系统，通过不断的迭代来验证优化，系统应该是弹性设计的。</p></li><li><p>你想要什么样的系统设计，就架构什么样的团队，能扁平化就扁平化。最好按业务来划分团队，这样能让团队自然的自治内聚，明确的业务边界会减少和外部的沟通成本，每个小团队都对自己的模块的整个生命周期负责，没有边界不清，没有无效的扯皮，inter-operate, not integrate。</p></li><li><p>做小而美的团队，人多会带来沟通的成本，让效率下降。亚马逊的Bezos有个逗趣的比喻，如果2个披萨不够一个团队吃的，那么这个团队就太大了。事实上一般一个互联网公司小产品的团队差不多就是7，8人左右（包含前后端测试交互用研等，可能身兼数职）。</p></li></ul><p>&emsp;&emsp; 再对应下衡量微服务的标准，我们很容易会发现他们之间的密切关系：</p><ul><li>分布式服务组成的系统</li><li>按照业务而不是技术来划分组织</li><li>做有生命的产品而不是项目</li><li>Smart endpoints and dumb pipes（我的理解是强服务个体和弱通信）</li><li>自动化运维（DevOps）</li><li>容错</li><li>快速演化</li></ul><blockquote><p><a href="https://www.jianshu.com/u/354cc1548a33" target="_blank" rel="noopener">【1】简书主页·share猿</a><br><a href="https://juejin.im/user/5a8e759851882524d842d174" target="_blank" rel="noopener">【2】掘金主页·share猿</a></p></blockquote><hr><p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>                </div>                <div class="image-caption"></div>            </figure></p><p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h2&gt;&lt;p&gt;&amp;emsp;&amp;emsp;关于微服务的介绍，可以参考微服务那点事。&lt;/p&gt;
+&lt;p&gt;&amp;emsp;&amp;emsp;微服务是最近非常火热的新概念，大家都
+      
+    
+    </summary>
+    
+      <category term="指导思想" scheme="https://lywlefan.github.io/categories/%E6%8C%87%E5%AF%BC%E6%80%9D%E6%83%B3/"/>
+    
+    
+      <category term="java" scheme="https://lywlefan.github.io/tags/java/"/>
+    
+      <category term="指导思想" scheme="https://lywlefan.github.io/tags/%E6%8C%87%E5%AF%BC%E6%80%9D%E6%83%B3/"/>
+    
+      <category term="微服务" scheme="https://lywlefan.github.io/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/"/>
+    
+  </entry>
   
   <entry>
     <title>成事-冯唐</title>
@@ -104,9 +174,9 @@
       <category term="收藏夹" scheme="https://lywlefan.github.io/categories/%E6%94%B6%E8%97%8F%E5%A4%B9/"/>
     
     
-      <category term="收藏" scheme="https://lywlefan.github.io/tags/%E6%94%B6%E8%97%8F/"/>
-    
       <category term="名言" scheme="https://lywlefan.github.io/tags/%E5%90%8D%E8%A8%80/"/>
+    
+      <category term="收藏" scheme="https://lywlefan.github.io/tags/%E6%94%B6%E8%97%8F/"/>
     
   </entry>
   
@@ -384,6 +454,36 @@
   </entry>
   
   <entry>
+    <title>一代商圣范蠡-姜正成</title>
+    <link href="https://lywlefan.github.io/2019/05/18/%E8%AF%BB%E4%B9%A6/2019/5%E6%9C%88/%E4%B8%80%E4%BB%A3%E5%95%86%E5%9C%A3%E8%8C%83%E8%A0%A1-%E5%A7%9C%E6%AD%A3%E6%88%90/"/>
+    <id>https://lywlefan.github.io/2019/05/18/读书/2019/5月/一代商圣范蠡-姜正成/</id>
+    <published>2019-05-17T16:00:00.000Z</published>
+    <updated>2019-05-21T11:00:17.106Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>能治国能安民，灭吴霸越，堪称一代名相。知进退懂经营，三致千金，不愧千秋商圣。</p></blockquote><h2 id="名言摘录"><a href="#名言摘录" class="headerlink" title="名言摘录"></a>名言摘录</h2><h3 id="范蠡给文种的临别书信"><a href="#范蠡给文种的临别书信" class="headerlink" title="范蠡给文种的临别书信"></a>范蠡给文种的临别书信</h3><p>&emsp;&emsp;飞鸟尽，良弓藏；狡兔死，走狗烹；敌国灭，谋臣亡。越王为人长颈鸟喙，可与共患难，不可与共乐。子何不去？</p><h3 id="人生三不朽"><a href="#人生三不朽" class="headerlink" title="人生三不朽"></a>人生三不朽</h3><p>&emsp;&emsp;立德、立功、立言，取其一容易，得其三更难，而范蠡三者全取。范蠡有为政之德，为商之德，富而好行其德，有十年声息十年教训兴越之功，有父子戮力治产积居、赀（zi）累巨万经商之功，又有《致富奇书》《范蠡兵法》《养鱼经》《陶朱公商训》著书立说之言，三者兼得，可谓德炳炳，功赫赫，言昭昭，为世人尊为商圣，万古流芳。</p><h3 id="经济循环理论"><a href="#经济循环理论" class="headerlink" title="经济循环理论"></a>经济循环理论</h3><ul><li>六岁穰（rang）六岁旱，十二岁一大饥。</li></ul><h3 id="经商致富十二条"><a href="#经商致富十二条" class="headerlink" title="经商致富十二条"></a>经商致富十二条</h3><p>&emsp;&emsp;人无信不立。</p><p>&emsp;&emsp;勤快节俭，谨慎负责，规矩方正，价格讲明，不负于人，富行其德。</p><p>&emsp;&emsp;能接纳，礼文接待，交关者众，能整顿，货物整齐，夺人心目。能倡率，躬行以律，亲感而生。</p><h3 id="人谋"><a href="#人谋" class="headerlink" title="人谋"></a>人谋</h3><p>用人要正，忠奸定兴废。</p><p>大事要慎，妄托受大害。</p><p>待人忌躁，暴躁交易少。</p><p>处事宜静，浮躁误事多。</p><p>言行宜和，和气能生财。</p><p>做事宜勤，懒惰百事废。</p><h3 id="事谋"><a href="#事谋" class="headerlink" title="事谋"></a>事谋</h3><p>用度宜俭，奢华财源败。</p><p>做工宜精，粗糙出劣品。</p><p>期货要准，马虎失信用。</p><p>交易要速，拖延失良机。</p><p>进货要严，滥入货价减。</p><p>出纳要谨，潦草出差错。</p><h3 id="物谋"><a href="#物谋" class="headerlink" title="物谋"></a>物谋</h3><p>优劣要清，混淆损耗大。</p><p>存物要整，散漫难查点。</p><p>价格要明，含糊多争执。</p><p>赊欠要审，滥出亏血本。</p><p>账目要清，糊涂弊端生。</p><p>查账要勤，懈怠滞本金。</p><h3 id="经商之道"><a href="#经商之道" class="headerlink" title="经商之道"></a>经商之道</h3><p>&emsp;&emsp;一是对百姓只取十一利；遣物如遣兵。</p><h3 id="陶朱公商训"><a href="#陶朱公商训" class="headerlink" title="陶朱公商训"></a>陶朱公商训</h3><p>生意要勤快，切勿懒惰，懒惰则百事废。</p><p>接纳要温和，切勿躁暴，躁暴则交易少。</p><p>价格要订明，切勿含糊，含糊则争执多。</p><p>账目要稽查，切勿懈怠，懈怠则资本滞。</p><p>货物要整理，切勿散漫，散漫则查点难。</p><p>出纳要谨慎，切勿大意，大意则错漏多。</p><p>期限要约定，切勿延迟，延迟则信用失。</p><p>临事要尽责，切勿放任，放任则受害大</p><p>用度要节俭，切勿奢侈，奢侈则钱财竭</p><p>买卖要随时，切勿拖延，拖延则机会失。</p><p>赊欠要识人，切勿滥出，滥出则血本亏。</p><p>优劣要分清，切勿混淆，混淆则耗用大。</p><p>用人要方正，切勿歪斜，歪斜则托付难。</p><p>货物要面验，切勿滥入，滥入则质价低。</p><p>钱账要清楚，切勿糊涂，糊涂则弊端生。</p><p>主心要镇定，切勿妄动，妄动则误事多。</p><p>工作要细心，切勿粗鲁，粗鲁则出劣品。</p><p>说话要规矩，切勿浮躁，浮躁则失事多。</p><p>囤积货物，垄断奇居，把握时机，聚散适宜。</p><p>“天、地、人、神、鬼“。</p><p>天为先天之智，经商之本;</p><p>地为后天修为，靠诚信立身;</p><p>人为仁义，懂取舍，讲究“君子爱财，取之有道；</p><p>神为勇强，遇事果敢，敢闯敢干;</p><p>鬼为心机，手法活络，能“翻手为云，覆手为雨”。</p><h3 id="范蠡经商十二则"><a href="#范蠡经商十二则" class="headerlink" title="范蠡经商十二则"></a>范蠡经商十二则</h3><p>一是能识人。知人善恶，账目不负。</p><p>二是能接纳。礼文相待，交往者众。</p><p>三是能安业。厌故喜新，商贾大病。</p><p>四是能整顿。货物整齐，夺人心目。</p><p>五是能敏捷。犹豫不决，终归无成。</p><p>六是能讨账。勤谨不怠，取行自多。</p><p>七是能用人。因才四用，任事有赖。</p><p>八是能辩论。生财有道，阐发愚蒙。</p><p>九是能办货。置货不苛，蚀本便经。</p><p>十是能知机。 售贮随时,可称名哲。</p><p>十一是能倡率。 躬行必律,亲感自生。</p><p>十二是能运数。 多寡宽紧,酌中而行。</p><h3 id="范蠡理财十二戒"><a href="#范蠡理财十二戒" class="headerlink" title="范蠡理财十二戒"></a>范蠡理财十二戒</h3><p>第一戒勿卑陋:应纳无文,交关不至:</p><p>第二戒勿亿柔:胸无果敢,经营不振;</p><p>第三戒勿虚华:用度无节,破败之端;</p><p>第四戒勿强辩:暴以待人,祸患难免;</p><p>第五戒勿懒惰:取讨不利,账目无有;</p><p>第六戒勿轻出:货物轻出,血本必亏;</p><p>第七戒勿争取:货重争趋,需防跌价;</p><p>第八戒勿昧时:依时贮发,各有常道;</p><p>第九戒勿固执: 拘执不通,便成枯木;</p><p>第十戒勿贪赊:贪赊多估,承卖莫续;</p><p>第十一戒勿薄蓄:货贱贮积,恢复必速;</p><p>第十二戒勿痴货:优劣不分,贻害匪浅。</p><h3 id="范蠡经商理财十二法"><a href="#范蠡经商理财十二法" class="headerlink" title="范蠡经商理财十二法"></a>范蠡经商理财十二法</h3><p>第一条生意要渤紧, 懒惰则百事废;</p><p>第二条接纳要温种, 躁暴则交易少;</p><p>第三条议价要订明,含糊则争执多;</p><p>第四条账目要稽查,懒怠则资本滞;</p><p>第五条货物要整理，散漫则必废残;</p><p>第六条出纳要谨慎,大意则错漏多;</p><p>第七条期银要约定,延迟则信用失;</p><p>第八条临事要责任,放弃则受害大;</p><p>第九条用度要节俭,奢侈则用途竭;</p><p>第十条买卖要随时,挨延则机宜失;</p><p>第十一条赊欠要识人，滥出则血本亏;</p><p>第十二条优劣要分清，苟且则必糊涂。</p><h2 id="思考感悟"><a href="#思考感悟" class="headerlink" title="思考感悟"></a>思考感悟</h2><h3 id="以治大国之法，治理金口小家"><a href="#以治大国之法，治理金口小家" class="headerlink" title="以治大国之法，治理金口小家"></a>以治大国之法，治理金口小家</h3><p>&emsp;&emsp;商圣让偏远的海滨金口繁荣起来靠的是什么？范蠡充分利用本地的优势资源盐和劳动力，充分发挥本地特色，让大家看不到价值的东西有了价值，当自己富有依旧不忘造福乡里，取之于民，用之于民，把金口的经济贸易充分调动了起来。</p><p><strong>名词解释</strong></p><ul><li>鸱(chi)夷子皮:范蠡给自己起的经商的名字。著名政治家、军事家、经济学家、道家代表作品：《计然篇》、《陶朱公生意经》《卢氏本草经》</li></ul><hr><blockquote><p><a href="https://www.jianshu.com/u/354cc1548a33" target="_blank" rel="noopener">【1】简书主页·share猿</a><br><a href="https://juejin.im/user/5a8e759851882524d842d174" target="_blank" rel="noopener">【2】掘金主页·share猿</a></p></blockquote><hr><p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>                </div>                <div class="image-caption"></div>            </figure></p><p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;blockquote&gt;
+&lt;p&gt;能治国能安民，灭吴霸越，堪称一代名相。知进退懂经营，三致千金，不愧千秋商圣。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;名言摘录&quot;&gt;&lt;a href=&quot;#名言摘录&quot; class=&quot;headerlink&quot; title=&quot;名言摘录&quot;&gt;&lt;/a&gt;名
+      
+    
+    </summary>
+    
+      <category term="读书" scheme="https://lywlefan.github.io/categories/%E8%AF%BB%E4%B9%A6/"/>
+    
+    
+      <category term="历史" scheme="https://lywlefan.github.io/tags/%E5%8E%86%E5%8F%B2/"/>
+    
+      <category term="传记" scheme="https://lywlefan.github.io/tags/%E4%BC%A0%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
     <title>数化万物-大数据重点战略实验室</title>
     <link href="https://lywlefan.github.io/2019/05/18/%E8%AF%BB%E4%B9%A6/2019/5%E6%9C%88/%E6%95%B0%E5%8C%96%E4%B8%87%E7%89%A9-%E5%A4%A7%E6%95%B0%E6%8D%AE%E9%87%8D%E7%82%B9%E6%88%98%E7%95%A5%E5%AE%9E%E9%AA%8C%E5%AE%A4/"/>
     <id>https://lywlefan.github.io/2019/05/18/读书/2019/5月/数化万物-大数据重点战略实验室/</id>
@@ -412,36 +512,6 @@
       <category term="大数据" scheme="https://lywlefan.github.io/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
     
       <category term="数字经济" scheme="https://lywlefan.github.io/tags/%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>一代商圣范蠡-姜正成</title>
-    <link href="https://lywlefan.github.io/2019/05/18/%E8%AF%BB%E4%B9%A6/2019/5%E6%9C%88/%E4%B8%80%E4%BB%A3%E5%95%86%E5%9C%A3%E8%8C%83%E8%A0%A1-%E5%A7%9C%E6%AD%A3%E6%88%90/"/>
-    <id>https://lywlefan.github.io/2019/05/18/读书/2019/5月/一代商圣范蠡-姜正成/</id>
-    <published>2019-05-17T16:00:00.000Z</published>
-    <updated>2019-05-21T11:00:17.106Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>能治国能安民，灭吴霸越，堪称一代名相。知进退懂经营，三致千金，不愧千秋商圣。</p></blockquote><h2 id="名言摘录"><a href="#名言摘录" class="headerlink" title="名言摘录"></a>名言摘录</h2><h3 id="范蠡给文种的临别书信"><a href="#范蠡给文种的临别书信" class="headerlink" title="范蠡给文种的临别书信"></a>范蠡给文种的临别书信</h3><p>&emsp;&emsp;飞鸟尽，良弓藏；狡兔死，走狗烹；敌国灭，谋臣亡。越王为人长颈鸟喙，可与共患难，不可与共乐。子何不去？</p><h3 id="人生三不朽"><a href="#人生三不朽" class="headerlink" title="人生三不朽"></a>人生三不朽</h3><p>&emsp;&emsp;立德、立功、立言，取其一容易，得其三更难，而范蠡三者全取。范蠡有为政之德，为商之德，富而好行其德，有十年声息十年教训兴越之功，有父子戮力治产积居、赀（zi）累巨万经商之功，又有《致富奇书》《范蠡兵法》《养鱼经》《陶朱公商训》著书立说之言，三者兼得，可谓德炳炳，功赫赫，言昭昭，为世人尊为商圣，万古流芳。</p><h3 id="经济循环理论"><a href="#经济循环理论" class="headerlink" title="经济循环理论"></a>经济循环理论</h3><ul><li>六岁穰（rang）六岁旱，十二岁一大饥。</li></ul><h3 id="经商致富十二条"><a href="#经商致富十二条" class="headerlink" title="经商致富十二条"></a>经商致富十二条</h3><p>&emsp;&emsp;人无信不立。</p><p>&emsp;&emsp;勤快节俭，谨慎负责，规矩方正，价格讲明，不负于人，富行其德。</p><p>&emsp;&emsp;能接纳，礼文接待，交关者众，能整顿，货物整齐，夺人心目。能倡率，躬行以律，亲感而生。</p><h3 id="人谋"><a href="#人谋" class="headerlink" title="人谋"></a>人谋</h3><p>用人要正，忠奸定兴废。</p><p>大事要慎，妄托受大害。</p><p>待人忌躁，暴躁交易少。</p><p>处事宜静，浮躁误事多。</p><p>言行宜和，和气能生财。</p><p>做事宜勤，懒惰百事废。</p><h3 id="事谋"><a href="#事谋" class="headerlink" title="事谋"></a>事谋</h3><p>用度宜俭，奢华财源败。</p><p>做工宜精，粗糙出劣品。</p><p>期货要准，马虎失信用。</p><p>交易要速，拖延失良机。</p><p>进货要严，滥入货价减。</p><p>出纳要谨，潦草出差错。</p><h3 id="物谋"><a href="#物谋" class="headerlink" title="物谋"></a>物谋</h3><p>优劣要清，混淆损耗大。</p><p>存物要整，散漫难查点。</p><p>价格要明，含糊多争执。</p><p>赊欠要审，滥出亏血本。</p><p>账目要清，糊涂弊端生。</p><p>查账要勤，懈怠滞本金。</p><h3 id="经商之道"><a href="#经商之道" class="headerlink" title="经商之道"></a>经商之道</h3><p>&emsp;&emsp;一是对百姓只取十一利；遣物如遣兵。</p><h3 id="陶朱公商训"><a href="#陶朱公商训" class="headerlink" title="陶朱公商训"></a>陶朱公商训</h3><p>生意要勤快，切勿懒惰，懒惰则百事废。</p><p>接纳要温和，切勿躁暴，躁暴则交易少。</p><p>价格要订明，切勿含糊，含糊则争执多。</p><p>账目要稽查，切勿懈怠，懈怠则资本滞。</p><p>货物要整理，切勿散漫，散漫则查点难。</p><p>出纳要谨慎，切勿大意，大意则错漏多。</p><p>期限要约定，切勿延迟，延迟则信用失。</p><p>临事要尽责，切勿放任，放任则受害大</p><p>用度要节俭，切勿奢侈，奢侈则钱财竭</p><p>买卖要随时，切勿拖延，拖延则机会失。</p><p>赊欠要识人，切勿滥出，滥出则血本亏。</p><p>优劣要分清，切勿混淆，混淆则耗用大。</p><p>用人要方正，切勿歪斜，歪斜则托付难。</p><p>货物要面验，切勿滥入，滥入则质价低。</p><p>钱账要清楚，切勿糊涂，糊涂则弊端生。</p><p>主心要镇定，切勿妄动，妄动则误事多。</p><p>工作要细心，切勿粗鲁，粗鲁则出劣品。</p><p>说话要规矩，切勿浮躁，浮躁则失事多。</p><p>囤积货物，垄断奇居，把握时机，聚散适宜。</p><p>“天、地、人、神、鬼“。</p><p>天为先天之智，经商之本;</p><p>地为后天修为，靠诚信立身;</p><p>人为仁义，懂取舍，讲究“君子爱财，取之有道；</p><p>神为勇强，遇事果敢，敢闯敢干;</p><p>鬼为心机，手法活络，能“翻手为云，覆手为雨”。</p><h3 id="范蠡经商十二则"><a href="#范蠡经商十二则" class="headerlink" title="范蠡经商十二则"></a>范蠡经商十二则</h3><p>一是能识人。知人善恶，账目不负。</p><p>二是能接纳。礼文相待，交往者众。</p><p>三是能安业。厌故喜新，商贾大病。</p><p>四是能整顿。货物整齐，夺人心目。</p><p>五是能敏捷。犹豫不决，终归无成。</p><p>六是能讨账。勤谨不怠，取行自多。</p><p>七是能用人。因才四用，任事有赖。</p><p>八是能辩论。生财有道，阐发愚蒙。</p><p>九是能办货。置货不苛，蚀本便经。</p><p>十是能知机。 售贮随时,可称名哲。</p><p>十一是能倡率。 躬行必律,亲感自生。</p><p>十二是能运数。 多寡宽紧,酌中而行。</p><h3 id="范蠡理财十二戒"><a href="#范蠡理财十二戒" class="headerlink" title="范蠡理财十二戒"></a>范蠡理财十二戒</h3><p>第一戒勿卑陋:应纳无文,交关不至:</p><p>第二戒勿亿柔:胸无果敢,经营不振;</p><p>第三戒勿虚华:用度无节,破败之端;</p><p>第四戒勿强辩:暴以待人,祸患难免;</p><p>第五戒勿懒惰:取讨不利,账目无有;</p><p>第六戒勿轻出:货物轻出,血本必亏;</p><p>第七戒勿争取:货重争趋,需防跌价;</p><p>第八戒勿昧时:依时贮发,各有常道;</p><p>第九戒勿固执: 拘执不通,便成枯木;</p><p>第十戒勿贪赊:贪赊多估,承卖莫续;</p><p>第十一戒勿薄蓄:货贱贮积,恢复必速;</p><p>第十二戒勿痴货:优劣不分,贻害匪浅。</p><h3 id="范蠡经商理财十二法"><a href="#范蠡经商理财十二法" class="headerlink" title="范蠡经商理财十二法"></a>范蠡经商理财十二法</h3><p>第一条生意要渤紧, 懒惰则百事废;</p><p>第二条接纳要温种, 躁暴则交易少;</p><p>第三条议价要订明,含糊则争执多;</p><p>第四条账目要稽查,懒怠则资本滞;</p><p>第五条货物要整理，散漫则必废残;</p><p>第六条出纳要谨慎,大意则错漏多;</p><p>第七条期银要约定,延迟则信用失;</p><p>第八条临事要责任,放弃则受害大;</p><p>第九条用度要节俭,奢侈则用途竭;</p><p>第十条买卖要随时,挨延则机宜失;</p><p>第十一条赊欠要识人，滥出则血本亏;</p><p>第十二条优劣要分清，苟且则必糊涂。</p><h2 id="思考感悟"><a href="#思考感悟" class="headerlink" title="思考感悟"></a>思考感悟</h2><h3 id="以治大国之法，治理金口小家"><a href="#以治大国之法，治理金口小家" class="headerlink" title="以治大国之法，治理金口小家"></a>以治大国之法，治理金口小家</h3><p>&emsp;&emsp;商圣让偏远的海滨金口繁荣起来靠的是什么？范蠡充分利用本地的优势资源盐和劳动力，充分发挥本地特色，让大家看不到价值的东西有了价值，当自己富有依旧不忘造福乡里，取之于民，用之于民，把金口的经济贸易充分调动了起来。</p><p><strong>名词解释</strong></p><ul><li>鸱(chi)夷子皮:范蠡给自己起的经商的名字。著名政治家、军事家、经济学家、道家代表作品：《计然篇》、《陶朱公生意经》《卢氏本草经》</li></ul><hr><blockquote><p><a href="https://www.jianshu.com/u/354cc1548a33" target="_blank" rel="noopener">【1】简书主页·share猿</a><br><a href="https://juejin.im/user/5a8e759851882524d842d174" target="_blank" rel="noopener">【2】掘金主页·share猿</a></p></blockquote><hr><p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>                </div>                <div class="image-caption"></div>            </figure></p><p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;blockquote&gt;
-&lt;p&gt;能治国能安民，灭吴霸越，堪称一代名相。知进退懂经营，三致千金，不愧千秋商圣。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&quot;名言摘录&quot;&gt;&lt;a href=&quot;#名言摘录&quot; class=&quot;headerlink&quot; title=&quot;名言摘录&quot;&gt;&lt;/a&gt;名
-      
-    
-    </summary>
-    
-      <category term="读书" scheme="https://lywlefan.github.io/categories/%E8%AF%BB%E4%B9%A6/"/>
-    
-    
-      <category term="历史" scheme="https://lywlefan.github.io/tags/%E5%8E%86%E5%8F%B2/"/>
-    
-      <category term="传记" scheme="https://lywlefan.github.io/tags/%E4%BC%A0%E8%AE%B0/"/>
     
   </entry>
   
@@ -479,33 +549,6 @@
   </entry>
   
   <entry>
-    <title>JAR包如何取工程外部文件</title>
-    <link href="https://lywlefan.github.io/2019/05/15/spring/spring-base/JAR%E5%8C%85%E5%A6%82%E4%BD%95%E5%8F%96%E5%B7%A5%E7%A8%8B%E5%A4%96%E9%83%A8%E6%96%87%E4%BB%B6/"/>
-    <id>https://lywlefan.github.io/2019/05/15/spring/spring-base/JAR包如何取工程外部文件/</id>
-    <published>2019-05-14T16:00:00.000Z</published>
-    <updated>2019-05-15T06:29:45.751Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="问题起源"><a href="#问题起源" class="headerlink" title="问题起源"></a>问题起源</h3><p>&emsp;&emsp;在开发支付stater的过程中会用到证书，而证书我们一般配置在工程项目中，那么我们自己开发的stater如何才能取到工程项目中的证书文件那？？？</p><h3 id="问题深究"><a href="#问题深究" class="headerlink" title="问题深究"></a>问题深究</h3><h4 id="分解问题"><a href="#分解问题" class="headerlink" title="分解问题"></a>分解问题</h4><p>&emsp;&emsp;要想解决这个问题，我们要明确</p><blockquote><p><a href="https://www.jianshu.com/u/354cc1548a33" target="_blank" rel="noopener">【1】简书主页·share猿</a><br><a href="https://juejin.im/user/5a8e759851882524d842d174" target="_blank" rel="noopener">【2】掘金主页·share猿</a></p></blockquote><hr><p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>                </div>                <div class="image-caption"></div>            </figure></p><p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h3 id=&quot;问题起源&quot;&gt;&lt;a href=&quot;#问题起源&quot; class=&quot;headerlink&quot; title=&quot;问题起源&quot;&gt;&lt;/a&gt;问题起源&lt;/h3&gt;&lt;p&gt;&amp;emsp;&amp;emsp;在开发支付stater的过程中会用到证书，而证书我们一般配置在工程项目中，那么我们自己开发的stat
-      
-    
-    </summary>
-    
-      <category term="spring" scheme="https://lywlefan.github.io/categories/spring/"/>
-    
-    
-      <category term="spring" scheme="https://lywlefan.github.io/tags/spring/"/>
-    
-      <category term="疑难杂症" scheme="https://lywlefan.github.io/tags/%E7%96%91%E9%9A%BE%E6%9D%82%E7%97%87/"/>
-    
-  </entry>
-  
-  <entry>
     <title>RestTemplate常见问题的解决办法.md</title>
     <link href="https://lywlefan.github.io/2019/05/15/spring/spring-base/RestTemplate%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/"/>
     <id>https://lywlefan.github.io/2019/05/15/spring/spring-base/RestTemplate常见问题的解决办法/</id>
@@ -535,6 +578,33 @@
   </entry>
   
   <entry>
+    <title>JAR包如何取工程外部文件</title>
+    <link href="https://lywlefan.github.io/2019/05/15/spring/spring-base/JAR%E5%8C%85%E5%A6%82%E4%BD%95%E5%8F%96%E5%B7%A5%E7%A8%8B%E5%A4%96%E9%83%A8%E6%96%87%E4%BB%B6/"/>
+    <id>https://lywlefan.github.io/2019/05/15/spring/spring-base/JAR包如何取工程外部文件/</id>
+    <published>2019-05-14T16:00:00.000Z</published>
+    <updated>2019-05-15T06:29:45.751Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="问题起源"><a href="#问题起源" class="headerlink" title="问题起源"></a>问题起源</h3><p>&emsp;&emsp;在开发支付stater的过程中会用到证书，而证书我们一般配置在工程项目中，那么我们自己开发的stater如何才能取到工程项目中的证书文件那？？？</p><h3 id="问题深究"><a href="#问题深究" class="headerlink" title="问题深究"></a>问题深究</h3><h4 id="分解问题"><a href="#分解问题" class="headerlink" title="分解问题"></a>分解问题</h4><p>&emsp;&emsp;要想解决这个问题，我们要明确</p><blockquote><p><a href="https://www.jianshu.com/u/354cc1548a33" target="_blank" rel="noopener">【1】简书主页·share猿</a><br><a href="https://juejin.im/user/5a8e759851882524d842d174" target="_blank" rel="noopener">【2】掘金主页·share猿</a></p></blockquote><hr><p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>                </div>                <div class="image-caption"></div>            </figure></p><p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;问题起源&quot;&gt;&lt;a href=&quot;#问题起源&quot; class=&quot;headerlink&quot; title=&quot;问题起源&quot;&gt;&lt;/a&gt;问题起源&lt;/h3&gt;&lt;p&gt;&amp;emsp;&amp;emsp;在开发支付stater的过程中会用到证书，而证书我们一般配置在工程项目中，那么我们自己开发的stat
+      
+    
+    </summary>
+    
+      <category term="spring" scheme="https://lywlefan.github.io/categories/spring/"/>
+    
+    
+      <category term="spring" scheme="https://lywlefan.github.io/tags/spring/"/>
+    
+      <category term="疑难杂症" scheme="https://lywlefan.github.io/tags/%E7%96%91%E9%9A%BE%E6%9D%82%E7%97%87/"/>
+    
+  </entry>
+  
+  <entry>
     <title>不用spring如何实例化一个bean</title>
     <link href="https://lywlefan.github.io/2019/05/14/spring/spring-base/%E4%B8%8D%E7%94%A8spring%E5%A6%82%E4%BD%95%E5%AE%9E%E4%BE%8B%E5%8C%96%E4%B8%80%E4%B8%AAbean/"/>
     <id>https://lywlefan.github.io/2019/05/14/spring/spring-base/不用spring如何实例化一个bean/</id>
@@ -558,65 +628,6 @@
       <category term="spring" scheme="https://lywlefan.github.io/tags/spring/"/>
     
       <category term="spring-base" scheme="https://lywlefan.github.io/tags/spring-base/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>如何写一个stater</title>
-    <link href="https://lywlefan.github.io/2019/05/13/spring/spring-boot/%E5%A6%82%E4%BD%95%E5%86%99%E4%B8%80%E4%B8%AAstater/"/>
-    <id>https://lywlefan.github.io/2019/05/13/spring/spring-boot/如何写一个stater/</id>
-    <published>2019-05-12T16:00:00.000Z</published>
-    <updated>2019-05-13T10:38:00.905Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>目标刻在岩石上，方法写在沙滩上.</p></blockquote><h3 id="命名规范"><a href="#命名规范" class="headerlink" title="命名规范"></a>命名规范</h3><p>&emsp;&emsp;不要使用spring-boot开头的，以避免将来spring-boot官方使用你的starter而重名。</p><ul><li><p>正例：xxxx-spring-boot-starter</p></li><li><p>反例：spring-boot-starter-xxxx</p></li></ul><h3 id="定功能"><a href="#定功能" class="headerlink" title="定功能"></a>定功能</h3><p>&emsp;&emsp;你所定义的starter需要有自己的独特功能，比如spring-boot-starter-web 提供的springmvc相关的自动装配，内嵌tomcat以及相关依赖，那们你自己定义的starter也是需要界定好自己的功能。举个列子，比如要写一个支付的stater：</p><ul><li>支付</li><li>支付通知</li><li>支付查询</li><li>退款</li><li>退款查询</li><li>退款通知</li></ul><h3 id="项目依赖"><a href="#项目依赖" class="headerlink" title="项目依赖"></a>项目依赖</h3><blockquote><p><a href="https://www.jianshu.com/u/354cc1548a33" target="_blank" rel="noopener">【1】简书主页·share猿</a><br><a href="https://juejin.im/user/5a8e759851882524d842d174" target="_blank" rel="noopener">【2】掘金主页·share猿</a></p></blockquote><hr><p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>                </div>                <div class="image-caption"></div>            </figure></p><p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;blockquote&gt;
-&lt;p&gt;目标刻在岩石上，方法写在沙滩上.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&quot;命名规范&quot;&gt;&lt;a href=&quot;#命名规范&quot; class=&quot;headerlink&quot; title=&quot;命名规范&quot;&gt;&lt;/a&gt;命名规范&lt;/h3&gt;&lt;p&gt;&amp;emsp;&amp;emsp
-      
-    
-    </summary>
-    
-      <category term="spring" scheme="https://lywlefan.github.io/categories/spring/"/>
-    
-    
-      <category term="spring" scheme="https://lywlefan.github.io/tags/spring/"/>
-    
-      <category term="spring-boot" scheme="https://lywlefan.github.io/tags/spring-boot/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>如何快速寻找到一个问题的答案</title>
-    <link href="https://lywlefan.github.io/2019/05/01/%E6%96%B9%E6%B3%95%E8%AE%BA/%E5%A6%82%E4%BD%95%E5%BF%AB%E9%80%9F%E5%AF%BB%E6%89%BE%E5%88%B0%E4%B8%80%E4%B8%AA%E9%97%AE%E9%A2%98%E7%9A%84%E7%AD%94%E6%A1%88/"/>
-    <id>https://lywlefan.github.io/2019/05/01/方法论/如何快速寻找到一个问题的答案/</id>
-    <published>2019-04-30T16:00:00.000Z</published>
-    <updated>2019-05-23T02:11:38.958Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>目标刻在岩石上，方法写在沙滩上。</p></blockquote><blockquote><p><a href="https://www.jianshu.com/u/354cc1548a33" target="_blank" rel="noopener">【1】简书主页·share猿</a><br><a href="https://juejin.im/user/5a8e759851882524d842d174" target="_blank" rel="noopener">【2】掘金主页·share猿</a></p></blockquote><hr><p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>                </div>                <div class="image-caption"></div>            </figure></p><p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;blockquote&gt;
-&lt;p&gt;目标刻在岩石上，方法写在沙滩上。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;blockquote&gt;
-&lt;p&gt;&lt;a href=&quot;https://www.jianshu.com/u/354cc1548a33&quot; target=&quot;_blank&quot; rel=&quot;noo
-      
-    
-    </summary>
-    
-      <category term="方法论" scheme="https://lywlefan.github.io/categories/%E6%96%B9%E6%B3%95%E8%AE%BA/"/>
-    
-    
-      <category term="方法" scheme="https://lywlefan.github.io/tags/%E6%96%B9%E6%B3%95/"/>
     
   </entry>
   
