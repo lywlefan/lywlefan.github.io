@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://lywlefan.github.io/"/>
-  <updated>2019-06-17T03:46:42.136Z</updated>
+  <updated>2019-06-21T03:29:00.979Z</updated>
   <id>https://lywlefan.github.io/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Slack</title>
+    <link href="https://lywlefan.github.io/2019/06/21/%E5%9F%BA%E7%A1%80%E5%B7%A9%E5%9B%BA/java/java%E6%9E%9A%E4%B8%BE%E7%9A%84%E6%80%BB%E7%BB%93%E5%92%8C%E5%AD%A6%E4%B9%A0/"/>
+    <id>https://lywlefan.github.io/2019/06/21/基础巩固/java/java枚举的总结和学习/</id>
+    <published>2019-06-20T16:00:00.000Z</published>
+    <updated>2019-06-21T03:29:00.979Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>万丈高楼平地起的前提是地基好.</p></blockquote><h2 id="枚举"><a href="#枚举" class="headerlink" title="枚举"></a>枚举</h2><h3 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h3><h4 id="规范"><a href="#规范" class="headerlink" title="规范"></a>规范</h4><ul><li><p>实例常量用大写</p></li><li><p>enum是个类(特别实用的特性,可以在switch语句中使用)</p></li></ul><h4 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h4><ul><li><p>toString:显示某个实例的名字</p></li><li><p>ordinal:显示常量的顺序</p></li><li><p>static values:按枚举常量顺序,产生常量构成的数组.</p></li><li><p>枚举类可以实现一个接口</p></li></ul><h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><h4 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">enum</span> Color &#123;  </span><br><span class="line">  RED, GREEN, BLANK, YELLOW  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h4 id="switch"><a href="#switch" class="headerlink" title="switch"></a>switch</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">enum Signal &#123;  </span><br><span class="line">    GREEN, YELLOW, RED  </span><br><span class="line">&#125;  </span><br><span class="line">public class TrafficLight &#123;  </span><br><span class="line">    Signal color = Signal.RED;  </span><br><span class="line">    public void change() &#123;  </span><br><span class="line">        switch (color) &#123;  </span><br><span class="line">        case RED:  </span><br><span class="line">            color = Signal.GREEN;  </span><br><span class="line">            break;  </span><br><span class="line">        case YELLOW:  </span><br><span class="line">            color = Signal.RED;  </span><br><span class="line">            break;  </span><br><span class="line">        case GREEN:  </span><br><span class="line">            color = Signal.YELLOW;  </span><br><span class="line">            break;  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h4 id="构造方法"><a href="#构造方法" class="headerlink" title="构造方法"></a>构造方法</h4><p>&emsp;&emsp;规定构造方法必须为private修饰符所修饰，也就是说只能在类的内部构造，不能在其他类中通过构造方法新增枚举类型。</p><ul><li>在枚举类中创建一个构造函数</li></ul><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Getter</span></span><br><span class="line"><span class="meta">@AllArgsConstructor</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">enum</span> CommonEnum &#123;   </span><br><span class="line"></span><br><span class="line">    SUCCESS(<span class="string">"交易成功"</span>,<span class="string">"SUCCESS"</span>);</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> String value;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><ul><li>枚举可以实现一个接口</li></ul><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">public interface Behaviour &#123;  </span><br><span class="line">    void print();  </span><br><span class="line">    String getInfo();  </span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line">public enum Color implements Behaviour&#123;  </span><br><span class="line">    RED(&quot;红色&quot;, 1), GREEN(&quot;绿色&quot;, 2), BLANK(&quot;白色&quot;, 3), YELLO(&quot;黄色&quot;, 4);  </span><br><span class="line">    // 成员变量  </span><br><span class="line">    private String name;  </span><br><span class="line">    private int index;  </span><br><span class="line">    // 构造方法  </span><br><span class="line">    private Color(String name, int index) &#123;  </span><br><span class="line">        this.name = name;  </span><br><span class="line">        this.index = index;  </span><br><span class="line">    &#125;  </span><br><span class="line">        //接口方法  </span><br><span class="line">    @Override  </span><br><span class="line">    public String getInfo() &#123;  </span><br><span class="line">        return this.name;  </span><br><span class="line">    &#125;  </span><br><span class="line">    //接口方法  </span><br><span class="line">    @Override  </span><br><span class="line">    public void print() &#123;  </span><br><span class="line">        System.out.println(this.index+&quot;:&quot;+this.name);  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h4 id="使用接口组织枚举"><a href="#使用接口组织枚举" class="headerlink" title="使用接口组织枚举"></a>使用接口组织枚举</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public interface Food &#123;  </span><br><span class="line">    enum Coffee implements Food&#123;  </span><br><span class="line">        BLACK_COFFEE,DECAF_COFFEE,LATTE,CAPPUCCINO  </span><br><span class="line">    &#125;  </span><br><span class="line">    enum Dessert implements Food&#123;  </span><br><span class="line">        FRUIT, CAKE, GELATO  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h4 id="关于枚举集合的使用"><a href="#关于枚举集合的使用" class="headerlink" title="关于枚举集合的使用"></a>关于枚举集合的使用</h4><p>&emsp;&msp;java.util.EnumSet和java.util.EnumMap是两个枚举集合。EnumSet保证集合中的元素不重复；EnumMap中的 key是enum类型，而value则可以是任意类型。关于这个两个集合的使用就不在这里赘述，可以参考JDK文档。</p><blockquote><p><a href="https://www.jianshu.com/u/354cc1548a33" target="_blank" rel="noopener">【1】简书主页·share猿</a><br><a href="https://juejin.im/user/5a8e759851882524d842d174" target="_blank" rel="noopener">【2】掘金主页·share猿</a></p></blockquote><hr><p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>                </div>                <div class="image-caption"></div>            </figure></p><p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;blockquote&gt;
+&lt;p&gt;万丈高楼平地起的前提是地基好.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;枚举&quot;&gt;&lt;a href=&quot;#枚举&quot; class=&quot;headerlink&quot; title=&quot;枚举&quot;&gt;&lt;/a&gt;枚举&lt;/h2&gt;&lt;h3 id=&quot;基础&quot;&gt;&lt;a href=&quot;#基
+      
+    
+    </summary>
+    
+      <category term="基础巩固" scheme="https://lywlefan.github.io/categories/%E5%9F%BA%E7%A1%80%E5%B7%A9%E5%9B%BA/"/>
+    
+    
+      <category term="基础" scheme="https://lywlefan.github.io/tags/%E5%9F%BA%E7%A1%80/"/>
+    
+      <category term="java" scheme="https://lywlefan.github.io/tags/java/"/>
+    
+  </entry>
   
   <entry>
     <title>学习的方法论</title>
@@ -92,9 +122,9 @@
       <category term="指导思想" scheme="https://lywlefan.github.io/categories/%E6%8C%87%E5%AF%BC%E6%80%9D%E6%83%B3/"/>
     
     
-      <category term="指导思想" scheme="https://lywlefan.github.io/tags/%E6%8C%87%E5%AF%BC%E6%80%9D%E6%83%B3/"/>
-    
       <category term="java" scheme="https://lywlefan.github.io/tags/java/"/>
+    
+      <category term="指导思想" scheme="https://lywlefan.github.io/tags/%E6%8C%87%E5%AF%BC%E6%80%9D%E6%83%B3/"/>
     
       <category term="微服务" scheme="https://lywlefan.github.io/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/"/>
     
@@ -132,9 +162,9 @@
       <category term="指导思想" scheme="https://lywlefan.github.io/categories/%E6%8C%87%E5%AF%BC%E6%80%9D%E6%83%B3/"/>
     
     
-      <category term="指导思想" scheme="https://lywlefan.github.io/tags/%E6%8C%87%E5%AF%BC%E6%80%9D%E6%83%B3/"/>
-    
       <category term="java" scheme="https://lywlefan.github.io/tags/java/"/>
+    
+      <category term="指导思想" scheme="https://lywlefan.github.io/tags/%E6%8C%87%E5%AF%BC%E6%80%9D%E6%83%B3/"/>
     
       <category term="java基础" scheme="https://lywlefan.github.io/tags/java%E5%9F%BA%E7%A1%80/"/>
     
@@ -228,9 +258,9 @@
       <category term="收藏夹" scheme="https://lywlefan.github.io/categories/%E6%94%B6%E8%97%8F%E5%A4%B9/"/>
     
     
-      <category term="名言" scheme="https://lywlefan.github.io/tags/%E5%90%8D%E8%A8%80/"/>
-    
       <category term="收藏" scheme="https://lywlefan.github.io/tags/%E6%94%B6%E8%97%8F/"/>
+    
+      <category term="名言" scheme="https://lywlefan.github.io/tags/%E5%90%8D%E8%A8%80/"/>
     
   </entry>
   
@@ -325,9 +355,9 @@
     <link href="https://lywlefan.github.io/2019/05/23/%E7%BD%91%E5%9D%80%E6%94%B6%E8%97%8F/"/>
     <id>https://lywlefan.github.io/2019/05/23/网址收藏/</id>
     <published>2019-05-22T16:00:00.000Z</published>
-    <updated>2019-05-28T03:14:54.269Z</updated>
+    <updated>2019-06-21T03:31:22.231Z</updated>
     
-    <content type="html"><![CDATA[<blockquote><p>目标刻在岩石上，方法写在沙滩上.</p></blockquote><h2 id="1-技术栈"><a href="#1-技术栈" class="headerlink" title="1.技术栈"></a>1.技术栈</h2><h3 id="1-1-WEB开发"><a href="#1-1-WEB开发" class="headerlink" title="1.1.WEB开发"></a>1.1.WEB开发</h3><h4 id="1-1-1-前端"><a href="#1-1-1-前端" class="headerlink" title="1.1.1.前端"></a>1.1.1.前端</h4><h4 id="1-1-2-后端"><a href="#1-1-2-后端" class="headerlink" title="1.1.2.后端"></a>1.1.2.后端</h4><ul><li><a href="http://blog.didispace.com/" target="_blank" rel="noopener">程序员DD</a></li><li><a href="http://itmuch.com/" target="_blank" rel="noopener">周立|Spring Cloud</a></li><li><a href="http://www.bysocket.com/" target="_blank" rel="noopener">泥瓦匠BYSocket的博客</a></li><li><a href="http://kailing.pub/" target="_blank" rel="noopener">KL博客</a></li><li><a href="http://edisonxu.org/" target="_blank" rel="noopener">Edison Xu’s Blog</a></li><li><a href="http://blog.720ui.com/" target="_blank" rel="noopener">梁桂钊的博客</a></li><li><a href="http://www.icnws.com/" target="_blank" rel="noopener">城南往事</a></li><li><a href="http://www.ictgu.cn/" target="_blank" rel="noopener">Any-Video</a></li><li><a href="http://blog.54im.com/" target="_blank" rel="noopener">钿畑的博客</a></li><li><a href="http://cmsblogs.com/" target="_blank" rel="noopener">chenssy</a></li><li><a href="https://www.cnkirito.moe/" target="_blank" rel="noopener">徐靖峰|个人博客</a></li><li><a href="http://cxytiandi.com/" target="_blank" rel="noopener">猿天地</a></li><li><a href="https://crossoverjie.top/" target="_blank" rel="noopener">crossoverjie</a></li><li><a href="http://www.iocoder.cn/" target="_blank" rel="noopener">芋道源码</a></li><li><a href="https://purewhite.io/" target="_blank" rel="noopener">Pure White</a></li></ul><h4 id="1-1-3-项目管理"><a href="#1-1-3-项目管理" class="headerlink" title="1.1.3.项目管理"></a>1.1.3.项目管理</h4><ul><li><a href="https://www.cnblogs.com/wayfarer/" target="_blank" rel="noopener">张逸的博客(ThoughtWorks架构师)</a></li></ul><h3 id="1-2-高级技术"><a href="#1-2-高级技术" class="headerlink" title="1.2.高级技术"></a>1.2.高级技术</h3><h4 id="1-2-1-深度学习"><a href="#1-2-1-深度学习" class="headerlink" title="1.2.1.深度学习"></a>1.2.1.深度学习</h4><ul><li><a href="https://nndl.github.io/" target="_blank" rel="noopener">神经网络与深度学习·邱锡鹏</a></li></ul><h2 id="2-运营"><a href="#2-运营" class="headerlink" title="2.运营"></a>2.运营</h2><h2 id="3-管理"><a href="#3-管理" class="headerlink" title="3.管理"></a>3.管理</h2><h2 id="4-博客"><a href="#4-博客" class="headerlink" title="4.博客"></a>4.博客</h2><ul><li><p><a href="http://jijiangshe.com" target="_blank" rel="noopener">技匠社</a></p></li><li><p><a href="https://sspai.com" target="_blank" rel="noopener">少数派</a></p></li></ul><h3 id="4-1-新闻咨询"><a href="#4-1-新闻咨询" class="headerlink" title="4.1.新闻咨询"></a>4.1.新闻咨询</h3><h4 id="4-1-1-本地新闻咨询"><a href="#4-1-1-本地新闻咨询" class="headerlink" title="4.1.1.本地新闻咨询"></a>4.1.1.本地新闻咨询</h4><ul><li><p><a href="http://www.hsw.cn/" target="_blank" rel="noopener">华商网</a></p></li><li><p><a href="http://epaper.xiancn.com/" target="_blank" rel="noopener">西安晚报</a></p></li><li><p><a href="http://epaper.sanqin.com/html/2019-05/21/node_1.htm?v=1" target="_blank" rel="noopener">三秦都市晚报</a></p></li></ul><blockquote><p><a href="https://www.jianshu.com/u/354cc1548a33" target="_blank" rel="noopener">【1】简书主页·share猿</a><br><a href="https://juejin.im/user/5a8e759851882524d842d174" target="_blank" rel="noopener">【2】掘金主页·share猿</a></p></blockquote><hr><p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>                </div>                <div class="image-caption"></div>            </figure></p><p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>]]></content>
+    <content type="html"><![CDATA[<blockquote><p>目标刻在岩石上，方法写在沙滩上.</p></blockquote><h2 id="1-技术栈"><a href="#1-技术栈" class="headerlink" title="1.技术栈"></a>1.技术栈</h2><h3 id="1-1-WEB开发"><a href="#1-1-WEB开发" class="headerlink" title="1.1.WEB开发"></a>1.1.WEB开发</h3><h4 id="1-1-1-前端"><a href="#1-1-1-前端" class="headerlink" title="1.1.1.前端"></a>1.1.1.前端</h4><h4 id="1-1-2-后端"><a href="#1-1-2-后端" class="headerlink" title="1.1.2.后端"></a>1.1.2.后端</h4><ul><li><a href="http://blog.didispace.com/" target="_blank" rel="noopener">程序员DD</a></li><li><a href="http://itmuch.com/" target="_blank" rel="noopener">周立|Spring Cloud</a></li><li><a href="http://www.bysocket.com/" target="_blank" rel="noopener">泥瓦匠BYSocket的博客</a></li><li><a href="http://kailing.pub/" target="_blank" rel="noopener">KL博客</a></li><li><a href="http://edisonxu.org/" target="_blank" rel="noopener">Edison Xu’s Blog</a></li><li><a href="http://blog.720ui.com/" target="_blank" rel="noopener">梁桂钊的博客</a></li><li><a href="http://www.icnws.com/" target="_blank" rel="noopener">城南往事</a></li><li><a href="http://www.ictgu.cn/" target="_blank" rel="noopener">Any-Video</a></li><li><a href="http://blog.54im.com/" target="_blank" rel="noopener">钿畑的博客</a></li><li><a href="http://cmsblogs.com/" target="_blank" rel="noopener">chenssy</a></li><li><a href="https://www.cnkirito.moe/" target="_blank" rel="noopener">徐靖峰|个人博客</a></li><li><a href="http://cxytiandi.com/" target="_blank" rel="noopener">猿天地</a></li><li><a href="https://crossoverjie.top/" target="_blank" rel="noopener">crossoverjie</a></li><li><a href="http://www.iocoder.cn/" target="_blank" rel="noopener">芋道源码</a></li><li><a href="https://purewhite.io/" target="_blank" rel="noopener">Pure White</a></li></ul><h4 id="1-1-3-项目管理"><a href="#1-1-3-项目管理" class="headerlink" title="1.1.3.项目管理"></a>1.1.3.项目管理</h4><ul><li><a href="https://www.cnblogs.com/wayfarer/" target="_blank" rel="noopener">张逸的博客(ThoughtWorks架构师)</a></li></ul><h3 id="1-2-高级技术"><a href="#1-2-高级技术" class="headerlink" title="1.2.高级技术"></a>1.2.高级技术</h3><h4 id="1-2-1-深度学习"><a href="#1-2-1-深度学习" class="headerlink" title="1.2.1.深度学习"></a>1.2.1.深度学习</h4><ul><li><a href="https://nndl.github.io/" target="_blank" rel="noopener">神经网络与深度学习·邱锡鹏</a></li></ul><h2 id="2-运营"><a href="#2-运营" class="headerlink" title="2.运营"></a>2.运营</h2><h2 id="3-管理"><a href="#3-管理" class="headerlink" title="3.管理"></a>3.管理</h2><h2 id="4-博客"><a href="#4-博客" class="headerlink" title="4.博客"></a>4.博客</h2><ul><li><p><a href="http://jijiangshe.com" target="_blank" rel="noopener">技匠社</a></p></li><li><p><a href="https://sspai.com" target="_blank" rel="noopener">少数派</a></p></li><li><p><a href="https://me.csdn.net/qq_27093465" target="_blank" rel="noopener">李学凯</a></p></li></ul><h3 id="4-1-新闻咨询"><a href="#4-1-新闻咨询" class="headerlink" title="4.1.新闻咨询"></a>4.1.新闻咨询</h3><h4 id="4-1-1-本地新闻咨询"><a href="#4-1-1-本地新闻咨询" class="headerlink" title="4.1.1.本地新闻咨询"></a>4.1.1.本地新闻咨询</h4><ul><li><p><a href="http://www.hsw.cn/" target="_blank" rel="noopener">华商网</a></p></li><li><p><a href="http://epaper.xiancn.com/" target="_blank" rel="noopener">西安晚报</a></p></li><li><p><a href="http://epaper.sanqin.com/html/2019-05/21/node_1.htm?v=1" target="_blank" rel="noopener">三秦都市晚报</a></p></li></ul><blockquote><p><a href="https://www.jianshu.com/u/354cc1548a33" target="_blank" rel="noopener">【1】简书主页·share猿</a><br><a href="https://juejin.im/user/5a8e759851882524d842d174" target="_blank" rel="noopener">【2】掘金主页·share猿</a></p></blockquote><hr><p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>                </div>                <div class="image-caption"></div>            </figure></p><p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>]]></content>
     
     <summary type="html">
     
@@ -409,40 +439,6 @@
   </entry>
   
   <entry>
-    <title>下一个倒下的会不会是华为(田涛、吴春波)</title>
-    <link href="https://lywlefan.github.io/2019/05/22/%E8%AF%BB%E4%B9%A6/2019/5%E6%9C%88/%E4%B8%8B%E4%B8%80%E4%B8%AA%E5%80%92%E4%B8%8B%E7%9A%84%E4%BC%9A%E4%B8%8D%E4%BC%9A%E6%98%AF%E5%8D%8E%E4%B8%BA-%E7%94%B0%E6%B6%9B%E3%80%81%E5%90%B4%E6%98%A5%E6%B3%A2/"/>
-    <id>https://lywlefan.github.io/2019/05/22/读书/2019/5月/下一个倒下的会不会是华为-田涛、吴春波/</id>
-    <published>2019-05-21T16:00:00.000Z</published>
-    <updated>2019-05-22T10:14:46.332Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>多读书，多看报，少吃零食，少睡觉！</p></blockquote><h3 id="人物记录"><a href="#人物记录" class="headerlink" title="人物记录"></a>人物记录</h3><h4 id="任正飞"><a href="#任正飞" class="headerlink" title="任正飞"></a>任正飞</h4><ul><li><p>著作</p><ul><li><p>《我的父亲母亲》</p></li><li><p>《北国之春》</p></li></ul></li></ul><h2 id="笔记摘抄"><a href="#笔记摘抄" class="headerlink" title="笔记摘抄"></a>笔记摘抄</h2><h3 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h3><h4 id="华为管理哲学"><a href="#华为管理哲学" class="headerlink" title="华为管理哲学"></a>华为管理哲学</h4><p>&emsp;&emsp;任正非说:“我们没有任何背景，也没有任何资源，我们除了拥有我们自己，其实一无所有。”“一切进步都掌握在自己手中，不在别人。”</p><p>&emsp;&emsp;以客户为中心，以奋斗者为本，长期坚持艰苦奋斗。</p><blockquote><p>G:华为掌门人的哲学用实际行动植根在了每个华为人的心中，从全民持股到耗散机制，这个集体有着共同的目标，而任就是点亮远处灯塔的那个人。他们只做好自己，学习别人的优点，反思别人的缺点，坦然面对一切，居安思危，砥砺前行！正如作者在文中说：如同铀原子在中子轰击下产生的核能量一样，你身上的小小原子核，在价值观的驱使下，发生了巨大的原子能。</p></blockquote><h4 id="华为初步形成了一个稳定与动态相融合的“金字塔”"><a href="#华为初步形成了一个稳定与动态相融合的“金字塔”" class="headerlink" title="华为初步形成了一个稳定与动态相融合的“金字塔”"></a>华为初步形成了一个稳定与动态相融合的“金字塔”</h4><p>&emsp;&emsp;最高层是组织的思想领袖群体，次高层是一批企业战略家和技术领袖，第三层是数百位各个功能体系的指挥员，他们必须具备战略思维，同时又调兵遣将、决策局部战役的统帅力；第四层是数千位经营、管理与研发方面的中基层管理者、技术领头人；“金字塔”的基座是10多万普通的知识员工，他们代表着华为这架商业战车真正战斗力与竞争力。</p><h4 id="是什么让华为快速发展？"><a href="#是什么让华为快速发展？" class="headerlink" title="是什么让华为快速发展？"></a>是什么让华为快速发展？</h4><p>&emsp;&emsp;是一种哲学思维，它植根于广大骨干心中。这就是“以客户为中心，以奋斗者为本，长期艰苦奋斗”的文化。这并不是什么背景，更不是什么上帝。</p><h4 id="六个字"><a href="#六个字" class="headerlink" title="六个字"></a>六个字</h4><ul><li><p>开放</p></li><li><p>妥协</p></li><li><p>灰度</p></li></ul><h4 id="自我批判"><a href="#自我批判" class="headerlink" title="自我批判"></a>自我批判</h4><p>&emsp;&emsp;变化是永恒的，所以观念也要随之改变，思考一刻也不能停息。</p><h4 id="不只任正非孤独，华为也是"><a href="#不只任正非孤独，华为也是" class="headerlink" title="不只任正非孤独，华为也是"></a>不只任正非孤独，华为也是</h4><p>&emsp;&emsp;华为没有成功，只是在成长。</p><h4 id="孤独，学会欣赏孤独"><a href="#孤独，学会欣赏孤独" class="headerlink" title="孤独，学会欣赏孤独"></a>孤独，学会欣赏孤独</h4><p>&emsp;&emsp;他没有娱乐、体育的任何一项爱好，唯一的嗜好就是阅读和思考，他也没有政界、商界的朋友，可以说他从学校到部队到华为，几乎没有朋友。但他善于交流，从国内到国际，从经济、政治乃至外交，无一不侃侃而谈。但这一切也脱不开对华为的思考。</p><p>&emsp;&emsp;实践是痛苦的。为了推动、驱使或者牵引10多万知识分子到全世界攻城略地、开疆拓土，不仅需要领袖们“竭智”——绞尽脑汁去思考，也需要老大们“竭力”——冲锋在前。</p><h3 id="第一章：常识·真理：以客户为中心"><a href="#第一章：常识·真理：以客户为中心" class="headerlink" title="第一章：常识·真理：以客户为中心"></a>第一章：常识·真理：以客户为中心</h3><h4 id="客户：华为存在的唯一理由"><a href="#客户：华为存在的唯一理由" class="headerlink" title="客户：华为存在的唯一理由"></a>客户：华为存在的唯一理由</h4><p>&emsp;&emsp;华为的明天在哪里？出路在哪里？</p><blockquote><p>阿尔卡特的困惑和迷茫让我不仅问自己，我的明天在哪里？出路在哪里？华为高举“以客户为中心”的旗帜，客户是华为存在的唯一理由，他是一切企业存在的唯一理由。我存在的意义是为这个世界创造更大的价值，修身，齐家，奉国！我的方向在哪里？我该如何走，我内心是迷茫的！我想创造更大的价值，但是感觉自己无能无力，只能把手头的事情做好。而你又能做什么？假如给你一个创造巨大价值的机会，你能否把我住？能否胜任？扪心自问，我还需要不断去历练，不断去打磨！每一天都是新的开始！加油！</p></blockquote><h5 id="华为四大战略内容"><a href="#华为四大战略内容" class="headerlink" title="华为四大战略内容"></a>华为四大战略内容</h5><p>&emsp;&emsp;为客户服务是华为存在的唯一理由；客户需求是华为发展的原动力。</p><ul><li>眼睛盯着客户，屁股对着老板</li></ul><p>&emsp;&emsp;在2010年的一次会议上，任正非进一步指出：在华为，坚决提拔那些眼睛盯着客户，屁股对着老板的员工；坚决淘汰那些眼睛盯着老板，屁股对着客户的干部。前者是公司价值的创造者，后者是牟取个人私利的奴才。各级干部要有境界，下属屁股对着你，自己可能不舒服，但必须要善待他们。</p><ul><li>被扭曲的常识</li></ul><p>&emsp;&emsp;让客户自觉掏腰包，让更多客户掏腰包，让客户长期掏腰包，谁就能变得更伟大。</p><p>&emsp;&emsp;百年西方管理学的核心思想，绕来绕去还是离不开一个根本：如何围绕消费者的需求，为公司定位，为管理者定位，为公司产品定位。</p><blockquote><p>围绕消费者的需求，字字珠玑，找到消费者就能找到市场，找到市场就能做服务，做好服务，做精服务，不断思考，不断反思，客户是上帝！</p></blockquote><p>&emsp;&emsp;管理大师德鲁克把企业定义为：创造客户。</p><ul><li>偏离客户，谁来养活我们</li></ul><p>&emsp;&emsp;2001年7月，公司内刊《华为人》报上，有一篇文章题目为“为客户服务是华为存在的理由”，任正非在审稿时，将其改为“为客户服务是华为存在的唯一理由”，他认为：华为命中注定是为客户而存在的，出来客户，华为没有存在的任何理由，所以是唯一理由。</p><p>&emsp;&emsp;钱钟书说：“真理都是赤裸裸的。”华为高管们则说：“不要把华为文化复杂化，不要把华为文化细枝末节化。”</p><h4 id="“百年帝国”的衰落"><a href="#“百年帝国”的衰落" class="headerlink" title="“百年帝国”的衰落"></a>“百年帝国”的衰落</h4><blockquote><p><a href="https://www.jianshu.com/u/354cc1548a33" target="_blank" rel="noopener">【1】简书主页·share猿</a><br><a href="https://juejin.im/user/5a8e759851882524d842d174" target="_blank" rel="noopener">【2】掘金主页·share猿</a></p></blockquote><hr><p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>                </div>                <div class="image-caption"></div>            </figure></p><p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;blockquote&gt;
-&lt;p&gt;多读书，多看报，少吃零食，少睡觉！&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&quot;人物记录&quot;&gt;&lt;a href=&quot;#人物记录&quot; class=&quot;headerlink&quot; title=&quot;人物记录&quot;&gt;&lt;/a&gt;人物记录&lt;/h3&gt;&lt;h4 id=&quot;任正飞&quot;&gt;
-      
-    
-    </summary>
-    
-      <category term="读书" scheme="https://lywlefan.github.io/categories/%E8%AF%BB%E4%B9%A6/"/>
-    
-    
-      <category term="读书" scheme="https://lywlefan.github.io/tags/%E8%AF%BB%E4%B9%A6/"/>
-    
-      <category term="科技历" scheme="https://lywlefan.github.io/tags/%E7%A7%91%E6%8A%80%E5%8E%86/"/>
-    
-      <category term="管理" scheme="https://lywlefan.github.io/tags/%E7%AE%A1%E7%90%86/"/>
-    
-      <category term="励志" scheme="https://lywlefan.github.io/tags/%E5%8A%B1%E5%BF%97/"/>
-    
-  </entry>
-  
-  <entry>
     <title>5月22日日报</title>
     <link href="https://lywlefan.github.io/2019/05/22/%E7%9C%8B%E6%8A%A5/2019/5%E6%9C%88/5%E6%9C%8822%E6%97%A5%E6%97%A5%E6%8A%A5/"/>
     <id>https://lywlefan.github.io/2019/05/22/看报/2019/5月/5月22日日报/</id>
@@ -504,6 +500,40 @@
       <category term="操作系统" scheme="https://lywlefan.github.io/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
     
       <category term="UNIX" scheme="https://lywlefan.github.io/tags/UNIX/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>下一个倒下的会不会是华为(田涛、吴春波)</title>
+    <link href="https://lywlefan.github.io/2019/05/22/%E8%AF%BB%E4%B9%A6/2019/5%E6%9C%88/%E4%B8%8B%E4%B8%80%E4%B8%AA%E5%80%92%E4%B8%8B%E7%9A%84%E4%BC%9A%E4%B8%8D%E4%BC%9A%E6%98%AF%E5%8D%8E%E4%B8%BA-%E7%94%B0%E6%B6%9B%E3%80%81%E5%90%B4%E6%98%A5%E6%B3%A2/"/>
+    <id>https://lywlefan.github.io/2019/05/22/读书/2019/5月/下一个倒下的会不会是华为-田涛、吴春波/</id>
+    <published>2019-05-21T16:00:00.000Z</published>
+    <updated>2019-05-22T10:14:46.332Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>多读书，多看报，少吃零食，少睡觉！</p></blockquote><h3 id="人物记录"><a href="#人物记录" class="headerlink" title="人物记录"></a>人物记录</h3><h4 id="任正飞"><a href="#任正飞" class="headerlink" title="任正飞"></a>任正飞</h4><ul><li><p>著作</p><ul><li><p>《我的父亲母亲》</p></li><li><p>《北国之春》</p></li></ul></li></ul><h2 id="笔记摘抄"><a href="#笔记摘抄" class="headerlink" title="笔记摘抄"></a>笔记摘抄</h2><h3 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h3><h4 id="华为管理哲学"><a href="#华为管理哲学" class="headerlink" title="华为管理哲学"></a>华为管理哲学</h4><p>&emsp;&emsp;任正非说:“我们没有任何背景，也没有任何资源，我们除了拥有我们自己，其实一无所有。”“一切进步都掌握在自己手中，不在别人。”</p><p>&emsp;&emsp;以客户为中心，以奋斗者为本，长期坚持艰苦奋斗。</p><blockquote><p>G:华为掌门人的哲学用实际行动植根在了每个华为人的心中，从全民持股到耗散机制，这个集体有着共同的目标，而任就是点亮远处灯塔的那个人。他们只做好自己，学习别人的优点，反思别人的缺点，坦然面对一切，居安思危，砥砺前行！正如作者在文中说：如同铀原子在中子轰击下产生的核能量一样，你身上的小小原子核，在价值观的驱使下，发生了巨大的原子能。</p></blockquote><h4 id="华为初步形成了一个稳定与动态相融合的“金字塔”"><a href="#华为初步形成了一个稳定与动态相融合的“金字塔”" class="headerlink" title="华为初步形成了一个稳定与动态相融合的“金字塔”"></a>华为初步形成了一个稳定与动态相融合的“金字塔”</h4><p>&emsp;&emsp;最高层是组织的思想领袖群体，次高层是一批企业战略家和技术领袖，第三层是数百位各个功能体系的指挥员，他们必须具备战略思维，同时又调兵遣将、决策局部战役的统帅力；第四层是数千位经营、管理与研发方面的中基层管理者、技术领头人；“金字塔”的基座是10多万普通的知识员工，他们代表着华为这架商业战车真正战斗力与竞争力。</p><h4 id="是什么让华为快速发展？"><a href="#是什么让华为快速发展？" class="headerlink" title="是什么让华为快速发展？"></a>是什么让华为快速发展？</h4><p>&emsp;&emsp;是一种哲学思维，它植根于广大骨干心中。这就是“以客户为中心，以奋斗者为本，长期艰苦奋斗”的文化。这并不是什么背景，更不是什么上帝。</p><h4 id="六个字"><a href="#六个字" class="headerlink" title="六个字"></a>六个字</h4><ul><li><p>开放</p></li><li><p>妥协</p></li><li><p>灰度</p></li></ul><h4 id="自我批判"><a href="#自我批判" class="headerlink" title="自我批判"></a>自我批判</h4><p>&emsp;&emsp;变化是永恒的，所以观念也要随之改变，思考一刻也不能停息。</p><h4 id="不只任正非孤独，华为也是"><a href="#不只任正非孤独，华为也是" class="headerlink" title="不只任正非孤独，华为也是"></a>不只任正非孤独，华为也是</h4><p>&emsp;&emsp;华为没有成功，只是在成长。</p><h4 id="孤独，学会欣赏孤独"><a href="#孤独，学会欣赏孤独" class="headerlink" title="孤独，学会欣赏孤独"></a>孤独，学会欣赏孤独</h4><p>&emsp;&emsp;他没有娱乐、体育的任何一项爱好，唯一的嗜好就是阅读和思考，他也没有政界、商界的朋友，可以说他从学校到部队到华为，几乎没有朋友。但他善于交流，从国内到国际，从经济、政治乃至外交，无一不侃侃而谈。但这一切也脱不开对华为的思考。</p><p>&emsp;&emsp;实践是痛苦的。为了推动、驱使或者牵引10多万知识分子到全世界攻城略地、开疆拓土，不仅需要领袖们“竭智”——绞尽脑汁去思考，也需要老大们“竭力”——冲锋在前。</p><h3 id="第一章：常识·真理：以客户为中心"><a href="#第一章：常识·真理：以客户为中心" class="headerlink" title="第一章：常识·真理：以客户为中心"></a>第一章：常识·真理：以客户为中心</h3><h4 id="客户：华为存在的唯一理由"><a href="#客户：华为存在的唯一理由" class="headerlink" title="客户：华为存在的唯一理由"></a>客户：华为存在的唯一理由</h4><p>&emsp;&emsp;华为的明天在哪里？出路在哪里？</p><blockquote><p>阿尔卡特的困惑和迷茫让我不仅问自己，我的明天在哪里？出路在哪里？华为高举“以客户为中心”的旗帜，客户是华为存在的唯一理由，他是一切企业存在的唯一理由。我存在的意义是为这个世界创造更大的价值，修身，齐家，奉国！我的方向在哪里？我该如何走，我内心是迷茫的！我想创造更大的价值，但是感觉自己无能无力，只能把手头的事情做好。而你又能做什么？假如给你一个创造巨大价值的机会，你能否把我住？能否胜任？扪心自问，我还需要不断去历练，不断去打磨！每一天都是新的开始！加油！</p></blockquote><h5 id="华为四大战略内容"><a href="#华为四大战略内容" class="headerlink" title="华为四大战略内容"></a>华为四大战略内容</h5><p>&emsp;&emsp;为客户服务是华为存在的唯一理由；客户需求是华为发展的原动力。</p><ul><li>眼睛盯着客户，屁股对着老板</li></ul><p>&emsp;&emsp;在2010年的一次会议上，任正非进一步指出：在华为，坚决提拔那些眼睛盯着客户，屁股对着老板的员工；坚决淘汰那些眼睛盯着老板，屁股对着客户的干部。前者是公司价值的创造者，后者是牟取个人私利的奴才。各级干部要有境界，下属屁股对着你，自己可能不舒服，但必须要善待他们。</p><ul><li>被扭曲的常识</li></ul><p>&emsp;&emsp;让客户自觉掏腰包，让更多客户掏腰包，让客户长期掏腰包，谁就能变得更伟大。</p><p>&emsp;&emsp;百年西方管理学的核心思想，绕来绕去还是离不开一个根本：如何围绕消费者的需求，为公司定位，为管理者定位，为公司产品定位。</p><blockquote><p>围绕消费者的需求，字字珠玑，找到消费者就能找到市场，找到市场就能做服务，做好服务，做精服务，不断思考，不断反思，客户是上帝！</p></blockquote><p>&emsp;&emsp;管理大师德鲁克把企业定义为：创造客户。</p><ul><li>偏离客户，谁来养活我们</li></ul><p>&emsp;&emsp;2001年7月，公司内刊《华为人》报上，有一篇文章题目为“为客户服务是华为存在的理由”，任正非在审稿时，将其改为“为客户服务是华为存在的唯一理由”，他认为：华为命中注定是为客户而存在的，出来客户，华为没有存在的任何理由，所以是唯一理由。</p><p>&emsp;&emsp;钱钟书说：“真理都是赤裸裸的。”华为高管们则说：“不要把华为文化复杂化，不要把华为文化细枝末节化。”</p><h4 id="“百年帝国”的衰落"><a href="#“百年帝国”的衰落" class="headerlink" title="“百年帝国”的衰落"></a>“百年帝国”的衰落</h4><blockquote><p><a href="https://www.jianshu.com/u/354cc1548a33" target="_blank" rel="noopener">【1】简书主页·share猿</a><br><a href="https://juejin.im/user/5a8e759851882524d842d174" target="_blank" rel="noopener">【2】掘金主页·share猿</a></p></blockquote><hr><p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>                </div>                <div class="image-caption"></div>            </figure></p><p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;blockquote&gt;
+&lt;p&gt;多读书，多看报，少吃零食，少睡觉！&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;人物记录&quot;&gt;&lt;a href=&quot;#人物记录&quot; class=&quot;headerlink&quot; title=&quot;人物记录&quot;&gt;&lt;/a&gt;人物记录&lt;/h3&gt;&lt;h4 id=&quot;任正飞&quot;&gt;
+      
+    
+    </summary>
+    
+      <category term="读书" scheme="https://lywlefan.github.io/categories/%E8%AF%BB%E4%B9%A6/"/>
+    
+    
+      <category term="读书" scheme="https://lywlefan.github.io/tags/%E8%AF%BB%E4%B9%A6/"/>
+    
+      <category term="科技历" scheme="https://lywlefan.github.io/tags/%E7%A7%91%E6%8A%80%E5%8E%86/"/>
+    
+      <category term="管理" scheme="https://lywlefan.github.io/tags/%E7%AE%A1%E7%90%86/"/>
+    
+      <category term="励志" scheme="https://lywlefan.github.io/tags/%E5%8A%B1%E5%BF%97/"/>
     
   </entry>
   
@@ -594,38 +624,11 @@
       <category term="工具" scheme="https://lywlefan.github.io/categories/%E5%B7%A5%E5%85%B7/"/>
     
     
-      <category term="开发" scheme="https://lywlefan.github.io/tags/%E5%BC%80%E5%8F%91/"/>
-    
       <category term="idea" scheme="https://lywlefan.github.io/tags/idea/"/>
     
+      <category term="开发" scheme="https://lywlefan.github.io/tags/%E5%BC%80%E5%8F%91/"/>
+    
       <category term="快捷键" scheme="https://lywlefan.github.io/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>JAR包如何取工程外部文件</title>
-    <link href="https://lywlefan.github.io/2019/05/15/spring/spring-base/JAR%E5%8C%85%E5%A6%82%E4%BD%95%E5%8F%96%E5%B7%A5%E7%A8%8B%E5%A4%96%E9%83%A8%E6%96%87%E4%BB%B6/"/>
-    <id>https://lywlefan.github.io/2019/05/15/spring/spring-base/JAR包如何取工程外部文件/</id>
-    <published>2019-05-14T16:00:00.000Z</published>
-    <updated>2019-05-15T06:29:45.751Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="问题起源"><a href="#问题起源" class="headerlink" title="问题起源"></a>问题起源</h3><p>&emsp;&emsp;在开发支付stater的过程中会用到证书，而证书我们一般配置在工程项目中，那么我们自己开发的stater如何才能取到工程项目中的证书文件那？？？</p><h3 id="问题深究"><a href="#问题深究" class="headerlink" title="问题深究"></a>问题深究</h3><h4 id="分解问题"><a href="#分解问题" class="headerlink" title="分解问题"></a>分解问题</h4><p>&emsp;&emsp;要想解决这个问题，我们要明确</p><blockquote><p><a href="https://www.jianshu.com/u/354cc1548a33" target="_blank" rel="noopener">【1】简书主页·share猿</a><br><a href="https://juejin.im/user/5a8e759851882524d842d174" target="_blank" rel="noopener">【2】掘金主页·share猿</a></p></blockquote><hr><p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>                </div>                <div class="image-caption"></div>            </figure></p><p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h3 id=&quot;问题起源&quot;&gt;&lt;a href=&quot;#问题起源&quot; class=&quot;headerlink&quot; title=&quot;问题起源&quot;&gt;&lt;/a&gt;问题起源&lt;/h3&gt;&lt;p&gt;&amp;emsp;&amp;emsp;在开发支付stater的过程中会用到证书，而证书我们一般配置在工程项目中，那么我们自己开发的stat
-      
-    
-    </summary>
-    
-      <category term="spring" scheme="https://lywlefan.github.io/categories/spring/"/>
-    
-    
-      <category term="spring" scheme="https://lywlefan.github.io/tags/spring/"/>
-    
-      <category term="疑难杂症" scheme="https://lywlefan.github.io/tags/%E7%96%91%E9%9A%BE%E6%9D%82%E7%97%87/"/>
     
   </entry>
   
