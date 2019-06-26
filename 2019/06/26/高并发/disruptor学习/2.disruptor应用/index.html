@@ -14,30 +14,27 @@
     
     
     
-    <title>LMAX架构 | share猿 | https://lywlefan.github.io/</title>
+    <title>1.disruptor初识 | share猿 | https://lywlefan.github.io/</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="theme-color" content="#3F51B5">
     
     
-    <meta name="keywords" content="并发,LMAX,disruptor">
-    <meta name="description" content="万丈高楼平地起的前提是地基好.  LMAX架构简介">
-<meta name="keywords" content="并发,LMAX,disruptor">
+    <meta name="keywords" content="并发,disruptor">
+    <meta name="description" content="disruptor号称能够在一个线程里每秒处理6百万订单,业务逻辑处理器完全是运行在内存中，使用事件源驱动方式。  本节导航 Disruptor核心链路场景应用讲解  并行计算- 串行操作  并行计算- 并行操作  并行计算- 多遍形高端操作  并行计算- 多生产者消费模型  并行计算- 多消费者消费模型   Disruptor核心链路场景应用讲解概念啥是核心链路?就拿京东来说,下单支付就是核心">
+<meta name="keywords" content="并发,disruptor">
 <meta property="og:type" content="article">
-<meta property="og:title" content="LMAX架构">
-<meta property="og:url" content="https://lywlefan.github.io/2019/06/21/架构/LMAX架构/index.html">
+<meta property="og:title" content="1.disruptor初识">
+<meta property="og:url" content="https://lywlefan.github.io/2019/06/26/高并发/disruptor学习/2.disruptor应用/index.html">
 <meta property="og:site_name" content="share猿">
-<meta property="og:description" content="万丈高楼平地起的前提是地基好.  LMAX架构简介">
+<meta property="og:description" content="disruptor号称能够在一个线程里每秒处理6百万订单,业务逻辑处理器完全是运行在内存中，使用事件源驱动方式。  本节导航 Disruptor核心链路场景应用讲解  并行计算- 串行操作  并行计算- 并行操作  并行计算- 多遍形高端操作  并行计算- 多生产者消费模型  并行计算- 多消费者消费模型   Disruptor核心链路场景应用讲解概念啥是核心链路?就拿京东来说,下单支付就是核心">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://pic002.cnblogs.com/images/2012/13665/2012021214023190.png">
-<meta property="og:image" content="https://pic002.cnblogs.com/images/2012/13665/2012021214025031.png">
-<meta property="og:image" content="https://pic002.cnblogs.com/images/2012/13665/2012021214031164.png">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-06-26T01:58:33.836Z">
+<meta property="og:updated_time" content="2019-06-26T08:27:12.674Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="LMAX架构">
-<meta name="twitter:description" content="万丈高楼平地起的前提是地基好.  LMAX架构简介">
-<meta name="twitter:image" content="https://pic002.cnblogs.com/images/2012/13665/2012021214023190.png">
+<meta name="twitter:title" content="1.disruptor初识">
+<meta name="twitter:description" content="disruptor号称能够在一个线程里每秒处理6百万订单,业务逻辑处理器完全是运行在内存中，使用事件源驱动方式。  本节导航 Disruptor核心链路场景应用讲解  并行计算- 串行操作  并行计算- 并行操作  并行计算- 多遍形高端操作  并行计算- 多生产者消费模型  并行计算- 多消费者消费模型   Disruptor核心链路场景应用讲解概念啥是核心链路?就拿京东来说,下单支付就是核心">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
     
         <link rel="alternate" type="application/atom+xml" title="share猿" href="/atom.xml">
     
@@ -125,13 +122,13 @@
         <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
           <i class="icon icon-lg icon-navicon"></i>
         </a>
-        <div class="flex-col header-title ellipsis">LMAX架构</div>
+        <div class="flex-col header-title ellipsis">1.disruptor初识</div>
         
         <div class="search-wrap" id="search-wrap">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="検索">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
@@ -147,15 +144,15 @@
 <header class="content-header post-header">
 
     <div class="container fade-scale">
-        <h1 class="title">LMAX架构</h1>
+        <h1 class="title">1.disruptor初识</h1>
         <h5 class="subtitle">
             
-                <time datetime="2019-06-20T16:00:00.000Z" itemprop="datePublished" class="page-time">
-  2019-06-21
+                <time datetime="2019-06-25T16:00:00.000Z" itemprop="datePublished" class="page-time">
+  2019-06-26
 </time>
 
 
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/架构/">架构</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/高并发/">高并发</a></li></ul>
 
             
         </h5>
@@ -172,20 +169,20 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#LMAX架构简介"><span class="post-toc-number">1.</span> <span class="post-toc-text">LMAX架构简介</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#本节导航"><span class="post-toc-number">1.</span> <span class="post-toc-text">本节导航</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Disruptor核心链路场景应用讲解"><span class="post-toc-number">2.</span> <span class="post-toc-text">Disruptor核心链路场景应用讲解</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#概念"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">概念</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#啥是核心链路"><span class="post-toc-number">2.1.1.</span> <span class="post-toc-text">啥是核心链路?</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#核心链路特点"><span class="post-toc-number">2.1.2.</span> <span class="post-toc-text">核心链路特点</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#如何实现"><span class="post-toc-number">2.1.3.</span> <span class="post-toc-text">如何实现</span></a></li></ol></li></ol></li></ol>
         </nav>
     </aside>
 
 
-<article id="post-架构/LMAX架构" class="post-article article-type-post fade" itemprop="blogPost">
+<article id="post-高并发/disruptor学习/2.disruptor应用" class="post-article article-type-post fade" itemprop="blogPost">
 
     <div class="post-card">
-        <h1 class="post-card-title">LMAX架构</h1>
+        <h1 class="post-card-title">1.disruptor初识</h1>
         <div class="post-meta">
-            <time class="post-time" title="2019-06-21 00:00:00" datetime="2019-06-20T16:00:00.000Z" itemprop="datePublished">2019-06-21</time>
+            <time class="post-time" title="2019-06-26 00:00:00" datetime="2019-06-25T16:00:00.000Z" itemprop="datePublished">2019-06-26</time>
 
             
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/架构/">架构</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/高并发/">高并发</a></li></ul>
 
 
 
@@ -198,51 +195,33 @@
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
             <blockquote>
-<p>万丈高楼平地起的前提是地基好.</p>
+<p>disruptor号称能够在一个线程里每秒处理6百万订单,业务逻辑处理器完全是运行在内存中，使用事件源驱动方式。</p>
 </blockquote>
-<h2 id="LMAX架构简介"><a href="#LMAX架构简介" class="headerlink" title="LMAX架构简介"></a>LMAX架构简介</h2><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="https://pic002.cnblogs.com/images/2012/13665/2012021214023190.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="https://pic002.cnblogs.com/images/2012/13665/2012021214025031.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="https://pic002.cnblogs.com/images/2012/13665/2012021214031164.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-<p>该架构主要基于：Disruptor + In Memory DDD + Event Sourcing</p>
-<ul>
-<li><p>通过高并发框架（Disruptor）实现用户事件的输入和Domain Event的输出；</p>
+<h3 id="本节导航"><a href="#本节导航" class="headerlink" title="本节导航"></a>本节导航</h3><ul>
+<li><p>Disruptor核心链路场景应用讲解</p>
 </li>
-<li><p>一个常驻内存的Business Logic Processor（DDD领域模型），它负责在纯内存中处理业务逻辑；关键点：首先确保用户输入事件被持久化到数据库，并定时创建快照，然后在内存中响应事件更改业务对象的状态；因为一切都是在内存中处理，所以没有IO，也不需要数据库事务，非常快；</p>
+<li><p>并行计算- 串行操作</p>
 </li>
-<li><p>机器down了怎么办？因为我们首先确保了业务对象的任何状态改变之前先持久化用户输入事件，所以在down机的时候通过事件回溯重新得到最新的业务对象。因为有了快照的保存，所以重建对象也非常快；</p>
+<li><p>并行计算- 并行操作</p>
+</li>
+<li><p>并行计算- 多遍形高端操作</p>
+</li>
+<li><p>并行计算- 多生产者消费模型</p>
+</li>
+<li><p>并行计算- 多消费者消费模型</p>
 </li>
 </ul>
-<p>该架构的主要观点：</p>
-<ul>
-<li><p>肯定了In-Memory内存模式 + 异步输入与输出事件（Disruptor） + Event Sourcing 架构，LMAX实践也验证了这个架构。这个架构降低复杂性。</p>
+<h3 id="Disruptor核心链路场景应用讲解"><a href="#Disruptor核心链路场景应用讲解" class="headerlink" title="Disruptor核心链路场景应用讲解"></a>Disruptor核心链路场景应用讲解</h3><h4 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h4><h5 id="啥是核心链路"><a href="#啥是核心链路" class="headerlink" title="啥是核心链路?"></a>啥是核心链路?</h5><p>就拿京东来说,下单支付就是核心链路,物流也是核心链路.</p>
+<h5 id="核心链路特点"><a href="#核心链路特点" class="headerlink" title="核心链路特点"></a>核心链路特点</h5><ul>
+<li><p>代码复杂</p>
 </li>
-<li><p>LMAX的核心是新型并发框架Disruptor，其核心是根据现代CPU硬件缓存特点发明不同于通用LinkedList或Queue的新型数据结构RingBuffer。</p>
+<li><p>业务逻辑复杂</p>
 </li>
-<li><p>号称并发未来的Actor模型被LMAX团队验证是有瓶颈的。</p>
+</ul>
+<h5 id="如何实现"><a href="#如何实现" class="headerlink" title="如何实现"></a>如何实现</h5><ul>
+<li><p>传统完全解耦的方式</p>
 </li>
-<li><p>提出新的并发模型，每个CPU一个线程，多个CPU多个线程并发模式，摒弃了锁模式。</p>
-</li>
-<li><p>ORM等Hibernate没有完全解决OO的目标，关系数据库的事务也不是最后救命的稻草。LMAX用自己的事件记录的方式实现事务，这也不同于所谓内存事务STM。</p>
-</li>
-<li><p>架构师要分离关注，一是通过DDD降低业务的复杂性；二是通过技术探索创新，降低技术平台的复杂性，让程序员更多精力投入业务问题解决上。</p>
+<li><p>模板模式</p>
 </li>
 </ul>
 <blockquote>
@@ -255,7 +234,16 @@
 <p><a href="https://juejin.im/user/5a8e759851882524d842d174" target="_blank" rel="noopener">【2】掘金主页·share猿</a></p>
 </blockquote>
 <blockquote>
-<p><a href="https://www.cnblogs.com/netfocus/archive/2012/02/12/2347919.html" target="_blank" rel="noopener">【3】LMAX架构简介·汤雪华</a></p>
+<p><a href="https://code.google.com/archive/p/disruptor/wikis/BlogsAndArticles.wiki" target="_blank" rel="noopener">【3】disruptor官网</a></p>
+</blockquote>
+<blockquote>
+<p><a href="https://zl198751.iteye.com/blog/1848575" target="_blank" rel="noopener">【4】JAVA CAS原理深度分析</a></p>
+</blockquote>
+<blockquote>
+<p><a href="http://ifeve.com/disruptor/" target="_blank" rel="noopener">【5】并发框架Disruptor译文</a></p>
+</blockquote>
+<blockquote>
+<p><a href="https://blog.52itstyle.vip/archives/2911/" target="_blank" rel="noopener">【6】从构建分布式秒杀系统聊聊Disruptor高性能队列</a></p>
 </blockquote>
 <hr>
 <p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">
@@ -274,12 +262,12 @@
     <div class="content">
         
 <span class="post-time">
-    最終更新：<time datetime="2019-06-26T01:58:33.836Z" itemprop="dateUpdated">2019-06-26 09:58:33</time>
+    Last updated: <time datetime="2019-06-26T08:27:12.674Z" itemprop="dateUpdated">2019-06-26 16:27:12</time>
 </span><br>
 
 
         
-        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2019/06/21/架构/LMAX架构/" target="_blank" rel="external">https://lywlefan.github.io/2019/06/21/架构/LMAX架构/</a>
+        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2019/06/26/高并发/disruptor学习/2.disruptor应用/" target="_blank" rel="external">https://lywlefan.github.io/2019/06/26/高并发/disruptor学习/2.disruptor应用/</a>
         
     </div>
     
@@ -300,7 +288,7 @@
 
         <div class="post-footer">
             
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LMAX/">LMAX</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/disruptor/">disruptor</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/并发/">并发</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/disruptor/">disruptor</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/并发/">并发</a></li></ul>
 
 
             
@@ -310,7 +298,7 @@
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://lywlefan.github.io/2019/06/21/架构/LMAX架构/&title=《LMAX架构》 — share猿&pic=https://lywlefan.github.io/img/avatar.png" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://lywlefan.github.io/2019/06/26/高并发/disruptor学习/2.disruptor应用/&title=《1.disruptor初识》 — share猿&pic=https://lywlefan.github.io/img/avatar.png" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -320,22 +308,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://lywlefan.github.io/2019/06/21/架构/LMAX架构/&title=《LMAX架构》 — share猿&source=分享有价值的内容,你我共同成长!" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://lywlefan.github.io/2019/06/26/高并发/disruptor学习/2.disruptor应用/&title=《1.disruptor初识》 — share猿&source=分享有价值的内容,你我共同成长!" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://lywlefan.github.io/2019/06/21/架构/LMAX架构/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://lywlefan.github.io/2019/06/26/高并发/disruptor学习/2.disruptor应用/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《LMAX架构》 — share猿&url=https://lywlefan.github.io/2019/06/21/架构/LMAX架构/&via=https://lywlefan.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《1.disruptor初识》 — share猿&url=https://lywlefan.github.io/2019/06/26/高并发/disruptor学习/2.disruptor应用/&via=https://lywlefan.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://lywlefan.github.io/2019/06/21/架构/LMAX架构/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://lywlefan.github.io/2019/06/26/高并发/disruptor学习/2.disruptor应用/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -358,18 +346,18 @@
 <nav class="post-nav flex-row flex-justify-between">
   
     <div class="waves-block waves-effect prev">
-      <a href="/2019/06/25/基础巩固/java/数据结构/环形缓冲区/" id="post-prev" class="post-nav-link">
+      <a href="/2019/06/26/高并发/disruptor学习/1.disruptor初识/" id="post-prev" class="post-nav-link">
         <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">环形缓冲区</h4>
+        <h4 class="title">1.disruptor初识</h4>
       </a>
     </div>
   
 
   
     <div class="waves-block waves-effect next">
-      <a href="/2019/06/21/基础巩固/java/java枚举的总结和学习/" id="post-next" class="post-nav-link">
+      <a href="/2019/06/26/基础巩固/java/线程/自定义线程池/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">java枚举的总结和学习</h4>
+        <h4 class="title">自定义线程池</h4>
       </a>
     </div>
   
@@ -470,7 +458,7 @@
             
                 <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
             
-            <span>このブログの内容物は<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja">クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際ライセンスの下に提供されています</a></span>
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
         </p>
     </div>
     <div class="bottom">
@@ -492,7 +480,7 @@
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://lywlefan.github.io/2019/06/21/架构/LMAX架构/&title=《LMAX架构》 — share猿&pic=https://lywlefan.github.io/img/avatar.png" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://lywlefan.github.io/2019/06/26/高并发/disruptor学习/2.disruptor应用/&title=《1.disruptor初识》 — share猿&pic=https://lywlefan.github.io/img/avatar.png" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -502,22 +490,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://lywlefan.github.io/2019/06/21/架构/LMAX架构/&title=《LMAX架构》 — share猿&source=分享有价值的内容,你我共同成长!" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://lywlefan.github.io/2019/06/26/高并发/disruptor学习/2.disruptor应用/&title=《1.disruptor初识》 — share猿&source=分享有价值的内容,你我共同成长!" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://lywlefan.github.io/2019/06/21/架构/LMAX架构/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://lywlefan.github.io/2019/06/26/高并发/disruptor学习/2.disruptor应用/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《LMAX架构》 — share猿&url=https://lywlefan.github.io/2019/06/21/架构/LMAX架构/&via=https://lywlefan.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《1.disruptor初识》 — share猿&url=https://lywlefan.github.io/2019/06/26/高并发/disruptor学习/2.disruptor应用/&via=https://lywlefan.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://lywlefan.github.io/2019/06/21/架构/LMAX架构/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://lywlefan.github.io/2019/06/26/高并发/disruptor学习/2.disruptor应用/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -528,7 +516,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACLElEQVR42u3ay26DQAwF0Pz/T6dSV63apNc2VMIcVhESwxwWjh/zeMTX8/N6f//55fp55+eVrHDwhYGBcVlG/rL3r8m3mzyb7w0DA+M+jGowffXsqzs5L8FjYGBgVJdLkPlvDAwMjDljEmSTJA8DAwNjUsTmzbheAZw8e0AtjoGBcUFGdTDwn79PnG9gYGBchDFJ4PJgeuws8pc3YmBgrGYk48PJwYvkqWqQLWS4GBgYKxjV4nOe5FXXed+S+/a/gYGBsZTRa2lVD43lQ8pkzUJqiIGBsYJRfaw6DOgVuvlgAAMD4w6MaknZKzWjxC6uuQtNPQwMjEWMPHU7o9ytHuyImm4YGBjrGJPGfXW7eRsuCc0YGBh3YCSBclLE5oF71NrDwMBYzcjLzh6suul54MbAwNjHmB96qCZ2p58ZwcDAWMrIQ+e8Vp6E6SjDxcDAWM1IguD7NDEJrNUQPCpcMTAwVjCaZzGKDbX8w+XH0ZojTAwMjIszekVmHoKrn2PyZ4CBgbGJUbX2itgcnIxF/zhsgYGBsZrRbMoXU8lqQy1KLjEwMFYzqkVmEi6TFSYfpZzhYmBgXJwx31BvhJkH9GZqiIGBsYjRS+wmSWQCPmyciYGBsYiRB9mkED1jMBB9FAwMjBswqlVvHl5765drcQwMDIxi+Js013r7wcDAwOiNCpLVyvU0BgbGjRl5EZsfg5gc1CjvBAMDYzWjVzrmZW0vKZw0/jAwMBYxPgDrc9YswyCCFAAAAABJRU5ErkJggg==" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACuElEQVR42u3a0W4bMQwEwPz/T7evBtJed0kpuALjp8BxdBoGkGiSX1/x69fH6/s7n+9//rb92+fPfH/KsRceHh7eYuvPD84/+benJIF7DlO+Zzw8PLzbvHbp5Phu8e1lEwURDw8P7zW8PC1uQ5Yn5Xh4eHj/Iy9Pjp+vgZaEh4eH9wbe5rh/ZuTl4Dbch2steHh4eDGv3egbfr7S38PDw8Nbd9VnxdmkFLtpkhW7xcPDw7vAyw/c2bhAi8/LuPlwGB4eHt5ZXtt2ytv8bYurfXpUDsbDw8O7xksWyo/1tgibJ9N5aTjaLh4eHt6I15YAZqMAM0xbEBlORuDh4eGVvHZDbat+ljS360TjVnh4eHhHefkhPkt82zXzRD/q7+Hh4eEd5W2O3fwxbcIdde3ykjEeHh7eUV6SIrdbzEcK2hmHeod4eHh413izJDhpg+WjA/tAFFchHh4e3lHeHjYbJtgXI/7wGTw8PLwf5OXlgLz0kFxFp5LsutuGh4eHV3bn2+JCssVNupy33KL38fDw8C7wikO2vCSSFTYXUrEaHh4e3iHerOWfFx3axtisIVePDuDh4eGtee23+Flqm48dzJph/xgdwMPDwzvEy1PkduAgwcwuj7rOgIeHh3eUly83Ky7kgcsLxHmI8fDw8G7w8iLCrHxwKlGeXUt4eHh4P8MrDtxR1jorHG/+AXh4eHi3eclX/VmRIj/o2+Jyfe/h4eHhHeJtjvj2t7PnzlJwPDw8vLO8fYKbDwTMBg42gcPDw8O7wduMNM0GthJYHtZZUo6Hh4e3580ug9nAweaqmF02eHh4ePd4ecE0KSWcapgN6yt4eHh4L+PlsM2gVds2w8PDw3s/rz3ck5HWdjggCiIeHh7eNV5SjDg1KNC20Fo2Hh4e3m1e+4U/D8SMkYRvP56Fh4eHN+L9Bk04K/BIJ0/PAAAAAElFTkSuQmCC" alt="微信分享二维码">
 </div>
 
 

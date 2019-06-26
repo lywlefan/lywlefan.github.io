@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>LMAX架构 | share猿 | https://lywlefan.github.io/</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="并发,LMAX,disruptor">
+    <meta name="description" content="万丈高楼平地起的前提是地基好.  LMAX架构简介">
+<meta name="keywords" content="并发,LMAX,disruptor">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LMAX架构">
+<meta property="og:url" content="https://lywlefan.github.io/2019/06/21/架构/LMAX架构/LMAX架构/index.html">
+<meta property="og:site_name" content="share猿">
+<meta property="og:description" content="万丈高楼平地起的前提是地基好.  LMAX架构简介">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://pic002.cnblogs.com/images/2012/13665/2012021214023190.png">
+<meta property="og:image" content="https://pic002.cnblogs.com/images/2012/13665/2012021214025031.png">
+<meta property="og:image" content="https://pic002.cnblogs.com/images/2012/13665/2012021214031164.png">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-06-26T08:26:15.301Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="LMAX架构">
+<meta name="twitter:description" content="万丈高楼平地起的前提是地基好.  LMAX架构简介">
+<meta name="twitter:image" content="https://pic002.cnblogs.com/images/2012/13665/2012021214023190.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="share猿" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">share猿</h5>
+          <a href="mailto:330334064@qq.com" title="330334064@qq.com" class="mail">330334064@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/lywlefan" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                GitHub
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/atom">
+                <i class="icon icon-lg icon-rss"></i>
+                订阅
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">LMAX架构</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">LMAX架构</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-06-20T16:00:00.000Z" itemprop="datePublished" class="page-time">
+  2019-06-21
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/架构/">架构</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#LMAX架构简介"><span class="post-toc-number">1.</span> <span class="post-toc-text">LMAX架构简介</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-架构/LMAX架构/LMAX架构" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">LMAX架构</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-06-21 00:00:00" datetime="2019-06-20T16:00:00.000Z" itemprop="datePublished">2019-06-21</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/架构/">架构</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <blockquote>
+<p>万丈高楼平地起的前提是地基好.</p>
+</blockquote>
+<h2 id="LMAX架构简介"><a href="#LMAX架构简介" class="headerlink" title="LMAX架构简介"></a>LMAX架构简介</h2><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://pic002.cnblogs.com/images/2012/13665/2012021214023190.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://pic002.cnblogs.com/images/2012/13665/2012021214025031.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://pic002.cnblogs.com/images/2012/13665/2012021214031164.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>该架构主要基于：Disruptor + In Memory DDD + Event Sourcing</p>
+<ul>
+<li><p>通过高并发框架（Disruptor）实现用户事件的输入和Domain Event的输出；</p>
+</li>
+<li><p>一个常驻内存的Business Logic Processor（DDD领域模型），它负责在纯内存中处理业务逻辑；关键点：首先确保用户输入事件被持久化到数据库，并定时创建快照，然后在内存中响应事件更改业务对象的状态；因为一切都是在内存中处理，所以没有IO，也不需要数据库事务，非常快；</p>
+</li>
+<li><p>机器down了怎么办？因为我们首先确保了业务对象的任何状态改变之前先持久化用户输入事件，所以在down机的时候通过事件回溯重新得到最新的业务对象。因为有了快照的保存，所以重建对象也非常快；</p>
+</li>
+</ul>
+<p>该架构的主要观点：</p>
+<ul>
+<li><p>肯定了In-Memory内存模式 + 异步输入与输出事件（Disruptor） + Event Sourcing 架构，LMAX实践也验证了这个架构。这个架构降低复杂性。</p>
+</li>
+<li><p>LMAX的核心是新型并发框架Disruptor，其核心是根据现代CPU硬件缓存特点发明不同于通用LinkedList或Queue的新型数据结构RingBuffer。</p>
+</li>
+<li><p>号称并发未来的Actor模型被LMAX团队验证是有瓶颈的。</p>
+</li>
+<li><p>提出新的并发模型，每个CPU一个线程，多个CPU多个线程并发模式，摒弃了锁模式。</p>
+</li>
+<li><p>ORM等Hibernate没有完全解决OO的目标，关系数据库的事务也不是最后救命的稻草。LMAX用自己的事件记录的方式实现事务，这也不同于所谓内存事务STM。</p>
+</li>
+<li><p>架构师要分离关注，一是通过DDD降低业务的复杂性；二是通过技术探索创新，降低技术平台的复杂性，让程序员更多精力投入业务问题解决上。</p>
+</li>
+</ul>
+<blockquote>
+<p><strong>参考文档</strong></p>
+</blockquote>
+<blockquote>
+<p><a href="https://www.jianshu.com/u/354cc1548a33" target="_blank" rel="noopener">【1】简书主页·share猿</a></p>
+</blockquote>
+<blockquote>
+<p><a href="https://juejin.im/user/5a8e759851882524d842d174" target="_blank" rel="noopener">【2】掘金主页·share猿</a></p>
+</blockquote>
+<blockquote>
+<p><a href="https://www.cnblogs.com/netfocus/archive/2012/02/12/2347919.html" target="_blank" rel="noopener">【3】LMAX架构简介·汤雪华</a></p>
+</blockquote>
+<hr>
+<p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
+<p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2019-06-26T08:26:15.301Z" itemprop="dateUpdated">2019-06-26 16:26:15</time>
+</span><br>
+
+
+        
+        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2019/06/21/架构/LMAX架构/LMAX架构/" target="_blank" rel="external">https://lywlefan.github.io/2019/06/21/架构/LMAX架构/LMAX架构/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://lywlefan.github.io">
+            <img src="/img/avatar.png" alt="share猿">
+            share猿
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LMAX/">LMAX</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/disruptor/">disruptor</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/并发/">并发</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://lywlefan.github.io/2019/06/21/架构/LMAX架构/LMAX架构/&title=《LMAX架构》 — share猿&pic=https://lywlefan.github.io/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://lywlefan.github.io/2019/06/21/架构/LMAX架构/LMAX架构/&title=《LMAX架构》 — share猿&source=分享有价值的内容,你我共同成长!" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://lywlefan.github.io/2019/06/21/架构/LMAX架构/LMAX架构/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《LMAX架构》 — share猿&url=https://lywlefan.github.io/2019/06/21/架构/LMAX架构/LMAX架构/&via=https://lywlefan.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://lywlefan.github.io/2019/06/21/架构/LMAX架构/LMAX架构/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2019/06/21/基础巩固/java/java枚举的总结和学习/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">java枚举的总结和学习</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/06/17/指导思想/方法论/学习的方法论/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">学习的方法论</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'true' == 'true',
+            verify: 'false' == 'true',
+            appId: "hQGVIAaJERVwyrWxj1uqgCqS-gzGzoHsz",
+            appKey: "l7FO5csTavNwXCGryJyOkkc1",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢赞赏!
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>share猿 &copy; 2015 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://lywlefan.github.io/2019/06/21/架构/LMAX架构/LMAX架构/&title=《LMAX架构》 — share猿&pic=https://lywlefan.github.io/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://lywlefan.github.io/2019/06/21/架构/LMAX架构/LMAX架构/&title=《LMAX架构》 — share猿&source=分享有价值的内容,你我共同成长!" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://lywlefan.github.io/2019/06/21/架构/LMAX架构/LMAX架构/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《LMAX架构》 — share猿&url=https://lywlefan.github.io/2019/06/21/架构/LMAX架构/LMAX架构/&via=https://lywlefan.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://lywlefan.github.io/2019/06/21/架构/LMAX架构/LMAX架构/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACtklEQVR42u3awW7rMAwEQP//T6fAuxZxdikT6QNGp8BQLY8OEkvyuuLx+jeSOeczfz/P3zwceHh4eKNPfzeSJdv5ybr370zm4+Hh4W3z7g/od6++x9z/zmcmK759joeHh/dV3v2Td0d2vnF5WI+Hh4f3v/BOjvLzLAEeHh7eX+Mly7SHfpLAzdMc67kWPDw8vJh3Es5+6/difQ8PDw/voKqeH755mWqWLB5+IR4eHt4C76mOrbaNoG3naoPyYS8YHh4eXhmLnhS0Tgpm+ZYlz6NkLh4eHt4x79kGqTYgbjervoTw8PDwHuUlx3d+uCfb8YWyFh4eHt6jvFmy9aRhK9+mvMmgbrrCw8PDO+AlB24+J//oJP3xQD4WDw8Pb4GXL9MWtGYffTJ/mJ/Gw8PDK3l5aiAPjpONaBMNwyAbDw8Pb42XLJnD9tIZ7QWGh4eHt8HLy1SzpMAsdG6vqygZgYeHh7fMa4PgNnWbBMpJmF7U9/Dw8PAWeMk//LNr47HguAzx8fDw8DZ47fLtKALfEfLDVYSHh4e3zJtR23A8T9fmcz5kqfHw8PAWeG0ovJJsHSUaPiDx8PDwFnhJKNyG123Stm0XyJu08PDw8DZ4J8mIIrQ9/qt8Cx7LteDh4eEFdau8lNU2Y7XhdXIZ1C1feHh4eAu82b/3J0Fw2xzQJojx8PDw9nivYOQVpTbV215CbVIDDw8Pb4+XH83tRszAs3arq2Xg4eHhlbxXOU5C7VmCow3Z6xsPDw8P7/nz9moP96T5IC+ttZfNEImHh4dXvv8kDXFyHJ+0HRTbjYeHh7fGa8PiWRq3vRjybTrKteDh4eEt89qmq6cKZm3YjYeHh/cXeLNyfrsd7ds+bAceHh7eGi8H3H90O/PZdqsrv4vw8PDwDnhHHVujgtbsqlip7OHh4eF1vB8kUQ0BdGv76wAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '欢迎回来！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '欢迎欢迎!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
