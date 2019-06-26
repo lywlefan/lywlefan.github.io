@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>1.disruptor初识 | share猿 | https://lywlefan.github.io/</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="并发,disruptor">
+    <meta name="description" content="disruptor号称能够在一个线程里每秒处理6百万订单,业务逻辑处理器完全是运行在内存中，使用事件源驱动方式。  要学的概念乐观锁打个比方理解乐观锁就是到桥头再看有没有车来过此桥,没有的话快速过桥. 悲观锁打个比方理解悲观锁说白了就是先发制人,我的车要过桥,但是我担心桥上有其他车,所以我提前把桥口加一个锁,我到桥头了在开锁过桥,过去了再把锁子接触了. 死锁打个比方理解简单的比方,两俩车同时过一">
+<meta name="keywords" content="并发,disruptor">
+<meta property="og:type" content="article">
+<meta property="og:title" content="1.disruptor初识">
+<meta property="og:url" content="https://lywlefan.github.io/2019/06/26/高并发/disruptor学习/1.disruptor初识/index.html">
+<meta property="og:site_name" content="share猿">
+<meta property="og:description" content="disruptor号称能够在一个线程里每秒处理6百万订单,业务逻辑处理器完全是运行在内存中，使用事件源驱动方式。  要学的概念乐观锁打个比方理解乐观锁就是到桥头再看有没有车来过此桥,没有的话快速过桥. 悲观锁打个比方理解悲观锁说白了就是先发制人,我的车要过桥,但是我担心桥上有其他车,所以我提前把桥口加一个锁,我到桥头了在开锁过桥,过去了再把锁子接触了. 死锁打个比方理解简单的比方,两俩车同时过一">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://blog.52itstyle.vip/usr/uploads/2018/05/2761303158.png">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-06-26T08:12:38.159Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="1.disruptor初识">
+<meta name="twitter:description" content="disruptor号称能够在一个线程里每秒处理6百万订单,业务逻辑处理器完全是运行在内存中，使用事件源驱动方式。  要学的概念乐观锁打个比方理解乐观锁就是到桥头再看有没有车来过此桥,没有的话快速过桥. 悲观锁打个比方理解悲观锁说白了就是先发制人,我的车要过桥,但是我担心桥上有其他车,所以我提前把桥口加一个锁,我到桥头了在开锁过桥,过去了再把锁子接触了. 死锁打个比方理解简单的比方,两俩车同时过一">
+<meta name="twitter:image" content="https://blog.52itstyle.vip/usr/uploads/2018/05/2761303158.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="share猿" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">share猿</h5>
+          <a href="mailto:330334064@qq.com" title="330334064@qq.com" class="mail">330334064@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/lywlefan" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                GitHub
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/atom">
+                <i class="icon icon-lg icon-rss"></i>
+                订阅
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">1.disruptor初识</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="検索">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">1.disruptor初识</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-06-25T16:00:00.000Z" itemprop="datePublished" class="page-time">
+  2019-06-26
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/高并发/">高并发</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#要学的概念"><span class="post-toc-number">1.</span> <span class="post-toc-text">要学的概念</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#乐观锁"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">乐观锁</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#打个比方理解"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">打个比方理解</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#悲观锁"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">悲观锁</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#打个比方理解-1"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">打个比方理解</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#死锁"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">死锁</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#打个比方理解-2"><span class="post-toc-number">1.3.1.</span> <span class="post-toc-text">打个比方理解</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#CAS"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">CAS</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#CAS简介"><span class="post-toc-number">1.4.1.</span> <span class="post-toc-text">CAS简介</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#CAS应用"><span class="post-toc-number">1.4.2.</span> <span class="post-toc-text">CAS应用</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#CAS原理"><span class="post-toc-number">1.4.3.</span> <span class="post-toc-text">CAS原理</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#CAS缺点"><span class="post-toc-number">1.4.4.</span> <span class="post-toc-text">CAS缺点</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#缓存行"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">缓存行</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#初识"><span class="post-toc-number">2.</span> <span class="post-toc-text">初识</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#性能"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">性能</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#hello-world"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">hello world</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#核心讲解"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">核心讲解</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#RingBuffer"><span class="post-toc-number">2.3.1.</span> <span class="post-toc-text">RingBuffer</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#Disruptor"><span class="post-toc-number">2.3.2.</span> <span class="post-toc-text">Disruptor</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#Sequence"><span class="post-toc-number">2.3.3.</span> <span class="post-toc-text">Sequence</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#Sequencer"><span class="post-toc-number">2.3.4.</span> <span class="post-toc-text">Sequencer</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#Sequence-Barrier"><span class="post-toc-number">2.3.5.</span> <span class="post-toc-text">Sequence Barrier</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#WaitStrategy"><span class="post-toc-number">2.3.6.</span> <span class="post-toc-text">WaitStrategy</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#Event"><span class="post-toc-number">2.3.7.</span> <span class="post-toc-text">Event</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#EventProcessor"><span class="post-toc-number">2.3.8.</span> <span class="post-toc-text">EventProcessor</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#EventHandler"><span class="post-toc-number">2.3.9.</span> <span class="post-toc-text">EventHandler</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#WorkProcessor"><span class="post-toc-number">2.3.10.</span> <span class="post-toc-text">WorkProcessor</span></a></li></ol></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-高并发/disruptor学习/1.disruptor初识" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">1.disruptor初识</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-06-26 00:00:00" datetime="2019-06-25T16:00:00.000Z" itemprop="datePublished">2019-06-26</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/高并发/">高并发</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <blockquote>
+<p>disruptor号称能够在一个线程里每秒处理6百万订单,业务逻辑处理器完全是运行在内存中，使用事件源驱动方式。</p>
+</blockquote>
+<h3 id="要学的概念"><a href="#要学的概念" class="headerlink" title="要学的概念"></a>要学的概念</h3><h4 id="乐观锁"><a href="#乐观锁" class="headerlink" title="乐观锁"></a>乐观锁</h4><h5 id="打个比方理解"><a href="#打个比方理解" class="headerlink" title="打个比方理解"></a>打个比方理解</h5><p>乐观锁就是到桥头再看有没有车来过此桥,没有的话快速过桥.</p>
+<h4 id="悲观锁"><a href="#悲观锁" class="headerlink" title="悲观锁"></a>悲观锁</h4><h5 id="打个比方理解-1"><a href="#打个比方理解-1" class="headerlink" title="打个比方理解"></a>打个比方理解</h5><p>悲观锁说白了就是先发制人,我的车要过桥,但是我担心桥上有其他车,所以我提前把桥口加一个锁,我到桥头了在开锁过桥,过去了再把锁子接触了.</p>
+<h4 id="死锁"><a href="#死锁" class="headerlink" title="死锁"></a>死锁</h4><h5 id="打个比方理解-2"><a href="#打个比方理解-2" class="headerlink" title="打个比方理解"></a>打个比方理解</h5><p>简单的比方,两俩车同时过一个桥,不能倒车,如果两辆车同时在桥上就会造成死锁,车就相当于我们的线程,桥就相当于资源.</p>
+<h4 id="CAS"><a href="#CAS" class="headerlink" title="CAS"></a>CAS</h4><h5 id="CAS简介"><a href="#CAS简介" class="headerlink" title="CAS简介"></a>CAS简介</h5><p>谷歌翻译CAS是<strong>比较并转换</strong>,java.util.concurrent包中借助CAS实现了区别于synchronouse同步锁的一种乐观锁。</p>
+<h5 id="CAS应用"><a href="#CAS应用" class="headerlink" title="CAS应用"></a>CAS应用</h5><p>CAS有3个操作数，内存值V，旧的预期值A，要修改的新值B。当且仅当预期值A和内存值V相同时，将内存值V修改为B，否则什么都不做。</p>
+<ul>
+<li>非阻塞算法 （nonblocking algorithms）</li>
+</ul>
+<blockquote>
+<p>一个线程的失败或者挂起不应该影响其他线程的失败或挂起的算法。</p>
+</blockquote>
+<h5 id="CAS原理"><a href="#CAS原理" class="headerlink" title="CAS原理"></a>CAS原理</h5><p>CAS通过调用JNI的代码实现的。JNI:Java Native Interface为JAVA本地调用，允许java调用其他语言而compareAndSwapInt就是借助C来调用CPU底层指令实现的。</p>
+<h5 id="CAS缺点"><a href="#CAS缺点" class="headerlink" title="CAS缺点"></a>CAS缺点</h5><ul>
+<li><p>ABA问题</p>
+</li>
+<li><p>循环时间长开销大</p>
+</li>
+<li><p>只能保证一个共享变量的原子操作</p>
+</li>
+</ul>
+<h4 id="缓存行"><a href="#缓存行" class="headerlink" title="缓存行"></a>缓存行</h4><h3 id="初识"><a href="#初识" class="headerlink" title="初识"></a>初识</h3><h4 id="性能"><a href="#性能" class="headerlink" title="性能"></a>性能</h4><ul>
+<li><p>一个线程每秒处理6百万订单</p>
+</li>
+<li><p>内存中运行 ,使用事件源驱动方式</p>
+</li>
+<li><p>业务逻辑处理核心Disruptor</p>
+</li>
+</ul>
+<h4 id="hello-world"><a href="#hello-world" class="headerlink" title="hello world"></a>hello world</h4><ul>
+<li><p>建立一个event类,用于创建Event类实例对象</p>
+</li>
+<li><p>需要有一个监听事件类,用于处理数据(Event类)</p>
+</li>
+<li><p>实例化Disruptor实例,配置一系列参数,编写Disruptor核心组件</p>
+</li>
+<li><p>编写生产者组件,向Disruptor容器中去投递数据</p>
+</li>
+</ul>
+<h4 id="核心讲解"><a href="#核心讲解" class="headerlink" title="核心讲解"></a>核心讲解</h4><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://blog.52itstyle.vip/usr/uploads/2018/05/2761303158.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h5 id="RingBuffer"><a href="#RingBuffer" class="headerlink" title="RingBuffer"></a>RingBuffer</h5><p>基于数组的缓存实现,也是创建sequencer与定义WaitStrategy的入口</p>
+<ul>
+<li><p>RingBuffer拥有一个序号,这个需要指向数组中下一个可用的元素</p>
+</li>
+<li><p>收尾相接的环 (环状数组)</p>
+</li>
+<li><p>假如缓存区芝麻满了,芝麻扔到哪里?</p>
+</li>
+<li><p>假如缓存区没芝麻了,如何取芝麻?</p>
+</li>
+<li><p>2的n次方更利于计算</p>
+</li>
+</ul>
+<h5 id="Disruptor"><a href="#Disruptor" class="headerlink" title="Disruptor"></a>Disruptor</h5><p>持有RingBuffer、消费者线程池Executor、消费者集合ConsumerRepository等引用.</p>
+<h5 id="Sequence"><a href="#Sequence" class="headerlink" title="Sequence"></a>Sequence</h5><ul>
+<li><p>通顺序递增的序号来编号,管理进行交换的数据(事件)</p>
+</li>
+<li><p>对数据(事件)的处理过程总是沿着序号逐个递增处理</p>
+</li>
+<li><p>一个Sequence用于跟踪标识某个特定的事件处理者(RingBuffer/Producer/Consumer)的处理进度</p>
+</li>
+<li><p>Sequence可以看成是一个AtomicLong用于标识进度</p>
+</li>
+<li><p>还有另外一个目的就是防止不同Sequence之间CPU缓存伪共享(Flase Sharing)的问题</p>
+</li>
+</ul>
+<h5 id="Sequencer"><a href="#Sequencer" class="headerlink" title="Sequencer"></a>Sequencer</h5><ul>
+<li><p>Sequencer是Disruptor的真正核心,包含Sequence</p>
+</li>
+<li><p>此接口有两个实现类</p>
+<ul>
+<li>SingleProducerSequencer</li>
+<li>MultiProducerSequencer</li>
+</ul>
+</li>
+<li><p>主要实现生产者和消费者之间快速、正确的传递数据并发算法</p>
+</li>
+</ul>
+<h5 id="Sequence-Barrier"><a href="#Sequence-Barrier" class="headerlink" title="Sequence Barrier"></a>Sequence Barrier</h5><ul>
+<li><p>用于保持RingBuffer的Main Published Sequence(Producer)和Consumer之间平衡关系;</p>
+</li>
+<li><p>决定Consumer是否还有可处理事件逻辑</p>
+</li>
+</ul>
+<h5 id="WaitStrategy"><a href="#WaitStrategy" class="headerlink" title="WaitStrategy"></a>WaitStrategy</h5><ul>
+<li><p>决定一个消费者将如何等待生产者将Event置入Disruptor</p>
+</li>
+<li><p>主要策略</p>
+<ul>
+<li><p>BlockWaitStrategy</p>
+<ul>
+<li><p>最低效策略</p>
+</li>
+<li><p>cpu消耗最小</p>
+</li>
+<li><p>在各种不同部署环境中提供更加一致性能表现</p>
+</li>
+</ul>
+</li>
+<li><p>SleepingWaitStrategy</p>
+<ul>
+<li>和上面性能差不多</li>
+<li>cpu性能和上面差不多</li>
+<li>对生产者线程影响最小,适合用于异步日志类似的场景</li>
+</ul>
+</li>
+<li><p>YieldingWaitStrategy</p>
+<ul>
+<li><p>性能最好</p>
+</li>
+<li><p>适用低延迟系统</p>
+</li>
+<li><p>要求极高性能</p>
+</li>
+<li><p>要求极高性能且事件处理线数小于CPU逻辑核心数场景,列如:CPU开启超线程的特性</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="Event"><a href="#Event" class="headerlink" title="Event"></a>Event</h5><ul>
+<li><p>从生产者到消费者过程中所处理的数据单元</p>
+</li>
+<li><p>Disruptor中没有代码表示Event,因为它完全是由用户定义的</p>
+</li>
+</ul>
+<h5 id="EventProcessor"><a href="#EventProcessor" class="headerlink" title="EventProcessor"></a>EventProcessor</h5><ul>
+<li><p>主要事件循环,处理Disruptor中的Event,拥有消费者Sequence</p>
+</li>
+<li><p>他是一个实现类是BatchEventProcessor,包含了event loop有效的实现,并且将回调一个EventHandler接口的实现对象.</p>
+</li>
+</ul>
+<h5 id="EventHandler"><a href="#EventHandler" class="headerlink" title="EventHandler"></a>EventHandler</h5><ul>
+<li>由用户并且代表了Disruptor中的一个消费者接口,也就是我们消费者逻辑都要写到这里.</li>
+</ul>
+<h5 id="WorkProcessor"><a href="#WorkProcessor" class="headerlink" title="WorkProcessor"></a>WorkProcessor</h5><ul>
+<li>确保每个sequence只被一个processor消费,在同一个WorkPool中处理多个WorkProcessor不会消费同样的sequence</li>
+</ul>
+<blockquote>
+<p><strong>参考文档</strong></p>
+</blockquote>
+<blockquote>
+<p><a href="https://www.jianshu.com/u/354cc1548a33" target="_blank" rel="noopener">【1】简书主页·share猿</a></p>
+</blockquote>
+<blockquote>
+<p><a href="https://juejin.im/user/5a8e759851882524d842d174" target="_blank" rel="noopener">【2】掘金主页·share猿</a></p>
+</blockquote>
+<blockquote>
+<p><a href="https://code.google.com/archive/p/disruptor/wikis/BlogsAndArticles.wiki" target="_blank" rel="noopener">【3】disruptor官网</a></p>
+</blockquote>
+<blockquote>
+<p><a href="https://zl198751.iteye.com/blog/1848575" target="_blank" rel="noopener">【4】JAVA CAS原理深度分析</a></p>
+</blockquote>
+<blockquote>
+<p><a href="http://ifeve.com/disruptor/" target="_blank" rel="noopener">【5】并发框架Disruptor译文</a></p>
+</blockquote>
+<blockquote>
+<p><a href="https://blog.52itstyle.vip/archives/2911/" target="_blank" rel="noopener">【6】从构建分布式秒杀系统聊聊Disruptor高性能队列</a></p>
+</blockquote>
+<hr>
+<p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
+<p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最終更新：<time datetime="2019-06-26T08:12:38.159Z" itemprop="dateUpdated">2019-06-26 16:12:38</time>
+</span><br>
+
+
+        
+        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2019/06/26/高并发/disruptor学习/1.disruptor初识/" target="_blank" rel="external">https://lywlefan.github.io/2019/06/26/高并发/disruptor学习/1.disruptor初识/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://lywlefan.github.io">
+            <img src="/img/avatar.png" alt="share猿">
+            share猿
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/disruptor/">disruptor</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/并发/">并发</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://lywlefan.github.io/2019/06/26/高并发/disruptor学习/1.disruptor初识/&title=《1.disruptor初识》 — share猿&pic=https://lywlefan.github.io/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://lywlefan.github.io/2019/06/26/高并发/disruptor学习/1.disruptor初识/&title=《1.disruptor初识》 — share猿&source=分享有价值的内容,你我共同成长!" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://lywlefan.github.io/2019/06/26/高并发/disruptor学习/1.disruptor初识/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《1.disruptor初识》 — share猿&url=https://lywlefan.github.io/2019/06/26/高并发/disruptor学习/1.disruptor初识/&via=https://lywlefan.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://lywlefan.github.io/2019/06/26/高并发/disruptor学习/1.disruptor初识/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2019/06/26/业务场景/交易所/撮合系统设计/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">撮合系统设计</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/06/26/基础巩固/java/线程/自定义线程池/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">自定义线程池</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'true' == 'true',
+            verify: 'false' == 'true',
+            appId: "hQGVIAaJERVwyrWxj1uqgCqS-gzGzoHsz",
+            appKey: "l7FO5csTavNwXCGryJyOkkc1",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢赞赏!
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>このブログの内容物は<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja">クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際ライセンスの下に提供されています</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>share猿 &copy; 2015 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://lywlefan.github.io/2019/06/26/高并发/disruptor学习/1.disruptor初识/&title=《1.disruptor初识》 — share猿&pic=https://lywlefan.github.io/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://lywlefan.github.io/2019/06/26/高并发/disruptor学习/1.disruptor初识/&title=《1.disruptor初识》 — share猿&source=分享有价值的内容,你我共同成长!" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://lywlefan.github.io/2019/06/26/高并发/disruptor学习/1.disruptor初识/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《1.disruptor初识》 — share猿&url=https://lywlefan.github.io/2019/06/26/高并发/disruptor学习/1.disruptor初识/&via=https://lywlefan.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://lywlefan.github.io/2019/06/26/高并发/disruptor学习/1.disruptor初识/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACv0lEQVR42u3aMXLjMAwF0Nz/0rvNFplJ5PwPkFkXT5XHtig+FiQE4OMjvv58uj5/8/Xz071fx0nGfPrn4QsPDw9vMfXXD55N6/USvJ56i/9mHDw8PLxrvHbo149MxkmWeDYOHh4e3nvy2oMhX6b2iXh4eHjvz3v9TZIyaEPzXz0Y8PDw8GLeLN0wS/7uN/0ruRY8PDy8mJdXkd7n85X6Hh4eHt66qp4Uw9rwOi93beb5bxw8PDy8C7x8w23D6DwUblu16nni4eHhHeW1hf8NNR+5bUR4PKjw8PDwrvE2zVXJpPetALPwHQ8PD+8GL9lek8A3GWHTtJrPLarv4eHh4S14RTI0wGwSE5sEx7DdCg8PD2/ByzfxvHCVwJIQuU1GRGlcPDw8vAUvf73fPKYNuGflt8fZ4uHh4R3lrZqZ4mRE3qCQLHExBzw8PLwLvHyg9vCYHS0fo+uHe/Hw8PCO8toNfbMQ+bRmyYhv/oOHh4d3jbfZfJOURJ7MbVMSP9yFh4eHd4GX3Ja3C2zSEPuSW9QfgYeHh3eIN2uBOlXQSpZsVn7Dw8PDu8GblfZngXi+3bclt7p1AA8PD2/Ba4tbpwpjSeA+K4M9tg7g4eHhHeLtX/tnadwbx8/jWwIeHh7eBV6bok0e36YYihA5L6Th4eHhXeAlP7cB8Sw1nLcs5PPBw8PD+x3eJuCeFb2SlESSzK07y/Dw8PDWvDaYbo+QfKNPlqk+GPDw8PAu8NpAti3tt+H7qRAcDw8P7yxvH+Dmd7VBfNH78HRg4OHh4V3gtRvurCjVBu77kB0PDw/vNm92GGwSDXkjwn4EPDw8vHu8fcJ0s7m34XXxTzw8PLy34SX3ztKy+/AdDw8P7515+4B43yCLh4eH9794STIiPwbaVq19Gvdxhnh4eHgXeO0L/6nSVN5kcKM9Cw8PD2/E+wsYDA0B8Qd4ZwAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '欢迎回来！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '欢迎欢迎!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
