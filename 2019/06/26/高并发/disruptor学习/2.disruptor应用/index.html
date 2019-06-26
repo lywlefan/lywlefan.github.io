@@ -30,7 +30,7 @@
 <meta property="og:description" content="disruptor号称能够在一个线程里每秒处理6百万订单,业务逻辑处理器完全是运行在内存中，使用事件源驱动方式。  本节导航 Disruptor核心链路场景应用讲解  并行计算- 串行操作  并行计算- 并行操作  并行计算- 多遍形高端操作  并行计算- 多生产者消费模型  并行计算- 多消费者消费模型   Disruptor核心链路场景应用讲解概念啥是核心链路?就拿京东来说,下单支付就是核心">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-06-26T08:27:12.674Z">
+<meta property="og:updated_time" content="2019-06-26T08:56:43.935Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="1.disruptor初识">
 <meta name="twitter:description" content="disruptor号称能够在一个线程里每秒处理6百万订单,业务逻辑处理器完全是运行在内存中，使用事件源驱动方式。  本节导航 Disruptor核心链路场景应用讲解  并行计算- 串行操作  并行计算- 并行操作  并行计算- 多遍形高端操作  并行计算- 多生产者消费模型  并行计算- 多消费者消费模型   Disruptor核心链路场景应用讲解概念啥是核心链路?就拿京东来说,下单支付就是核心">
@@ -169,7 +169,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#本节导航"><span class="post-toc-number">1.</span> <span class="post-toc-text">本节导航</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Disruptor核心链路场景应用讲解"><span class="post-toc-number">2.</span> <span class="post-toc-text">Disruptor核心链路场景应用讲解</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#概念"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">概念</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#啥是核心链路"><span class="post-toc-number">2.1.1.</span> <span class="post-toc-text">啥是核心链路?</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#核心链路特点"><span class="post-toc-number">2.1.2.</span> <span class="post-toc-text">核心链路特点</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#如何实现"><span class="post-toc-number">2.1.3.</span> <span class="post-toc-text">如何实现</span></a></li></ol></li></ol></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#本节导航"><span class="post-toc-number">1.</span> <span class="post-toc-text">本节导航</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Disruptor核心链路场景应用讲解"><span class="post-toc-number">2.</span> <span class="post-toc-text">Disruptor核心链路场景应用讲解</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#概念"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">概念</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#啥是核心链路"><span class="post-toc-number">2.1.1.</span> <span class="post-toc-text">啥是核心链路?</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#核心链路特点"><span class="post-toc-number">2.1.2.</span> <span class="post-toc-text">核心链路特点</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#如何实现"><span class="post-toc-number">2.1.3.</span> <span class="post-toc-text">如何实现</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#使用框架"><span class="post-toc-number">2.1.4.</span> <span class="post-toc-text">使用框架</span></a></li></ol></li></ol></li></ol>
         </nav>
     </aside>
 
@@ -224,6 +224,12 @@
 <li><p>模板模式</p>
 </li>
 </ul>
+<h5 id="使用框架"><a href="#使用框架" class="headerlink" title="使用框架"></a>使用框架</h5><ul>
+<li><p>有限状态机框架：Spring-StateMachine</p>
+</li>
+<li><p>使用Disruptor</p>
+</li>
+</ul>
 <blockquote>
 <p><strong>参考文档</strong></p>
 </blockquote>
@@ -262,7 +268,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2019-06-26T08:27:12.674Z" itemprop="dateUpdated">2019-06-26 16:27:12</time>
+    Last updated: <time datetime="2019-06-26T08:56:43.935Z" itemprop="dateUpdated">2019-06-26 16:56:43</time>
 </span><br>
 
 
@@ -346,18 +352,18 @@
 <nav class="post-nav flex-row flex-justify-between">
   
     <div class="waves-block waves-effect prev">
-      <a href="/2019/06/26/高并发/disruptor学习/1.disruptor初识/" id="post-prev" class="post-nav-link">
+      <a href="/2019/06/26/业务场景/交易所/撮合系统设计/" id="post-prev" class="post-nav-link">
         <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">1.disruptor初识</h4>
+        <h4 class="title">撮合系统设计</h4>
       </a>
     </div>
   
 
   
     <div class="waves-block waves-effect next">
-      <a href="/2019/06/26/基础巩固/java/线程/自定义线程池/" id="post-next" class="post-nav-link">
+      <a href="/2019/06/26/高并发/disruptor学习/1.disruptor初识/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">自定义线程池</h4>
+        <h4 class="title">1.disruptor初识</h4>
       </a>
     </div>
   
