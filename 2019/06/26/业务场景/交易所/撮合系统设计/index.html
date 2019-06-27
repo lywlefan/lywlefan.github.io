@@ -21,20 +21,27 @@
     
     
     <meta name="keywords" content="交易所,撮合">
-    <meta name="description" content="万丈高楼平地起的前提是地基好.  整体的架构细分实现 【1】简书主页·share猿【2】掘金主页·share猿   扫描以下公众号关注小猿↓↓↓↓↓↓↓↓                                                                                                           更多资讯请在简书、微博、今日头">
+    <meta name="description" content="摘要：撮合技术主要是从数据库撮合技术向内存撮合技术发展，这是因为数据库撮合技术越来越无法满足金融交易对于高可靠性、高性能、强安全性、可扩展性以及易维护性的需求。本文来自中生代技术群的34期分享，将和大家讨论基于内存的撮合的系统设计。李伟山，毕业于国防科技大学，曾就职于华为、阿里巴巴，目前人江苏大圆银泰技术总监，对于高并发、大数据架构设计有深刻的了解。1.概述  随着信息技术的日新月异和金融业务的">
 <meta name="keywords" content="交易所,撮合">
 <meta property="og:type" content="article">
 <meta property="og:title" content="撮合系统设计">
 <meta property="og:url" content="https://lywlefan.github.io/2019/06/26/业务场景/交易所/撮合系统设计/index.html">
 <meta property="og:site_name" content="share猿">
-<meta property="og:description" content="万丈高楼平地起的前提是地基好.  整体的架构细分实现 【1】简书主页·share猿【2】掘金主页·share猿   扫描以下公众号关注小猿↓↓↓↓↓↓↓↓                                                                                                           更多资讯请在简书、微博、今日头">
+<meta property="og:description" content="摘要：撮合技术主要是从数据库撮合技术向内存撮合技术发展，这是因为数据库撮合技术越来越无法满足金融交易对于高可靠性、高性能、强安全性、可扩展性以及易维护性的需求。本文来自中生代技术群的34期分享，将和大家讨论基于内存的撮合的系统设计。李伟山，毕业于国防科技大学，曾就职于华为、阿里巴巴，目前人江苏大圆银泰技术总监，对于高并发、大数据架构设计有深刻的了解。1.概述  随着信息技术的日新月异和金融业务的">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="http://mmbiz.qpic.cn/mmbiz_png/8jNAbhjXPiaPSXURRrM6z0TmxnwYWDcjPmgBLFM6paMJCDPghmFZic61JrBoeV2SlGd9bXoqDlAcEHfuaLOYmLBw/0?wx_fmt=png">
+<meta property="og:image" content="http://mmbiz.qpic.cn/mmbiz_png/8jNAbhjXPiaPSXURRrM6z0TmxnwYWDcjPKy0IicpPXvp6gNznmrfAWnLOZNjBRbcSOZwSQ8zsFrx6D8nbT15c72A/0?wx_fmt=png">
+<meta property="og:image" content="http://mmbiz.qpic.cn/mmbiz_png/8jNAbhjXPiaPSXURRrM6z0TmxnwYWDcjP15dWgFNVGIvpBEhNxLYcmFheu1UVibmuDY4OSFicicEHOAfdVELHfqt0g/0?wx_fmt=png">
+<meta property="og:image" content="http://mmbiz.qpic.cn/mmbiz_png/8jNAbhjXPiaPSXURRrM6z0TmxnwYWDcjPU3Awr4cSVaYvEHtZat9Yib4z9v8HI92oCoJpGic0X1Isgd04gvIomKbw/0?wx_fmt=png">
+<meta property="og:image" content="http://mmbiz.qpic.cn/mmbiz_png/8jNAbhjXPiaPSXURRrM6z0TmxnwYWDcjPGBaCyygk3QxLDxS31JA12tPUu52WouXgpI75hOJMzqElCBNDL1PdaA/0?wx_fmt=png">
+<meta property="og:image" content="http://mmbiz.qpic.cn/mmbiz_png/8jNAbhjXPiaPSXURRrM6z0TmxnwYWDcjPB9aicOqu9cpuS1bPrLyO1BGljN70CMT08lLia3Kl4Eu4QWJfFbTa7Ypg/0?wx_fmt=png">
+<meta property="og:image" content="http://mmbiz.qpic.cn/mmbiz_png/8jNAbhjXPiaPSXURRrM6z0TmxnwYWDcjPa1EESIvmatQ9NQh6R07tg5shjTFzMNfsl0Sx9fCGpQ7q6SajBNRtLg/0?wx_fmt=png">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-06-26T08:03:54.379Z">
+<meta property="og:updated_time" content="2019-06-27T11:27:06.133Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="撮合系统设计">
-<meta name="twitter:description" content="万丈高楼平地起的前提是地基好.  整体的架构细分实现 【1】简书主页·share猿【2】掘金主页·share猿   扫描以下公众号关注小猿↓↓↓↓↓↓↓↓                                                                                                           更多资讯请在简书、微博、今日头">
-<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:description" content="摘要：撮合技术主要是从数据库撮合技术向内存撮合技术发展，这是因为数据库撮合技术越来越无法满足金融交易对于高可靠性、高性能、强安全性、可扩展性以及易维护性的需求。本文来自中生代技术群的34期分享，将和大家讨论基于内存的撮合的系统设计。李伟山，毕业于国防科技大学，曾就职于华为、阿里巴巴，目前人江苏大圆银泰技术总监，对于高并发、大数据架构设计有深刻的了解。1.概述  随着信息技术的日新月异和金融业务的">
+<meta name="twitter:image" content="http://mmbiz.qpic.cn/mmbiz_png/8jNAbhjXPiaPSXURRrM6z0TmxnwYWDcjPmgBLFM6paMJCDPghmFZic61JrBoeV2SlGd9bXoqDlAcEHfuaLOYmLBw/0?wx_fmt=png">
     
         <link rel="alternate" type="application/atom+xml" title="share猿" href="/atom.xml">
     
@@ -128,7 +135,7 @@
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="検索">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
@@ -169,7 +176,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#整体的架构"><span class="post-toc-number">1.</span> <span class="post-toc-text">整体的架构</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#细分实现"><span class="post-toc-number">2.</span> <span class="post-toc-text">细分实现</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-系统总体设计"><span class="post-toc-number">1.</span> <span class="post-toc-text">2.系统总体设计</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-1-层次设计"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">2.1 层次设计</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-2-撮合交易算法"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">2.2 撮合交易算法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#2-2-1订单队列"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">2.2.1订单队列</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#2-2-2撮合顺序"><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">2.2.2撮合顺序</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-3-内存撮合"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">2.3 内存撮合</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-4-多机热备份"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">2.4 多机热备份</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-5-内存状态机复制"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">2.5 内存状态机复制</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#2-5-1关键技术点"><span class="post-toc-number">1.5.1.</span> <span class="post-toc-text">2.5.1关键技术点</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#2-5-2实现方案"><span class="post-toc-number">1.5.2.</span> <span class="post-toc-text">2.5.2实现方案</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-6-系统架构"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">2.6 系统架构</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#2-6-1系统硬件体系架构"><span class="post-toc-number">1.6.1.</span> <span class="post-toc-text">2.6.1系统硬件体系架构</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#2-6-2-系统软件体系架构"><span class="post-toc-number">1.6.2.</span> <span class="post-toc-text">2.6.2 系统软件体系架构</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#2-6-3撮合引擎架构"><span class="post-toc-number">1.6.3.</span> <span class="post-toc-text">2.6.3撮合引擎架构</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#2-6-4系统接口"><span class="post-toc-number">1.6.4.</span> <span class="post-toc-text">2.6.4系统接口</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-7-小节"><span class="post-toc-number">1.7.</span> <span class="post-toc-text">2.7 小节</span></a></li></ol></li></ol>
         </nav>
     </aside>
 
@@ -195,10 +202,125 @@
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
             <blockquote>
-<p>万丈高楼平地起的前提是地基好.</p>
+<p>摘要：撮合技术主要是从数据库撮合技术向内存撮合技术发展，这是因为数据库撮合技术越来越无法满足金融交易对于高可靠性、高性能、强安全性、可扩展性以及易维护性的需求。本文来自中生代技术群的34期分享，将和大家讨论基于内存的撮合的系统设计。李伟山，毕业于国防科技大学，曾就职于华为、阿里巴巴，目前人江苏大圆银泰技术总监，对于高并发、大数据架构设计有深刻的了解。1.概述</p>
 </blockquote>
-<h2 id="整体的架构"><a href="#整体的架构" class="headerlink" title="整体的架构"></a>整体的架构</h2><h2 id="细分实现"><a href="#细分实现" class="headerlink" title="细分实现"></a>细分实现</h2><blockquote>
-<p><a href="https://www.jianshu.com/u/354cc1548a33" target="_blank" rel="noopener">【1】简书主页·share猿</a><br><a href="https://juejin.im/user/5a8e759851882524d842d174" target="_blank" rel="noopener">【2】掘金主页·share猿</a></p>
+<p>随着信息技术的日新月异和金融业务的快速发展,金融交易领域对于核心技术的求也在不断增强,国内外金融交易模式已经从传统的人工叫价的方式变成了由高度电子化交易系统撮合订单的方式。传统的金融交易主要发生在有型金融市场中,金融交易的买卖双方通过叫价进行价格协商等方式最终达成一致,从而形成一笔交易,同时按照交易订单到指定的交割地点进行实物交割的交易方式。由于交易的整个过程主要依靠人来执行,传统的金融交易缺点主要有:效率低速度慢、交易时间限制大、交易空间限制大、交易成本非常髙、容易有内幕交易、交易扩展性差、交易容易出错、资金安全性差等一系列的缺点。</p>
+<p>时代不断变迁,金融交易通过与计算机技术的结合,走上了电子化交易的道路,通过将金融交易市场电子化,电子交易不仅消除了传统金融交易的种种弊端,也促进了现代金融业的快速发展。电子金融交易的主要优点有:交易效率高速度快、交易透明度高、交易成本低、系统安全性高、不受交易时间的限制、不受交易空间的限制、可以进行多方位的扩展、大力推动现代金融业发展等。</p>
+<p>因此现在电子交易己经成为了金融交易市场的主流交易方式。随着交易人数、笔数的不断增加,系统承受着越来越大的压力,如果在交易时间内系统发生故障,造成的损失往往不可估量。因此发出更可靠更高效的电子交易系统己经成为了金融交易领域的当务之急。</p>
+<p>撮合交易在金融交易系统中扮演者非常重要的角色。了解撮合交易的本质以及业务对于设计撮合系统至关重要。江苏大泰技术有限公司，致力于互联网金融平台的开发，目前已经在运行的平台有大宗交易、普洱茶交易系统，后期会发布连续现货和发售交易平台，接下来为大家介绍基于内存的撮合交易系统设计概要。</p>
+<h3 id="2-系统总体设计"><a href="#2-系统总体设计" class="headerlink" title="2.系统总体设计"></a>2.系统总体设计</h3><h4 id="2-1-层次设计"><a href="#2-1-层次设计" class="headerlink" title="2.1 层次设计"></a>2.1 层次设计</h4><p>一般而言,金融交易撮合系统中包括以下几个核心模块:</p>
+<p>用户:终端用户委托报价与数量,生成订单发送至交易平台。</p>
+<p>网关:负责收集用户订单,并将其派发给撮合引擎。</p>
+<p>撮合引擎:交易系统中的核心部分,用于接收订单并根据业务逻辑实现订单   撮合同时生成交易记录,随后给予用户交易结果反馈。</p>
+<p>数据库:用来存放交易过程中的订单和交易记录,实现数据持久化。</p>
+<p>此外,本文根据不同类型的金融交易展品将撮合模块划分为若干业务分区,每个分区独立进行撮合,彼此不受影响。对于单个业务分区而言,撮合系统整体架构设计如图1.2所示,本章的总体设计围绕撮合引擎层以及撮合引擎与网关层、数据库层的交互方式的总体设计。</p>
+<h4 id="2-2-撮合交易算法"><a href="#2-2-撮合交易算法" class="headerlink" title="2.2 撮合交易算法"></a>2.2 撮合交易算法</h4><p>如图2.1所示,撮合引擎的核心业务模块就是撮合交易算法撮合交易算法的任务一方面是完成对客户所下订单进行公平合理的排列和撮合功能,也要保证撮合算法的公平性、高效性以及扩展性等。由于不同金融交易系统的撮合业务各有不同,因此本节对通用的撮合交易算法进行概括性描述。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://mmbiz.qpic.cn/mmbiz_png/8jNAbhjXPiaPSXURRrM6z0TmxnwYWDcjPmgBLFM6paMJCDPghmFZic61JrBoeV2SlGd9bXoqDlAcEHfuaLOYmLBw/0?wx_fmt=png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h5 id="2-2-1订单队列"><a href="#2-2-1订单队列" class="headerlink" title="2.2.1订单队列"></a>2.2.1订单队列</h5><p>撮合交易的重要组成部分就是买卖订单,通过对买卖订单进行撮合最后形成交易记录。所以对无法立刻完成撮合的订单,需要有买入队列和卖出队列保存订单。队列按照<strong>“价格优先、同价格下时间优先”</strong>的原则。买入队列按照委托价格从低到高的顺序,卖出队列则按照委托价格从低到高的顺序排列,如图</p>
+<h5 id="2-2-2撮合顺序"><a href="#2-2-2撮合顺序" class="headerlink" title="2.2.2撮合顺序"></a>2.2.2撮合顺序</h5><p>撮合引擎接收到新的买入订单,则会到卖出队列的头部查找是否存在符合价格规则的卖出订单,如果存在卖出价格小于或等于买入价格的订单,则从队列中取出此订单并撮合成一笔交易;如果卖出队列为空或队列头部不满足价格关系,则将买入订单插入买入队列中,由于买入队列是按照价格与时间先后进行排序,所以新插入的订单会经过一次排序插入到买入队列的相应位置。</p>
+<p>相同的,当撮合引擎接收到新的卖出订单,则会到买入队列的头部査找是否存在符合价格规则的买入订单,如果存在买入价格大于或等于卖出价格的订单,则从订单队列中取出此订单并撮合成一笔交易;如果买入队列为空或队列头部不满足价格关系,则将卖出订单插入到卖出队列中,由于卖出队列也是按照价格与时间先后进行排序的所以新插入的订单会经过一次排序插入到卖出队列的相应位置[23]。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://mmbiz.qpic.cn/mmbiz_png/8jNAbhjXPiaPSXURRrM6z0TmxnwYWDcjPKy0IicpPXvp6gNznmrfAWnLOZNjBRbcSOZwSQ8zsFrx6D8nbT15c72A/0?wx_fmt=png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>结合买卖订单情况,撮合算法流程如图2.3所示。从图2.3所示的撮合顺序可知,买卖队列的有序性是保证撮合顺序的确定性的基础,并且撮合过程中每笔订单都可以撮合出当前最优交易。</p>
+<h4 id="2-3-内存撮合"><a href="#2-3-内存撮合" class="headerlink" title="2.3 内存撮合"></a>2.3 内存撮合</h4><p>当前的数据库撮合技术的性能低下的原因在于过多与数据库交互,使得I/O很多,系统整体处理速度同时受数据库事务逻辑约束。</p>
+<p>本文釆用内存撮合技术,通过最大程度去除与数据库的交互过程,将整个错和逻辑放在内存中进行(如图2.4所示)。因此比数据库撮合技术少了许多I/O交S间,在性能上可以大幅提升撮合速度;例是内存撮合的弊端就是由于内存的易失性,.?服务器出现故障停机时,所有的交易数据将会丢失,系统的可靠性以及一致性都相应人幅降低。因此本文在提高内存撮合技术可靠性的方面采用丫多机热备份及分布式一致性技术作为补充,从而获得内存撮合技术的高性能以及数据库撮合技术的数据持久性。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://mmbiz.qpic.cn/mmbiz_png/8jNAbhjXPiaPSXURRrM6z0TmxnwYWDcjP15dWgFNVGIvpBEhNxLYcmFheu1UVibmuDY4OSFicicEHOAfdVELHfqt0g/0?wx_fmt=png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>  
+<h4 id="2-4-多机热备份"><a href="#2-4-多机热备份" class="headerlink" title="2.4 多机热备份"></a>2.4 多机热备份</h4><p>由于内存撮合技术在撮合引攀出现异常时的可靠性和一致性非常差,而金融交场系统因为其业务特性,对服务小断以及数据丢失的容忍度非常低,提高容错性,一般多采取的是多机热条份技术。本文采用多机热备份技术,将一组撮合引樂部署成互为备份的撮合引擎集群,并且在同一时间内只有一台撮合引擎提供服务。当-其中运行这的一台撮六引擎出现故障无法继续正常工作 ,撮合引擎集群会迅速检测到这个故障,并选举出一个备份撮合引擎接管故障撮合引舉的任务从而保证整个撮合系统的正常运行多机热备份技术的本质就足针对服务器临时故障所做的一种备份技术,本文迎过采用多机热备份技术,来避免长 间的撮合服务中断,保证撮合系统长期、可靠的服务。如阁2.5所示,通过将多台撮合引擎进行热格份,从而保证在撮合引擎出现故障时,会在可以接受的时间内完成主机和备机之间的切换,由备份机提供无缝连续服务。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://mmbiz.qpic.cn/mmbiz_png/8jNAbhjXPiaPSXURRrM6z0TmxnwYWDcjPU3Awr4cSVaYvEHtZat9Yib4z9v8HI92oCoJpGic0X1Isgd04gvIomKbw/0?wx_fmt=png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>通过釆用多机热备份技术,降低了单一内存撮合引擎故障时系统不可用的问题,但仍旧无法提供100%的可用性,因为当出现大规模服务器集群故障时,仍旧存在服务不可用的可能性,但在实际生产环境中,三台互为备份的服务器就可以提供较高的可以用于生产环境的可靠性。</p>
+<h4 id="2-5-内存状态机复制"><a href="#2-5-内存状态机复制" class="headerlink" title="2.5 内存状态机复制"></a>2.5 内存状态机复制</h4><p>由于多机热备份技术引入了多台互为热备份的撮合引擎,根据撮合系统设计以及撮合逻辑要求,需要保证服务器之间的数据一致,这就需要保证多服务器之间一致性,这也是本文难点之一。</p>
+<p>本文提出一种内存状态机复制方案,即将撮合算法视作一个确定性状态机,将其复制多份并部署到撮合系统中的多台撮合引擎中。每个撮合引擎副本从相同的初始状态开始运行,当撮合系统收到网关发来的订单时,系统中的每个撮合引擎都会撮合这个订单,并依次产生交易记录,同时更新确定性撮合算法状态机的独立状态。通过这样的方式,当撮合系统正常运转时,每个撮合引擎副本都会具有相同的结果状态;当撮合系统出现故障或异常时,撮合引擎就会出现状态的不一致情况,换句话说一旦撮合系统的结果或状态出现了不一致的情况就可以断定系统出现了异常。</p>
+<h5 id="2-5-1关键技术点"><a href="#2-5-1关键技术点" class="headerlink" title="2.5.1关键技术点"></a>2.5.1关键技术点</h5><p>本文为了实现这样的内存状态机复制撮合系统,将撮合系统划分为以下组成关键技术点：</p>
+<ul>
+<li><p>将确定性撮合算法状态机服务部署到多个独立撮合引擎</p>
+</li>
+<li><p>接收网关订单,并作为确定性撮合算法状态机的输入</p>
+</li>
+<li><p>根据撮合算法需求,选择一种订单排序方式</p>
+</li>
+<li><p>每个撮合引擎对按照排序方式排序过的订单进行撮合</p>
+</li>
+<li><p>将确定性撮合算法状态机输出的交易记录作为给用户或数据库的响应</p>
+</li>
+<li><p>监控撮合引擎副本的状态或输出的差别</p>
+</li>
+</ul>
+<h5 id="2-5-2实现方案"><a href="#2-5-2实现方案" class="headerlink" title="2.5.2实现方案"></a>2.5.2实现方案</h5><p>为实现基于内存状态机复制的撮合系统,本文主要通过以下方案实现状态机复制的关键技术点:</p>
+<ul>
+<li><p>采用原子多播解决撮合引擎订单的可靠多播与全局有序性</p>
+</li>
+<li><p>采用基于无锁订单队列的流水线撮合技术提供快速的订单撮合</p>
+</li>
+<li><p>采用异步一致性持久化技术实现与数据库的交互</p>
+</li>
+<li><p>采用失效备援技术对撮合引擎集群进行状态监控并保证系统的容错能;</p>
+</li>
+<li><p>采用进度追赶技术解决将故障撮合引擎的恢复或新撮合引擎的加入</p>
+</li>
+</ul>
+<h4 id="2-6-系统架构"><a href="#2-6-系统架构" class="headerlink" title="2.6 系统架构"></a>2.6 系统架构</h4><h5 id="2-6-1系统硬件体系架构"><a href="#2-6-1系统硬件体系架构" class="headerlink" title="2.6.1系统硬件体系架构"></a>2.6.1系统硬件体系架构</h5><p>典型的高可靠高性能撮合模型硬件架构如图2.6所示,系统由n台客户端、N台网关、X个产品集群(每个集群由2至3台撮合引擎组成,负责响应产品订单的处理)、一个交易记录数据库和可选的监视系统组成。其中客户端连接到相应网关,网关负责接收客户端提交的订单,并根据订单相关的金融产品类别,转发到相对应的产品集群。产品集群中所有撮合引擎均接收网关发送的订单,根据撮合业务规则,将其撮合并回馈消息给网关和客户端,同时将撮合生成的交易记录持久化到交易记录数据库中。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://mmbiz.qpic.cn/mmbiz_png/8jNAbhjXPiaPSXURRrM6z0TmxnwYWDcjPGBaCyygk3QxLDxS31JA12tPUu52WouXgpI75hOJMzqElCBNDL1PdaA/0?wx_fmt=png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>通过对产品集群进行扩充,增加撮合引擎数量,可以增强产品集群的可靠性。将不同金融产品转发到不同的撮合产品集群中可以实现多产品高效并行撮合。</p>
+<h5 id="2-6-2-系统软件体系架构"><a href="#2-6-2-系统软件体系架构" class="headerlink" title="2.6.2 系统软件体系架构"></a>2.6.2 系统软件体系架构</h5><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://mmbiz.qpic.cn/mmbiz_png/8jNAbhjXPiaPSXURRrM6z0TmxnwYWDcjPB9aicOqu9cpuS1bPrLyO1BGljN70CMT08lLia3Kl4Eu4QWJfFbTa7Ypg/0?wx_fmt=png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>如图2.7所示,高可靠高性能撮合模型主要由表示层、转发层、业务层和数据层组成。其核心部分业务层主要由撮合引擎集群组成,每个撮合引擎采用原子多播将订单定序后进行撮合处理,并结合无锁订单队列实现高效流水线撮合,最后结果写入本地日志。整个业务流程由消息传递总线将消息反馈给转发层。转发层则根据产品转发规则将订单转发给相应撮合引擎集群;而撮合引擎将本地日志中的交易记录读取到异步持久化代理进程中,并进而与数据层的异步持久化写入进程通信,并最终持久化到数据库中。本地日志增强了撮合系统数据的可靠性,在出现故障后,数据仍就可以从本地日志中恢复;而界步的持久化机制则提高了数据的持久化吞吐率。</p>
+<h5 id="2-6-3撮合引擎架构"><a href="#2-6-3撮合引擎架构" class="headerlink" title="2.6.3撮合引擎架构"></a>2.6.3撮合引擎架构</h5><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://mmbiz.qpic.cn/mmbiz_png/8jNAbhjXPiaPSXURRrM6z0TmxnwYWDcjPa1EESIvmatQ9NQh6R07tg5shjTFzMNfsl0Sx9fCGpQ7q6SajBNRtLg/0?wx_fmt=png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>为了使系统可扩展易维护,撮合引擎由原子多播订单定序模块、撮合处理器模块、交易记录日志模块和内存数据组成,每个模块根据功能业务划分。其中各部分主要有以下功能:交易订单接收线程:负责从网关接收订单,并完成原子多播定序流程。交易订单发送线程:将定序完成的订单发送给相关撮合业务线程。交易信息发送线程:将订单交易状态反馈给网关。外围业务逻辑线程:进行撮合数据的准备处理,更新内存订单数据。撮合业务逻辑线程:根据确定性撮合算法撮合接收的订单。交易行情发布线程:处理内存行情信息并发布给网关。同步日志写线程:将订单撮合产生的交易记录同步持久化到本地日志文件。异步持久化代理进程:异步将日志文件中的数据读取并持久化到数据库。订单信息:存储订单的相关价格、数量、用户、限制、类型和状态等信息交易行情信息:撮合交易过程中的交易行情信息。</p>
+<h5 id="2-6-4系统接口"><a href="#2-6-4系统接口" class="headerlink" title="2.6.4系统接口"></a>2.6.4系统接口</h5><p>撮合系统主要为使用者提供订单的下单和查询服务、交易行情的实时反馈功能以及系统状态的监控查看服务。因此系统需要实现预留的接口主要包括:下单接口、订单查询接口、行情查询接口、系统控制接口和运行状态查询接口等。</p>
+<h4 id="2-7-小节"><a href="#2-7-小节" class="headerlink" title="2.7 小节"></a>2.7 小节</h4><p>从总体设计入手,将撮合业务处理从数据库迁移至内存中,同时釆用多机热备份技术解决内存撮合技术的易失性问题,最终提出内存状态机复制方案作为高可靠髙性能撮合系统的实现路线。撮合技术的具体实现将在下一章进行详细论述。</p>
+<p>###FAQ</p>
+<p>Q：热备的机制上。多个机器内存上的状态如何保证强一致性的？</p>
+<p>A： 是热备机器都是无状态，普洱茶按照不同品种产生不同撮合序列，只要保证单品种有序，其他撮合机和本机没有关系。</p>
+<p>Q: 如果新加入一台撮合引擎，怎么判断所有的撮合数据都同步到了这台新的引擎上？</p>
+<p>A: 委托单先要写raid文件系统，新增撮合引擎，也可以拿到数据。</p>
+<p>Q: 根据你的描述，一个集群中为了判断撮合引擎是否有故障，至少应该有3台撮合引擎吧?</p>
+<p>A:  zk来管理，并且有风控进程监控撮合进度。</p>
+<p>Q: 内存状态机的复制究竟是结果还是数据？</p>
+<p>A: 数据，就是把处理到某个状态的数据复制出来。</p>
+<p>Q: 如果只有两台撮合引擎，如果对一个买入订单，发现结果不一致，如何判断是哪一台的故障？</p>
+<p>A: 撮合只有一台进行撮合，撮合结束才回写数据库产生行情和分发个个终端，用户就可以看到自己委托单是否成交。</p>
+<blockquote>
+<p><a href="https://www.jianshu.com/u/354cc1548a33" target="_blank" rel="noopener">【1】简书主页·share猿</a><br><a href="https://juejin.im/user/5a8e759851882524d842d174" target="_blank" rel="noopener">【2】掘金主页·share猿</a><br><a href="https://toutiao.io/posts/q5bov1/preview" target="_blank" rel="noopener">【2】撮合系统· 李伟山</a><br><a href="https://www.itcodemonkey.com/article/11017.html" target="_blank" rel="noopener">【2】撮合系统·技术方舟</a></p>
 </blockquote>
 <hr>
 <p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">
@@ -218,7 +340,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2019-06-26T08:03:54.379Z" itemprop="dateUpdated">2019-06-26 16:03:54</time>
+    最終更新：<time datetime="2019-06-27T11:27:06.133Z" itemprop="dateUpdated">2019-06-27 19:27:06</time>
 </span><br>
 
 
@@ -414,7 +536,7 @@
             
                 <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
             
-            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+            <span>このブログの内容物は<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja">クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際ライセンスの下に提供されています</a></span>
         </p>
     </div>
     <div class="bottom">
