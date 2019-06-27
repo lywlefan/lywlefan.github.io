@@ -37,7 +37,7 @@
 <meta property="og:image" content="http://mmbiz.qpic.cn/mmbiz_png/8jNAbhjXPiaPSXURRrM6z0TmxnwYWDcjPB9aicOqu9cpuS1bPrLyO1BGljN70CMT08lLia3Kl4Eu4QWJfFbTa7Ypg/0?wx_fmt=png">
 <meta property="og:image" content="http://mmbiz.qpic.cn/mmbiz_png/8jNAbhjXPiaPSXURRrM6z0TmxnwYWDcjPa1EESIvmatQ9NQh6R07tg5shjTFzMNfsl0Sx9fCGpQ7q6SajBNRtLg/0?wx_fmt=png">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-06-27T11:27:06.133Z">
+<meta property="og:updated_time" content="2019-06-27T11:35:30.508Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="撮合系统设计">
 <meta name="twitter:description" content="摘要：撮合技术主要是从数据库撮合技术向内存撮合技术发展，这是因为数据库撮合技术越来越无法满足金融交易对于高可靠性、高性能、强安全性、可扩展性以及易维护性的需求。本文来自中生代技术群的34期分享，将和大家讨论基于内存的撮合的系统设计。李伟山，毕业于国防科技大学，曾就职于华为、阿里巴巴，目前人江苏大圆银泰技术总监，对于高并发、大数据架构设计有深刻的了解。1.概述  随着信息技术的日新月异和金融业务的">
@@ -135,7 +135,7 @@
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="検索">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
@@ -320,7 +320,7 @@
 <p>Q: 如果只有两台撮合引擎，如果对一个买入订单，发现结果不一致，如何判断是哪一台的故障？</p>
 <p>A: 撮合只有一台进行撮合，撮合结束才回写数据库产生行情和分发个个终端，用户就可以看到自己委托单是否成交。</p>
 <blockquote>
-<p><a href="https://www.jianshu.com/u/354cc1548a33" target="_blank" rel="noopener">【1】简书主页·share猿</a><br><a href="https://juejin.im/user/5a8e759851882524d842d174" target="_blank" rel="noopener">【2】掘金主页·share猿</a><br><a href="https://toutiao.io/posts/q5bov1/preview" target="_blank" rel="noopener">【2】撮合系统· 李伟山</a><br><a href="https://www.itcodemonkey.com/article/11017.html" target="_blank" rel="noopener">【2】撮合系统·技术方舟</a></p>
+<p><a href="https://www.jianshu.com/u/354cc1548a33" target="_blank" rel="noopener">【1】简书主页·share猿</a><br><a href="https://juejin.im/user/5a8e759851882524d842d174" target="_blank" rel="noopener">【2】掘金主页·share猿</a><br><a href="https://toutiao.io/posts/q5bov1/preview" target="_blank" rel="noopener">【3】撮合系统· 李伟山</a><br><a href="https://www.itcodemonkey.com/article/11017.html" target="_blank" rel="noopener">【4】撮合系统·技术方舟</a><br><a href="https://zhuanlan.zhihu.com/p/67311339" target="_blank" rel="noopener">【5】交易所视角下的套利指令撮合机制</a></p>
 </blockquote>
 <hr>
 <p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">
@@ -340,7 +340,7 @@
     <div class="content">
         
 <span class="post-time">
-    最終更新：<time datetime="2019-06-27T11:27:06.133Z" itemprop="dateUpdated">2019-06-27 19:27:06</time>
+    Last updated: <time datetime="2019-06-27T11:35:30.508Z" itemprop="dateUpdated">2019-06-27 19:35:30</time>
 </span><br>
 
 
@@ -433,9 +433,9 @@
 
   
     <div class="waves-block waves-effect next">
-      <a href="/2019/06/26/高并发/disruptor学习/2.disruptor应用/" id="post-next" class="post-nav-link">
+      <a href="/2019/06/26/高并发/disruptor学习/1.disruptor初识/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">2.disruptor应用</h4>
+        <h4 class="title">1.disruptor初识</h4>
       </a>
     </div>
   
@@ -536,7 +536,7 @@
             
                 <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
             
-            <span>このブログの内容物は<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja">クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際ライセンスの下に提供されています</a></span>
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
         </p>
     </div>
     <div class="bottom">
