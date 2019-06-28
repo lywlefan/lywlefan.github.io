@@ -30,7 +30,7 @@
 <meta property="og:description" content="阅读笔记生产者消息分区机制原理剖析 如何将大的数据均匀的分配到Kafka的各个Broker上？  为什么分区？   为什么分区？ 三级结构：主题-分区-消息  主题下的每条消息只会保存在某一个分区中，而不会在多个分区中被保存多份    疑问:为什么kafka要这样设计？有什么好处？  回答:我们设想一个问题，我们在学校找一个学生，如果我们直接把学生集中在一起去找是不是很麻烦，很低效。换种方式，每5">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-06-28T02:26:01.771Z">
+<meta property="og:updated_time" content="2019-06-28T08:38:14.695Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="09.生产者消息分区机制原理剖析">
 <meta name="twitter:description" content="阅读笔记生产者消息分区机制原理剖析 如何将大的数据均匀的分配到Kafka的各个Broker上？  为什么分区？   为什么分区？ 三级结构：主题-分区-消息  主题下的每条消息只会保存在某一个分区中，而不会在多个分区中被保存多份    疑问:为什么kafka要这样设计？有什么好处？  回答:我们设想一个问题，我们在学校找一个学生，如果我们直接把学生集中在一起去找是不是很麻烦，很低效。换种方式，每5">
@@ -169,7 +169,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#阅读笔记"><span class="post-toc-number">1.</span> <span class="post-toc-text">阅读笔记</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#生产者消息分区机制原理剖析"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">生产者消息分区机制原理剖析</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#为什么分区？"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">为什么分区？</span></a></li></ol></li></ol></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#阅读笔记"><span class="post-toc-number">1.</span> <span class="post-toc-text">阅读笔记</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#生产者消息分区机制原理剖析"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">生产者消息分区机制原理剖析</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#为什么分区？"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">为什么分区？</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#都有哪些分区策略？"><span class="post-toc-number">1.1.1.1.</span> <span class="post-toc-text">都有哪些分区策略？</span></a></li></ol></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#提出问题"><span class="post-toc-number">2.</span> <span class="post-toc-text">提出问题</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#自己提问"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">自己提问</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#问题1"><span class="post-toc-number">2.1.1.</span> <span class="post-toc-text">问题1</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#问题2"><span class="post-toc-number">2.1.2.</span> <span class="post-toc-text">问题2</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#其他人的问题"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">其他人的问题</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#问题1-1"><span class="post-toc-number">2.2.1.</span> <span class="post-toc-text">问题1</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#问题2-1"><span class="post-toc-number">2.2.2.</span> <span class="post-toc-text">问题2</span></a></li></ol></li></ol></li></ol>
         </nav>
     </aside>
 
@@ -214,9 +214,61 @@
 <li>不同的分区能够被放置到不同节点的机器上</li>
 </ul>
 <blockquote>
-<p>疑问：不同的分区被放到不同节点机器上，也就是说，分区的存储是随机分配的？</p>
+<p>疑问：同一个topic下不同的分区是保存到相同机器的不同磁盘上的吗？</p>
 </blockquote>
 <p><strong>回答</strong>:</p>
+<p>在 MongoDB 和 Elasticsearch 中就叫分Shard，而在HBase中则叫Region,在Cassandra中又被称作vnode。</p>
+<ul>
+<li>实现业务级别的消息顺序的问题</li>
+</ul>
+<h5 id="都有哪些分区策略？"><a href="#都有哪些分区策略？" class="headerlink" title="都有哪些分区策略？"></a>都有哪些分区策略？</h5><p>所谓分区策略是决定生产者将消息发送到那个分区的算法。提供了默认的分区策略，同时支持自定义分区策略。</p>
+<ul>
+<li><p>自定义分区</p>
+<ul>
+<li><p>配置partitioner.class参数</p>
+</li>
+<li><p>实现Partitioner接口</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">partition</span><span class="params">(String topic, Object key, <span class="keyword">byte</span>[] keyBytes, Object value, <span class="keyword">byte</span>[] valueBytes, Cluster cluster)</span></span>;</span><br></pre></td></tr></table></figure>
+<p>这里的topic、key、keyBytes、value和valueBytes都属于消息数据，cluster则是集群信息(比如当前Kafka集群有多少主题，多少Broker等)。</p>
+</li>
+</ul>
+</li>
+<li><p>策略</p>
+<ul>
+<li><p>轮询策略(Round-robin)</p>
+<p>轮询是kafka默认的消息存储策略，新增的消息会依次进入1/2/3/4/….对应的分区。轮询策略有非常优秀的负载均衡表现，它总能保证消息最大限度地平均分配到所有分区上，故默认情况下它是最合理的分区策略，也是我们常用的分区策略之一。</p>
+</li>
+<li><p>随机策略(Randomness)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">List&lt;PartitionInfo&gt; partitions = cluster.partitionsForTopic(topic);</span><br><span class="line"><span class="keyword">return</span> ThreadLocalRandom.current().nextInt(partitions.size());</span><br><span class="line">``` </span><br><span class="line">实现比较简单，先计算出该主题总的分区数，然后随机地返回一个小于它的正整数。</span><br><span class="line"></span><br><span class="line">该策略是kafka老版本的策略，追求数据均匀分布还是轮询策略比较好。</span><br><span class="line"></span><br><span class="line">- 按消息键保序策略</span><br><span class="line"></span><br><span class="line">    - 同一个消息key的消息进入同一个分区</span><br><span class="line">    </span><br><span class="line">    - 一个分区只能被同一个消费组（ConsumerGroup）内的一个消费者消费</span><br><span class="line">    </span><br><span class="line">    这里我们可以给我们的消息以时间的维度定义key，如此同一时间的消息就进入了同一个分区，同一个分区下的消息也有了顺序性。</span><br><span class="line">    </span><br><span class="line">    - 每个分区消息都是有顺序的</span><br><span class="line">    </span><br><span class="line">    - 代码实现</span><br><span class="line">    </span><br><span class="line">    ```java</span><br><span class="line">    List&lt;PartitionInfo&gt; partitions = cluster.partitionsForTopic(topic);</span><br><span class="line">    <span class="keyword">return</span> Math.abs(key.hashCode()) % partitions.size();</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>其他分区策略(比如：基于地理位置的分区策略)</p>
+<ul>
+<li><p>场景</p>
+<p>公司有两个机房，一个在广州，一个在北京，在每个机房里面抽取部分机器组成kafka集群。现在公司app搞活动，北京新注册的用户送北京烤鸭一只，广州注册的用户送一次大保健，我们如何用kafka实现这一需求？</p>
+</li>
+<li><p>解决方案一</p>
+</li>
+<li><p>解决方案二</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="提出问题"><a href="#提出问题" class="headerlink" title="提出问题"></a>提出问题</h2><h3 id="自己提问"><a href="#自己提问" class="headerlink" title="自己提问"></a>自己提问</h3><h4 id="问题1"><a href="#问题1" class="headerlink" title="问题1"></a>问题1</h4><blockquote>
+<p>通过kafka创建一个topic，默认分几个区？</p>
+</blockquote>
+<p><strong>回答</strong>：创建topic的时候就需要指定需要创建的分区个数.</p>
+<h4 id="问题2"><a href="#问题2" class="headerlink" title="问题2"></a>问题2</h4><blockquote>
+<p>基于地理位置的分区策略可以通过按消息键保序策略实现，这样做有什么意义？</p>
+</blockquote>
+<h3 id="其他人的问题"><a href="#其他人的问题" class="headerlink" title="其他人的问题"></a>其他人的问题</h3><h4 id="问题1-1"><a href="#问题1-1" class="headerlink" title="问题1"></a>问题1</h4><blockquote>
+<p>老师能不能有空能不能讲讲kafka和rocketMQ的对比, 我用下来感觉整体挺像的但是具体使用场景和性能优劣方面还是有点不知道该使用选择, 谢谢.</p>
+</blockquote>
+<p><strong>回答</strong>：在我看来RocketMQ与Kafka的主要区别 ：1. Kafka吞吐量大，多是面向大数据场景。RocketMQ吞吐量也很强， 不过它号称是金融业务级的消息中间件，也就是说可以用于实际的业务系统；2. RocketMQ毕竟是阿里出品，在国内技术支持力度要比Kafka强；3. Kafka现在主要发力Streaming，RocketMQ在流处理这块表现如何我不太清楚，至少streaming不是它现阶段的主要卖点。</p>
+<h4 id="问题2-1"><a href="#问题2-1" class="headerlink" title="问题2"></a>问题2</h4><blockquote>
+<p>kafka的主题只有一级、像mq可以进行主题分层：一级主题、二级主题。kafka为何这样设计？</p>
+</blockquote>
 <blockquote>
 <p><strong>参考文档</strong></p>
 </blockquote>
@@ -243,7 +295,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2019-06-28T02:26:01.771Z" itemprop="dateUpdated">2019-06-28 10:26:01</time>
+    Last updated: <time datetime="2019-06-28T08:38:14.695Z" itemprop="dateUpdated">2019-06-28 16:38:14</time>
 </span><br>
 
 
@@ -324,7 +376,14 @@
     </div>
 
     
-<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2019/06/28/中间件/kafka/读书笔记/kafka核心技术与实战-胡夕/10.生产者压缩算法面面观/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">10.生产者压缩算法面面观</h4>
+      </a>
+    </div>
   
 
   

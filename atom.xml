@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://lywlefan.github.io/"/>
-  <updated>2019-06-28T02:26:01.771Z</updated>
+  <updated>2019-06-28T10:22:40.122Z</updated>
   <id>https://lywlefan.github.io/</id>
   
   <author>
@@ -17,13 +17,47 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>10.生产者压缩算法面面观</title>
+    <link href="https://lywlefan.github.io/2019/06/28/%E4%B8%AD%E9%97%B4%E4%BB%B6/kafka/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/kafka%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%E4%B8%8E%E5%AE%9E%E6%88%98-%E8%83%A1%E5%A4%95/10.%E7%94%9F%E4%BA%A7%E8%80%85%E5%8E%8B%E7%BC%A9%E7%AE%97%E6%B3%95%E9%9D%A2%E9%9D%A2%E8%A7%82/"/>
+    <id>https://lywlefan.github.io/2019/06/28/中间件/kafka/读书笔记/kafka核心技术与实战-胡夕/10.生产者压缩算法面面观/</id>
+    <published>2019-06-27T16:00:00.000Z</published>
+    <updated>2019-06-28T10:22:40.122Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="阅读笔记"><a href="#阅读笔记" class="headerlink" title="阅读笔记"></a>阅读笔记</h2><ul><li><p>消息压缩</p></li><li><p>GZIP</p></li><li><p>Snappy</p></li><li><p>Zero Copy(零拷贝技术)</p></li><li><p>何时压缩</p></li></ul><h3 id="笔记"><a href="#笔记" class="headerlink" title="笔记"></a>笔记</h3><h4 id="压缩算法笔记"><a href="#压缩算法笔记" class="headerlink" title="压缩算法笔记"></a>压缩算法笔记</h4><ul><li><p>GZIP</p></li><li><p>Snappy</p></li><li><p>LZ4</p></li><li><p>Zstandard(zstd):2.1.0开始，facebook开源的压缩算法，能够提高超高性能压缩比。</p></li></ul><h5 id="如何压缩"><a href="#如何压缩" class="headerlink" title="如何压缩"></a>如何压缩</h5><blockquote><p>v1（kafka 0.11.0之前）:message set, message ,v2（kafka 0.11.0以后）:record batch,record</p></blockquote><p>我看了三遍老师的课，得到了我要的答案：<br>1.如果生产者使用了压缩，broker为了crc校验，会启动解压，这个解压过程不可避免；<br>2.v2的broker为了低版本的消费者，会把消息再次解压并进行协议转换。</p><ul><li><p>CRC校验（每条消息执行CRC校验）</p></li><li><p>消息集合</p></li><li><p>消息</p></li><li><p>日志项</p></li></ul><h5 id="看一个压缩算法的指标"><a href="#看一个压缩算法的指标" class="headerlink" title="看一个压缩算法的指标"></a>看一个压缩算法的指标</h5><ul><li>压缩比</li></ul><p>原来占100份空间的东西压缩成20，那么压缩比就是5，显然压缩比越高越好。</p><ul><li>吞吐量(压缩/解压缩)</li></ul><p>每秒能压缩或者解压多少MB数据,同样吞吐量也是越高越好。</p><h5 id="facebook各个压缩算法性能测试"><a href="#facebook各个压缩算法性能测试" class="headerlink" title="facebook各个压缩算法性能测试"></a>facebook各个压缩算法性能测试</h5><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://upload-images.jianshu.io/upload_images/3084894-0842150408ba26c8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="1.png" title>                </div>                <div class="image-caption">1.png</div>            </figure><h5 id="如何选择压缩算法"><a href="#如何选择压缩算法" class="headerlink" title="如何选择压缩算法"></a>如何选择压缩算法</h5><ul><li><p>启用压缩的一个条件就是Producer程序运行机器上的CPU要充足。</p></li><li><p>带宽资源有限建议开启压缩(带宽比cpu和内存还要珍贵)</p></li><li><p>cpu资源富于，建议开启zstd压缩，这样能极大节省网络资源消耗。</p></li><li><p>规避意料之外的解压缩，比如：兼容老版本而引入解压缩</p></li><li><p>有条件尽量保证不要出现消息格式转换的情况</p></li></ul><h3 id="浓缩精华"><a href="#浓缩精华" class="headerlink" title="浓缩精华"></a>浓缩精华</h3><ul><li>Producer端压缩/Broker端保持/Consumer端解压</li></ul><h3 id="注意问题"><a href="#注意问题" class="headerlink" title="注意问题"></a>注意问题</h3><h4 id="producer和broker端的压缩算法尽量保持一致"><a href="#producer和broker端的压缩算法尽量保持一致" class="headerlink" title="producer和broker端的压缩算法尽量保持一致"></a>producer和broker端的压缩算法尽量保持一致</h4><h3 id="建议"><a href="#建议" class="headerlink" title="建议"></a>建议</h3><h4 id="京东小哥建议"><a href="#京东小哥建议" class="headerlink" title="京东小哥建议"></a>京东小哥建议</h4><blockquote><p>去掉因为做消息校验而引入解压缩,据他们称，去掉解压缩后，Broker端CPU使用率至少降低了50%。</p></blockquote><p>社区未采纳建议，原因是消息校验特别重要，不能盲目去掉。</p><h3 id="应用实践"><a href="#应用实践" class="headerlink" title="应用实践"></a>应用实践</h3><h4 id="实时日志收集系统"><a href="#实时日志收集系统" class="headerlink" title="实时日志收集系统"></a>实时日志收集系统</h4><blockquote><p><strong>参考文档</strong></p></blockquote><blockquote><p><a href="https://www.jianshu.com/u/354cc1548a33" target="_blank" rel="noopener">【1】简书主页·share猿</a></p></blockquote><blockquote><p><a href="https://juejin.im/user/5a8e759851882524d842d174" target="_blank" rel="noopener">【2】掘金主页·share猿</a></p></blockquote><hr><p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>                </div>                <div class="image-caption"></div>            </figure></p><p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;阅读笔记&quot;&gt;&lt;a href=&quot;#阅读笔记&quot; class=&quot;headerlink&quot; title=&quot;阅读笔记&quot;&gt;&lt;/a&gt;阅读笔记&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;消息压缩&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;GZIP&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Snappy&lt;/p
+      
+    
+    </summary>
+    
+      <category term="中间件" scheme="https://lywlefan.github.io/categories/%E4%B8%AD%E9%97%B4%E4%BB%B6/"/>
+    
+    
+      <category term="kafka" scheme="https://lywlefan.github.io/tags/kafka/"/>
+    
+      <category term="读书笔记" scheme="https://lywlefan.github.io/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="kafka核心技术与实战-胡夕" scheme="https://lywlefan.github.io/tags/kafka%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%E4%B8%8E%E5%AE%9E%E6%88%98-%E8%83%A1%E5%A4%95/"/>
+    
+  </entry>
+  
+  <entry>
     <title>09.生产者消息分区机制原理剖析</title>
     <link href="https://lywlefan.github.io/2019/06/28/%E4%B8%AD%E9%97%B4%E4%BB%B6/kafka/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/kafka%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%E4%B8%8E%E5%AE%9E%E6%88%98-%E8%83%A1%E5%A4%95/09.%E7%94%9F%E4%BA%A7%E8%80%85%E6%B6%88%E6%81%AF%E5%88%86%E5%8C%BA%E6%9C%BA%E5%88%B6%E5%8E%9F%E7%90%86%E5%89%96%E6%9E%90/"/>
     <id>https://lywlefan.github.io/2019/06/28/中间件/kafka/读书笔记/kafka核心技术与实战-胡夕/09.生产者消息分区机制原理剖析/</id>
     <published>2019-06-27T16:00:00.000Z</published>
-    <updated>2019-06-28T02:26:01.771Z</updated>
+    <updated>2019-06-28T08:38:14.695Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="阅读笔记"><a href="#阅读笔记" class="headerlink" title="阅读笔记"></a>阅读笔记</h2><h3 id="生产者消息分区机制原理剖析"><a href="#生产者消息分区机制原理剖析" class="headerlink" title="生产者消息分区机制原理剖析"></a>生产者消息分区机制原理剖析</h3><ul><li><p>如何将大的数据均匀的分配到Kafka的各个Broker上？</p></li><li><p>为什么分区？</p></li></ul><h4 id="为什么分区？"><a href="#为什么分区？" class="headerlink" title="为什么分区？"></a>为什么分区？</h4><ul><li><p>三级结构：主题-分区-消息</p></li><li><p>主题下的每条消息只会保存在某一个分区中，而不会在多个分区中被保存多份</p></li></ul><blockquote><p>疑问:为什么kafka要这样设计？有什么好处？</p></blockquote><p><strong>回答</strong>:我们设想一个问题，我们在学校找一个学生，如果我们直接把学生集中在一起去找是不是很麻烦，很低效。换种方式，每50个学生一组，配置一个负责人，然后通知这些负责人去找某个同学，是不是很快就可以找到了，这也就是分区的意义所在。如果，我们把这种思想放到我们的系统中，就可以提高我们系统的负载均衡能力，实现了系统的高伸缩性(Scalability)</p><ul><li>不同的分区能够被放置到不同节点的机器上</li></ul><blockquote><p>疑问：不同的分区被放到不同节点机器上，也就是说，分区的存储是随机分配的？</p></blockquote><p><strong>回答</strong>:</p><blockquote><p><strong>参考文档</strong></p></blockquote><blockquote><p><a href="https://www.jianshu.com/u/354cc1548a33" target="_blank" rel="noopener">【1】简书主页·share猿</a></p></blockquote><blockquote><p><a href="https://juejin.im/user/5a8e759851882524d842d174" target="_blank" rel="noopener">【2】掘金主页·share猿</a></p></blockquote><hr><p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>                </div>                <div class="image-caption"></div>            </figure></p><p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>]]></content>
+    <content type="html"><![CDATA[<h2 id="阅读笔记"><a href="#阅读笔记" class="headerlink" title="阅读笔记"></a>阅读笔记</h2><h3 id="生产者消息分区机制原理剖析"><a href="#生产者消息分区机制原理剖析" class="headerlink" title="生产者消息分区机制原理剖析"></a>生产者消息分区机制原理剖析</h3><ul><li><p>如何将大的数据均匀的分配到Kafka的各个Broker上？</p></li><li><p>为什么分区？</p></li></ul><h4 id="为什么分区？"><a href="#为什么分区？" class="headerlink" title="为什么分区？"></a>为什么分区？</h4><ul><li><p>三级结构：主题-分区-消息</p></li><li><p>主题下的每条消息只会保存在某一个分区中，而不会在多个分区中被保存多份</p></li></ul><blockquote><p>疑问:为什么kafka要这样设计？有什么好处？</p></blockquote><p><strong>回答</strong>:我们设想一个问题，我们在学校找一个学生，如果我们直接把学生集中在一起去找是不是很麻烦，很低效。换种方式，每50个学生一组，配置一个负责人，然后通知这些负责人去找某个同学，是不是很快就可以找到了，这也就是分区的意义所在。如果，我们把这种思想放到我们的系统中，就可以提高我们系统的负载均衡能力，实现了系统的高伸缩性(Scalability)</p><ul><li>不同的分区能够被放置到不同节点的机器上</li></ul><blockquote><p>疑问：同一个topic下不同的分区是保存到相同机器的不同磁盘上的吗？</p></blockquote><p><strong>回答</strong>:</p><p>在 MongoDB 和 Elasticsearch 中就叫分Shard，而在HBase中则叫Region,在Cassandra中又被称作vnode。</p><ul><li>实现业务级别的消息顺序的问题</li></ul><h5 id="都有哪些分区策略？"><a href="#都有哪些分区策略？" class="headerlink" title="都有哪些分区策略？"></a>都有哪些分区策略？</h5><p>所谓分区策略是决定生产者将消息发送到那个分区的算法。提供了默认的分区策略，同时支持自定义分区策略。</p><ul><li><p>自定义分区</p><ul><li><p>配置partitioner.class参数</p></li><li><p>实现Partitioner接口</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">partition</span><span class="params">(String topic, Object key, <span class="keyword">byte</span>[] keyBytes, Object value, <span class="keyword">byte</span>[] valueBytes, Cluster cluster)</span></span>;</span><br></pre></td></tr></table></figure><p>这里的topic、key、keyBytes、value和valueBytes都属于消息数据，cluster则是集群信息(比如当前Kafka集群有多少主题，多少Broker等)。</p></li></ul></li><li><p>策略</p><ul><li><p>轮询策略(Round-robin)</p><p>轮询是kafka默认的消息存储策略，新增的消息会依次进入1/2/3/4/….对应的分区。轮询策略有非常优秀的负载均衡表现，它总能保证消息最大限度地平均分配到所有分区上，故默认情况下它是最合理的分区策略，也是我们常用的分区策略之一。</p></li><li><p>随机策略(Randomness)</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">List&lt;PartitionInfo&gt; partitions = cluster.partitionsForTopic(topic);</span><br><span class="line"><span class="keyword">return</span> ThreadLocalRandom.current().nextInt(partitions.size());</span><br><span class="line">``` </span><br><span class="line">实现比较简单，先计算出该主题总的分区数，然后随机地返回一个小于它的正整数。</span><br><span class="line"></span><br><span class="line">该策略是kafka老版本的策略，追求数据均匀分布还是轮询策略比较好。</span><br><span class="line"></span><br><span class="line">- 按消息键保序策略</span><br><span class="line"></span><br><span class="line">    - 同一个消息key的消息进入同一个分区</span><br><span class="line">    </span><br><span class="line">    - 一个分区只能被同一个消费组（ConsumerGroup）内的一个消费者消费</span><br><span class="line">    </span><br><span class="line">    这里我们可以给我们的消息以时间的维度定义key，如此同一时间的消息就进入了同一个分区，同一个分区下的消息也有了顺序性。</span><br><span class="line">    </span><br><span class="line">    - 每个分区消息都是有顺序的</span><br><span class="line">    </span><br><span class="line">    - 代码实现</span><br><span class="line">    </span><br><span class="line">    ```java</span><br><span class="line">    List&lt;PartitionInfo&gt; partitions = cluster.partitionsForTopic(topic);</span><br><span class="line">    <span class="keyword">return</span> Math.abs(key.hashCode()) % partitions.size();</span><br></pre></td></tr></table></figure></li><li><p>其他分区策略(比如：基于地理位置的分区策略)</p><ul><li><p>场景</p><p>公司有两个机房，一个在广州，一个在北京，在每个机房里面抽取部分机器组成kafka集群。现在公司app搞活动，北京新注册的用户送北京烤鸭一只，广州注册的用户送一次大保健，我们如何用kafka实现这一需求？</p></li><li><p>解决方案一</p></li><li><p>解决方案二</p></li></ul></li></ul></li></ul><h2 id="提出问题"><a href="#提出问题" class="headerlink" title="提出问题"></a>提出问题</h2><h3 id="自己提问"><a href="#自己提问" class="headerlink" title="自己提问"></a>自己提问</h3><h4 id="问题1"><a href="#问题1" class="headerlink" title="问题1"></a>问题1</h4><blockquote><p>通过kafka创建一个topic，默认分几个区？</p></blockquote><p><strong>回答</strong>：创建topic的时候就需要指定需要创建的分区个数.</p><h4 id="问题2"><a href="#问题2" class="headerlink" title="问题2"></a>问题2</h4><blockquote><p>基于地理位置的分区策略可以通过按消息键保序策略实现，这样做有什么意义？</p></blockquote><h3 id="其他人的问题"><a href="#其他人的问题" class="headerlink" title="其他人的问题"></a>其他人的问题</h3><h4 id="问题1-1"><a href="#问题1-1" class="headerlink" title="问题1"></a>问题1</h4><blockquote><p>老师能不能有空能不能讲讲kafka和rocketMQ的对比, 我用下来感觉整体挺像的但是具体使用场景和性能优劣方面还是有点不知道该使用选择, 谢谢.</p></blockquote><p><strong>回答</strong>：在我看来RocketMQ与Kafka的主要区别 ：1. Kafka吞吐量大，多是面向大数据场景。RocketMQ吞吐量也很强， 不过它号称是金融业务级的消息中间件，也就是说可以用于实际的业务系统；2. RocketMQ毕竟是阿里出品，在国内技术支持力度要比Kafka强；3. Kafka现在主要发力Streaming，RocketMQ在流处理这块表现如何我不太清楚，至少streaming不是它现阶段的主要卖点。</p><h4 id="问题2-1"><a href="#问题2-1" class="headerlink" title="问题2"></a>问题2</h4><blockquote><p>kafka的主题只有一级、像mq可以进行主题分层：一级主题、二级主题。kafka为何这样设计？</p></blockquote><blockquote><p><strong>参考文档</strong></p></blockquote><blockquote><p><a href="https://www.jianshu.com/u/354cc1548a33" target="_blank" rel="noopener">【1】简书主页·share猿</a></p></blockquote><blockquote><p><a href="https://juejin.im/user/5a8e759851882524d842d174" target="_blank" rel="noopener">【2】掘金主页·share猿</a></p></blockquote><hr><p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>                </div>                <div class="image-caption"></div>            </figure></p><p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>]]></content>
     
     <summary type="html">
     
@@ -138,36 +172,6 @@
   </entry>
   
   <entry>
-    <title>1.disruptor初识</title>
-    <link href="https://lywlefan.github.io/2019/06/26/%E9%AB%98%E5%B9%B6%E5%8F%91/disruptor%E5%AD%A6%E4%B9%A0/1.disruptor%E5%88%9D%E8%AF%86/"/>
-    <id>https://lywlefan.github.io/2019/06/26/高并发/disruptor学习/1.disruptor初识/</id>
-    <published>2019-06-25T16:00:00.000Z</published>
-    <updated>2019-06-26T08:12:38.159Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>disruptor号称能够在一个线程里每秒处理6百万订单,业务逻辑处理器完全是运行在内存中，使用事件源驱动方式。</p></blockquote><h3 id="要学的概念"><a href="#要学的概念" class="headerlink" title="要学的概念"></a>要学的概念</h3><h4 id="乐观锁"><a href="#乐观锁" class="headerlink" title="乐观锁"></a>乐观锁</h4><h5 id="打个比方理解"><a href="#打个比方理解" class="headerlink" title="打个比方理解"></a>打个比方理解</h5><p>乐观锁就是到桥头再看有没有车来过此桥,没有的话快速过桥.</p><h4 id="悲观锁"><a href="#悲观锁" class="headerlink" title="悲观锁"></a>悲观锁</h4><h5 id="打个比方理解-1"><a href="#打个比方理解-1" class="headerlink" title="打个比方理解"></a>打个比方理解</h5><p>悲观锁说白了就是先发制人,我的车要过桥,但是我担心桥上有其他车,所以我提前把桥口加一个锁,我到桥头了在开锁过桥,过去了再把锁子接触了.</p><h4 id="死锁"><a href="#死锁" class="headerlink" title="死锁"></a>死锁</h4><h5 id="打个比方理解-2"><a href="#打个比方理解-2" class="headerlink" title="打个比方理解"></a>打个比方理解</h5><p>简单的比方,两俩车同时过一个桥,不能倒车,如果两辆车同时在桥上就会造成死锁,车就相当于我们的线程,桥就相当于资源.</p><h4 id="CAS"><a href="#CAS" class="headerlink" title="CAS"></a>CAS</h4><h5 id="CAS简介"><a href="#CAS简介" class="headerlink" title="CAS简介"></a>CAS简介</h5><p>谷歌翻译CAS是<strong>比较并转换</strong>,java.util.concurrent包中借助CAS实现了区别于synchronouse同步锁的一种乐观锁。</p><h5 id="CAS应用"><a href="#CAS应用" class="headerlink" title="CAS应用"></a>CAS应用</h5><p>CAS有3个操作数，内存值V，旧的预期值A，要修改的新值B。当且仅当预期值A和内存值V相同时，将内存值V修改为B，否则什么都不做。</p><ul><li>非阻塞算法 （nonblocking algorithms）</li></ul><blockquote><p>一个线程的失败或者挂起不应该影响其他线程的失败或挂起的算法。</p></blockquote><h5 id="CAS原理"><a href="#CAS原理" class="headerlink" title="CAS原理"></a>CAS原理</h5><p>CAS通过调用JNI的代码实现的。JNI:Java Native Interface为JAVA本地调用，允许java调用其他语言而compareAndSwapInt就是借助C来调用CPU底层指令实现的。</p><h5 id="CAS缺点"><a href="#CAS缺点" class="headerlink" title="CAS缺点"></a>CAS缺点</h5><ul><li><p>ABA问题</p></li><li><p>循环时间长开销大</p></li><li><p>只能保证一个共享变量的原子操作</p></li></ul><h4 id="缓存行"><a href="#缓存行" class="headerlink" title="缓存行"></a>缓存行</h4><h3 id="初识"><a href="#初识" class="headerlink" title="初识"></a>初识</h3><h4 id="性能"><a href="#性能" class="headerlink" title="性能"></a>性能</h4><ul><li><p>一个线程每秒处理6百万订单</p></li><li><p>内存中运行 ,使用事件源驱动方式</p></li><li><p>业务逻辑处理核心Disruptor</p></li></ul><h4 id="hello-world"><a href="#hello-world" class="headerlink" title="hello world"></a>hello world</h4><ul><li><p>建立一个event类,用于创建Event类实例对象</p></li><li><p>需要有一个监听事件类,用于处理数据(Event类)</p></li><li><p>实例化Disruptor实例,配置一系列参数,编写Disruptor核心组件</p></li><li><p>编写生产者组件,向Disruptor容器中去投递数据</p></li></ul><h4 id="核心讲解"><a href="#核心讲解" class="headerlink" title="核心讲解"></a>核心讲解</h4><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://blog.52itstyle.vip/usr/uploads/2018/05/2761303158.png" alt title>                </div>                <div class="image-caption"></div>            </figure><h5 id="RingBuffer"><a href="#RingBuffer" class="headerlink" title="RingBuffer"></a>RingBuffer</h5><p>基于数组的缓存实现,也是创建sequencer与定义WaitStrategy的入口</p><ul><li><p>RingBuffer拥有一个序号,这个需要指向数组中下一个可用的元素</p></li><li><p>收尾相接的环 (环状数组)</p></li><li><p>假如缓存区芝麻满了,芝麻扔到哪里?</p></li><li><p>假如缓存区没芝麻了,如何取芝麻?</p></li><li><p>2的n次方更利于计算</p></li></ul><h5 id="Disruptor"><a href="#Disruptor" class="headerlink" title="Disruptor"></a>Disruptor</h5><p>持有RingBuffer、消费者线程池Executor、消费者集合ConsumerRepository等引用.</p><h5 id="Sequence"><a href="#Sequence" class="headerlink" title="Sequence"></a>Sequence</h5><ul><li><p>通顺序递增的序号来编号,管理进行交换的数据(事件)</p></li><li><p>对数据(事件)的处理过程总是沿着序号逐个递增处理</p></li><li><p>一个Sequence用于跟踪标识某个特定的事件处理者(RingBuffer/Producer/Consumer)的处理进度</p></li><li><p>Sequence可以看成是一个AtomicLong用于标识进度</p></li><li><p>还有另外一个目的就是防止不同Sequence之间CPU缓存伪共享(Flase Sharing)的问题</p></li></ul><h5 id="Sequencer"><a href="#Sequencer" class="headerlink" title="Sequencer"></a>Sequencer</h5><ul><li><p>Sequencer是Disruptor的真正核心,包含Sequence</p></li><li><p>此接口有两个实现类</p><ul><li>SingleProducerSequencer</li><li>MultiProducerSequencer</li></ul></li><li><p>主要实现生产者和消费者之间快速、正确的传递数据并发算法</p></li></ul><h5 id="Sequence-Barrier"><a href="#Sequence-Barrier" class="headerlink" title="Sequence Barrier"></a>Sequence Barrier</h5><ul><li><p>用于保持RingBuffer的Main Published Sequence(Producer)和Consumer之间平衡关系;</p></li><li><p>决定Consumer是否还有可处理事件逻辑</p></li></ul><h5 id="WaitStrategy"><a href="#WaitStrategy" class="headerlink" title="WaitStrategy"></a>WaitStrategy</h5><ul><li><p>决定一个消费者将如何等待生产者将Event置入Disruptor</p></li><li><p>主要策略</p><ul><li><p>BlockWaitStrategy</p><ul><li><p>最低效策略</p></li><li><p>cpu消耗最小</p></li><li><p>在各种不同部署环境中提供更加一致性能表现</p></li></ul></li><li><p>SleepingWaitStrategy</p><ul><li>和上面性能差不多</li><li>cpu性能和上面差不多</li><li>对生产者线程影响最小,适合用于异步日志类似的场景</li></ul></li><li><p>YieldingWaitStrategy</p><ul><li><p>性能最好</p></li><li><p>适用低延迟系统</p></li><li><p>要求极高性能</p></li><li><p>要求极高性能且事件处理线数小于CPU逻辑核心数场景,列如:CPU开启超线程的特性</p></li></ul></li></ul></li></ul><h5 id="Event"><a href="#Event" class="headerlink" title="Event"></a>Event</h5><ul><li><p>从生产者到消费者过程中所处理的数据单元</p></li><li><p>Disruptor中没有代码表示Event,因为它完全是由用户定义的</p></li></ul><h5 id="EventProcessor"><a href="#EventProcessor" class="headerlink" title="EventProcessor"></a>EventProcessor</h5><ul><li><p>主要事件循环,处理Disruptor中的Event,拥有消费者Sequence</p></li><li><p>他是一个实现类是BatchEventProcessor,包含了event loop有效的实现,并且将回调一个EventHandler接口的实现对象.</p></li></ul><h5 id="EventHandler"><a href="#EventHandler" class="headerlink" title="EventHandler"></a>EventHandler</h5><ul><li>由用户并且代表了Disruptor中的一个消费者接口,也就是我们消费者逻辑都要写到这里.</li></ul><h5 id="WorkProcessor"><a href="#WorkProcessor" class="headerlink" title="WorkProcessor"></a>WorkProcessor</h5><ul><li>确保每个sequence只被一个processor消费,在同一个WorkPool中处理多个WorkProcessor不会消费同样的sequence</li></ul><blockquote><p><strong>参考文档</strong></p></blockquote><blockquote><p><a href="https://www.jianshu.com/u/354cc1548a33" target="_blank" rel="noopener">【1】简书主页·share猿</a></p></blockquote><blockquote><p><a href="https://juejin.im/user/5a8e759851882524d842d174" target="_blank" rel="noopener">【2】掘金主页·share猿</a></p></blockquote><blockquote><p><a href="https://code.google.com/archive/p/disruptor/wikis/BlogsAndArticles.wiki" target="_blank" rel="noopener">【3】disruptor官网</a></p></blockquote><blockquote><p><a href="https://zl198751.iteye.com/blog/1848575" target="_blank" rel="noopener">【4】JAVA CAS原理深度分析</a></p></blockquote><blockquote><p><a href="http://ifeve.com/disruptor/" target="_blank" rel="noopener">【5】并发框架Disruptor译文</a></p></blockquote><blockquote><p><a href="https://blog.52itstyle.vip/archives/2911/" target="_blank" rel="noopener">【6】从构建分布式秒杀系统聊聊Disruptor高性能队列</a></p></blockquote><hr><p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>                </div>                <div class="image-caption"></div>            </figure></p><p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;blockquote&gt;
-&lt;p&gt;disruptor号称能够在一个线程里每秒处理6百万订单,业务逻辑处理器完全是运行在内存中，使用事件源驱动方式。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&quot;要学的概念&quot;&gt;&lt;a href=&quot;#要学的概念&quot; class=&quot;headerlink
-      
-    
-    </summary>
-    
-      <category term="高并发" scheme="https://lywlefan.github.io/categories/%E9%AB%98%E5%B9%B6%E5%8F%91/"/>
-    
-    
-      <category term="并发" scheme="https://lywlefan.github.io/tags/%E5%B9%B6%E5%8F%91/"/>
-    
-      <category term="disruptor" scheme="https://lywlefan.github.io/tags/disruptor/"/>
-    
-  </entry>
-  
-  <entry>
     <title>2.disruptor应用</title>
     <link href="https://lywlefan.github.io/2019/06/26/%E9%AB%98%E5%B9%B6%E5%8F%91/disruptor%E5%AD%A6%E4%B9%A0/2.disruptor%E5%BA%94%E7%94%A8/"/>
     <id>https://lywlefan.github.io/2019/06/26/高并发/disruptor学习/2.disruptor应用/</id>
@@ -184,6 +188,36 @@
 &lt;p&gt;disruptor号称能够在一个线程里每秒处理6百万订单,业务逻辑处理器完全是运行在内存中，使用事件源驱动方式。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h3 id=&quot;本节导航&quot;&gt;&lt;a href=&quot;#本节导航&quot; class=&quot;headerlink&quot; 
+      
+    
+    </summary>
+    
+      <category term="高并发" scheme="https://lywlefan.github.io/categories/%E9%AB%98%E5%B9%B6%E5%8F%91/"/>
+    
+    
+      <category term="并发" scheme="https://lywlefan.github.io/tags/%E5%B9%B6%E5%8F%91/"/>
+    
+      <category term="disruptor" scheme="https://lywlefan.github.io/tags/disruptor/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>1.disruptor初识</title>
+    <link href="https://lywlefan.github.io/2019/06/26/%E9%AB%98%E5%B9%B6%E5%8F%91/disruptor%E5%AD%A6%E4%B9%A0/1.disruptor%E5%88%9D%E8%AF%86/"/>
+    <id>https://lywlefan.github.io/2019/06/26/高并发/disruptor学习/1.disruptor初识/</id>
+    <published>2019-06-25T16:00:00.000Z</published>
+    <updated>2019-06-26T08:12:38.159Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>disruptor号称能够在一个线程里每秒处理6百万订单,业务逻辑处理器完全是运行在内存中，使用事件源驱动方式。</p></blockquote><h3 id="要学的概念"><a href="#要学的概念" class="headerlink" title="要学的概念"></a>要学的概念</h3><h4 id="乐观锁"><a href="#乐观锁" class="headerlink" title="乐观锁"></a>乐观锁</h4><h5 id="打个比方理解"><a href="#打个比方理解" class="headerlink" title="打个比方理解"></a>打个比方理解</h5><p>乐观锁就是到桥头再看有没有车来过此桥,没有的话快速过桥.</p><h4 id="悲观锁"><a href="#悲观锁" class="headerlink" title="悲观锁"></a>悲观锁</h4><h5 id="打个比方理解-1"><a href="#打个比方理解-1" class="headerlink" title="打个比方理解"></a>打个比方理解</h5><p>悲观锁说白了就是先发制人,我的车要过桥,但是我担心桥上有其他车,所以我提前把桥口加一个锁,我到桥头了在开锁过桥,过去了再把锁子接触了.</p><h4 id="死锁"><a href="#死锁" class="headerlink" title="死锁"></a>死锁</h4><h5 id="打个比方理解-2"><a href="#打个比方理解-2" class="headerlink" title="打个比方理解"></a>打个比方理解</h5><p>简单的比方,两俩车同时过一个桥,不能倒车,如果两辆车同时在桥上就会造成死锁,车就相当于我们的线程,桥就相当于资源.</p><h4 id="CAS"><a href="#CAS" class="headerlink" title="CAS"></a>CAS</h4><h5 id="CAS简介"><a href="#CAS简介" class="headerlink" title="CAS简介"></a>CAS简介</h5><p>谷歌翻译CAS是<strong>比较并转换</strong>,java.util.concurrent包中借助CAS实现了区别于synchronouse同步锁的一种乐观锁。</p><h5 id="CAS应用"><a href="#CAS应用" class="headerlink" title="CAS应用"></a>CAS应用</h5><p>CAS有3个操作数，内存值V，旧的预期值A，要修改的新值B。当且仅当预期值A和内存值V相同时，将内存值V修改为B，否则什么都不做。</p><ul><li>非阻塞算法 （nonblocking algorithms）</li></ul><blockquote><p>一个线程的失败或者挂起不应该影响其他线程的失败或挂起的算法。</p></blockquote><h5 id="CAS原理"><a href="#CAS原理" class="headerlink" title="CAS原理"></a>CAS原理</h5><p>CAS通过调用JNI的代码实现的。JNI:Java Native Interface为JAVA本地调用，允许java调用其他语言而compareAndSwapInt就是借助C来调用CPU底层指令实现的。</p><h5 id="CAS缺点"><a href="#CAS缺点" class="headerlink" title="CAS缺点"></a>CAS缺点</h5><ul><li><p>ABA问题</p></li><li><p>循环时间长开销大</p></li><li><p>只能保证一个共享变量的原子操作</p></li></ul><h4 id="缓存行"><a href="#缓存行" class="headerlink" title="缓存行"></a>缓存行</h4><h3 id="初识"><a href="#初识" class="headerlink" title="初识"></a>初识</h3><h4 id="性能"><a href="#性能" class="headerlink" title="性能"></a>性能</h4><ul><li><p>一个线程每秒处理6百万订单</p></li><li><p>内存中运行 ,使用事件源驱动方式</p></li><li><p>业务逻辑处理核心Disruptor</p></li></ul><h4 id="hello-world"><a href="#hello-world" class="headerlink" title="hello world"></a>hello world</h4><ul><li><p>建立一个event类,用于创建Event类实例对象</p></li><li><p>需要有一个监听事件类,用于处理数据(Event类)</p></li><li><p>实例化Disruptor实例,配置一系列参数,编写Disruptor核心组件</p></li><li><p>编写生产者组件,向Disruptor容器中去投递数据</p></li></ul><h4 id="核心讲解"><a href="#核心讲解" class="headerlink" title="核心讲解"></a>核心讲解</h4><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://blog.52itstyle.vip/usr/uploads/2018/05/2761303158.png" alt title>                </div>                <div class="image-caption"></div>            </figure><h5 id="RingBuffer"><a href="#RingBuffer" class="headerlink" title="RingBuffer"></a>RingBuffer</h5><p>基于数组的缓存实现,也是创建sequencer与定义WaitStrategy的入口</p><ul><li><p>RingBuffer拥有一个序号,这个需要指向数组中下一个可用的元素</p></li><li><p>收尾相接的环 (环状数组)</p></li><li><p>假如缓存区芝麻满了,芝麻扔到哪里?</p></li><li><p>假如缓存区没芝麻了,如何取芝麻?</p></li><li><p>2的n次方更利于计算</p></li></ul><h5 id="Disruptor"><a href="#Disruptor" class="headerlink" title="Disruptor"></a>Disruptor</h5><p>持有RingBuffer、消费者线程池Executor、消费者集合ConsumerRepository等引用.</p><h5 id="Sequence"><a href="#Sequence" class="headerlink" title="Sequence"></a>Sequence</h5><ul><li><p>通顺序递增的序号来编号,管理进行交换的数据(事件)</p></li><li><p>对数据(事件)的处理过程总是沿着序号逐个递增处理</p></li><li><p>一个Sequence用于跟踪标识某个特定的事件处理者(RingBuffer/Producer/Consumer)的处理进度</p></li><li><p>Sequence可以看成是一个AtomicLong用于标识进度</p></li><li><p>还有另外一个目的就是防止不同Sequence之间CPU缓存伪共享(Flase Sharing)的问题</p></li></ul><h5 id="Sequencer"><a href="#Sequencer" class="headerlink" title="Sequencer"></a>Sequencer</h5><ul><li><p>Sequencer是Disruptor的真正核心,包含Sequence</p></li><li><p>此接口有两个实现类</p><ul><li>SingleProducerSequencer</li><li>MultiProducerSequencer</li></ul></li><li><p>主要实现生产者和消费者之间快速、正确的传递数据并发算法</p></li></ul><h5 id="Sequence-Barrier"><a href="#Sequence-Barrier" class="headerlink" title="Sequence Barrier"></a>Sequence Barrier</h5><ul><li><p>用于保持RingBuffer的Main Published Sequence(Producer)和Consumer之间平衡关系;</p></li><li><p>决定Consumer是否还有可处理事件逻辑</p></li></ul><h5 id="WaitStrategy"><a href="#WaitStrategy" class="headerlink" title="WaitStrategy"></a>WaitStrategy</h5><ul><li><p>决定一个消费者将如何等待生产者将Event置入Disruptor</p></li><li><p>主要策略</p><ul><li><p>BlockWaitStrategy</p><ul><li><p>最低效策略</p></li><li><p>cpu消耗最小</p></li><li><p>在各种不同部署环境中提供更加一致性能表现</p></li></ul></li><li><p>SleepingWaitStrategy</p><ul><li>和上面性能差不多</li><li>cpu性能和上面差不多</li><li>对生产者线程影响最小,适合用于异步日志类似的场景</li></ul></li><li><p>YieldingWaitStrategy</p><ul><li><p>性能最好</p></li><li><p>适用低延迟系统</p></li><li><p>要求极高性能</p></li><li><p>要求极高性能且事件处理线数小于CPU逻辑核心数场景,列如:CPU开启超线程的特性</p></li></ul></li></ul></li></ul><h5 id="Event"><a href="#Event" class="headerlink" title="Event"></a>Event</h5><ul><li><p>从生产者到消费者过程中所处理的数据单元</p></li><li><p>Disruptor中没有代码表示Event,因为它完全是由用户定义的</p></li></ul><h5 id="EventProcessor"><a href="#EventProcessor" class="headerlink" title="EventProcessor"></a>EventProcessor</h5><ul><li><p>主要事件循环,处理Disruptor中的Event,拥有消费者Sequence</p></li><li><p>他是一个实现类是BatchEventProcessor,包含了event loop有效的实现,并且将回调一个EventHandler接口的实现对象.</p></li></ul><h5 id="EventHandler"><a href="#EventHandler" class="headerlink" title="EventHandler"></a>EventHandler</h5><ul><li>由用户并且代表了Disruptor中的一个消费者接口,也就是我们消费者逻辑都要写到这里.</li></ul><h5 id="WorkProcessor"><a href="#WorkProcessor" class="headerlink" title="WorkProcessor"></a>WorkProcessor</h5><ul><li>确保每个sequence只被一个processor消费,在同一个WorkPool中处理多个WorkProcessor不会消费同样的sequence</li></ul><blockquote><p><strong>参考文档</strong></p></blockquote><blockquote><p><a href="https://www.jianshu.com/u/354cc1548a33" target="_blank" rel="noopener">【1】简书主页·share猿</a></p></blockquote><blockquote><p><a href="https://juejin.im/user/5a8e759851882524d842d174" target="_blank" rel="noopener">【2】掘金主页·share猿</a></p></blockquote><blockquote><p><a href="https://code.google.com/archive/p/disruptor/wikis/BlogsAndArticles.wiki" target="_blank" rel="noopener">【3】disruptor官网</a></p></blockquote><blockquote><p><a href="https://zl198751.iteye.com/blog/1848575" target="_blank" rel="noopener">【4】JAVA CAS原理深度分析</a></p></blockquote><blockquote><p><a href="http://ifeve.com/disruptor/" target="_blank" rel="noopener">【5】并发框架Disruptor译文</a></p></blockquote><blockquote><p><a href="https://blog.52itstyle.vip/archives/2911/" target="_blank" rel="noopener">【6】从构建分布式秒杀系统聊聊Disruptor高性能队列</a></p></blockquote><hr><p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>                </div>                <div class="image-caption"></div>            </figure></p><p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;blockquote&gt;
+&lt;p&gt;disruptor号称能够在一个线程里每秒处理6百万订单,业务逻辑处理器完全是运行在内存中，使用事件源驱动方式。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;要学的概念&quot;&gt;&lt;a href=&quot;#要学的概念&quot; class=&quot;headerlink
       
     
     </summary>
@@ -262,38 +296,6 @@
   </entry>
   
   <entry>
-    <title>LMAX架构</title>
-    <link href="https://lywlefan.github.io/2019/06/21/%E6%9E%B6%E6%9E%84/LMAX%E6%9E%B6%E6%9E%84/LMAX%E6%9E%B6%E6%9E%84/"/>
-    <id>https://lywlefan.github.io/2019/06/21/架构/LMAX架构/LMAX架构/</id>
-    <published>2019-06-20T16:00:00.000Z</published>
-    <updated>2019-06-26T08:26:15.301Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>万丈高楼平地起的前提是地基好.</p></blockquote><h2 id="LMAX架构简介"><a href="#LMAX架构简介" class="headerlink" title="LMAX架构简介"></a>LMAX架构简介</h2><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://pic002.cnblogs.com/images/2012/13665/2012021214023190.png" alt title>                </div>                <div class="image-caption"></div>            </figure><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://pic002.cnblogs.com/images/2012/13665/2012021214025031.png" alt title>                </div>                <div class="image-caption"></div>            </figure><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://pic002.cnblogs.com/images/2012/13665/2012021214031164.png" alt title>                </div>                <div class="image-caption"></div>            </figure><p>该架构主要基于：Disruptor + In Memory DDD + Event Sourcing</p><ul><li><p>通过高并发框架（Disruptor）实现用户事件的输入和Domain Event的输出；</p></li><li><p>一个常驻内存的Business Logic Processor（DDD领域模型），它负责在纯内存中处理业务逻辑；关键点：首先确保用户输入事件被持久化到数据库，并定时创建快照，然后在内存中响应事件更改业务对象的状态；因为一切都是在内存中处理，所以没有IO，也不需要数据库事务，非常快；</p></li><li><p>机器down了怎么办？因为我们首先确保了业务对象的任何状态改变之前先持久化用户输入事件，所以在down机的时候通过事件回溯重新得到最新的业务对象。因为有了快照的保存，所以重建对象也非常快；</p></li></ul><p>该架构的主要观点：</p><ul><li><p>肯定了In-Memory内存模式 + 异步输入与输出事件（Disruptor） + Event Sourcing 架构，LMAX实践也验证了这个架构。这个架构降低复杂性。</p></li><li><p>LMAX的核心是新型并发框架Disruptor，其核心是根据现代CPU硬件缓存特点发明不同于通用LinkedList或Queue的新型数据结构RingBuffer。</p></li><li><p>号称并发未来的Actor模型被LMAX团队验证是有瓶颈的。</p></li><li><p>提出新的并发模型，每个CPU一个线程，多个CPU多个线程并发模式，摒弃了锁模式。</p></li><li><p>ORM等Hibernate没有完全解决OO的目标，关系数据库的事务也不是最后救命的稻草。LMAX用自己的事件记录的方式实现事务，这也不同于所谓内存事务STM。</p></li><li><p>架构师要分离关注，一是通过DDD降低业务的复杂性；二是通过技术探索创新，降低技术平台的复杂性，让程序员更多精力投入业务问题解决上。</p></li></ul><blockquote><p><strong>参考文档</strong></p></blockquote><blockquote><p><a href="https://www.jianshu.com/u/354cc1548a33" target="_blank" rel="noopener">【1】简书主页·share猿</a></p></blockquote><blockquote><p><a href="https://juejin.im/user/5a8e759851882524d842d174" target="_blank" rel="noopener">【2】掘金主页·share猿</a></p></blockquote><blockquote><p><a href="https://www.cnblogs.com/netfocus/archive/2012/02/12/2347919.html" target="_blank" rel="noopener">【3】LMAX架构简介·汤雪华</a></p></blockquote><hr><p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>                </div>                <div class="image-caption"></div>            </figure></p><p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;blockquote&gt;
-&lt;p&gt;万丈高楼平地起的前提是地基好.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&quot;LMAX架构简介&quot;&gt;&lt;a href=&quot;#LMAX架构简介&quot; class=&quot;headerlink&quot; title=&quot;LMAX架构简介&quot;&gt;&lt;/a&gt;LMAX架构简介&lt;/h2
-      
-    
-    </summary>
-    
-      <category term="架构" scheme="https://lywlefan.github.io/categories/%E6%9E%B6%E6%9E%84/"/>
-    
-    
-      <category term="并发" scheme="https://lywlefan.github.io/tags/%E5%B9%B6%E5%8F%91/"/>
-    
-      <category term="disruptor" scheme="https://lywlefan.github.io/tags/disruptor/"/>
-    
-      <category term="LMAX" scheme="https://lywlefan.github.io/tags/LMAX/"/>
-    
-  </entry>
-  
-  <entry>
     <title>java枚举的总结和学习</title>
     <link href="https://lywlefan.github.io/2019/06/21/%E5%9F%BA%E7%A1%80%E5%B7%A9%E5%9B%BA/java/java%E6%9E%9A%E4%B8%BE%E7%9A%84%E6%80%BB%E7%BB%93%E5%92%8C%E5%AD%A6%E4%B9%A0/"/>
     <id>https://lywlefan.github.io/2019/06/21/基础巩固/java/java枚举的总结和学习/</id>
@@ -320,6 +322,38 @@
       <category term="java" scheme="https://lywlefan.github.io/tags/java/"/>
     
       <category term="基础" scheme="https://lywlefan.github.io/tags/%E5%9F%BA%E7%A1%80/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>LMAX架构</title>
+    <link href="https://lywlefan.github.io/2019/06/21/%E6%9E%B6%E6%9E%84/LMAX%E6%9E%B6%E6%9E%84/LMAX%E6%9E%B6%E6%9E%84/"/>
+    <id>https://lywlefan.github.io/2019/06/21/架构/LMAX架构/LMAX架构/</id>
+    <published>2019-06-20T16:00:00.000Z</published>
+    <updated>2019-06-26T08:26:15.301Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>万丈高楼平地起的前提是地基好.</p></blockquote><h2 id="LMAX架构简介"><a href="#LMAX架构简介" class="headerlink" title="LMAX架构简介"></a>LMAX架构简介</h2><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://pic002.cnblogs.com/images/2012/13665/2012021214023190.png" alt title>                </div>                <div class="image-caption"></div>            </figure><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://pic002.cnblogs.com/images/2012/13665/2012021214025031.png" alt title>                </div>                <div class="image-caption"></div>            </figure><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://pic002.cnblogs.com/images/2012/13665/2012021214031164.png" alt title>                </div>                <div class="image-caption"></div>            </figure><p>该架构主要基于：Disruptor + In Memory DDD + Event Sourcing</p><ul><li><p>通过高并发框架（Disruptor）实现用户事件的输入和Domain Event的输出；</p></li><li><p>一个常驻内存的Business Logic Processor（DDD领域模型），它负责在纯内存中处理业务逻辑；关键点：首先确保用户输入事件被持久化到数据库，并定时创建快照，然后在内存中响应事件更改业务对象的状态；因为一切都是在内存中处理，所以没有IO，也不需要数据库事务，非常快；</p></li><li><p>机器down了怎么办？因为我们首先确保了业务对象的任何状态改变之前先持久化用户输入事件，所以在down机的时候通过事件回溯重新得到最新的业务对象。因为有了快照的保存，所以重建对象也非常快；</p></li></ul><p>该架构的主要观点：</p><ul><li><p>肯定了In-Memory内存模式 + 异步输入与输出事件（Disruptor） + Event Sourcing 架构，LMAX实践也验证了这个架构。这个架构降低复杂性。</p></li><li><p>LMAX的核心是新型并发框架Disruptor，其核心是根据现代CPU硬件缓存特点发明不同于通用LinkedList或Queue的新型数据结构RingBuffer。</p></li><li><p>号称并发未来的Actor模型被LMAX团队验证是有瓶颈的。</p></li><li><p>提出新的并发模型，每个CPU一个线程，多个CPU多个线程并发模式，摒弃了锁模式。</p></li><li><p>ORM等Hibernate没有完全解决OO的目标，关系数据库的事务也不是最后救命的稻草。LMAX用自己的事件记录的方式实现事务，这也不同于所谓内存事务STM。</p></li><li><p>架构师要分离关注，一是通过DDD降低业务的复杂性；二是通过技术探索创新，降低技术平台的复杂性，让程序员更多精力投入业务问题解决上。</p></li></ul><blockquote><p><strong>参考文档</strong></p></blockquote><blockquote><p><a href="https://www.jianshu.com/u/354cc1548a33" target="_blank" rel="noopener">【1】简书主页·share猿</a></p></blockquote><blockquote><p><a href="https://juejin.im/user/5a8e759851882524d842d174" target="_blank" rel="noopener">【2】掘金主页·share猿</a></p></blockquote><blockquote><p><a href="https://www.cnblogs.com/netfocus/archive/2012/02/12/2347919.html" target="_blank" rel="noopener">【3】LMAX架构简介·汤雪华</a></p></blockquote><hr><p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>                </div>                <div class="image-caption"></div>            </figure></p><p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;blockquote&gt;
+&lt;p&gt;万丈高楼平地起的前提是地基好.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;LMAX架构简介&quot;&gt;&lt;a href=&quot;#LMAX架构简介&quot; class=&quot;headerlink&quot; title=&quot;LMAX架构简介&quot;&gt;&lt;/a&gt;LMAX架构简介&lt;/h2
+      
+    
+    </summary>
+    
+      <category term="架构" scheme="https://lywlefan.github.io/categories/%E6%9E%B6%E6%9E%84/"/>
+    
+    
+      <category term="并发" scheme="https://lywlefan.github.io/tags/%E5%B9%B6%E5%8F%91/"/>
+    
+      <category term="LMAX" scheme="https://lywlefan.github.io/tags/LMAX/"/>
+    
+      <category term="disruptor" scheme="https://lywlefan.github.io/tags/disruptor/"/>
     
   </entry>
   
@@ -594,36 +628,6 @@
     
     
       <category term="日报" scheme="https://lywlefan.github.io/tags/%E6%97%A5%E6%8A%A5/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>我的文章收藏夹</title>
-    <link href="https://lywlefan.github.io/2019/05/24/%E6%96%87%E7%AB%A0%E6%94%B6%E8%97%8F/"/>
-    <id>https://lywlefan.github.io/2019/05/24/文章收藏/</id>
-    <published>2019-05-23T16:00:00.000Z</published>
-    <updated>2019-05-28T01:29:02.530Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>好记性不如烂笔头!</p></blockquote><h2 id="1-技术栈"><a href="#1-技术栈" class="headerlink" title="1.技术栈"></a>1.技术栈</h2><h3 id="WEB开发"><a href="#WEB开发" class="headerlink" title="WEB开发"></a>WEB开发</h3><h4 id="前端"><a href="#前端" class="headerlink" title="前端"></a>前端</h4><h4 id="后端"><a href="#后端" class="headerlink" title="后端"></a>后端</h4><h5 id="java"><a href="#java" class="headerlink" title="java"></a>java</h5><ul><li><p>基础</p></li><li><p>springboot</p><ul><li><p>监控</p><ul><li><a href="https://grafana.com" target="_blank" rel="noopener">grafana</a></li></ul></li></ul></li></ul><h5 id="python"><a href="#python" class="headerlink" title="python"></a>python</h5><ul><li><p>基础</p><ul><li><a href="https://github.com/jackfrued/Python-100-Days" target="_blank" rel="noopener">Python - 100天从新手到大师·骆昊</a></li></ul></li></ul><h3 id="1-2-高级技术"><a href="#1-2-高级技术" class="headerlink" title="1.2.高级技术"></a>1.2.高级技术</h3><h4 id="1-2-1-深度学习"><a href="#1-2-1-深度学习" class="headerlink" title="1.2.1.深度学习"></a>1.2.1.深度学习</h4><blockquote><p><a href="https://www.jianshu.com/u/354cc1548a33" target="_blank" rel="noopener">【1】简书主页·share猿</a><br><a href="https://juejin.im/user/5a8e759851882524d842d174" target="_blank" rel="noopener">【2】掘金主页·share猿</a></p></blockquote><hr><p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>                </div>                <div class="image-caption"></div>            </figure></p><p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;blockquote&gt;
-&lt;p&gt;好记性不如烂笔头!&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&quot;1-技术栈&quot;&gt;&lt;a href=&quot;#1-技术栈&quot; class=&quot;headerlink&quot; title=&quot;1.技术栈&quot;&gt;&lt;/a&gt;1.技术栈&lt;/h2&gt;&lt;h3 id=&quot;WEB开发&quot;&gt;&lt;a
-      
-    
-    </summary>
-    
-      <category term="收藏夹" scheme="https://lywlefan.github.io/categories/%E6%94%B6%E8%97%8F%E5%A4%B9/"/>
-    
-    
-      <category term="收藏" scheme="https://lywlefan.github.io/tags/%E6%94%B6%E8%97%8F/"/>
-    
-      <category term="文章" scheme="https://lywlefan.github.io/tags/%E6%96%87%E7%AB%A0/"/>
     
   </entry>
   
