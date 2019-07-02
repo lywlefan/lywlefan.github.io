@@ -20,9 +20,9 @@
     <meta name="theme-color" content="#3F51B5">
     
     
-    <meta name="keywords" content="kafka,读书笔记,kafka核心技术与实战-胡夕">
+    <meta name="keywords" content="读书笔记,kafka,kafka核心技术与实战-胡夕">
     <meta name="description" content="阅读笔记 kafka中什么算消息丢失  什么情况下能保证kafka消息不丢失   一句话概括,Kafka只对”已提交”的消息做有限度的持久化保证。 什么是已提交的消息?当kafka的若干个Broker成功的接收到一条消息并写入到日志文件之后,它们就会告诉生产者程序这条消息已成功提交。此时,这条消息在kafka看来就正式变为”已提交”消息了。 为什么是若干个Broker?这取决于”已提交”的定义,你">
-<meta name="keywords" content="kafka,读书笔记,kafka核心技术与实战-胡夕">
+<meta name="keywords" content="读书笔记,kafka,kafka核心技术与实战-胡夕">
 <meta property="og:type" content="article">
 <meta property="og:title" content="11.无消息丢失配置怎么实现？">
 <meta property="og:url" content="https://lywlefan.github.io/2019/07/01/中间件/kafka/读书笔记/kafka核心技术与实战-胡夕/11.无消息丢失配置怎么实现？/index.html">
@@ -128,7 +128,7 @@
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
@@ -280,7 +280,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2019-07-01T07:43:27.779Z" itemprop="dateUpdated">2019-07-01 15:43:27</time>
+    最后更新时间：<time datetime="2019-07-01T07:43:27.779Z" itemprop="dateUpdated">2019-07-01 15:43:27</time>
 </span><br>
 
 
@@ -361,14 +361,21 @@
     </div>
 
     
-<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2019/07/02/中间件/kafka/读书笔记/kafka核心技术与实战-胡夕/12.客户端都有哪些不常见但是很高级的功能？/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">12.客户端都有哪些不常见但是很高级的功能？</h4>
+      </a>
+    </div>
   
 
   
     <div class="waves-block waves-effect next">
-      <a href="/2019/07/01/中间件/kafka/读书笔记/kafka核心技术与实战-胡夕/12.客户端都有哪些不常见但是很高级的功能？/" id="post-next" class="post-nav-link">
+      <a href="/2019/06/28/中间件/kafka/读书笔记/kafka核心技术与实战-胡夕/10.生产者压缩算法面面观/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">12.客户端都有哪些不常见但是很高级的功能？</h4>
+        <h4 class="title">10.生产者压缩算法面面观</h4>
       </a>
     </div>
   
@@ -469,7 +476,7 @@
             
                 <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
             
-            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
         </p>
     </div>
     <div class="bottom">

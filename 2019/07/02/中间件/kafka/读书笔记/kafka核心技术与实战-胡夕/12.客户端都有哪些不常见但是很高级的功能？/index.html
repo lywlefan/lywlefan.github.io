@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>12.客户端都有哪些不常见但是很高级的功能？ | share猿 | https://lywlefan.github.io/</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="读书笔记,kafka,kafka核心技术与实战-胡夕">
+    <meta name="description" content="阅读笔记kafka 拦截器拦截器的原理和spring的拦截器的原理类似，可以做消息处理前后多个点的动态植入不同的处理逻辑。比如消息发送前或者在消息消费后。 kafka拦截器分为生产者拦截器和消费者拦截器。 生产拦截器允许你在发送消息前以及消息提交后植入你的拦截器逻辑； 消费拦截器支持在消费消息前以及提交位移后编写特定逻辑。 两种拦截器都支持链的方式，kafka会按序执行拦截器逻辑。 ###如何编写">
+<meta name="keywords" content="读书笔记,kafka,kafka核心技术与实战-胡夕">
+<meta property="og:type" content="article">
+<meta property="og:title" content="12.客户端都有哪些不常见但是很高级的功能？">
+<meta property="og:url" content="https://lywlefan.github.io/2019/07/02/中间件/kafka/读书笔记/kafka核心技术与实战-胡夕/12.客户端都有哪些不常见但是很高级的功能？/index.html">
+<meta property="og:site_name" content="share猿">
+<meta property="og:description" content="阅读笔记kafka 拦截器拦截器的原理和spring的拦截器的原理类似，可以做消息处理前后多个点的动态植入不同的处理逻辑。比如消息发送前或者在消息消费后。 kafka拦截器分为生产者拦截器和消费者拦截器。 生产拦截器允许你在发送消息前以及消息提交后植入你的拦截器逻辑； 消费拦截器支持在消费消息前以及提交位移后编写特定逻辑。 两种拦截器都支持链的方式，kafka会按序执行拦截器逻辑。 ###如何编写">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-07-02T05:47:03.388Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="12.客户端都有哪些不常见但是很高级的功能？">
+<meta name="twitter:description" content="阅读笔记kafka 拦截器拦截器的原理和spring的拦截器的原理类似，可以做消息处理前后多个点的动态植入不同的处理逻辑。比如消息发送前或者在消息消费后。 kafka拦截器分为生产者拦截器和消费者拦截器。 生产拦截器允许你在发送消息前以及消息提交后植入你的拦截器逻辑； 消费拦截器支持在消费消息前以及提交位移后编写特定逻辑。 两种拦截器都支持链的方式，kafka会按序执行拦截器逻辑。 ###如何编写">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+    
+        <link rel="alternate" type="application/atom+xml" title="share猿" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">share猿</h5>
+          <a href="mailto:330334064@qq.com" title="330334064@qq.com" class="mail">330334064@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/lywlefan" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                GitHub
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/atom">
+                <i class="icon icon-lg icon-rss"></i>
+                订阅
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">12.客户端都有哪些不常见但是很高级的功能？</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">12.客户端都有哪些不常见但是很高级的功能？</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-07-01T16:00:00.000Z" itemprop="datePublished" class="page-time">
+  2019-07-02
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/中间件/">中间件</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#阅读笔记"><span class="post-toc-number">1.</span> <span class="post-toc-text">阅读笔记</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#kafka-拦截器"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">kafka 拦截器</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#典型使用场景"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">典型使用场景</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#案例分享"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">案例分享</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#小结"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">小结</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-中间件/kafka/读书笔记/kafka核心技术与实战-胡夕/12.客户端都有哪些不常见但是很高级的功能？" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">12.客户端都有哪些不常见但是很高级的功能？</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-07-02 00:00:00" datetime="2019-07-01T16:00:00.000Z" itemprop="datePublished">2019-07-02</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/中间件/">中间件</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h2 id="阅读笔记"><a href="#阅读笔记" class="headerlink" title="阅读笔记"></a>阅读笔记</h2><h3 id="kafka-拦截器"><a href="#kafka-拦截器" class="headerlink" title="kafka 拦截器"></a>kafka 拦截器</h3><p>拦截器的原理和spring的拦截器的原理类似，可以做消息处理前后多个点的动态植入不同的处理逻辑。比如消息发送前或者在消息消费后。</p>
+<p>kafka拦截器分为生产者拦截器和消费者拦截器。</p>
+<p>生产拦截器允许你在发送消息前以及消息提交后植入你的拦截器逻辑；</p>
+<p>消费拦截器支持在消费消息前以及提交位移后编写特定逻辑。</p>
+<p>两种拦截器都支持链的方式，kafka会按序执行拦截器逻辑。</p>
+<p>###如何编写拦截器？</p>
+<ul>
+<li><p>生产者拦截器继承接口ProducerInterceptor</p>
+<ul>
+<li><p>onSend：消息调用前被调用</p>
+</li>
+<li><p>onAcknowledgement：消息提交成功或发送失败后被调用。这个方法要早于callback。这个方法和onSend不是在同一个线程里面调用，因此在两个方法调用过程中调用了某个共享变量，一定要保证线程安全。这个方法处在Producer发送的主路径中，所以我们不要放一些太重逻辑进去，负责你会发现Producer的TPS直线下降。</p>
+</li>
+</ul>
+</li>
+<li><p>消费者拦截器实现ConsumerInterceptor接口</p>
+<ul>
+<li><p>onConsume：在消息返回给Consumer 程序之前调用。也就是在消息开始处理前拦截一道。</p>
+</li>
+<li><p>onCommit：Consumer 在提交位移之后调用该方法。通常你可以在该方法做一些记账类的动作，比如：日志打印。</p>
+</li>
+</ul>
+</li>
+<li><p>注意的问题</p>
+<ul>
+<li>指定拦截器要指定它们全限定名，说的直白一点就是要把包名加上</li>
+</ul>
+</li>
+</ul>
+<h3 id="典型使用场景"><a href="#典型使用场景" class="headerlink" title="典型使用场景"></a>典型使用场景</h3><ul>
+<li>客户端监控</li>
+</ul>
+<p>kafka默认提供的监控指标都是针对单个客户端或Broker的，你很难从具体消息维度去追踪群间消息的流转路径。同时如何监控一条消息从生产到最后消费的端到端延时也是很多kafka用户需要解决的问题。</p>
+<p>从技术上讲，我们可以在客户端增加这样的逻辑，但是监控一般是不跟业务代码耦合的，因为耦合会影响业务代码性能。</p>
+<p>基于以上的考虑，我们可以把监控的逻辑加到拦截器里面，这样做的好处可以实现可插拔，不耦合。    </p>
+<ul>
+<li>端到端性能检测</li>
+</ul>
+<p>同上。</p>
+<ul>
+<li>消息审计</li>
+</ul>
+<p>所谓消息审计就是可以随时查看消息的去向，什么时间发布的？被什么业务消费了？我们就可以借用kafka的拦截器实现这个场景。</p>
+<h3 id="案例分享"><a href="#案例分享" class="headerlink" title="案例分享"></a>案例分享</h3><ul>
+<li>处理端到端的延时</li>
+</ul>
+<p>统计Producer到Consumer消费时间总时长，我们消费拦截器就可以按如下来写</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AvgLatencyProducerInterceptor</span> <span class="keyword">implements</span> <span class="title">ProducerInterceptor</span>&lt;<span class="title">String</span>, <span class="title">String</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Jedis jedis; <span class="comment">// 省略 Jedis 初始化</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> ProducerRecord&lt;String, String&gt; <span class="title">onSend</span><span class="params">(ProducerRecord&lt;String, String&gt; record)</span> </span>&#123;</span><br><span class="line">        jedis.incr(<span class="string">"totalSentMessage"</span>);</span><br><span class="line">        <span class="keyword">return</span> record;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onAcknowledgement</span><span class="params">(RecordMetadata metadata, Exception exception)</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">close</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">configure</span><span class="params">(Map&lt;java.lang.String, ?&gt; configs)</span> </span>&#123;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>下面是消费端代码：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AvgLatencyConsumerInterceptor</span> <span class="keyword">implements</span> <span class="title">ConsumerInterceptor</span>&lt;<span class="title">String</span>, <span class="title">String</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Jedis jedis; <span class="comment">// 省略 Jedis 初始化</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> ConsumerRecords&lt;String, String&gt; <span class="title">onConsume</span><span class="params">(ConsumerRecords&lt;String, String&gt; records)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">long</span> lantency = <span class="number">0L</span>;</span><br><span class="line">        <span class="keyword">for</span> (ConsumerRecord&lt;String, String&gt; record : records) &#123;</span><br><span class="line">            lantency += (System.currentTimeMillis() - record.timestamp());</span><br><span class="line">        &#125;</span><br><span class="line">        jedis.incrBy(<span class="string">"totalLatency"</span>, lantency);</span><br><span class="line">        <span class="keyword">long</span> totalLatency = Long.parseLong(jedis.get(<span class="string">"totalLatency"</span>));</span><br><span class="line">        <span class="keyword">long</span> totalSentMsgs = Long.parseLong(jedis.get(<span class="string">"totalSentMessage"</span>));</span><br><span class="line">        jedis.set(<span class="string">"avgLatency"</span>, String.valueOf(totalLatency / totalSentMsgs));</span><br><span class="line">        <span class="keyword">return</span> records;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCommit</span><span class="params">(Map&lt;TopicPartition, OffsetAndMetadata&gt; offsets)</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">close</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">configure</span><span class="params">(Map&lt;String, ?&gt; configs)</span> </span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这里我们可以用redis记录消息消费的时间,到redis中我们就可以很好的进行统计了,可以很好的统计到从producer到consumer的时间了。</p>
+<h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><blockquote>
+<p><strong>参考文档</strong></p>
+</blockquote>
+<blockquote>
+<p><a href="https://www.jianshu.com/u/354cc1548a33" target="_blank" rel="noopener">【1】简书主页·share猿</a></p>
+</blockquote>
+<blockquote>
+<p><a href="https://juejin.im/user/5a8e759851882524d842d174" target="_blank" rel="noopener">【2】掘金主页·share猿</a></p>
+</blockquote>
+<hr>
+<p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
+<p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-07-02T05:47:03.388Z" itemprop="dateUpdated">2019-07-02 13:47:03</time>
+</span><br>
+
+
+        
+        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2019/07/02/中间件/kafka/读书笔记/kafka核心技术与实战-胡夕/12.客户端都有哪些不常见但是很高级的功能？/" target="_blank" rel="external">https://lywlefan.github.io/2019/07/02/中间件/kafka/读书笔记/kafka核心技术与实战-胡夕/12.客户端都有哪些不常见但是很高级的功能？/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://lywlefan.github.io">
+            <img src="/img/avatar.png" alt="share猿">
+            share猿
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/kafka/">kafka</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/kafka核心技术与实战-胡夕/">kafka核心技术与实战-胡夕</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://lywlefan.github.io/2019/07/02/中间件/kafka/读书笔记/kafka核心技术与实战-胡夕/12.客户端都有哪些不常见但是很高级的功能？/&title=《12.客户端都有哪些不常见但是很高级的功能？》 — share猿&pic=https://lywlefan.github.io/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://lywlefan.github.io/2019/07/02/中间件/kafka/读书笔记/kafka核心技术与实战-胡夕/12.客户端都有哪些不常见但是很高级的功能？/&title=《12.客户端都有哪些不常见但是很高级的功能？》 — share猿&source=分享有价值的内容,你我共同成长!" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://lywlefan.github.io/2019/07/02/中间件/kafka/读书笔记/kafka核心技术与实战-胡夕/12.客户端都有哪些不常见但是很高级的功能？/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《12.客户端都有哪些不常见但是很高级的功能？》 — share猿&url=https://lywlefan.github.io/2019/07/02/中间件/kafka/读书笔记/kafka核心技术与实战-胡夕/12.客户端都有哪些不常见但是很高级的功能？/&via=https://lywlefan.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://lywlefan.github.io/2019/07/02/中间件/kafka/读书笔记/kafka核心技术与实战-胡夕/12.客户端都有哪些不常见但是很高级的功能？/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2019/07/02/高并发/书籍/java并发编程实战-王宝令/学习攻略.如何才能学好并发编程？/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">学习攻略.如何才能学好并发编程？</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/07/01/中间件/kafka/读书笔记/kafka核心技术与实战-胡夕/11.无消息丢失配置怎么实现？/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">11.无消息丢失配置怎么实现？</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'true' == 'true',
+            verify: 'false' == 'true',
+            appId: "hQGVIAaJERVwyrWxj1uqgCqS-gzGzoHsz",
+            appKey: "l7FO5csTavNwXCGryJyOkkc1",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢赞赏!
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>share猿 &copy; 2015 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://lywlefan.github.io/2019/07/02/中间件/kafka/读书笔记/kafka核心技术与实战-胡夕/12.客户端都有哪些不常见但是很高级的功能？/&title=《12.客户端都有哪些不常见但是很高级的功能？》 — share猿&pic=https://lywlefan.github.io/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://lywlefan.github.io/2019/07/02/中间件/kafka/读书笔记/kafka核心技术与实战-胡夕/12.客户端都有哪些不常见但是很高级的功能？/&title=《12.客户端都有哪些不常见但是很高级的功能？》 — share猿&source=分享有价值的内容,你我共同成长!" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://lywlefan.github.io/2019/07/02/中间件/kafka/读书笔记/kafka核心技术与实战-胡夕/12.客户端都有哪些不常见但是很高级的功能？/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《12.客户端都有哪些不常见但是很高级的功能？》 — share猿&url=https://lywlefan.github.io/2019/07/02/中间件/kafka/读书笔记/kafka核心技术与实战-胡夕/12.客户端都有哪些不常见但是很高级的功能？/&via=https://lywlefan.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://lywlefan.github.io/2019/07/02/中间件/kafka/读书笔记/kafka核心技术与实战-胡夕/12.客户端都有哪些不常见但是很高级的功能？/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAT4AAAE+CAAAAAAxUyPsAAAFN0lEQVR42u3cUW4bSRQDwNz/0t7fBbKSSL5RsEBKX4FtjXpqDOQ12cmvX/Hr5/z693V+v/Kr7776mfdfSdb//usPv/Dhw4cPH76Ypl30++u853h/G+2qkgeTX+fl2vDhw4cPH76JLxkXku/mDyD/lJzj/fXbYSi5Pj58+PDhw/dn+PLba4HaoSfh2K6ADx8+fPjw/d/47uH+5ZqXWOGpwQgfPnz48OHb+PJ6Ox9i2shgCx0SxC3cf7jrwIcPHz58+Mqh4e/588MvfPjw4cOHr9zY3w+ZtVe+H0e7r//DmvHhw4cPH75JY9uEb0xbBJAX4Unsfhlc8OHDhw8fvgtfWxjnS7mU0E/RXICiAQgfPnz48OGb+N7fTD7EbKDtiJM/kiRu2O7oPxIXfPjw4cOHL/3J6KDYdkyt3fbfg4b3o89TIws+fPjw4cN34Us+8l5C1x1C/Flb7Z0zfVg/Pnz48OHDN/G1w8SFIFnJ9rDzyuESOkSNBz58+PDhw/fbuzamy9DTDhZtJd+uqi3OT9McPnz48OH76/lylKcChTZu2EL87TFsww0+fPjw4cOX8+Ub+DxW2MaIdkTY1pMX/9Ga8eHDhw8fvmXNp5i7jcvzR9Ieg0sChWfLe3z48OHDh+8pvnzpCWI7grSfuA0ubfTw4V7w4cOHDx++gC+PxdsN9lM30EYG7QCUH62LEg58+PDhw4cv4GvD9A1u2+rfw4V7rv5SAB8+fPjw4Sv53o8vlyo9KZu3YiAvvy81f/Fg8OHDhw8fvomvyPWn8D0PwdsgY1tb+64PkT0+fPjw4cMX8P3Ery3Q/0ZBnjykth4Y6398+PDhw4dv4nvqL/KN9RtraMegdtzBhw8fPnz4Lnzt0JAH/UkUngwcz14tH1yighwfPnz48OErPzc/Fpa/qz3udo8AkgJ+q/w/jEf48OHDhw9fzHe5vfbAWRvc50NVu4bL4IIPHz58+PDd+dobTkDbKnqDTh7A96oCfPjw4cOHb+NrB5cc9Nlaul1PXki074rs8eHDhw8fvngcSTbMl/h+q+cv12/r9jaqwIcPHz58+BK+tpDebnLburePp93wbwV8PfXgw4cPHz58h3J6u9Vtw98+kmRwudcSL8N6fPjw4cOHL+ZrR41kZLmH4DlHG2e0lFHKgg8fPnz48KW59PhPkbdYPKfPy4PL6HM5bIcPHz58+PC1fJc6fKvV28GlpXlqKImujw8fPnz48JV8l5jg2WI7J8iLhJ/gldxv0b3jw4cPHz583dmt03+etS1i29gn179cbavV8eHDhw8fvo2vvbFn6+0LVk7ZBhMRIj58+PDhw/eWb6vDk6XUm+2vFeRtBF+UCvjw4cOHD9/Ed48GtrC+LcKTQeo+uxWPEB8+fPjw4Tvw5Ytoj4jl+fZWdedjx3ao7iU6Pnz48OHDV/IVKX75M5cgPt+05xD549mGIXz48OHDhy/h224jj7zbYmAjyMOIrVp4+ZP48OHDhw/fxJeHAm1M0KJcavXk0W7QRauPDx8+fPjwlXzt4LINQNs2PvnKNn6Ngxc+fPjw4cO37NlPI0J7CCyv4S/V9ftbbUOKujLHhw8fPnz43n7uFtC3xfb9GFn+kLbfkXFwwYcPHz58+Ca+vB5uKdut+zcGqTvuy3fhw4cPHz58f4TvMqy09NuqLmV58Zjx4cOHDx++L/O1wUG76Lw+3+KGrYbHhw8fPnz4nuXLh4wNsT3stQ0fbSRx+dXBhw8fPnz4Nr42pN428/k1LwPHVvA/UJbjw4cPHz58n7/7D+o7AsFnplNOAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '欢迎回来！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '欢迎欢迎!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

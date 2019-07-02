@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>01.可见性、原子性和有序性问题：并发编程Bug的源头 | share猿 | https://lywlefan.github.io/</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="并发,读书笔记,java并发编程实战-王宝令">
+    <meta name="description" content="阅读笔记 可见性  原子性  有序性   并发幕后的故事这些年，我们的 CPU、内存、I/O 设备都在不断迭代，不断朝着更快的方向努力。但是，在这个快速发展的过程中，有一个核心矛盾一直存在，就是这三者的速度差异。 CPU和内存速度差异可以形象描述:CPU是天上一天，内存是地上一年。内存和I/O设备速度差异就更大了，内存是天山一天，I/O设备是地上十年。 大部分程序是需要访问内存，有些还要访问I/O">
+<meta name="keywords" content="并发,读书笔记,java并发编程实战-王宝令">
+<meta property="og:type" content="article">
+<meta property="og:title" content="01.可见性、原子性和有序性问题：并发编程Bug的源头">
+<meta property="og:url" content="https://lywlefan.github.io/2019/07/02/高并发/书籍/java并发编程实战-王宝令/01.可见性、原子性和有序性问题：并发编程Bug的源头 /index.html">
+<meta property="og:site_name" content="share猿">
+<meta property="og:description" content="阅读笔记 可见性  原子性  有序性   并发幕后的故事这些年，我们的 CPU、内存、I/O 设备都在不断迭代，不断朝着更快的方向努力。但是，在这个快速发展的过程中，有一个核心矛盾一直存在，就是这三者的速度差异。 CPU和内存速度差异可以形象描述:CPU是天上一天，内存是地上一年。内存和I/O设备速度差异就更大了，内存是天山一天，I/O设备是地上十年。 大部分程序是需要访问内存，有些还要访问I/O">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/3084894-daaffaf66a9ac336.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/3084894-e90b1d6bad3f4d22.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-07-02T10:17:56.188Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="01.可见性、原子性和有序性问题：并发编程Bug的源头">
+<meta name="twitter:description" content="阅读笔记 可见性  原子性  有序性   并发幕后的故事这些年，我们的 CPU、内存、I/O 设备都在不断迭代，不断朝着更快的方向努力。但是，在这个快速发展的过程中，有一个核心矛盾一直存在，就是这三者的速度差异。 CPU和内存速度差异可以形象描述:CPU是天上一天，内存是地上一年。内存和I/O设备速度差异就更大了，内存是天山一天，I/O设备是地上十年。 大部分程序是需要访问内存，有些还要访问I/O">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/3084894-daaffaf66a9ac336.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+    
+        <link rel="alternate" type="application/atom+xml" title="share猿" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">share猿</h5>
+          <a href="mailto:330334064@qq.com" title="330334064@qq.com" class="mail">330334064@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/lywlefan" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                GitHub
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/atom">
+                <i class="icon icon-lg icon-rss"></i>
+                订阅
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">01.可见性、原子性和有序性问题：并发编程Bug的源头</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">01.可见性、原子性和有序性问题：并发编程Bug的源头</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-07-01T16:00:00.000Z" itemprop="datePublished" class="page-time">
+  2019-07-02
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/高并发/">高并发</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#阅读笔记"><span class="post-toc-number">1.</span> <span class="post-toc-text">阅读笔记</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#并发幕后的故事"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">并发幕后的故事</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#源头之一：缓存导致的可见性问题"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">源头之一：缓存导致的可见性问题</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#单核时代"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">单核时代</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#多核时代"><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">多核时代</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#源头之二：线程切换带来的原子性问题"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">源头之二：线程切换带来的原子性问题</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-高并发/书籍/java并发编程实战-王宝令/01.可见性、原子性和有序性问题：并发编程Bug的源头 " class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">01.可见性、原子性和有序性问题：并发编程Bug的源头</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-07-02 00:00:00" datetime="2019-07-01T16:00:00.000Z" itemprop="datePublished">2019-07-02</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/高并发/">高并发</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h2 id="阅读笔记"><a href="#阅读笔记" class="headerlink" title="阅读笔记"></a>阅读笔记</h2><ul>
+<li><p>可见性</p>
+</li>
+<li><p>原子性</p>
+</li>
+<li><p>有序性</p>
+</li>
+</ul>
+<h3 id="并发幕后的故事"><a href="#并发幕后的故事" class="headerlink" title="并发幕后的故事"></a>并发幕后的故事</h3><p>这些年，我们的 CPU、内存、I/O 设备都在不断迭代，不断朝着更快的方向努力。但是，在这个快速发展的过程中，<strong>有一个核心矛盾一直存在，就是这三者的速度差异</strong>。</p>
+<p>CPU和内存速度差异可以形象描述:CPU是天上一天，内存是地上一年。内存和I/O设备速度差异就更大了，内存是天山一天，I/O设备是地上十年。</p>
+<p>大部分程序是需要访问内存，有些还要访问I/O,所以单方面提高CPU性能是无效的。</p>
+<p>为了合理利用CPU高性能，平衡三者的速度差异，计算机体系/操作系统/编译程序都做了很大的贡献，主要体现在以下几点：</p>
+<ul>
+<li><p>CPU增加了缓存，以均衡速度差异</p>
+</li>
+<li><p>操作系统增加了进程/线程，以分时复用CPU，进而均衡CPU与I/O设备的速度差异；</p>
+</li>
+<li><p>编译程序优化指令执行次序，使得缓存能够更加合理的利用。</p>
+</li>
+</ul>
+<h3 id="源头之一：缓存导致的可见性问题"><a href="#源头之一：缓存导致的可见性问题" class="headerlink" title="源头之一：缓存导致的可见性问题"></a>源头之一：缓存导致的可见性问题</h3><h4 id="单核时代"><a href="#单核时代" class="headerlink" title="单核时代"></a>单核时代</h4><p>单核时代，所有线程在一颗CPU上执行，CPU缓存与内存的数据一致性容易解决。</p>
+<p>一个线程对CPU的操作，其他线程都是可见的。</p>
+<p>如下图所示，线程A和线程B都是操作同一个CPU里面的缓存，线程A操作CPU变量V之后，线程B再访问就一定可以得到最新值：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://upload-images.jianshu.io/upload_images/3084894-daaffaf66a9ac336.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>一个线程对共享变量的修改，另外一个线程立刻看到，我们称为<strong>可见性</strong>。</p>
+<h4 id="多核时代"><a href="#多核时代" class="headerlink" title="多核时代"></a>多核时代</h4><p>多核时代，每颗 CPU 都有自己的缓存，这时 CPU 缓存与内存的数据一致性就没那么容易解决了。</p>
+<p>当多个线程在不同的 CPU 上执行时，这些线程操作的是不同的CPU。</p>
+<p>线程 A 操作的是 CPU-1 上的缓存，而线程B操作的是 CPU-2 上的缓存，很明显，这个时候线程 A 对变量 V 的操作对于线程B 而言就不具备可见性了。这个就属于硬件程序员给软件程序员挖的“坑”。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://upload-images.jianshu.io/upload_images/3084894-e90b1d6bad3f4d22.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="多核 CPU 的缓存与内存关系图" title>
+                </div>
+                <div class="image-caption">多核 CPU 的缓存与内存关系图</div>
+            </figure>
+<p>下面我们再用一段代码来验证一下多核场景下的可见性问题。下面的代码，每执行一次 add10K() 方法，都会循环 10000 次 count+=1 操作。在 calc() 方法中我们创建了两个线程，每个线程调用一次 add10K() 方法，我们来想一想执行 calc() 方法得到的结果应该是多少呢？</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">long</span> count = <span class="number">0</span>;</span><br><span class="line">  <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">add10K</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> idx = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(idx++ &lt; <span class="number">10000</span>) &#123;</span><br><span class="line">      count += <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">long</span> <span class="title">calc</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">final</span> Test test = <span class="keyword">new</span> Test();</span><br><span class="line">    <span class="comment">// 创建两个线程，执行 add() 操作</span></span><br><span class="line">    Thread th1 = <span class="keyword">new</span> Thread(()-&gt;&#123;</span><br><span class="line">      test.add10K();</span><br><span class="line">    &#125;);</span><br><span class="line">    Thread th2 = <span class="keyword">new</span> Thread(()-&gt;&#123;</span><br><span class="line">      test.add10K();</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="comment">// 启动两个线程</span></span><br><span class="line">    th1.start();</span><br><span class="line">    th2.start();</span><br><span class="line">    <span class="comment">// 等待两个线程执行结束</span></span><br><span class="line">    th1.join();</span><br><span class="line">    th2.join();</span><br><span class="line">    <span class="keyword">return</span> count;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>直觉可能告诉你应该是20000，但实际结果确实10000到20000之间的随机数。为什么那？因为两个线程在两cpu的核之间不断切换才导致的。</p>
+<h3 id="源头之二：线程切换带来的原子性问题"><a href="#源头之二：线程切换带来的原子性问题" class="headerlink" title="源头之二：线程切换带来的原子性问题"></a>源头之二：线程切换带来的原子性问题</h3><blockquote>
+<p>推荐书单</p>
+</blockquote>
+<p>-《Java并发编程实战》作者阵容可谓大师云集，也包括Doug Lea</p>
+<p>-《Java并发编程的艺术》讲解并发包内部实现原理，能读明白，内功大增</p>
+<p>-《图解Java多线程设计模式》并发编程设计模式方面的经典书籍</p>
+<p>-《操作系统：精髓与设计原理》经典操作系统教材</p>
+<ul>
+<li><p><a href="http://ifeve.com" target="_blank" rel="noopener">http://ifeve.com</a> 国内专业并发编程网站</p>
+</li>
+<li><p><a href="http://www.cs.umd.edu/~pugh/java/memoryModel/" target="_blank" rel="noopener">http://www.cs.umd.edu/~pugh/java/memoryModel/</a> 很多并发编程的早期资料都在这里</p>
+</li>
+</ul>
+<blockquote>
+<p><strong>参考文档</strong></p>
+</blockquote>
+<blockquote>
+<p><a href="https://www.jianshu.com/u/354cc1548a33" target="_blank" rel="noopener">【1】简书主页·share猿</a></p>
+</blockquote>
+<blockquote>
+<p><a href="https://juejin.im/user/5a8e759851882524d842d174" target="_blank" rel="noopener">【2】掘金主页·share猿</a></p>
+</blockquote>
+<hr>
+<p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
+<p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-07-02T10:17:56.188Z" itemprop="dateUpdated">2019-07-02 18:17:56</time>
+</span><br>
+
+
+        
+        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2019/07/02/高并发/书籍/java并发编程实战-王宝令/01.可见性、原子性和有序性问题：并发编程Bug的源头 /" target="_blank" rel="external">https://lywlefan.github.io/2019/07/02/高并发/书籍/java并发编程实战-王宝令/01.可见性、原子性和有序性问题：并发编程Bug的源头 /</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://lywlefan.github.io">
+            <img src="/img/avatar.png" alt="share猿">
+            share猿
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java并发编程实战-王宝令/">java并发编程实战-王宝令</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/并发/">并发</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://lywlefan.github.io/2019/07/02/高并发/书籍/java并发编程实战-王宝令/01.可见性、原子性和有序性问题：并发编程Bug的源头 /&title=《01.可见性、原子性和有序性问题：并发编程Bug的源头》 — share猿&pic=https://lywlefan.github.io/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://lywlefan.github.io/2019/07/02/高并发/书籍/java并发编程实战-王宝令/01.可见性、原子性和有序性问题：并发编程Bug的源头 /&title=《01.可见性、原子性和有序性问题：并发编程Bug的源头》 — share猿&source=分享有价值的内容,你我共同成长!" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://lywlefan.github.io/2019/07/02/高并发/书籍/java并发编程实战-王宝令/01.可见性、原子性和有序性问题：并发编程Bug的源头 /" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《01.可见性、原子性和有序性问题：并发编程Bug的源头》 — share猿&url=https://lywlefan.github.io/2019/07/02/高并发/书籍/java并发编程实战-王宝令/01.可见性、原子性和有序性问题：并发编程Bug的源头 /&via=https://lywlefan.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://lywlefan.github.io/2019/07/02/高并发/书籍/java并发编程实战-王宝令/01.可见性、原子性和有序性问题：并发编程Bug的源头 /" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/07/02/高并发/书籍/java并发编程实战-王宝令/学习攻略.如何才能学好并发编程？/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">学习攻略.如何才能学好并发编程？</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'true' == 'true',
+            verify: 'false' == 'true',
+            appId: "hQGVIAaJERVwyrWxj1uqgCqS-gzGzoHsz",
+            appKey: "l7FO5csTavNwXCGryJyOkkc1",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢赞赏!
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>share猿 &copy; 2015 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://lywlefan.github.io/2019/07/02/高并发/书籍/java并发编程实战-王宝令/01.可见性、原子性和有序性问题：并发编程Bug的源头 /&title=《01.可见性、原子性和有序性问题：并发编程Bug的源头》 — share猿&pic=https://lywlefan.github.io/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://lywlefan.github.io/2019/07/02/高并发/书籍/java并发编程实战-王宝令/01.可见性、原子性和有序性问题：并发编程Bug的源头 /&title=《01.可见性、原子性和有序性问题：并发编程Bug的源头》 — share猿&source=分享有价值的内容,你我共同成长!" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://lywlefan.github.io/2019/07/02/高并发/书籍/java并发编程实战-王宝令/01.可见性、原子性和有序性问题：并发编程Bug的源头 /" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《01.可见性、原子性和有序性问题：并发编程Bug的源头》 — share猿&url=https://lywlefan.github.io/2019/07/02/高并发/书籍/java并发编程实战-王宝令/01.可见性、原子性和有序性问题：并发编程Bug的源头 /&via=https://lywlefan.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://lywlefan.github.io/2019/07/02/高并发/书籍/java并发编程实战-王宝令/01.可见性、原子性和有序性问题：并发编程Bug的源头 /" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAT4AAAE+CAAAAAAxUyPsAAAFOUlEQVR42u3cQW7cMBAEQP//084llyAW3dNDJT7Unoy1TJGlBbY5Q/jjI359rl/JOH9f8zSHp9GS68/r+njjhQ8fPnz48MU052uSqZwnd37/6S63QPNxHleBDx8+fPjwVXznhZ2//pMpJtEhGaGbTzJCMiY+fPjw4cP3M/nOWPldzgtLfrv/GR8+fPjw4fu/fNPYsRn/Vkli85Dw4cOHDx++N/iSYv0m3HTt8I64e/yv9zrw4cOHDx+++PX2tvyn/Xz5hQ8fPnz48AVfz9Mv7Gl5fRomznOehp5pWPliZHz48OHDh6/SmNLkN8sPnE3D03SeSau+Gx8fPnz48OGb8nXl7LzgPoXYF/HPI+TvDAIcPnz48OHDV/Ftpp7c7FZZoWsw5Afpkrnhw4cPHz58G74pQRd9uo5zft/ucNs0SOHDhw8fPnwdXx4R8ggy3U13xfGuGLFpQqwWhg8fPnz48F3aWu/HzI+gdYEpj2XlQ8KHDx8+fPgqvnxzvmk/54fYujL9tAGw/yjgw4cPHz58HV8eHTq+aXO6I9gcX5u28/Hhw4cPH74pXzLdacm7iyOb1vg0uOQhrPzc4cOHDx8+fAFfvrA8QGxiUFKgz4v4t467/TEOPnz48OHDt+DbHOqaNqG7Y2d52eJz+OrWiw8fPnz48E35khDQQexDRleYmKLkM4xOGeDDhw8fPnzDELPZ9k+LC3mxYMqRL35QIDjfBR8+fPjw4YtncmtTfTeyJMHi7vt5oR8fPnz48OHb8CUXdZNIQkNeqths77vWe/4BwocPHz58+JK75K3uvESeTyInmxb0kwe2ORzwewR8+PDhw4dvwbcfOimIlxvydczaH8v74r748OHDhw9fxTcttd/a9g8iwrD0MI045Vrw4cOHDx++Zi3lP/WYFuWnfMmjSh785mMRrQgfPnz48OGL+fLS9hvFhWmAmDbapy2BvLWADx8+fPjwbfjyUJLfflocn9532pjPcQcfAnz48OHDh6/i6xrYSXzJY1BeFJg+7C5sRdfjw4cPHz58/fXjUJLHlP3f5u3wPLjcLTfgw4cPHz58U75NsX58qOtqGz4fOSkW5LEJHz58+PDh6/jeKNZPufPFdPftSg/RPPHhw4cPH74hX97A3m/CN6GhQ+mOte2b+vjw4cOHD9/T/G+VrfNg8XbU6MoQZVjBhw8fPnz4Kr5koC6C5O/fHTmf/6Cn8RRc8OHDhw8fvmDVOdw0auyv2ZQqkpCUNwa+OVmADx8+fPjwrfm6YsGtTXseL6bRJ2+3R/PHhw8fPnz4hnxJaOi+4KfHyPICejdy1yaPWun48OHDhw9fzDf9It+3qPMywfnVlfK7sv7jlfjw4cOHD1/FN92E39qcJ1v9fRH/I34l98WHDx8+fPg2fF0U2Cxvf4AsadV3ZYhpEQQfPnz48OF7g28TKfaHyboHcGvkceEeHz58+PDhO/J1N84DxPRhTBczPeJ263AbPnz48OHDt+G7FQj2y0i4u4LFrZ1+dEANHz58+PDhi/nyxnDSru5a17eiUrei5Lf48OHDhw9fx7cJDclSp+327mHkf7v5QEwjET58+PDhw/c0k2khICkKPF2TvJ8U/d9oIZTBBR8+fPjw4av4brWxu4Nl+yL+tRL89K/w4cOHDx++l/mmm/xpMzsfrQtPCX3+4cCHDx8+fPj+DV+31PyapKTeBY7uAXxzTA0fPnz48OEb8iXxIp/ENKBsCuhdO6Fr/6/a5Pjw4cOHD9/6i39axM836l05PofbFEfw4cOHDx++iu8XfMoqKW5KgAUAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '欢迎回来！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '欢迎欢迎!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
