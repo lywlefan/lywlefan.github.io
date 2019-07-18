@@ -32,7 +32,7 @@
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/3084894-daaffaf66a9ac336.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/3084894-e90b1d6bad3f4d22.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-07-03T06:56:49.803Z">
+<meta property="og:updated_time" content="2019-07-09T07:47:35.382Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="01.可见性、原子性和有序性问题：并发编程Bug的源头">
 <meta name="twitter:description" content="阅读笔记 可见性  原子性  有序性   并发幕后的故事这些年，我们的 CPU、内存、I/O 设备都在不断迭代，不断朝着更快的方向努力。但是，在这个快速发展的过程中，有一个核心矛盾一直存在，就是这三者的速度差异。 CPU和内存速度差异可以形象描述:CPU是天上一天，内存是地上一年。内存和I/O设备速度差异就更大了，内存是天山一天，I/O设备是地上十年。 大部分程序是需要访问内存，有些还要访问I/O">
@@ -130,7 +130,7 @@
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="検索">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
@@ -240,6 +240,9 @@
 <p>下面我们再用一段代码来验证一下多核场景下的可见性问题。下面的代码，每执行一次 add10K() 方法，都会循环 10000 次 count+=1 操作。在 calc() 方法中我们创建了两个线程，每个线程调用一次 add10K() 方法，我们来想一想执行 calc() 方法得到的结果应该是多少呢？</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">long</span> count = <span class="number">0</span>;</span><br><span class="line">  <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">add10K</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> idx = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(idx++ &lt; <span class="number">10000</span>) &#123;</span><br><span class="line">      count += <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">long</span> <span class="title">calc</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">final</span> Test test = <span class="keyword">new</span> Test();</span><br><span class="line">    <span class="comment">// 创建两个线程，执行 add() 操作</span></span><br><span class="line">    Thread th1 = <span class="keyword">new</span> Thread(()-&gt;&#123;</span><br><span class="line">      test.add10K();</span><br><span class="line">    &#125;);</span><br><span class="line">    Thread th2 = <span class="keyword">new</span> Thread(()-&gt;&#123;</span><br><span class="line">      test.add10K();</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="comment">// 启动两个线程</span></span><br><span class="line">    th1.start();</span><br><span class="line">    th2.start();</span><br><span class="line">    <span class="comment">// 等待两个线程执行结束</span></span><br><span class="line">    th1.join();</span><br><span class="line">    th2.join();</span><br><span class="line">    <span class="keyword">return</span> count;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>直觉可能告诉你应该是20000，但实际结果确实10000到20000之间的随机数。为什么那？因为两个线程在两cpu的核之间不断切换才导致的。</p>
+<blockquote>
+<p>G:所谓可见性问题，说白了可见性是指当多个线程访问同一个变量时，一个线程修改了这个变量的值，其他线程能够立即看得到修改的值同时可以操作这个值。</p>
+</blockquote>
 <h3 id="源头之二：线程切换带来的原子性问题"><a href="#源头之二：线程切换带来的原子性问题" class="headerlink" title="源头之二：线程切换带来的原子性问题"></a>源头之二：线程切换带来的原子性问题</h3><ul>
 <li><p>关键词：</p>
 <ul>
@@ -379,7 +382,7 @@
     <div class="content">
         
 <span class="post-time">
-    最終更新：<time datetime="2019-07-03T06:56:49.803Z" itemprop="dateUpdated">2019-07-03 14:56:49</time>
+    Last updated: <time datetime="2019-07-09T07:47:35.382Z" itemprop="dateUpdated">2019-07-09 15:47:35</time>
 </span><br>
 
 
@@ -463,18 +466,18 @@
 <nav class="post-nav flex-row flex-justify-between">
   
     <div class="waves-block waves-effect prev">
-      <a href="/2019/07/03/高并发/书籍/java并发编程实战-王宝令/02.Java内存模型：看Java如何解决可见性和有序性问题 /" id="post-prev" class="post-nav-link">
+      <a href="/2019/07/02/高并发/书籍/java并发编程实战-王宝令/学习攻略.如何才能学好并发编程？/" id="post-prev" class="post-nav-link">
         <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">02.Java内存模型：看Java如何解决可见性和有序性问题</h4>
+        <h4 class="title">学习攻略.如何才能学好并发编程？</h4>
       </a>
     </div>
   
 
   
     <div class="waves-block waves-effect next">
-      <a href="/2019/07/02/高并发/书籍/java并发编程实战-王宝令/学习攻略.如何才能学好并发编程？/" id="post-next" class="post-nav-link">
+      <a href="/2019/07/02/中间件/kafka/读书笔记/kafka核心技术与实战-胡夕/12.客户端都有哪些不常见但是很高级的功能？/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">学习攻略.如何才能学好并发编程？</h4>
+        <h4 class="title">12.客户端都有哪些不常见但是很高级的功能？</h4>
       </a>
     </div>
   
@@ -575,7 +578,7 @@
             
                 <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
             
-            <span>このブログの内容物は<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja">クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際ライセンスの下に提供されています</a></span>
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
         </p>
     </div>
     <div class="bottom">
