@@ -124,7 +124,7 @@
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="検索">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
@@ -158,13 +158,13 @@
     <ul class="post-list">
     
         <li class="post-list-item fade">
-            <article id="post-架构/LMAX架构/LMAX架构" class="article-card article-type-post" itemprop="blogPost">
+            <article id="post-基础巩固/java/java枚举的总结和学习" class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
         <time class="post-time" title="2019-06-21 00:00:00" datetime="2019-06-20T16:00:00.000Z" itemprop="datePublished">2019-06-21</time>
 
         
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/架构/">架构</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/基础巩固/">基础巩固</a></li></ul>
 
 
 
@@ -175,7 +175,7 @@
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2019/06/21/架构/LMAX架构/LMAX架构/">LMAX架构</a>
+      <a class="post-title-link" href="/2019/06/21/基础巩固/java/java枚举的总结和学习/">java枚举的总结和学习</a>
     </h3>
   
 
@@ -188,28 +188,33 @@
         
 万丈高楼平地起的前提是地基好.
 
-LMAX架构简介
-                
-                    
-                    
-                
-                
-            
+枚举基础规范
+实例常量用大写
 
-                
-                    
-                    
-    ...
+enum是个类(特别实用的特性,可以在switch语句中使用)
+
+
+方法
+toString:显示某个实例的名字
+
+ordinal:显示常量的顺序
+
+static values:按枚举常量顺序,产生常量构成的数组.
+
+枚举类可以实现一个接口
+
+
+使用常量123public enum Color &#123;    RED, G...
     
 
-        <a href="/2019/06/21/架构/LMAX架构/LMAX架构/" class="post-more waves-effect waves-button">
-            続きを読む…
+        <a href="/2019/06/21/基础巩固/java/java枚举的总结和学习/" class="post-more waves-effect waves-button">
+            Continue reading...
         </a>
     </div>
     
     <div class="post-footer">
         
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LMAX/">LMAX</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/并发/">并发</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/基础/">基础</a></li></ul>
 
     </div>
     
@@ -251,7 +256,7 @@ LMAX架构简介
     
 
         <a href="/2019/06/17/指导思想/方法论/学习的方法论/" class="post-more waves-effect waves-button">
-            続きを読む…
+            Continue reading...
         </a>
     </div>
     
@@ -300,7 +305,7 @@ LMAX架构简介
     
 
         <a href="/2019/06/16/读书/2019/7月/富爸爸投资指南/" class="post-more waves-effect waves-button">
-            続きを読む…
+            Continue reading...
         </a>
     </div>
     
@@ -348,13 +353,60 @@ LMAX架构简介
     
 
         <a href="/2019/06/16/读书/2019/6月/用得上的商学课-骆骋/" class="post-more waves-effect waves-button">
-            続きを読む…
+            Continue reading...
         </a>
     </div>
     
     <div class="post-footer">
         
 	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/商学/">商学</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/常识/">常识</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-指导思想/java/微服务架构的理论基础 - 康威定律" class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2019-06-05 00:00:00" datetime="2019-06-04T16:00:00.000Z" itemprop="datePublished">2019-06-05</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/指导思想/">指导思想</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2019/06/05/指导思想/java/微服务架构的理论基础 - 康威定律/">微服务架构的理论基础 - 康威定律</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        概述&emsp;&emsp;关于微服务的介绍，可以参考微服务那点事。
+&emsp;&emsp;微服务是最近非常火热的新概念，大家都在追，也都觉得很对，但是似乎没有很充足的理论基础说明这是正确的，给人的感觉是 不明觉厉 。前段时间看了Mike Amundsen 《远距离条件下的康威定律——分布式世界中实现团队构建》（是Design RESTful API的作者）在InfoQ上的一个分享，觉得很...
+    
+
+        <a href="/2019/06/05/指导思想/java/微服务架构的理论基础 - 康威定律/" class="post-more waves-effect waves-button">
+            Continue reading...
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/微服务/">微服务</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/指导思想/">指导思想</a></li></ul>
 
     </div>
     
@@ -412,60 +464,13 @@ HashMap&amp;LinkedHashMap&amp;TreeMap&amp;CouncurrentHash...
     
 
         <a href="/2019/06/05/指导思想/java/java整体脉络总结/" class="post-more waves-effect waves-button">
-            続きを読む…
+            Continue reading...
         </a>
     </div>
     
     <div class="post-footer">
         
 	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java基础/">java基础</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/指导思想/">指导思想</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-指导思想/java/微服务架构的理论基础 - 康威定律" class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2019-06-05 00:00:00" datetime="2019-06-04T16:00:00.000Z" itemprop="datePublished">2019-06-05</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/指导思想/">指导思想</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2019/06/05/指导思想/java/微服务架构的理论基础 - 康威定律/">微服务架构的理论基础 - 康威定律</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        概述&emsp;&emsp;关于微服务的介绍，可以参考微服务那点事。
-&emsp;&emsp;微服务是最近非常火热的新概念，大家都在追，也都觉得很对，但是似乎没有很充足的理论基础说明这是正确的，给人的感觉是 不明觉厉 。前段时间看了Mike Amundsen 《远距离条件下的康威定律——分布式世界中实现团队构建》（是Design RESTful API的作者）在InfoQ上的一个分享，觉得很...
-    
-
-        <a href="/2019/06/05/指导思想/java/微服务架构的理论基础 - 康威定律/" class="post-more waves-effect waves-button">
-            続きを読む…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/微服务/">微服务</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/指导思想/">指导思想</a></li></ul>
 
     </div>
     
@@ -521,7 +526,7 @@ HashMap&amp;LinkedHashMap&amp;TreeMap&amp;CouncurrentHash...
     
 
         <a href="/2019/05/30/读书/2019/5月/成事-冯唐/" class="post-more waves-effect waves-button">
-            続きを読む…
+            Continue reading...
         </a>
     </div>
     
@@ -600,7 +605,7 @@ Velocity
     
 
         <a href="/2019/05/28/工具/常用工具收集/" class="post-more waves-effect waves-button">
-            続きを読む…
+            Continue reading...
         </a>
     </div>
     
@@ -663,7 +668,7 @@ Velocity
     
 
         <a href="/2019/05/27/名言收录/" class="post-more waves-effect waves-button">
-            続きを読む…
+            Continue reading...
         </a>
     </div>
     
@@ -725,7 +730,7 @@ Velocity
     
 
         <a href="/2019/05/27/自律给我自由,自律让我成长/" class="post-more waves-effect waves-button">
-            続きを読む…
+            Continue reading...
         </a>
     </div>
     
@@ -768,7 +773,7 @@ Velocity
             
                 <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
             
-            <span>このブログの内容物は<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja">クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際ライセンスの下に提供されています</a></span>
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
         </p>
     </div>
     <div class="bottom">
