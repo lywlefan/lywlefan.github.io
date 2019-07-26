@@ -691,7 +691,7 @@ kafka中什么算消息丢失
         </li>
     
         <li class="post-list-item fade">
-            <article id="post-中间件/kafka/读书笔记/kafka核心技术与实战-胡夕/10.生产者压缩算法面面观" class="article-card article-type-post" itemprop="blogPost">
+            <article id="post-中间件/kafka/读书笔记/kafka核心技术与实战-胡夕/09.生产者消息分区机制原理剖析" class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
         <time class="post-time" title="2019-06-28 00:00:00" datetime="2019-06-27T16:00:00.000Z" itemprop="datePublished">2019-06-28</time>
@@ -708,7 +708,7 @@ kafka中什么算消息丢失
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2019/06/28/中间件/kafka/读书笔记/kafka核心技术与实战-胡夕/10.生产者压缩算法面面观/">10.生产者压缩算法面面观</a>
+      <a class="post-title-link" href="/2019/06/28/中间件/kafka/读书笔记/kafka核心技术与实战-胡夕/09.生产者消息分区机制原理剖析/">09.生产者消息分区机制原理剖析</a>
     </h3>
   
 
@@ -718,33 +718,25 @@ kafka中什么算消息丢失
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        阅读笔记
-消息压缩
+        阅读笔记生产者消息分区机制原理剖析
+如何将大的数据均匀的分配到Kafka的各个Broker上？
 
-GZIP
-
-Snappy
-
-Zero Copy(零拷贝技术)
-
-何时压缩
+为什么分区？
 
 
-笔记压缩算法笔记
-GZIP
+为什么分区？
+三级结构：主题-分区-消息
 
-Snappy
-
-LZ4
-
-Zstandard(zstd):2.1.0开始，facebook开源的压缩算法，能够提高超高性能压缩比。
+主题下的每条消息只会保存在某一个分区中，而不会在多个分区中被保存多份
 
 
-如何压缩
-v1（kafka 0.11.0之前）:message set, message ,v2（kafka 0.11.0以后）...
+
+疑问:为什么kafka要这样设计？有什么好处？
+
+回答:我们设想一个问题，我们在学校找一个学生，如果我们直接把学生集中在一起去找是不是很麻烦，很低效。换种方式...
     
 
-        <a href="/2019/06/28/中间件/kafka/读书笔记/kafka核心技术与实战-胡夕/10.生产者压缩算法面面观/" class="post-more waves-effect waves-button">
+        <a href="/2019/06/28/中间件/kafka/读书笔记/kafka核心技术与实战-胡夕/09.生产者消息分区机制原理剖析/" class="post-more waves-effect waves-button">
             Continue reading...
         </a>
     </div>
