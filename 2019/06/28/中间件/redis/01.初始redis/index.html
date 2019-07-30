@@ -20,20 +20,20 @@
     <meta name="theme-color" content="#3F51B5">
     
     
-    <meta name="keywords" content="redis,学习笔记">
-    <meta name="description" content="redis是什么?redis是一个内存型数据(in-memory data structure store)。 redis支持什么数据类型字符类型(strings)哈希类型(hashes)list集合类型(lists)set集合类型(sets) 不允许重复  无序   sorted set集合类型(sorted sets) 不允许重复  有序(通过设置分数进行排序)   位图(bitmaps) 按">
-<meta name="keywords" content="redis,学习笔记">
+    <meta name="keywords" content="redis,redis基础">
+    <meta name="description" content="redis是什么?redis是一个内存型数据(in-memory data structure store)。Redis是用ANSI C编写的。 官网对redis关键词描述 开源内存数据库  可以进行缓存和消息代理  支持的数据类型有：字符串/hash/list/set/bitmaps/hyperloglogs  可以对集合进行排序  地理位置范围半径查询  支持流  内置复制功能  支持lua脚">
+<meta name="keywords" content="redis,redis基础">
 <meta property="og:type" content="article">
 <meta property="og:title" content="01.初始redis">
 <meta property="og:url" content="https://lywlefan.github.io/2019/06/28/中间件/redis/01.初始redis/index.html">
 <meta property="og:site_name" content="share猿">
-<meta property="og:description" content="redis是什么?redis是一个内存型数据(in-memory data structure store)。 redis支持什么数据类型字符类型(strings)哈希类型(hashes)list集合类型(lists)set集合类型(sets) 不允许重复  无序   sorted set集合类型(sorted sets) 不允许重复  有序(通过设置分数进行排序)   位图(bitmaps) 按">
+<meta property="og:description" content="redis是什么?redis是一个内存型数据(in-memory data structure store)。Redis是用ANSI C编写的。 官网对redis关键词描述 开源内存数据库  可以进行缓存和消息代理  支持的数据类型有：字符串/hash/list/set/bitmaps/hyperloglogs  可以对集合进行排序  地理位置范围半径查询  支持流  内置复制功能  支持lua脚">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-07-27T10:22:47.209Z">
+<meta property="og:updated_time" content="2019-07-30T07:52:30.470Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="01.初始redis">
-<meta name="twitter:description" content="redis是什么?redis是一个内存型数据(in-memory data structure store)。 redis支持什么数据类型字符类型(strings)哈希类型(hashes)list集合类型(lists)set集合类型(sets) 不允许重复  无序   sorted set集合类型(sorted sets) 不允许重复  有序(通过设置分数进行排序)   位图(bitmaps) 按">
+<meta name="twitter:description" content="redis是什么?redis是一个内存型数据(in-memory data structure store)。Redis是用ANSI C编写的。 官网对redis关键词描述 开源内存数据库  可以进行缓存和消息代理  支持的数据类型有：字符串/hash/list/set/bitmaps/hyperloglogs  可以对集合进行排序  地理位置范围半径查询  支持流  内置复制功能  支持lua脚">
 <meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
     
         <link rel="alternate" type="application/atom+xml" title="share猿" href="/atom.xml">
@@ -169,7 +169,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#redis是什么"><span class="post-toc-number">1.</span> <span class="post-toc-text">redis是什么?</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#redis支持什么数据类型"><span class="post-toc-number">2.</span> <span class="post-toc-text">redis支持什么数据类型</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#字符类型-strings"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">字符类型(strings)</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#哈希类型-hashes"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">哈希类型(hashes)</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#list集合类型-lists"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">list集合类型(lists)</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#set集合类型-sets"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">set集合类型(sets)</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#sorted-set集合类型-sorted-sets"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">sorted set集合类型(sorted sets)</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#位图-bitmaps"><span class="post-toc-number">2.6.</span> <span class="post-toc-text">位图(bitmaps)</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#hyperloglogs"><span class="post-toc-number">2.7.</span> <span class="post-toc-text">hyperloglogs</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#数据结构描述"><span class="post-toc-number">2.7.1.</span> <span class="post-toc-text">数据结构描述</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#特征"><span class="post-toc-number">2.7.2.</span> <span class="post-toc-text">特征</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#适用场景"><span class="post-toc-number">2.7.3.</span> <span class="post-toc-text">适用场景</span></a></li></ol></li></ol></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#redis是什么"><span class="post-toc-number">1.</span> <span class="post-toc-text">redis是什么?</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#官网对redis关键词描述"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">官网对redis关键词描述</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#redis支持什么数据类型"><span class="post-toc-number">2.</span> <span class="post-toc-text">redis支持什么数据类型</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#字符类型-strings"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">字符类型(strings)</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#哈希类型-hashes"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">哈希类型(hashes)</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#list集合类型-lists"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">list集合类型(lists)</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#set集合类型-sets"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">set集合类型(sets)</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#sorted-set集合类型-sorted-sets"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">sorted set集合类型(sorted sets)</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#位图-bitmaps"><span class="post-toc-number">2.6.</span> <span class="post-toc-text">位图(bitmaps)</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#hyperloglogs"><span class="post-toc-number">2.7.</span> <span class="post-toc-text">hyperloglogs</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#数据结构描述"><span class="post-toc-number">2.7.1.</span> <span class="post-toc-text">数据结构描述</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#特征"><span class="post-toc-number">2.7.2.</span> <span class="post-toc-text">特征</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#适用场景"><span class="post-toc-number">2.7.3.</span> <span class="post-toc-text">适用场景</span></a></li></ol></li></ol></li></ol>
         </nav>
     </aside>
 
@@ -194,7 +194,31 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <h3 id="redis是什么"><a href="#redis是什么" class="headerlink" title="redis是什么?"></a>redis是什么?</h3><p>redis是一个内存型数据(in-memory data structure store)。</p>
+            <h3 id="redis是什么"><a href="#redis是什么" class="headerlink" title="redis是什么?"></a>redis是什么?</h3><p>redis是一个内存型数据(in-memory data structure store)。Redis是用ANSI C编写的。</p>
+<h4 id="官网对redis关键词描述"><a href="#官网对redis关键词描述" class="headerlink" title="官网对redis关键词描述"></a>官网对redis关键词描述</h4><ul>
+<li><p>开源内存数据库</p>
+</li>
+<li><p>可以进行缓存和消息代理</p>
+</li>
+<li><p>支持的数据类型有：字符串/hash/list/set/bitmaps/hyperloglogs</p>
+</li>
+<li><p>可以对集合进行排序</p>
+</li>
+<li><p>地理位置范围半径查询</p>
+</li>
+<li><p>支持流</p>
+</li>
+<li><p>内置复制功能</p>
+</li>
+<li><p>支持lua脚本</p>
+</li>
+<li><p>LRU缓存淘汰算法</p>
+</li>
+<li><p>磁盘级的持久化</p>
+</li>
+<li><p>redis集群</p>
+</li>
+</ul>
 <h3 id="redis支持什么数据类型"><a href="#redis支持什么数据类型" class="headerlink" title="redis支持什么数据类型"></a>redis支持什么数据类型</h3><h4 id="字符类型-strings"><a href="#字符类型-strings" class="headerlink" title="字符类型(strings)"></a>字符类型(strings)</h4><h4 id="哈希类型-hashes"><a href="#哈希类型-hashes" class="headerlink" title="哈希类型(hashes)"></a>哈希类型(hashes)</h4><h4 id="list集合类型-lists"><a href="#list集合类型-lists" class="headerlink" title="list集合类型(lists)"></a>list集合类型(lists)</h4><h4 id="set集合类型-sets"><a href="#set集合类型-sets" class="headerlink" title="set集合类型(sets)"></a>set集合类型(sets)</h4><ul>
 <li><p>不允许重复</p>
 </li>
@@ -217,16 +241,50 @@
 <ul>
 <li>占用内存小</li>
 </ul>
-<h4 id="hyperloglogs"><a href="#hyperloglogs" class="headerlink" title="hyperloglogs"></a>hyperloglogs</h4><h5 id="数据结构描述"><a href="#数据结构描述" class="headerlink" title="数据结构描述"></a>数据结构描述</h5><h5 id="特征"><a href="#特征" class="headerlink" title="特征"></a>特征</h5><ul>
+<h4 id="hyperloglogs"><a href="#hyperloglogs" class="headerlink" title="hyperloglogs"></a>hyperloglogs</h4><ul>
+<li><p>Redis 在 2.8.9 版本添加了 HyperLogLog 结构</p>
+</li>
+<li><p>Redis HyperLogLog 是用来做基数统计的算法，HyperLogLog 的优点是，在输入元素的数量或者体积非常非常大时，计算基数所需的空间总是固定 的、并且是很小的。</p>
+</li>
+<li><p>在 Redis 里面，每个 HyperLogLog 键只需要花费 12 KB 内存，就可以计算接近 2^64 个不同元素的基数。这和计算基数时，元素越多耗费内存就越多的集合形成鲜明对比。</p>
+</li>
+<li><p>因为 HyperLogLog 只会根据输入元素来计算基数，而不会储存输入元素本身，所以 HyperLogLog 不能像集合那样，返回输入的各个元素。</p>
+</li>
+<li><p>HyperLogLog是一种算法，并非redis独有</p>
+</li>
+<li><p>目的是做基数统计，故不是集合，不会保存元数据，只记录数量而不是数值。</p>
+</li>
+<li><p>耗空间极小，支持输入非常体积的数据量</p>
+</li>
+<li><p>核心是基数估算算法，主要表现为计算时内存的使用和数据合并的处理。最终数值存在一定误差</p>
+</li>
+<li><p>redis中每个hyperloglog key占用了12K的内存用于标记基数（官方文档）</p>
+</li>
+<li><p>pfadd命令并不会一次性分配12k内存，而是随着基数的增加而逐渐增加内存分配；而pfmerge操作则会将sourcekey合并后存储在12k大小的key中，这由hyperloglog合并操作的原理（两个hyperloglog合并时需要单独比较每个桶的值）可以很容易理解。</p>
+</li>
+<li><p>误差说明：基数估计的结果是一个带有 0.81% 标准错误（standard error）的近似值。是可接受的范围</p>
+</li>
+<li><p>Redis 对 HyperLogLog 的存储进行了优化，在计数比较小时，它的存储空间采用稀疏矩阵存储，空间占用很小，仅仅在计数慢慢变大，稀疏矩阵占用空间渐渐超过了阈值时才会一次性转变成稠密矩阵，才会占用 12k 的空间</p>
+</li>
+</ul>
+<h5 id="数据结构描述"><a href="#数据结构描述" class="headerlink" title="数据结构描述"></a>数据结构描述</h5><h5 id="特征"><a href="#特征" class="headerlink" title="特征"></a>特征</h5><ul>
 <li><p>基数统计(不允许重复的数据)</p>
 </li>
 <li><p>占用12k空间</p>
 </li>
 </ul>
 <h5 id="适用场景"><a href="#适用场景" class="headerlink" title="适用场景"></a>适用场景</h5><ul>
-<li>大数据量统计</li>
+<li><p>统计注册 IP 数</p>
+</li>
+<li><p>统计每日访问 IP 数</p>
+</li>
+<li><p>统计页面实时 UV 数</p>
+</li>
+<li><p>统计在线用户数</p>
+</li>
+<li><p>统计用户每天搜索不同词条的个数</p>
+</li>
 </ul>
-<p>比如:高并发网站UV、PV等运营数据的统计。</p>
 <blockquote>
 <p><strong>参考文档</strong></p>
 </blockquote>
@@ -256,7 +314,7 @@
     <div class="content">
         
 <span class="post-time">
-    最終更新：<time datetime="2019-07-27T10:22:47.209Z" itemprop="dateUpdated">2019-07-27 18:22:47</time>
+    最終更新：<time datetime="2019-07-30T07:52:30.470Z" itemprop="dateUpdated">2019-07-30 15:52:30</time>
 </span><br>
 
 
@@ -282,7 +340,7 @@
 
         <div class="post-footer">
             
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/redis/">redis</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/学习笔记/">学习笔记</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/redis/">redis</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/redis基础/">redis基础</a></li></ul>
 
 
             
@@ -340,18 +398,18 @@
 <nav class="post-nav flex-row flex-justify-between">
   
     <div class="waves-block waves-effect prev">
-      <a href="/2019/06/28/中间件/redis/FAQ/" id="post-prev" class="post-nav-link">
+      <a href="/2019/07/01/中间件/kafka/读书笔记/kafka核心技术与实战-胡夕/11.无消息丢失配置怎么实现？/" id="post-prev" class="post-nav-link">
         <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">redis的FAQ</h4>
+        <h4 class="title">11.无消息丢失配置怎么实现？</h4>
       </a>
     </div>
   
 
   
     <div class="waves-block waves-effect next">
-      <a href="/2019/06/28/中间件/redis/VERSION/" id="post-next" class="post-nav-link">
+      <a href="/2019/06/28/中间件/redis/02.redis的应用--布隆过滤器/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">redis的VERSION</h4>
+        <h4 class="title">02.redis的应用--布隆过滤器</h4>
       </a>
     </div>
   
