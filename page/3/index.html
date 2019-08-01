@@ -124,7 +124,7 @@
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="検索">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
@@ -158,10 +158,10 @@
     <ul class="post-list">
     
         <li class="post-list-item fade">
-            <article id="post-高并发/disruptor学习/1.disruptor初识" class="article-card article-type-post" itemprop="blogPost">
+            <article id="post-高并发/基础/Java并发编程：CountDownLatch、CyclicBarrier和Semaphore" class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2019-06-26 00:00:00" datetime="2019-06-25T16:00:00.000Z" itemprop="datePublished">2019-06-26</time>
+        <time class="post-time" title="2019-06-27 00:00:00" datetime="2019-06-26T16:00:00.000Z" itemprop="datePublished">2019-06-27</time>
 
         
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/高并发/">高并发</a></li></ul>
@@ -175,7 +175,7 @@
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2019/06/26/高并发/disruptor学习/1.disruptor初识/">1.disruptor初识</a>
+      <a class="post-title-link" href="/2019/06/27/高并发/基础/Java并发编程：CountDownLatch、CyclicBarrier和Semaphore/">Java并发编程：CountDownLatch、CyclicBarrier和Semaphore</a>
     </h3>
   
 
@@ -186,21 +186,156 @@
 
     
         
-disruptor号称能够在一个线程里每秒处理6百万订单,业务逻辑处理器完全是运行在内存中，使用事件源驱动方式。
+面向对象的语言最好的学习方法就是在实际生活中找一个列子类比。
 
-要学的概念乐观锁打个比方理解乐观锁就是到桥头再看有没有车来过此桥,没有的话快速过桥.
-悲观锁打个比方理解悲观锁说白了就是先发制人,我的车要过桥,但是我担心桥上有其他车,所以我提前把桥口加一个锁,我到桥头了在开锁过桥,过去了再把锁子接触了.
-死锁打个比方理解简单的比方,两俩车同...
+
+CountDownLatch(计数器)
+
+CyclicBarrier(回环栅栏)
+
+Semaphore(信号量)
+
+
+CountDownLatchCountDownLatch类位于java.util.concurrent包下，利用它可以实现类似计数器的功能。比如有一个任务A，它要等待其他4个任务执行完毕之后才能执行，此时就可...
     
 
-        <a href="/2019/06/26/高并发/disruptor学习/1.disruptor初识/" class="post-more waves-effect waves-button">
-            続きを読む…
+        <a href="/2019/06/27/高并发/基础/Java并发编程：CountDownLatch、CyclicBarrier和Semaphore/" class="post-more waves-effect waves-button">
+            Continue reading...
         </a>
     </div>
     
     <div class="post-footer">
         
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/disruptor/">disruptor</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/并发/">并发</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/基础/">基础</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/并发/">并发</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-架构/架构导航" class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2019-06-26 00:00:00" datetime="2019-06-25T16:00:00.000Z" itemprop="datePublished">2019-06-26</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/导航/">导航</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2019/06/26/架构/架构导航/">架构导航</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        
+万丈高楼平地起的前提是地基好.
+
+技术选型网关
+Nginx
+Kong
+Zuul
+GateWay
+
+缓存
+Redis
+MemCached
+OsCache
+EhCache
+
+搜索
+ElasticSearch
+Solr
+
+熔断
+Hystrix
+resilience4j
+
+负载均衡
+DNS
+F5
+LVS
+Nginx
+OpenResty
+HAproxy
+注册中心
+Eureka
+
+Zookeeper
+...
+    
+
+        <a href="/2019/06/26/架构/架构导航/" class="post-more waves-effect waves-button">
+            Continue reading...
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/架构导航/">架构导航</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-业务场景/交易所/撮合系统设计" class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2019-06-26 00:00:00" datetime="2019-06-25T16:00:00.000Z" itemprop="datePublished">2019-06-26</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/业务场景/">业务场景</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2019/06/26/业务场景/交易所/撮合系统设计/">撮合系统设计</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        
+摘要：撮合技术主要是从数据库撮合技术向内存撮合技术发展，这是因为数据库撮合技术越来越无法满足金融交易对于高可靠性、高性能、强安全性、可扩展性以及易维护性的需求。本文来自中生代技术群的34期分享，将和大家讨论基于内存的撮合的系统设计。李伟山，毕业于国防科技大学，曾就职于华为、阿里巴巴，目前人江苏大圆银泰技术总监，对于高并发、大数据架构设计有深刻的了解。1.概述
+
+随着信息技术的日新月异和金融...
+    
+
+        <a href="/2019/06/26/业务场景/交易所/撮合系统设计/" class="post-more waves-effect waves-button">
+            Continue reading...
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/交易所/">交易所</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/撮合/">撮合</a></li></ul>
 
     </div>
     
@@ -257,7 +392,58 @@ Disruptor核心链路场景应用讲解概念啥是核心链路?就拿京东来�
     
 
         <a href="/2019/06/26/高并发/disruptor学习/2.disruptor应用/" class="post-more waves-effect waves-button">
-            続きを読む…
+            Continue reading...
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/disruptor/">disruptor</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/并发/">并发</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-高并发/disruptor学习/1.disruptor初识" class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2019-06-26 00:00:00" datetime="2019-06-25T16:00:00.000Z" itemprop="datePublished">2019-06-26</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/高并发/">高并发</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2019/06/26/高并发/disruptor学习/1.disruptor初识/">1.disruptor初识</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        
+disruptor号称能够在一个线程里每秒处理6百万订单,业务逻辑处理器完全是运行在内存中，使用事件源驱动方式。
+
+要学的概念乐观锁打个比方理解乐观锁就是到桥头再看有没有车来过此桥,没有的话快速过桥.
+悲观锁打个比方理解悲观锁说白了就是先发制人,我的车要过桥,但是我担心桥上有其他车,所以我提前把桥口加一个锁,我到桥头了在开锁过桥,过去了再把锁子接触了.
+死锁打个比方理解简单的比方,两俩车同...
+    
+
+        <a href="/2019/06/26/高并发/disruptor学习/1.disruptor初识/" class="post-more waves-effect waves-button">
+            Continue reading...
         </a>
     </div>
     
@@ -306,7 +492,7 @@ Disruptor核心链路场景应用讲解概念啥是核心链路?就拿京东来�
     
 
         <a href="/2019/06/26/基础巩固/java/线程/自定义线程池/" class="post-more waves-effect waves-button">
-            続きを読む…
+            Continue reading...
         </a>
     </div>
     
@@ -359,7 +545,7 @@ Disruptor核心链路场景应用讲解概念啥是核心链路?就拿京东来�
     
 
         <a href="/2019/06/25/基础巩固/java/数据结构/环形缓冲区/" class="post-more waves-effect waves-button">
-            続きを読む…
+            Continue reading...
         </a>
     </div>
     
@@ -410,7 +596,7 @@ Disruptor核心链路场景应用讲解概念啥是核心链路?就拿京东来�
     
 
         <a href="/2019/06/21/架构/从100到1000万高并发的架构演进之路/" class="post-more waves-effect waves-button">
-            続きを読む…
+            Continue reading...
         </a>
     </div>
     
@@ -475,7 +661,7 @@ static values:按枚举常量顺序,产生常量构成的数组.
     
 
         <a href="/2019/06/21/基础巩固/java/java枚举的总结和学习/" class="post-more waves-effect waves-button">
-            続きを読む…
+            Continue reading...
         </a>
     </div>
     
@@ -535,167 +721,13 @@ LMAX架构简介
     
 
         <a href="/2019/06/21/架构/LMAX架构/LMAX架构/" class="post-more waves-effect waves-button">
-            続きを読む…
+            Continue reading...
         </a>
     </div>
     
     <div class="post-footer">
         
 	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LMAX/">LMAX</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/并发/">并发</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-基础巩固/java/工具类/使用 Java8 新的时间 API使用" class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2019-06-21 00:00:00" datetime="2019-06-20T16:00:00.000Z" itemprop="datePublished">2019-06-21</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/基础巩固/">基础巩固</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2019/06/21/基础巩固/java/工具类/使用 Java8 新的时间 API使用/">使用Java8新的时间API使用</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        使用Java8新的时间API使用
-【1】简书主页·share猿【2】掘金主页·share猿【3】使用 Java8 新的时间 API·吾辈
-
-
-扫描以下公众号关注小猿↓↓↓↓↓↓↓↓
-                
-                    
-                    
-                
-                
-            
-...
-    
-
-        <a href="/2019/06/21/基础巩固/java/工具类/使用 Java8 新的时间 API使用/" class="post-more waves-effect waves-button">
-            続きを読む…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/基础/">基础</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/工具类/">工具类</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-指导思想/方法论/学习的方法论" class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2019-06-17 00:00:00" datetime="2019-06-16T16:00:00.000Z" itemprop="datePublished">2019-06-17</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/指导思想/">指导思想</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2019/06/17/指导思想/方法论/学习的方法论/">学习的方法论</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        高效学习方法学习要有明确的目的性&emsp;&emsp; 比如我现在要学习java基础,那么我学习java基础的目的性是啥? 给自己提出问题,把似是而非的问题用自己的话能讲清楚,进一步完善自己的基础总结笔记,记住,任何知识不是一蹴而就的,要不断的迭代学习.
-学习要有整体规划学习要有一个好的环境,在好的环境下不成长都难
-【1】简书主页·share猿【2】掘金主页·share猿【3】JavaGu...
-    
-
-        <a href="/2019/06/17/指导思想/方法论/学习的方法论/" class="post-more waves-effect waves-button">
-            続きを読む…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/学习方法/">学习方法</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/指导思想/">指导思想</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-读书/归档/2019/7月/富爸爸投资指南" class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2019-06-16 00:00:00" datetime="2019-06-15T16:00:00.000Z" itemprop="datePublished">2019-06-16</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/读书/">读书</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2019/06/16/读书/归档/2019/7月/富爸爸投资指南/">富爸爸投资指南</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        读书笔记序言10%的人赚了90%的钱
-财富是一种思维方式，而不是存在银行里的钱。
-税法是不公平的，它由富人制定，为富人服务。如果你想致富，就得利用富人适用的税法
-大多数投资者会说：“不要冒险。”而富有的投资者敢于“冒险”。2.大多数投资者强调“多元化”，而富有的投资者强调专注。3.普通投资者尽力最小化债务，而富有的投资者增加对他们有利的债务。4.普通投资者尽力减少支出，而富有的投资者懂得通过...
-    
-
-        <a href="/2019/06/16/读书/归档/2019/7月/富爸爸投资指南/" class="post-more waves-effect waves-button">
-            続きを読む…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/投资/">投资</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/财商/">财商</a></li></ul>
 
     </div>
     
@@ -732,7 +764,7 @@ LMAX架构简介
             
                 <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
             
-            <span>このブログの内容物は<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja">クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際ライセンスの下に提供されています</a></span>
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
         </p>
     </div>
     <div class="bottom">

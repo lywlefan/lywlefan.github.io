@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>01.初始redis | share猿 | https://lywlefan.github.io/</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="redis,redis基础">
+    <meta name="description" content="redis是什么?redis是一个内存型数据(in-memory data structure store)。Redis是用ANSI C编写的。 官网对redis关键词描述 开源内存数据库  可以进行缓存和消息代理  支持的数据类型有：字符串/hash/list/set/bitmaps/hyperloglogs  可以对集合进行排序  地理位置范围半径查询  支持流  内置复制功能  支持lua脚">
+<meta name="keywords" content="redis,redis基础">
+<meta property="og:type" content="article">
+<meta property="og:title" content="01.初始redis">
+<meta property="og:url" content="https://lywlefan.github.io/2019/07/30/中间件/redis/01.初始redis/index.html">
+<meta property="og:site_name" content="share猿">
+<meta property="og:description" content="redis是什么?redis是一个内存型数据(in-memory data structure store)。Redis是用ANSI C编写的。 官网对redis关键词描述 开源内存数据库  可以进行缓存和消息代理  支持的数据类型有：字符串/hash/list/set/bitmaps/hyperloglogs  可以对集合进行排序  地理位置范围半径查询  支持流  内置复制功能  支持lua脚">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-07-30T08:58:03.215Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="01.初始redis">
+<meta name="twitter:description" content="redis是什么?redis是一个内存型数据(in-memory data structure store)。Redis是用ANSI C编写的。 官网对redis关键词描述 开源内存数据库  可以进行缓存和消息代理  支持的数据类型有：字符串/hash/list/set/bitmaps/hyperloglogs  可以对集合进行排序  地理位置范围半径查询  支持流  内置复制功能  支持lua脚">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+    
+        <link rel="alternate" type="application/atom+xml" title="share猿" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">share猿</h5>
+          <a href="mailto:330334064@qq.com" title="330334064@qq.com" class="mail">330334064@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/lywlefan" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                GitHub
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/atom">
+                <i class="icon icon-lg icon-rss"></i>
+                订阅
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">01.初始redis</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">01.初始redis</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-07-29T16:00:00.000Z" itemprop="datePublished" class="page-time">
+  2019-07-30
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/中间件/">中间件</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#redis是什么"><span class="post-toc-number">1.</span> <span class="post-toc-text">redis是什么?</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#官网对redis关键词描述"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">官网对redis关键词描述</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#redis支持什么数据类型"><span class="post-toc-number">2.</span> <span class="post-toc-text">redis支持什么数据类型</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#字符类型-strings"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">字符类型(strings)</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#哈希类型-hashes"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">哈希类型(hashes)</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#list集合类型-lists"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">list集合类型(lists)</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#set集合类型-sets"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">set集合类型(sets)</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#sorted-set集合类型-sorted-sets"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">sorted set集合类型(sorted sets)</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#位图-bitmaps"><span class="post-toc-number">2.6.</span> <span class="post-toc-text">位图(bitmaps)</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#hyperloglogs"><span class="post-toc-number">2.7.</span> <span class="post-toc-text">hyperloglogs</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#数据结构描述"><span class="post-toc-number">2.7.1.</span> <span class="post-toc-text">数据结构描述</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#特征"><span class="post-toc-number">2.7.2.</span> <span class="post-toc-text">特征</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#适用场景"><span class="post-toc-number">2.7.3.</span> <span class="post-toc-text">适用场景</span></a></li></ol></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-中间件/redis/01.初始redis" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">01.初始redis</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-07-30 00:00:00" datetime="2019-07-29T16:00:00.000Z" itemprop="datePublished">2019-07-30</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/中间件/">中间件</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h3 id="redis是什么"><a href="#redis是什么" class="headerlink" title="redis是什么?"></a>redis是什么?</h3><p>redis是一个内存型数据(in-memory data structure store)。Redis是用ANSI C编写的。</p>
+<h4 id="官网对redis关键词描述"><a href="#官网对redis关键词描述" class="headerlink" title="官网对redis关键词描述"></a>官网对redis关键词描述</h4><ul>
+<li><p>开源内存数据库</p>
+</li>
+<li><p>可以进行缓存和消息代理</p>
+</li>
+<li><p>支持的数据类型有：字符串/hash/list/set/bitmaps/hyperloglogs</p>
+</li>
+<li><p>可以对集合进行排序</p>
+</li>
+<li><p>地理位置范围半径查询</p>
+</li>
+<li><p>支持流</p>
+</li>
+<li><p>内置复制功能</p>
+</li>
+<li><p>支持lua脚本</p>
+</li>
+<li><p>LRU缓存淘汰算法</p>
+</li>
+<li><p>磁盘级的持久化</p>
+</li>
+<li><p>redis集群</p>
+</li>
+</ul>
+<h3 id="redis支持什么数据类型"><a href="#redis支持什么数据类型" class="headerlink" title="redis支持什么数据类型"></a>redis支持什么数据类型</h3><h4 id="字符类型-strings"><a href="#字符类型-strings" class="headerlink" title="字符类型(strings)"></a>字符类型(strings)</h4><h4 id="哈希类型-hashes"><a href="#哈希类型-hashes" class="headerlink" title="哈希类型(hashes)"></a>哈希类型(hashes)</h4><h4 id="list集合类型-lists"><a href="#list集合类型-lists" class="headerlink" title="list集合类型(lists)"></a>list集合类型(lists)</h4><h4 id="set集合类型-sets"><a href="#set集合类型-sets" class="headerlink" title="set集合类型(sets)"></a>set集合类型(sets)</h4><ul>
+<li><p>不允许重复</p>
+</li>
+<li><p>无序</p>
+</li>
+</ul>
+<h4 id="sorted-set集合类型-sorted-sets"><a href="#sorted-set集合类型-sorted-sets" class="headerlink" title="sorted set集合类型(sorted sets)"></a>sorted set集合类型(sorted sets)</h4><ul>
+<li><p>不允许重复</p>
+</li>
+<li><p>有序(通过设置分数进行排序)</p>
+</li>
+</ul>
+<h4 id="位图-bitmaps"><a href="#位图-bitmaps" class="headerlink" title="位图(bitmaps)"></a>位图(bitmaps)</h4><ul>
+<li><p>按位进行标识</p>
+</li>
+<li><p>适合某个时间段状态只有两种的场景</p>
+</li>
+</ul>
+<p>比如:签到,每天签到,状态就是签了或者没签</p>
+<ul>
+<li>占用内存小</li>
+</ul>
+<h4 id="hyperloglogs"><a href="#hyperloglogs" class="headerlink" title="hyperloglogs"></a>hyperloglogs</h4><ul>
+<li><p>Redis 在 2.8.9 版本添加了 HyperLogLog 结构</p>
+</li>
+<li><p>Redis HyperLogLog 是用来做基数统计的算法，HyperLogLog 的优点是，在输入元素的数量或者体积非常非常大时，计算基数所需的空间总是固定 的、并且是很小的。</p>
+</li>
+<li><p>在 Redis 里面，每个 HyperLogLog 键只需要花费 12 KB 内存，就可以计算接近 2^64 个不同元素的基数。这和计算基数时，元素越多耗费内存就越多的集合形成鲜明对比。</p>
+</li>
+<li><p>因为 HyperLogLog 只会根据输入元素来计算基数，而不会储存输入元素本身，所以 HyperLogLog 不能像集合那样，返回输入的各个元素。</p>
+</li>
+<li><p>HyperLogLog是一种算法，并非redis独有</p>
+</li>
+<li><p>目的是做基数统计，故不是集合，不会保存元数据，只记录数量而不是数值。</p>
+</li>
+<li><p>耗空间极小，支持输入非常体积的数据量</p>
+</li>
+<li><p>核心是基数估算算法，主要表现为计算时内存的使用和数据合并的处理。最终数值存在一定误差</p>
+</li>
+<li><p>redis中每个hyperloglog key占用了12K的内存用于标记基数（官方文档）</p>
+</li>
+<li><p>pfadd命令并不会一次性分配12k内存，而是随着基数的增加而逐渐增加内存分配；而pfmerge操作则会将sourcekey合并后存储在12k大小的key中，这由hyperloglog合并操作的原理（两个hyperloglog合并时需要单独比较每个桶的值）可以很容易理解。</p>
+</li>
+<li><p>误差说明：基数估计的结果是一个带有 0.81% 标准错误（standard error）的近似值。是可接受的范围</p>
+</li>
+<li><p>Redis 对 HyperLogLog 的存储进行了优化，在计数比较小时，它的存储空间采用稀疏矩阵存储，空间占用很小，仅仅在计数慢慢变大，稀疏矩阵占用空间渐渐超过了阈值时才会一次性转变成稠密矩阵，才会占用 12k 的空间</p>
+</li>
+</ul>
+<h5 id="数据结构描述"><a href="#数据结构描述" class="headerlink" title="数据结构描述"></a>数据结构描述</h5><h5 id="特征"><a href="#特征" class="headerlink" title="特征"></a>特征</h5><ul>
+<li><p>基数统计(不允许重复的数据)</p>
+</li>
+<li><p>占用12k空间</p>
+</li>
+</ul>
+<h5 id="适用场景"><a href="#适用场景" class="headerlink" title="适用场景"></a>适用场景</h5><ul>
+<li><p>统计注册 IP 数</p>
+</li>
+<li><p>统计每日访问 IP 数</p>
+</li>
+<li><p>统计页面实时 UV 数</p>
+</li>
+<li><p>统计在线用户数</p>
+</li>
+<li><p>统计用户每天搜索不同词条的个数</p>
+</li>
+</ul>
+<blockquote>
+<p><strong>参考文档</strong></p>
+</blockquote>
+<blockquote>
+<p><a href="https://www.jianshu.com/u/354cc1548a33" target="_blank" rel="noopener">【1】简书主页·share猿</a></p>
+</blockquote>
+<blockquote>
+<p><a href="https://juejin.im/user/5a8e759851882524d842d174" target="_blank" rel="noopener">【2】掘金主页·share猿</a></p>
+</blockquote>
+<blockquote>
+<p><a href="https://redis.io" target="_blank" rel="noopener">【3】redis官网</a></p>
+</blockquote>
+<hr>
+<p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
+<p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2019-07-30T08:58:03.215Z" itemprop="dateUpdated">2019-07-30 16:58:03</time>
+</span><br>
+
+
+        
+        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2019/07/30/中间件/redis/01.初始redis/" target="_blank" rel="external">https://lywlefan.github.io/2019/07/30/中间件/redis/01.初始redis/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://lywlefan.github.io">
+            <img src="/img/avatar.png" alt="share猿">
+            share猿
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/redis/">redis</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/redis基础/">redis基础</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://lywlefan.github.io/2019/07/30/中间件/redis/01.初始redis/&title=《01.初始redis》 — share猿&pic=https://lywlefan.github.io/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://lywlefan.github.io/2019/07/30/中间件/redis/01.初始redis/&title=《01.初始redis》 — share猿&source=分享有价值的内容,你我共同成长!" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://lywlefan.github.io/2019/07/30/中间件/redis/01.初始redis/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《01.初始redis》 — share猿&url=https://lywlefan.github.io/2019/07/30/中间件/redis/01.初始redis/&via=https://lywlefan.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://lywlefan.github.io/2019/07/30/中间件/redis/01.初始redis/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2019/07/30/中间件/redis/02.redis的应用--布隆过滤器/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">02.redis的应用--布隆过滤器</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/07/26/读书/归档/2019/7月/从受欢迎到被需要-萌姐/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">从受欢迎到被需要-萌姐</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'true' == 'true',
+            verify: 'false' == 'true',
+            appId: "hQGVIAaJERVwyrWxj1uqgCqS-gzGzoHsz",
+            appKey: "l7FO5csTavNwXCGryJyOkkc1",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢赞赏!
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>share猿 &copy; 2015 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://lywlefan.github.io/2019/07/30/中间件/redis/01.初始redis/&title=《01.初始redis》 — share猿&pic=https://lywlefan.github.io/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://lywlefan.github.io/2019/07/30/中间件/redis/01.初始redis/&title=《01.初始redis》 — share猿&source=分享有价值的内容,你我共同成长!" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://lywlefan.github.io/2019/07/30/中间件/redis/01.初始redis/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《01.初始redis》 — share猿&url=https://lywlefan.github.io/2019/07/30/中间件/redis/01.初始redis/&via=https://lywlefan.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://lywlefan.github.io/2019/07/30/中间件/redis/01.初始redis/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACt0lEQVR42u3aQXIjMQgFUN//0pltUpOWPyBmvHhapey4W08LQQGvV7y+vq3z518P6/u3f/99/vbp7dcWHh4e3mDr522dP08O4rz1ya8ejwAPDw9vjfd0o54v8WqoON/evQN6Y8HDw8P7AN6ZlGyi+m3+ZDw8PLxP5uXlhmqinJDw8PDwPoGXb3qjyNs7lMu1Fjw8PLyYl3eRPufvlf4eHh4e3rirngeJ86WcX9+9dtfj8/Hw8PAWePmFW02156WK3tAVHh4e3jYveUEyFNU7oDzk5KWNH7/Cw8PDW+Ml0aP6muRyrwaYcojCw8PDW+PlW6/y8mLEPGz88gkeHh7eAi9vek0GWPP2f3UoYdT3w8PDwxvwem2n+dHcghUaYHh4eHhXeRtF22qBI/ltdewADw8Pb5s3bzs18/f4mPIxBTw8PLwNXu/qzwenesc3KYuUoxMeHh5ei5df/dWq8N4IQjJwgIeHh7fBq1611ZJrlZ2Eh2YSj4eHh7fA66XLk9w1r5fkx10eI8DDw8Mr8m6VACaB5G4x4sfT8PDw8NZ4Sdv+/KB8JSEnH194c9x4eHh4/4SXl18nSXZyWNUxgl+egIeHh7fAm2OSDfWCRzW9ftwzHh4e3lVe/oI8/b276UkpBA8PD2+DlzfA7ia7vSS7N6SFh4eHt8GrFlirqXa1AFF917VBKzw8PLwi71YxIidNkunkOXh4eHjbvDN43vKfpOyjhYeHh3eVNxmZ6h3Q+RKvttPePBMPDw9vgTe/YyepdvUgqsVfPDw8vD1eLxjkW8yT8moKHgUGPDw8vDXeXsypjg5UY1cUGPDw8PA+htcrEOeJe94Se1NxwcPDw/uvvF77qjqWmv/nm+PGw8PDW+Mlr6nWg5NwkhzcuZzxhoqHh4e3wOslx71rfVL8PfNek4WHh4eX8v4Aoz8r8DQyHO0AAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '欢迎回来！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '欢迎欢迎!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
