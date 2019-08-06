@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://lywlefan.github.io/"/>
-  <updated>2019-08-01T01:34:58.594Z</updated>
+  <updated>2019-08-05T08:33:48.760Z</updated>
   <id>https://lywlefan.github.io/</id>
   
   <author>
@@ -15,6 +15,62 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>22.括号的生成</title>
+    <link href="https://lywlefan.github.io/2019/08/05/%E7%AE%97%E6%B3%95/%E5%8A%9B%E6%89%A3/22.%E6%8B%AC%E5%8F%B7%E7%9A%84%E7%94%9F%E6%88%90/"/>
+    <id>https://lywlefan.github.io/2019/08/05/算法/力扣/22.括号的生成/</id>
+    <published>2019-08-04T16:00:00.000Z</published>
+    <updated>2019-08-05T08:33:48.760Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>万丈高楼平地起的前提是地基好.</p></blockquote><h3 id="题目介绍"><a href="#题目介绍" class="headerlink" title="题目介绍"></a>题目介绍</h3><p>给出 n 代表生成括号的对数，请你写出一个函数，使其能够生成所有可能的并且有效的括号组合。</p><p>例如，给出 n = 3，生成结果为：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">[</span><br><span class="line">  &quot;((()))&quot;,</span><br><span class="line">  &quot;(()())&quot;,</span><br><span class="line">  &quot;(())()&quot;,</span><br><span class="line">  &quot;()(())&quot;,</span><br><span class="line">  &quot;()()()&quot;</span><br><span class="line">]</span><br></pre></td></tr></table></figure><h3 id="思路梳理"><a href="#思路梳理" class="headerlink" title="思路梳理"></a>思路梳理</h3><h4 id="关键点"><a href="#关键点" class="headerlink" title="关键点"></a>关键点</h4><ul><li><p>生成括号对数</p></li><li><p>生成括号不同对数</p></li><li><p>生成的括号必须要闭合</p></li><li><p>生成括号的类型要用大括号包住</p></li></ul><h4 id="如何实现哪"><a href="#如何实现哪" class="headerlink" title="如何实现哪??"></a>如何实现哪??</h4><h5 id="我的思路-分类法-X"><a href="#我的思路-分类法-X" class="headerlink" title="我的思路:分类法 (X)"></a>我的思路:分类法 (X)</h5><ul><li><p>第一种情况:括号中括号</p></li><li><p>第二种情况:括号中多个括号</p></li><li><p>第三种情况:分割括号,然后括号中括号(左右)</p></li><li><p>第四种情况:括号独立类型</p></li></ul><h5 id="官方思路"><a href="#官方思路" class="headerlink" title="官方思路:"></a>官方思路:</h5><h3 id="题目实现"><a href="#题目实现" class="headerlink" title="题目实现"></a>题目实现</h3><h4 id="我的实现"><a href="#我的实现" class="headerlink" title="我的实现"></a>我的实现</h4><h5 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h5><h5 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h5><h4 id="最优解实现"><a href="#最优解实现" class="headerlink" title="最优解实现"></a>最优解实现</h4><h5 id="分析-1"><a href="#分析-1" class="headerlink" title="分析"></a>分析</h5><h5 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h5><blockquote><p><strong>参考文档</strong></p></blockquote><blockquote><p><a href="https://www.jianshu.com/u/354cc1548a33" target="_blank" rel="noopener">【1】简书主页·share猿</a></p></blockquote><blockquote><p><a href="https://juejin.im/user/5a8e759851882524d842d174" target="_blank" rel="noopener">【2】掘金主页·share猿</a></p></blockquote><blockquote><p><a href="https://github.com/azl397985856/leetcode" target="_blank" rel="noopener">【3】leetcode算法指南</a></p></blockquote><hr><p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>                </div>                <div class="image-caption"></div>            </figure></p><p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;blockquote&gt;
+&lt;p&gt;万丈高楼平地起的前提是地基好.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;题目介绍&quot;&gt;&lt;a href=&quot;#题目介绍&quot; class=&quot;headerlink&quot; title=&quot;题目介绍&quot;&gt;&lt;/a&gt;题目介绍&lt;/h3&gt;&lt;p&gt;给出 n 代表生成括号的
+      
+    
+    </summary>
+    
+      <category term="算法" scheme="https://lywlefan.github.io/categories/%E7%AE%97%E6%B3%95/"/>
+    
+    
+      <category term="力扣" scheme="https://lywlefan.github.io/tags/%E5%8A%9B%E6%89%A3/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>20.有效的括号</title>
+    <link href="https://lywlefan.github.io/2019/08/02/%E7%AE%97%E6%B3%95/%E5%8A%9B%E6%89%A3/20.%E6%9C%89%E6%95%88%E7%9A%84%E6%8B%AC%E5%8F%B7/"/>
+    <id>https://lywlefan.github.io/2019/08/02/算法/力扣/20.有效的括号/</id>
+    <published>2019-08-01T16:00:00.000Z</published>
+    <updated>2019-08-05T02:30:07.895Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>万丈高楼平地起的前提是地基好.</p></blockquote><h3 id="题目介绍"><a href="#题目介绍" class="headerlink" title="题目介绍"></a>题目介绍</h3><p>给定一个只包括 ‘(‘，’)’，’{‘，’}’，’[‘，’]’ 的字符串，判断字符串是否有效。</p><p>有效字符串需满足：</p><p>左括号必须用相同类型的右括号闭合。<br>左括号必须以正确的顺序闭合。<br>注意空字符串可被认为是有效字符串。</p><p>示例 1:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">输入: &quot;()&quot;</span><br><span class="line">输出: true</span><br><span class="line">示例 2:</span><br><span class="line"></span><br><span class="line">输入: &quot;()[]&#123;&#125;&quot;</span><br><span class="line">输出: true</span><br><span class="line">示例 3:</span><br><span class="line"></span><br><span class="line">输入: &quot;(]&quot;</span><br><span class="line">输出: false</span><br></pre></td></tr></table></figure><h3 id="题目解答"><a href="#题目解答" class="headerlink" title="题目解答"></a>题目解答</h3><h3 id="思路梳理"><a href="#思路梳理" class="headerlink" title="思路梳理"></a>思路梳理</h3><h4 id="哪些情况括号不闭合"><a href="#哪些情况括号不闭合" class="headerlink" title="哪些情况括号不闭合"></a>哪些情况括号不闭合</h4><ul><li><p>第一种:[(])</p></li><li><p>第二种:[)</p></li><li><p>第三种:[](</p></li></ul><h4 id="如何判断括号没有闭合"><a href="#如何判断括号没有闭合" class="headerlink" title="如何判断括号没有闭合"></a>如何判断括号没有闭合</h4><blockquote><p>注意：只包括括号，这是条件要注意！</p></blockquote><ul><li><p>1.获取每种类型左括号的第一次出现的位置</p></li><li><p>2.然后再找到每种类型右括号第一次出现的位置</p></li><li><p>3.如果存在以下情况则括号没有闭合</p><ul><li><p>a.类型左括号位置小于另一种类型括号右括号的位置,则括号没有闭合</p></li><li><p>b.任意类型括号不存在左括号或者右括号,则括号没有闭合</p></li></ul></li></ul><h4 id="最优解"><a href="#最优解" class="headerlink" title="最优解"></a>最优解</h4><ul><li>1.把左括号压入栈中</li><li>2.如果遇到右括号,取出栈最上面的元素去对应的值,判断和循环的元素是否相等,相等继续循环,否则返回false</li><li>3.循环结束,栈里面的元素依次被取出,说明括号串没啥问题,是闭合的. </li></ul><h3 id="题目实现"><a href="#题目实现" class="headerlink" title="题目实现"></a>题目实现</h3><h4 id="java"><a href="#java" class="headerlink" title="java"></a>java</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">static</span> Map&lt;Character, Character&gt; map = <span class="keyword">new</span> HashMap();</span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> &#123;</span><br><span class="line">    map.put(<span class="string">'('</span>, <span class="string">')'</span>);</span><br><span class="line">    map.put(<span class="string">'&#123;'</span>, <span class="string">'&#125;'</span>);</span><br><span class="line">    map.put(<span class="string">'['</span>, <span class="string">']'</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 方法一</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isValid</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">    Stack&lt;Character&gt; stack = <span class="keyword">new</span> Stack();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">char</span> in : s.toCharArray()) &#123;</span><br><span class="line">        <span class="comment">//左括号直接入栈</span></span><br><span class="line">        <span class="keyword">if</span> (map.keySet().contains(in)) &#123;</span><br><span class="line">            stack.push(in);</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (!stack.isEmpty() &amp;&amp; in == map.get(stack.pop())) <span class="keyword">continue</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> stack.isEmpty();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><blockquote><p><strong>参考文档</strong></p></blockquote><blockquote><p><a href="https://www.jianshu.com/u/354cc1548a33" target="_blank" rel="noopener">【1】简书主页·share猿</a></p></blockquote><blockquote><p><a href="https://juejin.im/user/5a8e759851882524d842d174" target="_blank" rel="noopener">【2】掘金主页·share猿</a></p></blockquote><blockquote><p><a href="https://github.com/azl397985856/leetcode" target="_blank" rel="noopener">【3】leetcode算法指南</a></p></blockquote><hr><p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>                </div>                <div class="image-caption"></div>            </figure></p><p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;blockquote&gt;
+&lt;p&gt;万丈高楼平地起的前提是地基好.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;题目介绍&quot;&gt;&lt;a href=&quot;#题目介绍&quot; class=&quot;headerlink&quot; title=&quot;题目介绍&quot;&gt;&lt;/a&gt;题目介绍&lt;/h3&gt;&lt;p&gt;给定一个只包括 ‘(‘，
+      
+    
+    </summary>
+    
+      <category term="算法" scheme="https://lywlefan.github.io/categories/%E7%AE%97%E6%B3%95/"/>
+    
+    
+      <category term="力扣" scheme="https://lywlefan.github.io/tags/%E5%8A%9B%E6%89%A3/"/>
+    
+  </entry>
   
   <entry>
     <title>算法导航</title>
@@ -79,33 +135,6 @@
   </entry>
   
   <entry>
-    <title>02.redis的应用--布隆过滤器</title>
-    <link href="https://lywlefan.github.io/2019/07/30/%E4%B8%AD%E9%97%B4%E4%BB%B6/redis/02.redis%E7%9A%84%E5%BA%94%E7%94%A8--%E5%B8%83%E9%9A%86%E8%BF%87%E6%BB%A4%E5%99%A8/"/>
-    <id>https://lywlefan.github.io/2019/07/30/中间件/redis/02.redis的应用--布隆过滤器/</id>
-    <published>2019-07-29T16:00:00.000Z</published>
-    <updated>2019-07-30T08:58:03.173Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="布隆过滤器"><a href="#布隆过滤器" class="headerlink" title="布隆过滤器"></a>布隆过滤器</h3><h4 id="思维导图"><a href="#思维导图" class="headerlink" title="思维导图"></a>思维导图</h4><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://upload-images.jianshu.io/upload_images/3084894-1be30bea723ccf8a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="布隆过滤器" title>                </div>                <div class="image-caption">布隆过滤器</div>            </figure><h3 id="布隆过滤器应用"><a href="#布隆过滤器应用" class="headerlink" title="布隆过滤器应用"></a>布隆过滤器应用</h3><h4 id="新闻推送去重"><a href="#新闻推送去重" class="headerlink" title="新闻推送去重"></a>新闻推送去重</h4><h4 id="垃圾邮件去重"><a href="#垃圾邮件去重" class="headerlink" title="垃圾邮件去重"></a>垃圾邮件去重</h4><h4 id="插件安装"><a href="#插件安装" class="headerlink" title="插件安装"></a>插件安装</h4><h5 id="下载插件"><a href="#下载插件" class="headerlink" title="下载插件"></a>下载插件</h5><p><a href="https://github.com/RedisBloom/RedisBloom/releases" target="_blank" rel="noopener">点击该地址选择合适的版本</a></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#下载</span><br><span class="line">wget https://github.com/RedisLabsModules/rebloom/archive/v1.1.1.tar.gz</span><br><span class="line">#解压</span><br><span class="line">tar zxvf v1.1.1.tar.gz</span><br><span class="line">cd rebloom-1.1.1</span><br><span class="line"># 编译</span><br><span class="line">make</span><br></pre></td></tr></table></figure><h4 id="配置插件"><a href="#配置插件" class="headerlink" title="配置插件"></a>配置插件</h4><p>在redis配置文件(redis.conf)中加入该模块即可</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">loadmodule /usr/local/web/redis/RedisBloom-1.1.1/rebloom.so</span><br></pre></td></tr></table></figure><p>或者启动的时候加载进去：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">redis-server /etc/redis/redis.conf --loadmodule /opt/redis/RedisBloom-2.0.1/src/rebloom.so INITIAL_SIZE 10000000 ERROR_RATE 0.0001</span><br></pre></td></tr></table></figure><h4 id="执行相关命令测试"><a href="#执行相关命令测试" class="headerlink" title="执行相关命令测试"></a>执行相关命令测试</h4><blockquote><p>以上就是我安装的步骤，但是安装完成后还是出现了问题，记录下来，后续慢慢解决。</p></blockquote><blockquote><p><strong>参考文档</strong></p></blockquote><blockquote><p><a href="https://www.jianshu.com/u/354cc1548a33" target="_blank" rel="noopener">【1】简书主页·share猿</a></p></blockquote><blockquote><p><a href="https://juejin.im/user/5a8e759851882524d842d174" target="_blank" rel="noopener">【2】掘金主页·share猿</a></p></blockquote><blockquote><p><a href="https://redis.io" target="_blank" rel="noopener">【3】redis官网</a></p></blockquote><blockquote><p><a href="https://github.com/RedisBloom/RedisBloom" target="_blank" rel="noopener">【4】布隆过滤器插件下载地址</a></p></blockquote><hr><p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>                </div>                <div class="image-caption"></div>            </figure></p><p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h3 id=&quot;布隆过滤器&quot;&gt;&lt;a href=&quot;#布隆过滤器&quot; class=&quot;headerlink&quot; title=&quot;布隆过滤器&quot;&gt;&lt;/a&gt;布隆过滤器&lt;/h3&gt;&lt;h4 id=&quot;思维导图&quot;&gt;&lt;a href=&quot;#思维导图&quot; class=&quot;headerlink&quot; title=&quot;思维导图&quot;
-      
-    
-    </summary>
-    
-      <category term="中间件" scheme="https://lywlefan.github.io/categories/%E4%B8%AD%E9%97%B4%E4%BB%B6/"/>
-    
-    
-      <category term="redis" scheme="https://lywlefan.github.io/tags/redis/"/>
-    
-      <category term="布隆过滤器" scheme="https://lywlefan.github.io/tags/%E5%B8%83%E9%9A%86%E8%BF%87%E6%BB%A4%E5%99%A8/"/>
-    
-  </entry>
-  
-  <entry>
     <title>01.初始redis</title>
     <link href="https://lywlefan.github.io/2019/07/30/%E4%B8%AD%E9%97%B4%E4%BB%B6/redis/01.%E5%88%9D%E5%A7%8Bredis/"/>
     <id>https://lywlefan.github.io/2019/07/30/中间件/redis/01.初始redis/</id>
@@ -129,6 +158,33 @@
       <category term="redis" scheme="https://lywlefan.github.io/tags/redis/"/>
     
       <category term="redis基础" scheme="https://lywlefan.github.io/tags/redis%E5%9F%BA%E7%A1%80/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>02.redis的应用--布隆过滤器</title>
+    <link href="https://lywlefan.github.io/2019/07/30/%E4%B8%AD%E9%97%B4%E4%BB%B6/redis/02.redis%E7%9A%84%E5%BA%94%E7%94%A8--%E5%B8%83%E9%9A%86%E8%BF%87%E6%BB%A4%E5%99%A8/"/>
+    <id>https://lywlefan.github.io/2019/07/30/中间件/redis/02.redis的应用--布隆过滤器/</id>
+    <published>2019-07-29T16:00:00.000Z</published>
+    <updated>2019-07-30T08:58:03.173Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="布隆过滤器"><a href="#布隆过滤器" class="headerlink" title="布隆过滤器"></a>布隆过滤器</h3><h4 id="思维导图"><a href="#思维导图" class="headerlink" title="思维导图"></a>思维导图</h4><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://upload-images.jianshu.io/upload_images/3084894-1be30bea723ccf8a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="布隆过滤器" title>                </div>                <div class="image-caption">布隆过滤器</div>            </figure><h3 id="布隆过滤器应用"><a href="#布隆过滤器应用" class="headerlink" title="布隆过滤器应用"></a>布隆过滤器应用</h3><h4 id="新闻推送去重"><a href="#新闻推送去重" class="headerlink" title="新闻推送去重"></a>新闻推送去重</h4><h4 id="垃圾邮件去重"><a href="#垃圾邮件去重" class="headerlink" title="垃圾邮件去重"></a>垃圾邮件去重</h4><h4 id="插件安装"><a href="#插件安装" class="headerlink" title="插件安装"></a>插件安装</h4><h5 id="下载插件"><a href="#下载插件" class="headerlink" title="下载插件"></a>下载插件</h5><p><a href="https://github.com/RedisBloom/RedisBloom/releases" target="_blank" rel="noopener">点击该地址选择合适的版本</a></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#下载</span><br><span class="line">wget https://github.com/RedisLabsModules/rebloom/archive/v1.1.1.tar.gz</span><br><span class="line">#解压</span><br><span class="line">tar zxvf v1.1.1.tar.gz</span><br><span class="line">cd rebloom-1.1.1</span><br><span class="line"># 编译</span><br><span class="line">make</span><br></pre></td></tr></table></figure><h4 id="配置插件"><a href="#配置插件" class="headerlink" title="配置插件"></a>配置插件</h4><p>在redis配置文件(redis.conf)中加入该模块即可</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">loadmodule /usr/local/web/redis/RedisBloom-1.1.1/rebloom.so</span><br></pre></td></tr></table></figure><p>或者启动的时候加载进去：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">redis-server /etc/redis/redis.conf --loadmodule /opt/redis/RedisBloom-2.0.1/src/rebloom.so INITIAL_SIZE 10000000 ERROR_RATE 0.0001</span><br></pre></td></tr></table></figure><h4 id="执行相关命令测试"><a href="#执行相关命令测试" class="headerlink" title="执行相关命令测试"></a>执行相关命令测试</h4><blockquote><p>以上就是我安装的步骤，但是安装完成后还是出现了问题，记录下来，后续慢慢解决。</p></blockquote><blockquote><p><strong>参考文档</strong></p></blockquote><blockquote><p><a href="https://www.jianshu.com/u/354cc1548a33" target="_blank" rel="noopener">【1】简书主页·share猿</a></p></blockquote><blockquote><p><a href="https://juejin.im/user/5a8e759851882524d842d174" target="_blank" rel="noopener">【2】掘金主页·share猿</a></p></blockquote><blockquote><p><a href="https://redis.io" target="_blank" rel="noopener">【3】redis官网</a></p></blockquote><blockquote><p><a href="https://github.com/RedisBloom/RedisBloom" target="_blank" rel="noopener">【4】布隆过滤器插件下载地址</a></p></blockquote><hr><p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>                </div>                <div class="image-caption"></div>            </figure></p><p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;布隆过滤器&quot;&gt;&lt;a href=&quot;#布隆过滤器&quot; class=&quot;headerlink&quot; title=&quot;布隆过滤器&quot;&gt;&lt;/a&gt;布隆过滤器&lt;/h3&gt;&lt;h4 id=&quot;思维导图&quot;&gt;&lt;a href=&quot;#思维导图&quot; class=&quot;headerlink&quot; title=&quot;思维导图&quot;
+      
+    
+    </summary>
+    
+      <category term="中间件" scheme="https://lywlefan.github.io/categories/%E4%B8%AD%E9%97%B4%E4%BB%B6/"/>
+    
+    
+      <category term="redis" scheme="https://lywlefan.github.io/tags/redis/"/>
+    
+      <category term="布隆过滤器" scheme="https://lywlefan.github.io/tags/%E5%B8%83%E9%9A%86%E8%BF%87%E6%BB%A4%E5%99%A8/"/>
     
   </entry>
   
@@ -258,9 +314,9 @@
     <link href="https://lywlefan.github.io/2019/07/11/%E8%AF%8D%E6%B1%87/%E8%BD%AF%E4%BB%B6/%E8%BD%AF%E4%BB%B6%E4%B8%AD%E6%9C%AA%E7%9F%A5%E8%AF%8D%E6%B1%87%E6%94%B6%E9%9B%86/"/>
     <id>https://lywlefan.github.io/2019/07/11/词汇/软件/软件中未知词汇收集/</id>
     <published>2019-07-10T16:00:00.000Z</published>
-    <updated>2019-08-01T04:42:13.849Z</updated>
+    <updated>2019-08-02T09:26:54.494Z</updated>
     
-    <content type="html"><![CDATA[<blockquote><p>先有词汇量,然后再能好好说话,好好做事。</p></blockquote><h3 id="2019年词汇"><a href="#2019年词汇" class="headerlink" title="2019年词汇"></a>2019年词汇</h3><h4 id="7月词汇"><a href="#7月词汇" class="headerlink" title="7月词汇"></a>7月词汇</h4><h5 id="二方库"><a href="#二方库" class="headerlink" title="二方库"></a>二方库</h5><ul><li>一方库：本工程中的各模块的相互依赖</li><li>二方库：公司内部的依赖库，一般指公司内部的其他项目发布的jar包</li><li>三方库：公司之外的开源库， 比如apache、ibm、google等发布的依赖</li></ul><h5 id="mock数据"><a href="#mock数据" class="headerlink" title="mock数据"></a>mock数据</h5><p>在前后端分离开发过程中，后端为前端请求制造的模拟数据。常见制造模拟数据的方法有如下几种：</p><ul><li><p><a href="https://www.google.com/search?q=easymock&amp;oq=easymock&amp;aqs=chrome..69i57&amp;sourceid=chrome&amp;ie=UTF-8" target="_blank" rel="noopener">easymock</a></p></li><li><p><a href="http://mockjs.com/" target="_blank" rel="noopener">Mock.js</a></p></li><li><p><a href="https://www.npmjs.com/package/server-mock" target="_blank" rel="noopener">server-mock</a></p></li></ul><h5 id="SOA"><a href="#SOA" class="headerlink" title="SOA"></a>SOA</h5><p>面向服务架构（Service-Oriented Architecture，SOA）又称“面向服务的体系结构”，是Gartner于2O世纪9O年代中期提出的面向服务架构的概念。 </p><h5 id="打tag"><a href="#打tag" class="headerlink" title="打tag"></a>打tag</h5><p>说白了就是给你的项目打个标签，立个里程碑，这样就可以去方便的回溯每个版本的代码了。如何打tag，命令如下：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"># 打tag -a 后面是tag名称 -m 后面是注释（这里我们可以写我们这个版本做了什么？）</span><br><span class="line">git tag -a v3.2.1 -m &apos;线上版本&apos;</span><br><span class="line"></span><br><span class="line"># 将标签提交到远程仓库</span><br><span class="line">git push origin v3.2.1</span><br></pre></td></tr></table></figure><h5 id="qps"><a href="#qps" class="headerlink" title="qps"></a>qps</h5><p>每秒查询率QPS是对一个特定的查询服务器在规定时间内所处理流量多少的衡量标准，在因特网上，作为域名系统服务器的机器的性能经常用每秒查询率来衡量。</p><ul><li>吞吐量</li></ul><p>吞吐量是指系统在单位时间内处理请求的数量。</p><ul><li>并发用户数 </li></ul><p>并发用户数是指系统可以同时承载的正常使用系统功能的用户的数量。</p><blockquote><p><a href="https://www.jianshu.com/u/354cc1548a33" target="_blank" rel="noopener">【1】简书主页·share猿</a><br><a href="https://juejin.im/user/5a8e759851882524d842d174" target="_blank" rel="noopener">【2】掘金主页·share猿</a></p></blockquote><hr><p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>                </div>                <div class="image-caption"></div>            </figure></p><p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>]]></content>
+    <content type="html"><![CDATA[<blockquote><p>先有词汇量,然后再能好好说话,好好做事。</p></blockquote><h3 id="2019年词汇"><a href="#2019年词汇" class="headerlink" title="2019年词汇"></a>2019年词汇</h3><h4 id="7月词汇"><a href="#7月词汇" class="headerlink" title="7月词汇"></a>7月词汇</h4><h5 id="二方库"><a href="#二方库" class="headerlink" title="二方库"></a>二方库</h5><ul><li>一方库：本工程中的各模块的相互依赖</li><li>二方库：公司内部的依赖库，一般指公司内部的其他项目发布的jar包</li><li>三方库：公司之外的开源库， 比如apache、ibm、google等发布的依赖</li></ul><h5 id="mock数据"><a href="#mock数据" class="headerlink" title="mock数据"></a>mock数据</h5><p>在前后端分离开发过程中，后端为前端请求制造的模拟数据。常见制造模拟数据的方法有如下几种：</p><ul><li><p><a href="https://www.google.com/search?q=easymock&amp;oq=easymock&amp;aqs=chrome..69i57&amp;sourceid=chrome&amp;ie=UTF-8" target="_blank" rel="noopener">easymock</a></p></li><li><p><a href="http://mockjs.com/" target="_blank" rel="noopener">Mock.js</a></p></li><li><p><a href="https://www.npmjs.com/package/server-mock" target="_blank" rel="noopener">server-mock</a></p></li></ul><h5 id="SOA"><a href="#SOA" class="headerlink" title="SOA"></a>SOA</h5><p>面向服务架构（Service-Oriented Architecture，SOA）又称“面向服务的体系结构”，是Gartner于2O世纪9O年代中期提出的面向服务架构的概念。 </p><h5 id="打tag"><a href="#打tag" class="headerlink" title="打tag"></a>打tag</h5><p>说白了就是给你的项目打个标签，立个里程碑，这样就可以去方便的回溯每个版本的代码了。如何打tag，命令如下：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"># 打tag -a 后面是tag名称 -m 后面是注释（这里我们可以写我们这个版本做了什么？）</span><br><span class="line">git tag -a v3.2.1 -m &apos;线上版本&apos;</span><br><span class="line"></span><br><span class="line"># 将标签提交到远程仓库</span><br><span class="line">git push origin v3.2.1</span><br></pre></td></tr></table></figure><h5 id="qps"><a href="#qps" class="headerlink" title="qps"></a>qps</h5><p>每秒查询率QPS是对一个特定的查询服务器在规定时间内所处理流量多少的衡量标准，在因特网上，作为域名系统服务器的机器的性能经常用每秒查询率来衡量。</p><ul><li>吞吐量</li></ul><p>吞吐量是指系统在单位时间内处理请求的数量。</p><ul><li>并发用户数 </li></ul><p>并发用户数是指系统可以同时承载的正常使用系统功能的用户的数量。</p><h5 id="IO线程"><a href="#IO线程" class="headerlink" title="IO线程"></a>IO线程</h5><h5 id="VisualVM"><a href="#VisualVM" class="headerlink" title="VisualVM"></a>VisualVM</h5><p>VisualVM是JDK自带的一款全能型性能监控和故障分析工具,包括对CPU使用、JVM堆内存消耗、线程、类加载的实时监控,内存dump文件分析,垃圾回收运行情况的可视化分析等,对故障排查和性能调优很有帮助。</p><h5 id="包装类"><a href="#包装类" class="headerlink" title="包装类"></a>包装类</h5><p>包装类（Wrapper Class）： Java是一个面向对象的编程语言，但是Java中的八种基本数据类型却是不面向对象的，为了使用方便和解决这个不足，在设计类时为每个基本数据类型设计了一个对应的类进行代表，这样八种基本数据类型对应的类统称为包装类(Wrapper Class)，包装类均位于java.lang包。</p><h5 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h5><p>栈就像枪的梭子一样,先进后出.</p><blockquote><p><a href="https://www.jianshu.com/u/354cc1548a33" target="_blank" rel="noopener">【1】简书主页·share猿</a><br><a href="https://juejin.im/user/5a8e759851882524d842d174" target="_blank" rel="noopener">【2】掘金主页·share猿</a></p></blockquote><hr><p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>                </div>                <div class="image-caption"></div>            </figure></p><p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>]]></content>
     
     <summary type="html">
     
@@ -516,11 +572,38 @@
   </entry>
   
   <entry>
-    <title>redis的FAQ</title>
-    <link href="https://lywlefan.github.io/2019/06/28/%E4%B8%AD%E9%97%B4%E4%BB%B6/redis/FAQ/"/>
-    <id>https://lywlefan.github.io/2019/06/28/中间件/redis/FAQ/</id>
+    <title>es的COLLECTION</title>
+    <link href="https://lywlefan.github.io/2019/06/28/%E4%B8%AD%E9%97%B4%E4%BB%B6/es/COLLECTION/"/>
+    <id>https://lywlefan.github.io/2019/06/28/中间件/es/COLLECTION/</id>
     <published>2019-06-27T16:00:00.000Z</published>
-    <updated>2019-07-27T10:22:47.106Z</updated>
+    <updated>2019-08-06T01:57:57.408Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="学习"><a href="#学习" class="headerlink" title="学习"></a>学习</h3><h4 id="基础学习"><a href="#基础学习" class="headerlink" title="基础学习"></a>基础学习</h4><ul><li><p><a href="https://blog.csdn.net/laoyang360/article/details/52244917" target="_blank" rel="noopener">1.Elasticsearch学习，请先看这一篇！</a></p></li><li><p><a href="https://es.xiaoleilu.com/" target="_blank" rel="noopener">2.Elasticsearch 权威指南（中文版）</a></p></li></ul><h5 id="视频"><a href="#视频" class="headerlink" title="视频"></a>视频</h5><h5 id="文章"><a href="#文章" class="headerlink" title="文章"></a>文章</h5><h3 id="考试"><a href="#考试" class="headerlink" title="考试"></a>考试</h3><h4 id="考试导航"><a href="#考试导航" class="headerlink" title="考试导航"></a>考试导航</h4><h5 id="文章-1"><a href="#文章-1" class="headerlink" title="文章"></a>文章</h5><ul><li><a href="https://blog.csdn.net/laoyang360/article/details/95036171" target="_blank" rel="noopener">Elastic认证考试，请先看这一篇！</a></li></ul><h5 id="视频-1"><a href="#视频-1" class="headerlink" title="视频"></a>视频</h5><h4 id="备考学习"><a href="#备考学习" class="headerlink" title="备考学习"></a>备考学习</h4><blockquote><p><strong>参考文档</strong></p></blockquote><blockquote><p><a href="https://www.jianshu.com/u/354cc1548a33" target="_blank" rel="noopener">【1】简书主页·share猿</a></p></blockquote><blockquote><p><a href="https://juejin.im/user/5a8e759851882524d842d174" target="_blank" rel="noopener">【2】掘金主页·share猿</a></p></blockquote><blockquote><p><a href="https://www.elastic.co" target="_blank" rel="noopener">【3】elasticsearch官网</a></p></blockquote><hr><p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>                </div>                <div class="image-caption"></div>            </figure></p><p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;学习&quot;&gt;&lt;a href=&quot;#学习&quot; class=&quot;headerlink&quot; title=&quot;学习&quot;&gt;&lt;/a&gt;学习&lt;/h3&gt;&lt;h4 id=&quot;基础学习&quot;&gt;&lt;a href=&quot;#基础学习&quot; class=&quot;headerlink&quot; title=&quot;基础学习&quot;&gt;&lt;/a&gt;基础学习&lt;/h
+      
+    
+    </summary>
+    
+      <category term="中间件" scheme="https://lywlefan.github.io/categories/%E4%B8%AD%E9%97%B4%E4%BB%B6/"/>
+    
+    
+      <category term="collection" scheme="https://lywlefan.github.io/tags/collection/"/>
+    
+      <category term="elasticsearch" scheme="https://lywlefan.github.io/tags/elasticsearch/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>es的VERSION</title>
+    <link href="https://lywlefan.github.io/2019/06/28/%E4%B8%AD%E9%97%B4%E4%BB%B6/es/VERSION/"/>
+    <id>https://lywlefan.github.io/2019/06/28/中间件/es/VERSION/</id>
+    <published>2019-06-27T16:00:00.000Z</published>
+    <updated>2019-08-06T01:39:26.118Z</updated>
     
     <content type="html"><![CDATA[<h3 id="问题整理"><a href="#问题整理" class="headerlink" title="问题整理"></a>问题整理</h3><blockquote><p><strong>参考文档</strong></p></blockquote><blockquote><p><a href="https://www.jianshu.com/u/354cc1548a33" target="_blank" rel="noopener">【1】简书主页·share猿</a></p></blockquote><blockquote><p><a href="https://juejin.im/user/5a8e759851882524d842d174" target="_blank" rel="noopener">【2】掘金主页·share猿</a></p></blockquote><blockquote><p><a href="https://redis.io" target="_blank" rel="noopener">【3】redis官网</a></p></blockquote><hr><p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>                </div>                <div class="image-caption"></div>            </figure></p><p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>]]></content>
     
@@ -542,99 +625,6 @@
       <category term="redis" scheme="https://lywlefan.github.io/tags/redis/"/>
     
       <category term="学习笔记" scheme="https://lywlefan.github.io/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>redis的VERSION</title>
-    <link href="https://lywlefan.github.io/2019/06/28/%E4%B8%AD%E9%97%B4%E4%BB%B6/redis/VERSION/"/>
-    <id>https://lywlefan.github.io/2019/06/28/中间件/redis/VERSION/</id>
-    <published>2019-06-27T16:00:00.000Z</published>
-    <updated>2019-07-27T10:22:47.165Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="问题整理"><a href="#问题整理" class="headerlink" title="问题整理"></a>问题整理</h3><blockquote><p><strong>参考文档</strong></p></blockquote><blockquote><p><a href="https://www.jianshu.com/u/354cc1548a33" target="_blank" rel="noopener">【1】简书主页·share猿</a></p></blockquote><blockquote><p><a href="https://juejin.im/user/5a8e759851882524d842d174" target="_blank" rel="noopener">【2】掘金主页·share猿</a></p></blockquote><blockquote><p><a href="https://redis.io" target="_blank" rel="noopener">【3】redis官网</a></p></blockquote><hr><p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>                </div>                <div class="image-caption"></div>            </figure></p><p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h3 id=&quot;问题整理&quot;&gt;&lt;a href=&quot;#问题整理&quot; class=&quot;headerlink&quot; title=&quot;问题整理&quot;&gt;&lt;/a&gt;问题整理&lt;/h3&gt;&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;参考文档&lt;/strong&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;blockquo
-      
-    
-    </summary>
-    
-      <category term="中间件" scheme="https://lywlefan.github.io/categories/%E4%B8%AD%E9%97%B4%E4%BB%B6/"/>
-    
-    
-      <category term="redis" scheme="https://lywlefan.github.io/tags/redis/"/>
-    
-      <category term="学习笔记" scheme="https://lywlefan.github.io/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>10.生产者压缩算法面面观</title>
-    <link href="https://lywlefan.github.io/2019/06/28/%E4%B8%AD%E9%97%B4%E4%BB%B6/kafka/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/kafka%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%E4%B8%8E%E5%AE%9E%E6%88%98-%E8%83%A1%E5%A4%95/10.%E7%94%9F%E4%BA%A7%E8%80%85%E5%8E%8B%E7%BC%A9%E7%AE%97%E6%B3%95%E9%9D%A2%E9%9D%A2%E8%A7%82/"/>
-    <id>https://lywlefan.github.io/2019/06/28/中间件/kafka/读书笔记/kafka核心技术与实战-胡夕/10.生产者压缩算法面面观/</id>
-    <published>2019-06-27T16:00:00.000Z</published>
-    <updated>2019-06-28T10:22:40.122Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="阅读笔记"><a href="#阅读笔记" class="headerlink" title="阅读笔记"></a>阅读笔记</h2><ul><li><p>消息压缩</p></li><li><p>GZIP</p></li><li><p>Snappy</p></li><li><p>Zero Copy(零拷贝技术)</p></li><li><p>何时压缩</p></li></ul><h3 id="笔记"><a href="#笔记" class="headerlink" title="笔记"></a>笔记</h3><h4 id="压缩算法笔记"><a href="#压缩算法笔记" class="headerlink" title="压缩算法笔记"></a>压缩算法笔记</h4><ul><li><p>GZIP</p></li><li><p>Snappy</p></li><li><p>LZ4</p></li><li><p>Zstandard(zstd):2.1.0开始，facebook开源的压缩算法，能够提高超高性能压缩比。</p></li></ul><h5 id="如何压缩"><a href="#如何压缩" class="headerlink" title="如何压缩"></a>如何压缩</h5><blockquote><p>v1（kafka 0.11.0之前）:message set, message ,v2（kafka 0.11.0以后）:record batch,record</p></blockquote><p>我看了三遍老师的课，得到了我要的答案：<br>1.如果生产者使用了压缩，broker为了crc校验，会启动解压，这个解压过程不可避免；<br>2.v2的broker为了低版本的消费者，会把消息再次解压并进行协议转换。</p><ul><li><p>CRC校验（每条消息执行CRC校验）</p></li><li><p>消息集合</p></li><li><p>消息</p></li><li><p>日志项</p></li></ul><h5 id="看一个压缩算法的指标"><a href="#看一个压缩算法的指标" class="headerlink" title="看一个压缩算法的指标"></a>看一个压缩算法的指标</h5><ul><li>压缩比</li></ul><p>原来占100份空间的东西压缩成20，那么压缩比就是5，显然压缩比越高越好。</p><ul><li>吞吐量(压缩/解压缩)</li></ul><p>每秒能压缩或者解压多少MB数据,同样吞吐量也是越高越好。</p><h5 id="facebook各个压缩算法性能测试"><a href="#facebook各个压缩算法性能测试" class="headerlink" title="facebook各个压缩算法性能测试"></a>facebook各个压缩算法性能测试</h5><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://upload-images.jianshu.io/upload_images/3084894-0842150408ba26c8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="1.png" title>                </div>                <div class="image-caption">1.png</div>            </figure><h5 id="如何选择压缩算法"><a href="#如何选择压缩算法" class="headerlink" title="如何选择压缩算法"></a>如何选择压缩算法</h5><ul><li><p>启用压缩的一个条件就是Producer程序运行机器上的CPU要充足。</p></li><li><p>带宽资源有限建议开启压缩(带宽比cpu和内存还要珍贵)</p></li><li><p>cpu资源富于，建议开启zstd压缩，这样能极大节省网络资源消耗。</p></li><li><p>规避意料之外的解压缩，比如：兼容老版本而引入解压缩</p></li><li><p>有条件尽量保证不要出现消息格式转换的情况</p></li></ul><h3 id="浓缩精华"><a href="#浓缩精华" class="headerlink" title="浓缩精华"></a>浓缩精华</h3><ul><li>Producer端压缩/Broker端保持/Consumer端解压</li></ul><h3 id="注意问题"><a href="#注意问题" class="headerlink" title="注意问题"></a>注意问题</h3><h4 id="producer和broker端的压缩算法尽量保持一致"><a href="#producer和broker端的压缩算法尽量保持一致" class="headerlink" title="producer和broker端的压缩算法尽量保持一致"></a>producer和broker端的压缩算法尽量保持一致</h4><h3 id="建议"><a href="#建议" class="headerlink" title="建议"></a>建议</h3><h4 id="京东小哥建议"><a href="#京东小哥建议" class="headerlink" title="京东小哥建议"></a>京东小哥建议</h4><blockquote><p>去掉因为做消息校验而引入解压缩,据他们称，去掉解压缩后，Broker端CPU使用率至少降低了50%。</p></blockquote><p>社区未采纳建议，原因是消息校验特别重要，不能盲目去掉。</p><h3 id="应用实践"><a href="#应用实践" class="headerlink" title="应用实践"></a>应用实践</h3><h4 id="实时日志收集系统"><a href="#实时日志收集系统" class="headerlink" title="实时日志收集系统"></a>实时日志收集系统</h4><blockquote><p><strong>参考文档</strong></p></blockquote><blockquote><p><a href="https://www.jianshu.com/u/354cc1548a33" target="_blank" rel="noopener">【1】简书主页·share猿</a></p></blockquote><blockquote><p><a href="https://juejin.im/user/5a8e759851882524d842d174" target="_blank" rel="noopener">【2】掘金主页·share猿</a></p></blockquote><hr><p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>                </div>                <div class="image-caption"></div>            </figure></p><p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;阅读笔记&quot;&gt;&lt;a href=&quot;#阅读笔记&quot; class=&quot;headerlink&quot; title=&quot;阅读笔记&quot;&gt;&lt;/a&gt;阅读笔记&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;消息压缩&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;GZIP&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Snappy&lt;/p
-      
-    
-    </summary>
-    
-      <category term="中间件" scheme="https://lywlefan.github.io/categories/%E4%B8%AD%E9%97%B4%E4%BB%B6/"/>
-    
-    
-      <category term="读书笔记" scheme="https://lywlefan.github.io/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
-    
-      <category term="kafka" scheme="https://lywlefan.github.io/tags/kafka/"/>
-    
-      <category term="kafka核心技术与实战-胡夕" scheme="https://lywlefan.github.io/tags/kafka%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%E4%B8%8E%E5%AE%9E%E6%88%98-%E8%83%A1%E5%A4%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>09.生产者消息分区机制原理剖析</title>
-    <link href="https://lywlefan.github.io/2019/06/28/%E4%B8%AD%E9%97%B4%E4%BB%B6/kafka/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/kafka%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%E4%B8%8E%E5%AE%9E%E6%88%98-%E8%83%A1%E5%A4%95/09.%E7%94%9F%E4%BA%A7%E8%80%85%E6%B6%88%E6%81%AF%E5%88%86%E5%8C%BA%E6%9C%BA%E5%88%B6%E5%8E%9F%E7%90%86%E5%89%96%E6%9E%90/"/>
-    <id>https://lywlefan.github.io/2019/06/28/中间件/kafka/读书笔记/kafka核心技术与实战-胡夕/09.生产者消息分区机制原理剖析/</id>
-    <published>2019-06-27T16:00:00.000Z</published>
-    <updated>2019-06-28T08:38:14.695Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="阅读笔记"><a href="#阅读笔记" class="headerlink" title="阅读笔记"></a>阅读笔记</h2><h3 id="生产者消息分区机制原理剖析"><a href="#生产者消息分区机制原理剖析" class="headerlink" title="生产者消息分区机制原理剖析"></a>生产者消息分区机制原理剖析</h3><ul><li><p>如何将大的数据均匀的分配到Kafka的各个Broker上？</p></li><li><p>为什么分区？</p></li></ul><h4 id="为什么分区？"><a href="#为什么分区？" class="headerlink" title="为什么分区？"></a>为什么分区？</h4><ul><li><p>三级结构：主题-分区-消息</p></li><li><p>主题下的每条消息只会保存在某一个分区中，而不会在多个分区中被保存多份</p></li></ul><blockquote><p>疑问:为什么kafka要这样设计？有什么好处？</p></blockquote><p><strong>回答</strong>:我们设想一个问题，我们在学校找一个学生，如果我们直接把学生集中在一起去找是不是很麻烦，很低效。换种方式，每50个学生一组，配置一个负责人，然后通知这些负责人去找某个同学，是不是很快就可以找到了，这也就是分区的意义所在。如果，我们把这种思想放到我们的系统中，就可以提高我们系统的负载均衡能力，实现了系统的高伸缩性(Scalability)</p><ul><li>不同的分区能够被放置到不同节点的机器上</li></ul><blockquote><p>疑问：同一个topic下不同的分区是保存到相同机器的不同磁盘上的吗？</p></blockquote><p><strong>回答</strong>:</p><p>在 MongoDB 和 Elasticsearch 中就叫分Shard，而在HBase中则叫Region,在Cassandra中又被称作vnode。</p><ul><li>实现业务级别的消息顺序的问题</li></ul><h5 id="都有哪些分区策略？"><a href="#都有哪些分区策略？" class="headerlink" title="都有哪些分区策略？"></a>都有哪些分区策略？</h5><p>所谓分区策略是决定生产者将消息发送到那个分区的算法。提供了默认的分区策略，同时支持自定义分区策略。</p><ul><li><p>自定义分区</p><ul><li><p>配置partitioner.class参数</p></li><li><p>实现Partitioner接口</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">partition</span><span class="params">(String topic, Object key, <span class="keyword">byte</span>[] keyBytes, Object value, <span class="keyword">byte</span>[] valueBytes, Cluster cluster)</span></span>;</span><br></pre></td></tr></table></figure><p>这里的topic、key、keyBytes、value和valueBytes都属于消息数据，cluster则是集群信息(比如当前Kafka集群有多少主题，多少Broker等)。</p></li></ul></li><li><p>策略</p><ul><li><p>轮询策略(Round-robin)</p><p>轮询是kafka默认的消息存储策略，新增的消息会依次进入1/2/3/4/….对应的分区。轮询策略有非常优秀的负载均衡表现，它总能保证消息最大限度地平均分配到所有分区上，故默认情况下它是最合理的分区策略，也是我们常用的分区策略之一。</p></li><li><p>随机策略(Randomness)</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">List&lt;PartitionInfo&gt; partitions = cluster.partitionsForTopic(topic);</span><br><span class="line"><span class="keyword">return</span> ThreadLocalRandom.current().nextInt(partitions.size());</span><br><span class="line">``` </span><br><span class="line">实现比较简单，先计算出该主题总的分区数，然后随机地返回一个小于它的正整数。</span><br><span class="line"></span><br><span class="line">该策略是kafka老版本的策略，追求数据均匀分布还是轮询策略比较好。</span><br><span class="line"></span><br><span class="line">- 按消息键保序策略</span><br><span class="line"></span><br><span class="line">    - 同一个消息key的消息进入同一个分区</span><br><span class="line">    </span><br><span class="line">    - 一个分区只能被同一个消费组（ConsumerGroup）内的一个消费者消费</span><br><span class="line">    </span><br><span class="line">    这里我们可以给我们的消息以时间的维度定义key，如此同一时间的消息就进入了同一个分区，同一个分区下的消息也有了顺序性。</span><br><span class="line">    </span><br><span class="line">    - 每个分区消息都是有顺序的</span><br><span class="line">    </span><br><span class="line">    - 代码实现</span><br><span class="line">    </span><br><span class="line">    ```java</span><br><span class="line">    List&lt;PartitionInfo&gt; partitions = cluster.partitionsForTopic(topic);</span><br><span class="line">    <span class="keyword">return</span> Math.abs(key.hashCode()) % partitions.size();</span><br></pre></td></tr></table></figure></li><li><p>其他分区策略(比如：基于地理位置的分区策略)</p><ul><li><p>场景</p><p>公司有两个机房，一个在广州，一个在北京，在每个机房里面抽取部分机器组成kafka集群。现在公司app搞活动，北京新注册的用户送北京烤鸭一只，广州注册的用户送一次大保健，我们如何用kafka实现这一需求？</p></li><li><p>解决方案一</p></li><li><p>解决方案二</p></li></ul></li></ul></li></ul><h2 id="提出问题"><a href="#提出问题" class="headerlink" title="提出问题"></a>提出问题</h2><h3 id="自己提问"><a href="#自己提问" class="headerlink" title="自己提问"></a>自己提问</h3><h4 id="问题1"><a href="#问题1" class="headerlink" title="问题1"></a>问题1</h4><blockquote><p>通过kafka创建一个topic，默认分几个区？</p></blockquote><p><strong>回答</strong>：创建topic的时候就需要指定需要创建的分区个数.</p><h4 id="问题2"><a href="#问题2" class="headerlink" title="问题2"></a>问题2</h4><blockquote><p>基于地理位置的分区策略可以通过按消息键保序策略实现，这样做有什么意义？</p></blockquote><h3 id="其他人的问题"><a href="#其他人的问题" class="headerlink" title="其他人的问题"></a>其他人的问题</h3><h4 id="问题1-1"><a href="#问题1-1" class="headerlink" title="问题1"></a>问题1</h4><blockquote><p>老师能不能有空能不能讲讲kafka和rocketMQ的对比, 我用下来感觉整体挺像的但是具体使用场景和性能优劣方面还是有点不知道该使用选择, 谢谢.</p></blockquote><p><strong>回答</strong>：在我看来RocketMQ与Kafka的主要区别 ：1. Kafka吞吐量大，多是面向大数据场景。RocketMQ吞吐量也很强， 不过它号称是金融业务级的消息中间件，也就是说可以用于实际的业务系统；2. RocketMQ毕竟是阿里出品，在国内技术支持力度要比Kafka强；3. Kafka现在主要发力Streaming，RocketMQ在流处理这块表现如何我不太清楚，至少streaming不是它现阶段的主要卖点。</p><h4 id="问题2-1"><a href="#问题2-1" class="headerlink" title="问题2"></a>问题2</h4><blockquote><p>kafka的主题只有一级、像mq可以进行主题分层：一级主题、二级主题。kafka为何这样设计？</p></blockquote><blockquote><p><strong>参考文档</strong></p></blockquote><blockquote><p><a href="https://www.jianshu.com/u/354cc1548a33" target="_blank" rel="noopener">【1】简书主页·share猿</a></p></blockquote><blockquote><p><a href="https://juejin.im/user/5a8e759851882524d842d174" target="_blank" rel="noopener">【2】掘金主页·share猿</a></p></blockquote><hr><p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>                </div>                <div class="image-caption"></div>            </figure></p><p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;阅读笔记&quot;&gt;&lt;a href=&quot;#阅读笔记&quot; class=&quot;headerlink&quot; title=&quot;阅读笔记&quot;&gt;&lt;/a&gt;阅读笔记&lt;/h2&gt;&lt;h3 id=&quot;生产者消息分区机制原理剖析&quot;&gt;&lt;a href=&quot;#生产者消息分区机制原理剖析&quot; class=&quot;headerlink
-      
-    
-    </summary>
-    
-      <category term="中间件" scheme="https://lywlefan.github.io/categories/%E4%B8%AD%E9%97%B4%E4%BB%B6/"/>
-    
-    
-      <category term="读书笔记" scheme="https://lywlefan.github.io/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
-    
-      <category term="kafka" scheme="https://lywlefan.github.io/tags/kafka/"/>
-    
-      <category term="kafka核心技术与实战-胡夕" scheme="https://lywlefan.github.io/tags/kafka%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%E4%B8%8E%E5%AE%9E%E6%88%98-%E8%83%A1%E5%A4%95/"/>
     
   </entry>
   
