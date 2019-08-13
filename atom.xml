@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://lywlefan.github.io/"/>
-  <updated>2019-08-06T09:38:37.695Z</updated>
+  <updated>2019-08-13T07:43:35.396Z</updated>
   <id>https://lywlefan.github.io/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>内功修炼-算法02</title>
+    <link href="https://lywlefan.github.io/2019/08/13/%E7%AE%97%E6%B3%95/%E5%8A%9B%E6%89%A3/%E5%86%85%E5%8A%9F%E4%BF%AE%E7%82%BC-%E7%AE%97%E6%B3%9502/"/>
+    <id>https://lywlefan.github.io/2019/08/13/算法/力扣/内功修炼-算法02/</id>
+    <published>2019-08-12T16:00:00.000Z</published>
+    <updated>2019-08-13T07:43:35.396Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>万丈高楼平地起的前提是地基好.</p></blockquote><h2 id="题目-无重复字符的最长子串"><a href="#题目-无重复字符的最长子串" class="headerlink" title="题目:无重复字符的最长子串"></a>题目:无重复字符的最长子串</h2><h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>给定一个字符串，请你找出其中不含有重复字符的 <strong>最长子串</strong> 的长度。</p><p>示例 1:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">输入: &quot;abcabcbb&quot;</span><br><span class="line">输出: 3 </span><br><span class="line">解释: 因为无重复字符的最长子串是 &quot;abc&quot;，所以其长度为 3。</span><br><span class="line">示例 2:</span><br><span class="line"></span><br><span class="line">输入: &quot;bbbbb&quot;</span><br><span class="line">输出: 1</span><br><span class="line">解释: 因为无重复字符的最长子串是 &quot;b&quot;，所以其长度为 1。</span><br><span class="line">示例 3:</span><br><span class="line"></span><br><span class="line">输入: &quot;pwwkew&quot;</span><br><span class="line">输出: 3</span><br><span class="line">解释: 因为无重复字符的最长子串是 &quot;wke&quot;，所以其长度为 3。</span><br><span class="line">     请注意，你的答案必须是 子串 的长度，&quot;pwke&quot; 是一个子序列，不是子串。</span><br></pre></td></tr></table></figure><h3 id="题目分析"><a href="#题目分析" class="headerlink" title="题目分析"></a>题目分析</h3><h4 id="关键点"><a href="#关键点" class="headerlink" title="关键点"></a>关键点</h4><ul><li>不含有重复字符的最大字符串长度</li></ul><h4 id="思路梳理"><a href="#思路梳理" class="headerlink" title="思路梳理"></a>思路梳理</h4><h5 id="我的解题思路"><a href="#我的解题思路" class="headerlink" title="我的解题思路"></a>我的解题思路</h5><ul><li>1.把字符串转换为字符数组</li><li>2.把字符串逐个放入set集合(set),同时记录放入集合的数量(j)</li><li>2.如果set集合长度和放入数量不符,记录该长度(l),清空set集合,把j设置为0,放入刚才放入的值,继续循环</li><li>3.如果继续出现上述清空,和上面记录的长度进行对比,小于清空继续,大于更新记录长度</li></ul><p>总结:上述解题思路忽略了空格字符串的情况,存在问题.</p><h5 id="正确的解题思路-滑动窗口"><a href="#正确的解题思路-滑动窗口" class="headerlink" title="正确的解题思路:滑动窗口"></a>正确的解题思路:滑动窗口</h5><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://upload-images.jianshu.io/upload_images/3084894-676af09bd331705a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="时间窗移动原理" title>                </div>                <div class="image-caption">时间窗移动原理</div>            </figure><ul><li>1.定义一个map集合(map)，用于存储字符值和位置，key为字符，value为字符位置加1</li><li>2.定义一个变量ans,用于记录时间窗最大长度</li><li>3.定义时间窗起点start和时间窗结束点end</li><li>4.然后把end向右滑动,最大长度为（end-start+1），如果map集合中存在该元素,说明遇到了重复的元素<ul><li>4.1.记录时间窗最大值ans</li><li>4.2.移动时间窗start到重复元素第一个之后的位置</li></ul></li><li>5.继续滑动,直到j=字符串长度</li></ul><h3 id="题目解答"><a href="#题目解答" class="headerlink" title="题目解答"></a>题目解答</h3><h4 id="我的解答"><a href="#我的解答" class="headerlink" title="我的解答"></a>我的解答</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 思路一:</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> *      1.把字符串转换为字符数组</span></span><br><span class="line"><span class="comment"> *      2.把字符串逐个放入set集合(set),同时记录放入集合的数量(j)</span></span><br><span class="line"><span class="comment"> *      2.如果set集合长度和放入数量不符,记录该长度(l),清空set集合,把j设置为0,放入刚才放入的值,继续循环</span></span><br><span class="line"><span class="comment"> *      3.如果继续出现上述清空,和上面记录的长度进行对比,小于清空继续,大于更新记录长度</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> *      时间复杂度:T(N) 空间复杂度:O(1)</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * 测试情况:不通过</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * 总结分析:</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> *      1.没有考虑到空格字符串的情况</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">lengthOfLongestSubstring1</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">char</span> [] chars = s.toCharArray();</span><br><span class="line">    Set set = <span class="keyword">new</span> HashSet();</span><br><span class="line">    <span class="keyword">int</span> l=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>,j=<span class="number">0</span>;i&lt;chars.length;i++)&#123;</span><br><span class="line">       set.add(chars[i]);</span><br><span class="line">       j++;</span><br><span class="line">       <span class="keyword">if</span> (set.size()&lt;j)&#123;</span><br><span class="line">           l = Math.max(set.size(),l);</span><br><span class="line">           set.clear();</span><br><span class="line">           j = <span class="number">1</span>;</span><br><span class="line">           set.add(chars[i]);</span><br><span class="line">       &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> l;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h4 id="正确的解答"><a href="#正确的解答" class="headerlink" title="正确的解答"></a>正确的解答</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 思路二: 滑动窗口</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> *      1.定义一个map集合(map)，用于存储字符值和位置，key为字符，value为字符位置加1</span></span><br><span class="line"><span class="comment"> *      2.定义一个变量ans,用于记录时间窗最大长度</span></span><br><span class="line"><span class="comment"> *      3.定义时间窗起点start和时间窗结束点end</span></span><br><span class="line"><span class="comment"> *      4.然后把end向右滑动,最大长度为（end-start+1），如果map集合中存在该元素,说明遇到了重复的元素</span></span><br><span class="line"><span class="comment"> *          4.1.记录时间窗最大值ans</span></span><br><span class="line"><span class="comment"> *          4.2.移动时间窗start到重复元素第一个之后的位置</span></span><br><span class="line"><span class="comment"> *      5.继续滑动,直到j=字符串长度</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">lengthOfLongestSubstring2</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n = s.length(), ans = <span class="number">0</span>;</span><br><span class="line">    Map&lt;Character, Integer&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> end = <span class="number">0</span>, start = <span class="number">0</span>; end &lt; n; end++) &#123;</span><br><span class="line">        <span class="keyword">char</span> alpha = s.charAt(end);</span><br><span class="line">        <span class="keyword">if</span> (map.containsKey(alpha)) &#123;</span><br><span class="line">            start = Math.max(map.get(alpha), start);</span><br><span class="line">        &#125;</span><br><span class="line">        ans = Math.max(ans, end - start + <span class="number">1</span>);</span><br><span class="line">        map.put(s.charAt(end), end + <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="题目总结"><a href="#题目总结" class="headerlink" title="题目总结"></a>题目总结</h3><p>在做这道题目的过程中,没有考虑到空格字符串的情况,这是基础不扎实导致的,null/“”/“ “,这三个还是有很大的区别的,如果大家也遇到和我一样的问题,可以当做是一个教训。</p><p>还有就是滑动窗口,这个理解比较麻烦,最好可以看我上面画的那种图,或者你可以自己画一个出来,滑动窗口是一个常用的办法,我们要深入理解。记得在有一次做限流的时候也用到了滑动窗口的概念。</p><blockquote><p><strong>参考文档</strong></p></blockquote><blockquote><p><a href="https://www.jianshu.com/u/354cc1548a33" target="_blank" rel="noopener">【1】简书主页·share猿</a></p></blockquote><blockquote><p><a href="https://juejin.im/user/5a8e759851882524d842d174" target="_blank" rel="noopener">【2】掘金主页·share猿</a></p></blockquote><blockquote><p><a href="https://github.com/azl397985856/leetcode" target="_blank" rel="noopener">【3】leetcode算法指南</a></p></blockquote><hr><p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>                </div>                <div class="image-caption"></div>            </figure></p><p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;blockquote&gt;
+&lt;p&gt;万丈高楼平地起的前提是地基好.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;题目-无重复字符的最长子串&quot;&gt;&lt;a href=&quot;#题目-无重复字符的最长子串&quot; class=&quot;headerlink&quot; title=&quot;题目:无重复字符的最长子串&quot;&gt;&lt;
+      
+    
+    </summary>
+    
+      <category term="算法" scheme="https://lywlefan.github.io/categories/%E7%AE%97%E6%B3%95/"/>
+    
+    
+      <category term="力扣" scheme="https://lywlefan.github.io/tags/%E5%8A%9B%E6%89%A3/"/>
+    
+  </entry>
   
   <entry>
     <title>21.合并两个有序的链表</title>
@@ -308,34 +336,6 @@
   </entry>
   
   <entry>
-    <title>软件中未知词汇收集</title>
-    <link href="https://lywlefan.github.io/2019/07/11/%E8%AF%8D%E6%B1%87/%E8%BD%AF%E4%BB%B6/%E8%BD%AF%E4%BB%B6%E4%B8%AD%E6%9C%AA%E7%9F%A5%E8%AF%8D%E6%B1%87%E6%94%B6%E9%9B%86/"/>
-    <id>https://lywlefan.github.io/2019/07/11/词汇/软件/软件中未知词汇收集/</id>
-    <published>2019-07-10T16:00:00.000Z</published>
-    <updated>2019-08-09T09:10:46.891Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>先有词汇量,然后再能好好说话,好好做事。</p></blockquote><h3 id="2019年词汇"><a href="#2019年词汇" class="headerlink" title="2019年词汇"></a>2019年词汇</h3><h4 id="7月词汇"><a href="#7月词汇" class="headerlink" title="7月词汇"></a>7月词汇</h4><h5 id="二方库"><a href="#二方库" class="headerlink" title="二方库"></a>二方库</h5><ul><li>一方库：本工程中的各模块的相互依赖</li><li>二方库：公司内部的依赖库，一般指公司内部的其他项目发布的jar包</li><li>三方库：公司之外的开源库， 比如apache、ibm、google等发布的依赖</li></ul><h5 id="mock数据"><a href="#mock数据" class="headerlink" title="mock数据"></a>mock数据</h5><p>在前后端分离开发过程中，后端为前端请求制造的模拟数据。常见制造模拟数据的方法有如下几种：</p><ul><li><p><a href="https://www.google.com/search?q=easymock&amp;oq=easymock&amp;aqs=chrome..69i57&amp;sourceid=chrome&amp;ie=UTF-8" target="_blank" rel="noopener">easymock</a></p></li><li><p><a href="http://mockjs.com/" target="_blank" rel="noopener">Mock.js</a></p></li><li><p><a href="https://www.npmjs.com/package/server-mock" target="_blank" rel="noopener">server-mock</a></p></li></ul><h5 id="SOA"><a href="#SOA" class="headerlink" title="SOA"></a>SOA</h5><p>面向服务架构（Service-Oriented Architecture，SOA）又称“面向服务的体系结构”，是Gartner于2O世纪9O年代中期提出的面向服务架构的概念。 </p><h5 id="打tag"><a href="#打tag" class="headerlink" title="打tag"></a>打tag</h5><p>说白了就是给你的项目打个标签，立个里程碑，这样就可以去方便的回溯每个版本的代码了。如何打tag，命令如下：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"># 打tag -a 后面是tag名称 -m 后面是注释（这里我们可以写我们这个版本做了什么？）</span><br><span class="line">git tag -a v3.2.1 -m &apos;线上版本&apos;</span><br><span class="line"></span><br><span class="line"># 将标签提交到远程仓库</span><br><span class="line">git push origin v3.2.1</span><br></pre></td></tr></table></figure><h5 id="qps"><a href="#qps" class="headerlink" title="qps"></a>qps</h5><p>每秒查询率QPS是对一个特定的查询服务器在规定时间内所处理流量多少的衡量标准，在因特网上，作为域名系统服务器的机器的性能经常用每秒查询率来衡量。</p><ul><li>吞吐量</li></ul><p>吞吐量是指系统在单位时间内处理请求的数量。</p><ul><li>并发用户数 </li></ul><p>并发用户数是指系统可以同时承载的正常使用系统功能的用户的数量。</p><h5 id="IO线程"><a href="#IO线程" class="headerlink" title="IO线程"></a>IO线程</h5><h5 id="VisualVM"><a href="#VisualVM" class="headerlink" title="VisualVM"></a>VisualVM</h5><p>VisualVM是JDK自带的一款全能型性能监控和故障分析工具,包括对CPU使用、JVM堆内存消耗、线程、类加载的实时监控,内存dump文件分析,垃圾回收运行情况的可视化分析等,对故障排查和性能调优很有帮助。</p><h5 id="包装类"><a href="#包装类" class="headerlink" title="包装类"></a>包装类</h5><p>包装类（Wrapper Class）： Java是一个面向对象的编程语言，但是Java中的八种基本数据类型却是不面向对象的，为了使用方便和解决这个不足，在设计类时为每个基本数据类型设计了一个对应的类进行代表，这样八种基本数据类型对应的类统称为包装类(Wrapper Class)，包装类均位于java.lang包。</p><h5 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h5><p>栈就像枪的梭子一样,先进后出.</p><h4 id="8月词汇"><a href="#8月词汇" class="headerlink" title="8月词汇"></a>8月词汇</h4><h5 id="TDD"><a href="#TDD" class="headerlink" title="TDD"></a>TDD</h5><p>TDD是测试驱动开发（Test-Driven Development）的英文简称，是敏捷开发中的一项核心实践和技术，也是一种设计方法论。</p><h5 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h5><p>一个算法中的所有语句执行次数之和称为语句频度或时间频度,记为T(n)。</p><h5 id="空间复杂度"><a href="#空间复杂度" class="headerlink" title="空间复杂度"></a>空间复杂度</h5><p>如果算法执行所需要的临时空间不随着某个变量n的大小而变化，即此算法空间复杂度为一个常量，可表示为 O(1)</p><h5 id="哑结点"><a href="#哑结点" class="headerlink" title="哑结点"></a>哑结点</h5><p>说白了就是无用的节点,一般处在链表的头部.是一个被人为创建的节点，虽然其内容为NULL，但是它在堆中有占有一定的空间。哑节点的使用可以避免边界问题的处理，达到简化代码与减少代码出错可能性的目的。</p><blockquote><p><a href="https://www.jianshu.com/u/354cc1548a33" target="_blank" rel="noopener">【1】简书主页·share猿</a><br><a href="https://juejin.im/user/5a8e759851882524d842d174" target="_blank" rel="noopener">【2】掘金主页·share猿</a></p></blockquote><hr><p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>                </div>                <div class="image-caption"></div>            </figure></p><p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;blockquote&gt;
-&lt;p&gt;先有词汇量,然后再能好好说话,好好做事。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&quot;2019年词汇&quot;&gt;&lt;a href=&quot;#2019年词汇&quot; class=&quot;headerlink&quot; title=&quot;2019年词汇&quot;&gt;&lt;/a&gt;2019年词汇&lt;/h
-      
-    
-    </summary>
-    
-      <category term="软件" scheme="https://lywlefan.github.io/categories/%E8%BD%AF%E4%BB%B6/"/>
-    
-    
-      <category term="第一次听说的词汇" scheme="https://lywlefan.github.io/tags/%E7%AC%AC%E4%B8%80%E6%AC%A1%E5%90%AC%E8%AF%B4%E7%9A%84%E8%AF%8D%E6%B1%87/"/>
-    
-  </entry>
-  
-  <entry>
     <title>研发英文词汇收集</title>
     <link href="https://lywlefan.github.io/2019/07/11/%E8%AF%8D%E6%B1%87/%E8%BD%AF%E4%BB%B6/%E7%A0%94%E5%8F%91%E8%8B%B1%E6%96%87%E8%AF%8D%E6%B1%87%E6%94%B6%E9%9B%86/"/>
     <id>https://lywlefan.github.io/2019/07/11/词汇/软件/研发英文词汇收集/</id>
@@ -362,6 +362,34 @@
       <category term="词汇" scheme="https://lywlefan.github.io/tags/%E8%AF%8D%E6%B1%87/"/>
     
       <category term="专业英文词汇" scheme="https://lywlefan.github.io/tags/%E4%B8%93%E4%B8%9A%E8%8B%B1%E6%96%87%E8%AF%8D%E6%B1%87/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>软件中未知词汇收集</title>
+    <link href="https://lywlefan.github.io/2019/07/11/%E8%AF%8D%E6%B1%87/%E8%BD%AF%E4%BB%B6/%E8%BD%AF%E4%BB%B6%E4%B8%AD%E6%9C%AA%E7%9F%A5%E8%AF%8D%E6%B1%87%E6%94%B6%E9%9B%86/"/>
+    <id>https://lywlefan.github.io/2019/07/11/词汇/软件/软件中未知词汇收集/</id>
+    <published>2019-07-10T16:00:00.000Z</published>
+    <updated>2019-08-09T09:10:46.891Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>先有词汇量,然后再能好好说话,好好做事。</p></blockquote><h3 id="2019年词汇"><a href="#2019年词汇" class="headerlink" title="2019年词汇"></a>2019年词汇</h3><h4 id="7月词汇"><a href="#7月词汇" class="headerlink" title="7月词汇"></a>7月词汇</h4><h5 id="二方库"><a href="#二方库" class="headerlink" title="二方库"></a>二方库</h5><ul><li>一方库：本工程中的各模块的相互依赖</li><li>二方库：公司内部的依赖库，一般指公司内部的其他项目发布的jar包</li><li>三方库：公司之外的开源库， 比如apache、ibm、google等发布的依赖</li></ul><h5 id="mock数据"><a href="#mock数据" class="headerlink" title="mock数据"></a>mock数据</h5><p>在前后端分离开发过程中，后端为前端请求制造的模拟数据。常见制造模拟数据的方法有如下几种：</p><ul><li><p><a href="https://www.google.com/search?q=easymock&amp;oq=easymock&amp;aqs=chrome..69i57&amp;sourceid=chrome&amp;ie=UTF-8" target="_blank" rel="noopener">easymock</a></p></li><li><p><a href="http://mockjs.com/" target="_blank" rel="noopener">Mock.js</a></p></li><li><p><a href="https://www.npmjs.com/package/server-mock" target="_blank" rel="noopener">server-mock</a></p></li></ul><h5 id="SOA"><a href="#SOA" class="headerlink" title="SOA"></a>SOA</h5><p>面向服务架构（Service-Oriented Architecture，SOA）又称“面向服务的体系结构”，是Gartner于2O世纪9O年代中期提出的面向服务架构的概念。 </p><h5 id="打tag"><a href="#打tag" class="headerlink" title="打tag"></a>打tag</h5><p>说白了就是给你的项目打个标签，立个里程碑，这样就可以去方便的回溯每个版本的代码了。如何打tag，命令如下：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"># 打tag -a 后面是tag名称 -m 后面是注释（这里我们可以写我们这个版本做了什么？）</span><br><span class="line">git tag -a v3.2.1 -m &apos;线上版本&apos;</span><br><span class="line"></span><br><span class="line"># 将标签提交到远程仓库</span><br><span class="line">git push origin v3.2.1</span><br></pre></td></tr></table></figure><h5 id="qps"><a href="#qps" class="headerlink" title="qps"></a>qps</h5><p>每秒查询率QPS是对一个特定的查询服务器在规定时间内所处理流量多少的衡量标准，在因特网上，作为域名系统服务器的机器的性能经常用每秒查询率来衡量。</p><ul><li>吞吐量</li></ul><p>吞吐量是指系统在单位时间内处理请求的数量。</p><ul><li>并发用户数 </li></ul><p>并发用户数是指系统可以同时承载的正常使用系统功能的用户的数量。</p><h5 id="IO线程"><a href="#IO线程" class="headerlink" title="IO线程"></a>IO线程</h5><h5 id="VisualVM"><a href="#VisualVM" class="headerlink" title="VisualVM"></a>VisualVM</h5><p>VisualVM是JDK自带的一款全能型性能监控和故障分析工具,包括对CPU使用、JVM堆内存消耗、线程、类加载的实时监控,内存dump文件分析,垃圾回收运行情况的可视化分析等,对故障排查和性能调优很有帮助。</p><h5 id="包装类"><a href="#包装类" class="headerlink" title="包装类"></a>包装类</h5><p>包装类（Wrapper Class）： Java是一个面向对象的编程语言，但是Java中的八种基本数据类型却是不面向对象的，为了使用方便和解决这个不足，在设计类时为每个基本数据类型设计了一个对应的类进行代表，这样八种基本数据类型对应的类统称为包装类(Wrapper Class)，包装类均位于java.lang包。</p><h5 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h5><p>栈就像枪的梭子一样,先进后出.</p><h4 id="8月词汇"><a href="#8月词汇" class="headerlink" title="8月词汇"></a>8月词汇</h4><h5 id="TDD"><a href="#TDD" class="headerlink" title="TDD"></a>TDD</h5><p>TDD是测试驱动开发（Test-Driven Development）的英文简称，是敏捷开发中的一项核心实践和技术，也是一种设计方法论。</p><h5 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h5><p>一个算法中的所有语句执行次数之和称为语句频度或时间频度,记为T(n)。</p><h5 id="空间复杂度"><a href="#空间复杂度" class="headerlink" title="空间复杂度"></a>空间复杂度</h5><p>如果算法执行所需要的临时空间不随着某个变量n的大小而变化，即此算法空间复杂度为一个常量，可表示为 O(1)</p><h5 id="哑结点"><a href="#哑结点" class="headerlink" title="哑结点"></a>哑结点</h5><p>说白了就是无用的节点,一般处在链表的头部.是一个被人为创建的节点，虽然其内容为NULL，但是它在堆中有占有一定的空间。哑节点的使用可以避免边界问题的处理，达到简化代码与减少代码出错可能性的目的。</p><blockquote><p><a href="https://www.jianshu.com/u/354cc1548a33" target="_blank" rel="noopener">【1】简书主页·share猿</a><br><a href="https://juejin.im/user/5a8e759851882524d842d174" target="_blank" rel="noopener">【2】掘金主页·share猿</a></p></blockquote><hr><p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>                </div>                <div class="image-caption"></div>            </figure></p><p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;blockquote&gt;
+&lt;p&gt;先有词汇量,然后再能好好说话,好好做事。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;2019年词汇&quot;&gt;&lt;a href=&quot;#2019年词汇&quot; class=&quot;headerlink&quot; title=&quot;2019年词汇&quot;&gt;&lt;/a&gt;2019年词汇&lt;/h
+      
+    
+    </summary>
+    
+      <category term="软件" scheme="https://lywlefan.github.io/categories/%E8%BD%AF%E4%BB%B6/"/>
+    
+    
+      <category term="第一次听说的词汇" scheme="https://lywlefan.github.io/tags/%E7%AC%AC%E4%B8%80%E6%AC%A1%E5%90%AC%E8%AF%B4%E7%9A%84%E8%AF%8D%E6%B1%87/"/>
     
   </entry>
   
@@ -472,6 +500,38 @@
   </entry>
   
   <entry>
+    <title>学习攻略.如何才能学好并发编程？</title>
+    <link href="https://lywlefan.github.io/2019/07/02/%E9%AB%98%E5%B9%B6%E5%8F%91/%E4%B9%A6%E7%B1%8D/java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E5%AE%9E%E6%88%98-%E7%8E%8B%E5%AE%9D%E4%BB%A4/%E5%AD%A6%E4%B9%A0%E6%94%BB%E7%95%A5.%E5%A6%82%E4%BD%95%E6%89%8D%E8%83%BD%E5%AD%A6%E5%A5%BD%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%EF%BC%9F/"/>
+    <id>https://lywlefan.github.io/2019/07/02/高并发/书籍/java并发编程实战-王宝令/学习攻略.如何才能学好并发编程？/</id>
+    <published>2019-07-01T16:00:00.000Z</published>
+    <updated>2019-07-02T09:23:11.375Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="阅读笔记"><a href="#阅读笔记" class="headerlink" title="阅读笔记"></a>阅读笔记</h2><p>并发是一门独立学科也是一门综合科学，从两个方面突破并发编程：</p><ul><li><p>跳出来，看全景</p></li><li><p>钻进去，看本质</p></li></ul><h3 id="跳出来，看全景"><a href="#跳出来，看全景" class="headerlink" title="跳出来，看全景"></a>跳出来，看全景</h3><p>学习最忌讳的就是“盲人摸象”，只看到局部，没有全局。从单一知识点跳出来，高屋建瓴看并发编程，首要之事就是建立一张全景图。</p><h4 id="并发核心问题"><a href="#并发核心问题" class="headerlink" title="并发核心问题"></a>并发核心问题</h4><h5 id="分工"><a href="#分工" class="headerlink" title="分工"></a>分工</h5><p>像做项目的分工一样，不同的工作分给不同的人，实现工作效率最大化。</p><p>在学习抽象的东西的时候要多与现实生活中的场景进行类比。</p><p>Java SDK 并发包里的 Executor、Fork/Join、Future本质上都是一种分工的方式。</p><p>并发编程领域还总结了一些设计模式，基本上都是和分工方法相关的，例如生产者 - 消费者、Message、Worker Thread 模式等。</p><h5 id="同步"><a href="#同步" class="headerlink" title="同步"></a>同步</h5><p>同步就相当于项目中的沟通协调，什么时间干什么工作。</p><p>放到软件程序中就是一个线程执行完，通知下一个线程执行而已。例如，用 Future 可以发起一个异步调用，当主线程通过 get() 方法取结果时，主线程就会等待，当异步执行的结果返回时，get() 方法就自动返回了，这就解决了我们主从线程的协作。</p><p>Java SDK 里提供的 CountDownLatch、CyclicBarrierr、Phaser、Exchanger 也都是用来解决线程协作问题的。</p><p>还有很多场景，是需要你自己来处理线程之间的协作。</p><p>在java并发编程领域，解决协作问题的核心就是<strong>管程</strong>，上面提到的所有线程协作技术底层都是利用管程解决的。管程是一种解决并发问题的通用模型，除了能解决线程协助问题，还能解决下面我们将要介绍的互斥问题。可以这么说，<strong>管程是解决并发问题的万能钥匙</strong>。</p><p>关键是理解管程模型，学好它就可以解决所有问题。</p><p>其次是了解java JDK并发包提供的几个线程协作的工具类场景，用好它们可以妥妥地提高你的工作效率。</p><h5 id="互斥"><a href="#互斥" class="headerlink" title="互斥"></a>互斥</h5><p>分工/同步主要强调性能，但是并发程序里还有一部分是关于正确性，用专业术语叫“线程安全”。</p><ul><li><p>可见性问题</p></li><li><p>有序性问题</p></li><li><p>原子性问题</p></li></ul><p>为了解决以上三个问题，java语言引入了内存模型，内存模型提供了一系列的规则，利用这些规则，我们可以避免以上问题。</p><p><strong>所谓互斥，指的是同一时刻，只允许一个线程访问共享变量。</strong></p><p>实现互斥的核心技术是锁，java语言里synchronized、SDK里各种Lock都能解决互斥问题。</p><p>虽说锁解决了安全性问题，但同时也带来了性能问题，那如何保证安全性的同时又尽量提高性能那？分场景优化：</p><ul><li><p>Java SDK 里提供的 ReadWriteLock、StampedLock 就可以优化读多写少场景下锁的性能。</p></li><li><p>还可以使用无锁的数据结构，例如 Java SDK 里提供的原子类都是基于无锁技术实现的。</p></li></ul><p>除此之外，还有一些其他的方案，原理是不共享变量或者变量只允许许读。这方面，Java 提供了Thread Local 和 final 关键字，还有一种 Copy-on-write 的模式。</p><p>使用锁除了要注意性能问题外，还需要注意死锁问题。</p><p>这部分内容比较复杂，往往还是跨领域的，例如要理解可见性，就需要了解一些 CPU 和缓存的知识；</p><p>很多无锁算法的实现往往也需要理解 CPU 缓存。</p><p>这部分内容的学习，需要博览群书，在大脑里建立起 CPU、内存、I/O 执行的模拟器。</p><p>全景图</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://upload-images.jianshu.io/upload_images/3084894-e4dba3439c48d077.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>                </div>                <div class="image-caption"></div>            </figure><h3 id="钻进去，看本质"><a href="#钻进去，看本质" class="headerlink" title="钻进去，看本质"></a>钻进去，看本质</h3><p>深入理解，找到本质。</p><p>多分析这些概念和结论是怎么来的？？</p><p>它们是用来解决什么问题的？</p><p>知其然知其所以然。</p><p>工程上解决问题，一定要有理论做基础。</p><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><blockquote><p>推荐书单</p></blockquote><p>-《Java并发编程实战》作者阵容可谓大师云集，也包括Doug Lea</p><p>-《Java并发编程的艺术》讲解并发包内部实现原理，能读明白，内功大增</p><p>-《图解Java多线程设计模式》并发编程设计模式方面的经典书籍</p><p>-《操作系统：精髓与设计原理》经典操作系统教材</p><ul><li><p><a href="http://ifeve.com" target="_blank" rel="noopener">http://ifeve.com</a> 国内专业并发编程网站</p></li><li><p><a href="http://www.cs.umd.edu/~pugh/java/memoryModel/" target="_blank" rel="noopener">http://www.cs.umd.edu/~pugh/java/memoryModel/</a> 很多并发编程的早期资料都在这里</p></li></ul><blockquote><p><strong>参考文档</strong></p></blockquote><blockquote><p><a href="https://www.jianshu.com/u/354cc1548a33" target="_blank" rel="noopener">【1】简书主页·share猿</a></p></blockquote><blockquote><p><a href="https://juejin.im/user/5a8e759851882524d842d174" target="_blank" rel="noopener">【2】掘金主页·share猿</a></p></blockquote><hr><p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>                </div>                <div class="image-caption"></div>            </figure></p><p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;阅读笔记&quot;&gt;&lt;a href=&quot;#阅读笔记&quot; class=&quot;headerlink&quot; title=&quot;阅读笔记&quot;&gt;&lt;/a&gt;阅读笔记&lt;/h2&gt;&lt;p&gt;并发是一门独立学科也是一门综合科学，从两个方面突破并发编程：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;跳出来，看全景&lt;/p&gt;
+&lt;/l
+      
+    
+    </summary>
+    
+      <category term="高并发" scheme="https://lywlefan.github.io/categories/%E9%AB%98%E5%B9%B6%E5%8F%91/"/>
+    
+    
+      <category term="并发" scheme="https://lywlefan.github.io/tags/%E5%B9%B6%E5%8F%91/"/>
+    
+      <category term="读书笔记" scheme="https://lywlefan.github.io/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="java并发编程实战-王宝令" scheme="https://lywlefan.github.io/tags/java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E5%AE%9E%E6%88%98-%E7%8E%8B%E5%AE%9D%E4%BB%A4/"/>
+    
+  </entry>
+  
+  <entry>
     <title>01.可见性、原子性和有序性问题：并发编程Bug的源头</title>
     <link href="https://lywlefan.github.io/2019/07/02/%E9%AB%98%E5%B9%B6%E5%8F%91/%E4%B9%A6%E7%B1%8D/java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E5%AE%9E%E6%88%98-%E7%8E%8B%E5%AE%9D%E4%BB%A4/01.%E5%8F%AF%E8%A7%81%E6%80%A7%E3%80%81%E5%8E%9F%E5%AD%90%E6%80%A7%E5%92%8C%E6%9C%89%E5%BA%8F%E6%80%A7%E9%97%AE%E9%A2%98%EF%BC%9A%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8BBug%E7%9A%84%E6%BA%90%E5%A4%B4%20/"/>
     <id>https://lywlefan.github.io/2019/07/02/高并发/书籍/java并发编程实战-王宝令/01.可见性、原子性和有序性问题：并发编程Bug的源头 /</id>
@@ -490,38 +550,6 @@
 &lt;li&gt;&lt;p&gt;原子性&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;p&gt;有序性&lt;/p&gt;
-&lt;/l
-      
-    
-    </summary>
-    
-      <category term="高并发" scheme="https://lywlefan.github.io/categories/%E9%AB%98%E5%B9%B6%E5%8F%91/"/>
-    
-    
-      <category term="并发" scheme="https://lywlefan.github.io/tags/%E5%B9%B6%E5%8F%91/"/>
-    
-      <category term="读书笔记" scheme="https://lywlefan.github.io/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
-    
-      <category term="java并发编程实战-王宝令" scheme="https://lywlefan.github.io/tags/java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E5%AE%9E%E6%88%98-%E7%8E%8B%E5%AE%9D%E4%BB%A4/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>学习攻略.如何才能学好并发编程？</title>
-    <link href="https://lywlefan.github.io/2019/07/02/%E9%AB%98%E5%B9%B6%E5%8F%91/%E4%B9%A6%E7%B1%8D/java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E5%AE%9E%E6%88%98-%E7%8E%8B%E5%AE%9D%E4%BB%A4/%E5%AD%A6%E4%B9%A0%E6%94%BB%E7%95%A5.%E5%A6%82%E4%BD%95%E6%89%8D%E8%83%BD%E5%AD%A6%E5%A5%BD%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%EF%BC%9F/"/>
-    <id>https://lywlefan.github.io/2019/07/02/高并发/书籍/java并发编程实战-王宝令/学习攻略.如何才能学好并发编程？/</id>
-    <published>2019-07-01T16:00:00.000Z</published>
-    <updated>2019-07-02T09:23:11.375Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="阅读笔记"><a href="#阅读笔记" class="headerlink" title="阅读笔记"></a>阅读笔记</h2><p>并发是一门独立学科也是一门综合科学，从两个方面突破并发编程：</p><ul><li><p>跳出来，看全景</p></li><li><p>钻进去，看本质</p></li></ul><h3 id="跳出来，看全景"><a href="#跳出来，看全景" class="headerlink" title="跳出来，看全景"></a>跳出来，看全景</h3><p>学习最忌讳的就是“盲人摸象”，只看到局部，没有全局。从单一知识点跳出来，高屋建瓴看并发编程，首要之事就是建立一张全景图。</p><h4 id="并发核心问题"><a href="#并发核心问题" class="headerlink" title="并发核心问题"></a>并发核心问题</h4><h5 id="分工"><a href="#分工" class="headerlink" title="分工"></a>分工</h5><p>像做项目的分工一样，不同的工作分给不同的人，实现工作效率最大化。</p><p>在学习抽象的东西的时候要多与现实生活中的场景进行类比。</p><p>Java SDK 并发包里的 Executor、Fork/Join、Future本质上都是一种分工的方式。</p><p>并发编程领域还总结了一些设计模式，基本上都是和分工方法相关的，例如生产者 - 消费者、Message、Worker Thread 模式等。</p><h5 id="同步"><a href="#同步" class="headerlink" title="同步"></a>同步</h5><p>同步就相当于项目中的沟通协调，什么时间干什么工作。</p><p>放到软件程序中就是一个线程执行完，通知下一个线程执行而已。例如，用 Future 可以发起一个异步调用，当主线程通过 get() 方法取结果时，主线程就会等待，当异步执行的结果返回时，get() 方法就自动返回了，这就解决了我们主从线程的协作。</p><p>Java SDK 里提供的 CountDownLatch、CyclicBarrierr、Phaser、Exchanger 也都是用来解决线程协作问题的。</p><p>还有很多场景，是需要你自己来处理线程之间的协作。</p><p>在java并发编程领域，解决协作问题的核心就是<strong>管程</strong>，上面提到的所有线程协作技术底层都是利用管程解决的。管程是一种解决并发问题的通用模型，除了能解决线程协助问题，还能解决下面我们将要介绍的互斥问题。可以这么说，<strong>管程是解决并发问题的万能钥匙</strong>。</p><p>关键是理解管程模型，学好它就可以解决所有问题。</p><p>其次是了解java JDK并发包提供的几个线程协作的工具类场景，用好它们可以妥妥地提高你的工作效率。</p><h5 id="互斥"><a href="#互斥" class="headerlink" title="互斥"></a>互斥</h5><p>分工/同步主要强调性能，但是并发程序里还有一部分是关于正确性，用专业术语叫“线程安全”。</p><ul><li><p>可见性问题</p></li><li><p>有序性问题</p></li><li><p>原子性问题</p></li></ul><p>为了解决以上三个问题，java语言引入了内存模型，内存模型提供了一系列的规则，利用这些规则，我们可以避免以上问题。</p><p><strong>所谓互斥，指的是同一时刻，只允许一个线程访问共享变量。</strong></p><p>实现互斥的核心技术是锁，java语言里synchronized、SDK里各种Lock都能解决互斥问题。</p><p>虽说锁解决了安全性问题，但同时也带来了性能问题，那如何保证安全性的同时又尽量提高性能那？分场景优化：</p><ul><li><p>Java SDK 里提供的 ReadWriteLock、StampedLock 就可以优化读多写少场景下锁的性能。</p></li><li><p>还可以使用无锁的数据结构，例如 Java SDK 里提供的原子类都是基于无锁技术实现的。</p></li></ul><p>除此之外，还有一些其他的方案，原理是不共享变量或者变量只允许许读。这方面，Java 提供了Thread Local 和 final 关键字，还有一种 Copy-on-write 的模式。</p><p>使用锁除了要注意性能问题外，还需要注意死锁问题。</p><p>这部分内容比较复杂，往往还是跨领域的，例如要理解可见性，就需要了解一些 CPU 和缓存的知识；</p><p>很多无锁算法的实现往往也需要理解 CPU 缓存。</p><p>这部分内容的学习，需要博览群书，在大脑里建立起 CPU、内存、I/O 执行的模拟器。</p><p>全景图</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://upload-images.jianshu.io/upload_images/3084894-e4dba3439c48d077.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>                </div>                <div class="image-caption"></div>            </figure><h3 id="钻进去，看本质"><a href="#钻进去，看本质" class="headerlink" title="钻进去，看本质"></a>钻进去，看本质</h3><p>深入理解，找到本质。</p><p>多分析这些概念和结论是怎么来的？？</p><p>它们是用来解决什么问题的？</p><p>知其然知其所以然。</p><p>工程上解决问题，一定要有理论做基础。</p><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><blockquote><p>推荐书单</p></blockquote><p>-《Java并发编程实战》作者阵容可谓大师云集，也包括Doug Lea</p><p>-《Java并发编程的艺术》讲解并发包内部实现原理，能读明白，内功大增</p><p>-《图解Java多线程设计模式》并发编程设计模式方面的经典书籍</p><p>-《操作系统：精髓与设计原理》经典操作系统教材</p><ul><li><p><a href="http://ifeve.com" target="_blank" rel="noopener">http://ifeve.com</a> 国内专业并发编程网站</p></li><li><p><a href="http://www.cs.umd.edu/~pugh/java/memoryModel/" target="_blank" rel="noopener">http://www.cs.umd.edu/~pugh/java/memoryModel/</a> 很多并发编程的早期资料都在这里</p></li></ul><blockquote><p><strong>参考文档</strong></p></blockquote><blockquote><p><a href="https://www.jianshu.com/u/354cc1548a33" target="_blank" rel="noopener">【1】简书主页·share猿</a></p></blockquote><blockquote><p><a href="https://juejin.im/user/5a8e759851882524d842d174" target="_blank" rel="noopener">【2】掘金主页·share猿</a></p></blockquote><hr><p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>                </div>                <div class="image-caption"></div>            </figure></p><p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;阅读笔记&quot;&gt;&lt;a href=&quot;#阅读笔记&quot; class=&quot;headerlink&quot; title=&quot;阅读笔记&quot;&gt;&lt;/a&gt;阅读笔记&lt;/h2&gt;&lt;p&gt;并发是一门独立学科也是一门综合科学，从两个方面突破并发编程：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;跳出来，看全景&lt;/p&gt;
 &lt;/l
       
     
@@ -596,36 +624,6 @@
       <category term="kafka" scheme="https://lywlefan.github.io/tags/kafka/"/>
     
       <category term="kafka核心技术与实战-胡夕" scheme="https://lywlefan.github.io/tags/kafka%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%E4%B8%8E%E5%AE%9E%E6%88%98-%E8%83%A1%E5%A4%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>es的FAQ</title>
-    <link href="https://lywlefan.github.io/2019/06/28/%E4%B8%AD%E9%97%B4%E4%BB%B6/es/FAQ/"/>
-    <id>https://lywlefan.github.io/2019/06/28/中间件/es/FAQ/</id>
-    <published>2019-06-27T16:00:00.000Z</published>
-    <updated>2019-08-06T01:39:26.074Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="问题整理"><a href="#问题整理" class="headerlink" title="问题整理"></a>问题整理</h3><blockquote><p><strong>参考文档</strong></p></blockquote><blockquote><p><a href="https://www.jianshu.com/u/354cc1548a33" target="_blank" rel="noopener">【1】简书主页·share猿</a></p></blockquote><blockquote><p><a href="https://juejin.im/user/5a8e759851882524d842d174" target="_blank" rel="noopener">【2】掘金主页·share猿</a></p></blockquote><blockquote><p><a href="https://redis.io" target="_blank" rel="noopener">【3】redis官网</a></p></blockquote><hr><p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>                </div>                <div class="image-caption"></div>            </figure></p><p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h3 id=&quot;问题整理&quot;&gt;&lt;a href=&quot;#问题整理&quot; class=&quot;headerlink&quot; title=&quot;问题整理&quot;&gt;&lt;/a&gt;问题整理&lt;/h3&gt;&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;参考文档&lt;/strong&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;blockquo
-      
-    
-    </summary>
-    
-      <category term="中间件" scheme="https://lywlefan.github.io/categories/%E4%B8%AD%E9%97%B4%E4%BB%B6/"/>
-    
-    
-      <category term="redis" scheme="https://lywlefan.github.io/tags/redis/"/>
-    
-      <category term="学习笔记" scheme="https://lywlefan.github.io/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   
