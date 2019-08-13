@@ -31,7 +31,7 @@
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/3084894-676af09bd331705a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-08-13T07:43:35.396Z">
+<meta property="og:updated_time" content="2019-08-13T07:45:01.255Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="内功修炼-算法02">
 <meta name="twitter:description" content="万丈高楼平地起的前提是地基好.  题目:无重复字符的最长子串题目描述给定一个字符串，请你找出其中不含有重复字符的 最长子串 的长度。 示例 1: 123456789101112131415输入: &amp;quot;abcabcbb&amp;quot;输出: 3 解释: 因为无重复字符的最长子串是 &amp;quot;abc&amp;quot;，所以其长度为 3。示例 2:输入: &amp;quot;bbbbb&amp;quot;输出: 1解">
@@ -205,10 +205,14 @@
 <li>不含有重复字符的最大字符串长度</li>
 </ul>
 <h4 id="思路梳理"><a href="#思路梳理" class="headerlink" title="思路梳理"></a>思路梳理</h4><h5 id="我的解题思路"><a href="#我的解题思路" class="headerlink" title="我的解题思路"></a>我的解题思路</h5><ul>
-<li>1.把字符串转换为字符数组</li>
-<li>2.把字符串逐个放入set集合(set),同时记录放入集合的数量(j)</li>
-<li>2.如果set集合长度和放入数量不符,记录该长度(l),清空set集合,把j设置为0,放入刚才放入的值,继续循环</li>
-<li>3.如果继续出现上述清空,和上面记录的长度进行对比,小于清空继续,大于更新记录长度</li>
+<li><p>1.把字符串转换为字符数组</p>
+</li>
+<li><p>2.把字符串逐个放入set集合(set),同时记录放入集合的数量(j)</p>
+</li>
+<li><p>2.如果set集合长度和放入数量不符,记录该长度(l),清空set集合,把j设置为0,放入刚才放入的值,继续循环</p>
+</li>
+<li><p>3.如果继续出现上述清空,和上面记录的长度进行对比,小于清空继续,大于更新记录长度</p>
+</li>
 </ul>
 <p>总结:上述解题思路忽略了空格字符串的情况,存在问题.</p>
 <h5 id="正确的解题思路-滑动窗口"><a href="#正确的解题思路-滑动窗口" class="headerlink" title="正确的解题思路:滑动窗口"></a>正确的解题思路:滑动窗口</h5><figure class="image-bubble">
@@ -219,15 +223,22 @@
                 <div class="image-caption">时间窗移动原理</div>
             </figure>
 <ul>
-<li>1.定义一个map集合(map)，用于存储字符值和位置，key为字符，value为字符位置加1</li>
-<li>2.定义一个变量ans,用于记录时间窗最大长度</li>
-<li>3.定义时间窗起点start和时间窗结束点end</li>
-<li>4.然后把end向右滑动,最大长度为（end-start+1），如果map集合中存在该元素,说明遇到了重复的元素<ul>
-<li>4.1.记录时间窗最大值ans</li>
-<li>4.2.移动时间窗start到重复元素第一个之后的位置</li>
+<li><p>1.定义一个map集合(map)，用于存储字符值和位置，key为字符，value为字符位置加1</p>
+</li>
+<li><p>2.定义一个变量ans,用于记录时间窗最大长度</p>
+</li>
+<li><p>3.定义时间窗起点start和时间窗结束点end</p>
+</li>
+<li><p>4.然后把end向右滑动,最大长度为（end-start+1），如果map集合中存在该元素,说明遇到了重复的元素</p>
+<ul>
+<li><p>4.1.记录时间窗最大值ans</p>
+</li>
+<li><p>4.2.移动时间窗start到重复元素第一个之后的位置</p>
+</li>
 </ul>
 </li>
-<li>5.继续滑动,直到j=字符串长度</li>
+<li><p>5.继续滑动,直到j=字符串长度</p>
+</li>
 </ul>
 <h3 id="题目解答"><a href="#题目解答" class="headerlink" title="题目解答"></a>题目解答</h3><h4 id="我的解答"><a href="#我的解答" class="headerlink" title="我的解答"></a>我的解答</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 思路一:</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> *      1.把字符串转换为字符数组</span></span><br><span class="line"><span class="comment"> *      2.把字符串逐个放入set集合(set),同时记录放入集合的数量(j)</span></span><br><span class="line"><span class="comment"> *      2.如果set集合长度和放入数量不符,记录该长度(l),清空set集合,把j设置为0,放入刚才放入的值,继续循环</span></span><br><span class="line"><span class="comment"> *      3.如果继续出现上述清空,和上面记录的长度进行对比,小于清空继续,大于更新记录长度</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> *      时间复杂度:T(N) 空间复杂度:O(1)</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * 测试情况:不通过</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * 总结分析:</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> *      1.没有考虑到空格字符串的情况</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">lengthOfLongestSubstring1</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">char</span> [] chars = s.toCharArray();</span><br><span class="line">    Set set = <span class="keyword">new</span> HashSet();</span><br><span class="line">    <span class="keyword">int</span> l=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>,j=<span class="number">0</span>;i&lt;chars.length;i++)&#123;</span><br><span class="line">       set.add(chars[i]);</span><br><span class="line">       j++;</span><br><span class="line">       <span class="keyword">if</span> (set.size()&lt;j)&#123;</span><br><span class="line">           l = Math.max(set.size(),l);</span><br><span class="line">           set.clear();</span><br><span class="line">           j = <span class="number">1</span>;</span><br><span class="line">           set.add(chars[i]);</span><br><span class="line">       &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> l;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h4 id="正确的解答"><a href="#正确的解答" class="headerlink" title="正确的解答"></a>正确的解答</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 思路二: 滑动窗口</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> *      1.定义一个map集合(map)，用于存储字符值和位置，key为字符，value为字符位置加1</span></span><br><span class="line"><span class="comment"> *      2.定义一个变量ans,用于记录时间窗最大长度</span></span><br><span class="line"><span class="comment"> *      3.定义时间窗起点start和时间窗结束点end</span></span><br><span class="line"><span class="comment"> *      4.然后把end向右滑动,最大长度为（end-start+1），如果map集合中存在该元素,说明遇到了重复的元素</span></span><br><span class="line"><span class="comment"> *          4.1.记录时间窗最大值ans</span></span><br><span class="line"><span class="comment"> *          4.2.移动时间窗start到重复元素第一个之后的位置</span></span><br><span class="line"><span class="comment"> *      5.继续滑动,直到j=字符串长度</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">lengthOfLongestSubstring2</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n = s.length(), ans = <span class="number">0</span>;</span><br><span class="line">    Map&lt;Character, Integer&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> end = <span class="number">0</span>, start = <span class="number">0</span>; end &lt; n; end++) &#123;</span><br><span class="line">        <span class="keyword">char</span> alpha = s.charAt(end);</span><br><span class="line">        <span class="keyword">if</span> (map.containsKey(alpha)) &#123;</span><br><span class="line">            start = Math.max(map.get(alpha), start);</span><br><span class="line">        &#125;</span><br><span class="line">        ans = Math.max(ans, end - start + <span class="number">1</span>);</span><br><span class="line">        map.put(s.charAt(end), end + <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -262,7 +273,7 @@
     <div class="content">
         
 <span class="post-time">
-    最終更新：<time datetime="2019-08-13T07:43:35.396Z" itemprop="dateUpdated">2019-08-13 15:43:35</time>
+    最終更新：<time datetime="2019-08-13T07:45:01.255Z" itemprop="dateUpdated">2019-08-13 15:45:01</time>
 </span><br>
 
 
