@@ -124,7 +124,7 @@
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="検索">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
@@ -158,10 +158,10 @@
     <ul class="post-list">
     
         <li class="post-list-item fade">
-            <article id="post-中间件/es/COLLECTION" class="article-card article-type-post" itemprop="blogPost">
+            <article id="post-中间件/kafka/读书笔记/kafka核心技术与实战-胡夕/11.无消息丢失配置怎么实现？" class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2019-06-28 00:00:00" datetime="2019-06-27T16:00:00.000Z" itemprop="datePublished">2019-06-28</time>
+        <time class="post-time" title="2019-07-01 00:00:00" datetime="2019-06-30T16:00:00.000Z" itemprop="datePublished">2019-07-01</time>
 
         
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/中间件/">中间件</a></li></ul>
@@ -175,7 +175,7 @@
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2019/06/28/中间件/es/COLLECTION/">es的COLLECTION</a>
+      <a class="post-title-link" href="/2019/07/01/中间件/kafka/读书笔记/kafka核心技术与实战-胡夕/11.无消息丢失配置怎么实现？/">11.无消息丢失配置怎么实现？</a>
     </h3>
   
 
@@ -185,172 +185,25 @@
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        学习基础学习
-1.Elasticsearch学习，请先看这一篇！
+        阅读笔记
+kafka中什么算消息丢失
 
-2.Elasticsearch 权威指南（中文版）
-
-
-视频文章考试考试导航文章
-Elastic认证考试，请先看这一篇！
-
-视频备考学习
-参考文档
+什么情况下能保证kafka消息不丢失
 
 
-【1】简书主页·share猿
-
-
-【2】掘金主页·share猿
-
-
-【3】elasticsearch官网
-
-
-扫描以下公众号关注小猿↓↓↓↓↓↓↓↓
-            ...
+一句话概括,Kafka只对”已提交”的消息做有限度的持久化保证。
+什么是已提交的消息?当kafka的若干个Broker成功的接收到一条消息并写入到日志文件之后,它们就会告诉生产者程序这条消息已成功提交。此时,这条消息在kafka看来就正式变为”已提交”消息了。
+为什么是若干个Broker?这取决于”已提交”的定...
     
 
-        <a href="/2019/06/28/中间件/es/COLLECTION/" class="post-more waves-effect waves-button">
-            続きを読む…
+        <a href="/2019/07/01/中间件/kafka/读书笔记/kafka核心技术与实战-胡夕/11.无消息丢失配置怎么实现？/" class="post-more waves-effect waves-button">
+            Continue reading...
         </a>
     </div>
     
     <div class="post-footer">
         
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/collection/">collection</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/elasticsearch/">elasticsearch</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-中间件/es/FAQ" class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2019-06-28 00:00:00" datetime="2019-06-27T16:00:00.000Z" itemprop="datePublished">2019-06-28</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/中间件/">中间件</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2019/06/28/中间件/es/FAQ/">es的FAQ</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        问题整理
-参考文档
-
-
-【1】简书主页·share猿
-
-
-【2】掘金主页·share猿
-
-
-【3】redis官网
-
-
-扫描以下公众号关注小猿↓↓↓↓↓↓↓↓
-                
-                    
-                    
-                
-                
-            
-更多资讯请在简书、微博、...
-    
-
-        <a href="/2019/06/28/中间件/es/FAQ/" class="post-more waves-effect waves-button">
-            続きを読む…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/redis/">redis</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/学习笔记/">学习笔记</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-中间件/es/VERSION" class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2019-06-28 00:00:00" datetime="2019-06-27T16:00:00.000Z" itemprop="datePublished">2019-06-28</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/中间件/">中间件</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2019/06/28/中间件/es/VERSION/">es的VERSION</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        问题整理
-参考文档
-
-
-【1】简书主页·share猿
-
-
-【2】掘金主页·share猿
-
-
-【3】redis官网
-
-
-扫描以下公众号关注小猿↓↓↓↓↓↓↓↓
-                
-                    
-                    
-                
-                
-            
-更多资讯请在简书、微博、...
-    
-
-        <a href="/2019/06/28/中间件/es/VERSION/" class="post-more waves-effect waves-button">
-            続きを読む…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/redis/">redis</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/学习笔记/">学习笔记</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/kafka/">kafka</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/kafka核心技术与实战-胡夕/">kafka核心技术与实战-胡夕</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
 
     </div>
     
@@ -410,7 +263,73 @@ Elastic认证考试，请先看这一篇！
     
 
         <a href="/2019/06/28/中间件/redis/FAQ/" class="post-more waves-effect waves-button">
-            続きを読む…
+            Continue reading...
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/redis/">redis</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/学习笔记/">学习笔记</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-中间件/es/FAQ" class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2019-06-28 00:00:00" datetime="2019-06-27T16:00:00.000Z" itemprop="datePublished">2019-06-28</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/中间件/">中间件</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2019/06/28/中间件/es/FAQ/">es的FAQ</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        问题整理
+参考文档
+
+
+【1】简书主页·share猿
+
+
+【2】掘金主页·share猿
+
+
+【3】redis官网
+
+
+扫描以下公众号关注小猿↓↓↓↓↓↓↓↓
+                
+                    
+                    
+                
+                
+            
+更多资讯请在简书、微博、...
+    
+
+        <a href="/2019/06/28/中间件/es/FAQ/" class="post-more waves-effect waves-button">
+            Continue reading...
         </a>
     </div>
     
@@ -476,7 +395,7 @@ Elastic认证考试，请先看这一篇！
     
 
         <a href="/2019/06/28/中间件/redis/VERSION/" class="post-more waves-effect waves-button">
-            続きを読む…
+            Continue reading...
         </a>
     </div>
     
@@ -491,7 +410,7 @@ Elastic认证考试，请先看这一篇！
         </li>
     
         <li class="post-list-item fade">
-            <article id="post-中间件/kafka/读书笔记/kafka核心技术与实战-胡夕/09.生产者消息分区机制原理剖析" class="article-card article-type-post" itemprop="blogPost">
+            <article id="post-中间件/es/COLLECTION" class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
         <time class="post-time" title="2019-06-28 00:00:00" datetime="2019-06-27T16:00:00.000Z" itemprop="datePublished">2019-06-28</time>
@@ -508,7 +427,7 @@ Elastic认证考试，请先看这一篇！
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2019/06/28/中间件/kafka/读书笔记/kafka核心技术与实战-胡夕/09.生产者消息分区机制原理剖析/">09.生产者消息分区机制原理剖析</a>
+      <a class="post-title-link" href="/2019/06/28/中间件/es/COLLECTION/">es的COLLECTION</a>
     </h3>
   
 
@@ -518,32 +437,106 @@ Elastic认证考试，请先看这一篇！
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        阅读笔记生产者消息分区机制原理剖析
-如何将大的数据均匀的分配到Kafka的各个Broker上？
+        学习基础学习
+1.Elasticsearch学习，请先看这一篇！
 
-为什么分区？
-
-
-为什么分区？
-三级结构：主题-分区-消息
-
-主题下的每条消息只会保存在某一个分区中，而不会在多个分区中被保存多份
+2.Elasticsearch 权威指南（中文版）
 
 
+视频文章考试考试导航文章
+Elastic认证考试，请先看这一篇！
 
-疑问:为什么kafka要这样设计？有什么好处？
+视频备考学习
+参考文档
 
-回答:我们设想一个问题，我们在学校找一个学生，如果我们直接把学生集中在一起去找是不是很麻烦，很低效。换种方式...
+
+【1】简书主页·share猿
+
+
+【2】掘金主页·share猿
+
+
+【3】elasticsearch官网
+
+
+扫描以下公众号关注小猿↓↓↓↓↓↓↓↓
+            ...
     
 
-        <a href="/2019/06/28/中间件/kafka/读书笔记/kafka核心技术与实战-胡夕/09.生产者消息分区机制原理剖析/" class="post-more waves-effect waves-button">
-            続きを読む…
+        <a href="/2019/06/28/中间件/es/COLLECTION/" class="post-more waves-effect waves-button">
+            Continue reading...
         </a>
     </div>
     
     <div class="post-footer">
         
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/kafka/">kafka</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/kafka核心技术与实战-胡夕/">kafka核心技术与实战-胡夕</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/collection/">collection</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/elasticsearch/">elasticsearch</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-中间件/es/VERSION" class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2019-06-28 00:00:00" datetime="2019-06-27T16:00:00.000Z" itemprop="datePublished">2019-06-28</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/中间件/">中间件</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2019/06/28/中间件/es/VERSION/">es的VERSION</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        问题整理
+参考文档
+
+
+【1】简书主页·share猿
+
+
+【2】掘金主页·share猿
+
+
+【3】redis官网
+
+
+扫描以下公众号关注小猿↓↓↓↓↓↓↓↓
+                
+                    
+                    
+                
+                
+            
+更多资讯请在简书、微博、...
+    
+
+        <a href="/2019/06/28/中间件/es/VERSION/" class="post-more waves-effect waves-button">
+            Continue reading...
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/redis/">redis</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/学习笔记/">学习笔记</a></li></ul>
 
     </div>
     
@@ -606,7 +599,68 @@ v1（kafka 0.11.0之前）:message set, message ,v2（kafka 0.11.0以后）...
     
 
         <a href="/2019/06/28/中间件/kafka/读书笔记/kafka核心技术与实战-胡夕/10.生产者压缩算法面面观/" class="post-more waves-effect waves-button">
-            続きを読む…
+            Continue reading...
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/kafka/">kafka</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/kafka核心技术与实战-胡夕/">kafka核心技术与实战-胡夕</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-中间件/kafka/读书笔记/kafka核心技术与实战-胡夕/09.生产者消息分区机制原理剖析" class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2019-06-28 00:00:00" datetime="2019-06-27T16:00:00.000Z" itemprop="datePublished">2019-06-28</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/中间件/">中间件</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2019/06/28/中间件/kafka/读书笔记/kafka核心技术与实战-胡夕/09.生产者消息分区机制原理剖析/">09.生产者消息分区机制原理剖析</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        阅读笔记生产者消息分区机制原理剖析
+如何将大的数据均匀的分配到Kafka的各个Broker上？
+
+为什么分区？
+
+
+为什么分区？
+三级结构：主题-分区-消息
+
+主题下的每条消息只会保存在某一个分区中，而不会在多个分区中被保存多份
+
+
+
+疑问:为什么kafka要这样设计？有什么好处？
+
+回答:我们设想一个问题，我们在学校找一个学生，如果我们直接把学生集中在一起去找是不是很麻烦，很低效。换种方式...
+    
+
+        <a href="/2019/06/28/中间件/kafka/读书笔记/kafka核心技术与实战-胡夕/09.生产者消息分区机制原理剖析/" class="post-more waves-effect waves-button">
+            Continue reading...
         </a>
     </div>
     
@@ -663,7 +717,7 @@ CountDownLatchCountDownLatch类位于java.util.concurrent包下，利用它可�
     
 
         <a href="/2019/06/27/高并发/基础/Java并发编程：CountDownLatch、CyclicBarrier和Semaphore/" class="post-more waves-effect waves-button">
-            続きを読む…
+            Continue reading...
         </a>
     </div>
     
@@ -743,62 +797,13 @@ Zookeeper
     
 
         <a href="/2019/06/26/架构/架构导航/" class="post-more waves-effect waves-button">
-            続きを読む…
+            Continue reading...
         </a>
     </div>
     
     <div class="post-footer">
         
 	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/架构导航/">架构导航</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-业务场景/交易所/撮合系统设计" class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2019-06-26 00:00:00" datetime="2019-06-25T16:00:00.000Z" itemprop="datePublished">2019-06-26</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/业务场景/">业务场景</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2019/06/26/业务场景/交易所/撮合系统设计/">撮合系统设计</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        
-摘要：撮合技术主要是从数据库撮合技术向内存撮合技术发展，这是因为数据库撮合技术越来越无法满足金融交易对于高可靠性、高性能、强安全性、可扩展性以及易维护性的需求。本文来自中生代技术群的34期分享，将和大家讨论基于内存的撮合的系统设计。李伟山，毕业于国防科技大学，曾就职于华为、阿里巴巴，目前人江苏大圆银泰技术总监，对于高并发、大数据架构设计有深刻的了解。1.概述
-
-随着信息技术的日新月异和金融...
-    
-
-        <a href="/2019/06/26/业务场景/交易所/撮合系统设计/" class="post-more waves-effect waves-button">
-            続きを読む…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/交易所/">交易所</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/撮合/">撮合</a></li></ul>
 
     </div>
     
@@ -835,7 +840,7 @@ Zookeeper
             
                 <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
             
-            <span>このブログの内容物は<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja">クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際ライセンスの下に提供されています</a></span>
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
         </p>
     </div>
     <div class="bottom">

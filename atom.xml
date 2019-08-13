@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://lywlefan.github.io/"/>
-  <updated>2019-08-13T07:45:01.255Z</updated>
+  <updated>2019-08-13T10:52:53.387Z</updated>
   <id>https://lywlefan.github.io/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>02.redis的线程IO和通讯协议</title>
+    <link href="https://lywlefan.github.io/2019/08/13/%E4%B8%AD%E9%97%B4%E4%BB%B6/redis/02.redis%E7%9A%84%E7%BA%BF%E7%A8%8BIO%E5%92%8C%E9%80%9A%E8%AE%AF%E5%8D%8F%E8%AE%AE/"/>
+    <id>https://lywlefan.github.io/2019/08/13/中间件/redis/02.redis的线程IO和通讯协议/</id>
+    <published>2019-08-12T16:00:00.000Z</published>
+    <updated>2019-08-13T10:52:53.387Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="redis的线程IO"><a href="#redis的线程IO" class="headerlink" title="redis的线程IO"></a>redis的线程IO</h2><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://upload-images.jianshu.io/upload_images/3084894-bcf206af27739ea2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="线程IO" title>                </div>                <div class="image-caption">线程IO</div>            </figure><p>Redis是个单线程程序!但是他有高并发特性,单个节点可以支持10w的QPS。除了redis是单线程,Nginx也是单线程的。单线程为什么如此之快?单线程有如何处理多并发的客户端连接?下面让我们带着这些问题一起深究redis的线程IO。</p><h3 id="5种IO模型学习"><a href="#5种IO模型学习" class="headerlink" title="5种IO模型学习"></a>5种IO模型学习</h3><ul><li><p>阻塞IO模型</p></li><li><p>非阻塞IO模型</p></li><li><p>IO复用模型</p></li><li><p>信号驱动的IO模型</p></li><li><p>异步IO模型</p></li></ul><h4 id="阻塞IO模型"><a href="#阻塞IO模型" class="headerlink" title="阻塞IO模型"></a>阻塞IO模型</h4><p>进程发起IO系统调用后，进程被阻塞，转到内核空间处理，整个IO处理完毕后返回进程。操作成功则进程获取到数据。</p><h5 id="类比"><a href="#类比" class="headerlink" title="类比"></a>类比</h5><p>老李去火车站买票，排队三天买到一张退票。</p><p>耗费：在车站吃喝拉撒睡 3天，其他事一件没干。</p><h5 id="典型应用"><a href="#典型应用" class="headerlink" title="典型应用"></a>典型应用</h5><ul><li><p>阻塞socket</p></li><li><p>java BIO</p></li></ul><h5 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h5><ul><li><p>进程阻塞挂起不消耗CPU资源，及时响应每个操作；</p></li><li><p>实现难度低、开发应用较容易；</p></li><li><p>适用并发量小的网络应用开发；</p></li></ul><p>不适用并发量大的应用：因为一个请求IO会阻塞进程，所以，得为每请求分配一个处理进程（线程）以及时响应，系统开销大。</p><h4 id="非阻塞IO模型"><a href="#非阻塞IO模型" class="headerlink" title="非阻塞IO模型"></a>非阻塞IO模型</h4><p>进程发起IO系统调用后，如果内核缓冲区没有数据，需要到IO设备中读取，进程返回一个错误而不会被阻塞；进程发起IO系统调用后，如果内核缓冲区有数据，内核就会把数据返回进程。</p><h5 id="类比-1"><a href="#类比-1" class="headerlink" title="类比"></a>类比</h5><p> 老李去火车站买票，隔12小时去火车站问有没有退票，三天后买到一张票。</p><p> 耗费：往返车站6次，路上6小时，其他时间做了好多事。</p><h5 id="典型应用-1"><a href="#典型应用-1" class="headerlink" title="典型应用"></a>典型应用</h5><ul><li>socket是非阻塞的方式（设置为NONBLOCK）</li></ul><h5 id="特点-1"><a href="#特点-1" class="headerlink" title="特点"></a>特点</h5><ul><li><p>进程轮询（重复）调用，消耗CPU的资源；</p></li><li><p>实现难度低、开发应用相对阻塞IO模式较难；</p></li><li><p>适用并发量较小、且不需要及时响应的网络应用开发；</p></li></ul><h4 id="IO复用模型"><a href="#IO复用模型" class="headerlink" title="IO复用模型"></a>IO复用模型</h4><p>多个的进程的IO可以注册到一个复用器（select）上，然后用一个进程调用该select， select会监听所有注册进来的IO；</p><p>如果select没有监听的IO在内核缓冲区都没有可读数据，select调用进程会被阻塞；而当任一IO在内核缓冲区中有可数据时，select调用就会返回；</p><p>而后select调用进程可以自己或通知另外的进程（注册进程）来再次发起读取IO，读取内核中准备好的数据。</p><p>可以看到，多个进程注册IO后，只有另一个select调用进程被阻塞。</p><h5 id="类比-2"><a href="#类比-2" class="headerlink" title="类比"></a>类比</h5><p>是找一个宿管大妈来帮你监视下楼的女生, 这个期间你可以些其他的事情. 例如可以顺便看看其他妹子,玩玩王者荣耀, 上个厕所等等. IO复用又包括 select, poll, epoll 模式. 那么它们的区别是什么?</p><ul><li>select</li></ul><p>每一个女生下楼, select大妈都不知道这个是不是你的女神, 她需要一个一个询问, 并且select大妈能力还有限, 最多一次帮你监视1024个妹子</p><ul><li>poll</li></ul><p>不限制盯着女生的数量, 只要是经过宿舍楼门口的女生, 都会帮你去问是不是你女神</p><ul><li>epoll</li></ul><p>不限制盯着女生的数量, 并且也不需要一个一个去问. 那么如何做呢? epoll大妈会为每个进宿舍楼的女生脸上贴上一个大字条,上面写上女生自己的名字, 只要女生下楼了, epoll大妈就知道这个是不是你女神了, 然后大妈再通知你.</p><h5 id="典型应用-2"><a href="#典型应用-2" class="headerlink" title="典型应用"></a>典型应用</h5><ul><li><p>select</p></li><li><p>poll</p></li><li><p>epoll三种方案</p></li><li><p>nginx都可以选择使用这三个方案</p></li><li><p>Java NIO;</p></li></ul><h5 id="特点-2"><a href="#特点-2" class="headerlink" title="特点"></a>特点</h5><ul><li><p>专一进程解决多个进程IO的阻塞问题，性能好；Reactor模式;</p></li><li><p>实现、开发应用难度较大；</p></li><li><p>适用高并发服务应用开发：一个进程（线程）响应多个请求</p></li></ul><h5 id="形成原因"><a href="#形成原因" class="headerlink" title="形成原因"></a>形成原因</h5><p>如果一个I/O流进来，我们就开启一个进程处理这个I/O流。那么假设现在有一百万个I/O流进来，那我们就需要开启一百万个进程一一对应处理这些I/O流（——这就是传统意义下的多进程并发处理）。思考一下，一百万个进程，你的CPU占有率会多高，这个实现方式及其的不合理。所以人们提出了I/O多路复用这个模型，一个线程，通过记录I/O流的状态来同时管理多个I/O，可以提高服务器的吞吐能力。</p><h4 id="信号驱动的IO模型"><a href="#信号驱动的IO模型" class="headerlink" title="信号驱动的IO模型"></a>信号驱动的IO模型</h4><p>当进程发起一个IO操作，会向内核注册一个信号处理函数，然后进程返回不阻塞；当内核数据就绪时会发送一个信号给进程，进程便在信号处理函数中调用IO读取数据。</p><h5 id="特点-3"><a href="#特点-3" class="headerlink" title="特点"></a>特点</h5><ul><li>回调机制，实现、开发应用难度大；</li></ul><h4 id="异步IO模型"><a href="#异步IO模型" class="headerlink" title="异步IO模型"></a>异步IO模型</h4><p>当进程发起一个IO操作，进程返回（不阻塞），但也不能返回果结；内核把整个IO处理完后，会通知进程结果。如果IO操作成功则进程直接获取到数据。</p><h5 id="特点-4"><a href="#特点-4" class="headerlink" title="特点"></a>特点</h5><ul><li><p>不阻塞，数据一步到位；Proactor模式；</p></li><li><p>需要操作系统的底层支持，LINUX 2.5 版本内核首现，2.6 版本产品的内核标准特性；</p></li><li><p>实现、开发应用难度大；</p></li><li><p>非常适合高性能高并发应用</p></li></ul><h5 id="典型"><a href="#典型" class="headerlink" title="典型"></a>典型</h5><ul><li><p>JAVA7 AIO</p></li><li><p>高性能服务器应用</p></li></ul><p>通过学习5种IO模型,我们知道了Redis就是使用的IO复用模型里面的select。</p><h3 id="指令队列"><a href="#指令队列" class="headerlink" title="指令队列"></a>指令队列</h3><p>Redis 会将每个客户端套接字都关联一个指令队列。客户端的指令通过队列来排队进行顺序处理，先到先服务。 也就是说指令的请求顺序是通过队列来进行约束的。</p><h3 id="响应队列"><a href="#响应队列" class="headerlink" title="响应队列"></a>响应队列</h3><p>每个客户端关联一个响应队列。然后服务端通过响应队列将数据返回给客户端。</p><h3 id="定时任务"><a href="#定时任务" class="headerlink" title="定时任务"></a>定时任务</h3><p>服务器处理要响应 IO 事件外，还要处理其它事情。比如定时任务就是非常重要的一件事。如果线程阻塞在 select 系统调用上，定时任务将无法得到准时调度。那 Redis 是如何解决这个问题的呢？</p><blockquote><p>如果面试官问到这个问题我肯定是处于懵逼状态。老钱书中写到,redis会把定时任务记录到一个叫最小堆的数据结构中,每个周期循环redis会立即处理堆最上面的数据。  </p></blockquote><h2 id="redis的通讯协议"><a href="#redis的通讯协议" class="headerlink" title="redis的通讯协议"></a>redis的通讯协议</h2><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://upload-images.jianshu.io/upload_images/3084894-d8790174146ea545.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="通讯协议" title>                </div>                <div class="image-caption">通讯协议</div>            </figure><h3 id="RESP协议简介"><a href="#RESP协议简介" class="headerlink" title="RESP协议简介"></a>RESP协议简介</h3><p>Redis 的客户端和服务端之间采取了一种独立名为 RESP(REdis Serialization Protocol) 的协议，作者主要考虑了以下几个点：</p><ul><li>容易实现</li><li>解析快</li><li>人类可读</li></ul><p>注意：RESP 虽然是为 Redis 设计的，但是同样也可以用于其他 C/S 的软件。</p><h3 id="数据类型及示例"><a href="#数据类型及示例" class="headerlink" title="数据类型及示例"></a>数据类型及示例</h3><p>RESP 主要可以序列化以下几种类型：整数，单行回复(简单字符串)，数组，错误信息，多行字符串。Redis 客户端向服务端发送的是一组由执行的命令组成的字符串数组，服务端根据不同的命令回复不同类型的数据，但协议的每部分都是以 “\r\n” (CRLF) 结尾的。另外 RESP 是二进制安全的，不需要处理从一个进程到另一个进程的传输，因为它使用了前缀长度进行传输。</p><p>在 RESP 中, 一些数据的类型通过它的第一个字节进行判断：</p><ul><li><p>单行回复：回复的第一个字节是 “+”</p></li><li><p>错误信息：回复的第一个字节是 “-”</p></li><li><p>整形数字：回复的第一个字节是 “:”</p></li><li><p>多行字符串：回复的第一个字节是 “\$”</p></li><li><p>数组：回复的第一个字节是 “*”</p></li></ul><p>RESP 协议还是相对易于理解的，另外理解了协议也方便对 Redis 一些问题的定位及客户端的实现。</p><p>Redis 协议里有大量冗余的回车换行符，但是这不影响它成为互联网技术领域非常受欢迎的一个文本协议。有很多开源项目使用 RESP 作为它的通讯协议。在技术领域性能并不总是一切，还有简单性、易理解性和易实现性，这些都需要进行适当权衡。</p><blockquote><p><strong>参考文档</strong></p></blockquote><blockquote><p><a href="https://www.jianshu.com/u/354cc1548a33" target="_blank" rel="noopener">【1】简书主页·share猿</a></p></blockquote><blockquote><p><a href="https://juejin.im/user/5a8e759851882524d842d174" target="_blank" rel="noopener">【2】掘金主页·share猿</a></p></blockquote><blockquote><p><a href="https://redis.io" target="_blank" rel="noopener">【3】redis官网</a></p></blockquote><hr><p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>                </div>                <div class="image-caption"></div>            </figure></p><p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;redis的线程IO&quot;&gt;&lt;a href=&quot;#redis的线程IO&quot; class=&quot;headerlink&quot; title=&quot;redis的线程IO&quot;&gt;&lt;/a&gt;redis的线程IO&lt;/h2&gt;&lt;figure class=&quot;image-bubble&quot;&gt;
+           
+      
+    
+    </summary>
+    
+      <category term="中间件" scheme="https://lywlefan.github.io/categories/%E4%B8%AD%E9%97%B4%E4%BB%B6/"/>
+    
+    
+      <category term="redis" scheme="https://lywlefan.github.io/tags/redis/"/>
+    
+      <category term="redis基础" scheme="https://lywlefan.github.io/tags/redis%E5%9F%BA%E7%A1%80/"/>
+    
+  </entry>
   
   <entry>
     <title>内功修炼-算法02</title>
@@ -336,44 +364,6 @@
   </entry>
   
   <entry>
-    <title>财务词汇</title>
-    <link href="https://lywlefan.github.io/2019/07/11/%E8%AF%8D%E6%B1%87/%E8%B4%A2%E5%8A%A1/%E8%B4%A2%E5%8A%A1%E8%AF%8D%E6%B1%87/"/>
-    <id>https://lywlefan.github.io/2019/07/11/词汇/财务/财务词汇/</id>
-    <published>2019-07-10T16:00:00.000Z</published>
-    <updated>2019-07-19T09:50:08.629Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>先有词汇量,然后再能好好说话,好好做事。</p></blockquote><ul><li><p>重要</p></li><li><p>不重要</p></li><li><p>理解</p></li><li><p>未理解</p></li></ul><h2 id="2019年"><a href="#2019年" class="headerlink" title="2019年"></a>2019年</h2><h3 id="7月份词汇"><a href="#7月份词汇" class="headerlink" title="7月份词汇"></a>7月份词汇</h3><h4 id="重要理解词汇"><a href="#重要理解词汇" class="headerlink" title="重要理解词汇"></a>重要理解词汇</h4><ul><li>资产</li></ul><blockquote><p>G:如何获得资产？<br>a.加杠杆购买资产，产生源源不断的现金流<br>b.花时间创造资产</p></blockquote><ul><li><p>负债</p></li><li><p>现值</p></li></ul><p>是在给定的利率水平下，未来的资金折现到现在时刻的价值。</p><ul><li><p>现金流</p><ul><li><p>经营性现金流</p></li><li><p>投资性现金流</p></li><li><p>融资性现金流</p></li></ul></li><li><p>资产负债表</p></li><li><p>损益表</p></li><li><p>所有者权益变动表</p></li><li><p>财务报表附注</p></li><li><p>审查报表</p></li><li><p>预算盈余</p></li><li><p>净现值法（NPV）</p><ul><li><p>净现值</p><p>未来资金流现值与未来资金流出现值差额。</p></li></ul></li><li><p>折现率</p></li></ul><p>折现率是指将未来有限期预期收益折算成现值的比率。</p><ul><li>内部收益率（IRR）</li></ul><h4 id="不重要理解词汇"><a href="#不重要理解词汇" class="headerlink" title="不重要理解词汇"></a>不重要理解词汇</h4><ul><li><p>直线法折旧</p></li><li><p>双倍余额递减法折旧（年折旧率=2÷预计的折旧年限×100％）</p></li></ul><h4 id="重要不理解词汇"><a href="#重要不理解词汇" class="headerlink" title="重要不理解词汇"></a>重要不理解词汇</h4><h4 id="不重要不理解词汇"><a href="#不重要不理解词汇" class="headerlink" title="不重要不理解词汇"></a>不重要不理解词汇</h4><ul><li><p>借款人</p></li><li><p>信贷人员</p></li><li><p>银行流水</p></li></ul><blockquote><p><a href="https://www.jianshu.com/u/354cc1548a33" target="_blank" rel="noopener">【1】简书主页·share猿</a><br><a href="https://juejin.im/user/5a8e759851882524d842d174" target="_blank" rel="noopener">【2】掘金主页·share猿</a></p></blockquote><hr><p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>                </div>                <div class="image-caption"></div>            </figure></p><p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;blockquote&gt;
-&lt;p&gt;先有词汇量,然后再能好好说话,好好做事。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;重要&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;不重要&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;理解&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;未理解&lt;/p&gt;
-&lt;/li
-      
-    
-    </summary>
-    
-      <category term="词汇" scheme="https://lywlefan.github.io/categories/%E8%AF%8D%E6%B1%87/"/>
-    
-    
-      <category term="词汇" scheme="https://lywlefan.github.io/tags/%E8%AF%8D%E6%B1%87/"/>
-    
-      <category term="财务" scheme="https://lywlefan.github.io/tags/%E8%B4%A2%E5%8A%A1/"/>
-    
-  </entry>
-  
-  <entry>
     <title>研发英文词汇收集</title>
     <link href="https://lywlefan.github.io/2019/07/11/%E8%AF%8D%E6%B1%87/%E8%BD%AF%E4%BB%B6/%E7%A0%94%E5%8F%91%E8%8B%B1%E6%96%87%E8%AF%8D%E6%B1%87%E6%94%B6%E9%9B%86/"/>
     <id>https://lywlefan.github.io/2019/07/11/词汇/软件/研发英文词汇收集/</id>
@@ -428,6 +418,44 @@
     
     
       <category term="第一次听说的词汇" scheme="https://lywlefan.github.io/tags/%E7%AC%AC%E4%B8%80%E6%AC%A1%E5%90%AC%E8%AF%B4%E7%9A%84%E8%AF%8D%E6%B1%87/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>财务词汇</title>
+    <link href="https://lywlefan.github.io/2019/07/11/%E8%AF%8D%E6%B1%87/%E8%B4%A2%E5%8A%A1/%E8%B4%A2%E5%8A%A1%E8%AF%8D%E6%B1%87/"/>
+    <id>https://lywlefan.github.io/2019/07/11/词汇/财务/财务词汇/</id>
+    <published>2019-07-10T16:00:00.000Z</published>
+    <updated>2019-07-19T09:50:08.629Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>先有词汇量,然后再能好好说话,好好做事。</p></blockquote><ul><li><p>重要</p></li><li><p>不重要</p></li><li><p>理解</p></li><li><p>未理解</p></li></ul><h2 id="2019年"><a href="#2019年" class="headerlink" title="2019年"></a>2019年</h2><h3 id="7月份词汇"><a href="#7月份词汇" class="headerlink" title="7月份词汇"></a>7月份词汇</h3><h4 id="重要理解词汇"><a href="#重要理解词汇" class="headerlink" title="重要理解词汇"></a>重要理解词汇</h4><ul><li>资产</li></ul><blockquote><p>G:如何获得资产？<br>a.加杠杆购买资产，产生源源不断的现金流<br>b.花时间创造资产</p></blockquote><ul><li><p>负债</p></li><li><p>现值</p></li></ul><p>是在给定的利率水平下，未来的资金折现到现在时刻的价值。</p><ul><li><p>现金流</p><ul><li><p>经营性现金流</p></li><li><p>投资性现金流</p></li><li><p>融资性现金流</p></li></ul></li><li><p>资产负债表</p></li><li><p>损益表</p></li><li><p>所有者权益变动表</p></li><li><p>财务报表附注</p></li><li><p>审查报表</p></li><li><p>预算盈余</p></li><li><p>净现值法（NPV）</p><ul><li><p>净现值</p><p>未来资金流现值与未来资金流出现值差额。</p></li></ul></li><li><p>折现率</p></li></ul><p>折现率是指将未来有限期预期收益折算成现值的比率。</p><ul><li>内部收益率（IRR）</li></ul><h4 id="不重要理解词汇"><a href="#不重要理解词汇" class="headerlink" title="不重要理解词汇"></a>不重要理解词汇</h4><ul><li><p>直线法折旧</p></li><li><p>双倍余额递减法折旧（年折旧率=2÷预计的折旧年限×100％）</p></li></ul><h4 id="重要不理解词汇"><a href="#重要不理解词汇" class="headerlink" title="重要不理解词汇"></a>重要不理解词汇</h4><h4 id="不重要不理解词汇"><a href="#不重要不理解词汇" class="headerlink" title="不重要不理解词汇"></a>不重要不理解词汇</h4><ul><li><p>借款人</p></li><li><p>信贷人员</p></li><li><p>银行流水</p></li></ul><blockquote><p><a href="https://www.jianshu.com/u/354cc1548a33" target="_blank" rel="noopener">【1】简书主页·share猿</a><br><a href="https://juejin.im/user/5a8e759851882524d842d174" target="_blank" rel="noopener">【2】掘金主页·share猿</a></p></blockquote><hr><p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>                </div>                <div class="image-caption"></div>            </figure></p><p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;blockquote&gt;
+&lt;p&gt;先有词汇量,然后再能好好说话,好好做事。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;重要&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;不重要&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;理解&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;未理解&lt;/p&gt;
+&lt;/li
+      
+    
+    </summary>
+    
+      <category term="词汇" scheme="https://lywlefan.github.io/categories/%E8%AF%8D%E6%B1%87/"/>
+    
+    
+      <category term="词汇" scheme="https://lywlefan.github.io/tags/%E8%AF%8D%E6%B1%87/"/>
+    
+      <category term="财务" scheme="https://lywlefan.github.io/tags/%E8%B4%A2%E5%8A%A1/"/>
     
   </entry>
   
@@ -500,6 +528,38 @@
   </entry>
   
   <entry>
+    <title>学习攻略.如何才能学好并发编程？</title>
+    <link href="https://lywlefan.github.io/2019/07/02/%E9%AB%98%E5%B9%B6%E5%8F%91/%E4%B9%A6%E7%B1%8D/java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E5%AE%9E%E6%88%98-%E7%8E%8B%E5%AE%9D%E4%BB%A4/%E5%AD%A6%E4%B9%A0%E6%94%BB%E7%95%A5.%E5%A6%82%E4%BD%95%E6%89%8D%E8%83%BD%E5%AD%A6%E5%A5%BD%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%EF%BC%9F/"/>
+    <id>https://lywlefan.github.io/2019/07/02/高并发/书籍/java并发编程实战-王宝令/学习攻略.如何才能学好并发编程？/</id>
+    <published>2019-07-01T16:00:00.000Z</published>
+    <updated>2019-07-02T09:23:11.375Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="阅读笔记"><a href="#阅读笔记" class="headerlink" title="阅读笔记"></a>阅读笔记</h2><p>并发是一门独立学科也是一门综合科学，从两个方面突破并发编程：</p><ul><li><p>跳出来，看全景</p></li><li><p>钻进去，看本质</p></li></ul><h3 id="跳出来，看全景"><a href="#跳出来，看全景" class="headerlink" title="跳出来，看全景"></a>跳出来，看全景</h3><p>学习最忌讳的就是“盲人摸象”，只看到局部，没有全局。从单一知识点跳出来，高屋建瓴看并发编程，首要之事就是建立一张全景图。</p><h4 id="并发核心问题"><a href="#并发核心问题" class="headerlink" title="并发核心问题"></a>并发核心问题</h4><h5 id="分工"><a href="#分工" class="headerlink" title="分工"></a>分工</h5><p>像做项目的分工一样，不同的工作分给不同的人，实现工作效率最大化。</p><p>在学习抽象的东西的时候要多与现实生活中的场景进行类比。</p><p>Java SDK 并发包里的 Executor、Fork/Join、Future本质上都是一种分工的方式。</p><p>并发编程领域还总结了一些设计模式，基本上都是和分工方法相关的，例如生产者 - 消费者、Message、Worker Thread 模式等。</p><h5 id="同步"><a href="#同步" class="headerlink" title="同步"></a>同步</h5><p>同步就相当于项目中的沟通协调，什么时间干什么工作。</p><p>放到软件程序中就是一个线程执行完，通知下一个线程执行而已。例如，用 Future 可以发起一个异步调用，当主线程通过 get() 方法取结果时，主线程就会等待，当异步执行的结果返回时，get() 方法就自动返回了，这就解决了我们主从线程的协作。</p><p>Java SDK 里提供的 CountDownLatch、CyclicBarrierr、Phaser、Exchanger 也都是用来解决线程协作问题的。</p><p>还有很多场景，是需要你自己来处理线程之间的协作。</p><p>在java并发编程领域，解决协作问题的核心就是<strong>管程</strong>，上面提到的所有线程协作技术底层都是利用管程解决的。管程是一种解决并发问题的通用模型，除了能解决线程协助问题，还能解决下面我们将要介绍的互斥问题。可以这么说，<strong>管程是解决并发问题的万能钥匙</strong>。</p><p>关键是理解管程模型，学好它就可以解决所有问题。</p><p>其次是了解java JDK并发包提供的几个线程协作的工具类场景，用好它们可以妥妥地提高你的工作效率。</p><h5 id="互斥"><a href="#互斥" class="headerlink" title="互斥"></a>互斥</h5><p>分工/同步主要强调性能，但是并发程序里还有一部分是关于正确性，用专业术语叫“线程安全”。</p><ul><li><p>可见性问题</p></li><li><p>有序性问题</p></li><li><p>原子性问题</p></li></ul><p>为了解决以上三个问题，java语言引入了内存模型，内存模型提供了一系列的规则，利用这些规则，我们可以避免以上问题。</p><p><strong>所谓互斥，指的是同一时刻，只允许一个线程访问共享变量。</strong></p><p>实现互斥的核心技术是锁，java语言里synchronized、SDK里各种Lock都能解决互斥问题。</p><p>虽说锁解决了安全性问题，但同时也带来了性能问题，那如何保证安全性的同时又尽量提高性能那？分场景优化：</p><ul><li><p>Java SDK 里提供的 ReadWriteLock、StampedLock 就可以优化读多写少场景下锁的性能。</p></li><li><p>还可以使用无锁的数据结构，例如 Java SDK 里提供的原子类都是基于无锁技术实现的。</p></li></ul><p>除此之外，还有一些其他的方案，原理是不共享变量或者变量只允许许读。这方面，Java 提供了Thread Local 和 final 关键字，还有一种 Copy-on-write 的模式。</p><p>使用锁除了要注意性能问题外，还需要注意死锁问题。</p><p>这部分内容比较复杂，往往还是跨领域的，例如要理解可见性，就需要了解一些 CPU 和缓存的知识；</p><p>很多无锁算法的实现往往也需要理解 CPU 缓存。</p><p>这部分内容的学习，需要博览群书，在大脑里建立起 CPU、内存、I/O 执行的模拟器。</p><p>全景图</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://upload-images.jianshu.io/upload_images/3084894-e4dba3439c48d077.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>                </div>                <div class="image-caption"></div>            </figure><h3 id="钻进去，看本质"><a href="#钻进去，看本质" class="headerlink" title="钻进去，看本质"></a>钻进去，看本质</h3><p>深入理解，找到本质。</p><p>多分析这些概念和结论是怎么来的？？</p><p>它们是用来解决什么问题的？</p><p>知其然知其所以然。</p><p>工程上解决问题，一定要有理论做基础。</p><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><blockquote><p>推荐书单</p></blockquote><p>-《Java并发编程实战》作者阵容可谓大师云集，也包括Doug Lea</p><p>-《Java并发编程的艺术》讲解并发包内部实现原理，能读明白，内功大增</p><p>-《图解Java多线程设计模式》并发编程设计模式方面的经典书籍</p><p>-《操作系统：精髓与设计原理》经典操作系统教材</p><ul><li><p><a href="http://ifeve.com" target="_blank" rel="noopener">http://ifeve.com</a> 国内专业并发编程网站</p></li><li><p><a href="http://www.cs.umd.edu/~pugh/java/memoryModel/" target="_blank" rel="noopener">http://www.cs.umd.edu/~pugh/java/memoryModel/</a> 很多并发编程的早期资料都在这里</p></li></ul><blockquote><p><strong>参考文档</strong></p></blockquote><blockquote><p><a href="https://www.jianshu.com/u/354cc1548a33" target="_blank" rel="noopener">【1】简书主页·share猿</a></p></blockquote><blockquote><p><a href="https://juejin.im/user/5a8e759851882524d842d174" target="_blank" rel="noopener">【2】掘金主页·share猿</a></p></blockquote><hr><p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>                </div>                <div class="image-caption"></div>            </figure></p><p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;阅读笔记&quot;&gt;&lt;a href=&quot;#阅读笔记&quot; class=&quot;headerlink&quot; title=&quot;阅读笔记&quot;&gt;&lt;/a&gt;阅读笔记&lt;/h2&gt;&lt;p&gt;并发是一门独立学科也是一门综合科学，从两个方面突破并发编程：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;跳出来，看全景&lt;/p&gt;
+&lt;/l
+      
+    
+    </summary>
+    
+      <category term="高并发" scheme="https://lywlefan.github.io/categories/%E9%AB%98%E5%B9%B6%E5%8F%91/"/>
+    
+    
+      <category term="并发" scheme="https://lywlefan.github.io/tags/%E5%B9%B6%E5%8F%91/"/>
+    
+      <category term="读书笔记" scheme="https://lywlefan.github.io/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="java并发编程实战-王宝令" scheme="https://lywlefan.github.io/tags/java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E5%AE%9E%E6%88%98-%E7%8E%8B%E5%AE%9D%E4%BB%A4/"/>
+    
+  </entry>
+  
+  <entry>
     <title>01.可见性、原子性和有序性问题：并发编程Bug的源头</title>
     <link href="https://lywlefan.github.io/2019/07/02/%E9%AB%98%E5%B9%B6%E5%8F%91/%E4%B9%A6%E7%B1%8D/java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E5%AE%9E%E6%88%98-%E7%8E%8B%E5%AE%9D%E4%BB%A4/01.%E5%8F%AF%E8%A7%81%E6%80%A7%E3%80%81%E5%8E%9F%E5%AD%90%E6%80%A7%E5%92%8C%E6%9C%89%E5%BA%8F%E6%80%A7%E9%97%AE%E9%A2%98%EF%BC%9A%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8BBug%E7%9A%84%E6%BA%90%E5%A4%B4%20/"/>
     <id>https://lywlefan.github.io/2019/07/02/高并发/书籍/java并发编程实战-王宝令/01.可见性、原子性和有序性问题：并发编程Bug的源头 /</id>
@@ -535,38 +595,6 @@
   </entry>
   
   <entry>
-    <title>学习攻略.如何才能学好并发编程？</title>
-    <link href="https://lywlefan.github.io/2019/07/02/%E9%AB%98%E5%B9%B6%E5%8F%91/%E4%B9%A6%E7%B1%8D/java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E5%AE%9E%E6%88%98-%E7%8E%8B%E5%AE%9D%E4%BB%A4/%E5%AD%A6%E4%B9%A0%E6%94%BB%E7%95%A5.%E5%A6%82%E4%BD%95%E6%89%8D%E8%83%BD%E5%AD%A6%E5%A5%BD%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%EF%BC%9F/"/>
-    <id>https://lywlefan.github.io/2019/07/02/高并发/书籍/java并发编程实战-王宝令/学习攻略.如何才能学好并发编程？/</id>
-    <published>2019-07-01T16:00:00.000Z</published>
-    <updated>2019-07-02T09:23:11.375Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="阅读笔记"><a href="#阅读笔记" class="headerlink" title="阅读笔记"></a>阅读笔记</h2><p>并发是一门独立学科也是一门综合科学，从两个方面突破并发编程：</p><ul><li><p>跳出来，看全景</p></li><li><p>钻进去，看本质</p></li></ul><h3 id="跳出来，看全景"><a href="#跳出来，看全景" class="headerlink" title="跳出来，看全景"></a>跳出来，看全景</h3><p>学习最忌讳的就是“盲人摸象”，只看到局部，没有全局。从单一知识点跳出来，高屋建瓴看并发编程，首要之事就是建立一张全景图。</p><h4 id="并发核心问题"><a href="#并发核心问题" class="headerlink" title="并发核心问题"></a>并发核心问题</h4><h5 id="分工"><a href="#分工" class="headerlink" title="分工"></a>分工</h5><p>像做项目的分工一样，不同的工作分给不同的人，实现工作效率最大化。</p><p>在学习抽象的东西的时候要多与现实生活中的场景进行类比。</p><p>Java SDK 并发包里的 Executor、Fork/Join、Future本质上都是一种分工的方式。</p><p>并发编程领域还总结了一些设计模式，基本上都是和分工方法相关的，例如生产者 - 消费者、Message、Worker Thread 模式等。</p><h5 id="同步"><a href="#同步" class="headerlink" title="同步"></a>同步</h5><p>同步就相当于项目中的沟通协调，什么时间干什么工作。</p><p>放到软件程序中就是一个线程执行完，通知下一个线程执行而已。例如，用 Future 可以发起一个异步调用，当主线程通过 get() 方法取结果时，主线程就会等待，当异步执行的结果返回时，get() 方法就自动返回了，这就解决了我们主从线程的协作。</p><p>Java SDK 里提供的 CountDownLatch、CyclicBarrierr、Phaser、Exchanger 也都是用来解决线程协作问题的。</p><p>还有很多场景，是需要你自己来处理线程之间的协作。</p><p>在java并发编程领域，解决协作问题的核心就是<strong>管程</strong>，上面提到的所有线程协作技术底层都是利用管程解决的。管程是一种解决并发问题的通用模型，除了能解决线程协助问题，还能解决下面我们将要介绍的互斥问题。可以这么说，<strong>管程是解决并发问题的万能钥匙</strong>。</p><p>关键是理解管程模型，学好它就可以解决所有问题。</p><p>其次是了解java JDK并发包提供的几个线程协作的工具类场景，用好它们可以妥妥地提高你的工作效率。</p><h5 id="互斥"><a href="#互斥" class="headerlink" title="互斥"></a>互斥</h5><p>分工/同步主要强调性能，但是并发程序里还有一部分是关于正确性，用专业术语叫“线程安全”。</p><ul><li><p>可见性问题</p></li><li><p>有序性问题</p></li><li><p>原子性问题</p></li></ul><p>为了解决以上三个问题，java语言引入了内存模型，内存模型提供了一系列的规则，利用这些规则，我们可以避免以上问题。</p><p><strong>所谓互斥，指的是同一时刻，只允许一个线程访问共享变量。</strong></p><p>实现互斥的核心技术是锁，java语言里synchronized、SDK里各种Lock都能解决互斥问题。</p><p>虽说锁解决了安全性问题，但同时也带来了性能问题，那如何保证安全性的同时又尽量提高性能那？分场景优化：</p><ul><li><p>Java SDK 里提供的 ReadWriteLock、StampedLock 就可以优化读多写少场景下锁的性能。</p></li><li><p>还可以使用无锁的数据结构，例如 Java SDK 里提供的原子类都是基于无锁技术实现的。</p></li></ul><p>除此之外，还有一些其他的方案，原理是不共享变量或者变量只允许许读。这方面，Java 提供了Thread Local 和 final 关键字，还有一种 Copy-on-write 的模式。</p><p>使用锁除了要注意性能问题外，还需要注意死锁问题。</p><p>这部分内容比较复杂，往往还是跨领域的，例如要理解可见性，就需要了解一些 CPU 和缓存的知识；</p><p>很多无锁算法的实现往往也需要理解 CPU 缓存。</p><p>这部分内容的学习，需要博览群书，在大脑里建立起 CPU、内存、I/O 执行的模拟器。</p><p>全景图</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://upload-images.jianshu.io/upload_images/3084894-e4dba3439c48d077.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>                </div>                <div class="image-caption"></div>            </figure><h3 id="钻进去，看本质"><a href="#钻进去，看本质" class="headerlink" title="钻进去，看本质"></a>钻进去，看本质</h3><p>深入理解，找到本质。</p><p>多分析这些概念和结论是怎么来的？？</p><p>它们是用来解决什么问题的？</p><p>知其然知其所以然。</p><p>工程上解决问题，一定要有理论做基础。</p><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><blockquote><p>推荐书单</p></blockquote><p>-《Java并发编程实战》作者阵容可谓大师云集，也包括Doug Lea</p><p>-《Java并发编程的艺术》讲解并发包内部实现原理，能读明白，内功大增</p><p>-《图解Java多线程设计模式》并发编程设计模式方面的经典书籍</p><p>-《操作系统：精髓与设计原理》经典操作系统教材</p><ul><li><p><a href="http://ifeve.com" target="_blank" rel="noopener">http://ifeve.com</a> 国内专业并发编程网站</p></li><li><p><a href="http://www.cs.umd.edu/~pugh/java/memoryModel/" target="_blank" rel="noopener">http://www.cs.umd.edu/~pugh/java/memoryModel/</a> 很多并发编程的早期资料都在这里</p></li></ul><blockquote><p><strong>参考文档</strong></p></blockquote><blockquote><p><a href="https://www.jianshu.com/u/354cc1548a33" target="_blank" rel="noopener">【1】简书主页·share猿</a></p></blockquote><blockquote><p><a href="https://juejin.im/user/5a8e759851882524d842d174" target="_blank" rel="noopener">【2】掘金主页·share猿</a></p></blockquote><hr><p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>                </div>                <div class="image-caption"></div>            </figure></p><p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;阅读笔记&quot;&gt;&lt;a href=&quot;#阅读笔记&quot; class=&quot;headerlink&quot; title=&quot;阅读笔记&quot;&gt;&lt;/a&gt;阅读笔记&lt;/h2&gt;&lt;p&gt;并发是一门独立学科也是一门综合科学，从两个方面突破并发编程：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;跳出来，看全景&lt;/p&gt;
-&lt;/l
-      
-    
-    </summary>
-    
-      <category term="高并发" scheme="https://lywlefan.github.io/categories/%E9%AB%98%E5%B9%B6%E5%8F%91/"/>
-    
-    
-      <category term="并发" scheme="https://lywlefan.github.io/tags/%E5%B9%B6%E5%8F%91/"/>
-    
-      <category term="读书笔记" scheme="https://lywlefan.github.io/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
-    
-      <category term="java并发编程实战-王宝令" scheme="https://lywlefan.github.io/tags/java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E5%AE%9E%E6%88%98-%E7%8E%8B%E5%AE%9D%E4%BB%A4/"/>
-    
-  </entry>
-  
-  <entry>
     <title>12.客户端都有哪些不常见但是很高级的功能？</title>
     <link href="https://lywlefan.github.io/2019/07/02/%E4%B8%AD%E9%97%B4%E4%BB%B6/kafka/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/kafka%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%E4%B8%8E%E5%AE%9E%E6%88%98-%E8%83%A1%E5%A4%95/12.%E5%AE%A2%E6%88%B7%E7%AB%AF%E9%83%BD%E6%9C%89%E5%93%AA%E4%BA%9B%E4%B8%8D%E5%B8%B8%E8%A7%81%E4%BD%86%E6%98%AF%E5%BE%88%E9%AB%98%E7%BA%A7%E7%9A%84%E5%8A%9F%E8%83%BD%EF%BC%9F/"/>
     <id>https://lywlefan.github.io/2019/07/02/中间件/kafka/读书笔记/kafka核心技术与实战-胡夕/12.客户端都有哪些不常见但是很高级的功能？/</id>
@@ -580,38 +608,6 @@
       
       
         &lt;h2 id=&quot;阅读笔记&quot;&gt;&lt;a href=&quot;#阅读笔记&quot; class=&quot;headerlink&quot; title=&quot;阅读笔记&quot;&gt;&lt;/a&gt;阅读笔记&lt;/h2&gt;&lt;h3 id=&quot;kafka-拦截器&quot;&gt;&lt;a href=&quot;#kafka-拦截器&quot; class=&quot;headerlink&quot; title=
-      
-    
-    </summary>
-    
-      <category term="中间件" scheme="https://lywlefan.github.io/categories/%E4%B8%AD%E9%97%B4%E4%BB%B6/"/>
-    
-    
-      <category term="读书笔记" scheme="https://lywlefan.github.io/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
-    
-      <category term="kafka" scheme="https://lywlefan.github.io/tags/kafka/"/>
-    
-      <category term="kafka核心技术与实战-胡夕" scheme="https://lywlefan.github.io/tags/kafka%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%E4%B8%8E%E5%AE%9E%E6%88%98-%E8%83%A1%E5%A4%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>11.无消息丢失配置怎么实现？</title>
-    <link href="https://lywlefan.github.io/2019/07/01/%E4%B8%AD%E9%97%B4%E4%BB%B6/kafka/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/kafka%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%E4%B8%8E%E5%AE%9E%E6%88%98-%E8%83%A1%E5%A4%95/11.%E6%97%A0%E6%B6%88%E6%81%AF%E4%B8%A2%E5%A4%B1%E9%85%8D%E7%BD%AE%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0%EF%BC%9F/"/>
-    <id>https://lywlefan.github.io/2019/07/01/中间件/kafka/读书笔记/kafka核心技术与实战-胡夕/11.无消息丢失配置怎么实现？/</id>
-    <published>2019-06-30T16:00:00.000Z</published>
-    <updated>2019-07-01T07:43:27.779Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="阅读笔记"><a href="#阅读笔记" class="headerlink" title="阅读笔记"></a>阅读笔记</h2><ul><li><p>kafka中什么算消息丢失</p></li><li><p>什么情况下能保证kafka消息不丢失</p></li></ul><p>一句话概括,Kafka只对”已提交”的消息做有限度的持久化保证。</p><h3 id="什么是已提交的消息"><a href="#什么是已提交的消息" class="headerlink" title="什么是已提交的消息?"></a>什么是已提交的消息?</h3><p>当kafka的若干个Broker成功的接收到一条消息并写入到日志文件之后,它们就会告诉生产者程序这条消息已成功提交。此时,这条消息在kafka看来就正式变为”已提交”消息了。</p><p>为什么是若干个Broker?这取决于”已提交”的定义,你可以选择只有一个broker成功保存该消息就算已提交,也可以令所有broker都保存才算已提交.</p><h3 id="有限度的持久化保证"><a href="#有限度的持久化保证" class="headerlink" title="有限度的持久化保证"></a>有限度的持久化保证</h3><p>至少有一个Broker存活,只要这个条件成立,kafka就不会丢消息,但是一个都不会存活的情况是有可能出现的.</p><h4 id="消息丢失的案例"><a href="#消息丢失的案例" class="headerlink" title="消息丢失的案例"></a>消息丢失的案例</h4><p>复盘”kafka消息丢失”案例。</p><h5 id="生产者程序丢失数据"><a href="#生产者程序丢失数据" class="headerlink" title="生产者程序丢失数据"></a>生产者程序丢失数据</h5><p>kafka producer是异步发送消息的,所以说当我们调用完producer.send(msg)这个api后,他通过会立即返回,但是并不代表我们消息发送成功.</p><p>以上发送消息的方式是不靠谱的,建议不要这样去搞,因为这种方式以下原因可能造成消息发送失败:</p><ul><li><p>网络抖动</p></li><li><p>消息本身不合格,Broker不接受</p></li></ul><p>解决以上问题其实有比较好的办法,就是我们Producer永远使用带有回调通知的发送API,也就是说不要使用producer.send(msg),而要使用producer.send(msg,callback),callback会告诉你消息是否处理成功,然后你再根据具体情况进行相应的处理。</p><p>如果因为某些瞬间错误,可以让producer继续重试,总之发送消息失败的责任是producer而不是在broker,当然broker宕机断网除外。</p><h5 id="消费者程序丢失数据"><a href="#消费者程序丢失数据" class="headerlink" title="消费者程序丢失数据"></a>消费者程序丢失数据</h5><p>在kafka消费消息的时候有个”位移”的概念,我们可以把消费消息当做我们读书,而”位移”就相当于”书签”。</p><p>什么情况下消费者程序会存在丢数据的情况哪???</p><p>我们把上面的类比分成两个部分:1.读书 2.移动书签位置</p><p>加入我们先移动书签,再读书就有可能造成消费者丢数据的情况,比如:我们计划读书到100页,然后我们把书签放到100页,当我们读到96页的时候突然有急事出去了,下次继续读的时候就从100页开始了,中间的页我们就没读到。</p><p>针对以上情况,我们应该是先读书然后移动书签的位置。</p><blockquote><p>但是先读书再移动书签会不会造成消息重复消费的情况。</p></blockquote><p>还一种多线程消费的情况,以前我们是一个人读书,现在把一本书10章分给10个人一起读,然后大家读完宣布这本书读完。</p><p>以上这种情况有可能这种异常情况,有部分线程没有读完就更新了位移,这就导致部分消息没有消费,但是响应的确实已经消费了的情况。</p><p>解决以上问题的办法就是:多线程处理消费消息,Consumer程序不要开启自动提交位移,而是要应用程序手动提交位移。</p><h3 id="最佳实践"><a href="#最佳实践" class="headerlink" title="最佳实践"></a>最佳实践</h3><ul><li><p>使用掉回调的生产消息的方法</p></li><li><p>设置 acks = all。acks 是 Producer的一个参数，代表了你对“已提交”消息的定义。如果设置成 all，则表明所有副本 Broker都要接收到消息，该消息才算是“已提交”。这是最高等级的“已提交”定义。</p></li><li><p>设置 retries 为一个较大的值。这里的 retries 同样是 Producer 的参数，对应前面提到的 Producer 自动重试。当出现网络的瞬时抖动时，消息发送可能会失败，此时配置了 retries &gt; 0 的 Producer 能够自动重试消息发送，避免消息丢失。</p></li><li><p>设置 unclean.leader.election.enable = false。这是 Broker 端的参数，它控制的是哪些 Broker有资格竞选分区的 Leader。如果一个 Broker 落后原先的 Leader 太多，那么它一旦成为新的 Leader，必然会造成消息的丢失。故一般都要将该参数设置成 false，即不允许这种情况的发生。</p></li><li><p>设置 replication.factor &gt;= 3。这也是 Broker 端的参数。其实这里想表述的是，最好将消息多保存几份，毕竟目前防止消息丢失的主要机制就是冗余。</p></li><li><p>设置 min.insync.replicas &gt; 1。这依然是 Broker 端参数，控制的是消息至少要被写入到多少个副本才算是“已提交”。设置成大于 1 可以提升消息持久性。在实际环境中千万不要使用默认值 1。</p></li><li><p>确保 replication.factor&gt; min.insync.replicas。如果两者相等，那么只要有一个副本挂机，整个分区就无法正常工作了。我们不仅要改善消息的持久性，防止数据丢失，还要在不降低可用性的基础上完成。推荐设置成 replication.factor = min.insync.replicas + 1。</p></li><li><p>确保消息消费完成再提交。Consumer 端有个参数 enable.auto.commit，最好把它设置成 false ，并采用手动提交位移的方式。 就像前面说的，这对于单 Consumer 多线程处理的场景而言是至关重要的。</p></li></ul><h3 id="开发讨论"><a href="#开发讨论" class="headerlink" title="开发讨论"></a>开发讨论</h3><p>特别隐秘丢消息的场景:</p><p>当增加主题分区后，在某段“不凑巧”的时间间隔后，Producer 先于 Consumer 感知到新增加的分区，而 Consumer 设置的是“从最新位移处”开始读取消息，因此在 Consumer 感知到新分区前，Producer 发送的这些消息就全部“丢失”了，或者说 Consumer 无法读取到这些消息。Kafka 设计上的一个小缺陷，你有什么解决的办法吗？</p><ul><li><p>cricket1981：consumer改用”从最早位置”读解决新加分区造成的问题</p></li><li><p>明翼：这个问题我想个办法就是程序停止再增加分区，如果不能停止那就找个通知机制了。请教一个问题min.insync.replicas这个参数如果设置成3，假设副本数设置为4，那岂不是只支持一台broker坏掉的情况？</p></li><li><p>作者：能想到的一个简单方法是让consumer端缓存订阅信息，如果发现新的订阅分区出现，手动调整位移到最开始处执行（比如consumer.seekToBeginning）</p></li></ul><blockquote><p><strong>参考文档</strong></p></blockquote><blockquote><p><a href="https://www.jianshu.com/u/354cc1548a33" target="_blank" rel="noopener">【1】简书主页·share猿</a></p></blockquote><blockquote><p><a href="https://juejin.im/user/5a8e759851882524d842d174" target="_blank" rel="noopener">【2】掘金主页·share猿</a></p></blockquote><hr><p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>                </div>                <div class="image-caption"></div>            </figure></p><p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;阅读笔记&quot;&gt;&lt;a href=&quot;#阅读笔记&quot; class=&quot;headerlink&quot; title=&quot;阅读笔记&quot;&gt;&lt;/a&gt;阅读笔记&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;kafka中什么算消息丢失&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;什么情况下能保证kafka消息不丢失&lt;/p&gt;
       
     
     </summary>
