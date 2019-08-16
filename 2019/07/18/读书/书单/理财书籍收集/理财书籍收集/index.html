@@ -538,10 +538,10 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
     var OriginTitile = document.title, titleTime;
     document.addEventListener('visibilitychange', function() {
         if (document.hidden) {
-            document.title = '欢迎回来！';
+            document.title = '共同学习!共同进步!';
             clearTimeout(titleTime);
         } else {
-            document.title = '欢迎欢迎!';
+            document.title = 'Share猿社区官方';
             titleTime = setTimeout(function() {
                 document.title = OriginTitile;
             },2000);
