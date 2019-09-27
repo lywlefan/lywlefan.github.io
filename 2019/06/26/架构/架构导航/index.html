@@ -35,7 +35,7 @@
 <meta property="og:image" content="https://blog.52itstyle.vip/usr/uploads/2017/11/603463236.png">
 <meta property="og:image" content="https://blog.52itstyle.vip/usr/uploads/2018/12/1389990329.png">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-08-05T09:53:32.061Z">
+<meta property="og:updated_time" content="2019-09-26T09:46:28.949Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="架构导航">
 <meta name="twitter:description" content="万丈高楼平地起的前提是地基好.  技术选型网关 Nginx Kong Zuul GateWay  缓存 Redis MemCached OsCache EhCache  搜索 ElasticSearch Solr  熔断 Hystrix resilience4j  负载均衡 DNS F5 LVS Nginx OpenResty HAproxy 注册中心 Eureka  Zookeeper Red">
@@ -403,7 +403,10 @@
 <li>负载均衡（负载均衡算法）</li>
 <li>反向代理</li>
 <li>服务隔离</li>
-<li>服务限流</li>
+<li>服务限流<ul>
+<li>sentinel</li>
+</ul>
+</li>
 </ul>
 <p><a href="https://blog.csdn.net/a925907195/article/details/80076486" target="_blank" rel="noopener">1.限流文章</a></p>
 <ul>
@@ -435,8 +438,19 @@
 <li>单体水平扩容</li>
 <li>应用拆分</li>
 <li>数据库拆分</li>
-<li>数据库分库分表</li>
+<li>数据库分库分表<ul>
+<li>sharding-jdbc(当当/京东)</li>
+<li>mycat(民间组织)</li>
+<li>TDDL(CLIENT模式)，DRDS和cobar(PROXY模式)(阿里)</li>
+<li>Atlas(360)</li>
+<li>zebra(美团)</li>
+</ul>
+</li>
 <li>数据异构</li>
+<li>数据同步<ul>
+<li>canal(binlog日志同步)</li>
+</ul>
+</li>
 <li>分布式任务</li>
 </ul>
 <h4 id="网络安全"><a href="#网络安全" class="headerlink" title="网络安全"></a>网络安全</h4><ul>
@@ -474,7 +488,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2019-08-05T09:53:32.061Z" itemprop="dateUpdated">2019-08-05 17:53:32</time>
+    最后更新时间：<time datetime="2019-09-26T09:46:28.949Z" itemprop="dateUpdated">2019-09-26 17:46:28</time>
 </span><br>
 
 
@@ -558,18 +572,18 @@
 <nav class="post-nav flex-row flex-justify-between">
   
     <div class="waves-block waves-effect prev">
-      <a href="/2019/06/27/高并发/基础/Java并发编程：CountDownLatch、CyclicBarrier和Semaphore/" id="post-prev" class="post-nav-link">
+      <a href="/2019/06/26/基础巩固/java/线程/自定义线程池/" id="post-prev" class="post-nav-link">
         <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">Java并发编程：CountDownLatch、CyclicBarrier和Semaphore</h4>
+        <h4 class="title">自定义线程池</h4>
       </a>
     </div>
   
 
   
     <div class="waves-block waves-effect next">
-      <a href="/2019/06/26/业务场景/交易所/撮合系统设计/" id="post-next" class="post-nav-link">
+      <a href="/2019/06/26/高并发/disruptor学习/1.disruptor初识/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">撮合系统设计</h4>
+        <h4 class="title">1.disruptor初识</h4>
       </a>
     </div>
   
