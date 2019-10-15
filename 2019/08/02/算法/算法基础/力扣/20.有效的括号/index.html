@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>20.有效的括号 | share猿 | https://lywlefan.github.io/</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="力扣,基础">
+    <meta name="description" content="万丈高楼平地起的前提是地基好.  题目介绍给定一个只包括 ‘(‘，’)’，’{‘，’}’，’[‘，’]’ 的字符串，判断字符串是否有效。 有效字符串需满足： 左括号必须用相同类型的右括号闭合。左括号必须以正确的顺序闭合。注意空字符串可被认为是有效字符串。 示例 1: 1234567891011输入: &amp;quot;()&amp;quot;输出: true示例 2:输入: &amp;quot;()[]&amp;#123;&amp;">
+<meta name="keywords" content="力扣,基础">
+<meta property="og:type" content="article">
+<meta property="og:title" content="20.有效的括号">
+<meta property="og:url" content="https://lywlefan.github.io/2019/08/02/算法/算法基础/力扣/20.有效的括号/index.html">
+<meta property="og:site_name" content="share猿">
+<meta property="og:description" content="万丈高楼平地起的前提是地基好.  题目介绍给定一个只包括 ‘(‘，’)’，’{‘，’}’，’[‘，’]’ 的字符串，判断字符串是否有效。 有效字符串需满足： 左括号必须用相同类型的右括号闭合。左括号必须以正确的顺序闭合。注意空字符串可被认为是有效字符串。 示例 1: 1234567891011输入: &amp;quot;()&amp;quot;输出: true示例 2:输入: &amp;quot;()[]&amp;#123;&amp;">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-10-15T08:11:12.866Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="20.有效的括号">
+<meta name="twitter:description" content="万丈高楼平地起的前提是地基好.  题目介绍给定一个只包括 ‘(‘，’)’，’{‘，’}’，’[‘，’]’ 的字符串，判断字符串是否有效。 有效字符串需满足： 左括号必须用相同类型的右括号闭合。左括号必须以正确的顺序闭合。注意空字符串可被认为是有效字符串。 示例 1: 1234567891011输入: &amp;quot;()&amp;quot;输出: true示例 2:输入: &amp;quot;()[]&amp;#123;&amp;">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+    
+        <link rel="alternate" type="application/atom+xml" title="share猿" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">share猿</h5>
+          <a href="mailto:330334064@qq.com" title="330334064@qq.com" class="mail">330334064@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/lywlefan" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                GitHub
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/atom">
+                <i class="icon icon-lg icon-rss"></i>
+                订阅
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">20.有效的括号</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">20.有效的括号</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-08-01T16:00:00.000Z" itemprop="datePublished" class="page-time">
+  2019-08-02
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/算法/">算法</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#题目介绍"><span class="post-toc-number">1.</span> <span class="post-toc-text">题目介绍</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#题目解答"><span class="post-toc-number">2.</span> <span class="post-toc-text">题目解答</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#思路梳理"><span class="post-toc-number">3.</span> <span class="post-toc-text">思路梳理</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#哪些情况括号不闭合"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">哪些情况括号不闭合</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#如何判断括号没有闭合"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">如何判断括号没有闭合</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#最优解"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">最优解</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#题目实现"><span class="post-toc-number">4.</span> <span class="post-toc-text">题目实现</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#java"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">java</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-算法/算法基础/力扣/20.有效的括号" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">20.有效的括号</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-08-02 00:00:00" datetime="2019-08-01T16:00:00.000Z" itemprop="datePublished">2019-08-02</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/算法/">算法</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <blockquote>
+<p>万丈高楼平地起的前提是地基好.</p>
+</blockquote>
+<h3 id="题目介绍"><a href="#题目介绍" class="headerlink" title="题目介绍"></a>题目介绍</h3><p>给定一个只包括 ‘(‘，’)’，’{‘，’}’，’[‘，’]’ 的字符串，判断字符串是否有效。</p>
+<p>有效字符串需满足：</p>
+<p>左括号必须用相同类型的右括号闭合。<br>左括号必须以正确的顺序闭合。<br>注意空字符串可被认为是有效字符串。</p>
+<p>示例 1:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">输入: &quot;()&quot;</span><br><span class="line">输出: true</span><br><span class="line">示例 2:</span><br><span class="line"></span><br><span class="line">输入: &quot;()[]&#123;&#125;&quot;</span><br><span class="line">输出: true</span><br><span class="line">示例 3:</span><br><span class="line"></span><br><span class="line">输入: &quot;(]&quot;</span><br><span class="line">输出: false</span><br></pre></td></tr></table></figure>
+<h3 id="题目解答"><a href="#题目解答" class="headerlink" title="题目解答"></a>题目解答</h3><h3 id="思路梳理"><a href="#思路梳理" class="headerlink" title="思路梳理"></a>思路梳理</h3><h4 id="哪些情况括号不闭合"><a href="#哪些情况括号不闭合" class="headerlink" title="哪些情况括号不闭合"></a>哪些情况括号不闭合</h4><ul>
+<li><p>第一种:[(])</p>
+</li>
+<li><p>第二种:[)</p>
+</li>
+<li><p>第三种:[](</p>
+</li>
+</ul>
+<h4 id="如何判断括号没有闭合"><a href="#如何判断括号没有闭合" class="headerlink" title="如何判断括号没有闭合"></a>如何判断括号没有闭合</h4><blockquote>
+<p>注意：只包括括号，这是条件要注意！</p>
+</blockquote>
+<ul>
+<li><p>1.获取每种类型左括号的第一次出现的位置</p>
+</li>
+<li><p>2.然后再找到每种类型右括号第一次出现的位置</p>
+</li>
+<li><p>3.如果存在以下情况则括号没有闭合</p>
+<ul>
+<li><p>a.类型左括号位置小于另一种类型括号右括号的位置,则括号没有闭合</p>
+</li>
+<li><p>b.任意类型括号不存在左括号或者右括号,则括号没有闭合</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="最优解"><a href="#最优解" class="headerlink" title="最优解"></a>最优解</h4><ul>
+<li>1.把左括号压入栈中</li>
+<li>2.如果遇到右括号,取出栈最上面的元素去对应的值,判断和循环的元素是否相等,相等继续循环,否则返回false</li>
+<li>3.循环结束,栈里面的元素依次被取出,说明括号串没啥问题,是闭合的. </li>
+</ul>
+<h3 id="题目实现"><a href="#题目实现" class="headerlink" title="题目实现"></a>题目实现</h3><h4 id="java"><a href="#java" class="headerlink" title="java"></a>java</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">static</span> Map&lt;Character, Character&gt; map = <span class="keyword">new</span> HashMap();</span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> &#123;</span><br><span class="line">    map.put(<span class="string">'('</span>, <span class="string">')'</span>);</span><br><span class="line">    map.put(<span class="string">'&#123;'</span>, <span class="string">'&#125;'</span>);</span><br><span class="line">    map.put(<span class="string">'['</span>, <span class="string">']'</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 方法一</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isValid</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">    Stack&lt;Character&gt; stack = <span class="keyword">new</span> Stack();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">char</span> in : s.toCharArray()) &#123;</span><br><span class="line">        <span class="comment">//左括号直接入栈</span></span><br><span class="line">        <span class="keyword">if</span> (map.keySet().contains(in)) &#123;</span><br><span class="line">            stack.push(in);</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (!stack.isEmpty() &amp;&amp; in == map.get(stack.pop())) <span class="keyword">continue</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> stack.isEmpty();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>参考文档</strong></p>
+</blockquote>
+<blockquote>
+<p><a href="https://www.jianshu.com/u/354cc1548a33" target="_blank" rel="noopener">【1】简书主页·share猿</a></p>
+</blockquote>
+<blockquote>
+<p><a href="https://juejin.im/user/5a8e759851882524d842d174" target="_blank" rel="noopener">【2】掘金主页·share猿</a></p>
+</blockquote>
+<blockquote>
+<p><a href="https://github.com/azl397985856/leetcode" target="_blank" rel="noopener">【3】leetcode算法指南</a></p>
+</blockquote>
+<hr>
+<p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
+<p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-10-15T08:11:12.866Z" itemprop="dateUpdated">2019-10-15 16:11:12</time>
+</span><br>
+
+
+        
+        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2019/08/02/算法/算法基础/力扣/20.有效的括号/" target="_blank" rel="external">https://lywlefan.github.io/2019/08/02/算法/算法基础/力扣/20.有效的括号/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://lywlefan.github.io">
+            <img src="/img/avatar.png" alt="share猿">
+            share猿
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/力扣/">力扣</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/基础/">基础</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://lywlefan.github.io/2019/08/02/算法/算法基础/力扣/20.有效的括号/&title=《20.有效的括号》 — share猿&pic=https://lywlefan.github.io/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://lywlefan.github.io/2019/08/02/算法/算法基础/力扣/20.有效的括号/&title=《20.有效的括号》 — share猿&source=分享有价值的内容,你我共同成长!" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://lywlefan.github.io/2019/08/02/算法/算法基础/力扣/20.有效的括号/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《20.有效的括号》 — share猿&url=https://lywlefan.github.io/2019/08/02/算法/算法基础/力扣/20.有效的括号/&via=https://lywlefan.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://lywlefan.github.io/2019/08/02/算法/算法基础/力扣/20.有效的括号/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2019/08/05/算法/算法基础/力扣/22.括号的生成/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">22.括号的生成</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/08/01/算法/算法导航/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">算法导航</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'true' == 'true',
+            verify: 'false' == 'true',
+            appId: "hQGVIAaJERVwyrWxj1uqgCqS-gzGzoHsz",
+            appKey: "l7FO5csTavNwXCGryJyOkkc1",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢赞赏!
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>share猿 &copy; 2015 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://lywlefan.github.io/2019/08/02/算法/算法基础/力扣/20.有效的括号/&title=《20.有效的括号》 — share猿&pic=https://lywlefan.github.io/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://lywlefan.github.io/2019/08/02/算法/算法基础/力扣/20.有效的括号/&title=《20.有效的括号》 — share猿&source=分享有价值的内容,你我共同成长!" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://lywlefan.github.io/2019/08/02/算法/算法基础/力扣/20.有效的括号/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《20.有效的括号》 — share猿&url=https://lywlefan.github.io/2019/08/02/算法/算法基础/力扣/20.有效的括号/&via=https://lywlefan.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://lywlefan.github.io/2019/08/02/算法/算法基础/力扣/20.有效的括号/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACrklEQVR42u3awWrDMBAE0Pz/T6fXQrEzs5KCCy+nQBJbTwV5O7uvV/x6/3pdfXr//u91kmveX23bCw8PD29h6Vc3zj9NNiX5bbJx0Wbh4eHhHePNjvvksL7nJUvP74uHh4f3fN79AyZnt8U3Hh4e3v/lJUVtsvSWhIeHh/cEXnsQ3x/9bXDQLv1I1oKHh4cX8/Iu0nPeH+nv4eHh4S131ZNCOSm1d0UM9Wrx8PDwDvDaJlYeHyTjBbOQoh4Ow8PDwzvGyw/xPJhoHwy77o6Hh4d3jtfGqetHdj46kEchl7/Fw8PDO8BrHwxt6NBuQbuJUZyBh4eHd4DXHuKzR0jS/l9Zz7Cbh4eHh1fyZrHsDD8bsWo36LK/h4eHh7eJl3+pLVtnowazqOJD4Y6Hh4e3ldcOBOwtefMG2La/Gx4eHt4yL6Hm0equSCLZ7jogxsPDw9vES4al2lvmEW07qlWHHXh4eHgHeOdaYrNgYjaCsNTrw8PDwxvxZkf/fdg6GzBtG2wRFQ8PD+8Ar13urEHVFtwrD6EonsDDw8PbykuO9fXHxkoBPQwg8PDw8DbxZiVsvhGzA30W/l6OXuHh4eFt4rUNsBZ/f/t2tKu+Ox4eHt4BXhsNtKV2fp3k+3khPkw+8PDw8BZ4bcsqAc9K5w2lPB4eHt4x3noLalYcz4rsouWGh4eH93Vecsv24M43buVTPDw8vO/w2mW1x/pKhJGPO+Dh4eGd473L164dTQaqNoS5eHh4eAd4s+XmgwL5smYx8aydhoeHh7fOSx4G+bJmh3s+SpXcFw8PD+87vNNjAbOhgQ0NPDw8PLwH8GaNsRy5UrLj4eHhPZPXtv9XooSkYXbkuYeHh4cX8JIwYhZPtAV0Gzd8KNPx8PDwDvBW/uG/v1yyQbMrDBl4eHh4q7wfJTsW2wRj1UgAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '共同学习!共同进步!';
+            clearTimeout(titleTime);
+        } else {
+            document.title = 'Share猿社区官方';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

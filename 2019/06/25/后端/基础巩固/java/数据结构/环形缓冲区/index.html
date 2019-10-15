@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>环形缓冲区 | share猿 | https://lywlefan.github.io/</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="基础,java">
+    <meta name="description" content="万丈高楼平地起的前提是地基好.  环形缓冲区介绍圆形缓冲区（circular buffer），也称作圆形队列（circular queue），循环缓冲区（cyclic buffer），环形缓冲区（ring buffer），是一种数据结构用于表示一个固定尺寸、头尾相连的缓冲区，适合缓存数据流。">
+<meta name="keywords" content="基础,java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="环形缓冲区">
+<meta property="og:url" content="https://lywlefan.github.io/2019/06/25/后端/基础巩固/java/数据结构/环形缓冲区/index.html">
+<meta property="og:site_name" content="share猿">
+<meta property="og:description" content="万丈高楼平地起的前提是地基好.  环形缓冲区介绍圆形缓冲区（circular buffer），也称作圆形队列（circular queue），循环缓冲区（cyclic buffer），环形缓冲区（ring buffer），是一种数据结构用于表示一个固定尺寸、头尾相连的缓冲区，适合缓存数据流。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://file.elecfans.com/web1/M00/50/35/o4YBAFrwa-6AegOaAAA4gY1qlrg104.png">
+<meta property="og:image" content="http://file.elecfans.com/web1/M00/50/41/pIYBAFrwbAqAACQYAAAD3oTpgUw459.png">
+<meta property="og:image" content="http://file.elecfans.com/web1/M00/50/41/pIYBAFrwbA2AKF6_AAADdB6vQFU279.png">
+<meta property="og:image" content="http://file.elecfans.com/web1/M00/50/35/o4YBAFrwa_aAXRcsAAAEWhT6FVc909.png">
+<meta property="og:image" content="http://file.elecfans.com/web1/M00/50/41/pIYBAFrwbBCAQMANAAAD5C7jghM939.png">
+<meta property="og:image" content="http://file.elecfans.com/web1/M00/50/35/o4YBAFrwa_mAE8tFAAAFjCtPkIM681.png">
+<meta property="og:image" content="http://file.elecfans.com/web1/M00/50/41/pIYBAFrwbBSAKyW6AAAF3Om3IyE233.png">
+<meta property="og:image" content="http://file.elecfans.com/web1/M00/50/35/o4YBAFrwa_2AV4y2AAAFORhzqEE837.png">
+<meta property="og:image" content="http://file.elecfans.com/web1/M00/50/35/o4YBAFrwbACARs89AAAGVd0aJDk224.png">
+<meta property="og:image" content="http://file.elecfans.com/web1/M00/50/41/pIYBAFrwbBuAeOkFAAAHY4qLrwc154.png">
+<meta property="og:image" content="http://file.elecfans.com/web1/M00/50/41/pIYBAFrwbCCAYYCNAAAuVAwq83g393.png">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-10-15T06:42:25.174Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="环形缓冲区">
+<meta name="twitter:description" content="万丈高楼平地起的前提是地基好.  环形缓冲区介绍圆形缓冲区（circular buffer），也称作圆形队列（circular queue），循环缓冲区（cyclic buffer），环形缓冲区（ring buffer），是一种数据结构用于表示一个固定尺寸、头尾相连的缓冲区，适合缓存数据流。">
+<meta name="twitter:image" content="http://file.elecfans.com/web1/M00/50/35/o4YBAFrwa-6AegOaAAA4gY1qlrg104.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="share猿" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">share猿</h5>
+          <a href="mailto:330334064@qq.com" title="330334064@qq.com" class="mail">330334064@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/lywlefan" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                GitHub
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/atom">
+                <i class="icon icon-lg icon-rss"></i>
+                订阅
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">环形缓冲区</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">环形缓冲区</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-06-24T16:00:00.000Z" itemprop="datePublished" class="page-time">
+  2019-06-25
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/后端/">后端</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#环形缓冲区"><span class="post-toc-number">1.</span> <span class="post-toc-text">环形缓冲区</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#介绍"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">介绍</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#用法"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">用法</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#工作过程"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">工作过程</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#圆形缓冲区工作机制"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">圆形缓冲区工作机制</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#读指针与写指针"><span class="post-toc-number">1.4.1.</span> <span class="post-toc-text">读指针与写指针</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#总是保持一个存储单元为空"><span class="post-toc-number">1.4.2.</span> <span class="post-toc-text">总是保持一个存储单元为空</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#使用数据计数"><span class="post-toc-number">1.4.3.</span> <span class="post-toc-text">使用数据计数</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#镜像指示位"><span class="post-toc-number">1.4.4.</span> <span class="post-toc-text">镜像指示位</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#读-写-计数"><span class="post-toc-number">1.4.5.</span> <span class="post-toc-text">读/写 计数</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#记录最后的操作"><span class="post-toc-number">1.4.6.</span> <span class="post-toc-text">记录最后的操作</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#POSIX优化实现"><span class="post-toc-number">1.4.7.</span> <span class="post-toc-text">POSIX优化实现</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Linux内核的kfifo"><span class="post-toc-number">1.4.8.</span> <span class="post-toc-text">Linux内核的kfifo</span></a></li></ol></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-后端/基础巩固/java/数据结构/环形缓冲区" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">环形缓冲区</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-06-25 00:00:00" datetime="2019-06-24T16:00:00.000Z" itemprop="datePublished">2019-06-25</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/后端/">后端</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <blockquote>
+<p>万丈高楼平地起的前提是地基好.</p>
+</blockquote>
+<h2 id="环形缓冲区"><a href="#环形缓冲区" class="headerlink" title="环形缓冲区"></a>环形缓冲区</h2><h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>圆形缓冲区（circular buffer），也称作圆形队列（circular queue），循环缓冲区（cyclic buffer），环形缓冲区（ring buffer），是一种数据结构用于表示一个固定尺寸、头尾相连的缓冲区，适合缓存数据流。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://file.elecfans.com/web1/M00/50/35/o4YBAFrwa-6AegOaAAA4gY1qlrg104.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h3 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h3><p>圆形缓冲区的一个有用特性是：当一个数据元素被用掉后，其余数据元素不需要移动其存储位置。相反，一个非圆形缓冲区（例如一个普通的队列）在用掉一个数据元素后，其余数据元素需要向前搬移。换句话说，圆形缓冲区适合实现先进先出缓冲区，而非圆形缓冲区适合后进先出缓冲区。</p>
+<p>圆形缓冲区适合于事先明确了缓冲区的最大容量的情形。扩展一个圆形缓冲区的容量，需要搬移其中的数据。因此一个缓冲区如果需要经常调整其容量，用链表实现更为合适。</p>
+<p>写操作覆盖圆形缓冲区中未被处理的数据在某些情况下是允许的。特别是在多媒体处理时。例如，音频的生产者可以覆盖掉声卡尚未来得及处理的音频数据。</p>
+<h3 id="工作过程"><a href="#工作过程" class="headerlink" title="工作过程"></a>工作过程</h3><p>一个圆形缓冲区最初为空并有预定的长度。例如，这是一个具有七个元素空间的圆形缓冲区，其中底部的单线与箭头表示“头尾相接”形成一个圆形地址空间：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://file.elecfans.com/web1/M00/50/41/pIYBAFrwbAqAACQYAAAD3oTpgUw459.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>假定1被写入缓冲区中部（对于圆形缓冲区来说，最初的写入位置在哪里是无关紧要的）：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://file.elecfans.com/web1/M00/50/41/pIYBAFrwbA2AKF6_AAADdB6vQFU279.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>再写入2个元素，分别是2 &amp; 3 — 被追加在1之后：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://file.elecfans.com/web1/M00/50/35/o4YBAFrwa_aAXRcsAAAEWhT6FVc909.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>如果两个元素被处理，那么是缓冲区中最老的两个元素被卸载。在本例中，1 &amp; 2被卸载，缓冲区中只剩下3:</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://file.elecfans.com/web1/M00/50/41/pIYBAFrwbBCAQMANAAAD5C7jghM939.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>如果缓冲区中有7个元素，则是满的：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://file.elecfans.com/web1/M00/50/35/o4YBAFrwa_mAE8tFAAAFjCtPkIM681.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>如果缓冲区是满的，又要写入新的数据，一种策略是覆盖掉最老的数据。此例中，2个新数据— A &amp; B — 写入，覆盖了3 &amp; 4:</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://file.elecfans.com/web1/M00/50/41/pIYBAFrwbBSAKyW6AAAF3Om3IyE233.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>也可以采取其他策略，禁止覆盖缓冲区的数据，采取返回一个错误码或者抛出异常。</p>
+<p>最终，如果从缓冲区中卸载2个数据，不是3 &amp; 4 而是 5 &amp; 6 。因为 A &amp; B 已经覆盖了3 &amp; 4：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://file.elecfans.com/web1/M00/50/35/o4YBAFrwa_2AV4y2AAAFORhzqEE837.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h3 id="圆形缓冲区工作机制"><a href="#圆形缓冲区工作机制" class="headerlink" title="圆形缓冲区工作机制"></a>圆形缓冲区工作机制</h3><p>由于计算机内存是线性地址空间，因此圆形缓冲区需要特别的设计才可以从逻辑上实现。</p>
+<h4 id="读指针与写指针"><a href="#读指针与写指针" class="headerlink" title="读指针与写指针"></a>读指针与写指针</h4><p>一般的，圆形缓冲区需要4个指针：</p>
+<ul>
+<li>在内存中实际开始位置；</li>
+<li>在内存中实际结束位置，也可以用缓冲区长度代替；</li>
+<li>存储在缓冲区中的有效数据的开始位置（读指针）；</li>
+<li>存储在缓冲区中的有效数据的结尾位置（写指针）。</li>
+</ul>
+<p>读指针、写指针可以用整型值来表示。</p>
+<p>下例为一个未满的缓冲区的读写指针：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://file.elecfans.com/web1/M00/50/35/o4YBAFrwbACARs89AAAGVd0aJDk224.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>下例为一个满的缓冲区的读写指针：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://file.elecfans.com/web1/M00/50/41/pIYBAFrwbBuAeOkFAAAHY4qLrwc154.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>区分缓冲区满或者空缓冲区是满、或是空，都有可能出现读指针与写指针指向同一位置：</p>
+<p>250px有多种策略用于检测缓冲区是满、或是空.</p>
+<h4 id="总是保持一个存储单元为空"><a href="#总是保持一个存储单元为空" class="headerlink" title="总是保持一个存储单元为空"></a>总是保持一个存储单元为空</h4><p>缓冲区中总是有一个存储单元保持未使用状态。缓冲区最多存入个数据。如果读写指针指向同一位置，则缓冲区为空。如果写指针位于读指针的相邻后一个位置，则缓冲区为满。这种策略的优点是简单、鲁棒；缺点是语义上实际可存数据量与缓冲区容量不一致，测试缓冲区是否满需要做取余数计算。</p>
+<h4 id="使用数据计数"><a href="#使用数据计数" class="headerlink" title="使用数据计数"></a>使用数据计数</h4><p>这种策略不使用显式的写指针，而是保持着缓冲区内存储的数据的计数。因此测试缓冲区是空是满非常简单；对性能影响可以忽略。缺点是读写操作都需要修改这个存储数据计数，对于多线程访问缓冲区需要并发控制。</p>
+<h4 id="镜像指示位"><a href="#镜像指示位" class="headerlink" title="镜像指示位"></a>镜像指示位</h4><p>缓冲区的长度如果是n，逻辑地址空间则为0至n-1；那么，规定n至2n-1为镜像逻辑地址空间。本策略规定读写指针的地址空间为0至2n-1，其 中低半部分对应于常规的逻辑地址空间，高半部分对应于镜像逻辑地址空间。当指针值大于等于2n时，使其折返（wrapped）到ptr-2n。使用一位表 示写指针或读指针是否进入了虚拟的镜像存储区：置位表示进入，不置位表示没进入还在基本存储区。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://file.elecfans.com/web1/M00/50/41/pIYBAFrwbCCAYYCNAAAuVAwq83g393.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>在读写指针的值相同情况下，如果二者的指示位相同，说明缓冲区为空；如果二者的指示位不同，说明缓冲区为满。这种方法优点是测试缓冲区满/空很简 单；不需要做取余数操作；读写线程可以分别设计专用算法策略，能实现精致的并发控制。 缺点是读写指针各需要额外的一位作为指示位。</p>
+<p>如果缓冲区长度是2的幂，则本方法可以省略镜像指示位。如果读写指针的值相等，则缓冲区为空；如果读写指针相差n，则缓冲区为满，这可以用条件表达式（写指针 == (读指针 异或 缓冲区长度)）来判断。</p>
+<h4 id="读-写-计数"><a href="#读-写-计数" class="headerlink" title="读/写 计数"></a>读/写 计数</h4><p>用两个有符号整型变量分别保存写入、读出缓冲区的数据数量。其差值就是缓冲区中尚未被处理的有效数据的数量。这种方法的优点是读线程、写线程互不干扰；缺点是需要额外两个变量。</p>
+<h4 id="记录最后的操作"><a href="#记录最后的操作" class="headerlink" title="记录最后的操作"></a>记录最后的操作</h4><p>使用一位记录最后一次操作是读还是写。读写指针值相等情况下，如果最后一次操作为写入，那么缓冲区是满的；如果最后一次操作为读出，那么缓冲区是空。 这种策略的缺点是读写操作共享一个标志位，多线程时需要并发控制。</p>
+<h4 id="POSIX优化实现"><a href="#POSIX优化实现" class="headerlink" title="POSIX优化实现"></a>POSIX优化实现</h4><h4 id="Linux内核的kfifo"><a href="#Linux内核的kfifo" class="headerlink" title="Linux内核的kfifo"></a>Linux内核的kfifo</h4><p>在Linux内核文件kfifo.h和kfifo.c中，定义了一个先进先出圆形缓冲区实现。如果只有一个读线程、一个写线程，二者没有共享的被修改的控制变量，那么可以证明这种情况下不需要并发控制。kfifo就满足上述条件。kfifo要求缓冲区长度必须为2的幂。读、写指针分别是无符号整型变量。把读写指针变换为缓冲区内的索引值，仅需要“按位与”操作：（指针值 按位与 （缓冲区长度-1））。这避免了计算代价高昂的“求余”操作。且下述关系总是成立：</p>
+<p>读指针 + 缓冲区存储的数据长度 == 写指针即使在写指针达到了无符号整型的上界，上溢出后写指针的值小于读指针的值，上述关系仍然保持成立（这是因为无符号整型加法的性质）。 kfifo的写操作，首先计算缓冲区中当前可写入存储空间的数据长度：len = min[待写入数据长度, 缓冲区长度 - （写指针 - 读指针）]然后，分两段写入数据。第一段是从写指针开始向缓冲区末尾方向；第二段是从缓冲区起始处写入余下的可写入数据，这部分可能数据长度为0即并无实际数据写入。</p>
+<blockquote>
+<p><a href="https://www.jianshu.com/u/354cc1548a33" target="_blank" rel="noopener">【1】简书主页·share猿</a><br><a href="https://juejin.im/user/5a8e759851882524d842d174" target="_blank" rel="noopener">【2】掘金主页·share猿</a></p>
+</blockquote>
+<hr>
+<p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
+<p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-10-15T06:42:25.174Z" itemprop="dateUpdated">2019-10-15 14:42:25</time>
+</span><br>
+
+
+        
+        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2019/06/25/后端/基础巩固/java/数据结构/环形缓冲区/" target="_blank" rel="external">https://lywlefan.github.io/2019/06/25/后端/基础巩固/java/数据结构/环形缓冲区/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://lywlefan.github.io">
+            <img src="/img/avatar.png" alt="share猿">
+            share猿
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/基础/">基础</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://lywlefan.github.io/2019/06/25/后端/基础巩固/java/数据结构/环形缓冲区/&title=《环形缓冲区》 — share猿&pic=https://lywlefan.github.io/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://lywlefan.github.io/2019/06/25/后端/基础巩固/java/数据结构/环形缓冲区/&title=《环形缓冲区》 — share猿&source=分享有价值的内容,你我共同成长!" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://lywlefan.github.io/2019/06/25/后端/基础巩固/java/数据结构/环形缓冲区/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《环形缓冲区》 — share猿&url=https://lywlefan.github.io/2019/06/25/后端/基础巩固/java/数据结构/环形缓冲区/&via=https://lywlefan.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://lywlefan.github.io/2019/06/25/后端/基础巩固/java/数据结构/环形缓冲区/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2019/06/26/架构/架构导航/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">架构导航</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/06/21/架构/从100到1000万高并发的架构演进之路/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">LMAX架构</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'true' == 'true',
+            verify: 'false' == 'true',
+            appId: "hQGVIAaJERVwyrWxj1uqgCqS-gzGzoHsz",
+            appKey: "l7FO5csTavNwXCGryJyOkkc1",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢赞赏!
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>share猿 &copy; 2015 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://lywlefan.github.io/2019/06/25/后端/基础巩固/java/数据结构/环形缓冲区/&title=《环形缓冲区》 — share猿&pic=https://lywlefan.github.io/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://lywlefan.github.io/2019/06/25/后端/基础巩固/java/数据结构/环形缓冲区/&title=《环形缓冲区》 — share猿&source=分享有价值的内容,你我共同成长!" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://lywlefan.github.io/2019/06/25/后端/基础巩固/java/数据结构/环形缓冲区/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《环形缓冲区》 — share猿&url=https://lywlefan.github.io/2019/06/25/后端/基础巩固/java/数据结构/环形缓冲区/&via=https://lywlefan.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://lywlefan.github.io/2019/06/25/后端/基础巩固/java/数据结构/环形缓冲区/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAADNklEQVR42u3aQW7jMBAEQP//014gpwUMOd1DBrDo0ilwLInFHDozw8cjvp4/1+sn/1+v33y96+qZr8/J15PfVV/Y2NjYN2E/317Ja9rfXi30/edXq7r65OoubGxs7FPZeUgkYdZuZZIyySYWG4qNjY39lew8nPIgzMOyvRcbGxsbO3/crCRoo259ndjY2Nhns1eWuDf8dhUn23pp2NjY2B/PXhmsftrPfzjfxsbGxv5I9nN07TpS8z7SVkqdX9aPjY2NfRC7LQNmY4C8uZ8EUnt8p6hpsLGxsY9g5xGS/DYfLewaQiR/HmxsbOyT2O1xmTai8i1InpCsJyqcsLGxsQ9it//6J62ftnk0C6c25LCxsbFPZa8clMmP6awvfRauRSmCjY2NfVv2SnmQtHJmoZiHZduW2lAVYWNjY38wuz1AkzBmh2xmh3jqAMbGxsb+AvZKEdLGSVt45AeJhtUVNjY29q3Ysyb+bDw8G+7mUVdMRbCxsbEPYq8fapy9OB8PzxpVv2wrNjY29tHslbCZFQm72kz52AMbGxv7JPZsBNsessmb+yvj5CEeGxsb+wh23lhfL12KaGkP4rTvxcbGxr45e3Zb22za1gZaKHiwsbGxv4E9Ozq5EoFtIdTWVVGAYWNjY9+cvatNsx5FUfDEjaqitYSNjY19BDt/WdLWbzclefvKH+Zy5djY2NjHsYf/ypfj3naQnG9T+zRsbGzs89h7m0qzAXDbclraVmxsbOwj2LNYal+8Ej/J+DbZmkf+JWxsbOwbsneVEznsL4qcIkSxsbGxD2LnraXZwZrZpuRR1G4ZNjY29tns2TB1Bkg2Yr2lVRzZxMbGxj6Cvbe0yMeubWjNRgvDBhM2Njb2rdhFyo2+ORvlRoXEwhuxsbGx785+lld+VxtI+Sa2I+TLqQg2Njb2Eez1MMijqD2gs1LMbEhvbGxs7Fux8yhaWeLsaE477s23ABsbG/s89kovaqUI2du6er8d2NjY2NgrC21jZlbG5E/AxsbG/k72SpHQFiTvP9nQRcPGxsY+jr0y3J0duEm2u205Fcd9sLGxsQ9izxo6SWC8B7cD4/aZG/DY2NjYn87+B0jfv4OdXzMMAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '共同学习!共同进步!';
+            clearTimeout(titleTime);
+        } else {
+            document.title = 'Share猿社区官方';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>学习攻略.如何才能学好并发编程？ | share猿 | https://lywlefan.github.io/</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="java,高并发,java并发编程实战-王宝令,读书笔记">
+    <meta name="description" content="阅读笔记并发是一门独立学科也是一门综合科学，从两个方面突破并发编程：  跳出来，看全景  钻进去，看本质   跳出来，看全景学习最忌讳的就是“盲人摸象”，只看到局部，没有全局。从单一知识点跳出来，高屋建瓴看并发编程，首要之事就是建立一张全景图。 并发核心问题分工像做项目的分工一样，不同的工作分给不同的人，实现工作效率最大化。 在学习抽象的东西的时候要多与现实生活中的场景进行类比。 Java SDK">
+<meta name="keywords" content="java,高并发,java并发编程实战-王宝令,读书笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="学习攻略.如何才能学好并发编程？">
+<meta property="og:url" content="https://lywlefan.github.io/2019/07/02/后端/高并发/java/书籍/java并发编程实战-王宝令/学习攻略.如何才能学好并发编程？/index.html">
+<meta property="og:site_name" content="share猿">
+<meta property="og:description" content="阅读笔记并发是一门独立学科也是一门综合科学，从两个方面突破并发编程：  跳出来，看全景  钻进去，看本质   跳出来，看全景学习最忌讳的就是“盲人摸象”，只看到局部，没有全局。从单一知识点跳出来，高屋建瓴看并发编程，首要之事就是建立一张全景图。 并发核心问题分工像做项目的分工一样，不同的工作分给不同的人，实现工作效率最大化。 在学习抽象的东西的时候要多与现实生活中的场景进行类比。 Java SDK">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/3084894-e4dba3439c48d077.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-10-15T06:46:35.648Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="学习攻略.如何才能学好并发编程？">
+<meta name="twitter:description" content="阅读笔记并发是一门独立学科也是一门综合科学，从两个方面突破并发编程：  跳出来，看全景  钻进去，看本质   跳出来，看全景学习最忌讳的就是“盲人摸象”，只看到局部，没有全局。从单一知识点跳出来，高屋建瓴看并发编程，首要之事就是建立一张全景图。 并发核心问题分工像做项目的分工一样，不同的工作分给不同的人，实现工作效率最大化。 在学习抽象的东西的时候要多与现实生活中的场景进行类比。 Java SDK">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/3084894-e4dba3439c48d077.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+    
+        <link rel="alternate" type="application/atom+xml" title="share猿" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">share猿</h5>
+          <a href="mailto:330334064@qq.com" title="330334064@qq.com" class="mail">330334064@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/lywlefan" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                GitHub
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/atom">
+                <i class="icon icon-lg icon-rss"></i>
+                订阅
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">学习攻略.如何才能学好并发编程？</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">学习攻略.如何才能学好并发编程？</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-07-01T16:00:00.000Z" itemprop="datePublished" class="page-time">
+  2019-07-02
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/后端/">后端</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#阅读笔记"><span class="post-toc-number">1.</span> <span class="post-toc-text">阅读笔记</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#跳出来，看全景"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">跳出来，看全景</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#并发核心问题"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">并发核心问题</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#分工"><span class="post-toc-number">1.1.1.1.</span> <span class="post-toc-text">分工</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#同步"><span class="post-toc-number">1.1.1.2.</span> <span class="post-toc-text">同步</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#互斥"><span class="post-toc-number">1.1.1.3.</span> <span class="post-toc-text">互斥</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#钻进去，看本质"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">钻进去，看本质</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#总结"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">总结</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-后端/高并发/java/书籍/java并发编程实战-王宝令/学习攻略.如何才能学好并发编程？" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">学习攻略.如何才能学好并发编程？</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-07-02 00:00:00" datetime="2019-07-01T16:00:00.000Z" itemprop="datePublished">2019-07-02</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/后端/">后端</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h2 id="阅读笔记"><a href="#阅读笔记" class="headerlink" title="阅读笔记"></a>阅读笔记</h2><p>并发是一门独立学科也是一门综合科学，从两个方面突破并发编程：</p>
+<ul>
+<li><p>跳出来，看全景</p>
+</li>
+<li><p>钻进去，看本质</p>
+</li>
+</ul>
+<h3 id="跳出来，看全景"><a href="#跳出来，看全景" class="headerlink" title="跳出来，看全景"></a>跳出来，看全景</h3><p>学习最忌讳的就是“盲人摸象”，只看到局部，没有全局。从单一知识点跳出来，高屋建瓴看并发编程，首要之事就是建立一张全景图。</p>
+<h4 id="并发核心问题"><a href="#并发核心问题" class="headerlink" title="并发核心问题"></a>并发核心问题</h4><h5 id="分工"><a href="#分工" class="headerlink" title="分工"></a>分工</h5><p>像做项目的分工一样，不同的工作分给不同的人，实现工作效率最大化。</p>
+<p>在学习抽象的东西的时候要多与现实生活中的场景进行类比。</p>
+<p>Java SDK 并发包里的 Executor、Fork/Join、Future本质上都是一种分工的方式。</p>
+<p>并发编程领域还总结了一些设计模式，基本上都是和分工方法相关的，例如生产者 - 消费者、Message、Worker Thread 模式等。</p>
+<h5 id="同步"><a href="#同步" class="headerlink" title="同步"></a>同步</h5><p>同步就相当于项目中的沟通协调，什么时间干什么工作。</p>
+<p>放到软件程序中就是一个线程执行完，通知下一个线程执行而已。例如，用 Future 可以发起一个异步调用，当主线程通过 get() 方法取结果时，主线程就会等待，当异步执行的结果返回时，get() 方法就自动返回了，这就解决了我们主从线程的协作。</p>
+<p>Java SDK 里提供的 CountDownLatch、CyclicBarrierr、Phaser、Exchanger 也都是用来解决线程协作问题的。</p>
+<p>还有很多场景，是需要你自己来处理线程之间的协作。</p>
+<p>在java并发编程领域，解决协作问题的核心就是<strong>管程</strong>，上面提到的所有线程协作技术底层都是利用管程解决的。管程是一种解决并发问题的通用模型，除了能解决线程协助问题，还能解决下面我们将要介绍的互斥问题。可以这么说，<strong>管程是解决并发问题的万能钥匙</strong>。</p>
+<p>关键是理解管程模型，学好它就可以解决所有问题。</p>
+<p>其次是了解java JDK并发包提供的几个线程协作的工具类场景，用好它们可以妥妥地提高你的工作效率。</p>
+<h5 id="互斥"><a href="#互斥" class="headerlink" title="互斥"></a>互斥</h5><p>分工/同步主要强调性能，但是并发程序里还有一部分是关于正确性，用专业术语叫“线程安全”。</p>
+<ul>
+<li><p>可见性问题</p>
+</li>
+<li><p>有序性问题</p>
+</li>
+<li><p>原子性问题</p>
+</li>
+</ul>
+<p>为了解决以上三个问题，java语言引入了内存模型，内存模型提供了一系列的规则，利用这些规则，我们可以避免以上问题。</p>
+<p><strong>所谓互斥，指的是同一时刻，只允许一个线程访问共享变量。</strong></p>
+<p>实现互斥的核心技术是锁，java语言里synchronized、SDK里各种Lock都能解决互斥问题。</p>
+<p>虽说锁解决了安全性问题，但同时也带来了性能问题，那如何保证安全性的同时又尽量提高性能那？分场景优化：</p>
+<ul>
+<li><p>Java SDK 里提供的 ReadWriteLock、StampedLock 就可以优化读多写少场景下锁的性能。</p>
+</li>
+<li><p>还可以使用无锁的数据结构，例如 Java SDK 里提供的原子类都是基于无锁技术实现的。</p>
+</li>
+</ul>
+<p>除此之外，还有一些其他的方案，原理是不共享变量或者变量只允许许读。这方面，Java 提供了Thread Local 和 final 关键字，还有一种 Copy-on-write 的模式。</p>
+<p>使用锁除了要注意性能问题外，还需要注意死锁问题。</p>
+<p>这部分内容比较复杂，往往还是跨领域的，例如要理解可见性，就需要了解一些 CPU 和缓存的知识；</p>
+<p>很多无锁算法的实现往往也需要理解 CPU 缓存。</p>
+<p>这部分内容的学习，需要博览群书，在大脑里建立起 CPU、内存、I/O 执行的模拟器。</p>
+<p>全景图</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://upload-images.jianshu.io/upload_images/3084894-e4dba3439c48d077.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h3 id="钻进去，看本质"><a href="#钻进去，看本质" class="headerlink" title="钻进去，看本质"></a>钻进去，看本质</h3><p>深入理解，找到本质。</p>
+<p>多分析这些概念和结论是怎么来的？？</p>
+<p>它们是用来解决什么问题的？</p>
+<p>知其然知其所以然。</p>
+<p>工程上解决问题，一定要有理论做基础。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><blockquote>
+<p>推荐书单</p>
+</blockquote>
+<p>-《Java并发编程实战》作者阵容可谓大师云集，也包括Doug Lea</p>
+<p>-《Java并发编程的艺术》讲解并发包内部实现原理，能读明白，内功大增</p>
+<p>-《图解Java多线程设计模式》并发编程设计模式方面的经典书籍</p>
+<p>-《操作系统：精髓与设计原理》经典操作系统教材</p>
+<ul>
+<li><p><a href="http://ifeve.com" target="_blank" rel="noopener">http://ifeve.com</a> 国内专业并发编程网站</p>
+</li>
+<li><p><a href="http://www.cs.umd.edu/~pugh/java/memoryModel/" target="_blank" rel="noopener">http://www.cs.umd.edu/~pugh/java/memoryModel/</a> 很多并发编程的早期资料都在这里</p>
+</li>
+</ul>
+<blockquote>
+<p><strong>参考文档</strong></p>
+</blockquote>
+<blockquote>
+<p><a href="https://www.jianshu.com/u/354cc1548a33" target="_blank" rel="noopener">【1】简书主页·share猿</a></p>
+</blockquote>
+<blockquote>
+<p><a href="https://juejin.im/user/5a8e759851882524d842d174" target="_blank" rel="noopener">【2】掘金主页·share猿</a></p>
+</blockquote>
+<hr>
+<p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
+<p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-10-15T06:46:35.648Z" itemprop="dateUpdated">2019-10-15 14:46:35</time>
+</span><br>
+
+
+        
+        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2019/07/02/后端/高并发/java/书籍/java并发编程实战-王宝令/学习攻略.如何才能学好并发编程？/" target="_blank" rel="external">https://lywlefan.github.io/2019/07/02/后端/高并发/java/书籍/java并发编程实战-王宝令/学习攻略.如何才能学好并发编程？/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://lywlefan.github.io">
+            <img src="/img/avatar.png" alt="share猿">
+            share猿
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java并发编程实战-王宝令/">java并发编程实战-王宝令</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/高并发/">高并发</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://lywlefan.github.io/2019/07/02/后端/高并发/java/书籍/java并发编程实战-王宝令/学习攻略.如何才能学好并发编程？/&title=《学习攻略.如何才能学好并发编程？》 — share猿&pic=https://lywlefan.github.io/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://lywlefan.github.io/2019/07/02/后端/高并发/java/书籍/java并发编程实战-王宝令/学习攻略.如何才能学好并发编程？/&title=《学习攻略.如何才能学好并发编程？》 — share猿&source=分享有价值的内容,你我共同成长!" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://lywlefan.github.io/2019/07/02/后端/高并发/java/书籍/java并发编程实战-王宝令/学习攻略.如何才能学好并发编程？/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《学习攻略.如何才能学好并发编程？》 — share猿&url=https://lywlefan.github.io/2019/07/02/后端/高并发/java/书籍/java并发编程实战-王宝令/学习攻略.如何才能学好并发编程？/&via=https://lywlefan.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://lywlefan.github.io/2019/07/02/后端/高并发/java/书籍/java并发编程实战-王宝令/学习攻略.如何才能学好并发编程？/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2019/07/02/后端/中间件/消息中间件/kafka/读书笔记/kafka核心技术与实战-胡夕/12.客户端都有哪些不常见但是很高级的功能？/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">12.客户端都有哪些不常见但是很高级的功能？</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/07/02/后端/高并发/java/书籍/java并发编程实战-王宝令/01.可见性、原子性和有序性问题：并发编程Bug的源头 /" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">01.可见性、原子性和有序性问题：并发编程Bug的源头</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'true' == 'true',
+            verify: 'false' == 'true',
+            appId: "hQGVIAaJERVwyrWxj1uqgCqS-gzGzoHsz",
+            appKey: "l7FO5csTavNwXCGryJyOkkc1",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢赞赏!
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>share猿 &copy; 2015 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://lywlefan.github.io/2019/07/02/后端/高并发/java/书籍/java并发编程实战-王宝令/学习攻略.如何才能学好并发编程？/&title=《学习攻略.如何才能学好并发编程？》 — share猿&pic=https://lywlefan.github.io/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://lywlefan.github.io/2019/07/02/后端/高并发/java/书籍/java并发编程实战-王宝令/学习攻略.如何才能学好并发编程？/&title=《学习攻略.如何才能学好并发编程？》 — share猿&source=分享有价值的内容,你我共同成长!" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://lywlefan.github.io/2019/07/02/后端/高并发/java/书籍/java并发编程实战-王宝令/学习攻略.如何才能学好并发编程？/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《学习攻略.如何才能学好并发编程？》 — share猿&url=https://lywlefan.github.io/2019/07/02/后端/高并发/java/书籍/java并发编程实战-王宝令/学习攻略.如何才能学好并发编程？/&via=https://lywlefan.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://lywlefan.github.io/2019/07/02/后端/高并发/java/书籍/java并发编程实战-王宝令/学习攻略.如何才能学好并发编程？/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASYAAAEmCAAAAADqr2IGAAAEfUlEQVR42u3aUVLrMAwF0Lf/TfM2AO29UsrE4eSLocW2TpixJfnfv/j5Kp/X4/z0m59GyMdP/iofoX4wYcKECdMtmZKAXy90BnctRxtvHjsmTJgwYXoGUzJcHuTncPN1vp43jx0TJkyYMP01phnEbOlFGC9nTD7FhAkTJkyYXoeaL/faonP7IjFhwoQJ099kaodLjgL7g8UsyLa1eXEtHBMmTJgw3YxpX0g99+eLH0yYMGHCdDOm/cXTpLCbNETb40U7/ipqTJgwYcJ0LFO+QSbJ5+wC0Ka8Owu4jRcTJkyYMJ3O9LmLL3mZeFZuniW3+eFj1U3FhAkTJkw3YGpbd0nYyebdHhdmCXmOWFQIMGHChAnTgUyzxDVf6OYqTFve3azqTaKLCRMmTJgOZPqdSzz5hv2JFHd2pMCECRMmTM9jagu7+214Vt699pBRH5IwYcKECdODmPIwPpE2J5t620Btv1nn4pgwYcKE6WZMm+Qw3/6T37ft0mSWvNX6ZnZMmDBhwvRoprzZmR8m2hFme/QM9JtPMWHChAnTsUxJuzHJntt0tN34Z9d02iJvXT7GhAkTJky3Z7r2QDBrE85aoVfN+PrVfuTchAkTJkyYfpFpU069Kt29qjnaHjgSIEyYMGHC9Aym2bWYPLGcNS+HhdfRGi6rCmDChAkTppsxzRbXbvOzkusqTQ22+eJCEiZMmDBhOpypbQe2RdWrWo/79mo+4ze1cEyYMGHC9AimWdsvP160ReFNwTd5YVFDFBMmTJgwPYJpXxj9XKj5IaO9FBtFjQkTJkyYDmdKUs12mrYsm8+1KTq3a8CECRMmTE9i+vTVnDbtnG3nVxWpfzwQYMKECROmo5gSoP02nGy6M74Za/7PgQkTJkyYTmdqW5Kbi545SvtK8iLy69nfnJswYcKECdOBTJtk9apy8CyMtlh8wT8BJkyYMGE6nCm/7DJLI/NycJ5sz8IeFo4xYcKECdOBTG3616a+M+i29ZgQzA4KRYUAEyZMmDDdkikJL9+8N4eMPICWu11h9MIwYcKECdMhTFeluPmU16ays++0DVdMmDBhwvQMpjYBnk0/2+bbzX6/EkyYMGHC9CSm/VWY2RWZzbEgv+4zKwQXU2LChAkTptsztc282fWXtlG6n7d9wXXzEhMmTJgwHcWUJ585YnEVZrS22TdX7UxMmDBhwnQgU9sIbMPOE9EkKZ21PDetU0yYMGHC9AymWUk031xn5df8qLFpgr4ZGRMmTJgwHcv0iWk2F2va7yQjF8HnDyZMmDBhOoTpq3w22/Prv5odCNoUevivgAkTJkyYjmWa7YktSn5xJwlpX4xOVjU8RmDChAkTplsytRvq/trN5j5M2xydzfXNp5gwYcKE6XCm/SaaJ5DtRn5Vo3T1ajFhwoQJ059h2i8352vT6Tyu+uVhwoQJE6Y/yZQXZBO4fTo9Q4lWjgkTJkyYDmdKiqRt8XfWjHydPLct1fylvtn9MWHChAnTsUyziy9t6zFPpGejJS/42stAmDBhwoTp9kz/AUDL0wQN+mQPAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '共同学习!共同进步!';
+            clearTimeout(titleTime);
+        } else {
+            document.title = 'Share猿社区官方';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

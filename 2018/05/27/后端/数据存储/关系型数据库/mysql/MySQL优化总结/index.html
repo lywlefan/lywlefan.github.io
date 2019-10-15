@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>MySQL优化总结 | share猿 | https://lywlefan.github.io/</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="关系型数据库,mysql">
+    <meta name="description" content="&amp;emsp;&amp;emsp;实践一门技术的最好方式就是深入理解它的思想，然后造一个出来！  数据库设计 适当冗余  冗余长时间不变更的字段  冗余数据增量较小的表的字段,衡量好得失     适当建立索引 可是天下没有免费的午餐，查询速度的提高是以插入、更新、删除的速度为代价的，这些写操作，增加了大量的I/O。  一个表的索引所占空间比数据所占空间还大的情况经常发生.  我们建立一个索引，必须保证这个">
+<meta name="keywords" content="关系型数据库,mysql">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MySQL优化总结">
+<meta property="og:url" content="https://lywlefan.github.io/2018/05/27/后端/数据存储/关系型数据库/mysql/MySQL优化总结/index.html">
+<meta property="og:site_name" content="share猿">
+<meta property="og:description" content="&amp;emsp;&amp;emsp;实践一门技术的最好方式就是深入理解它的思想，然后造一个出来！  数据库设计 适当冗余  冗余长时间不变更的字段  冗余数据增量较小的表的字段,衡量好得失     适当建立索引 可是天下没有免费的午餐，查询速度的提高是以插入、更新、删除的速度为代价的，这些写操作，增加了大量的I/O。  一个表的索引所占空间比数据所占空间还大的情况经常发生.  我们建立一个索引，必须保证这个">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-10-15T06:46:35.544Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MySQL优化总结">
+<meta name="twitter:description" content="&amp;emsp;&amp;emsp;实践一门技术的最好方式就是深入理解它的思想，然后造一个出来！  数据库设计 适当冗余  冗余长时间不变更的字段  冗余数据增量较小的表的字段,衡量好得失     适当建立索引 可是天下没有免费的午餐，查询速度的提高是以插入、更新、删除的速度为代价的，这些写操作，增加了大量的I/O。  一个表的索引所占空间比数据所占空间还大的情况经常发生.  我们建立一个索引，必须保证这个">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+    
+        <link rel="alternate" type="application/atom+xml" title="share猿" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">share猿</h5>
+          <a href="mailto:330334064@qq.com" title="330334064@qq.com" class="mail">330334064@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/lywlefan" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                GitHub
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/atom">
+                <i class="icon icon-lg icon-rss"></i>
+                订阅
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">MySQL优化总结</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">MySQL优化总结</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-05-26T16:00:00.000Z" itemprop="datePublished" class="page-time">
+  2018-05-27
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/后端/">后端</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#数据库设计"><span class="post-toc-number">1.</span> <span class="post-toc-text">数据库设计</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#适当建立索引"><span class="post-toc-number">2.</span> <span class="post-toc-text">适当建立索引</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#对表进行水平划分"><span class="post-toc-number">3.</span> <span class="post-toc-text">对表进行水平划分</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#对表进行垂直划分"><span class="post-toc-number">4.</span> <span class="post-toc-text">对表进行垂直划分</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#选择适当的字段类型，特别是主键"><span class="post-toc-number">5.</span> <span class="post-toc-text">选择适当的字段类型，特别是主键</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#文件、图片等大文件用文件系统存储，不用数据库"><span class="post-toc-number">6.</span> <span class="post-toc-text">文件、图片等大文件用文件系统存储，不用数据库</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#外键表示清楚，方便建立索引"><span class="post-toc-number">7.</span> <span class="post-toc-text">外键表示清楚，方便建立索引</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#掌握表的写入时机"><span class="post-toc-number">8.</span> <span class="post-toc-text">掌握表的写入时机</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#宁可集中批量操作，避免频繁读写"><span class="post-toc-number">9.</span> <span class="post-toc-text">宁可集中批量操作，避免频繁读写</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#选择合适的引擎"><span class="post-toc-number">10.</span> <span class="post-toc-text">选择合适的引擎</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Sql语句优化"><span class="post-toc-number">11.</span> <span class="post-toc-text">Sql语句优化</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-后端/数据存储/关系型数据库/mysql/MySQL优化总结" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">MySQL优化总结</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-05-27 00:00:00" datetime="2018-05-26T16:00:00.000Z" itemprop="datePublished">2018-05-27</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/后端/">后端</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <blockquote>
+<p>&emsp;&emsp;实践一门技术的最好方式就是深入理解它的思想，然后造一个出来！</p>
+</blockquote>
+<h3 id="数据库设计"><a href="#数据库设计" class="headerlink" title="数据库设计"></a>数据库设计</h3><ul>
+<li><p>适当冗余</p>
+<ul>
+<li><p>冗余长时间不变更的字段</p>
+</li>
+<li><p>冗余数据增量较小的表的字段,衡量好得失</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="适当建立索引"><a href="#适当建立索引" class="headerlink" title="适当建立索引"></a>适当建立索引</h3><ul>
+<li><p>可是天下没有免费的午餐，查询速度的提高是以插入、更新、删除的速度为代价的，这些写操作，增加了大量的I/O。</p>
+</li>
+<li><p>一个表的索引所占空间比数据所占空间还大的情况经常发生.</p>
+</li>
+<li><p>我们建立一个索引，必须保证这个索引不会“亏本”,一般需要遵守这样的规则：</p>
+<ul>
+<li><p>索引的字段必须是经常作为查询条件的字段</p>
+</li>
+<li><p>如果索引多个字段，第一个字段要是经常作为查询条件的。如果只有第二个字段作为查询条件，这个索引不会起到作用;</p>
+</li>
+<li><p>索引的字段必须有足够的区分度;</p>
+</li>
+<li><p>Mysql 对于长字段支持前缀索引(所谓的前缀索引就是某些字段只过长,可以取部分值进行检索);  </p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="对表进行水平划分"><a href="#对表进行水平划分" class="headerlink" title="对表进行水平划分"></a>对表进行水平划分</h3><ul>
+<li><p>记录数太多了,上千万条</p>
+</li>
+<li><p>可以取一个维度对表进行拆分,比如地域/月份</p>
+</li>
+</ul>
+<h3 id="对表进行垂直划分"><a href="#对表进行垂直划分" class="headerlink" title="对表进行垂直划分"></a>对表进行垂直划分</h3><ul>
+<li>记录不多,但是字段很长的情况</li>
+</ul>
+<h3 id="选择适当的字段类型，特别是主键"><a href="#选择适当的字段类型，特别是主键" class="headerlink" title="选择适当的字段类型，特别是主键"></a>选择适当的字段类型，特别是主键</h3><ul>
+<li><p>保小不保大，能用占用字节小的字段就不用大字段(比如主键，我们强烈建议用自增类型)</p>
+</li>
+<li><p>值得一提的是，datetime和timestamp，datetime占用8个字节，而timestamp占用4个字节</p>
+</li>
+</ul>
+<h3 id="文件、图片等大文件用文件系统存储，不用数据库"><a href="#文件、图片等大文件用文件系统存储，不用数据库" class="headerlink" title="文件、图片等大文件用文件系统存储，不用数据库"></a>文件、图片等大文件用文件系统存储，不用数据库</h3><h3 id="外键表示清楚，方便建立索引"><a href="#外键表示清楚，方便建立索引" class="headerlink" title="外键表示清楚，方便建立索引"></a>外键表示清楚，方便建立索引</h3><p>&emsp;&emsp;我们都知道，在powerdesigner里为两个实体建立关系，生成物理模型时会自动给外键建立索引。所以我们不要怕建立关系把线拉乱，建立个ShortCut就好了。</p>
+<h3 id="掌握表的写入时机"><a href="#掌握表的写入时机" class="headerlink" title="掌握表的写入时机"></a>掌握表的写入时机</h3><ul>
+<li>同样是写入一个表，先写和后写对后续的操作会产生很大影响</li>
+</ul>
+<h3 id="宁可集中批量操作，避免频繁读写"><a href="#宁可集中批量操作，避免频繁读写" class="headerlink" title="宁可集中批量操作，避免频繁读写"></a>宁可集中批量操作，避免频繁读写</h3><p>&emsp;&emsp;系统里包含了积分部分，学生和老师通过系统做了操作都可以获得积分，而且积分规则很复杂，限制每类操作获得积分不同，每人每天每类积分都有上限。比如登录，一次登录就可以获得1分，但是不管你登录多少次，一天只能累积一个登录积分。这个还是简单的，有的积分很变态，比如老师积分中有一类是看老师判作业的情况，规则是：老师判了作业，发现学生有错的，学生改过了，老师再判，如果这时候学生都对了，就给老师加分，如果学生还是错的，那就接着改，知道学生都改对了，老师都判完了，才能给老师加分。如果用程序来处理，很可能每个功能都会额外的写一堆代码来处理这个鸡肋似的积分。不仅编程的同事干活找不到重点，还平白给数据库带来了很大的压力。经过和需求人员的讨论，确定积分没有必要实时累积，于是我们采取后台脚本批量处理的方式。夜深人静的时候，让机器自己玩去吧。</p>
+<h3 id="选择合适的引擎"><a href="#选择合适的引擎" class="headerlink" title="选择合适的引擎"></a>选择合适的引擎</h3><p>&emsp;&emsp;Mysql提供了很多种引擎，我们用的最多的是myisam，innodb，memory这三类。官方手册上说道myisqm比innodb的读速度要快，大概是3倍。不过书不能尽信啊，《OreIlly.High.Performance.Mysql》这本书里提到了myisam和innodb的比较，在测试中myisam的表现还不及innodb。至于memory，哈哈，还是比较好用的。在批处理种作临时表是个不错的选择(如果内存够大)。在我的一个批处理中，速度比近乎1：10。</p>
+<h3 id="Sql语句优化"><a href="#Sql语句优化" class="headerlink" title="Sql语句优化"></a>Sql语句优化</h3><ul>
+<li><p>Sql语句优化工具</p>
+<ul>
+<li><p>慢日志</p>
+<p>&emsp;&emsp;配置很简单，参数文件里配置：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">slow_query_log=d:/slow.txt</span><br><span class="line">long_query_time = 2</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<pre><code>&amp;emsp;&amp;emsp;慢日志文件可能会很大，让人去看是很难受的事。这时候我们可以通过mysql自带的工具来分析。
+</code></pre><blockquote>
+<p><a href="https://www.jianshu.com/u/354cc1548a33" target="_blank" rel="noopener">【1】简书主页·share猿</a>﻿<br><a href="https://juejin.im/user/5a8e759851882524d842d174" target="_blank" rel="noopener">【2】掘金主页·share猿</a>﻿﻿<br><a href="http://tech.it168.com/a2009/0526/577/000000577940_6.shtml" target="_blank" rel="noopener">【3】MySQL优化总结·周长亮</a>﻿﻿</p>
+</blockquote>
+<p>—﻿</p>
+<p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong>﻿</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt>﻿﻿</p>
+<p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-10-15T06:46:35.544Z" itemprop="dateUpdated">2019-10-15 14:46:35</time>
+</span><br>
+
+
+        
+        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2018/05/27/后端/数据存储/关系型数据库/mysql/MySQL优化总结/" target="_blank" rel="external">https://lywlefan.github.io/2018/05/27/后端/数据存储/关系型数据库/mysql/MySQL优化总结/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://lywlefan.github.io">
+            <img src="/img/avatar.png" alt="share猿">
+            share猿
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mysql/">mysql</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/关系型数据库/">关系型数据库</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://lywlefan.github.io/2018/05/27/后端/数据存储/关系型数据库/mysql/MySQL优化总结/&title=《MySQL优化总结》 — share猿&pic=https://lywlefan.github.io/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://lywlefan.github.io/2018/05/27/后端/数据存储/关系型数据库/mysql/MySQL优化总结/&title=《MySQL优化总结》 — share猿&source=分享有价值的内容,你我共同成长!" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://lywlefan.github.io/2018/05/27/后端/数据存储/关系型数据库/mysql/MySQL优化总结/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《MySQL优化总结》 — share猿&url=https://lywlefan.github.io/2018/05/27/后端/数据存储/关系型数据库/mysql/MySQL优化总结/&via=https://lywlefan.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://lywlefan.github.io/2018/05/27/后端/数据存储/关系型数据库/mysql/MySQL优化总结/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/05/30/后端/bug收集桶/java/Lombok初次使用启动项目报错解决/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">Spring Boot配置FastJson报错</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/05/06/架构/微服务架构/微服务架构导航/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">微服务架构导航</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'true' == 'true',
+            verify: 'false' == 'true',
+            appId: "hQGVIAaJERVwyrWxj1uqgCqS-gzGzoHsz",
+            appKey: "l7FO5csTavNwXCGryJyOkkc1",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢赞赏!
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>share猿 &copy; 2015 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://lywlefan.github.io/2018/05/27/后端/数据存储/关系型数据库/mysql/MySQL优化总结/&title=《MySQL优化总结》 — share猿&pic=https://lywlefan.github.io/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://lywlefan.github.io/2018/05/27/后端/数据存储/关系型数据库/mysql/MySQL优化总结/&title=《MySQL优化总结》 — share猿&source=分享有价值的内容,你我共同成长!" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://lywlefan.github.io/2018/05/27/后端/数据存储/关系型数据库/mysql/MySQL优化总结/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《MySQL优化总结》 — share猿&url=https://lywlefan.github.io/2018/05/27/后端/数据存储/关系型数据库/mysql/MySQL优化总结/&via=https://lywlefan.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://lywlefan.github.io/2018/05/27/后端/数据存储/关系型数据库/mysql/MySQL优化总结/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAADLElEQVR42u3aQW4jMQwEwPz/095rgMXY3aQNZOSaU5A4GpVyYNjUz0/8PP57fn//6uvf33m+Zv6u9i2rBxsbG/sm7MfTJ3nBFf458vkh5kd59ZkrCzY2Nvap7BaTlI2kgCWH0q4T7QQbGxv769ltu5I0MG27go2NjY09Y+dtyXvjpLzsYWNjY38nOwmVctistCQHkeztzVkaNjY29p9nbwB/7euPzLexsbGx/zD7UT55a5EUm00stVJgY2NjH8T+XAzUjnU35XO4f2xsbOyD2G2g0/6Hn48Q8ks8Q2SyFWxsbOzbsj9RkJLgfl/S2uYEGxsb+yT2JiqabSiPnJ4fYrLPy3dhY2NjH8SelaJNydnEUvv6jI2Njf097HxD7xrlzsbGm/EwNjY29hnsdxWPpJwkB9SWyWSccFm6sLGxsY9gb6L8pATmx5FvtI2QXqyJjY2NfSg7X27TMMy2njdRRR3GxsbGvi072XRbfmaFal8gi7EENjY29kHsPDNPfjq7lNOOEzaHUo8KsLGxsW/CnkVCbZuRB0azQ6mbE2xsbOxD2bN/7veBUd4U7YcE2NjY2N/DTsrVJpzKr+lsmpl6HoKNjY19c/Z+0+0IuS1sOf5FGcPGxsY+gj2Lh5KGJB+15gWpDa2wsbGxv4HdFoP8M7OR7aZraI8GGxsb+zx2G/q0Uf6MNBsJROUTGxsb+wh2vmge3+ctRFv8Wl7UgWFjY2PfnD1bKA/696vlK7dRFzY2NvYZ7NmLZ8g2Wtp85kWZxMbGxj6I3TYPbcMwazneG2wVAwlsbGzs27JnQfwwynlTXJUMiV/8hbGxsbGPY+dBfP5bM3yOaQvbi3EvNjY29s3ZyRJ50Uqak9noN+qlktWwsbGxj2A/yqcN+mctymYAXE+2sbGxsW/OnjUAbSsya3JmAdPmShA2Njb2fdlJ0WqbirbN2Fwemu0ZGxsb+zx2ewUn/61ZMSsAsytE2NjY2F/Pnl2jaYP+9gpmsRNsbGzsL2Y/j/j3I+S8RWmL2eVNJWxsbOwj2EmolEdL+U/bT7ZXeS7fhY2NjX0Qex/QvHdwm+Pb48PGxsY+jv0PyEA1ABcfqH8AAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '共同学习!共同进步!';
+            clearTimeout(titleTime);
+        } else {
+            document.title = 'Share猿社区官方';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

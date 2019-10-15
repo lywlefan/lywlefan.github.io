@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>02.redis的线程IO和通讯协议 | share猿 | https://lywlefan.github.io/</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="redis,数据存储,NOSQL">
+    <meta name="description" content="redis的线程IO                                                                                             线程IO              Redis是个单线程程序!但是他有高并发特性,单个节点可以支持10w的QPS。除了redis是单线程,Nginx也是单线程的。单线程为什么如此之快?单线程有如">
+<meta name="keywords" content="redis,数据存储,NOSQL">
+<meta property="og:type" content="article">
+<meta property="og:title" content="02.redis的线程IO和通讯协议">
+<meta property="og:url" content="https://lywlefan.github.io/2019/08/13/后端/数据存储/NOSQL/redis/03.redis的线程IO和通讯协议/index.html">
+<meta property="og:site_name" content="share猿">
+<meta property="og:description" content="redis的线程IO                                                                                             线程IO              Redis是个单线程程序!但是他有高并发特性,单个节点可以支持10w的QPS。除了redis是单线程,Nginx也是单线程的。单线程为什么如此之快?单线程有如">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/3084894-bcf206af27739ea2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/3084894-d8790174146ea545.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-10-15T06:42:25.278Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="02.redis的线程IO和通讯协议">
+<meta name="twitter:description" content="redis的线程IO                                                                                             线程IO              Redis是个单线程程序!但是他有高并发特性,单个节点可以支持10w的QPS。除了redis是单线程,Nginx也是单线程的。单线程为什么如此之快?单线程有如">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/3084894-bcf206af27739ea2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+    
+        <link rel="alternate" type="application/atom+xml" title="share猿" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">share猿</h5>
+          <a href="mailto:330334064@qq.com" title="330334064@qq.com" class="mail">330334064@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/lywlefan" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                GitHub
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/atom">
+                <i class="icon icon-lg icon-rss"></i>
+                订阅
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">02.redis的线程IO和通讯协议</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">02.redis的线程IO和通讯协议</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-08-12T16:00:00.000Z" itemprop="datePublished" class="page-time">
+  2019-08-13
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/后端/">后端</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#redis的线程IO"><span class="post-toc-number">1.</span> <span class="post-toc-text">redis的线程IO</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#5种IO模型学习"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">5种IO模型学习</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#阻塞IO模型"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">阻塞IO模型</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#类比"><span class="post-toc-number">1.1.1.1.</span> <span class="post-toc-text">类比</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#典型应用"><span class="post-toc-number">1.1.1.2.</span> <span class="post-toc-text">典型应用</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#特点"><span class="post-toc-number">1.1.1.3.</span> <span class="post-toc-text">特点</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#非阻塞IO模型"><span class="post-toc-number">1.1.2.</span> <span class="post-toc-text">非阻塞IO模型</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#类比-1"><span class="post-toc-number">1.1.2.1.</span> <span class="post-toc-text">类比</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#典型应用-1"><span class="post-toc-number">1.1.2.2.</span> <span class="post-toc-text">典型应用</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#特点-1"><span class="post-toc-number">1.1.2.3.</span> <span class="post-toc-text">特点</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#IO复用模型"><span class="post-toc-number">1.1.3.</span> <span class="post-toc-text">IO复用模型</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#类比-2"><span class="post-toc-number">1.1.3.1.</span> <span class="post-toc-text">类比</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#典型应用-2"><span class="post-toc-number">1.1.3.2.</span> <span class="post-toc-text">典型应用</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#特点-2"><span class="post-toc-number">1.1.3.3.</span> <span class="post-toc-text">特点</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#形成原因"><span class="post-toc-number">1.1.3.4.</span> <span class="post-toc-text">形成原因</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#信号驱动的IO模型"><span class="post-toc-number">1.1.4.</span> <span class="post-toc-text">信号驱动的IO模型</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#特点-3"><span class="post-toc-number">1.1.4.1.</span> <span class="post-toc-text">特点</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#异步IO模型"><span class="post-toc-number">1.1.5.</span> <span class="post-toc-text">异步IO模型</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#特点-4"><span class="post-toc-number">1.1.5.1.</span> <span class="post-toc-text">特点</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#典型"><span class="post-toc-number">1.1.5.2.</span> <span class="post-toc-text">典型</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#指令队列"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">指令队列</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#响应队列"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">响应队列</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#定时任务"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">定时任务</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#redis的通讯协议"><span class="post-toc-number">2.</span> <span class="post-toc-text">redis的通讯协议</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#RESP协议简介"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">RESP协议简介</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#数据类型及示例"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">数据类型及示例</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-后端/数据存储/NOSQL/redis/03.redis的线程IO和通讯协议" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">02.redis的线程IO和通讯协议</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-08-13 00:00:00" datetime="2019-08-12T16:00:00.000Z" itemprop="datePublished">2019-08-13</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/后端/">后端</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h2 id="redis的线程IO"><a href="#redis的线程IO" class="headerlink" title="redis的线程IO"></a>redis的线程IO</h2><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://upload-images.jianshu.io/upload_images/3084894-bcf206af27739ea2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="线程IO" title>
+                </div>
+                <div class="image-caption">线程IO</div>
+            </figure>
+<p>Redis是个单线程程序!但是他有高并发特性,单个节点可以支持10w的QPS。除了redis是单线程,Nginx也是单线程的。单线程为什么如此之快?单线程有如何处理多并发的客户端连接?下面让我们带着这些问题一起深究redis的线程IO。</p>
+<h3 id="5种IO模型学习"><a href="#5种IO模型学习" class="headerlink" title="5种IO模型学习"></a>5种IO模型学习</h3><ul>
+<li><p>阻塞IO模型</p>
+</li>
+<li><p>非阻塞IO模型</p>
+</li>
+<li><p>IO复用模型</p>
+</li>
+<li><p>信号驱动的IO模型</p>
+</li>
+<li><p>异步IO模型</p>
+</li>
+</ul>
+<h4 id="阻塞IO模型"><a href="#阻塞IO模型" class="headerlink" title="阻塞IO模型"></a>阻塞IO模型</h4><p>进程发起IO系统调用后，进程被阻塞，转到内核空间处理，整个IO处理完毕后返回进程。操作成功则进程获取到数据。</p>
+<h5 id="类比"><a href="#类比" class="headerlink" title="类比"></a>类比</h5><p>老李去火车站买票，排队三天买到一张退票。</p>
+<p>耗费：在车站吃喝拉撒睡 3天，其他事一件没干。</p>
+<h5 id="典型应用"><a href="#典型应用" class="headerlink" title="典型应用"></a>典型应用</h5><ul>
+<li><p>阻塞socket</p>
+</li>
+<li><p>java BIO</p>
+</li>
+</ul>
+<h5 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h5><ul>
+<li><p>进程阻塞挂起不消耗CPU资源，及时响应每个操作；</p>
+</li>
+<li><p>实现难度低、开发应用较容易；</p>
+</li>
+<li><p>适用并发量小的网络应用开发；</p>
+</li>
+</ul>
+<p>不适用并发量大的应用：因为一个请求IO会阻塞进程，所以，得为每请求分配一个处理进程（线程）以及时响应，系统开销大。</p>
+<h4 id="非阻塞IO模型"><a href="#非阻塞IO模型" class="headerlink" title="非阻塞IO模型"></a>非阻塞IO模型</h4><p>进程发起IO系统调用后，如果内核缓冲区没有数据，需要到IO设备中读取，进程返回一个错误而不会被阻塞；进程发起IO系统调用后，如果内核缓冲区有数据，内核就会把数据返回进程。</p>
+<h5 id="类比-1"><a href="#类比-1" class="headerlink" title="类比"></a>类比</h5><p> 老李去火车站买票，隔12小时去火车站问有没有退票，三天后买到一张票。</p>
+<p> 耗费：往返车站6次，路上6小时，其他时间做了好多事。</p>
+<h5 id="典型应用-1"><a href="#典型应用-1" class="headerlink" title="典型应用"></a>典型应用</h5><ul>
+<li>socket是非阻塞的方式（设置为NONBLOCK）</li>
+</ul>
+<h5 id="特点-1"><a href="#特点-1" class="headerlink" title="特点"></a>特点</h5><ul>
+<li><p>进程轮询（重复）调用，消耗CPU的资源；</p>
+</li>
+<li><p>实现难度低、开发应用相对阻塞IO模式较难；</p>
+</li>
+<li><p>适用并发量较小、且不需要及时响应的网络应用开发；</p>
+</li>
+</ul>
+<h4 id="IO复用模型"><a href="#IO复用模型" class="headerlink" title="IO复用模型"></a>IO复用模型</h4><p>多个的进程的IO可以注册到一个复用器（select）上，然后用一个进程调用该select， select会监听所有注册进来的IO；</p>
+<p>如果select没有监听的IO在内核缓冲区都没有可读数据，select调用进程会被阻塞；而当任一IO在内核缓冲区中有可数据时，select调用就会返回；</p>
+<p>而后select调用进程可以自己或通知另外的进程（注册进程）来再次发起读取IO，读取内核中准备好的数据。</p>
+<p>可以看到，多个进程注册IO后，只有另一个select调用进程被阻塞。</p>
+<h5 id="类比-2"><a href="#类比-2" class="headerlink" title="类比"></a>类比</h5><p>是找一个宿管大妈来帮你监视下楼的女生, 这个期间你可以些其他的事情. 例如可以顺便看看其他妹子,玩玩王者荣耀, 上个厕所等等. IO复用又包括 select, poll, epoll 模式. 那么它们的区别是什么?</p>
+<ul>
+<li>select</li>
+</ul>
+<p>每一个女生下楼, select大妈都不知道这个是不是你的女神, 她需要一个一个询问, 并且select大妈能力还有限, 最多一次帮你监视1024个妹子</p>
+<ul>
+<li>poll</li>
+</ul>
+<p>不限制盯着女生的数量, 只要是经过宿舍楼门口的女生, 都会帮你去问是不是你女神</p>
+<ul>
+<li>epoll</li>
+</ul>
+<p>不限制盯着女生的数量, 并且也不需要一个一个去问. 那么如何做呢? epoll大妈会为每个进宿舍楼的女生脸上贴上一个大字条,上面写上女生自己的名字, 只要女生下楼了, epoll大妈就知道这个是不是你女神了, 然后大妈再通知你.</p>
+<h5 id="典型应用-2"><a href="#典型应用-2" class="headerlink" title="典型应用"></a>典型应用</h5><ul>
+<li><p>select</p>
+</li>
+<li><p>poll</p>
+</li>
+<li><p>epoll三种方案</p>
+</li>
+<li><p>nginx都可以选择使用这三个方案</p>
+</li>
+<li><p>Java NIO;</p>
+</li>
+</ul>
+<h5 id="特点-2"><a href="#特点-2" class="headerlink" title="特点"></a>特点</h5><ul>
+<li><p>专一进程解决多个进程IO的阻塞问题，性能好；Reactor模式;</p>
+</li>
+<li><p>实现、开发应用难度较大；</p>
+</li>
+<li><p>适用高并发服务应用开发：一个进程（线程）响应多个请求</p>
+</li>
+</ul>
+<h5 id="形成原因"><a href="#形成原因" class="headerlink" title="形成原因"></a>形成原因</h5><p>如果一个I/O流进来，我们就开启一个进程处理这个I/O流。那么假设现在有一百万个I/O流进来，那我们就需要开启一百万个进程一一对应处理这些I/O流（——这就是传统意义下的多进程并发处理）。思考一下，一百万个进程，你的CPU占有率会多高，这个实现方式及其的不合理。所以人们提出了I/O多路复用这个模型，一个线程，通过记录I/O流的状态来同时管理多个I/O，可以提高服务器的吞吐能力。</p>
+<h4 id="信号驱动的IO模型"><a href="#信号驱动的IO模型" class="headerlink" title="信号驱动的IO模型"></a>信号驱动的IO模型</h4><p>当进程发起一个IO操作，会向内核注册一个信号处理函数，然后进程返回不阻塞；当内核数据就绪时会发送一个信号给进程，进程便在信号处理函数中调用IO读取数据。</p>
+<h5 id="特点-3"><a href="#特点-3" class="headerlink" title="特点"></a>特点</h5><ul>
+<li>回调机制，实现、开发应用难度大；</li>
+</ul>
+<h4 id="异步IO模型"><a href="#异步IO模型" class="headerlink" title="异步IO模型"></a>异步IO模型</h4><p>当进程发起一个IO操作，进程返回（不阻塞），但也不能返回果结；内核把整个IO处理完后，会通知进程结果。如果IO操作成功则进程直接获取到数据。</p>
+<h5 id="特点-4"><a href="#特点-4" class="headerlink" title="特点"></a>特点</h5><ul>
+<li><p>不阻塞，数据一步到位；Proactor模式；</p>
+</li>
+<li><p>需要操作系统的底层支持，LINUX 2.5 版本内核首现，2.6 版本产品的内核标准特性；</p>
+</li>
+<li><p>实现、开发应用难度大；</p>
+</li>
+<li><p>非常适合高性能高并发应用</p>
+</li>
+</ul>
+<h5 id="典型"><a href="#典型" class="headerlink" title="典型"></a>典型</h5><ul>
+<li><p>JAVA7 AIO</p>
+</li>
+<li><p>高性能服务器应用</p>
+</li>
+</ul>
+<p>通过学习5种IO模型,我们知道了Redis就是使用的IO复用模型里面的select。</p>
+<h3 id="指令队列"><a href="#指令队列" class="headerlink" title="指令队列"></a>指令队列</h3><p>Redis 会将每个客户端套接字都关联一个指令队列。客户端的指令通过队列来排队进行顺序处理，先到先服务。 也就是说指令的请求顺序是通过队列来进行约束的。</p>
+<h3 id="响应队列"><a href="#响应队列" class="headerlink" title="响应队列"></a>响应队列</h3><p>每个客户端关联一个响应队列。然后服务端通过响应队列将数据返回给客户端。</p>
+<h3 id="定时任务"><a href="#定时任务" class="headerlink" title="定时任务"></a>定时任务</h3><p>服务器处理要响应 IO 事件外，还要处理其它事情。比如定时任务就是非常重要的一件事。如果线程阻塞在 select 系统调用上，定时任务将无法得到准时调度。那 Redis 是如何解决这个问题的呢？</p>
+<blockquote>
+<p>如果面试官问到这个问题我肯定是处于懵逼状态。老钱书中写到,redis会把定时任务记录到一个叫最小堆的数据结构中,每个周期循环redis会立即处理堆最上面的数据。  </p>
+</blockquote>
+<h2 id="redis的通讯协议"><a href="#redis的通讯协议" class="headerlink" title="redis的通讯协议"></a>redis的通讯协议</h2><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://upload-images.jianshu.io/upload_images/3084894-d8790174146ea545.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="通讯协议" title>
+                </div>
+                <div class="image-caption">通讯协议</div>
+            </figure>
+<h3 id="RESP协议简介"><a href="#RESP协议简介" class="headerlink" title="RESP协议简介"></a>RESP协议简介</h3><p>Redis 的客户端和服务端之间采取了一种独立名为 RESP(REdis Serialization Protocol) 的协议，作者主要考虑了以下几个点：</p>
+<ul>
+<li>容易实现</li>
+<li>解析快</li>
+<li>人类可读</li>
+</ul>
+<p>注意：RESP 虽然是为 Redis 设计的，但是同样也可以用于其他 C/S 的软件。</p>
+<h3 id="数据类型及示例"><a href="#数据类型及示例" class="headerlink" title="数据类型及示例"></a>数据类型及示例</h3><p>RESP 主要可以序列化以下几种类型：整数，单行回复(简单字符串)，数组，错误信息，多行字符串。Redis 客户端向服务端发送的是一组由执行的命令组成的字符串数组，服务端根据不同的命令回复不同类型的数据，但协议的每部分都是以 “\r\n” (CRLF) 结尾的。另外 RESP 是二进制安全的，不需要处理从一个进程到另一个进程的传输，因为它使用了前缀长度进行传输。</p>
+<p>在 RESP 中, 一些数据的类型通过它的第一个字节进行判断：</p>
+<ul>
+<li><p>单行回复：回复的第一个字节是 “+”</p>
+</li>
+<li><p>错误信息：回复的第一个字节是 “-”</p>
+</li>
+<li><p>整形数字：回复的第一个字节是 “:”</p>
+</li>
+<li><p>多行字符串：回复的第一个字节是 “\$”</p>
+</li>
+<li><p>数组：回复的第一个字节是 “*”</p>
+</li>
+</ul>
+<p>RESP 协议还是相对易于理解的，另外理解了协议也方便对 Redis 一些问题的定位及客户端的实现。</p>
+<p>Redis 协议里有大量冗余的回车换行符，但是这不影响它成为互联网技术领域非常受欢迎的一个文本协议。有很多开源项目使用 RESP 作为它的通讯协议。在技术领域性能并不总是一切，还有简单性、易理解性和易实现性，这些都需要进行适当权衡。</p>
+<blockquote>
+<p><strong>参考文档</strong></p>
+</blockquote>
+<blockquote>
+<p><a href="https://www.jianshu.com/u/354cc1548a33" target="_blank" rel="noopener">【1】简书主页·share猿</a></p>
+</blockquote>
+<blockquote>
+<p><a href="https://juejin.im/user/5a8e759851882524d842d174" target="_blank" rel="noopener">【2】掘金主页·share猿</a></p>
+</blockquote>
+<blockquote>
+<p><a href="https://redis.io" target="_blank" rel="noopener">【3】redis官网</a></p>
+</blockquote>
+<hr>
+<p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
+<p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-10-15T06:42:25.278Z" itemprop="dateUpdated">2019-10-15 14:42:25</time>
+</span><br>
+
+
+        
+        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2019/08/13/后端/数据存储/NOSQL/redis/03.redis的线程IO和通讯协议/" target="_blank" rel="external">https://lywlefan.github.io/2019/08/13/后端/数据存储/NOSQL/redis/03.redis的线程IO和通讯协议/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://lywlefan.github.io">
+            <img src="/img/avatar.png" alt="share猿">
+            share猿
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NOSQL/">NOSQL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/redis/">redis</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据存储/">数据存储</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://lywlefan.github.io/2019/08/13/后端/数据存储/NOSQL/redis/03.redis的线程IO和通讯协议/&title=《02.redis的线程IO和通讯协议》 — share猿&pic=https://lywlefan.github.io/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://lywlefan.github.io/2019/08/13/后端/数据存储/NOSQL/redis/03.redis的线程IO和通讯协议/&title=《02.redis的线程IO和通讯协议》 — share猿&source=分享有价值的内容,你我共同成长!" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://lywlefan.github.io/2019/08/13/后端/数据存储/NOSQL/redis/03.redis的线程IO和通讯协议/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《02.redis的线程IO和通讯协议》 — share猿&url=https://lywlefan.github.io/2019/08/13/后端/数据存储/NOSQL/redis/03.redis的线程IO和通讯协议/&via=https://lywlefan.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://lywlefan.github.io/2019/08/13/后端/数据存储/NOSQL/redis/03.redis的线程IO和通讯协议/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2019/09/03/后端/基础巩固/java/异常/try-with-resources和multiple catch的学习/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">try-with-resources和multiple catch的学习</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/08/13/算法/算法基础/力扣/内功修炼-算法02/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">内功修炼-算法02</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'true' == 'true',
+            verify: 'false' == 'true',
+            appId: "hQGVIAaJERVwyrWxj1uqgCqS-gzGzoHsz",
+            appKey: "l7FO5csTavNwXCGryJyOkkc1",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢赞赏!
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>share猿 &copy; 2015 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://lywlefan.github.io/2019/08/13/后端/数据存储/NOSQL/redis/03.redis的线程IO和通讯协议/&title=《02.redis的线程IO和通讯协议》 — share猿&pic=https://lywlefan.github.io/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://lywlefan.github.io/2019/08/13/后端/数据存储/NOSQL/redis/03.redis的线程IO和通讯协议/&title=《02.redis的线程IO和通讯协议》 — share猿&source=分享有价值的内容,你我共同成长!" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://lywlefan.github.io/2019/08/13/后端/数据存储/NOSQL/redis/03.redis的线程IO和通讯协议/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《02.redis的线程IO和通讯协议》 — share猿&url=https://lywlefan.github.io/2019/08/13/后端/数据存储/NOSQL/redis/03.redis的线程IO和通讯协议/&via=https://lywlefan.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://lywlefan.github.io/2019/08/13/后端/数据存储/NOSQL/redis/03.redis的线程IO和通讯协议/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAADK0lEQVR42u3ayW7CUAwFUP7/p+m2EiJc24lEzMmq6vDyjlm4Hh6P+Hn+e16/8/rTdyck30/OfL3J44oHGxsb+ybs5+Hzjv3u9ce/ecw4fvvxB5BbsLGxsbeye0ni+BLV0OS3SgL04TRsbGzsH2Ynl66e3EtR1Y8HGxsbG/ushs6k4KmmT2xsbOzfYVfbOlVAr+Dp3e3kXho2Njb217PzlPP9X18y38bGxsb+Yvaz+Jw7lJ2XKE0FNjY29iJ2ngCq6zj5uHeePqv3x8bGxt7E7rXmq22d6wbAyT0f1ddgY2Nj35Z93TpOXsDk65h5gKKMjY2NjX1b9nwA0GvZV8fJvRQb3QobGxt7BfusF+Qt/knq6tUUo+yNjY2N/fXsK/ot81TUGwk0hxDY2NjYt2X30knymnzJ5jj55YOHPIjY2NjYm9hVwKSpNEk5vcImWv3ExsbGvjk7T2DlKF62HlQthB5J/sTGxsa+OfvchnuvjJk0qvKhMjY2NvY+9iRtJOVKMgA+a4Tc7KhhY2Nj35xdLTyqTZ+zrpuXNIW1S2xsbOyl7PxlvTBNRsv5OR8+KmxsbOyl7AQ8bxslga6mpfKyDjY2NvZSdt76ydtDvYFuXro0B8bY2NjYi9hJ0ydPbOVRaxymPOiFggcbGxt7BTtJFYV/8Yv/7fdKmryRFH0O2NjY2IvYeZM9SXjVACWhyYuT8soONjY29m3Z1ZWayfrOpLA5a6GnnL2xsbGxb8XOwzG5aDLinTSnCukTGxsbexE7ObrauJmfM0l7ebsKGxsbewe7mlTmKSQPWQ4rDySwsbGx17GrV6kOBnptpuoiUV66YGNjY+9jJ4khH6ZOQpMEIkmNJ+RtbGxs7Buyq+2nPFHlLacT2v1JmwkbGxt7BXuyZFktGHJ80iQaFS3Y2NjYi9i9AXBv0FsNX7Xk6I06sLGxsXewq0mrB6teqxfiPATY2NjY+9iTSWjyt70UmAe0en9sbGzsX2bnzf3JSk2VWm4nYWNjY/88OzlnfvKkH/YhENjY2Njr2ElTKUk21XPOGtxWW1rY2NjYm9jVZJBTJ42h5JzeadjY2NiL2H8W1qWBqfpeOQAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '共同学习!共同进步!';
+            clearTimeout(titleTime);
+        } else {
+            document.title = 'Share猿社区官方';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

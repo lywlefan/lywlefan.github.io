@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>11.无消息丢失配置怎么实现？ | share猿 | https://lywlefan.github.io/</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="读书笔记,kafka,kafka核心技术与实战-胡夕">
+    <meta name="description" content="阅读笔记 kafka中什么算消息丢失  什么情况下能保证kafka消息不丢失   一句话概括,Kafka只对”已提交”的消息做有限度的持久化保证。 什么是已提交的消息?当kafka的若干个Broker成功的接收到一条消息并写入到日志文件之后,它们就会告诉生产者程序这条消息已成功提交。此时,这条消息在kafka看来就正式变为”已提交”消息了。 为什么是若干个Broker?这取决于”已提交”的定义,你">
+<meta name="keywords" content="读书笔记,kafka,kafka核心技术与实战-胡夕">
+<meta property="og:type" content="article">
+<meta property="og:title" content="11.无消息丢失配置怎么实现？">
+<meta property="og:url" content="https://lywlefan.github.io/2019/07/01/后端/中间件/消息中间件/kafka/读书笔记/kafka核心技术与实战-胡夕/11.无消息丢失配置怎么实现？/index.html">
+<meta property="og:site_name" content="share猿">
+<meta property="og:description" content="阅读笔记 kafka中什么算消息丢失  什么情况下能保证kafka消息不丢失   一句话概括,Kafka只对”已提交”的消息做有限度的持久化保证。 什么是已提交的消息?当kafka的若干个Broker成功的接收到一条消息并写入到日志文件之后,它们就会告诉生产者程序这条消息已成功提交。此时,这条消息在kafka看来就正式变为”已提交”消息了。 为什么是若干个Broker?这取决于”已提交”的定义,你">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-10-15T06:42:24.901Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="11.无消息丢失配置怎么实现？">
+<meta name="twitter:description" content="阅读笔记 kafka中什么算消息丢失  什么情况下能保证kafka消息不丢失   一句话概括,Kafka只对”已提交”的消息做有限度的持久化保证。 什么是已提交的消息?当kafka的若干个Broker成功的接收到一条消息并写入到日志文件之后,它们就会告诉生产者程序这条消息已成功提交。此时,这条消息在kafka看来就正式变为”已提交”消息了。 为什么是若干个Broker?这取决于”已提交”的定义,你">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+    
+        <link rel="alternate" type="application/atom+xml" title="share猿" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">share猿</h5>
+          <a href="mailto:330334064@qq.com" title="330334064@qq.com" class="mail">330334064@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/lywlefan" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                GitHub
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/atom">
+                <i class="icon icon-lg icon-rss"></i>
+                订阅
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">11.无消息丢失配置怎么实现？</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">11.无消息丢失配置怎么实现？</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-06-30T16:00:00.000Z" itemprop="datePublished" class="page-time">
+  2019-07-01
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/后端/">后端</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#阅读笔记"><span class="post-toc-number">1.</span> <span class="post-toc-text">阅读笔记</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#什么是已提交的消息"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">什么是已提交的消息?</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#有限度的持久化保证"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">有限度的持久化保证</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#消息丢失的案例"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">消息丢失的案例</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#生产者程序丢失数据"><span class="post-toc-number">1.2.1.1.</span> <span class="post-toc-text">生产者程序丢失数据</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#消费者程序丢失数据"><span class="post-toc-number">1.2.1.2.</span> <span class="post-toc-text">消费者程序丢失数据</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#最佳实践"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">最佳实践</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#开发讨论"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">开发讨论</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-后端/中间件/消息中间件/kafka/读书笔记/kafka核心技术与实战-胡夕/11.无消息丢失配置怎么实现？" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">11.无消息丢失配置怎么实现？</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-07-01 00:00:00" datetime="2019-06-30T16:00:00.000Z" itemprop="datePublished">2019-07-01</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/后端/">后端</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h2 id="阅读笔记"><a href="#阅读笔记" class="headerlink" title="阅读笔记"></a>阅读笔记</h2><ul>
+<li><p>kafka中什么算消息丢失</p>
+</li>
+<li><p>什么情况下能保证kafka消息不丢失</p>
+</li>
+</ul>
+<p>一句话概括,Kafka只对”已提交”的消息做有限度的持久化保证。</p>
+<h3 id="什么是已提交的消息"><a href="#什么是已提交的消息" class="headerlink" title="什么是已提交的消息?"></a>什么是已提交的消息?</h3><p>当kafka的若干个Broker成功的接收到一条消息并写入到日志文件之后,它们就会告诉生产者程序这条消息已成功提交。此时,这条消息在kafka看来就正式变为”已提交”消息了。</p>
+<p>为什么是若干个Broker?这取决于”已提交”的定义,你可以选择只有一个broker成功保存该消息就算已提交,也可以令所有broker都保存才算已提交.</p>
+<h3 id="有限度的持久化保证"><a href="#有限度的持久化保证" class="headerlink" title="有限度的持久化保证"></a>有限度的持久化保证</h3><p>至少有一个Broker存活,只要这个条件成立,kafka就不会丢消息,但是一个都不会存活的情况是有可能出现的.</p>
+<h4 id="消息丢失的案例"><a href="#消息丢失的案例" class="headerlink" title="消息丢失的案例"></a>消息丢失的案例</h4><p>复盘”kafka消息丢失”案例。</p>
+<h5 id="生产者程序丢失数据"><a href="#生产者程序丢失数据" class="headerlink" title="生产者程序丢失数据"></a>生产者程序丢失数据</h5><p>kafka producer是异步发送消息的,所以说当我们调用完producer.send(msg)这个api后,他通过会立即返回,但是并不代表我们消息发送成功.</p>
+<p>以上发送消息的方式是不靠谱的,建议不要这样去搞,因为这种方式以下原因可能造成消息发送失败:</p>
+<ul>
+<li><p>网络抖动</p>
+</li>
+<li><p>消息本身不合格,Broker不接受</p>
+</li>
+</ul>
+<p>解决以上问题其实有比较好的办法,就是我们Producer永远使用带有回调通知的发送API,也就是说不要使用producer.send(msg),而要使用producer.send(msg,callback),callback会告诉你消息是否处理成功,然后你再根据具体情况进行相应的处理。</p>
+<p>如果因为某些瞬间错误,可以让producer继续重试,总之发送消息失败的责任是producer而不是在broker,当然broker宕机断网除外。</p>
+<h5 id="消费者程序丢失数据"><a href="#消费者程序丢失数据" class="headerlink" title="消费者程序丢失数据"></a>消费者程序丢失数据</h5><p>在kafka消费消息的时候有个”位移”的概念,我们可以把消费消息当做我们读书,而”位移”就相当于”书签”。</p>
+<p>什么情况下消费者程序会存在丢数据的情况哪???</p>
+<p>我们把上面的类比分成两个部分:1.读书 2.移动书签位置</p>
+<p>加入我们先移动书签,再读书就有可能造成消费者丢数据的情况,比如:我们计划读书到100页,然后我们把书签放到100页,当我们读到96页的时候突然有急事出去了,下次继续读的时候就从100页开始了,中间的页我们就没读到。</p>
+<p>针对以上情况,我们应该是先读书然后移动书签的位置。</p>
+<blockquote>
+<p>但是先读书再移动书签会不会造成消息重复消费的情况。</p>
+</blockquote>
+<p>还一种多线程消费的情况,以前我们是一个人读书,现在把一本书10章分给10个人一起读,然后大家读完宣布这本书读完。</p>
+<p>以上这种情况有可能这种异常情况,有部分线程没有读完就更新了位移,这就导致部分消息没有消费,但是响应的确实已经消费了的情况。</p>
+<p>解决以上问题的办法就是:多线程处理消费消息,Consumer程序不要开启自动提交位移,而是要应用程序手动提交位移。</p>
+<h3 id="最佳实践"><a href="#最佳实践" class="headerlink" title="最佳实践"></a>最佳实践</h3><ul>
+<li><p>使用掉回调的生产消息的方法</p>
+</li>
+<li><p>设置 acks = all。acks 是 Producer的一个参数，代表了你对“已提交”消息的定义。如果设置成 all，则表明所有副本 Broker都要接收到消息，该消息才算是“已提交”。这是最高等级的“已提交”定义。</p>
+</li>
+<li><p>设置 retries 为一个较大的值。这里的 retries 同样是 Producer 的参数，对应前面提到的 Producer 自动重试。当出现网络的瞬时抖动时，消息发送可能会失败，此时配置了 retries &gt; 0 的 Producer 能够自动重试消息发送，避免消息丢失。</p>
+</li>
+<li><p>设置 unclean.leader.election.enable = false。这是 Broker 端的参数，它控制的是哪些 Broker有资格竞选分区的 Leader。如果一个 Broker 落后原先的 Leader 太多，那么它一旦成为新的 Leader，必然会造成消息的丢失。故一般都要将该参数设置成 false，即不允许这种情况的发生。</p>
+</li>
+<li><p>设置 replication.factor &gt;= 3。这也是 Broker 端的参数。其实这里想表述的是，最好将消息多保存几份，毕竟目前防止消息丢失的主要机制就是冗余。</p>
+</li>
+<li><p>设置 min.insync.replicas &gt; 1。这依然是 Broker 端参数，控制的是消息至少要被写入到多少个副本才算是“已提交”。设置成大于 1 可以提升消息持久性。在实际环境中千万不要使用默认值 1。</p>
+</li>
+<li><p>确保 replication.factor&gt; min.insync.replicas。如果两者相等，那么只要有一个副本挂机，整个分区就无法正常工作了。我们不仅要改善消息的持久性，防止数据丢失，还要在不降低可用性的基础上完成。推荐设置成 replication.factor = min.insync.replicas + 1。</p>
+</li>
+<li><p>确保消息消费完成再提交。Consumer 端有个参数 enable.auto.commit，最好把它设置成 false ，并采用手动提交位移的方式。 就像前面说的，这对于单 Consumer 多线程处理的场景而言是至关重要的。</p>
+</li>
+</ul>
+<h3 id="开发讨论"><a href="#开发讨论" class="headerlink" title="开发讨论"></a>开发讨论</h3><p>特别隐秘丢消息的场景:</p>
+<p>当增加主题分区后，在某段“不凑巧”的时间间隔后，Producer 先于 Consumer 感知到新增加的分区，而 Consumer 设置的是“从最新位移处”开始读取消息，因此在 Consumer 感知到新分区前，Producer 发送的这些消息就全部“丢失”了，或者说 Consumer 无法读取到这些消息。Kafka 设计上的一个小缺陷，你有什么解决的办法吗？</p>
+<ul>
+<li><p>cricket1981：consumer改用”从最早位置”读解决新加分区造成的问题</p>
+</li>
+<li><p>明翼：这个问题我想个办法就是程序停止再增加分区，如果不能停止那就找个通知机制了。请教一个问题min.insync.replicas这个参数如果设置成3，假设副本数设置为4，那岂不是只支持一台broker坏掉的情况？</p>
+</li>
+<li><p>作者：能想到的一个简单方法是让consumer端缓存订阅信息，如果发现新的订阅分区出现，手动调整位移到最开始处执行（比如consumer.seekToBeginning）</p>
+</li>
+</ul>
+<blockquote>
+<p><strong>参考文档</strong></p>
+</blockquote>
+<blockquote>
+<p><a href="https://www.jianshu.com/u/354cc1548a33" target="_blank" rel="noopener">【1】简书主页·share猿</a></p>
+</blockquote>
+<blockquote>
+<p><a href="https://juejin.im/user/5a8e759851882524d842d174" target="_blank" rel="noopener">【2】掘金主页·share猿</a></p>
+</blockquote>
+<hr>
+<p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
+<p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-10-15T06:42:24.901Z" itemprop="dateUpdated">2019-10-15 14:42:24</time>
+</span><br>
+
+
+        
+        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2019/07/01/后端/中间件/消息中间件/kafka/读书笔记/kafka核心技术与实战-胡夕/11.无消息丢失配置怎么实现？/" target="_blank" rel="external">https://lywlefan.github.io/2019/07/01/后端/中间件/消息中间件/kafka/读书笔记/kafka核心技术与实战-胡夕/11.无消息丢失配置怎么实现？/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://lywlefan.github.io">
+            <img src="/img/avatar.png" alt="share猿">
+            share猿
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/kafka/">kafka</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/kafka核心技术与实战-胡夕/">kafka核心技术与实战-胡夕</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://lywlefan.github.io/2019/07/01/后端/中间件/消息中间件/kafka/读书笔记/kafka核心技术与实战-胡夕/11.无消息丢失配置怎么实现？/&title=《11.无消息丢失配置怎么实现？》 — share猿&pic=https://lywlefan.github.io/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://lywlefan.github.io/2019/07/01/后端/中间件/消息中间件/kafka/读书笔记/kafka核心技术与实战-胡夕/11.无消息丢失配置怎么实现？/&title=《11.无消息丢失配置怎么实现？》 — share猿&source=分享有价值的内容,你我共同成长!" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://lywlefan.github.io/2019/07/01/后端/中间件/消息中间件/kafka/读书笔记/kafka核心技术与实战-胡夕/11.无消息丢失配置怎么实现？/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《11.无消息丢失配置怎么实现？》 — share猿&url=https://lywlefan.github.io/2019/07/01/后端/中间件/消息中间件/kafka/读书笔记/kafka核心技术与实战-胡夕/11.无消息丢失配置怎么实现？/&via=https://lywlefan.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://lywlefan.github.io/2019/07/01/后端/中间件/消息中间件/kafka/读书笔记/kafka核心技术与实战-胡夕/11.无消息丢失配置怎么实现？/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2019/07/02/后端/高并发/java/书籍/java并发编程实战-王宝令/01.可见性、原子性和有序性问题：并发编程Bug的源头 /" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">01.可见性、原子性和有序性问题：并发编程Bug的源头</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/06/28/后端/中间件/消息中间件/kafka/读书笔记/kafka核心技术与实战-胡夕/10.生产者压缩算法面面观/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">10.生产者压缩算法面面观</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'true' == 'true',
+            verify: 'false' == 'true',
+            appId: "hQGVIAaJERVwyrWxj1uqgCqS-gzGzoHsz",
+            appKey: "l7FO5csTavNwXCGryJyOkkc1",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢赞赏!
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>share猿 &copy; 2015 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://lywlefan.github.io/2019/07/01/后端/中间件/消息中间件/kafka/读书笔记/kafka核心技术与实战-胡夕/11.无消息丢失配置怎么实现？/&title=《11.无消息丢失配置怎么实现？》 — share猿&pic=https://lywlefan.github.io/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://lywlefan.github.io/2019/07/01/后端/中间件/消息中间件/kafka/读书笔记/kafka核心技术与实战-胡夕/11.无消息丢失配置怎么实现？/&title=《11.无消息丢失配置怎么实现？》 — share猿&source=分享有价值的内容,你我共同成长!" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://lywlefan.github.io/2019/07/01/后端/中间件/消息中间件/kafka/读书笔记/kafka核心技术与实战-胡夕/11.无消息丢失配置怎么实现？/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《11.无消息丢失配置怎么实现？》 — share猿&url=https://lywlefan.github.io/2019/07/01/后端/中间件/消息中间件/kafka/读书笔记/kafka核心技术与实战-胡夕/11.无消息丢失配置怎么实现？/&via=https://lywlefan.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://lywlefan.github.io/2019/07/01/后端/中间件/消息中间件/kafka/读书笔记/kafka核心技术与实战-胡夕/11.无消息丢失配置怎么实现？/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAT4AAAE+CAAAAAAxUyPsAAAFQElEQVR42u3dUa4bNxAEQN//0jaQLxvOW3f3rIIgKX0Jkt6SLArQbA9hf/sWP77/9fj5+Vev5O/er/PVDJ9fz6/52gMfPnz48OH77XL51J+n1U73ecTk+vlnnl/P54kPHz58+PDd+fJipZ3Evexot7ZdRbJ5X76ODx8+fPjwfYwvmcTz4i/34Mkn8xIqWSM+fPjw4cP37+HLy4txWmVhlIcX21cBHz58+PDhe5cvX/Y9WL+XI3kA0Tb4P9jrwIcPHz58+A4H1P7bz19+4MOHDx8+fPGt/vaj3h4muzezL837UQMfPnz48OFbNMbAuqXZFr+Nu7Xzx9Hx4cOHDx++afR783trkF/uyvNmf7vl9Zzx4cOHDx++YM7tVHL0tphob/LbMqjd+KTFjg8fPnz48N35tuNcb93Yb4fD7psxrhcfPnz48OFb1jve8Odt7KQ8SlrsWzO+LafqsfDhw4cPH754rPb2+3NlRIKVN9fbCGAbHR8+fPjw4bvwXWL6fCpvxet58XE5iPaHNeLDhw8fPnwlX76MfElbK30rTfJSKW+KJ+8W08WHDx8+fPgef7uThbUhex7Qb+XFZf5tK6I+r4cPHz58+PAdQu1LZJ+HEffA4tJswIcPHz58+D7H15YvbTj+VojQliCXed6vgA8fPnz48D1fIWlRR1F1SZwjbsVTjn6JIfDhw4cPH76cr43d2wZ2uyVtSz4PL1rWqOWADx8+fPjwHfjyEmEDuhw1a5vr+TW3UqzuruPDhw8fPnzBsvMf+7wcuW9S3iz/BBY+fPjw4cN34WsPoj0D5X97aWm3IcLlkNwfZogPHz58+PAtp61O0XZbLmwFSt4e2EKKdr31FPHhw4cPH774YFZ+yOzCkTfI80InCf3bxnxU3eDDhw8fPnzdnXIRW7elyaWw2CKJyxZuXwt8+PDhw4fvwvdc1myt6Pw6z8T5rBLQdr348OHDhw/fxncJry+b8dZxtGRW421/0mDAhw8fPnz4Sr6tpX05ppaXLG2rYNvm7+Uj+k7hw4cPHz58ZcnShtdtGZFP9K2y5rLqv3kFHz58+PDhK/m2gS9H0PLwPZ9DHhO01Vy0Unz48OHDh+/Al0OcfuynBnbS0n7rUFrxSXz48OHDh2/5ZP3PaSXLeL5CW6Zs27Ctqy6/8OHDhw8fvgPfvUDJS42tUb1tzxZ51JE9Pnz48OHDl/5Gj//x4VayXJoElzJrCxEienz48OHDh++Rbxu4DdnbcuGtRn5eiuUhyC/P8eHDhw8fvolva0VvR8Quze/2uFsbSSTb/+X5Anz48OHDh2/iS4qMyyLzZeSNga3cuTfa8eHDhw8fvjtffozs3fZ53q7e4oC8hMpLGXz48OHDh6/ly+PptnHeTi6/yc9B88bDJRbBhw8fPnz4Wr63Btiudonstzi+3ZJok/Dhw4cPH74D3+XAWR7B52VQEuXnn/nE1wUfPnz48OFL+Nob9faxNb+3Fnh+JK7djKhNjg8fPnz48MV8eVR9ics3ppasrtem0etsAx8+fPjw4Svj6bZl3pYpyU173sC+lC+n8wX48OHDhw9fmsPXP9v58tqSpY0Atr/dWvv48OHDhw/fna891HUJuO9t73xW+ZVP7+LDhw8fPnwT31vh+AZ6ifi3YqVtydcn+/Dhw4cPH74z31ZwJKPkJUiLuIUURXCPDx8+fPjw/SN87YLbz2zN7K2d327nGBngw4cPHz58h7B+I0gKmnuEsbXV8y1/oU2ODx8+fPj+x3zbAbV2sC1oeLcMaguyNv7Ahw8fPnz4Hvl+AMmmFnXzwFXYAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '共同学习!共同进步!';
+            clearTimeout(titleTime);
+        } else {
+            document.title = 'Share猿社区官方';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

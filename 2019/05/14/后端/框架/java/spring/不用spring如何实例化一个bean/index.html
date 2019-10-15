@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>不用spring如何实例化一个bean | share猿 | https://lywlefan.github.io/</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="spring,java,框架">
+    <meta name="description" content="问题源起&amp;emsp;&amp;emsp;为什么写这么一篇文章那？主要还是源自最近在写支付的starter的过程中遇到的一个问题，我们知道在支付的过程中需要去配置一些相关的参数，因为是starter我们一般是通过配置文件的方式进行配置，引用我们stater的工程会通过yml文件中配置的属性把这些值给我们。 &amp;emsp;&amp;emsp;那么我想在stater里面取到这些值该如何去做那？？我直接new一个配置类对象">
+<meta name="keywords" content="spring,java,框架">
+<meta property="og:type" content="article">
+<meta property="og:title" content="不用spring如何实例化一个bean">
+<meta property="og:url" content="https://lywlefan.github.io/2019/05/14/后端/框架/java/spring/不用spring如何实例化一个bean/index.html">
+<meta property="og:site_name" content="share猿">
+<meta property="og:description" content="问题源起&amp;emsp;&amp;emsp;为什么写这么一篇文章那？主要还是源自最近在写支付的starter的过程中遇到的一个问题，我们知道在支付的过程中需要去配置一些相关的参数，因为是starter我们一般是通过配置文件的方式进行配置，引用我们stater的工程会通过yml文件中配置的属性把这些值给我们。 &amp;emsp;&amp;emsp;那么我想在stater里面取到这些值该如何去做那？？我直接new一个配置类对象">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-10-15T06:46:35.873Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="不用spring如何实例化一个bean">
+<meta name="twitter:description" content="问题源起&amp;emsp;&amp;emsp;为什么写这么一篇文章那？主要还是源自最近在写支付的starter的过程中遇到的一个问题，我们知道在支付的过程中需要去配置一些相关的参数，因为是starter我们一般是通过配置文件的方式进行配置，引用我们stater的工程会通过yml文件中配置的属性把这些值给我们。 &amp;emsp;&amp;emsp;那么我想在stater里面取到这些值该如何去做那？？我直接new一个配置类对象">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+    
+        <link rel="alternate" type="application/atom+xml" title="share猿" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">share猿</h5>
+          <a href="mailto:330334064@qq.com" title="330334064@qq.com" class="mail">330334064@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/lywlefan" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                GitHub
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/atom">
+                <i class="icon icon-lg icon-rss"></i>
+                订阅
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">不用spring如何实例化一个bean</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">不用spring如何实例化一个bean</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-05-13T16:00:00.000Z" itemprop="datePublished" class="page-time">
+  2019-05-14
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/后端/">后端</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#问题源起"><span class="post-toc-number">1.</span> <span class="post-toc-text">问题源起</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#问题深究"><span class="post-toc-number">2.</span> <span class="post-toc-text">问题深究</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#提出问题，分解问题"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">提出问题，分解问题</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#spring如何实例化bean？？"><span class="post-toc-number">2.1.1.</span> <span class="post-toc-text">spring如何实例化bean？？</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#我们假如不用这个注解如何去调这个接口那？？"><span class="post-toc-number">2.1.2.</span> <span class="post-toc-text">我们假如不用这个注解如何去调这个接口那？？</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#解决各个问题"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">解决各个问题</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#spring实例化方式有那些？？"><span class="post-toc-number">2.2.1.</span> <span class="post-toc-text">spring实例化方式有那些？？</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#setter方法实例化"><span class="post-toc-number">2.2.1.1.</span> <span class="post-toc-text">setter方法实例化</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#构造函数"><span class="post-toc-number">2.2.1.2.</span> <span class="post-toc-text">构造函数</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#静态工厂方式"><span class="post-toc-number">2.2.1.3.</span> <span class="post-toc-text">静态工厂方式</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#实例工厂"><span class="post-toc-number">2.2.1.4.</span> <span class="post-toc-text">实例工厂</span></a></li></ol></li></ol></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-后端/框架/java/spring/不用spring如何实例化一个bean" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">不用spring如何实例化一个bean</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-05-14 00:00:00" datetime="2019-05-13T16:00:00.000Z" itemprop="datePublished">2019-05-14</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/后端/">后端</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h3 id="问题源起"><a href="#问题源起" class="headerlink" title="问题源起"></a>问题源起</h3><p>&emsp;&emsp;为什么写这么一篇文章那？主要还是源自最近在写支付的starter的过程中遇到的一个问题，我们知道在支付的过程中需要去配置一些相关的参数，因为是starter我们一般是通过配置文件的方式进行配置，引用我们stater的工程会通过yml文件中配置的属性把这些值给我们。</p>
+<p>&emsp;&emsp;那么我想在stater里面取到这些值该如何去做那？？我直接new一个配置类对象但是却取不到，因此我们就在思考spring到底是如何实例化bean的？？他对bean做了什么？？如果不用spring的注解我们又该如何去实例化我们的bean那？带着这些问题我开始了我的解惑之旅。。。</p>
+<h3 id="问题深究"><a href="#问题深究" class="headerlink" title="问题深究"></a>问题深究</h3><h4 id="提出问题，分解问题"><a href="#提出问题，分解问题" class="headerlink" title="提出问题，分解问题"></a>提出问题，分解问题</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@AllArgsConstructor</span></span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/api/v1/app/"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AppController</span> <span class="keyword">extends</span> <span class="title">BaseController</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    AppBannerService appBannerService;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping</span>(value = <span class="string">"index"</span>, method = RequestMethod.POST)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Result <span class="title">index</span><span class="params">(HttpServletRequest request,@RequestBody @Valid AppBannerAreaCode appBannerAreaCode)</span> </span>&#123;</span><br><span class="line">        Map&lt;String,Object&gt; appMessage=<span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        String appId=CommonUtils.getAppIdFromHeader(request);</span><br><span class="line">        List&lt;AppBanner&gt; banners=appBannerService.getBannersByAppIdAndCode(appId,appBannerAreaCode.getProvinceCode());</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Result(banners);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;上面的controller是我用日常开发常用的，AppBannerService是我们定义的业务接口，接口有实现类，我们只需要简单的注解就可以直接调用接口的方法了。</p>
+<h5 id="spring如何实例化bean？？"><a href="#spring如何实例化bean？？" class="headerlink" title="spring如何实例化bean？？"></a>spring如何实例化bean？？</h5><ul>
+<li><p>spring实例化方式有那些？？</p>
+</li>
+<li><p>容器是如何实例化的？？</p>
+</li>
+</ul>
+<h5 id="我们假如不用这个注解如何去调这个接口那？？"><a href="#我们假如不用这个注解如何去调这个接口那？？" class="headerlink" title="我们假如不用这个注解如何去调这个接口那？？"></a>我们假如不用这个注解如何去调这个接口那？？</h5><p>&emsp;&emsp;接下来我们就围绕以上两个问题进行展开。</p>
+<h4 id="解决各个问题"><a href="#解决各个问题" class="headerlink" title="解决各个问题"></a>解决各个问题</h4><h5 id="spring实例化方式有那些？？"><a href="#spring实例化方式有那些？？" class="headerlink" title="spring实例化方式有那些？？"></a>spring实例化方式有那些？？</h5><p>&emsp;&emsp;软件开发到最后的最高境界就是制定标准，然后严格安装标准去开发和迭代。我个人认为spring也是如此，spring给自己定义了标准的四种实例化方式，我们在日常开发中就可以通过这四种实例化方式进行实例化，下面让我们一起细究一下这四种实例化方式：</p>
+<h6 id="setter方法实例化"><a href="#setter方法实例化" class="headerlink" title="setter方法实例化"></a>setter方法实例化</h6><ul>
+<li>主类</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">IUserDao</span> </span>&#123;</span><br><span class="line">                <span class="function"><span class="keyword">void</span> <span class="title">addUser</span><span class="params">()</span></span>;</span><br><span class="line">                <span class="function"><span class="keyword">void</span> <span class="title">delUser</span><span class="params">()</span></span>;</span><br><span class="line">                <span class="function"><span class="keyword">void</span> <span class="title">updateUser</span><span class="params">()</span></span>;</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserDaoImpl</span> <span class="keyword">implements</span> <span class="title">IUserDao</span> </span>&#123;</span><br><span class="line">                <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addUser</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                    System.out.println(<span class="string">"addUser方法被调用了"</span>);</span><br><span class="line">                &#125;        </span><br><span class="line">                <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">delUser</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                    System.out.println(<span class="string">"delUser方法被调用了"</span>);</span><br><span class="line">                &#125;        </span><br><span class="line">                <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">updateUser</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                    System.out.println(<span class="string">"updateUser方法被调用了"</span>);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserAction</span> </span>&#123;</span><br><span class="line">                    <span class="keyword">private</span> IUserDao dao; <span class="comment">//dao是一个依赖对象,要由springg进行管理,要生成 get set 方法</span></span><br><span class="line">                            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">execute</span><span class="params">()</span></span>&#123;</span><br><span class="line">                            dao.addUser();</span><br><span class="line">                            dao.updateUser();</span><br><span class="line">                            dao.delUser();</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>配置文件</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//配置文件</span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">name</span>=<span class="string">"userAction_name"</span> <span class="attr">class</span>=<span class="string">"cat.action.UserAction"</span> &gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"dao"</span> <span class="attr">ref</span>=<span class="string">"userDao_name"</span> /&gt;</span>  //引用的是下面的名称</span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span>    </span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">name</span>=<span class="string">"userDao_name"</span> <span class="attr">class</span>=<span class="string">"cat.dao.UserDaoImpl"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>测试</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">//测试</span></span><br><span class="line">ClassPathXmlApplicationContext ctx=<span class="keyword">new</span> ClassPathXmlApplicationContext(<span class="string">"beans.xml"</span>);</span><br><span class="line">UserAction action=(UserAction)ctx.getBean(<span class="string">"userAction_name"</span>);</span><br><span class="line">action.execute();</span><br></pre></td></tr></table></figure>
+<h6 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h6><ul>
+<li>主类</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserAction</span> </span>&#123;</span><br><span class="line">       <span class="comment">//public UserAction()&#123;&#125; 可以保保留一个无参的构造函数</span></span><br><span class="line">                </span><br><span class="line">       <span class="comment">//这是几个依赖对象,不用生成get set方法了</span></span><br><span class="line">       <span class="keyword">private</span> UserInfo user;</span><br><span class="line">       <span class="keyword">private</span> String school;</span><br><span class="line">       <span class="keyword">private</span> IUserDao dao;     </span><br><span class="line">            </span><br><span class="line">       <span class="comment">//希望Spring 由构造函数注入依赖对象</span></span><br><span class="line">       <span class="function"><span class="keyword">public</span> <span class="title">UserAction</span><span class="params">(IUserDao dao,UserInfo user,String school)</span></span>&#123;</span><br><span class="line">              <span class="keyword">this</span>.dao=dao;</span><br><span class="line">              <span class="keyword">this</span>.school=school;</span><br><span class="line">              <span class="keyword">this</span>.user=user;</span><br><span class="line">              &#125;</span><br><span class="line">                </span><br><span class="line">            </span><br><span class="line">       <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">execute</span><span class="params">()</span></span>&#123;</span><br><span class="line">              dao.addUser();</span><br><span class="line">              dao.updateUser();</span><br><span class="line">              dao.delUser();</span><br><span class="line">                    </span><br><span class="line">              System.out.println(user);</span><br><span class="line">              System.out.println(school);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>配置文件</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">//配置文件</span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">name</span>=<span class="string">"userInfo_name"</span> <span class="attr">class</span>=<span class="string">"cat.beans.UserInfo"</span> &gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"id"</span> <span class="attr">value</span>=<span class="string">"1"</span> /&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"userName"</span> <span class="attr">value</span>=<span class="string">"周周"</span> /&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"password"</span> <span class="attr">value</span>=<span class="string">"123"</span> /&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"note"</span> <span class="attr">value</span>=<span class="string">"这是备注"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line">                    </span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">name</span>=<span class="string">"userAction_name"</span> <span class="attr">class</span>=<span class="string">"cat.action.UserAction"</span> &gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">ref</span>=<span class="string">"userDao_name"</span> /&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">ref</span>=<span class="string">"userInfo_name"</span> /&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">value</span>=<span class="string">"哈尔滨师范大学"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line">            </span><br><span class="line">/*</span><br><span class="line">也可以指定 索引和 type 属性 , 索引和type 都可以不指定</span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">name</span>=<span class="string">"userAction_name"</span> <span class="attr">class</span>=<span class="string">"cat.action.UserAction"</span> &gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">index</span>=<span class="string">"0"</span> <span class="attr">ref</span>=<span class="string">"userDao_name"</span> <span class="attr">type</span>=<span class="string">"cat.dao.IUserDao"</span> /&gt;</span>  如果是接口,就不能指定是实现类的类型</span><br><span class="line"><span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">index</span>=<span class="string">"1"</span> <span class="attr">ref</span>=<span class="string">"userInfo_name"</span> <span class="attr">type</span>=<span class="string">"cat.beans.UserInfo"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">index</span>=<span class="string">"2"</span> <span class="attr">value</span>=<span class="string">"哈尔滨师范大学"</span>  /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line">*/</span><br><span class="line">                </span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">name</span>=<span class="string">"userDao_name"</span> <span class="attr">class</span>=<span class="string">"cat.dao.UserDaoImpl"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>测试</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//测试</span></span><br><span class="line">ClassPathXmlApplicationContext ctx=<span class="keyword">new</span> ClassPathXmlApplicationContext(<span class="string">"beans.xml"</span>);</span><br><span class="line">UserAction action=(UserAction)ctx.getBean(<span class="string">"userAction_name"</span>);</span><br><span class="line">action.execute();</span><br></pre></td></tr></table></figure>
+<h6 id="静态工厂方式"><a href="#静态工厂方式" class="headerlink" title="静态工厂方式"></a>静态工厂方式</h6><ul>
+<li>主类</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//工厂,用来生成dao的实现类</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserDaoFactory</span> </span>&#123;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> IUserDao <span class="title">createUserDaoInstance</span><span class="params">()</span></span>&#123;</span><br><span class="line">       <span class="keyword">return</span> <span class="keyword">new</span> UserDaoOracleImpl();</span><br><span class="line">       &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">           </span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserAction</span> </span>&#123;</span><br><span class="line">       <span class="keyword">private</span> IUserDao dao;<span class="comment">//使用工厂方式注值,也要生成set方法</span></span><br><span class="line">       <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">execute</span><span class="params">()</span></span>&#123;</span><br><span class="line">              dao.addUser();</span><br><span class="line">              dao.updateUser();</span><br><span class="line">              dao.delUser();</span><br><span class="line">&#125;</span><br><span class="line">                </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setDao</span><span class="params">(IUserDao dao)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.dao = dao;</span><br><span class="line">&#125;    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>配置文件</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//配置文件 </span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">name</span>=<span class="string">"userAction_name"</span> <span class="attr">class</span>=<span class="string">"cat.action.UserAction"</span> &gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"dao"</span>  <span class="attr">ref</span>=<span class="string">"userDao_name"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line">              </span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">name</span>=<span class="string">"userDao_name"</span> <span class="attr">class</span>=<span class="string">"cat.dao.UserDaoFactory"</span> <span class="attr">factory-method</span>=<span class="string">"createUserDaoInstance"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>测试</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//测试</span></span><br><span class="line">ClassPathXmlApplicationContext ctx=<span class="keyword">new</span> ClassPathXmlApplicationContext(<span class="string">"beans.xml"</span>);</span><br><span class="line">UserAction action=(UserAction)ctx.getBean(<span class="string">"userAction_name"</span>);</span><br><span class="line">action.execute();</span><br></pre></td></tr></table></figure>
+<h6 id="实例工厂"><a href="#实例工厂" class="headerlink" title="实例工厂"></a>实例工厂</h6><ul>
+<li>主类</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//工厂 =&gt;</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserDaoFactory</span> </span>&#123;</span><br><span class="line"><span class="comment">//这个方法不是静态的</span></span><br><span class="line"><span class="function"><span class="keyword">public</span>  IUserDao <span class="title">createUserDaoInstance</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> UserDaoOracleImpl();</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>配置文件</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">//配置文件 </span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">name</span>=<span class="string">"userAction_name"</span> <span class="attr">class</span>=<span class="string">"cat.action.UserAction"</span> &gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"dao"</span>  <span class="attr">ref</span>=<span class="string">"userDao_name"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line">              </span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span>  <span class="attr">name</span>=<span class="string">"userDaoFactory_name"</span> <span class="attr">class</span>=<span class="string">"cat.dao.UserDaoFactory"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">name</span>=<span class="string">"userDao_name"</span> <span class="attr">factory-bean</span>=<span class="string">"userDaoFactory_name"</span> <span class="attr">factory-method</span>=<span class="string">"createUserDaoInstance"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>测试</li>
+</ul>
+<blockquote>
+<p><a href="https://www.jianshu.com/u/354cc1548a33" target="_blank" rel="noopener">【1】简书主页·share猿</a><br><a href="https://juejin.im/user/5a8e759851882524d842d174" target="_blank" rel="noopener">【2】掘金主页·share猿</a></p>
+</blockquote>
+<hr>
+<p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
+<p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-10-15T06:46:35.873Z" itemprop="dateUpdated">2019-10-15 14:46:35</time>
+</span><br>
+
+
+        
+        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2019/05/14/后端/框架/java/spring/不用spring如何实例化一个bean/" target="_blank" rel="external">https://lywlefan.github.io/2019/05/14/后端/框架/java/spring/不用spring如何实例化一个bean/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://lywlefan.github.io">
+            <img src="/img/avatar.png" alt="share猿">
+            share猿
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/spring/">spring</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/框架/">框架</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://lywlefan.github.io/2019/05/14/后端/框架/java/spring/不用spring如何实例化一个bean/&title=《不用spring如何实例化一个bean》 — share猿&pic=https://lywlefan.github.io/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://lywlefan.github.io/2019/05/14/后端/框架/java/spring/不用spring如何实例化一个bean/&title=《不用spring如何实例化一个bean》 — share猿&source=分享有价值的内容,你我共同成长!" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://lywlefan.github.io/2019/05/14/后端/框架/java/spring/不用spring如何实例化一个bean/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《不用spring如何实例化一个bean》 — share猿&url=https://lywlefan.github.io/2019/05/14/后端/框架/java/spring/不用spring如何实例化一个bean/&via=https://lywlefan.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://lywlefan.github.io/2019/05/14/后端/框架/java/spring/不用spring如何实例化一个bean/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2019/05/15/后端/框架/java/spring/JAR包如何取工程外部文件/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">JAR包如何取工程外部文件</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/05/13/后端/框架/java/spring/如何写一个stater/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">如何写一个stater</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'true' == 'true',
+            verify: 'false' == 'true',
+            appId: "hQGVIAaJERVwyrWxj1uqgCqS-gzGzoHsz",
+            appKey: "l7FO5csTavNwXCGryJyOkkc1",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢赞赏!
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>share猿 &copy; 2015 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://lywlefan.github.io/2019/05/14/后端/框架/java/spring/不用spring如何实例化一个bean/&title=《不用spring如何实例化一个bean》 — share猿&pic=https://lywlefan.github.io/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://lywlefan.github.io/2019/05/14/后端/框架/java/spring/不用spring如何实例化一个bean/&title=《不用spring如何实例化一个bean》 — share猿&source=分享有价值的内容,你我共同成长!" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://lywlefan.github.io/2019/05/14/后端/框架/java/spring/不用spring如何实例化一个bean/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《不用spring如何实例化一个bean》 — share猿&url=https://lywlefan.github.io/2019/05/14/后端/框架/java/spring/不用spring如何实例化一个bean/&via=https://lywlefan.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://lywlefan.github.io/2019/05/14/后端/框架/java/spring/不用spring如何实例化一个bean/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAADOElEQVR42u3a0Y7bMAwEwPz/T6evLVrbu5QPjZXxU5A4MkcHHENSr1d8vf+6jj49+u75O0dP+f3OfP3bLmxsbOyHsN+n1zm7vec8hmSdNs7DPwk2Njb2duwklPbxSfKbJbkkzovVsLGxsb+e3RYq7ZqzLcPGxsbGni13lK7Wi43Z07GxsbG/k31vaTFLh0lqbGO7oZeGjY2N/fHsnwj6f73+kfk2NjY29gez3+XVtvLbsJIS5QYFNjY29kbs9khN8hO/bSqtp882fmxsbOxd2Qlgpa0zG0i0g4dio7GxsbG3Y89SRV48JOVNXtKsHCHCxsbG3ondNozytDQLK/9W3sC66KVhY2Njb8HOE0Z7OGZ2BCcfMAzLFWxsbOzt2C1pNk5YSZCzDboY8WJjY2Nvys6PxUTD1DigNkXlRcg/1sHGxsbejp0f0Jmlvfw4ziwd1qkXGxsbezt2Eu5Kgkka/bPiJx8t/PE+NjY29qbsvLSYFQazIUQ7xogU2NjY2BuxZ8VA22zKU+D6OLlIpdjY2NgbsVeaOO3Rmfxqj/7kZQ82Njb2Tuy2uZ/vZT5OaBtP7dZcZGxsbGzsh7PvbdncdQQnB+Sj3yEMGxsb+4HsWesnDzovLVYSXpI+sbGxsfdjt4cs88ZQe+wm3/o2H71W9gkbGxv749nt65VvtcOD2ej3YkOxsbGxt2MXP+LLcmKdtDJOPrwHGxsbewv2vU2cdjAwC73djujvjI2Njf1wdttwn7WTZiPe2acXr7GxsbE3YifFQF5ItIVKPlq+9+nY2NjY38bOW/P5CHa2fruJFxuHjY2NvR27HQC0JUG+5myo3LaisLGxsfdjz4apdx3KWSkzknjqW7GxsbEfyL534JoXJHnyS9j1vmJjY2M/nP0urzZJtJ+27aekwVScVMLGxsZ+IHv9f35elsza+u1Bn1lSxMbGxn46u01aK7/tV+atbSl18XRsbGzs7dizke1sy/LtqJv+ecbGxsbG/mJ2W2Ccp6iVllMe7XCSjI2Njb0peyW9tSHOkl90PzY2NvZ27NlxnLz9lL8/G9y2gwRsbGzsndh5C3699bMycshHxSutKGxsbOxHsX8BBbm6lgYWPW0AAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '共同学习!共同进步!';
+            clearTimeout(titleTime);
+        } else {
+            document.title = 'Share猿社区官方';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

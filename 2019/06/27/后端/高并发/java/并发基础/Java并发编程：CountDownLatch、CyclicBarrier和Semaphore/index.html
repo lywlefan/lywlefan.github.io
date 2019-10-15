@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>Java并发编程：CountDownLatch、CyclicBarrier和Semaphore | share猿 | https://lywlefan.github.io/</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="java,高并发,并发基础">
+    <meta name="description" content="面向对象的语言最好的学习方法就是在实际生活中找一个列子类比。   CountDownLatch(计数器)  CyclicBarrier(回环栅栏)  Semaphore(信号量)   CountDownLatchCountDownLatch类位于java.util.concurrent包下，利用它可以实现类似计数器的功能。比如有一个任务A，它要等待其他4个任务执行完毕之后才能执行，此时就可以利用">
+<meta name="keywords" content="java,高并发,并发基础">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java并发编程：CountDownLatch、CyclicBarrier和Semaphore">
+<meta property="og:url" content="https://lywlefan.github.io/2019/06/27/后端/高并发/java/并发基础/Java并发编程：CountDownLatch、CyclicBarrier和Semaphore/index.html">
+<meta property="og:site_name" content="share猿">
+<meta property="og:description" content="面向对象的语言最好的学习方法就是在实际生活中找一个列子类比。   CountDownLatch(计数器)  CyclicBarrier(回环栅栏)  Semaphore(信号量)   CountDownLatchCountDownLatch类位于java.util.concurrent包下，利用它可以实现类似计数器的功能。比如有一个任务A，它要等待其他4个任务执行完毕之后才能执行，此时就可以利用">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-10-15T06:46:35.360Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java并发编程：CountDownLatch、CyclicBarrier和Semaphore">
+<meta name="twitter:description" content="面向对象的语言最好的学习方法就是在实际生活中找一个列子类比。   CountDownLatch(计数器)  CyclicBarrier(回环栅栏)  Semaphore(信号量)   CountDownLatchCountDownLatch类位于java.util.concurrent包下，利用它可以实现类似计数器的功能。比如有一个任务A，它要等待其他4个任务执行完毕之后才能执行，此时就可以利用">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+    
+        <link rel="alternate" type="application/atom+xml" title="share猿" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">share猿</h5>
+          <a href="mailto:330334064@qq.com" title="330334064@qq.com" class="mail">330334064@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/lywlefan" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                GitHub
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/atom">
+                <i class="icon icon-lg icon-rss"></i>
+                订阅
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Java并发编程：CountDownLatch、CyclicBarrier和Semaphore</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Java并发编程：CountDownLatch、CyclicBarrier和Semaphore</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-06-26T16:00:00.000Z" itemprop="datePublished" class="page-time">
+  2019-06-27
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/后端/">后端</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#CountDownLatch"><span class="post-toc-number">1.</span> <span class="post-toc-text">CountDownLatch</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#基础"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">基础</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#构造方法"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">构造方法</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#方法"><span class="post-toc-number">1.1.2.</span> <span class="post-toc-text">方法</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#类比理解"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">类比理解</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#CyclicBarrier"><span class="post-toc-number">2.</span> <span class="post-toc-text">CyclicBarrier</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#基础-1"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">基础</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#构造方法-1"><span class="post-toc-number">2.1.1.</span> <span class="post-toc-text">构造方法</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#方法-1"><span class="post-toc-number">2.1.2.</span> <span class="post-toc-text">方法</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#类比理解-1"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">类比理解</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#例1"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">例1</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#例2"><span class="post-toc-number">2.3.1.</span> <span class="post-toc-text">例2</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#例3"><span class="post-toc-number">2.3.2.</span> <span class="post-toc-text">例3</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#例5"><span class="post-toc-number">2.3.3.</span> <span class="post-toc-text">例5</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Semaphore"><span class="post-toc-number">3.</span> <span class="post-toc-text">Semaphore</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#基础-2"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">基础</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#构造方法-2"><span class="post-toc-number">3.1.1.</span> <span class="post-toc-text">构造方法</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#方法-2"><span class="post-toc-number">3.1.2.</span> <span class="post-toc-text">方法</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#类比理解-2"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">类比理解</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#FAQ"><span class="post-toc-number">4.</span> <span class="post-toc-text">FAQ</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#总结"><span class="post-toc-number">5.</span> <span class="post-toc-text">总结</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1）CountDownLatch和CyclicBarrier都能够实现线程之间的等待，只不过它们侧重点不同："><span class="post-toc-number">5.1.</span> <span class="post-toc-text">1）CountDownLatch和CyclicBarrier都能够实现线程之间的等待，只不过它们侧重点不同：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2）Semaphore其实和锁有点类似，它一般用于控制对某组资源的访问权限。"><span class="post-toc-number">5.2.</span> <span class="post-toc-text">2）Semaphore其实和锁有点类似，它一般用于控制对某组资源的访问权限。</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-后端/高并发/java/并发基础/Java并发编程：CountDownLatch、CyclicBarrier和Semaphore" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Java并发编程：CountDownLatch、CyclicBarrier和Semaphore</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-06-27 00:00:00" datetime="2019-06-26T16:00:00.000Z" itemprop="datePublished">2019-06-27</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/后端/">后端</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <blockquote>
+<p>面向对象的语言最好的学习方法就是在实际生活中找一个列子类比。</p>
+</blockquote>
+<ul>
+<li><p>CountDownLatch(计数器)</p>
+</li>
+<li><p>CyclicBarrier(回环栅栏)</p>
+</li>
+<li><p>Semaphore(信号量)</p>
+</li>
+</ul>
+<h3 id="CountDownLatch"><a href="#CountDownLatch" class="headerlink" title="CountDownLatch"></a>CountDownLatch</h3><p>CountDownLatch类位于java.util.concurrent包下，利用它可以实现类似计数器的功能。比如有一个任务A，它要等待其他4个任务执行完毕之后才能执行，此时就可以利用CountDownLatch来实现这种功能了。</p>
+<h4 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h4><h5 id="构造方法"><a href="#构造方法" class="headerlink" title="构造方法"></a>构造方法</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">//count代表计数的个数</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">CountDownLatch</span><span class="params">(<span class="keyword">int</span> count)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (count &lt; <span class="number">0</span>) <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"count &lt; 0"</span>);</span><br><span class="line">    <span class="keyword">this</span>.sync = <span class="keyword">new</span> Sync(count);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//调用await()方法的线程会被挂起，它会等待直到count值为0才继续执行</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">await</span><span class="params">()</span> <span class="keyword">throws</span> InterruptedException </span>&#123; &#125;; </span><br><span class="line"><span class="comment">//和await()类似，只不过等待一定的时间后count值还没变为0的话就会继续执行</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">await</span><span class="params">(<span class="keyword">long</span> timeout, TimeUnit unit)</span> <span class="keyword">throws</span> InterruptedException </span>&#123; &#125;; </span><br><span class="line"><span class="comment">//将count值减1</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">countDown</span><span class="params">()</span> </span>&#123; &#125;;</span><br></pre></td></tr></table></figure>
+<h4 id="类比理解"><a href="#类比理解" class="headerlink" title="类比理解"></a>类比理解</h4><p>大家在考科目一的时候是如何考的？我们知道车管所的考试机器比考试人数要少很多，假如机器有50个，每次考官让50个人进去，然后再宣布考试开始，其他人继续等待。</p>
+<p>CountDownLatch就可以实现这个效果，我们可以这样做：</p>
+<ul>
+<li><p>CountDownLatch latch=new CountDownLatch(50)</p>
+</li>
+<li><p>进入考场一个学员，我们就latch.countDown()减一</p>
+</li>
+<li><p>到latch为0的时候，考官宣布考试开始，如此而已</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">     <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;   </span><br><span class="line">         <span class="keyword">final</span> CountDownLatch latch = <span class="keyword">new</span> CountDownLatch(<span class="number">2</span>);</span><br><span class="line">          </span><br><span class="line">         <span class="keyword">new</span> Thread()&#123;</span><br><span class="line">             <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                 <span class="keyword">try</span> &#123;</span><br><span class="line">                     System.out.println(<span class="string">"子线程"</span>+Thread.currentThread().getName()+<span class="string">"正在执行"</span>);</span><br><span class="line">                    Thread.sleep(<span class="number">3000</span>);</span><br><span class="line">                    System.out.println(<span class="string">"子线程"</span>+Thread.currentThread().getName()+<span class="string">"执行完毕"</span>);</span><br><span class="line">                    latch.countDown();</span><br><span class="line">                &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                &#125;</span><br><span class="line">             &#125;;</span><br><span class="line">         &#125;.start();</span><br><span class="line">          </span><br><span class="line">         <span class="keyword">new</span> Thread()&#123;</span><br><span class="line">             <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                 <span class="keyword">try</span> &#123;</span><br><span class="line">                     System.out.println(<span class="string">"子线程"</span>+Thread.currentThread().getName()+<span class="string">"正在执行"</span>);</span><br><span class="line">                     Thread.sleep(<span class="number">3000</span>);</span><br><span class="line">                     System.out.println(<span class="string">"子线程"</span>+Thread.currentThread().getName()+<span class="string">"执行完毕"</span>);</span><br><span class="line">                     latch.countDown();</span><br><span class="line">                &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                &#125;</span><br><span class="line">             &#125;;</span><br><span class="line">         &#125;.start();</span><br><span class="line">          </span><br><span class="line">         <span class="keyword">try</span> &#123;</span><br><span class="line">             System.out.println(<span class="string">"等待2个子线程执行完毕..."</span>);</span><br><span class="line">            latch.await();</span><br><span class="line">            System.out.println(<span class="string">"2个子线程已经执行完毕"</span>);</span><br><span class="line">            System.out.println(<span class="string">"继续执行主线程"</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>执行结果：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">线程Thread-<span class="number">0</span>正在执行</span><br><span class="line">线程Thread-<span class="number">1</span>正在执行</span><br><span class="line">等待<span class="number">2</span>个子线程执行完毕...</span><br><span class="line">线程Thread-<span class="number">0</span>执行完毕</span><br><span class="line">线程Thread-<span class="number">1</span>执行完毕</span><br><span class="line"><span class="number">2</span>个子线程已经执行完毕</span><br><span class="line">继续执行主线程</span><br></pre></td></tr></table></figure>
+<h3 id="CyclicBarrier"><a href="#CyclicBarrier" class="headerlink" title="CyclicBarrier"></a>CyclicBarrier</h3><h4 id="基础-1"><a href="#基础-1" class="headerlink" title="基础"></a>基础</h4><p>字面意思回环栅栏，通过它可以实现让一组线程等待至某个状态之后再全部同时执行。叫做回环是因为当所有等待线程都被释放以后，CyclicBarrier可以被重用。我们暂且把这个状态就叫做barrier，当调用await()方法之后，线程就处于barrier了。</p>
+<p>CyclicBarrier类位于java.util.concurrent包下，CyclicBarrier提供2个构造器：</p>
+<h5 id="构造方法-1"><a href="#构造方法-1" class="headerlink" title="构造方法"></a>构造方法</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">CyclicBarrier</span><span class="params">(<span class="keyword">int</span> parties, Runnable barrierAction)</span> </span>&#123;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">CyclicBarrier</span><span class="params">(<span class="keyword">int</span> parties)</span> </span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>参数parties指让多少个线程或者任务等待至barrier状态；参数barrierAction为当这些线程都达到barrier状态时会执行的内容。</p>
+<h5 id="方法-1"><a href="#方法-1" class="headerlink" title="方法"></a>方法</h5><p>然后CyclicBarrier中最重要的方法就是await方法，它有2个重载版本：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">await</span><span class="params">()</span> <span class="keyword">throws</span> InterruptedException, BrokenBarrierException </span>&#123; &#125;;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">await</span><span class="params">(<span class="keyword">long</span> timeout, TimeUnit unit)</span><span class="keyword">throws</span> InterruptedException,BrokenBarrierException,TimeoutException </span>&#123; &#125;;</span><br></pre></td></tr></table></figure>
+<p>第一个版本比较常用，用来挂起当前线程，直至所有线程都到达barrier状态再同时执行后续任务；</p>
+<p>第二个版本是让这些线程等待至一定的时间，如果还有线程没有到达barrier状态就直接让到达barrier的线程执行后续任务。</p>
+<h4 id="类比理解-1"><a href="#类比理解-1" class="headerlink" title="类比理解"></a>类比理解</h4><h4 id="例1"><a href="#例1" class="headerlink" title="例1"></a>例1</h4><p>假若有若干个线程都要进行写数据操作，并且只有所有线程都完成写数据操作之后，这些线程才能继续做后面的事情，此时就可以利用CyclicBarrier了：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> N = <span class="number">4</span>;</span><br><span class="line">        CyclicBarrier barrier  = <span class="keyword">new</span> CyclicBarrier(N);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;N;i++)</span><br><span class="line">            <span class="keyword">new</span> Writer(barrier).start();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Writer</span> <span class="keyword">extends</span> <span class="title">Thread</span></span>&#123;</span><br><span class="line">        <span class="keyword">private</span> CyclicBarrier cyclicBarrier;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">Writer</span><span class="params">(CyclicBarrier cyclicBarrier)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.cyclicBarrier = cyclicBarrier;</span><br><span class="line">        &#125;</span><br><span class="line"> </span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            System.out.println(<span class="string">"线程"</span>+Thread.currentThread().getName()+<span class="string">"正在写入数据..."</span>);</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                Thread.sleep(<span class="number">5000</span>);      <span class="comment">//以睡眠来模拟写入数据操作</span></span><br><span class="line">                System.out.println(<span class="string">"线程"</span>+Thread.currentThread().getName()+<span class="string">"写入数据完毕，等待其他线程写入完毕"</span>);</span><br><span class="line">                cyclicBarrier.await();</span><br><span class="line">            &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;<span class="keyword">catch</span>(BrokenBarrierException e)&#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println(<span class="string">"所有线程写入完毕，继续处理其他任务..."</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>执行结果：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">线程Thread-<span class="number">0</span>正在写入数据...</span><br><span class="line">线程Thread-<span class="number">3</span>正在写入数据...</span><br><span class="line">线程Thread-<span class="number">2</span>正在写入数据...</span><br><span class="line">线程Thread-<span class="number">1</span>正在写入数据...</span><br><span class="line">线程Thread-<span class="number">2</span>写入数据完毕，等待其他线程写入完毕</span><br><span class="line">线程Thread-<span class="number">0</span>写入数据完毕，等待其他线程写入完毕</span><br><span class="line">线程Thread-<span class="number">3</span>写入数据完毕，等待其他线程写入完毕</span><br><span class="line">线程Thread-<span class="number">1</span>写入数据完毕，等待其他线程写入完毕</span><br><span class="line">所有线程写入完毕，继续处理其他任务...</span><br><span class="line">所有线程写入完毕，继续处理其他任务...</span><br><span class="line">所有线程写入完毕，继续处理其他任务...</span><br><span class="line">所有线程写入完毕，继续处理其他任务...</span><br></pre></td></tr></table></figure>
+<p>从上面输出结果可以看出，每个写入线程执行完写数据操作之后，就在等待其他线程写入操作完毕。</p>
+<p>当所有线程线程写入操作完毕之后，所有线程就继续进行后续的操作了。</p>
+<h5 id="例2"><a href="#例2" class="headerlink" title="例2"></a>例2</h5><p>如果说想在所有线程写入操作完之后，进行额外的其他操作可以为CyclicBarrier提供Runnable参数：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> N = <span class="number">4</span>;</span><br><span class="line">        CyclicBarrier barrier  = <span class="keyword">new</span> CyclicBarrier(N,<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                System.out.println(<span class="string">"当前线程"</span>+Thread.currentThread().getName());   </span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">         </span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;N;i++)</span><br><span class="line">            <span class="keyword">new</span> Writer(barrier).start();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Writer</span> <span class="keyword">extends</span> <span class="title">Thread</span></span>&#123;</span><br><span class="line">        <span class="keyword">private</span> CyclicBarrier cyclicBarrier;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">Writer</span><span class="params">(CyclicBarrier cyclicBarrier)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.cyclicBarrier = cyclicBarrier;</span><br><span class="line">        &#125;</span><br><span class="line"> </span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            System.out.println(<span class="string">"线程"</span>+Thread.currentThread().getName()+<span class="string">"正在写入数据..."</span>);</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                Thread.sleep(<span class="number">5000</span>);      <span class="comment">//以睡眠来模拟写入数据操作</span></span><br><span class="line">                System.out.println(<span class="string">"线程"</span>+Thread.currentThread().getName()+<span class="string">"写入数据完毕，等待其他线程写入完毕"</span>);</span><br><span class="line">                cyclicBarrier.await();</span><br><span class="line">            &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;<span class="keyword">catch</span>(BrokenBarrierException e)&#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println(<span class="string">"所有线程写入完毕，继续处理其他任务..."</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>运行结果:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">线程Thread-<span class="number">0</span>正在写入数据...</span><br><span class="line">线程Thread-<span class="number">1</span>正在写入数据...</span><br><span class="line">线程Thread-<span class="number">2</span>正在写入数据...</span><br><span class="line">线程Thread-<span class="number">3</span>正在写入数据...</span><br><span class="line">线程Thread-<span class="number">0</span>写入数据完毕，等待其他线程写入完毕</span><br><span class="line">线程Thread-<span class="number">1</span>写入数据完毕，等待其他线程写入完毕</span><br><span class="line">线程Thread-<span class="number">2</span>写入数据完毕，等待其他线程写入完毕</span><br><span class="line">线程Thread-<span class="number">3</span>写入数据完毕，等待其他线程写入完毕</span><br><span class="line">当前线程Thread-<span class="number">3</span></span><br><span class="line">所有线程写入完毕，继续处理其他任务...</span><br><span class="line">所有线程写入完毕，继续处理其他任务...</span><br><span class="line">所有线程写入完毕，继续处理其他任务...</span><br><span class="line">所有线程写入完毕，继续处理其他任务...</span><br></pre></td></tr></table></figure>
+<p>从结果可以看出，当四个线程都到达barrier状态后，会从四个线程中选择一个线程去执行Runnable。</p>
+<h5 id="例3"><a href="#例3" class="headerlink" title="例3"></a>例3</h5><p>下面看一下为await指定时间的效果：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> N = <span class="number">4</span>;</span><br><span class="line">        CyclicBarrier barrier  = <span class="keyword">new</span> CyclicBarrier(N);</span><br><span class="line">         </span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;N;i++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(i&lt;N-<span class="number">1</span>)</span><br><span class="line">                <span class="keyword">new</span> Writer(barrier).start();</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    Thread.sleep(<span class="number">5000</span>);</span><br><span class="line">                &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">new</span> Writer(barrier).start();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Writer</span> <span class="keyword">extends</span> <span class="title">Thread</span></span>&#123;</span><br><span class="line">        <span class="keyword">private</span> CyclicBarrier cyclicBarrier;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">Writer</span><span class="params">(CyclicBarrier cyclicBarrier)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.cyclicBarrier = cyclicBarrier;</span><br><span class="line">        &#125;</span><br><span class="line"> </span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            System.out.println(<span class="string">"线程"</span>+Thread.currentThread().getName()+<span class="string">"正在写入数据..."</span>);</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                Thread.sleep(<span class="number">5000</span>);      <span class="comment">//以睡眠来模拟写入数据操作</span></span><br><span class="line">                System.out.println(<span class="string">"线程"</span>+Thread.currentThread().getName()+<span class="string">"写入数据完毕，等待其他线程写入完毕"</span>);</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    cyclicBarrier.await(<span class="number">2000</span>, TimeUnit.MILLISECONDS);</span><br><span class="line">                &#125; <span class="keyword">catch</span> (TimeoutException e) &#123;</span><br><span class="line">                    <span class="comment">// TODO Auto-generated catch block</span></span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;<span class="keyword">catch</span>(BrokenBarrierException e)&#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println(Thread.currentThread().getName()+<span class="string">"所有线程写入完毕，继续处理其他任务..."</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>执行结果：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">线程Thread-<span class="number">0</span>正在写入数据...</span><br><span class="line">线程Thread-<span class="number">2</span>正在写入数据...</span><br><span class="line">线程Thread-<span class="number">1</span>正在写入数据...</span><br><span class="line">线程Thread-<span class="number">2</span>写入数据完毕，等待其他线程写入完毕</span><br><span class="line">线程Thread-<span class="number">0</span>写入数据完毕，等待其他线程写入完毕</span><br><span class="line">线程Thread-<span class="number">1</span>写入数据完毕，等待其他线程写入完毕</span><br><span class="line">线程Thread-<span class="number">3</span>正在写入数据...</span><br><span class="line">java.util.concurrent.TimeoutException</span><br><span class="line">Thread-<span class="number">1</span>所有线程写入完毕，继续处理其他任务...</span><br><span class="line">Thread-<span class="number">0</span>所有线程写入完毕，继续处理其他任务...</span><br><span class="line">    at java.util.concurrent.CyclicBarrier.dowait(Unknown Source)</span><br><span class="line">    at java.util.concurrent.CyclicBarrier.await(Unknown Source)</span><br><span class="line">    at com.cxh.test1.Test$Writer.run(Test.java:<span class="number">58</span>)</span><br><span class="line">java.util.concurrent.BrokenBarrierException</span><br><span class="line">    at java.util.concurrent.CyclicBarrier.dowait(Unknown Source)</span><br><span class="line">    at java.util.concurrent.CyclicBarrier.await(Unknown Source)</span><br><span class="line">    at com.cxh.test1.Test$Writer.run(Test.java:<span class="number">58</span>)</span><br><span class="line">java.util.concurrent.BrokenBarrierException</span><br><span class="line">    at java.util.concurrent.CyclicBarrier.dowait(Unknown Source)</span><br><span class="line">    at java.util.concurrent.CyclicBarrier.await(Unknown Source)</span><br><span class="line">    at com.cxh.test1.Test$Writer.run(Test.java:<span class="number">58</span>)</span><br><span class="line">Thread-<span class="number">2</span>所有线程写入完毕，继续处理其他任务...</span><br><span class="line">java.util.concurrent.BrokenBarrierException</span><br><span class="line">线程Thread-<span class="number">3</span>写入数据完毕，等待其他线程写入完毕</span><br><span class="line">    at java.util.concurrent.CyclicBarrier.dowait(Unknown Source)</span><br><span class="line">    at java.util.concurrent.CyclicBarrier.await(Unknown Source)</span><br><span class="line">    at com.cxh.test1.Test$Writer.run(Test.java:<span class="number">58</span>)</span><br><span class="line">Thread-<span class="number">3</span>所有线程写入完毕，继续处理其他任务...</span><br></pre></td></tr></table></figure>
+<p>上面的代码在main方法的for循环中，故意让最后一个线程启动延迟，因为在前面三个线程都达到barrier之后，等待了指定的时间发现第四个线程还没有达到barrier，就抛出异常并继续执行后面的任务。</p>
+<h5 id="例5"><a href="#例5" class="headerlink" title="例5"></a>例5</h5><p>另外CyclicBarrier是可以重用的，看下面这个例子：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> N = <span class="number">4</span>;</span><br><span class="line">        CyclicBarrier barrier  = <span class="keyword">new</span> CyclicBarrier(N);</span><br><span class="line">         </span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;N;i++) &#123;</span><br><span class="line">            <span class="keyword">new</span> Writer(barrier).start();</span><br><span class="line">        &#125;</span><br><span class="line">         </span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            Thread.sleep(<span class="number">25000</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">         </span><br><span class="line">        System.out.println(<span class="string">"CyclicBarrier重用"</span>);</span><br><span class="line">         </span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;N;i++) &#123;</span><br><span class="line">            <span class="keyword">new</span> Writer(barrier).start();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Writer</span> <span class="keyword">extends</span> <span class="title">Thread</span></span>&#123;</span><br><span class="line">        <span class="keyword">private</span> CyclicBarrier cyclicBarrier;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">Writer</span><span class="params">(CyclicBarrier cyclicBarrier)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.cyclicBarrier = cyclicBarrier;</span><br><span class="line">        &#125;</span><br><span class="line"> </span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            System.out.println(<span class="string">"线程"</span>+Thread.currentThread().getName()+<span class="string">"正在写入数据..."</span>);</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                Thread.sleep(<span class="number">5000</span>);      <span class="comment">//以睡眠来模拟写入数据操作</span></span><br><span class="line">                System.out.println(<span class="string">"线程"</span>+Thread.currentThread().getName()+<span class="string">"写入数据完毕，等待其他线程写入完毕"</span>);</span><br><span class="line">             </span><br><span class="line">                cyclicBarrier.await();</span><br><span class="line">            &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;<span class="keyword">catch</span>(BrokenBarrierException e)&#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println(Thread.currentThread().getName()+<span class="string">"所有线程写入完毕，继续处理其他任务..."</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>执行结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">线程Thread-0正在写入数据...</span><br><span class="line">线程Thread-1正在写入数据...</span><br><span class="line">线程Thread-3正在写入数据...</span><br><span class="line">线程Thread-2正在写入数据...</span><br><span class="line">线程Thread-1写入数据完毕，等待其他线程写入完毕</span><br><span class="line">线程Thread-3写入数据完毕，等待其他线程写入完毕</span><br><span class="line">线程Thread-2写入数据完毕，等待其他线程写入完毕</span><br><span class="line">线程Thread-0写入数据完毕，等待其他线程写入完毕</span><br><span class="line">Thread-0所有线程写入完毕，继续处理其他任务...</span><br><span class="line">Thread-3所有线程写入完毕，继续处理其他任务...</span><br><span class="line">Thread-1所有线程写入完毕，继续处理其他任务...</span><br><span class="line">Thread-2所有线程写入完毕，继续处理其他任务...</span><br><span class="line">CyclicBarrier重用</span><br><span class="line">线程Thread-4正在写入数据...</span><br><span class="line">线程Thread-5正在写入数据...</span><br><span class="line">线程Thread-6正在写入数据...</span><br><span class="line">线程Thread-7正在写入数据...</span><br><span class="line">线程Thread-7写入数据完毕，等待其他线程写入完毕</span><br><span class="line">线程Thread-5写入数据完毕，等待其他线程写入完毕</span><br><span class="line">线程Thread-6写入数据完毕，等待其他线程写入完毕</span><br><span class="line">线程Thread-4写入数据完毕，等待其他线程写入完毕</span><br><span class="line">Thread-4所有线程写入完毕，继续处理其他任务...</span><br><span class="line">Thread-5所有线程写入完毕，继续处理其他任务...</span><br><span class="line">Thread-6所有线程写入完毕，继续处理其他任务...</span><br><span class="line">Thread-7所有线程写入完毕，继续处理其他任务...</span><br></pre></td></tr></table></figure>
+<p>从执行结果可以看出，在初次的4个线程越过barrier状态后，又可以用来进行新一轮的使用。而CountDownLatch无法进行重复使用。</p>
+<h3 id="Semaphore"><a href="#Semaphore" class="headerlink" title="Semaphore"></a>Semaphore</h3><p>Semaphore翻译成字面意思为 信号量，Semaphore可以控同时访问的线程个数，通过 acquire() 获取一个许可，如果没有就等待，而 release() 释放一个许可。</p>
+<h4 id="基础-2"><a href="#基础-2" class="headerlink" title="基础"></a>基础</h4><p>Semaphore类位于java.util.concurrent包下，它提供了2个构造器：</p>
+<h5 id="构造方法-2"><a href="#构造方法-2" class="headerlink" title="构造方法"></a>构造方法</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">Semaphore</span><span class="params">(<span class="keyword">int</span> permits)</span> </span>&#123;          <span class="comment">//参数permits表示许可数目，即同时可以允许多少线程进行访问</span></span><br><span class="line">    sync = <span class="keyword">new</span> NonfairSync(permits);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">Semaphore</span><span class="params">(<span class="keyword">int</span> permits, <span class="keyword">boolean</span> fair)</span> </span>&#123;    <span class="comment">//这个多了一个参数fair表示是否是公平的，即等待时间越久的越先获取许可</span></span><br><span class="line">    sync = (fair)? <span class="keyword">new</span> FairSync(permits) : <span class="keyword">new</span> NonfairSync(permits);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="方法-2"><a href="#方法-2" class="headerlink" title="方法"></a>方法</h5><p>下面说一下Semaphore类中比较重要的几个方法，首先是acquire()、release()方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">acquire</span><span class="params">()</span> <span class="keyword">throws</span> InterruptedException </span>&#123;  &#125;     <span class="comment">//获取一个许可</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">acquire</span><span class="params">(<span class="keyword">int</span> permits)</span> <span class="keyword">throws</span> InterruptedException </span>&#123; &#125;    <span class="comment">//获取permits个许可</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">release</span><span class="params">()</span> </span>&#123; &#125;          <span class="comment">//释放一个许可</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">release</span><span class="params">(<span class="keyword">int</span> permits)</span> </span>&#123; &#125;    <span class="comment">//释放permits个许可</span></span><br></pre></td></tr></table></figure>
+<p>acquire()用来获取一个许可，若无许可能够获得，则会一直等待，直到获得许可。</p>
+<p>release()用来释放许可。注意，在释放许可之前，必须先获获得许可。</p>
+<p>这4个方法都会被阻塞，如果想立即得到执行结果，可以使用下面几个方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">tryAcquire</span><span class="params">()</span> </span>&#123; &#125;;    <span class="comment">//尝试获取一个许可，若获取成功，则立即返回true，若获取失败，则立即返回false</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">tryAcquire</span><span class="params">(<span class="keyword">long</span> timeout, TimeUnit unit)</span> <span class="keyword">throws</span> InterruptedException </span>&#123; &#125;;  <span class="comment">//尝试获取一个许可，若在指定的时间内获取成功，则立即返回true，否则则立即返回false</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">tryAcquire</span><span class="params">(<span class="keyword">int</span> permits)</span> </span>&#123; &#125;; <span class="comment">//尝试获取permits个许可，若获取成功，则立即返回true，若获取失败，则立即返回false</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">tryAcquire</span><span class="params">(<span class="keyword">int</span> permits, <span class="keyword">long</span> timeout, TimeUnit unit)</span> <span class="keyword">throws</span> InterruptedException </span>&#123; &#125;; <span class="comment">//尝试获取permits个许可，若在指定的时间内获取成功，则立即返回true，否则则立即返回false</span></span><br></pre></td></tr></table></figure>
+<p>另外还可以通过availablePermits()方法得到可用的许可数目。</p>
+<h4 id="类比理解-2"><a href="#类比理解-2" class="headerlink" title="类比理解"></a>类比理解</h4><p>下面通过一个例子来看一下Semaphore的具体使用：</p>
+<p>假若一个工厂有5台机器，但是有8个工人，一台机器同时只能被一个工人使用，只有使用完了，其他工人才能继续使用。那么我们就可以通过Semaphore来实现：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> N = <span class="number">8</span>;            <span class="comment">//工人数</span></span><br><span class="line">        Semaphore semaphore = <span class="keyword">new</span> Semaphore(<span class="number">5</span>); <span class="comment">//机器数目</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;N;i++)</span><br><span class="line">            <span class="keyword">new</span> Worker(i,semaphore).start();</span><br><span class="line">    &#125;</span><br><span class="line">     </span><br><span class="line">    <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Worker</span> <span class="keyword">extends</span> <span class="title">Thread</span></span>&#123;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">int</span> num;</span><br><span class="line">        <span class="keyword">private</span> Semaphore semaphore;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">Worker</span><span class="params">(<span class="keyword">int</span> num,Semaphore semaphore)</span></span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.num = num;</span><br><span class="line">            <span class="keyword">this</span>.semaphore = semaphore;</span><br><span class="line">        &#125;</span><br><span class="line">         </span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                semaphore.acquire();</span><br><span class="line">                System.out.println(<span class="string">"工人"</span>+<span class="keyword">this</span>.num+<span class="string">"占用一个机器在生产..."</span>);</span><br><span class="line">                Thread.sleep(<span class="number">2000</span>);</span><br><span class="line">                System.out.println(<span class="string">"工人"</span>+<span class="keyword">this</span>.num+<span class="string">"释放出机器"</span>);</span><br><span class="line">                semaphore.release();           </span><br><span class="line">            &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>执行结果：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">工人<span class="number">0</span>占用一个机器在生产...</span><br><span class="line">工人<span class="number">1</span>占用一个机器在生产...</span><br><span class="line">工人<span class="number">2</span>占用一个机器在生产...</span><br><span class="line">工人<span class="number">4</span>占用一个机器在生产...</span><br><span class="line">工人<span class="number">5</span>占用一个机器在生产...</span><br><span class="line">工人<span class="number">0</span>释放出机器</span><br><span class="line">工人<span class="number">2</span>释放出机器</span><br><span class="line">工人<span class="number">3</span>占用一个机器在生产...</span><br><span class="line">工人<span class="number">7</span>占用一个机器在生产...</span><br><span class="line">工人<span class="number">4</span>释放出机器</span><br><span class="line">工人<span class="number">5</span>释放出机器</span><br><span class="line">工人<span class="number">1</span>释放出机器</span><br><span class="line">工人<span class="number">6</span>占用一个机器在生产...</span><br><span class="line">工人<span class="number">3</span>释放出机器</span><br><span class="line">工人<span class="number">7</span>释放出机器</span><br><span class="line">工人<span class="number">6</span>释放出机器</span><br></pre></td></tr></table></figure>
+<h3 id="FAQ"><a href="#FAQ" class="headerlink" title="FAQ"></a>FAQ</h3><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>下面对上面说的三个辅助类进行一个总结：</p>
+<h4 id="1）CountDownLatch和CyclicBarrier都能够实现线程之间的等待，只不过它们侧重点不同："><a href="#1）CountDownLatch和CyclicBarrier都能够实现线程之间的等待，只不过它们侧重点不同：" class="headerlink" title="1）CountDownLatch和CyclicBarrier都能够实现线程之间的等待，只不过它们侧重点不同："></a>1）CountDownLatch和CyclicBarrier都能够实现线程之间的等待，只不过它们侧重点不同：</h4><ul>
+<li><p>CountDownLatch一般用于某个线程A等待若干个其他线程执行完任务之后，它才执行；</p>
+</li>
+<li><p>而CyclicBarrier一般用于一组线程互相等待至某个状态，然后这一组线程再同时执行；</p>
+</li>
+<li><p>另外，CountDownLatch是不能够重用的，而CyclicBarrier是可以重用的。</p>
+</li>
+</ul>
+<h4 id="2）Semaphore其实和锁有点类似，它一般用于控制对某组资源的访问权限。"><a href="#2）Semaphore其实和锁有点类似，它一般用于控制对某组资源的访问权限。" class="headerlink" title="2）Semaphore其实和锁有点类似，它一般用于控制对某组资源的访问权限。"></a>2）Semaphore其实和锁有点类似，它一般用于控制对某组资源的访问权限。</h4><blockquote>
+<p><strong>参考文档</strong></p>
+</blockquote>
+<blockquote>
+<p><a href="https://www.jianshu.com/u/354cc1548a33" target="_blank" rel="noopener">【1】简书主页·share猿</a></p>
+</blockquote>
+<blockquote>
+<p><a href="https://juejin.im/user/5a8e759851882524d842d174" target="_blank" rel="noopener">【2】掘金主页·share猿</a></p>
+</blockquote>
+<blockquote>
+<p><a href="https://code.google.com/archive/p/disruptor/wikis/BlogsAndArticles.wiki" target="_blank" rel="noopener">【3】disruptor官网</a></p>
+</blockquote>
+<blockquote>
+<p><a href="https://zl198751.iteye.com/blog/1848575" target="_blank" rel="noopener">【4】JAVA CAS原理深度分析</a></p>
+</blockquote>
+<blockquote>
+<p><a href="http://ifeve.com/disruptor/" target="_blank" rel="noopener">【5】并发框架Disruptor译文</a></p>
+</blockquote>
+<blockquote>
+<p><a href="https://blog.52itstyle.vip/archives/2911/" target="_blank" rel="noopener">【6】从构建分布式秒杀系统聊聊Disruptor高性能队列</a></p>
+</blockquote>
+<hr>
+<p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
+<p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-10-15T06:46:35.360Z" itemprop="dateUpdated">2019-10-15 14:46:35</time>
+</span><br>
+
+
+        
+        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2019/06/27/后端/高并发/java/并发基础/Java并发编程：CountDownLatch、CyclicBarrier和Semaphore/" target="_blank" rel="external">https://lywlefan.github.io/2019/06/27/后端/高并发/java/并发基础/Java并发编程：CountDownLatch、CyclicBarrier和Semaphore/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://lywlefan.github.io">
+            <img src="/img/avatar.png" alt="share猿">
+            share猿
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/并发基础/">并发基础</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/高并发/">高并发</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://lywlefan.github.io/2019/06/27/后端/高并发/java/并发基础/Java并发编程：CountDownLatch、CyclicBarrier和Semaphore/&title=《Java并发编程：CountDownLatch、CyclicBarrier和Semaphore》 — share猿&pic=https://lywlefan.github.io/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://lywlefan.github.io/2019/06/27/后端/高并发/java/并发基础/Java并发编程：CountDownLatch、CyclicBarrier和Semaphore/&title=《Java并发编程：CountDownLatch、CyclicBarrier和Semaphore》 — share猿&source=分享有价值的内容,你我共同成长!" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://lywlefan.github.io/2019/06/27/后端/高并发/java/并发基础/Java并发编程：CountDownLatch、CyclicBarrier和Semaphore/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Java并发编程：CountDownLatch、CyclicBarrier和Semaphore》 — share猿&url=https://lywlefan.github.io/2019/06/27/后端/高并发/java/并发基础/Java并发编程：CountDownLatch、CyclicBarrier和Semaphore/&via=https://lywlefan.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://lywlefan.github.io/2019/06/27/后端/高并发/java/并发基础/Java并发编程：CountDownLatch、CyclicBarrier和Semaphore/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2019/06/28/后端/中间件/消息中间件/kafka/读书笔记/kafka核心技术与实战-胡夕/09.生产者消息分区机制原理剖析/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">09.生产者消息分区机制原理剖析</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/06/26/后端/高并发/java/并发框架/disruptor/2.disruptor应用/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">2.disruptor应用</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'true' == 'true',
+            verify: 'false' == 'true',
+            appId: "hQGVIAaJERVwyrWxj1uqgCqS-gzGzoHsz",
+            appKey: "l7FO5csTavNwXCGryJyOkkc1",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢赞赏!
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>share猿 &copy; 2015 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://lywlefan.github.io/2019/06/27/后端/高并发/java/并发基础/Java并发编程：CountDownLatch、CyclicBarrier和Semaphore/&title=《Java并发编程：CountDownLatch、CyclicBarrier和Semaphore》 — share猿&pic=https://lywlefan.github.io/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://lywlefan.github.io/2019/06/27/后端/高并发/java/并发基础/Java并发编程：CountDownLatch、CyclicBarrier和Semaphore/&title=《Java并发编程：CountDownLatch、CyclicBarrier和Semaphore》 — share猿&source=分享有价值的内容,你我共同成长!" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://lywlefan.github.io/2019/06/27/后端/高并发/java/并发基础/Java并发编程：CountDownLatch、CyclicBarrier和Semaphore/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Java并发编程：CountDownLatch、CyclicBarrier和Semaphore》 — share猿&url=https://lywlefan.github.io/2019/06/27/后端/高并发/java/并发基础/Java并发编程：CountDownLatch、CyclicBarrier和Semaphore/&via=https://lywlefan.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://lywlefan.github.io/2019/06/27/后端/高并发/java/并发基础/Java并发编程：CountDownLatch、CyclicBarrier和Semaphore/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASYAAAEmCAAAAADqr2IGAAAEhUlEQVR42u3aS24jOxAEQN3/0n7bAfxsZVZRA1ETvTL0azLaAOv3eMTX1x/X91fa6/svf/97s5Lk9ccrLkyYMGHC9JZMyZZ+3+Tvn5z92mx77Wfyx4kJEyZMmG5nSn7u923nx3D+SH5fW/6ZNgTBhAkTJkyY2mXlaXASOvy0kvzxYMKECRMmTPuAoF7KiP4V6TQmTJgwYfo8pn2BdbbhJJXdbzJPsw/UwjFhwoQJ05sx5Zv8vL9fMt+ECRMmTJjehumrvPajOfkAzSzFzVP6YteYMGHChOlaplmxtV3ogZRyscn24f34SUyYMGHCdCFT0pJsW4ab9mf7ME4lt0++iwkTJkyYLmdKtj1LKWdkeXqcrKRd55MKASZMmDBhuoppUxJtx27aI3mWKp8NPh6b/xFMmDBhwvQGTMmheHZBbZrdtjDbYKL4D8KECRMmTNcynSVrF5envqcapXXhGBMmTJgwXcs0S1/bZLjdZBs6JAFKHnzUc0OYMGHChOlCptnrybLysCP/VnvkrwIgTJgwYcJ0FVO+iPyVV9RLzz6kNmTBhAkTJkz3Mr3iyM+bnZuAoE2zZ4Xjx+siI0yYMGHC9NeZ2hGZNpXNi8v5xnKUtlhcxzKYMGHChOntmTZDNqdS0NkG8kGcGSgmTJgwYbqdKd9q/qOvw22Lv5uHF0VPmDBhwoTpEqaELC+5tr+ZJ6t5W7QNOOrUHRMmTJgwvT1TXorNr33Zty1Atw3OtkyMCRMmTJjuZZod/8lhnKSgmxZjG160kdH/vIsJEyZMmC5n+jtF29lWZ8FHW4yuB3cwYcKECdMlTO3Rvhm7ad/Nm5r74CMqBGPChAkTpquYZuXXTRl3VuQ9FToM74UJEyZMmK5lSpp/7WGfH8Z52JG0KtsEPt87JkyYMGG6lylvH+ZjNBvQPXobEEQFX0yYMGHC9NFM+SF6KiVuB2vyQvPw7pgwYcKE6SOYcppZv7Q9vGePcFbYfbJCTJgwYcJ0OdNstGXGl3Pkm8kHfWYjQZgwYcKE6V6mWXF2Brppc+Yby4ODvIGKCRMmTJg+g2l2AM8KtbMhm305OIeLHgAmTJgwYbqE6ewRWwzElN/dNFbbsaEoYsKECRMmTG/PtC+/5m3FU8HBvplaDxhhwoQJE6bLmZJ0cTYikzcX88/npeT8Xk8eBiZMmDBhupYp/8Lm+E8S3Tz42AcTwzQYEyZMmDBdyDRbbrvtU0dyvrHZd+vuLiZMmDBhuoppX5bdp82zEZxZiJDfFxMmTJgw3cu0v007lNNem+Ly5u5PvoUJEyZMmC5h+iqvU8f5bFQoH9nZPOYfu76YMGHChOlCplnjcN9KzI/w/L5tOftsYxUTJkyYML0z0+xA3ReLZ5+cNWUPNG4xYcKECdPlTG2ptH1lVnhtG5Mb+qj+jQkTJkyY/hmmWfMyLxmfKhzPWqQ/pr6YMGHChOkfYJod520Zd/Zrm8T7CRYmTJgwYbqcKSny5slwPl6zhz6FeKydiQkTJkyY3oxp0zKcFWeTjc0S77bZeYAGEyZMmDC9L9N/BCx3mDGjNPAAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '共同学习!共同进步!';
+            clearTimeout(titleTime);
+        } else {
+            document.title = 'Share猿社区官方';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>09.生产者消息分区机制原理剖析 | share猿 | https://lywlefan.github.io/</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="读书笔记,kafka,kafka核心技术与实战-胡夕">
+    <meta name="description" content="阅读笔记生产者消息分区机制原理剖析 如何将大的数据均匀的分配到Kafka的各个Broker上？  为什么分区？   为什么分区？ 三级结构：主题-分区-消息  主题下的每条消息只会保存在某一个分区中，而不会在多个分区中被保存多份    疑问:为什么kafka要这样设计？有什么好处？  回答:我们设想一个问题，我们在学校找一个学生，如果我们直接把学生集中在一起去找是不是很麻烦，很低效。换种方式，每5">
+<meta name="keywords" content="读书笔记,kafka,kafka核心技术与实战-胡夕">
+<meta property="og:type" content="article">
+<meta property="og:title" content="09.生产者消息分区机制原理剖析">
+<meta property="og:url" content="https://lywlefan.github.io/2019/06/28/后端/中间件/消息中间件/kafka/读书笔记/kafka核心技术与实战-胡夕/09.生产者消息分区机制原理剖析/index.html">
+<meta property="og:site_name" content="share猿">
+<meta property="og:description" content="阅读笔记生产者消息分区机制原理剖析 如何将大的数据均匀的分配到Kafka的各个Broker上？  为什么分区？   为什么分区？ 三级结构：主题-分区-消息  主题下的每条消息只会保存在某一个分区中，而不会在多个分区中被保存多份    疑问:为什么kafka要这样设计？有什么好处？  回答:我们设想一个问题，我们在学校找一个学生，如果我们直接把学生集中在一起去找是不是很麻烦，很低效。换种方式，每5">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-10-15T06:42:25.322Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="09.生产者消息分区机制原理剖析">
+<meta name="twitter:description" content="阅读笔记生产者消息分区机制原理剖析 如何将大的数据均匀的分配到Kafka的各个Broker上？  为什么分区？   为什么分区？ 三级结构：主题-分区-消息  主题下的每条消息只会保存在某一个分区中，而不会在多个分区中被保存多份    疑问:为什么kafka要这样设计？有什么好处？  回答:我们设想一个问题，我们在学校找一个学生，如果我们直接把学生集中在一起去找是不是很麻烦，很低效。换种方式，每5">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+    
+        <link rel="alternate" type="application/atom+xml" title="share猿" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">share猿</h5>
+          <a href="mailto:330334064@qq.com" title="330334064@qq.com" class="mail">330334064@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/lywlefan" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                GitHub
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/atom">
+                <i class="icon icon-lg icon-rss"></i>
+                订阅
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">09.生产者消息分区机制原理剖析</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">09.生产者消息分区机制原理剖析</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-06-27T16:00:00.000Z" itemprop="datePublished" class="page-time">
+  2019-06-28
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/后端/">后端</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#阅读笔记"><span class="post-toc-number">1.</span> <span class="post-toc-text">阅读笔记</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#生产者消息分区机制原理剖析"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">生产者消息分区机制原理剖析</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#为什么分区？"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">为什么分区？</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#都有哪些分区策略？"><span class="post-toc-number">1.1.1.1.</span> <span class="post-toc-text">都有哪些分区策略？</span></a></li></ol></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#提出问题"><span class="post-toc-number">2.</span> <span class="post-toc-text">提出问题</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#自己提问"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">自己提问</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#问题1"><span class="post-toc-number">2.1.1.</span> <span class="post-toc-text">问题1</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#问题2"><span class="post-toc-number">2.1.2.</span> <span class="post-toc-text">问题2</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#其他人的问题"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">其他人的问题</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#问题1-1"><span class="post-toc-number">2.2.1.</span> <span class="post-toc-text">问题1</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#问题2-1"><span class="post-toc-number">2.2.2.</span> <span class="post-toc-text">问题2</span></a></li></ol></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-后端/中间件/消息中间件/kafka/读书笔记/kafka核心技术与实战-胡夕/09.生产者消息分区机制原理剖析" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">09.生产者消息分区机制原理剖析</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-06-28 00:00:00" datetime="2019-06-27T16:00:00.000Z" itemprop="datePublished">2019-06-28</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/后端/">后端</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h2 id="阅读笔记"><a href="#阅读笔记" class="headerlink" title="阅读笔记"></a>阅读笔记</h2><h3 id="生产者消息分区机制原理剖析"><a href="#生产者消息分区机制原理剖析" class="headerlink" title="生产者消息分区机制原理剖析"></a>生产者消息分区机制原理剖析</h3><ul>
+<li><p>如何将大的数据均匀的分配到Kafka的各个Broker上？</p>
+</li>
+<li><p>为什么分区？</p>
+</li>
+</ul>
+<h4 id="为什么分区？"><a href="#为什么分区？" class="headerlink" title="为什么分区？"></a>为什么分区？</h4><ul>
+<li><p>三级结构：主题-分区-消息</p>
+</li>
+<li><p>主题下的每条消息只会保存在某一个分区中，而不会在多个分区中被保存多份</p>
+</li>
+</ul>
+<blockquote>
+<p>疑问:为什么kafka要这样设计？有什么好处？</p>
+</blockquote>
+<p><strong>回答</strong>:我们设想一个问题，我们在学校找一个学生，如果我们直接把学生集中在一起去找是不是很麻烦，很低效。换种方式，每50个学生一组，配置一个负责人，然后通知这些负责人去找某个同学，是不是很快就可以找到了，这也就是分区的意义所在。如果，我们把这种思想放到我们的系统中，就可以提高我们系统的负载均衡能力，实现了系统的高伸缩性(Scalability)</p>
+<ul>
+<li>不同的分区能够被放置到不同节点的机器上</li>
+</ul>
+<blockquote>
+<p>疑问：同一个topic下不同的分区是保存到相同机器的不同磁盘上的吗？</p>
+</blockquote>
+<p><strong>回答</strong>:</p>
+<p>在 MongoDB 和 Elasticsearch 中就叫分Shard，而在HBase中则叫Region,在Cassandra中又被称作vnode。</p>
+<ul>
+<li>实现业务级别的消息顺序的问题</li>
+</ul>
+<h5 id="都有哪些分区策略？"><a href="#都有哪些分区策略？" class="headerlink" title="都有哪些分区策略？"></a>都有哪些分区策略？</h5><p>所谓分区策略是决定生产者将消息发送到那个分区的算法。提供了默认的分区策略，同时支持自定义分区策略。</p>
+<ul>
+<li><p>自定义分区</p>
+<ul>
+<li><p>配置partitioner.class参数</p>
+</li>
+<li><p>实现Partitioner接口</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">partition</span><span class="params">(String topic, Object key, <span class="keyword">byte</span>[] keyBytes, Object value, <span class="keyword">byte</span>[] valueBytes, Cluster cluster)</span></span>;</span><br></pre></td></tr></table></figure>
+<p>这里的topic、key、keyBytes、value和valueBytes都属于消息数据，cluster则是集群信息(比如当前Kafka集群有多少主题，多少Broker等)。</p>
+</li>
+</ul>
+</li>
+<li><p>策略</p>
+<ul>
+<li><p>轮询策略(Round-robin)</p>
+<p>轮询是kafka默认的消息存储策略，新增的消息会依次进入1/2/3/4/….对应的分区。轮询策略有非常优秀的负载均衡表现，它总能保证消息最大限度地平均分配到所有分区上，故默认情况下它是最合理的分区策略，也是我们常用的分区策略之一。</p>
+</li>
+<li><p>随机策略(Randomness)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">List&lt;PartitionInfo&gt; partitions = cluster.partitionsForTopic(topic);</span><br><span class="line"><span class="keyword">return</span> ThreadLocalRandom.current().nextInt(partitions.size());</span><br><span class="line">``` </span><br><span class="line">实现比较简单，先计算出该主题总的分区数，然后随机地返回一个小于它的正整数。</span><br><span class="line"></span><br><span class="line">该策略是kafka老版本的策略，追求数据均匀分布还是轮询策略比较好。</span><br><span class="line"></span><br><span class="line">- 按消息键保序策略</span><br><span class="line"></span><br><span class="line">    - 同一个消息key的消息进入同一个分区</span><br><span class="line">    </span><br><span class="line">    - 一个分区只能被同一个消费组（ConsumerGroup）内的一个消费者消费</span><br><span class="line">    </span><br><span class="line">    这里我们可以给我们的消息以时间的维度定义key，如此同一时间的消息就进入了同一个分区，同一个分区下的消息也有了顺序性。</span><br><span class="line">    </span><br><span class="line">    - 每个分区消息都是有顺序的</span><br><span class="line">    </span><br><span class="line">    - 代码实现</span><br><span class="line">    </span><br><span class="line">    ```java</span><br><span class="line">    List&lt;PartitionInfo&gt; partitions = cluster.partitionsForTopic(topic);</span><br><span class="line">    <span class="keyword">return</span> Math.abs(key.hashCode()) % partitions.size();</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>其他分区策略(比如：基于地理位置的分区策略)</p>
+<ul>
+<li><p>场景</p>
+<p>公司有两个机房，一个在广州，一个在北京，在每个机房里面抽取部分机器组成kafka集群。现在公司app搞活动，北京新注册的用户送北京烤鸭一只，广州注册的用户送一次大保健，我们如何用kafka实现这一需求？</p>
+</li>
+<li><p>解决方案一</p>
+</li>
+<li><p>解决方案二</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="提出问题"><a href="#提出问题" class="headerlink" title="提出问题"></a>提出问题</h2><h3 id="自己提问"><a href="#自己提问" class="headerlink" title="自己提问"></a>自己提问</h3><h4 id="问题1"><a href="#问题1" class="headerlink" title="问题1"></a>问题1</h4><blockquote>
+<p>通过kafka创建一个topic，默认分几个区？</p>
+</blockquote>
+<p><strong>回答</strong>：创建topic的时候就需要指定需要创建的分区个数.</p>
+<h4 id="问题2"><a href="#问题2" class="headerlink" title="问题2"></a>问题2</h4><blockquote>
+<p>基于地理位置的分区策略可以通过按消息键保序策略实现，这样做有什么意义？</p>
+</blockquote>
+<h3 id="其他人的问题"><a href="#其他人的问题" class="headerlink" title="其他人的问题"></a>其他人的问题</h3><h4 id="问题1-1"><a href="#问题1-1" class="headerlink" title="问题1"></a>问题1</h4><blockquote>
+<p>老师能不能有空能不能讲讲kafka和rocketMQ的对比, 我用下来感觉整体挺像的但是具体使用场景和性能优劣方面还是有点不知道该使用选择, 谢谢.</p>
+</blockquote>
+<p><strong>回答</strong>：在我看来RocketMQ与Kafka的主要区别 ：1. Kafka吞吐量大，多是面向大数据场景。RocketMQ吞吐量也很强， 不过它号称是金融业务级的消息中间件，也就是说可以用于实际的业务系统；2. RocketMQ毕竟是阿里出品，在国内技术支持力度要比Kafka强；3. Kafka现在主要发力Streaming，RocketMQ在流处理这块表现如何我不太清楚，至少streaming不是它现阶段的主要卖点。</p>
+<h4 id="问题2-1"><a href="#问题2-1" class="headerlink" title="问题2"></a>问题2</h4><blockquote>
+<p>kafka的主题只有一级、像mq可以进行主题分层：一级主题、二级主题。kafka为何这样设计？</p>
+</blockquote>
+<blockquote>
+<p><strong>参考文档</strong></p>
+</blockquote>
+<blockquote>
+<p><a href="https://www.jianshu.com/u/354cc1548a33" target="_blank" rel="noopener">【1】简书主页·share猿</a></p>
+</blockquote>
+<blockquote>
+<p><a href="https://juejin.im/user/5a8e759851882524d842d174" target="_blank" rel="noopener">【2】掘金主页·share猿</a></p>
+</blockquote>
+<hr>
+<p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
+<p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-10-15T06:42:25.322Z" itemprop="dateUpdated">2019-10-15 14:42:25</time>
+</span><br>
+
+
+        
+        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2019/06/28/后端/中间件/消息中间件/kafka/读书笔记/kafka核心技术与实战-胡夕/09.生产者消息分区机制原理剖析/" target="_blank" rel="external">https://lywlefan.github.io/2019/06/28/后端/中间件/消息中间件/kafka/读书笔记/kafka核心技术与实战-胡夕/09.生产者消息分区机制原理剖析/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://lywlefan.github.io">
+            <img src="/img/avatar.png" alt="share猿">
+            share猿
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/kafka/">kafka</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/kafka核心技术与实战-胡夕/">kafka核心技术与实战-胡夕</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://lywlefan.github.io/2019/06/28/后端/中间件/消息中间件/kafka/读书笔记/kafka核心技术与实战-胡夕/09.生产者消息分区机制原理剖析/&title=《09.生产者消息分区机制原理剖析》 — share猿&pic=https://lywlefan.github.io/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://lywlefan.github.io/2019/06/28/后端/中间件/消息中间件/kafka/读书笔记/kafka核心技术与实战-胡夕/09.生产者消息分区机制原理剖析/&title=《09.生产者消息分区机制原理剖析》 — share猿&source=分享有价值的内容,你我共同成长!" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://lywlefan.github.io/2019/06/28/后端/中间件/消息中间件/kafka/读书笔记/kafka核心技术与实战-胡夕/09.生产者消息分区机制原理剖析/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《09.生产者消息分区机制原理剖析》 — share猿&url=https://lywlefan.github.io/2019/06/28/后端/中间件/消息中间件/kafka/读书笔记/kafka核心技术与实战-胡夕/09.生产者消息分区机制原理剖析/&via=https://lywlefan.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://lywlefan.github.io/2019/06/28/后端/中间件/消息中间件/kafka/读书笔记/kafka核心技术与实战-胡夕/09.生产者消息分区机制原理剖析/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2019/06/28/后端/搜索引擎/es/VERSION/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">es的VERSION</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/06/27/后端/高并发/java/并发基础/Java并发编程：CountDownLatch、CyclicBarrier和Semaphore/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Java并发编程：CountDownLatch、CyclicBarrier和Semaphore</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'true' == 'true',
+            verify: 'false' == 'true',
+            appId: "hQGVIAaJERVwyrWxj1uqgCqS-gzGzoHsz",
+            appKey: "l7FO5csTavNwXCGryJyOkkc1",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢赞赏!
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>share猿 &copy; 2015 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://lywlefan.github.io/2019/06/28/后端/中间件/消息中间件/kafka/读书笔记/kafka核心技术与实战-胡夕/09.生产者消息分区机制原理剖析/&title=《09.生产者消息分区机制原理剖析》 — share猿&pic=https://lywlefan.github.io/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://lywlefan.github.io/2019/06/28/后端/中间件/消息中间件/kafka/读书笔记/kafka核心技术与实战-胡夕/09.生产者消息分区机制原理剖析/&title=《09.生产者消息分区机制原理剖析》 — share猿&source=分享有价值的内容,你我共同成长!" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://lywlefan.github.io/2019/06/28/后端/中间件/消息中间件/kafka/读书笔记/kafka核心技术与实战-胡夕/09.生产者消息分区机制原理剖析/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《09.生产者消息分区机制原理剖析》 — share猿&url=https://lywlefan.github.io/2019/06/28/后端/中间件/消息中间件/kafka/读书笔记/kafka核心技术与实战-胡夕/09.生产者消息分区机制原理剖析/&via=https://lywlefan.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://lywlefan.github.io/2019/06/28/后端/中间件/消息中间件/kafka/读书笔记/kafka核心技术与实战-胡夕/09.生产者消息分区机制原理剖析/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAT4AAAE+CAAAAAAxUyPsAAAFQUlEQVR42u3awW7jVhQD0Pz/T7doVy0COySvnMXgeBXMyJZ0ngFTvO/rK3799e/rv39//5fk+Pfvup/91ZV8f1fyv4+98OHDhw8fvrcf8eoS3190DnqBePXe+7veL/lLYnz48OHDh2/iS+LCPUbcI0sSO9qYkocqfPjw4cOH7zf5LoEmuZl8kZJlyJf/tPD48OHDhw/fr/B9omi4FPdbnGoHCfjw4cOHD99TfFuMaB/+80u83FJb5f/SrAMfPnz48OE7xIU/+++HX/jw4cOHD99UBOQ//O1QvH2Mz8PNtuktcsCHDx8+fPgmh3awnRBsWPe08ImS4odPwIcPHz58+GK+hKONMu0FtWdsI0jyL+OXBh8+fPjw4VvyRsSan/4SVpLSYSsUtqAzhjN8+PDhw4fvxRW2P/DbEP0SX+7fjjzu1PUEPnz48OHDNzXbefjIby8fmSefkwSdHDcJPcVWNnz48OHDh6/ka4NIW44ntfulCLi06G3BUTcu+PDhw4cP37dPuPzkf/r4dkzehpK8NHlphQ8fPnz48E18bWGdMLXj9vZdl4r/qdE+Pnz48OHDl/PlI+RtlH7BusSLtixoCwt8+PDhw4fvKb5L+MiX5KlBe34l28L/QI8PHz58+PCVfJcBc7td7DJKb8/b1vTtnoIaFB8+fPjw4YuffC8xJXlEb2PTZXm2r8upOMCHDx8+fPiCDWrtRSdHtmHlMizP6/j2S/BylwE+fPjw4cMX8LXF+hYv2vFAe8MtZd6gPLDLAB8+fPjw4Xs7Mm9vJh91t7eXb01rr/9ynfjw4cOHD99TfFvlfQk0eVzYHvu3azsV/fjw4cOHD1/At42Qt+JgG1pvg+182H85Fz58+PDhw5ef66maIGfKN15fNsZdjiy+HPjw4cOHD9/Et5XU+WN/HjXyyiCpOe4j/K/tBvDhw4cPH764Z94GyZcFaIvyfNtcWxbk58WHDx8+fPg2vsu0NyEeZ/UPDQkulAUcPnz48OHDF/PlwWW7mU+DtmOAhLKoQvDhw4cPH76Sb/vhby8if7XL1hYBW7n/Ays+fPjw4cM38bXj562m3ygvC7mhFNEKHz58+PDhO/BtceEyhL4Hl+RW86K/jlP48OHDhw9fzJdvAksCSh4gtqIhKTLaOJIc//JIfPjw4cOHb+JLHvXbi34qdrQL3J6xHav/7298+PDhw4dv4rsU623d315iXta3G9G2UfoPuQ8fPnz48OFLn47HKJDf0iXoXB7v27F9PuzHhw8fPnz4Wr622m5Bt+1u7R6wZwfqebTChw8fPnz4Wr52+N3W3+2t5mfPI9RWcxQRBx8+fPjw4Yv58pI6DxNbfMlL+bwOaLnrUIUPHz58+PAtz+NRdLgHgq2GuA8MtgF5W+vjw4cPHz58bWWwvbbH70+UBe24Pan1i7IeHz58+PDhi/kuQ+s2fLSD+XzZ8mPaSgIfPnz48OF7ii//CW+r+W1zW37z28LcS/z624EPHz58+PDFo+58fH6pBnLorZR/6lw/bFDDhw8fPnz4Jr4krFxq7uT45NPywJGEmPFd+PDhw4cP3/Kux4JCHm4uw/V2FpEsQB6/8OHDhw8fvjvfZdjcbhFrP6ddjDbcPBBc8OHDhw8fvokv+VHfiu98JPBstNoKi7oWwYcPHz58+D7MdxmKv48UeR2Qb1nbCouiqsCHDx8+fPg+xrc9/F+iwz1etKP0dmHw4cOHDx++jS8v6/OCux1vP1vft+PwLTDhw4cPHz58Ld9Whbe32j7254PtDWsbsY+jBXz48OHDh++f19+7FL6GxmAP+gAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '共同学习!共同进步!';
+            clearTimeout(titleTime);
+        } else {
+            document.title = 'Share猿社区官方';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

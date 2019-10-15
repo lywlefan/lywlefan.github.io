@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://lywlefan.github.io/"/>
-  <updated>2019-09-03T08:37:21.928Z</updated>
+  <updated>2019-10-15T06:27:56.116Z</updated>
   <id>https://lywlefan.github.io/</id>
   
   <author>
@@ -17,11 +17,96 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>后端导航</title>
+    <link href="https://lywlefan.github.io/2019/10/15/%E5%90%8E%E7%AB%AF/%E5%90%8E%E7%AB%AF%E5%AF%BC%E8%88%AA/"/>
+    <id>https://lywlefan.github.io/2019/10/15/后端/后端导航/</id>
+    <published>2019-10-14T16:00:00.000Z</published>
+    <updated>2019-10-15T06:27:56.116Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="网站直达"><a href="#网站直达" class="headerlink" title="网站直达"></a>网站直达</h1><h2 id="官网"><a href="#官网" class="headerlink" title="官网"></a>官网</h2><h2 id="团队博客"><a href="#团队博客" class="headerlink" title="团队博客"></a>团队博客</h2><p><a href="https://tech.meituan.com/" target="_blank" rel="noopener">美团技术团队</a></p><h2 id="个人博客"><a href="#个人博客" class="headerlink" title="个人博客"></a>个人博客</h2><p><a href="http://jijiangshe.com" target="_blank" rel="noopener">技匠社</a><a href="https://sspai.com" target="_blank" rel="noopener">少数派</a><a href="https://me.csdn.net/qq_27093465" target="_blank" rel="noopener">李学凯</a><a href="http://blog.didispace.com/" target="_blank" rel="noopener">程序员DD</a> <a href="http://itmuch.com/" target="_blank" rel="noopener">周立|Spring Cloud</a> <a href="http://www.bysocket.com/" target="_blank" rel="noopener">泥瓦匠BYSocket的博客</a> <a href="http://kailing.pub/" target="_blank" rel="noopener">KL博客</a> <a href="http://edisonxu.org/" target="_blank" rel="noopener">Edison Xu’s Blog</a> <a href="http://blog.720ui.com/" target="_blank" rel="noopener">梁桂钊的博客</a> <a href="http://www.icnws.com/" target="_blank" rel="noopener">城南往事</a> <a href="http://www.ictgu.cn/" target="_blank" rel="noopener">Any-Video</a> <a href="http://blog.54im.com/" target="_blank" rel="noopener">钿畑的博客</a> <a href="http://cmsblogs.com/" target="_blank" rel="noopener">chenssy</a> <a href="https://www.cnkirito.moe/" target="_blank" rel="noopener">徐靖峰|个人博客</a> <a href="http://cxytiandi.com/" target="_blank" rel="noopener">猿天地</a> <a href="https://crossoverjie.top/" target="_blank" rel="noopener">crossoverjie</a> <a href="http://www.iocoder.cn/" target="_blank" rel="noopener">芋道源码</a> <a href="https://purewhite.io/" target="_blank" rel="noopener">Pure White</a> <a href="https://blog.52itstyle.vip/" target="_blank" rel="noopener">小柒</a> <a href="https://www.cnblogs.com/netfocus/archive/2012/02/12/2347919.html" target="_blank" rel="noopener">汤雪华的博客</a> <a href="https://www.cnblogs.com/huxi2b/" target="_blank" rel="noopener">kafka核心技术讲解作者·huxihx</a> <a href="https://blog.csdn.net/a724888" target="_blank" rel="noopener">黄小斜</a> <a href="https://github.com/h2pl/" target="_blank" rel="noopener">黄小斜github</a><a href="https://www.cnblogs.com/wayfarer/" target="_blank" rel="noopener">张逸的博客(ThoughtWorks架构师)</a><a href="https://nndl.github.io/" target="_blank" rel="noopener">神经网络与深度学习·邱锡鹏</a></p><blockquote><p><a href="https://www.jianshu.com/u/354cc1548a33" target="_blank" rel="noopener">【1】简书主页·share猿</a><br><a href="https://juejin.im/user/5a8e759851882524d842d174" target="_blank" rel="noopener">【2】掘金主页·share猿</a></p></blockquote><hr><p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>                </div>                <div class="image-caption"></div>            </figure></p><p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;网站直达&quot;&gt;&lt;a href=&quot;#网站直达&quot; class=&quot;headerlink&quot; title=&quot;网站直达&quot;&gt;&lt;/a&gt;网站直达&lt;/h1&gt;&lt;h2 id=&quot;官网&quot;&gt;&lt;a href=&quot;#官网&quot; class=&quot;headerlink&quot; title=&quot;官网&quot;&gt;&lt;/a&gt;官网&lt;/h
+      
+    
+    </summary>
+    
+      <category term="后端" scheme="https://lywlefan.github.io/categories/%E5%90%8E%E7%AB%AF/"/>
+    
+    
+      <category term="导航" scheme="https://lywlefan.github.io/tags/%E5%AF%BC%E8%88%AA/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>如何把订单均匀分布到分片表里面</title>
+    <link href="https://lywlefan.github.io/2019/09/29/%E5%90%8E%E7%AB%AF/%E4%B8%AD%E9%97%B4%E4%BB%B6/%E5%88%86%E5%BA%93%E5%88%86%E8%A1%A8/sharding-jdbc/%E5%A6%82%E4%BD%95%E6%8A%8A%E8%AE%A2%E5%8D%95%E5%9D%87%E5%8C%80%E5%88%86%E5%B8%83%E5%88%B0%E5%88%86%E7%89%87%E8%A1%A8%E9%87%8C%E9%9D%A2/"/>
+    <id>https://lywlefan.github.io/2019/09/29/后端/中间件/分库分表/sharding-jdbc/如何把订单均匀分布到分片表里面/</id>
+    <published>2019-09-28T16:00:00.000Z</published>
+    <updated>2019-10-15T06:42:25.684Z</updated>
+    
+    <content type="html"><![CDATA[<p>这几天学习了数据库的中间件—-sharding-jdbc,</p><blockquote><p><strong>参考文档</strong></p></blockquote><blockquote><p><a href="https://shardingsphere.apache.org" target="_blank" rel="noopener">官方文档</a></p></blockquote><hr><p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>                </div>                <div class="image-caption"></div>            </figure></p><p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;这几天学习了数据库的中间件—-sharding-jdbc,&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;参考文档&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;https://shardingsphere
+      
+    
+    </summary>
+    
+      <category term="后端" scheme="https://lywlefan.github.io/categories/%E5%90%8E%E7%AB%AF/"/>
+    
+    
+      <category term="分库分表" scheme="https://lywlefan.github.io/tags/%E5%88%86%E5%BA%93%E5%88%86%E8%A1%A8/"/>
+    
+      <category term="sharding-jdbc" scheme="https://lywlefan.github.io/tags/sharding-jdbc/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>初始Sharding-jdbc.md</title>
+    <link href="https://lywlefan.github.io/2019/09/27/%E5%90%8E%E7%AB%AF/%E4%B8%AD%E9%97%B4%E4%BB%B6/%E5%88%86%E5%BA%93%E5%88%86%E8%A1%A8/sharding-jdbc/%E5%88%9D%E5%A7%8BSharding-jdbc/"/>
+    <id>https://lywlefan.github.io/2019/09/27/后端/中间件/分库分表/sharding-jdbc/初始Sharding-jdbc/</id>
+    <published>2019-09-26T16:00:00.000Z</published>
+    <updated>2019-10-15T06:42:26.155Z</updated>
+    
+    <content type="html"><![CDATA[<p>让我们一起来学习数据库中间件shardingsphere,shareding-jdbc是他其中的一个产品.</p><h2 id="what"><a href="#what" class="headerlink" title="what"></a>what</h2><h3 id="什么是shardingsphere"><a href="#什么是shardingsphere" class="headerlink" title="什么是shardingsphere?"></a>什么是shardingsphere?</h3><p>shardingsphere是一个数据库中间件,</p><blockquote><p><strong>参考文档</strong></p></blockquote><blockquote><p><a href="https://shardingsphere.apache.org" target="_blank" rel="noopener">官方文档</a></p></blockquote><hr><p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>                </div>                <div class="image-caption"></div>            </figure></p><p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;让我们一起来学习数据库中间件shardingsphere,shareding-jdbc是他其中的一个产品.&lt;/p&gt;
+&lt;h2 id=&quot;what&quot;&gt;&lt;a href=&quot;#what&quot; class=&quot;headerlink&quot; title=&quot;what&quot;&gt;&lt;/a&gt;what&lt;/h2&gt;&lt;h3 
+      
+    
+    </summary>
+    
+      <category term="后端" scheme="https://lywlefan.github.io/categories/%E5%90%8E%E7%AB%AF/"/>
+    
+    
+      <category term="分库分表" scheme="https://lywlefan.github.io/tags/%E5%88%86%E5%BA%93%E5%88%86%E8%A1%A8/"/>
+    
+      <category term="sharding-jdbc" scheme="https://lywlefan.github.io/tags/sharding-jdbc/"/>
+    
+  </entry>
+  
+  <entry>
     <title>AOT,JIT学习总结</title>
-    <link href="https://lywlefan.github.io/2019/09/03/%E5%9F%BA%E7%A1%80%E5%B7%A9%E5%9B%BA/java/jvm/AOT,JIT%E5%AD%A6%E4%B9%A0/"/>
-    <id>https://lywlefan.github.io/2019/09/03/基础巩固/java/jvm/AOT,JIT学习/</id>
+    <link href="https://lywlefan.github.io/2019/09/03/%E5%90%8E%E7%AB%AF/%E5%9F%BA%E7%A1%80%E5%B7%A9%E5%9B%BA/java/jvm/AOT,JIT%E5%AD%A6%E4%B9%A0/"/>
+    <id>https://lywlefan.github.io/2019/09/03/后端/基础巩固/java/jvm/AOT,JIT学习/</id>
     <published>2019-09-02T16:00:00.000Z</published>
-    <updated>2019-09-03T08:37:21.928Z</updated>
+    <updated>2019-10-15T06:42:25.223Z</updated>
     
     <content type="html"><![CDATA[<blockquote><p>万丈高楼平地起的前提是地基好.</p></blockquote><h2 id="是什么"><a href="#是什么" class="headerlink" title="是什么?"></a>是什么?</h2><p>JIT，即Just-in-time,动态(即时)编译，边运行边编译；AOT，Ahead Of Time，指运行前编译，是两种程序的编译方式</p><h2 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h2><p>这两种编译方式的主要区别在于是否在“运行时”进行编译</p><h3 id="JIT"><a href="#JIT" class="headerlink" title="JIT"></a>JIT</h3><h4 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h4><ul><li>可以根据当前硬件情况实时编译生成最优机器指令（ps. AOT也可以做到，在用户使用是使用字节码根据机器情况在做一次编译）</li><li>可以根据当前程序的运行情况生成最优的机器指令序列</li><li>当程序需要支持动态链接时，只能使用JIT</li><li>可以根据进程中内存的实际情况调整代码，使内存能够更充分的利用</li></ul><h4 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h4><ul><li>编译需要占用运行时资源，会导致进程卡顿</li><li>由于编译时间需要占用运行时间，对于某些代码的编译优化不能完全支持，需要在程序流畅和编译时间之间做权衡</li><li>在编译准备和识别频繁使用的方法需要占用时间，使得初始编译不能达到最高性能</li></ul><h3 id="AOT"><a href="#AOT" class="headerlink" title="AOT"></a>AOT</h3><h4 id="优点-1"><a href="#优点-1" class="headerlink" title="优点"></a>优点</h4><ul><li>在程序运行前编译，可以避免在运行时的编译性能消耗和内存消耗</li><li>可以在程序运行初期就达到最高性能</li><li>可以显著的加快程序的启动</li></ul><h3 id="缺点-1"><a href="#缺点-1" class="headerlink" title="缺点"></a>缺点</h3><ul><li>在程序运行前编译会使程序安装的时间增加</li><li>牺牲Java的一致性</li><li>将提前编译的内容保存会占用更多的外</li></ul><blockquote><p><a href="https://www.jianshu.com/u/354cc1548a33" target="_blank" rel="noopener">【1】简书主页·share猿</a><br><a href="https://juejin.im/user/5a8e759851882524d842d174" target="_blank" rel="noopener">【2】掘金主页·share猿</a></p></blockquote><hr><p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>                </div>                <div class="image-caption"></div>            </figure></p><p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>]]></content>
     
@@ -37,21 +122,21 @@
     
     </summary>
     
-      <category term="基础巩固" scheme="https://lywlefan.github.io/categories/%E5%9F%BA%E7%A1%80%E5%B7%A9%E5%9B%BA/"/>
+      <category term="后端" scheme="https://lywlefan.github.io/categories/%E5%90%8E%E7%AB%AF/"/>
     
     
-      <category term="java基础" scheme="https://lywlefan.github.io/tags/java%E5%9F%BA%E7%A1%80/"/>
+      <category term="基础" scheme="https://lywlefan.github.io/tags/%E5%9F%BA%E7%A1%80/"/>
     
-      <category term="jvm" scheme="https://lywlefan.github.io/tags/jvm/"/>
+      <category term="java" scheme="https://lywlefan.github.io/tags/java/"/>
     
   </entry>
   
   <entry>
     <title>try-with-resources和multiple catch的学习</title>
-    <link href="https://lywlefan.github.io/2019/09/03/%E5%9F%BA%E7%A1%80%E5%B7%A9%E5%9B%BA/java/%E5%BC%82%E5%B8%B8/try-with-resources%E5%92%8Cmultiple%20catch%E7%9A%84%E5%AD%A6%E4%B9%A0/"/>
-    <id>https://lywlefan.github.io/2019/09/03/基础巩固/java/异常/try-with-resources和multiple catch的学习/</id>
+    <link href="https://lywlefan.github.io/2019/09/03/%E5%90%8E%E7%AB%AF/%E5%9F%BA%E7%A1%80%E5%B7%A9%E5%9B%BA/java/%E5%BC%82%E5%B8%B8/try-with-resources%E5%92%8Cmultiple%20catch%E7%9A%84%E5%AD%A6%E4%B9%A0/"/>
+    <id>https://lywlefan.github.io/2019/09/03/后端/基础巩固/java/异常/try-with-resources和multiple catch的学习/</id>
     <published>2019-09-02T16:00:00.000Z</published>
-    <updated>2019-09-03T10:05:20.644Z</updated>
+    <updated>2019-10-15T06:42:24.753Z</updated>
     
     <content type="html"><![CDATA[<blockquote><p>万丈高楼平地起的前提是地基好.</p></blockquote><h1 id="try-with-resources"><a href="#try-with-resources" class="headerlink" title="try-with-resources"></a>try-with-resources</h1><h2 id="是什么"><a href="#是什么" class="headerlink" title="是什么?"></a>是什么?</h2><p>在Java编程过程中，如果打开了外部资源（文件、数据库连接、网络连接等），我们必须在这些外部资源使用完毕后，手动关闭它们。因为外部资源不由JVM管理，无法享用JVM的垃圾回收机制，如果我们不在编程时确保在正确的时机关闭外部资源，就会导致外部资源泄露，紧接着就会出现文件被异常占用，数据库连接过多导致连接池溢出等诸多很严重的问题。</p><p>为了确保外部资源一定要被关闭，通常关闭代码被写入finally代码块中，当然我们还必须注意到关闭资源时可能抛出的异常，于是变有了下面的经典代码：</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    FileInputStream inputStream = <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        inputStream = <span class="keyword">new</span> FileInputStream(<span class="keyword">new</span> File(<span class="string">"test"</span>));</span><br><span class="line">        System.out.println(inputStream.read());</span><br><span class="line">    &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(e.getMessage(), e);</span><br><span class="line">    &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (inputStream != <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                inputStream.close();</span><br><span class="line">            &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">                <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(e.getMessage(), e);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h1 id="multiple-catch"><a href="#multiple-catch" class="headerlink" title="multiple catch"></a>multiple catch</h1><h2 id="是什么-1"><a href="#是什么-1" class="headerlink" title="是什么?"></a>是什么?</h2><blockquote><p><a href="https://www.jianshu.com/u/354cc1548a33" target="_blank" rel="noopener">【1】简书主页·share猿</a><br><a href="https://juejin.im/user/5a8e759851882524d842d174" target="_blank" rel="noopener">【2】掘金主页·share猿</a></p></blockquote><hr><p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>                </div>                <div class="image-caption"></div>            </figure></p><p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>]]></content>
     
@@ -67,51 +152,21 @@
     
     </summary>
     
-      <category term="基础巩固" scheme="https://lywlefan.github.io/categories/%E5%9F%BA%E7%A1%80%E5%B7%A9%E5%9B%BA/"/>
+      <category term="后端" scheme="https://lywlefan.github.io/categories/%E5%90%8E%E7%AB%AF/"/>
     
     
-      <category term="java基础" scheme="https://lywlefan.github.io/tags/java%E5%9F%BA%E7%A1%80/"/>
+      <category term="基础" scheme="https://lywlefan.github.io/tags/%E5%9F%BA%E7%A1%80/"/>
     
-      <category term="异常" scheme="https://lywlefan.github.io/tags/%E5%BC%82%E5%B8%B8/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>人生效率手册-时间管理</title>
-    <link href="https://lywlefan.github.io/2019/08/13/%E8%AF%BB%E4%B9%A6/%E5%BD%92%E6%A1%A3/2019/8%E6%9C%88/%E4%BA%BA%E7%94%9F%E6%95%88%E7%8E%87%E6%89%8B%E5%86%8C/%E4%BA%BA%E7%94%9F%E6%95%88%E7%8E%87%E6%89%8B%E5%86%8C-%E6%97%B6%E9%97%B4%E7%AE%A1%E7%90%86/"/>
-    <id>https://lywlefan.github.io/2019/08/13/读书/归档/2019/8月/人生效率手册/人生效率手册-时间管理/</id>
-    <published>2019-08-12T16:00:00.000Z</published>
-    <updated>2019-08-14T05:36:30.638Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="思维导图"><a href="#思维导图" class="headerlink" title="思维导图"></a>思维导图</h3><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://images.smcdn.cn/AfUmWuhtrKsBvQ6J/时间管理.jpg" alt title>                </div>                <div class="image-caption"></div>            </figure><h3 id="金句-语录"><a href="#金句-语录" class="headerlink" title="金句/语录"></a>金句/语录</h3><p>1.如果一个人花费了越多的时间进行精细化的练习，那么他就越可能做到更好，并且在这个领域当中达到顶级水平。</p><p>2.如果要完美地掌握某项复杂的技能，就需要一遍又一遍艰苦的训练，而练习的时间必须达到一个最小的临界值，这个临界值就是10000小时。</p><p>3.千万不要认为人生目标只是一种光环或者口号，它必须要成为你的行动纲领，每一天去坚持去实践，让自己的努力看得见。</p><p>4.在人生中需要把重要的事情放在前面，并且一次只做好一件事情。</p><p>5.真正的时间管理，是从开始计划，到实施计划、总结复盘，再到评估，以及再次计划的过程。</p><p>6.你想掌握时间管理，一个非常重要的方法就是用项目管理的方法，来管理好自己的时间，记住四个要素，计划、实施、总结、评估，才能到再次计划。</p><p>7.一定要每天都能拿出2~3小时，用在积累自己的核心竞争力上，用来做最重要且不紧急的事情。</p><p>8.时间管理，越早想明白越好；但想明白还不够，越早做到越好；做到还不够，只有每天坚持才重要。</p><p>9.香港铁路有限公司中国顾问易瑥，在4家世界500强公司担任过高管，他熟练掌握0.1618法则，他喜欢将时间管理与0.1618法则相结合，一般上午11点之前处理最重要、最紧急的事情，下午的时间用来思考最重要的事情，最急的事情必须先处理，最重要的处理不好都不行，如果事情特别重要但不紧急的话可以往后放，但紧急不重要的事情就可以授权给他人做，这就是0.1618法则。我们需要将有限的时间投入那0.1618的事情上，以此来锻炼我们的核心竞争力。</p><p>10.最后骨灰级的激励，就是自己愿意去做一个榜样，并且找到你的粉丝们。如果你的行为处处被他人监督，自己想不实施、想犯懒都不行。</p><p>11.你要跟过去的自己PK，与过去的自己做一个对比，只要你进步了一点点，那么，你就赢了。</p><h3 id="实践感悟"><a href="#实践感悟" class="headerlink" title="实践感悟"></a>实践感悟</h3><h4 id="时间管理"><a href="#时间管理" class="headerlink" title="时间管理"></a>时间管理</h4><ul><li>践行早起仪式</li><li>时间要有目标性</li><li>硬实力打造 </li><li>0.1618法则</li><li>单点突破打造社区</li></ul><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>看了这一小节，给我最大的感悟就是，在过去的时光里对自己的时间在进行暴殄天物呀！太浪费了，心疼呀!老铁！一天最起码浪费四五个小时，每天四五个小时，每年一千多小时，我的天，一千多小时，可以干多少大事！成功的人都把这四五个小时把握住了，而我没有把握住还妄想自己某一天能取得巨大成就，你简直开了一个天的玩笑。</p><p>其次，给我感触最深的就是要学会用时间的方法。时间管理是一种习惯，书中提到的早起仪式，是连贯的动作，都是好的事情，好的事情就会让你每天有一个好的开始，一日之计在于晨，把握好早餐的时光，起床，写下自己的三个目标，复盘昨日的不足和要改进的地方，全身心投入要硬本领修炼上，然吃早饭，带着快乐的心情去上班，美好的一天就这样开始了！好事也会在我们身上慢慢发生。</p><p>一起加油！社区的小伙伴们！加入我们的社区，和我们每天一起打卡学习！和我们一起修炼自己！不负此生！我们是最棒的！</p><blockquote><p>讨论：大家认为怎样管理自己的时间比较合理？欢迎留言</p></blockquote><blockquote><p><a href="https://www.jianshu.com/u/354cc1548a33" target="_blank" rel="noopener">【1】简书主页·share猿</a><br><a href="https://juejin.im/user/5a8e759851882524d842d174" target="_blank" rel="noopener">【2】掘金主页·share猿</a></p></blockquote><hr><p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>                </div>                <div class="image-caption"></div>            </figure></p><p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h3 id=&quot;思维导图&quot;&gt;&lt;a href=&quot;#思维导图&quot; class=&quot;headerlink&quot; title=&quot;思维导图&quot;&gt;&lt;/a&gt;思维导图&lt;/h3&gt;&lt;figure class=&quot;image-bubble&quot;&gt;
-                &lt;div class=&quot;img-lig
-      
-    
-    </summary>
-    
-      <category term="读书" scheme="https://lywlefan.github.io/categories/%E8%AF%BB%E4%B9%A6/"/>
-    
-    
-      <category term="读书笔记" scheme="https://lywlefan.github.io/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
-    
-      <category term="2019年读书" scheme="https://lywlefan.github.io/tags/2019%E5%B9%B4%E8%AF%BB%E4%B9%A6/"/>
-    
-      <category term="8月读书" scheme="https://lywlefan.github.io/tags/8%E6%9C%88%E8%AF%BB%E4%B9%A6/"/>
+      <category term="java" scheme="https://lywlefan.github.io/tags/java/"/>
     
   </entry>
   
   <entry>
     <title>02.redis的线程IO和通讯协议</title>
-    <link href="https://lywlefan.github.io/2019/08/13/%E4%B8%AD%E9%97%B4%E4%BB%B6/redis/02.redis%E7%9A%84%E7%BA%BF%E7%A8%8BIO%E5%92%8C%E9%80%9A%E8%AE%AF%E5%8D%8F%E8%AE%AE/"/>
-    <id>https://lywlefan.github.io/2019/08/13/中间件/redis/02.redis的线程IO和通讯协议/</id>
+    <link href="https://lywlefan.github.io/2019/08/13/%E5%90%8E%E7%AB%AF/%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/NOSQL/redis/03.redis%E7%9A%84%E7%BA%BF%E7%A8%8BIO%E5%92%8C%E9%80%9A%E8%AE%AF%E5%8D%8F%E8%AE%AE/"/>
+    <id>https://lywlefan.github.io/2019/08/13/后端/数据存储/NOSQL/redis/03.redis的线程IO和通讯协议/</id>
     <published>2019-08-12T16:00:00.000Z</published>
-    <updated>2019-08-14T01:21:11.015Z</updated>
+    <updated>2019-10-15T06:42:25.278Z</updated>
     
     <content type="html"><![CDATA[<h2 id="redis的线程IO"><a href="#redis的线程IO" class="headerlink" title="redis的线程IO"></a>redis的线程IO</h2><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://upload-images.jianshu.io/upload_images/3084894-bcf206af27739ea2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="线程IO" title>                </div>                <div class="image-caption">线程IO</div>            </figure><p>Redis是个单线程程序!但是他有高并发特性,单个节点可以支持10w的QPS。除了redis是单线程,Nginx也是单线程的。单线程为什么如此之快?单线程有如何处理多并发的客户端连接?下面让我们带着这些问题一起深究redis的线程IO。</p><h3 id="5种IO模型学习"><a href="#5种IO模型学习" class="headerlink" title="5种IO模型学习"></a>5种IO模型学习</h3><ul><li><p>阻塞IO模型</p></li><li><p>非阻塞IO模型</p></li><li><p>IO复用模型</p></li><li><p>信号驱动的IO模型</p></li><li><p>异步IO模型</p></li></ul><h4 id="阻塞IO模型"><a href="#阻塞IO模型" class="headerlink" title="阻塞IO模型"></a>阻塞IO模型</h4><p>进程发起IO系统调用后，进程被阻塞，转到内核空间处理，整个IO处理完毕后返回进程。操作成功则进程获取到数据。</p><h5 id="类比"><a href="#类比" class="headerlink" title="类比"></a>类比</h5><p>老李去火车站买票，排队三天买到一张退票。</p><p>耗费：在车站吃喝拉撒睡 3天，其他事一件没干。</p><h5 id="典型应用"><a href="#典型应用" class="headerlink" title="典型应用"></a>典型应用</h5><ul><li><p>阻塞socket</p></li><li><p>java BIO</p></li></ul><h5 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h5><ul><li><p>进程阻塞挂起不消耗CPU资源，及时响应每个操作；</p></li><li><p>实现难度低、开发应用较容易；</p></li><li><p>适用并发量小的网络应用开发；</p></li></ul><p>不适用并发量大的应用：因为一个请求IO会阻塞进程，所以，得为每请求分配一个处理进程（线程）以及时响应，系统开销大。</p><h4 id="非阻塞IO模型"><a href="#非阻塞IO模型" class="headerlink" title="非阻塞IO模型"></a>非阻塞IO模型</h4><p>进程发起IO系统调用后，如果内核缓冲区没有数据，需要到IO设备中读取，进程返回一个错误而不会被阻塞；进程发起IO系统调用后，如果内核缓冲区有数据，内核就会把数据返回进程。</p><h5 id="类比-1"><a href="#类比-1" class="headerlink" title="类比"></a>类比</h5><p> 老李去火车站买票，隔12小时去火车站问有没有退票，三天后买到一张票。</p><p> 耗费：往返车站6次，路上6小时，其他时间做了好多事。</p><h5 id="典型应用-1"><a href="#典型应用-1" class="headerlink" title="典型应用"></a>典型应用</h5><ul><li>socket是非阻塞的方式（设置为NONBLOCK）</li></ul><h5 id="特点-1"><a href="#特点-1" class="headerlink" title="特点"></a>特点</h5><ul><li><p>进程轮询（重复）调用，消耗CPU的资源；</p></li><li><p>实现难度低、开发应用相对阻塞IO模式较难；</p></li><li><p>适用并发量较小、且不需要及时响应的网络应用开发；</p></li></ul><h4 id="IO复用模型"><a href="#IO复用模型" class="headerlink" title="IO复用模型"></a>IO复用模型</h4><p>多个的进程的IO可以注册到一个复用器（select）上，然后用一个进程调用该select， select会监听所有注册进来的IO；</p><p>如果select没有监听的IO在内核缓冲区都没有可读数据，select调用进程会被阻塞；而当任一IO在内核缓冲区中有可数据时，select调用就会返回；</p><p>而后select调用进程可以自己或通知另外的进程（注册进程）来再次发起读取IO，读取内核中准备好的数据。</p><p>可以看到，多个进程注册IO后，只有另一个select调用进程被阻塞。</p><h5 id="类比-2"><a href="#类比-2" class="headerlink" title="类比"></a>类比</h5><p>是找一个宿管大妈来帮你监视下楼的女生, 这个期间你可以些其他的事情. 例如可以顺便看看其他妹子,玩玩王者荣耀, 上个厕所等等. IO复用又包括 select, poll, epoll 模式. 那么它们的区别是什么?</p><ul><li>select</li></ul><p>每一个女生下楼, select大妈都不知道这个是不是你的女神, 她需要一个一个询问, 并且select大妈能力还有限, 最多一次帮你监视1024个妹子</p><ul><li>poll</li></ul><p>不限制盯着女生的数量, 只要是经过宿舍楼门口的女生, 都会帮你去问是不是你女神</p><ul><li>epoll</li></ul><p>不限制盯着女生的数量, 并且也不需要一个一个去问. 那么如何做呢? epoll大妈会为每个进宿舍楼的女生脸上贴上一个大字条,上面写上女生自己的名字, 只要女生下楼了, epoll大妈就知道这个是不是你女神了, 然后大妈再通知你.</p><h5 id="典型应用-2"><a href="#典型应用-2" class="headerlink" title="典型应用"></a>典型应用</h5><ul><li><p>select</p></li><li><p>poll</p></li><li><p>epoll三种方案</p></li><li><p>nginx都可以选择使用这三个方案</p></li><li><p>Java NIO;</p></li></ul><h5 id="特点-2"><a href="#特点-2" class="headerlink" title="特点"></a>特点</h5><ul><li><p>专一进程解决多个进程IO的阻塞问题，性能好；Reactor模式;</p></li><li><p>实现、开发应用难度较大；</p></li><li><p>适用高并发服务应用开发：一个进程（线程）响应多个请求</p></li></ul><h5 id="形成原因"><a href="#形成原因" class="headerlink" title="形成原因"></a>形成原因</h5><p>如果一个I/O流进来，我们就开启一个进程处理这个I/O流。那么假设现在有一百万个I/O流进来，那我们就需要开启一百万个进程一一对应处理这些I/O流（——这就是传统意义下的多进程并发处理）。思考一下，一百万个进程，你的CPU占有率会多高，这个实现方式及其的不合理。所以人们提出了I/O多路复用这个模型，一个线程，通过记录I/O流的状态来同时管理多个I/O，可以提高服务器的吞吐能力。</p><h4 id="信号驱动的IO模型"><a href="#信号驱动的IO模型" class="headerlink" title="信号驱动的IO模型"></a>信号驱动的IO模型</h4><p>当进程发起一个IO操作，会向内核注册一个信号处理函数，然后进程返回不阻塞；当内核数据就绪时会发送一个信号给进程，进程便在信号处理函数中调用IO读取数据。</p><h5 id="特点-3"><a href="#特点-3" class="headerlink" title="特点"></a>特点</h5><ul><li>回调机制，实现、开发应用难度大；</li></ul><h4 id="异步IO模型"><a href="#异步IO模型" class="headerlink" title="异步IO模型"></a>异步IO模型</h4><p>当进程发起一个IO操作，进程返回（不阻塞），但也不能返回果结；内核把整个IO处理完后，会通知进程结果。如果IO操作成功则进程直接获取到数据。</p><h5 id="特点-4"><a href="#特点-4" class="headerlink" title="特点"></a>特点</h5><ul><li><p>不阻塞，数据一步到位；Proactor模式；</p></li><li><p>需要操作系统的底层支持，LINUX 2.5 版本内核首现，2.6 版本产品的内核标准特性；</p></li><li><p>实现、开发应用难度大；</p></li><li><p>非常适合高性能高并发应用</p></li></ul><h5 id="典型"><a href="#典型" class="headerlink" title="典型"></a>典型</h5><ul><li><p>JAVA7 AIO</p></li><li><p>高性能服务器应用</p></li></ul><p>通过学习5种IO模型,我们知道了Redis就是使用的IO复用模型里面的select。</p><h3 id="指令队列"><a href="#指令队列" class="headerlink" title="指令队列"></a>指令队列</h3><p>Redis 会将每个客户端套接字都关联一个指令队列。客户端的指令通过队列来排队进行顺序处理，先到先服务。 也就是说指令的请求顺序是通过队列来进行约束的。</p><h3 id="响应队列"><a href="#响应队列" class="headerlink" title="响应队列"></a>响应队列</h3><p>每个客户端关联一个响应队列。然后服务端通过响应队列将数据返回给客户端。</p><h3 id="定时任务"><a href="#定时任务" class="headerlink" title="定时任务"></a>定时任务</h3><p>服务器处理要响应 IO 事件外，还要处理其它事情。比如定时任务就是非常重要的一件事。如果线程阻塞在 select 系统调用上，定时任务将无法得到准时调度。那 Redis 是如何解决这个问题的呢？</p><blockquote><p>如果面试官问到这个问题我肯定是处于懵逼状态。老钱书中写到,redis会把定时任务记录到一个叫最小堆的数据结构中,每个周期循环redis会立即处理堆最上面的数据。  </p></blockquote><h2 id="redis的通讯协议"><a href="#redis的通讯协议" class="headerlink" title="redis的通讯协议"></a>redis的通讯协议</h2><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://upload-images.jianshu.io/upload_images/3084894-d8790174146ea545.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="通讯协议" title>                </div>                <div class="image-caption">通讯协议</div>            </figure><h3 id="RESP协议简介"><a href="#RESP协议简介" class="headerlink" title="RESP协议简介"></a>RESP协议简介</h3><p>Redis 的客户端和服务端之间采取了一种独立名为 RESP(REdis Serialization Protocol) 的协议，作者主要考虑了以下几个点：</p><ul><li>容易实现</li><li>解析快</li><li>人类可读</li></ul><p>注意：RESP 虽然是为 Redis 设计的，但是同样也可以用于其他 C/S 的软件。</p><h3 id="数据类型及示例"><a href="#数据类型及示例" class="headerlink" title="数据类型及示例"></a>数据类型及示例</h3><p>RESP 主要可以序列化以下几种类型：整数，单行回复(简单字符串)，数组，错误信息，多行字符串。Redis 客户端向服务端发送的是一组由执行的命令组成的字符串数组，服务端根据不同的命令回复不同类型的数据，但协议的每部分都是以 “\r\n” (CRLF) 结尾的。另外 RESP 是二进制安全的，不需要处理从一个进程到另一个进程的传输，因为它使用了前缀长度进行传输。</p><p>在 RESP 中, 一些数据的类型通过它的第一个字节进行判断：</p><ul><li><p>单行回复：回复的第一个字节是 “+”</p></li><li><p>错误信息：回复的第一个字节是 “-”</p></li><li><p>整形数字：回复的第一个字节是 “:”</p></li><li><p>多行字符串：回复的第一个字节是 “\$”</p></li><li><p>数组：回复的第一个字节是 “*”</p></li></ul><p>RESP 协议还是相对易于理解的，另外理解了协议也方便对 Redis 一些问题的定位及客户端的实现。</p><p>Redis 协议里有大量冗余的回车换行符，但是这不影响它成为互联网技术领域非常受欢迎的一个文本协议。有很多开源项目使用 RESP 作为它的通讯协议。在技术领域性能并不总是一切，还有简单性、易理解性和易实现性，这些都需要进行适当权衡。</p><blockquote><p><strong>参考文档</strong></p></blockquote><blockquote><p><a href="https://www.jianshu.com/u/354cc1548a33" target="_blank" rel="noopener">【1】简书主页·share猿</a></p></blockquote><blockquote><p><a href="https://juejin.im/user/5a8e759851882524d842d174" target="_blank" rel="noopener">【2】掘金主页·share猿</a></p></blockquote><blockquote><p><a href="https://redis.io" target="_blank" rel="noopener">【3】redis官网</a></p></blockquote><hr><p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>                </div>                <div class="image-caption"></div>            </figure></p><p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>]]></content>
     
@@ -125,21 +180,23 @@
     
     </summary>
     
-      <category term="中间件" scheme="https://lywlefan.github.io/categories/%E4%B8%AD%E9%97%B4%E4%BB%B6/"/>
+      <category term="后端" scheme="https://lywlefan.github.io/categories/%E5%90%8E%E7%AB%AF/"/>
     
     
       <category term="redis" scheme="https://lywlefan.github.io/tags/redis/"/>
     
-      <category term="redis基础" scheme="https://lywlefan.github.io/tags/redis%E5%9F%BA%E7%A1%80/"/>
+      <category term="数据存储" scheme="https://lywlefan.github.io/tags/%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/"/>
+    
+      <category term="NOSQL" scheme="https://lywlefan.github.io/tags/NOSQL/"/>
     
   </entry>
   
   <entry>
     <title>内功修炼-算法02</title>
-    <link href="https://lywlefan.github.io/2019/08/13/%E7%AE%97%E6%B3%95/%E5%8A%9B%E6%89%A3/%E5%86%85%E5%8A%9F%E4%BF%AE%E7%82%BC-%E7%AE%97%E6%B3%9502/"/>
-    <id>https://lywlefan.github.io/2019/08/13/算法/力扣/内功修炼-算法02/</id>
+    <link href="https://lywlefan.github.io/2019/08/13/%E7%AE%97%E6%B3%95/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/%E5%8A%9B%E6%89%A3/%E5%86%85%E5%8A%9F%E4%BF%AE%E7%82%BC-%E7%AE%97%E6%B3%9502/"/>
+    <id>https://lywlefan.github.io/2019/08/13/算法/算法基础/力扣/内功修炼-算法02/</id>
     <published>2019-08-12T16:00:00.000Z</published>
-    <updated>2019-08-13T10:59:17.405Z</updated>
+    <updated>2019-10-15T08:11:12.416Z</updated>
     
     <content type="html"><![CDATA[<blockquote><p>万丈高楼平地起的前提是地基好.</p></blockquote><h2 id="题目-无重复字符的最长子串"><a href="#题目-无重复字符的最长子串" class="headerlink" title="题目:无重复字符的最长子串"></a>题目:无重复字符的最长子串</h2><h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>给定一个字符串，请你找出其中不含有重复字符的 <strong>最长子串</strong> 的长度。</p><p>示例 1:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">输入: &quot;abcabcbb&quot;</span><br><span class="line">输出: 3 </span><br><span class="line">解释: 因为无重复字符的最长子串是 &quot;abc&quot;，所以其长度为 3。</span><br><span class="line">示例 2:</span><br><span class="line"></span><br><span class="line">输入: &quot;bbbbb&quot;</span><br><span class="line">输出: 1</span><br><span class="line">解释: 因为无重复字符的最长子串是 &quot;b&quot;，所以其长度为 1。</span><br><span class="line">示例 3:</span><br><span class="line"></span><br><span class="line">输入: &quot;pwwkew&quot;</span><br><span class="line">输出: 3</span><br><span class="line">解释: 因为无重复字符的最长子串是 &quot;wke&quot;，所以其长度为 3。</span><br><span class="line">     请注意，你的答案必须是 子串 的长度，&quot;pwke&quot; 是一个子序列，不是子串。</span><br></pre></td></tr></table></figure><h3 id="题目分析"><a href="#题目分析" class="headerlink" title="题目分析"></a>题目分析</h3><h4 id="关键点"><a href="#关键点" class="headerlink" title="关键点"></a>关键点</h4><ul><li>不含有重复字符的最大字符串长度</li></ul><h4 id="思路梳理"><a href="#思路梳理" class="headerlink" title="思路梳理"></a>思路梳理</h4><h5 id="我的解题思路"><a href="#我的解题思路" class="headerlink" title="我的解题思路"></a>我的解题思路</h5><ul><li><p>1.把字符串转换为字符数组</p></li><li><p>2.把字符串逐个放入set集合(set),同时记录放入集合的数量(j)</p></li><li><p>2.如果set集合长度和放入数量不符,记录该长度(l),清空set集合,把j设置为0,放入刚才放入的值,继续循环</p></li><li><p>3.如果继续出现上述清空,和上面记录的长度进行对比,小于清空继续,大于更新记录长度</p></li></ul><p>总结:上述解题思路忽略了空格字符串的情况,存在问题.</p><h5 id="正确的解题思路-滑动窗口"><a href="#正确的解题思路-滑动窗口" class="headerlink" title="正确的解题思路:滑动窗口"></a>正确的解题思路:滑动窗口</h5><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://upload-images.jianshu.io/upload_images/3084894-676af09bd331705a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="时间窗移动原理" title>                </div>                <div class="image-caption">时间窗移动原理</div>            </figure><ul><li><p>1.定义一个map集合(map)，用于存储字符值和位置，key为字符，value为字符位置加1</p></li><li><p>2.定义一个变量ans,用于记录时间窗最大长度</p></li><li><p>3.定义时间窗起点start和时间窗结束点end</p></li><li><p>4.然后把end向右滑动,最大长度为（end-start+1），如果map集合中存在该元素,说明遇到了重复的元素</p><ul><li><p>4.1.记录时间窗最大值ans</p></li><li><p>4.2.移动时间窗start到重复元素第一个之后的位置</p></li></ul></li><li><p>5.继续滑动,直到j=字符串长度</p></li></ul><h3 id="题目解答"><a href="#题目解答" class="headerlink" title="题目解答"></a>题目解答</h3><h4 id="我的解答"><a href="#我的解答" class="headerlink" title="我的解答"></a>我的解答</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 思路一:</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> *      1.把字符串转换为字符数组</span></span><br><span class="line"><span class="comment"> *      2.把字符串逐个放入set集合(set),同时记录放入集合的数量(j)</span></span><br><span class="line"><span class="comment"> *      2.如果set集合长度和放入数量不符,记录该长度(l),清空set集合,把j设置为0,放入刚才放入的值,继续循环</span></span><br><span class="line"><span class="comment"> *      3.如果继续出现上述清空,和上面记录的长度进行对比,小于清空继续,大于更新记录长度</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> *      时间复杂度:T(N) 空间复杂度:O(1)</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * 测试情况:不通过</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * 总结分析:</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> *      1.没有考虑到空格字符串的情况</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">lengthOfLongestSubstring1</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">char</span> [] chars = s.toCharArray();</span><br><span class="line">    Set set = <span class="keyword">new</span> HashSet();</span><br><span class="line">    <span class="keyword">int</span> l=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>,j=<span class="number">0</span>;i&lt;chars.length;i++)&#123;</span><br><span class="line">       set.add(chars[i]);</span><br><span class="line">       j++;</span><br><span class="line">       <span class="keyword">if</span> (set.size()&lt;j)&#123;</span><br><span class="line">           l = Math.max(set.size(),l);</span><br><span class="line">           set.clear();</span><br><span class="line">           j = <span class="number">1</span>;</span><br><span class="line">           set.add(chars[i]);</span><br><span class="line">       &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> l;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h4 id="正确的解答"><a href="#正确的解答" class="headerlink" title="正确的解答"></a>正确的解答</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 思路二: 滑动窗口</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> *      1.定义一个map集合(map)，用于存储字符值和位置，key为字符，value为字符位置加1</span></span><br><span class="line"><span class="comment"> *      2.定义一个变量ans,用于记录时间窗最大长度</span></span><br><span class="line"><span class="comment"> *      3.定义时间窗起点start和时间窗结束点end</span></span><br><span class="line"><span class="comment"> *      4.然后把end向右滑动,最大长度为（end-start+1），如果map集合中存在该元素,说明遇到了重复的元素</span></span><br><span class="line"><span class="comment"> *          4.1.记录时间窗最大值ans</span></span><br><span class="line"><span class="comment"> *          4.2.移动时间窗start到重复元素第一个之后的位置</span></span><br><span class="line"><span class="comment"> *      5.继续滑动,直到j=字符串长度</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">lengthOfLongestSubstring2</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n = s.length(), ans = <span class="number">0</span>;</span><br><span class="line">    Map&lt;Character, Integer&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> end = <span class="number">0</span>, start = <span class="number">0</span>; end &lt; n; end++) &#123;</span><br><span class="line">        <span class="keyword">char</span> alpha = s.charAt(end);</span><br><span class="line">        <span class="keyword">if</span> (map.containsKey(alpha)) &#123;</span><br><span class="line">            start = Math.max(map.get(alpha), start);</span><br><span class="line">        &#125;</span><br><span class="line">        ans = Math.max(ans, end - start + <span class="number">1</span>);</span><br><span class="line">        map.put(s.charAt(end), end + <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="题目总结"><a href="#题目总结" class="headerlink" title="题目总结"></a>题目总结</h3><p>在做这道题目的过程中,没有考虑到空格字符串的情况,这是基础不扎实导致的,null/“”/“ “,这三个还是有很大的区别的,如果大家也遇到和我一样的问题,可以当做是一个教训。</p><p>还有就是滑动窗口,这个理解比较麻烦,最好可以看我上面画的那种图,或者你可以自己画一个出来,滑动窗口是一个常用的办法,我们要深入理解。记得在有一次做限流的时候也用到了滑动窗口的概念。</p><h3 id="问题讨论"><a href="#问题讨论" class="headerlink" title="问题讨论"></a>问题讨论</h3><ul><li>假如让你用滑动窗口实现一个简单的限流,如何实现?(加入星球看答案哦!里面有更多精彩内容!)</li></ul><blockquote><p><strong>参考文档</strong></p></blockquote><blockquote><p><a href="https://www.jianshu.com/u/354cc1548a33" target="_blank" rel="noopener">【1】简书主页·share猿</a></p></blockquote><blockquote><p><a href="https://juejin.im/user/5a8e759851882524d842d174" target="_blank" rel="noopener">【2】掘金主页·share猿</a></p></blockquote><blockquote><p><a href="https://github.com/azl397985856/leetcode" target="_blank" rel="noopener">【3】leetcode算法指南</a></p></blockquote><hr><p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>                </div>                <div class="image-caption"></div>            </figure></p><p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>]]></content>
     
@@ -160,14 +217,16 @@
     
       <category term="力扣" scheme="https://lywlefan.github.io/tags/%E5%8A%9B%E6%89%A3/"/>
     
+      <category term="基础" scheme="https://lywlefan.github.io/tags/%E5%9F%BA%E7%A1%80/"/>
+    
   </entry>
   
   <entry>
     <title>21.合并两个有序的链表</title>
-    <link href="https://lywlefan.github.io/2019/08/06/%E7%AE%97%E6%B3%95/%E5%8A%9B%E6%89%A3/21.%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E7%9A%84%E9%93%BE%E8%A1%A8/"/>
-    <id>https://lywlefan.github.io/2019/08/06/算法/力扣/21.合并两个有序的链表/</id>
+    <link href="https://lywlefan.github.io/2019/08/06/%E7%AE%97%E6%B3%95/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/%E5%8A%9B%E6%89%A3/21.%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E7%9A%84%E9%93%BE%E8%A1%A8/"/>
+    <id>https://lywlefan.github.io/2019/08/06/算法/算法基础/力扣/21.合并两个有序的链表/</id>
     <published>2019-08-05T16:00:00.000Z</published>
-    <updated>2019-08-06T09:38:37.695Z</updated>
+    <updated>2019-10-15T08:11:12.750Z</updated>
     
     <content type="html"><![CDATA[<blockquote><p>万丈高楼平地起的前提是地基好.</p></blockquote><h3 id="题目介绍"><a href="#题目介绍" class="headerlink" title="题目介绍"></a>题目介绍</h3><p>将两个有序链表合并为一个新的有序链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。 </p><p>示例 1:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：1-&gt;2-&gt;4, 1-&gt;3-&gt;4</span><br><span class="line">输出：1-&gt;1-&gt;2-&gt;3-&gt;4-&gt;4</span><br></pre></td></tr></table></figure><h3 id="题目解答"><a href="#题目解答" class="headerlink" title="题目解答"></a>题目解答</h3><h3 id="思路梳理"><a href="#思路梳理" class="headerlink" title="思路梳理"></a>思路梳理</h3><h3 id="题目实现"><a href="#题目实现" class="headerlink" title="题目实现"></a>题目实现</h3><h4 id="java"><a href="#java" class="headerlink" title="java"></a>java</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure><blockquote><p><strong>参考文档</strong></p></blockquote><blockquote><p><a href="https://www.jianshu.com/u/354cc1548a33" target="_blank" rel="noopener">【1】简书主页·share猿</a></p></blockquote><blockquote><p><a href="https://juejin.im/user/5a8e759851882524d842d174" target="_blank" rel="noopener">【2】掘金主页·share猿</a></p></blockquote><blockquote><p><a href="https://github.com/azl397985856/leetcode" target="_blank" rel="noopener">【3】leetcode算法指南</a></p></blockquote><hr><p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>                </div>                <div class="image-caption"></div>            </figure></p><p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>]]></content>
     
@@ -188,14 +247,16 @@
     
       <category term="力扣" scheme="https://lywlefan.github.io/tags/%E5%8A%9B%E6%89%A3/"/>
     
+      <category term="基础" scheme="https://lywlefan.github.io/tags/%E5%9F%BA%E7%A1%80/"/>
+    
   </entry>
   
   <entry>
     <title>22.括号的生成</title>
-    <link href="https://lywlefan.github.io/2019/08/05/%E7%AE%97%E6%B3%95/%E5%8A%9B%E6%89%A3/22.%E6%8B%AC%E5%8F%B7%E7%9A%84%E7%94%9F%E6%88%90/"/>
-    <id>https://lywlefan.github.io/2019/08/05/算法/力扣/22.括号的生成/</id>
+    <link href="https://lywlefan.github.io/2019/08/05/%E7%AE%97%E6%B3%95/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/%E5%8A%9B%E6%89%A3/22.%E6%8B%AC%E5%8F%B7%E7%9A%84%E7%94%9F%E6%88%90/"/>
+    <id>https://lywlefan.github.io/2019/08/05/算法/算法基础/力扣/22.括号的生成/</id>
     <published>2019-08-04T16:00:00.000Z</published>
-    <updated>2019-08-05T08:33:48.760Z</updated>
+    <updated>2019-10-15T08:11:12.582Z</updated>
     
     <content type="html"><![CDATA[<blockquote><p>万丈高楼平地起的前提是地基好.</p></blockquote><h3 id="题目介绍"><a href="#题目介绍" class="headerlink" title="题目介绍"></a>题目介绍</h3><p>给出 n 代表生成括号的对数，请你写出一个函数，使其能够生成所有可能的并且有效的括号组合。</p><p>例如，给出 n = 3，生成结果为：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">[</span><br><span class="line">  &quot;((()))&quot;,</span><br><span class="line">  &quot;(()())&quot;,</span><br><span class="line">  &quot;(())()&quot;,</span><br><span class="line">  &quot;()(())&quot;,</span><br><span class="line">  &quot;()()()&quot;</span><br><span class="line">]</span><br></pre></td></tr></table></figure><h3 id="思路梳理"><a href="#思路梳理" class="headerlink" title="思路梳理"></a>思路梳理</h3><h4 id="关键点"><a href="#关键点" class="headerlink" title="关键点"></a>关键点</h4><ul><li><p>生成括号对数</p></li><li><p>生成括号不同对数</p></li><li><p>生成的括号必须要闭合</p></li><li><p>生成括号的类型要用大括号包住</p></li></ul><h4 id="如何实现哪"><a href="#如何实现哪" class="headerlink" title="如何实现哪??"></a>如何实现哪??</h4><h5 id="我的思路-分类法-X"><a href="#我的思路-分类法-X" class="headerlink" title="我的思路:分类法 (X)"></a>我的思路:分类法 (X)</h5><ul><li><p>第一种情况:括号中括号</p></li><li><p>第二种情况:括号中多个括号</p></li><li><p>第三种情况:分割括号,然后括号中括号(左右)</p></li><li><p>第四种情况:括号独立类型</p></li></ul><h5 id="官方思路"><a href="#官方思路" class="headerlink" title="官方思路:"></a>官方思路:</h5><h3 id="题目实现"><a href="#题目实现" class="headerlink" title="题目实现"></a>题目实现</h3><h4 id="我的实现"><a href="#我的实现" class="headerlink" title="我的实现"></a>我的实现</h4><h5 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h5><h5 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h5><h4 id="最优解实现"><a href="#最优解实现" class="headerlink" title="最优解实现"></a>最优解实现</h4><h5 id="分析-1"><a href="#分析-1" class="headerlink" title="分析"></a>分析</h5><h5 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h5><blockquote><p><strong>参考文档</strong></p></blockquote><blockquote><p><a href="https://www.jianshu.com/u/354cc1548a33" target="_blank" rel="noopener">【1】简书主页·share猿</a></p></blockquote><blockquote><p><a href="https://juejin.im/user/5a8e759851882524d842d174" target="_blank" rel="noopener">【2】掘金主页·share猿</a></p></blockquote><blockquote><p><a href="https://github.com/azl397985856/leetcode" target="_blank" rel="noopener">【3】leetcode算法指南</a></p></blockquote><hr><p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>                </div>                <div class="image-caption"></div>            </figure></p><p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>]]></content>
     
@@ -216,14 +277,16 @@
     
       <category term="力扣" scheme="https://lywlefan.github.io/tags/%E5%8A%9B%E6%89%A3/"/>
     
+      <category term="基础" scheme="https://lywlefan.github.io/tags/%E5%9F%BA%E7%A1%80/"/>
+    
   </entry>
   
   <entry>
     <title>20.有效的括号</title>
-    <link href="https://lywlefan.github.io/2019/08/02/%E7%AE%97%E6%B3%95/%E5%8A%9B%E6%89%A3/20.%E6%9C%89%E6%95%88%E7%9A%84%E6%8B%AC%E5%8F%B7/"/>
-    <id>https://lywlefan.github.io/2019/08/02/算法/力扣/20.有效的括号/</id>
+    <link href="https://lywlefan.github.io/2019/08/02/%E7%AE%97%E6%B3%95/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/%E5%8A%9B%E6%89%A3/20.%E6%9C%89%E6%95%88%E7%9A%84%E6%8B%AC%E5%8F%B7/"/>
+    <id>https://lywlefan.github.io/2019/08/02/算法/算法基础/力扣/20.有效的括号/</id>
     <published>2019-08-01T16:00:00.000Z</published>
-    <updated>2019-08-05T02:30:07.895Z</updated>
+    <updated>2019-10-15T08:11:12.866Z</updated>
     
     <content type="html"><![CDATA[<blockquote><p>万丈高楼平地起的前提是地基好.</p></blockquote><h3 id="题目介绍"><a href="#题目介绍" class="headerlink" title="题目介绍"></a>题目介绍</h3><p>给定一个只包括 ‘(‘，’)’，’{‘，’}’，’[‘，’]’ 的字符串，判断字符串是否有效。</p><p>有效字符串需满足：</p><p>左括号必须用相同类型的右括号闭合。<br>左括号必须以正确的顺序闭合。<br>注意空字符串可被认为是有效字符串。</p><p>示例 1:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">输入: &quot;()&quot;</span><br><span class="line">输出: true</span><br><span class="line">示例 2:</span><br><span class="line"></span><br><span class="line">输入: &quot;()[]&#123;&#125;&quot;</span><br><span class="line">输出: true</span><br><span class="line">示例 3:</span><br><span class="line"></span><br><span class="line">输入: &quot;(]&quot;</span><br><span class="line">输出: false</span><br></pre></td></tr></table></figure><h3 id="题目解答"><a href="#题目解答" class="headerlink" title="题目解答"></a>题目解答</h3><h3 id="思路梳理"><a href="#思路梳理" class="headerlink" title="思路梳理"></a>思路梳理</h3><h4 id="哪些情况括号不闭合"><a href="#哪些情况括号不闭合" class="headerlink" title="哪些情况括号不闭合"></a>哪些情况括号不闭合</h4><ul><li><p>第一种:[(])</p></li><li><p>第二种:[)</p></li><li><p>第三种:[](</p></li></ul><h4 id="如何判断括号没有闭合"><a href="#如何判断括号没有闭合" class="headerlink" title="如何判断括号没有闭合"></a>如何判断括号没有闭合</h4><blockquote><p>注意：只包括括号，这是条件要注意！</p></blockquote><ul><li><p>1.获取每种类型左括号的第一次出现的位置</p></li><li><p>2.然后再找到每种类型右括号第一次出现的位置</p></li><li><p>3.如果存在以下情况则括号没有闭合</p><ul><li><p>a.类型左括号位置小于另一种类型括号右括号的位置,则括号没有闭合</p></li><li><p>b.任意类型括号不存在左括号或者右括号,则括号没有闭合</p></li></ul></li></ul><h4 id="最优解"><a href="#最优解" class="headerlink" title="最优解"></a>最优解</h4><ul><li>1.把左括号压入栈中</li><li>2.如果遇到右括号,取出栈最上面的元素去对应的值,判断和循环的元素是否相等,相等继续循环,否则返回false</li><li>3.循环结束,栈里面的元素依次被取出,说明括号串没啥问题,是闭合的. </li></ul><h3 id="题目实现"><a href="#题目实现" class="headerlink" title="题目实现"></a>题目实现</h3><h4 id="java"><a href="#java" class="headerlink" title="java"></a>java</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">static</span> Map&lt;Character, Character&gt; map = <span class="keyword">new</span> HashMap();</span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> &#123;</span><br><span class="line">    map.put(<span class="string">'('</span>, <span class="string">')'</span>);</span><br><span class="line">    map.put(<span class="string">'&#123;'</span>, <span class="string">'&#125;'</span>);</span><br><span class="line">    map.put(<span class="string">'['</span>, <span class="string">']'</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 方法一</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isValid</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">    Stack&lt;Character&gt; stack = <span class="keyword">new</span> Stack();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">char</span> in : s.toCharArray()) &#123;</span><br><span class="line">        <span class="comment">//左括号直接入栈</span></span><br><span class="line">        <span class="keyword">if</span> (map.keySet().contains(in)) &#123;</span><br><span class="line">            stack.push(in);</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (!stack.isEmpty() &amp;&amp; in == map.get(stack.pop())) <span class="keyword">continue</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> stack.isEmpty();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><blockquote><p><strong>参考文档</strong></p></blockquote><blockquote><p><a href="https://www.jianshu.com/u/354cc1548a33" target="_blank" rel="noopener">【1】简书主页·share猿</a></p></blockquote><blockquote><p><a href="https://juejin.im/user/5a8e759851882524d842d174" target="_blank" rel="noopener">【2】掘金主页·share猿</a></p></blockquote><blockquote><p><a href="https://github.com/azl397985856/leetcode" target="_blank" rel="noopener">【3】leetcode算法指南</a></p></blockquote><hr><p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>                </div>                <div class="image-caption"></div>            </figure></p><p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>]]></content>
     
@@ -244,6 +307,8 @@
     
       <category term="力扣" scheme="https://lywlefan.github.io/tags/%E5%8A%9B%E6%89%A3/"/>
     
+      <category term="基础" scheme="https://lywlefan.github.io/tags/%E5%9F%BA%E7%A1%80/"/>
+    
   </entry>
   
   <entry>
@@ -251,7 +316,7 @@
     <link href="https://lywlefan.github.io/2019/08/01/%E7%AE%97%E6%B3%95/%E7%AE%97%E6%B3%95%E5%AF%BC%E8%88%AA/"/>
     <id>https://lywlefan.github.io/2019/08/01/算法/算法导航/</id>
     <published>2019-07-31T16:00:00.000Z</published>
-    <updated>2019-08-01T01:34:58.594Z</updated>
+    <updated>2019-10-15T08:11:12.814Z</updated>
     
     <content type="html"><![CDATA[<blockquote><p>万丈高楼平地起的前提是地基好.</p></blockquote><blockquote><p><strong>参考文档</strong></p></blockquote><blockquote><p><a href="https://www.jianshu.com/u/354cc1548a33" target="_blank" rel="noopener">【1】简书主页·share猿</a></p></blockquote><blockquote><p><a href="https://juejin.im/user/5a8e759851882524d842d174" target="_blank" rel="noopener">【2】掘金主页·share猿</a></p></blockquote><blockquote><p><a href="https://github.com/azl397985856/leetcode" target="_blank" rel="noopener">【3】leetcode算法指南</a></p></blockquote><hr><p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>                </div>                <div class="image-caption"></div>            </figure></p><p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>]]></content>
     
@@ -271,19 +336,19 @@
     
     </summary>
     
-      <category term="导航" scheme="https://lywlefan.github.io/categories/%E5%AF%BC%E8%88%AA/"/>
+      <category term="算法" scheme="https://lywlefan.github.io/categories/%E7%AE%97%E6%B3%95/"/>
     
     
-      <category term="算法导航" scheme="https://lywlefan.github.io/tags/%E7%AE%97%E6%B3%95%E5%AF%BC%E8%88%AA/"/>
+      <category term="导航" scheme="https://lywlefan.github.io/tags/%E5%AF%BC%E8%88%AA/"/>
     
   </entry>
   
   <entry>
     <title>ab.exe压测工具的使用</title>
-    <link href="https://lywlefan.github.io/2019/07/31/%E5%B7%A5%E5%85%B7/%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/ab.exe%E5%8E%8B%E6%B5%8B%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8/"/>
-    <id>https://lywlefan.github.io/2019/07/31/工具/测试工具/ab.exe压测工具的使用/</id>
+    <link href="https://lywlefan.github.io/2019/07/31/%E6%B5%8B%E8%AF%95/%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95/ab.exe%E5%8E%8B%E6%B5%8B%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8/"/>
+    <id>https://lywlefan.github.io/2019/07/31/测试/压力测试/ab.exe压测工具的使用/</id>
     <published>2019-07-30T16:00:00.000Z</published>
-    <updated>2019-07-31T01:50:43.222Z</updated>
+    <updated>2019-10-15T08:11:12.259Z</updated>
     
     <content type="html"><![CDATA[<blockquote><p>工欲善其事，必先利器！</p></blockquote><h3 id="ad-exe介绍"><a href="#ad-exe介绍" class="headerlink" title="ad.exe介绍"></a>ad.exe介绍</h3><p>ab.exe是一个性能检测工具，是apache server中的一个小组件，使用简单，方便</p><h3 id="ad-exe下载"><a href="#ad-exe下载" class="headerlink" title="ad.exe下载"></a>ad.exe下载</h3><p><a href="http://files.cnblogs.com/files/gossip/ab.zip" target="_blank" rel="noopener">下载地址</a></p><h3 id="ad-exe使用步骤"><a href="#ad-exe使用步骤" class="headerlink" title="ad.exe使用步骤"></a>ad.exe使用步骤</h3><h4 id="打开cmd"><a href="#打开cmd" class="headerlink" title="打开cmd"></a>打开cmd</h4><h4 id="进入ab-exe所在的路径（默认放在d盘根目录下）"><a href="#进入ab-exe所在的路径（默认放在d盘根目录下）" class="headerlink" title="进入ab.exe所在的路径（默认放在d盘根目录下）"></a>进入ab.exe所在的路径（默认放在d盘根目录下）</h4><h4 id="命令示例"><a href="#命令示例" class="headerlink" title="命令示例"></a>命令示例</h4> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"> </span><br><span class="line">#介绍ab的命令</span><br><span class="line">ab help</span><br><span class="line">#ab命令请求（一共请求10次,10个并发同时请求）</span><br><span class="line">ab -n 10 -c 10 http://www.cnblogs.com/</span><br><span class="line">#ab命令超时请求（一共请求50次,50个并发同时请求，超时时间设为100秒， 当出现timeout时，可以设置超时时间）</span><br><span class="line">ab -n 50 -c 50 -t 100 http://www.cnblogs.com/</span><br></pre></td></tr></table></figure><h3 id="ab命令使用场景"><a href="#ab命令使用场景" class="headerlink" title="ab命令使用场景"></a>ab命令使用场景</h3><ul><li>可以测试网关的限流</li></ul><blockquote><p><a href="https://www.jianshu.com/u/354cc1548a33" target="_blank" rel="noopener">【1】简书主页·share猿</a><br><a href="https://juejin.im/user/5a8e759851882524d842d174" target="_blank" rel="noopener">【2】掘金主页·share猿</a></p></blockquote><hr><p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>                </div>                <div class="image-caption"></div>            </figure></p><p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>]]></content>
     
@@ -299,21 +364,19 @@
     
     </summary>
     
-      <category term="工具" scheme="https://lywlefan.github.io/categories/%E5%B7%A5%E5%85%B7/"/>
+      <category term="测试" scheme="https://lywlefan.github.io/categories/%E6%B5%8B%E8%AF%95/"/>
     
     
-      <category term="测试工具" scheme="https://lywlefan.github.io/tags/%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/"/>
-    
-      <category term="ad.exe" scheme="https://lywlefan.github.io/tags/ad-exe/"/>
+      <category term="压力测试" scheme="https://lywlefan.github.io/tags/%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95/"/>
     
   </entry>
   
   <entry>
     <title>01.初始redis</title>
-    <link href="https://lywlefan.github.io/2019/07/30/%E4%B8%AD%E9%97%B4%E4%BB%B6/redis/01.%E5%88%9D%E5%A7%8Bredis/"/>
-    <id>https://lywlefan.github.io/2019/07/30/中间件/redis/01.初始redis/</id>
+    <link href="https://lywlefan.github.io/2019/07/30/%E5%90%8E%E7%AB%AF/%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/NOSQL/redis/01.%E5%88%9D%E5%A7%8Bredis/"/>
+    <id>https://lywlefan.github.io/2019/07/30/后端/数据存储/NOSQL/redis/01.初始redis/</id>
     <published>2019-07-29T16:00:00.000Z</published>
-    <updated>2019-07-30T08:58:03.215Z</updated>
+    <updated>2019-10-15T06:42:25.070Z</updated>
     
     <content type="html"><![CDATA[<h3 id="redis是什么"><a href="#redis是什么" class="headerlink" title="redis是什么?"></a>redis是什么?</h3><p>redis是一个内存型数据(in-memory data structure store)。Redis是用ANSI C编写的。</p><h4 id="官网对redis关键词描述"><a href="#官网对redis关键词描述" class="headerlink" title="官网对redis关键词描述"></a>官网对redis关键词描述</h4><ul><li><p>开源内存数据库</p></li><li><p>可以进行缓存和消息代理</p></li><li><p>支持的数据类型有：字符串/hash/list/set/bitmaps/hyperloglogs</p></li><li><p>可以对集合进行排序</p></li><li><p>地理位置范围半径查询</p></li><li><p>支持流</p></li><li><p>内置复制功能</p></li><li><p>支持lua脚本</p></li><li><p>LRU缓存淘汰算法</p></li><li><p>磁盘级的持久化</p></li><li><p>redis集群</p></li></ul><h3 id="redis支持什么数据类型"><a href="#redis支持什么数据类型" class="headerlink" title="redis支持什么数据类型"></a>redis支持什么数据类型</h3><h4 id="字符类型-strings"><a href="#字符类型-strings" class="headerlink" title="字符类型(strings)"></a>字符类型(strings)</h4><h4 id="哈希类型-hashes"><a href="#哈希类型-hashes" class="headerlink" title="哈希类型(hashes)"></a>哈希类型(hashes)</h4><h4 id="list集合类型-lists"><a href="#list集合类型-lists" class="headerlink" title="list集合类型(lists)"></a>list集合类型(lists)</h4><h4 id="set集合类型-sets"><a href="#set集合类型-sets" class="headerlink" title="set集合类型(sets)"></a>set集合类型(sets)</h4><ul><li><p>不允许重复</p></li><li><p>无序</p></li></ul><h4 id="sorted-set集合类型-sorted-sets"><a href="#sorted-set集合类型-sorted-sets" class="headerlink" title="sorted set集合类型(sorted sets)"></a>sorted set集合类型(sorted sets)</h4><ul><li><p>不允许重复</p></li><li><p>有序(通过设置分数进行排序)</p></li></ul><h4 id="位图-bitmaps"><a href="#位图-bitmaps" class="headerlink" title="位图(bitmaps)"></a>位图(bitmaps)</h4><ul><li><p>按位进行标识</p></li><li><p>适合某个时间段状态只有两种的场景</p></li></ul><p>比如:签到,每天签到,状态就是签了或者没签</p><ul><li>占用内存小</li></ul><h4 id="hyperloglogs"><a href="#hyperloglogs" class="headerlink" title="hyperloglogs"></a>hyperloglogs</h4><ul><li><p>Redis 在 2.8.9 版本添加了 HyperLogLog 结构</p></li><li><p>Redis HyperLogLog 是用来做基数统计的算法，HyperLogLog 的优点是，在输入元素的数量或者体积非常非常大时，计算基数所需的空间总是固定 的、并且是很小的。</p></li><li><p>在 Redis 里面，每个 HyperLogLog 键只需要花费 12 KB 内存，就可以计算接近 2^64 个不同元素的基数。这和计算基数时，元素越多耗费内存就越多的集合形成鲜明对比。</p></li><li><p>因为 HyperLogLog 只会根据输入元素来计算基数，而不会储存输入元素本身，所以 HyperLogLog 不能像集合那样，返回输入的各个元素。</p></li><li><p>HyperLogLog是一种算法，并非redis独有</p></li><li><p>目的是做基数统计，故不是集合，不会保存元数据，只记录数量而不是数值。</p></li><li><p>耗空间极小，支持输入非常体积的数据量</p></li><li><p>核心是基数估算算法，主要表现为计算时内存的使用和数据合并的处理。最终数值存在一定误差</p></li><li><p>redis中每个hyperloglog key占用了12K的内存用于标记基数（官方文档）</p></li><li><p>pfadd命令并不会一次性分配12k内存，而是随着基数的增加而逐渐增加内存分配；而pfmerge操作则会将sourcekey合并后存储在12k大小的key中，这由hyperloglog合并操作的原理（两个hyperloglog合并时需要单独比较每个桶的值）可以很容易理解。</p></li><li><p>误差说明：基数估计的结果是一个带有 0.81% 标准错误（standard error）的近似值。是可接受的范围</p></li><li><p>Redis 对 HyperLogLog 的存储进行了优化，在计数比较小时，它的存储空间采用稀疏矩阵存储，空间占用很小，仅仅在计数慢慢变大，稀疏矩阵占用空间渐渐超过了阈值时才会一次性转变成稠密矩阵，才会占用 12k 的空间</p></li></ul><h5 id="数据结构描述"><a href="#数据结构描述" class="headerlink" title="数据结构描述"></a>数据结构描述</h5><h5 id="特征"><a href="#特征" class="headerlink" title="特征"></a>特征</h5><ul><li><p>基数统计(不允许重复的数据)</p></li><li><p>占用12k空间</p></li></ul><h5 id="适用场景"><a href="#适用场景" class="headerlink" title="适用场景"></a>适用场景</h5><ul><li><p>统计注册 IP 数</p></li><li><p>统计每日访问 IP 数</p></li><li><p>统计页面实时 UV 数</p></li><li><p>统计在线用户数</p></li><li><p>统计用户每天搜索不同词条的个数</p></li></ul><blockquote><p><strong>参考文档</strong></p></blockquote><blockquote><p><a href="https://www.jianshu.com/u/354cc1548a33" target="_blank" rel="noopener">【1】简书主页·share猿</a></p></blockquote><blockquote><p><a href="https://juejin.im/user/5a8e759851882524d842d174" target="_blank" rel="noopener">【2】掘金主页·share猿</a></p></blockquote><blockquote><p><a href="https://redis.io" target="_blank" rel="noopener">【3】redis官网</a></p></blockquote><hr><p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>                </div>                <div class="image-caption"></div>            </figure></p><p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>]]></content>
     
@@ -326,79 +389,23 @@
     
     </summary>
     
-      <category term="中间件" scheme="https://lywlefan.github.io/categories/%E4%B8%AD%E9%97%B4%E4%BB%B6/"/>
+      <category term="后端" scheme="https://lywlefan.github.io/categories/%E5%90%8E%E7%AB%AF/"/>
     
     
       <category term="redis" scheme="https://lywlefan.github.io/tags/redis/"/>
     
-      <category term="redis基础" scheme="https://lywlefan.github.io/tags/redis%E5%9F%BA%E7%A1%80/"/>
+      <category term="数据存储" scheme="https://lywlefan.github.io/tags/%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/"/>
     
-  </entry>
-  
-  <entry>
-    <title>从受欢迎到被需要读书笔记</title>
-    <link href="https://lywlefan.github.io/2019/07/30/%E8%AF%BB%E4%B9%A6/%E5%BD%92%E6%A1%A3/2019/7%E6%9C%88/%E4%BB%8E%E5%8F%97%E6%AC%A2%E8%BF%8E%E5%88%B0%E8%A2%AB%E9%9C%80%E8%A6%81-%E5%BC%A0%E8%90%8C/%E3%80%8A%E4%BB%8E%E5%8F%97%E6%AC%A2%E8%BF%8E%E5%88%B0%E8%A2%AB%E9%9C%80%E8%A6%81%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-01/"/>
-    <id>https://lywlefan.github.io/2019/07/30/读书/归档/2019/7月/从受欢迎到被需要-张萌/《从受欢迎到被需要》读书笔记-01/</id>
-    <published>2019-07-29T16:00:00.000Z</published>
-    <updated>2019-08-16T01:42:34.827Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="第一章：从受欢迎到被需要，高情商人的跃迁术"><a href="#第一章：从受欢迎到被需要，高情商人的跃迁术" class="headerlink" title="第一章：从受欢迎到被需要，高情商人的跃迁术"></a>第一章：从受欢迎到被需要，高情商人的跃迁术</h3><h4 id="思维导图"><a href="#思维导图" class="headerlink" title="思维导图"></a>思维导图</h4><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://upload-images.jianshu.io/upload_images/3084894-b103aaf5d5f07b9a.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="从受欢迎到被需要第一章" title>                </div>                <div class="image-caption">从受欢迎到被需要第一章</div>            </figure><h4 id="核心观点"><a href="#核心观点" class="headerlink" title="核心观点"></a>核心观点</h4><ul><li><p>价值交换，前提是要挖掘出自己的价值</p></li><li><p>让人舒服的表达，展示自己的能力、诚意、决心，同时要放低姿态，突出别人重要性，取得共赢的局面。</p></li><li><p>答应别人的价值要明确具体。</p></li><li><p>找对通道。</p></li></ul><h4 id="语句摘录"><a href="#语句摘录" class="headerlink" title="语句摘录"></a>语句摘录</h4><ul><li><p>禅宗有句话，大意是“道不可道，然近道之道不可不道”，道理与此大致相同。高情商很难，难在那些不可言说的分寸拿捏。</p></li><li><p>高情商是可以“变现”的，是所有奋斗者不可或缺的重要助力。</p></li><li><p>高情商者会让别人感到很舒服，会受到别人欢迎。但并不是所有让别人感觉舒适的人都是高情商者，还可能是“取悦症”患者。让别人感觉舒适，并不等于一定会得到别人的帮助。如果别人乐意帮你，你很幸运，那是情分；反之，也无可厚非。</p></li><li><p>高情商者会让别人感觉很舒适，这点很重要。但是比这更重要的是用好自己的价值，促进高情商“变现”。</p></li><li><p>在人与人交往的过程中，不管建立什么样的关系，都不外乎两个因素：一是情感因素。二是价值因素。</p></li><li><p>我是谁，我能提供什么，我需要什么。</p></li><li><p>当面对一个陌生人的时候，能够快速运用三点定位法对他进行社交价值定位。</p></li><li><p>我觉得请人帮忙，最重要的是诚恳，要能放得下面子，放低自己的姿态。这样才能让别人看到你的诚意，他们才会帮助你。对了，还要突出别人帮助你的重要性，还有你对成功的渴望。我想我会这样跟别人说：‘您知道为了这件事，我付出了很多很多的努力。而且您的帮助对我来说也是非常重要的，您可能不知道您现在的选择将会决定我们这件事情的成败。如果您能够施以援手，这份恩情我是永远都不会忘记的。’</p></li><li><p>我的感觉是，要想获得别人的帮助，首先得学会‘亮肌肉’。</p></li><li><p>我不用再跟他说：‘我遇到了一个困难，需要你的帮助。’我可以这么对他说：‘我这里有一个不错的机会，对我们双方都有好处，你要不要试一试？’</p></li><li><p>只要是手心朝上向别人索取，不管怎么伪装你都优雅不起来。只有把单向的索取变成双向受益的共赢，这件事才能更加体面。</p></li><li><p>这个用来弥补对方因为帮你而付出的东西，我把它叫作“兑付型产品”。它可以是实物，可以是信息，也可以是服务。只要用来弥补对方因为帮你而做出的付出，就可以叫作“兑付型产品”。</p></li><li><p>我们来总结一下展示自己的兑付型产品的三个关键：第一，抢占先机，在事情没开始前，就把兑付型产品拿出来；第二，要具体，这个兑付型产品到底是什么一定要说清楚；第三，要可被量化，除了要说明兑付型产品是什么还要准确说出数量。</p></li><li><p>首先，你的价值取决于你所处的通道。如果你所处的是一个上升的通道，那你的价值也会跟着不断攀升；如果你所处的是一个下行的通道，那你的价值就会不断贬值。其次，你的价值取决于对方的需求。你的价值符合对方需求时，你就是一个有价值的人。如果对方没有这种需求，你的价值在对方看来也许一文不值。</p></li><li><p>不管是工作还是创业，都会提前弄明白自己将要进入的这个行业到底是处于上行期还是下行期。</p></li><li><p>弄明白这个关于价值的问题的关键所在：不光能帮你选择一个事半功倍的领域，还能解决怀才不遇的问题。</p></li></ul><h4 id="思考感悟"><a href="#思考感悟" class="headerlink" title="思考感悟"></a>思考感悟</h4><ul><li><p>人与人之间的关系主要在“情感”和“价值”。</p></li><li><p>如何和一个陌生人建立深厚的友谊？</p><ul><li></li></ul></li></ul><blockquote><p><a href="https://www.jianshu.com/u/354cc1548a33" target="_blank" rel="noopener">【1】简书主页·share猿</a><br><a href="https://juejin.im/user/5a8e759851882524d842d174" target="_blank" rel="noopener">【2】掘金主页·share猿</a></p></blockquote><hr><p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>                </div>                <div class="image-caption"></div>            </figure></p><p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h3 id=&quot;第一章：从受欢迎到被需要，高情商人的跃迁术&quot;&gt;&lt;a href=&quot;#第一章：从受欢迎到被需要，高情商人的跃迁术&quot; class=&quot;headerlink&quot; title=&quot;第一章：从受欢迎到被需要，高情商人的跃迁术&quot;&gt;&lt;/a&gt;第一章：从受欢迎到被需要，高情商人的跃迁术&lt;/
-      
-    
-    </summary>
-    
-      <category term="读书" scheme="https://lywlefan.github.io/categories/%E8%AF%BB%E4%B9%A6/"/>
-    
-    
-      <category term="读书笔记" scheme="https://lywlefan.github.io/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
-    
-      <category term="2019年读书" scheme="https://lywlefan.github.io/tags/2019%E5%B9%B4%E8%AF%BB%E4%B9%A6/"/>
-    
-      <category term="7月读书" scheme="https://lywlefan.github.io/tags/7%E6%9C%88%E8%AF%BB%E4%B9%A6/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>多小的个体都要有自己的品牌</title>
-    <link href="https://lywlefan.github.io/2019/07/30/%E8%AF%BB%E4%B9%A6/%E5%BD%92%E6%A1%A3/2019/7%E6%9C%88/%E4%BB%8E%E5%8F%97%E6%AC%A2%E8%BF%8E%E5%88%B0%E8%A2%AB%E9%9C%80%E8%A6%81-%E5%BC%A0%E8%90%8C/%E5%A4%9A%E5%B0%8F%E7%9A%84%E4%B8%AA%E4%BD%93%E9%83%BD%E8%A6%81%E6%9C%89%E8%87%AA%E5%B7%B1%E7%9A%84%E5%93%81%E7%89%8C/"/>
-    <id>https://lywlefan.github.io/2019/07/30/读书/归档/2019/7月/从受欢迎到被需要-张萌/多小的个体都要有自己的品牌/</id>
-    <published>2019-07-29T16:00:00.000Z</published>
-    <updated>2019-08-14T01:26:49.584Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="从受欢迎到被需要"><a href="#从受欢迎到被需要" class="headerlink" title="从受欢迎到被需要"></a>从受欢迎到被需要</h2><p><a href="https://upload-images.jianshu.io/upload_images/3084894-9cc43db39e6549da.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" target="_blank" rel="noopener">从受欢迎到被需要思维导图</a></p><h3 id="第一章：从受欢迎到被需要，高情商人的跃迁术"><a href="#第一章：从受欢迎到被需要，高情商人的跃迁术" class="headerlink" title="第一章：从受欢迎到被需要，高情商人的跃迁术"></a>第一章：从受欢迎到被需要，高情商人的跃迁术</h3><h4 id="思维导图"><a href="#思维导图" class="headerlink" title="思维导图"></a>思维导图</h4><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://upload-images.jianshu.io/upload_images/3084894-b103aaf5d5f07b9a.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="从受欢迎到被需要第一章" title>                </div>                <div class="image-caption">从受欢迎到被需要第一章</div>            </figure><h4 id="核心观点"><a href="#核心观点" class="headerlink" title="核心观点"></a>核心观点</h4><ul><li><p>价值交换，前提是要挖掘出自己的价值</p></li><li><p>让人舒服的表达，展示自己的能力、诚意、决心，同时要放低姿态，突出别人重要性，取得共赢的局面。</p></li><li><p>答应别人的价值要明确具体。</p></li><li><p>找对通道。</p></li></ul><h4 id="语句摘录"><a href="#语句摘录" class="headerlink" title="语句摘录"></a>语句摘录</h4><ul><li><p>禅宗有句话，大意是“道不可道，然近道之道不可不道”，道理与此大致相同。高情商很难，难在那些不可言说的分寸拿捏。</p></li><li><p>高情商是可以“变现”的，是所有奋斗者不可或缺的重要助力。</p></li><li><p>高情商者会让别人感到很舒服，会受到别人欢迎。但并不是所有让别人感觉舒适的人都是高情商者，还可能是“取悦症”患者。让别人感觉舒适，并不等于一定会得到别人的帮助。如果别人乐意帮你，你很幸运，那是情分；反之，也无可厚非。</p></li><li><p>高情商者会让别人感觉很舒适，这点很重要。但是比这更重要的是用好自己的价值，促进高情商“变现”。</p></li><li><p>在人与人交往的过程中，不管建立什么样的关系，都不外乎两个因素：一是情感因素。二是价值因素。</p></li><li><p>我是谁，我能提供什么，我需要什么。</p></li><li><p>当面对一个陌生人的时候，能够快速运用三点定位法对他进行社交价值定位。</p></li><li><p>我觉得请人帮忙，最重要的是诚恳，要能放得下面子，放低自己的姿态。这样才能让别人看到你的诚意，他们才会帮助你。对了，还要突出别人帮助你的重要性，还有你对成功的渴望。我想我会这样跟别人说：‘您知道为了这件事，我付出了很多很多的努力。而且您的帮助对我来说也是非常重要的，您可能不知道您现在的选择将会决定我们这件事情的成败。如果您能够施以援手，这份恩情我是永远都不会忘记的。’</p></li><li><p>我的感觉是，要想获得别人的帮助，首先得学会‘亮肌肉’。</p></li><li><p>我不用再跟他说：‘我遇到了一个困难，需要你的帮助。’我可以这么对他说：‘我这里有一个不错的机会，对我们双方都有好处，你要不要试一试？’</p></li><li><p>只要是手心朝上向别人索取，不管怎么伪装你都优雅不起来。只有把单向的索取变成双向受益的共赢，这件事才能更加体面。</p></li><li><p>这个用来弥补对方因为帮你而付出的东西，我把它叫作“兑付型产品”。它可以是实物，可以是信息，也可以是服务。只要用来弥补对方因为帮你而做出的付出，就可以叫作“兑付型产品”。</p></li><li><p>我们来总结一下展示自己的兑付型产品的三个关键：第一，抢占先机，在事情没开始前，就把兑付型产品拿出来；第二，要具体，这个兑付型产品到底是什么一定要说清楚；第三，要可被量化，除了要说明兑付型产品是什么还要准确说出数量。</p></li><li><p>首先，你的价值取决于你所处的通道。如果你所处的是一个上升的通道，那你的价值也会跟着不断攀升；如果你所处的是一个下行的通道，那你的价值就会不断贬值。其次，你的价值取决于对方的需求。你的价值符合对方需求时，你就是一个有价值的人。如果对方没有这种需求，你的价值在对方看来也许一文不值。</p></li><li><p>不管是工作还是创业，都会提前弄明白自己将要进入的这个行业到底是处于上行期还是下行期。</p></li><li><p>弄明白这个关于价值的问题的关键所在：不光能帮你选择一个事半功倍的领域，还能解决怀才不遇的问题。</p></li></ul><h4 id="思考感悟"><a href="#思考感悟" class="headerlink" title="思考感悟"></a>思考感悟</h4><ul><li><p>人与人之间的关系主要在“情感”和“价值”。</p></li><li><p>如何和一个陌生人建立深厚的友谊？</p><ul><li></li></ul></li></ul><h3 id="第二章：品牌管理能力"><a href="#第二章：品牌管理能力" class="headerlink" title="第二章：品牌管理能力"></a>第二章：品牌管理能力</h3><h4 id="思维导图-1"><a href="#思维导图-1" class="headerlink" title="思维导图"></a>思维导图</h4><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://upload-images.jianshu.io/upload_images/3084894-0b98fd499e799a90.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="从受欢迎到被需要第二章" title>                </div>                <div class="image-caption">从受欢迎到被需要第二章</div>            </figure><h4 id="核心观点-1"><a href="#核心观点-1" class="headerlink" title="核心观点"></a>核心观点</h4><ul><li><p>品牌有本领</p></li><li><p>给人成事的感觉</p></li><li><p>一个好的故事</p></li><li><p>好的形象，符合大众心中所想，甚至超越</p></li><li><p>一个好的签名，让别人记住你。</p></li></ul><h4 id="语句摘录-1"><a href="#语句摘录-1" class="headerlink" title="语句摘录"></a>语句摘录</h4><ul><li><p>肯努力是一件好事，但是如果找不对方向，就会变成一场灾难。</p></li><li><p>个人品牌最重要的是状态，状态决定了你在他人资源列表当中的位置。从这点来说，再没有比奋斗者姿态更好的个人品牌了。</p></li><li><p>学会高情商的品牌思维后，一定要学会给你的社交做减法，减少在无效社交上花费的时间，把主要的时间用来做自我精进，把“奋斗者”作为你个人品牌的标签。</p></li><li><p>大家都相信他们能成事。做别人眼里那个能成事的人，这是我对修炼高情商的小伙伴的要求。</p></li><li><p>具有较高成就需要的人，在现实中的表现看起来才能更像是一个能够成大事的人。</p></li><li><p>这些人身上具有三种共同特质：1．心里永远有一个能逼出自己潜能的目标 2．明白只有自己能够成就自我 3．相对于付出，更看重结果</p></li><li><p>让结果说话。从经济学的角度来说就是，他们不会因为那些已经付出的沉没成本而痛苦纠结。从哲学角度来说，他们不会为打翻的牛奶而哭泣。</p></li><li><p>故事没有对错之分。只要能合乎逻辑，能够自圆其说，就是一个完整的故事。</p></li><li><p>到你的故事中充满积极、奋进的力量，这时你就是一个具有超高“成就需求”的人了，这才是一个奋斗者应该有的姿态。</p></li><li><p>“颜值”并不一定很重要，但是你的形体绝对很重要。</p></li><li><p>不要说经济紧张，不要说没有时间，这都是阻碍你奋斗的借口。</p></li><li><p>为形象管理所做的付出不是消费，不是享受，而是投资，是迈向成功的重要一环。有条件要做，没有条件就要创造条件去做。</p></li><li><p>人和衣服有两种关系：一种是衣服能提升人的气质，另一种是衣服的品质要靠人的气质来烘托。</p></li><li><p>哪怕条件再艰苦也要保证有一个能挂衣服的地方。</p></li></ul><h4 id="思考感悟-1"><a href="#思考感悟-1" class="headerlink" title="思考感悟"></a>思考感悟</h4><h3 id="第三章：怎么做才能让自己变的“值钱”"><a href="#第三章：怎么做才能让自己变的“值钱”" class="headerlink" title="第三章：怎么做才能让自己变的“值钱”"></a>第三章：怎么做才能让自己变的“值钱”</h3><h4 id="思维导图-2"><a href="#思维导图-2" class="headerlink" title="思维导图"></a>思维导图</h4><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://upload-images.jianshu.io/upload_images/3084894-1323d06224a04a7c.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="从受欢迎到被需要第三章" title>                </div>                <div class="image-caption">从受欢迎到被需要第三章</div>            </figure><h4 id="核心观点-2"><a href="#核心观点-2" class="headerlink" title="核心观点"></a>核心观点</h4><ul><li><p>利他思维产生链接</p></li><li><p>想成为什么人就跟什么人站到一起</p></li><li><p>成为想成为的那类人就变的值钱了</p></li></ul><h4 id="语句摘录-2"><a href="#语句摘录-2" class="headerlink" title="语句摘录"></a>语句摘录</h4><ul><li><p>学会的最高标准是会教。</p></li><li><p>不管面对什么样的问题，不要着急动手，先想想这是个什么问题，是认知上的还是实操上的。如果是认知上的问题，这就需要你捅破那层窗户纸；如果是实操上的问题，那么你需要的就是一个工具。</p></li><li><p>什么是利他思维？</p></li></ul><p>就是在考虑问题的时候，站在他人利益的角度，以维护和满足他人的需求为出发点。这</p><ul><li><p>我把完成这些事情所需要的时间和精力叫作无差别资源，也就是说这些事情由他去办或者由你去办，再或者由别人来办，产生的效果都是一样的。只要付出时间和精力就好，至于是谁来付出，产生的结果没有本质上的区别。</p></li><li><p>你越是担心什么就越会发生什么。</p></li><li><p>就是做事情像射击打靶一样，瞄准目标直接开枪。</p></li><li><p>破局的方法。</p><ul><li><p>1．直接询问／用心观察</p><p>  那些把事情办得很漂亮的人从来都不会直接开口询问，而是用心观察，从细节看出端倪，答案就在自己心中</p></li><li><p>2．只盯着目标本身／关心他所关心的一切</p><p>  能够把目光从目标本身发散开来，覆盖到目标所覆盖的一切。</p></li><li><p>3．如果你能……／如果你需要的话……</p><p>  这话语当中满满的交换意味会让对方觉得受到了威胁，这就注定了接下来事情的走向不会向好的方向发展。</p></li></ul></li></ul><p>我最近刚好在做……有一些富裕的……这个对……来说挺有好处的，您看看身边认识的人当中有没有需要的。如果您需要的话……不然浪费了挺可惜的。</p><ul><li><p>成功学之父吉米·罗恩说过一句话：“你就是和你最常来往的五个人的平均值。”</p></li><li><p>还有一句话叫“再穷也要站在富人堆里”</p></li><li><p>“富人”是指那些资历雄厚、资源强大的牛人，他们是未来有可能为你提供助力的贵人。</p></li><li><p>人脉不是角色，人脉的本质是资源，是可以帮你解决问题的资源。</p></li><li><p>而资源的定义是什么？是人，是机会，是财富，是信息。用高情商积累人脉，是为了让人脉为你所用，让你能够从中获取资源，提升人生效率，实现人生目标。</p></li><li><p>就是指像项链上那根把珍珠穿在一起的绳子一样，用自己的圈层把资历和资源优于自己的人连接在一起，使自己拥有跟他们一样的身价。</p></li><li><p>绳律的核心并不是圈层也不是串联，而是我们在温图尔的故事中所看到的“利他”。</p></li><li><p>站在富人堆里的正确方式是主动为他们提供帮助。</p></li><li><p>尽量做到以下三个关键：首先，斜杠一下。其次，不断精进。最后，穿针引线。</p></li><li><p>利他思维做这件事，就像上文所述，把单纯请人帮忙这件事变成双赢或者多赢。</p></li><li><p>绳律，付出是一种心态，利他是一个角度，能助人是一种能力，三根支柱缺一不可。第三步：主场转换，把主动权交给对方；第四步：麻烦一下别人，让感情在相互帮助中升温</p></li><li><p>这种强关系，可以按照以下几步来建立：第一步：给对方足够的安全感；转化陌生人脉的第一步，就是要化解这种不信任感。第二步：热情，但是要有分寸</p></li><li><p>要想把握好分寸，就要善用微笑的表情、赞美的语言，保持自信、放松的对话状态，不要把对方当成陌生人，而要像平常和朋友聊天一样，慢慢地，对方就会接收到这一点，和你一样放松下来。</p></li><li><p>千万不要给别人添麻烦。不过，在修炼高情商的道路上，不仅不要害怕给别人添麻烦，而且在某种意义上，人情债绝对称得上是“关系神器”。</p></li><li><p>俗话说得好：只有相互欠着的两个人才会念念不忘。</p></li><li><p>亲近关系就在这个互相帮助、互相麻烦的过程中慢慢形成了。</p></li><li><p>你可以通过为自己和对方打上同样的标签，把对方迅速变成“自己人”。</p></li><li><p>人脉饥渴症其实并不是人脉真的不够，而是你感觉不够。</p></li><li><p>就是“10/20/150法则”和年度人脉关系管理系统。学会了这两个方法，你就不会轻易陷入“明明身边有大把的资源，却总因为资源太少而焦虑”的困境。</p><ul><li><p>10人管理法则，这10个人是你的至亲至爱，他们是永远不会跟你翻脸的人。</p></li><li><p>20人管理法则，这20人跟你今年要实现的主要目标相关。</p></li><li><p>150人管理法则。我们每年都会认识很多人，但不是所有人都要成为你的朋友。150人是20人的候补。</p></li></ul></li><li><p>六度人脉关系管理系统是根据年度目标建立的，它属于未来你要实现目标的间接性实现方式。</p></li><li><p>标记对象时你可以留意两个范畴。第一个范畴是对方个人的基本情况，如生日、喜好等，这里面有五个具体的标记点。1．你跟对方是什么关系。2．对方的生日，这里要记得做特殊标注。3．对方的父母和子女的情况，他的父母和子女分别是谁。4．喜好问题，即对方真正爱好什么。5．对对方来说非常重要的日子。</p></li></ul><h4 id="思考感悟-2"><a href="#思考感悟-2" class="headerlink" title="思考感悟"></a>思考感悟</h4><ul><li><p>想成为什么人就去跟他们产生链接，哪怕自己的付出没有回报也要竭尽全力去产生链接。</p></li><li><p>能帮助别人获利，那么你们的关系也就开始建立了，有了人情就有了关系。</p></li></ul><h3 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h3><h4 id="思维导图-3"><a href="#思维导图-3" class="headerlink" title="思维导图"></a>思维导图</h4><h4 id="核心观点-3"><a href="#核心观点-3" class="headerlink" title="核心观点"></a>核心观点</h4><h4 id="语句摘录-3"><a href="#语句摘录-3" class="headerlink" title="语句摘录"></a>语句摘录</h4><h4 id="思考感悟-3"><a href="#思考感悟-3" class="headerlink" title="思考感悟"></a>思考感悟</h4><blockquote><p><a href="https://www.jianshu.com/u/354cc1548a33" target="_blank" rel="noopener">【1】简书主页·share猿</a><br><a href="https://juejin.im/user/5a8e759851882524d842d174" target="_blank" rel="noopener">【2】掘金主页·share猿</a></p></blockquote><hr><p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>                </div>                <div class="image-caption"></div>            </figure></p><p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;从受欢迎到被需要&quot;&gt;&lt;a href=&quot;#从受欢迎到被需要&quot; class=&quot;headerlink&quot; title=&quot;从受欢迎到被需要&quot;&gt;&lt;/a&gt;从受欢迎到被需要&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;https://upload-images.jianshu.io/uplo
-      
-    
-    </summary>
-    
-      <category term="读书" scheme="https://lywlefan.github.io/categories/%E8%AF%BB%E4%B9%A6/"/>
-    
-    
-      <category term="读书笔记" scheme="https://lywlefan.github.io/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
-    
-      <category term="2019年读书" scheme="https://lywlefan.github.io/tags/2019%E5%B9%B4%E8%AF%BB%E4%B9%A6/"/>
-    
-      <category term="7月读书" scheme="https://lywlefan.github.io/tags/7%E6%9C%88%E8%AF%BB%E4%B9%A6/"/>
+      <category term="NOSQL" scheme="https://lywlefan.github.io/tags/NOSQL/"/>
     
   </entry>
   
   <entry>
     <title>02.redis的应用--布隆过滤器</title>
-    <link href="https://lywlefan.github.io/2019/07/30/%E4%B8%AD%E9%97%B4%E4%BB%B6/redis/02.redis%E7%9A%84%E5%BA%94%E7%94%A8--%E5%B8%83%E9%9A%86%E8%BF%87%E6%BB%A4%E5%99%A8/"/>
-    <id>https://lywlefan.github.io/2019/07/30/中间件/redis/02.redis的应用--布隆过滤器/</id>
+    <link href="https://lywlefan.github.io/2019/07/30/%E5%90%8E%E7%AB%AF/%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/NOSQL/redis/02.redis%E7%9A%84%E5%BA%94%E7%94%A8--%E5%B8%83%E9%9A%86%E8%BF%87%E6%BB%A4%E5%99%A8/"/>
+    <id>https://lywlefan.github.io/2019/07/30/后端/数据存储/NOSQL/redis/02.redis的应用--布隆过滤器/</id>
     <published>2019-07-29T16:00:00.000Z</published>
-    <updated>2019-07-30T08:58:03.173Z</updated>
+    <updated>2019-10-15T06:42:26.043Z</updated>
     
     <content type="html"><![CDATA[<h3 id="布隆过滤器"><a href="#布隆过滤器" class="headerlink" title="布隆过滤器"></a>布隆过滤器</h3><h4 id="思维导图"><a href="#思维导图" class="headerlink" title="思维导图"></a>思维导图</h4><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://upload-images.jianshu.io/upload_images/3084894-1be30bea723ccf8a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="布隆过滤器" title>                </div>                <div class="image-caption">布隆过滤器</div>            </figure><h3 id="布隆过滤器应用"><a href="#布隆过滤器应用" class="headerlink" title="布隆过滤器应用"></a>布隆过滤器应用</h3><h4 id="新闻推送去重"><a href="#新闻推送去重" class="headerlink" title="新闻推送去重"></a>新闻推送去重</h4><h4 id="垃圾邮件去重"><a href="#垃圾邮件去重" class="headerlink" title="垃圾邮件去重"></a>垃圾邮件去重</h4><h4 id="插件安装"><a href="#插件安装" class="headerlink" title="插件安装"></a>插件安装</h4><h5 id="下载插件"><a href="#下载插件" class="headerlink" title="下载插件"></a>下载插件</h5><p><a href="https://github.com/RedisBloom/RedisBloom/releases" target="_blank" rel="noopener">点击该地址选择合适的版本</a></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#下载</span><br><span class="line">wget https://github.com/RedisLabsModules/rebloom/archive/v1.1.1.tar.gz</span><br><span class="line">#解压</span><br><span class="line">tar zxvf v1.1.1.tar.gz</span><br><span class="line">cd rebloom-1.1.1</span><br><span class="line"># 编译</span><br><span class="line">make</span><br></pre></td></tr></table></figure><h4 id="配置插件"><a href="#配置插件" class="headerlink" title="配置插件"></a>配置插件</h4><p>在redis配置文件(redis.conf)中加入该模块即可</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">loadmodule /usr/local/web/redis/RedisBloom-1.1.1/rebloom.so</span><br></pre></td></tr></table></figure><p>或者启动的时候加载进去：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">redis-server /etc/redis/redis.conf --loadmodule /opt/redis/RedisBloom-2.0.1/src/rebloom.so INITIAL_SIZE 10000000 ERROR_RATE 0.0001</span><br></pre></td></tr></table></figure><h4 id="执行相关命令测试"><a href="#执行相关命令测试" class="headerlink" title="执行相关命令测试"></a>执行相关命令测试</h4><blockquote><p>以上就是我安装的步骤，但是安装完成后还是出现了问题，记录下来，后续慢慢解决。</p></blockquote><blockquote><p><strong>参考文档</strong></p></blockquote><blockquote><p><a href="https://www.jianshu.com/u/354cc1548a33" target="_blank" rel="noopener">【1】简书主页·share猿</a></p></blockquote><blockquote><p><a href="https://juejin.im/user/5a8e759851882524d842d174" target="_blank" rel="noopener">【2】掘金主页·share猿</a></p></blockquote><blockquote><p><a href="https://redis.io" target="_blank" rel="noopener">【3】redis官网</a></p></blockquote><blockquote><p><a href="https://github.com/RedisBloom/RedisBloom" target="_blank" rel="noopener">【4】布隆过滤器插件下载地址</a></p></blockquote><hr><p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>                </div>                <div class="image-caption"></div>            </figure></p><p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>]]></content>
     
@@ -411,79 +418,23 @@
     
     </summary>
     
-      <category term="中间件" scheme="https://lywlefan.github.io/categories/%E4%B8%AD%E9%97%B4%E4%BB%B6/"/>
+      <category term="后端" scheme="https://lywlefan.github.io/categories/%E5%90%8E%E7%AB%AF/"/>
     
     
       <category term="redis" scheme="https://lywlefan.github.io/tags/redis/"/>
     
-      <category term="布隆过滤器" scheme="https://lywlefan.github.io/tags/%E5%B8%83%E9%9A%86%E8%BF%87%E6%BB%A4%E5%99%A8/"/>
+      <category term="数据存储" scheme="https://lywlefan.github.io/tags/%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/"/>
     
-  </entry>
-  
-  <entry>
-    <title>你值不值钱由你说了算</title>
-    <link href="https://lywlefan.github.io/2019/07/30/%E8%AF%BB%E4%B9%A6/%E5%BD%92%E6%A1%A3/2019/7%E6%9C%88/%E4%BB%8E%E5%8F%97%E6%AC%A2%E8%BF%8E%E5%88%B0%E8%A2%AB%E9%9C%80%E8%A6%81-%E5%BC%A0%E8%90%8C/%E4%BD%A0%E5%80%BC%E4%B8%8D%E5%80%BC%E9%92%B1%E7%94%B1%E4%BD%A0%E8%AF%B4%E4%BA%86%E7%AE%97/"/>
-    <id>https://lywlefan.github.io/2019/07/30/读书/归档/2019/7月/从受欢迎到被需要-张萌/你值不值钱由你说了算/</id>
-    <published>2019-07-29T16:00:00.000Z</published>
-    <updated>2019-08-14T01:25:38.409Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="从受欢迎到被需要"><a href="#从受欢迎到被需要" class="headerlink" title="从受欢迎到被需要"></a>从受欢迎到被需要</h2><p><a href="https://upload-images.jianshu.io/upload_images/3084894-9cc43db39e6549da.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" target="_blank" rel="noopener">从受欢迎到被需要思维导图</a></p><h3 id="第一章：从受欢迎到被需要，高情商人的跃迁术"><a href="#第一章：从受欢迎到被需要，高情商人的跃迁术" class="headerlink" title="第一章：从受欢迎到被需要，高情商人的跃迁术"></a>第一章：从受欢迎到被需要，高情商人的跃迁术</h3><h4 id="思维导图"><a href="#思维导图" class="headerlink" title="思维导图"></a>思维导图</h4><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://upload-images.jianshu.io/upload_images/3084894-b103aaf5d5f07b9a.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="从受欢迎到被需要第一章" title>                </div>                <div class="image-caption">从受欢迎到被需要第一章</div>            </figure><h4 id="核心观点"><a href="#核心观点" class="headerlink" title="核心观点"></a>核心观点</h4><ul><li><p>价值交换，前提是要挖掘出自己的价值</p></li><li><p>让人舒服的表达，展示自己的能力、诚意、决心，同时要放低姿态，突出别人重要性，取得共赢的局面。</p></li><li><p>答应别人的价值要明确具体。</p></li><li><p>找对通道。</p></li></ul><h4 id="语句摘录"><a href="#语句摘录" class="headerlink" title="语句摘录"></a>语句摘录</h4><ul><li><p>禅宗有句话，大意是“道不可道，然近道之道不可不道”，道理与此大致相同。高情商很难，难在那些不可言说的分寸拿捏。</p></li><li><p>高情商是可以“变现”的，是所有奋斗者不可或缺的重要助力。</p></li><li><p>高情商者会让别人感到很舒服，会受到别人欢迎。但并不是所有让别人感觉舒适的人都是高情商者，还可能是“取悦症”患者。让别人感觉舒适，并不等于一定会得到别人的帮助。如果别人乐意帮你，你很幸运，那是情分；反之，也无可厚非。</p></li><li><p>高情商者会让别人感觉很舒适，这点很重要。但是比这更重要的是用好自己的价值，促进高情商“变现”。</p></li><li><p>在人与人交往的过程中，不管建立什么样的关系，都不外乎两个因素：一是情感因素。二是价值因素。</p></li><li><p>我是谁，我能提供什么，我需要什么。</p></li><li><p>当面对一个陌生人的时候，能够快速运用三点定位法对他进行社交价值定位。</p></li><li><p>我觉得请人帮忙，最重要的是诚恳，要能放得下面子，放低自己的姿态。这样才能让别人看到你的诚意，他们才会帮助你。对了，还要突出别人帮助你的重要性，还有你对成功的渴望。我想我会这样跟别人说：‘您知道为了这件事，我付出了很多很多的努力。而且您的帮助对我来说也是非常重要的，您可能不知道您现在的选择将会决定我们这件事情的成败。如果您能够施以援手，这份恩情我是永远都不会忘记的。’</p></li><li><p>我的感觉是，要想获得别人的帮助，首先得学会‘亮肌肉’。</p></li><li><p>我不用再跟他说：‘我遇到了一个困难，需要你的帮助。’我可以这么对他说：‘我这里有一个不错的机会，对我们双方都有好处，你要不要试一试？’</p></li><li><p>只要是手心朝上向别人索取，不管怎么伪装你都优雅不起来。只有把单向的索取变成双向受益的共赢，这件事才能更加体面。</p></li><li><p>这个用来弥补对方因为帮你而付出的东西，我把它叫作“兑付型产品”。它可以是实物，可以是信息，也可以是服务。只要用来弥补对方因为帮你而做出的付出，就可以叫作“兑付型产品”。</p></li><li><p>我们来总结一下展示自己的兑付型产品的三个关键：第一，抢占先机，在事情没开始前，就把兑付型产品拿出来；第二，要具体，这个兑付型产品到底是什么一定要说清楚；第三，要可被量化，除了要说明兑付型产品是什么还要准确说出数量。</p></li><li><p>首先，你的价值取决于你所处的通道。如果你所处的是一个上升的通道，那你的价值也会跟着不断攀升；如果你所处的是一个下行的通道，那你的价值就会不断贬值。其次，你的价值取决于对方的需求。你的价值符合对方需求时，你就是一个有价值的人。如果对方没有这种需求，你的价值在对方看来也许一文不值。</p></li><li><p>不管是工作还是创业，都会提前弄明白自己将要进入的这个行业到底是处于上行期还是下行期。</p></li><li><p>弄明白这个关于价值的问题的关键所在：不光能帮你选择一个事半功倍的领域，还能解决怀才不遇的问题。</p></li></ul><h4 id="思考感悟"><a href="#思考感悟" class="headerlink" title="思考感悟"></a>思考感悟</h4><ul><li><p>人与人之间的关系主要在“情感”和“价值”。</p></li><li><p>如何和一个陌生人建立深厚的友谊？</p><ul><li></li></ul></li></ul><h3 id="第二章：品牌管理能力"><a href="#第二章：品牌管理能力" class="headerlink" title="第二章：品牌管理能力"></a>第二章：品牌管理能力</h3><h4 id="思维导图-1"><a href="#思维导图-1" class="headerlink" title="思维导图"></a>思维导图</h4><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://upload-images.jianshu.io/upload_images/3084894-0b98fd499e799a90.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="从受欢迎到被需要第二章" title>                </div>                <div class="image-caption">从受欢迎到被需要第二章</div>            </figure><h4 id="核心观点-1"><a href="#核心观点-1" class="headerlink" title="核心观点"></a>核心观点</h4><ul><li><p>品牌有本领</p></li><li><p>给人成事的感觉</p></li><li><p>一个好的故事</p></li><li><p>好的形象，符合大众心中所想，甚至超越</p></li><li><p>一个好的签名，让别人记住你。</p></li></ul><h4 id="语句摘录-1"><a href="#语句摘录-1" class="headerlink" title="语句摘录"></a>语句摘录</h4><ul><li><p>肯努力是一件好事，但是如果找不对方向，就会变成一场灾难。</p></li><li><p>个人品牌最重要的是状态，状态决定了你在他人资源列表当中的位置。从这点来说，再没有比奋斗者姿态更好的个人品牌了。</p></li><li><p>学会高情商的品牌思维后，一定要学会给你的社交做减法，减少在无效社交上花费的时间，把主要的时间用来做自我精进，把“奋斗者”作为你个人品牌的标签。</p></li><li><p>大家都相信他们能成事。做别人眼里那个能成事的人，这是我对修炼高情商的小伙伴的要求。</p></li><li><p>具有较高成就需要的人，在现实中的表现看起来才能更像是一个能够成大事的人。</p></li><li><p>这些人身上具有三种共同特质：1．心里永远有一个能逼出自己潜能的目标 2．明白只有自己能够成就自我 3．相对于付出，更看重结果</p></li><li><p>让结果说话。从经济学的角度来说就是，他们不会因为那些已经付出的沉没成本而痛苦纠结。从哲学角度来说，他们不会为打翻的牛奶而哭泣。</p></li><li><p>故事没有对错之分。只要能合乎逻辑，能够自圆其说，就是一个完整的故事。</p></li><li><p>到你的故事中充满积极、奋进的力量，这时你就是一个具有超高“成就需求”的人了，这才是一个奋斗者应该有的姿态。</p></li><li><p>“颜值”并不一定很重要，但是你的形体绝对很重要。</p></li><li><p>不要说经济紧张，不要说没有时间，这都是阻碍你奋斗的借口。</p></li><li><p>为形象管理所做的付出不是消费，不是享受，而是投资，是迈向成功的重要一环。有条件要做，没有条件就要创造条件去做。</p></li><li><p>人和衣服有两种关系：一种是衣服能提升人的气质，另一种是衣服的品质要靠人的气质来烘托。</p></li><li><p>哪怕条件再艰苦也要保证有一个能挂衣服的地方。</p></li></ul><h4 id="思考感悟-1"><a href="#思考感悟-1" class="headerlink" title="思考感悟"></a>思考感悟</h4><h3 id="第三章：怎么做才能让自己变的“值钱”"><a href="#第三章：怎么做才能让自己变的“值钱”" class="headerlink" title="第三章：怎么做才能让自己变的“值钱”"></a>第三章：怎么做才能让自己变的“值钱”</h3><h4 id="思维导图-2"><a href="#思维导图-2" class="headerlink" title="思维导图"></a>思维导图</h4><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://upload-images.jianshu.io/upload_images/3084894-1323d06224a04a7c.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="从受欢迎到被需要第三章" title>                </div>                <div class="image-caption">从受欢迎到被需要第三章</div>            </figure><h4 id="核心观点-2"><a href="#核心观点-2" class="headerlink" title="核心观点"></a>核心观点</h4><ul><li><p>利他思维产生链接</p></li><li><p>想成为什么人就跟什么人站到一起</p></li><li><p>成为想成为的那类人就变的值钱了</p></li></ul><h4 id="语句摘录-2"><a href="#语句摘录-2" class="headerlink" title="语句摘录"></a>语句摘录</h4><ul><li><p>学会的最高标准是会教。</p></li><li><p>不管面对什么样的问题，不要着急动手，先想想这是个什么问题，是认知上的还是实操上的。如果是认知上的问题，这就需要你捅破那层窗户纸；如果是实操上的问题，那么你需要的就是一个工具。</p></li><li><p>什么是利他思维？</p></li></ul><p>就是在考虑问题的时候，站在他人利益的角度，以维护和满足他人的需求为出发点。这</p><ul><li><p>我把完成这些事情所需要的时间和精力叫作无差别资源，也就是说这些事情由他去办或者由你去办，再或者由别人来办，产生的效果都是一样的。只要付出时间和精力就好，至于是谁来付出，产生的结果没有本质上的区别。</p></li><li><p>你越是担心什么就越会发生什么。</p></li><li><p>就是做事情像射击打靶一样，瞄准目标直接开枪。</p></li><li><p>破局的方法。</p><ul><li><p>1．直接询问／用心观察</p><p>  那些把事情办得很漂亮的人从来都不会直接开口询问，而是用心观察，从细节看出端倪，答案就在自己心中</p></li><li><p>2．只盯着目标本身／关心他所关心的一切</p><p>  能够把目光从目标本身发散开来，覆盖到目标所覆盖的一切。</p></li><li><p>3．如果你能……／如果你需要的话……</p><p>  这话语当中满满的交换意味会让对方觉得受到了威胁，这就注定了接下来事情的走向不会向好的方向发展。</p></li></ul></li></ul><p>我最近刚好在做……有一些富裕的……这个对……来说挺有好处的，您看看身边认识的人当中有没有需要的。如果您需要的话……不然浪费了挺可惜的。</p><ul><li><p>成功学之父吉米·罗恩说过一句话：“你就是和你最常来往的五个人的平均值。”</p></li><li><p>还有一句话叫“再穷也要站在富人堆里”</p></li><li><p>“富人”是指那些资历雄厚、资源强大的牛人，他们是未来有可能为你提供助力的贵人。</p></li><li><p>人脉不是角色，人脉的本质是资源，是可以帮你解决问题的资源。</p></li><li><p>而资源的定义是什么？是人，是机会，是财富，是信息。用高情商积累人脉，是为了让人脉为你所用，让你能够从中获取资源，提升人生效率，实现人生目标。</p></li><li><p>就是指像项链上那根把珍珠穿在一起的绳子一样，用自己的圈层把资历和资源优于自己的人连接在一起，使自己拥有跟他们一样的身价。</p></li><li><p>绳律的核心并不是圈层也不是串联，而是我们在温图尔的故事中所看到的“利他”。</p></li><li><p>站在富人堆里的正确方式是主动为他们提供帮助。</p></li><li><p>尽量做到以下三个关键：首先，斜杠一下。其次，不断精进。最后，穿针引线。</p></li><li><p>利他思维做这件事，就像上文所述，把单纯请人帮忙这件事变成双赢或者多赢。</p></li><li><p>绳律，付出是一种心态，利他是一个角度，能助人是一种能力，三根支柱缺一不可。第三步：主场转换，把主动权交给对方；第四步：麻烦一下别人，让感情在相互帮助中升温</p></li><li><p>这种强关系，可以按照以下几步来建立：第一步：给对方足够的安全感；转化陌生人脉的第一步，就是要化解这种不信任感。第二步：热情，但是要有分寸</p></li><li><p>要想把握好分寸，就要善用微笑的表情、赞美的语言，保持自信、放松的对话状态，不要把对方当成陌生人，而要像平常和朋友聊天一样，慢慢地，对方就会接收到这一点，和你一样放松下来。</p></li><li><p>千万不要给别人添麻烦。不过，在修炼高情商的道路上，不仅不要害怕给别人添麻烦，而且在某种意义上，人情债绝对称得上是“关系神器”。</p></li><li><p>俗话说得好：只有相互欠着的两个人才会念念不忘。</p></li><li><p>亲近关系就在这个互相帮助、互相麻烦的过程中慢慢形成了。</p></li><li><p>你可以通过为自己和对方打上同样的标签，把对方迅速变成“自己人”。</p></li><li><p>人脉饥渴症其实并不是人脉真的不够，而是你感觉不够。</p></li><li><p>就是“10/20/150法则”和年度人脉关系管理系统。学会了这两个方法，你就不会轻易陷入“明明身边有大把的资源，却总因为资源太少而焦虑”的困境。</p><ul><li><p>10人管理法则，这10个人是你的至亲至爱，他们是永远不会跟你翻脸的人。</p></li><li><p>20人管理法则，这20人跟你今年要实现的主要目标相关。</p></li><li><p>150人管理法则。我们每年都会认识很多人，但不是所有人都要成为你的朋友。150人是20人的候补。</p></li></ul></li><li><p>六度人脉关系管理系统是根据年度目标建立的，它属于未来你要实现目标的间接性实现方式。</p></li><li><p>标记对象时你可以留意两个范畴。第一个范畴是对方个人的基本情况，如生日、喜好等，这里面有五个具体的标记点。1．你跟对方是什么关系。2．对方的生日，这里要记得做特殊标注。3．对方的父母和子女的情况，他的父母和子女分别是谁。4．喜好问题，即对方真正爱好什么。5．对对方来说非常重要的日子。</p></li></ul><h4 id="思考感悟-2"><a href="#思考感悟-2" class="headerlink" title="思考感悟"></a>思考感悟</h4><ul><li><p>想成为什么人就去跟他们产生链接，哪怕自己的付出没有回报也要竭尽全力去产生链接。</p></li><li><p>能帮助别人获利，那么你们的关系也就开始建立了，有了人情就有了关系。</p></li></ul><h3 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h3><h4 id="思维导图-3"><a href="#思维导图-3" class="headerlink" title="思维导图"></a>思维导图</h4><h4 id="核心观点-3"><a href="#核心观点-3" class="headerlink" title="核心观点"></a>核心观点</h4><h4 id="语句摘录-3"><a href="#语句摘录-3" class="headerlink" title="语句摘录"></a>语句摘录</h4><h4 id="思考感悟-3"><a href="#思考感悟-3" class="headerlink" title="思考感悟"></a>思考感悟</h4><blockquote><p><a href="https://www.jianshu.com/u/354cc1548a33" target="_blank" rel="noopener">【1】简书主页·share猿</a><br><a href="https://juejin.im/user/5a8e759851882524d842d174" target="_blank" rel="noopener">【2】掘金主页·share猿</a></p></blockquote><hr><p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>                </div>                <div class="image-caption"></div>            </figure></p><p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;从受欢迎到被需要&quot;&gt;&lt;a href=&quot;#从受欢迎到被需要&quot; class=&quot;headerlink&quot; title=&quot;从受欢迎到被需要&quot;&gt;&lt;/a&gt;从受欢迎到被需要&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;https://upload-images.jianshu.io/uplo
-      
-    
-    </summary>
-    
-      <category term="读书" scheme="https://lywlefan.github.io/categories/%E8%AF%BB%E4%B9%A6/"/>
-    
-    
-      <category term="读书笔记" scheme="https://lywlefan.github.io/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
-    
-      <category term="2019年读书" scheme="https://lywlefan.github.io/tags/2019%E5%B9%B4%E8%AF%BB%E4%B9%A6/"/>
-    
-      <category term="7月读书" scheme="https://lywlefan.github.io/tags/7%E6%9C%88%E8%AF%BB%E4%B9%A6/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>从受欢迎到被需要-萌姐</title>
-    <link href="https://lywlefan.github.io/2019/07/26/%E8%AF%BB%E4%B9%A6/%E5%BD%92%E6%A1%A3/2019/7%E6%9C%88/%E4%BB%8E%E5%8F%97%E6%AC%A2%E8%BF%8E%E5%88%B0%E8%A2%AB%E9%9C%80%E8%A6%81-%E8%90%8C%E5%A7%90/"/>
-    <id>https://lywlefan.github.io/2019/07/26/读书/归档/2019/7月/从受欢迎到被需要-萌姐/</id>
-    <published>2019-07-25T16:00:00.000Z</published>
-    <updated>2019-08-14T05:36:30.687Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="从受欢迎到被需要"><a href="#从受欢迎到被需要" class="headerlink" title="从受欢迎到被需要"></a>从受欢迎到被需要</h2><p><a href="https://upload-images.jianshu.io/upload_images/3084894-9cc43db39e6549da.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" target="_blank" rel="noopener">从受欢迎到被需要思维导图</a></p><h3 id="第一章：从受欢迎到被需要，高情商人的跃迁术"><a href="#第一章：从受欢迎到被需要，高情商人的跃迁术" class="headerlink" title="第一章：从受欢迎到被需要，高情商人的跃迁术"></a>第一章：从受欢迎到被需要，高情商人的跃迁术</h3><h4 id="思维导图"><a href="#思维导图" class="headerlink" title="思维导图"></a>思维导图</h4><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://upload-images.jianshu.io/upload_images/3084894-b103aaf5d5f07b9a.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="从受欢迎到被需要第一章" title>                </div>                <div class="image-caption">从受欢迎到被需要第一章</div>            </figure><h4 id="核心观点"><a href="#核心观点" class="headerlink" title="核心观点"></a>核心观点</h4><ul><li><p>价值交换，前提是要挖掘出自己的价值</p></li><li><p>让人舒服的表达，展示自己的能力、诚意、决心，同时要放低姿态，突出别人重要性，取得共赢的局面。</p></li><li><p>答应别人的价值要明确具体。</p></li><li><p>找对通道。</p></li></ul><h4 id="语句摘录"><a href="#语句摘录" class="headerlink" title="语句摘录"></a>语句摘录</h4><ul><li><p>禅宗有句话，大意是“道不可道，然近道之道不可不道”，道理与此大致相同。高情商很难，难在那些不可言说的分寸拿捏。</p></li><li><p>高情商是可以“变现”的，是所有奋斗者不可或缺的重要助力。</p></li><li><p>高情商者会让别人感到很舒服，会受到别人欢迎。但并不是所有让别人感觉舒适的人都是高情商者，还可能是“取悦症”患者。让别人感觉舒适，并不等于一定会得到别人的帮助。如果别人乐意帮你，你很幸运，那是情分；反之，也无可厚非。</p></li><li><p>高情商者会让别人感觉很舒适，这点很重要。但是比这更重要的是用好自己的价值，促进高情商“变现”。</p></li><li><p>在人与人交往的过程中，不管建立什么样的关系，都不外乎两个因素：一是情感因素。二是价值因素。</p></li><li><p>我是谁，我能提供什么，我需要什么。</p></li><li><p>当面对一个陌生人的时候，能够快速运用三点定位法对他进行社交价值定位。</p></li><li><p>我觉得请人帮忙，最重要的是诚恳，要能放得下面子，放低自己的姿态。这样才能让别人看到你的诚意，他们才会帮助你。对了，还要突出别人帮助你的重要性，还有你对成功的渴望。我想我会这样跟别人说：‘您知道为了这件事，我付出了很多很多的努力。而且您的帮助对我来说也是非常重要的，您可能不知道您现在的选择将会决定我们这件事情的成败。如果您能够施以援手，这份恩情我是永远都不会忘记的。’</p></li><li><p>我的感觉是，要想获得别人的帮助，首先得学会‘亮肌肉’。</p></li><li><p>我不用再跟他说：‘我遇到了一个困难，需要你的帮助。’我可以这么对他说：‘我这里有一个不错的机会，对我们双方都有好处，你要不要试一试？’</p></li><li><p>只要是手心朝上向别人索取，不管怎么伪装你都优雅不起来。只有把单向的索取变成双向受益的共赢，这件事才能更加体面。</p></li><li><p>这个用来弥补对方因为帮你而付出的东西，我把它叫作“兑付型产品”。它可以是实物，可以是信息，也可以是服务。只要用来弥补对方因为帮你而做出的付出，就可以叫作“兑付型产品”。</p></li><li><p>我们来总结一下展示自己的兑付型产品的三个关键：第一，抢占先机，在事情没开始前，就把兑付型产品拿出来；第二，要具体，这个兑付型产品到底是什么一定要说清楚；第三，要可被量化，除了要说明兑付型产品是什么还要准确说出数量。</p></li><li><p>首先，你的价值取决于你所处的通道。如果你所处的是一个上升的通道，那你的价值也会跟着不断攀升；如果你所处的是一个下行的通道，那你的价值就会不断贬值。其次，你的价值取决于对方的需求。你的价值符合对方需求时，你就是一个有价值的人。如果对方没有这种需求，你的价值在对方看来也许一文不值。</p></li><li><p>不管是工作还是创业，都会提前弄明白自己将要进入的这个行业到底是处于上行期还是下行期。</p></li><li><p>弄明白这个关于价值的问题的关键所在：不光能帮你选择一个事半功倍的领域，还能解决怀才不遇的问题。</p></li></ul><h4 id="思考感悟"><a href="#思考感悟" class="headerlink" title="思考感悟"></a>思考感悟</h4><ul><li><p>人与人之间的关系主要在“情感”和“价值”。</p></li><li><p>如何和一个陌生人建立深厚的友谊？</p><ul><li></li></ul></li></ul><h3 id="第二章：品牌管理能力"><a href="#第二章：品牌管理能力" class="headerlink" title="第二章：品牌管理能力"></a>第二章：品牌管理能力</h3><h4 id="思维导图-1"><a href="#思维导图-1" class="headerlink" title="思维导图"></a>思维导图</h4><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://upload-images.jianshu.io/upload_images/3084894-0b98fd499e799a90.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="从受欢迎到被需要第二章" title>                </div>                <div class="image-caption">从受欢迎到被需要第二章</div>            </figure><h4 id="核心观点-1"><a href="#核心观点-1" class="headerlink" title="核心观点"></a>核心观点</h4><ul><li><p>品牌有本领</p></li><li><p>给人成事的感觉</p></li><li><p>一个好的故事</p></li><li><p>好的形象，符合大众心中所想，甚至超越</p></li><li><p>一个好的签名，让别人记住你。</p></li></ul><h4 id="语句摘录-1"><a href="#语句摘录-1" class="headerlink" title="语句摘录"></a>语句摘录</h4><ul><li><p>肯努力是一件好事，但是如果找不对方向，就会变成一场灾难。</p></li><li><p>个人品牌最重要的是状态，状态决定了你在他人资源列表当中的位置。从这点来说，再没有比奋斗者姿态更好的个人品牌了。</p></li><li><p>学会高情商的品牌思维后，一定要学会给你的社交做减法，减少在无效社交上花费的时间，把主要的时间用来做自我精进，把“奋斗者”作为你个人品牌的标签。</p></li><li><p>大家都相信他们能成事。做别人眼里那个能成事的人，这是我对修炼高情商的小伙伴的要求。</p></li><li><p>具有较高成就需要的人，在现实中的表现看起来才能更像是一个能够成大事的人。</p></li><li><p>这些人身上具有三种共同特质：1．心里永远有一个能逼出自己潜能的目标 2．明白只有自己能够成就自我 3．相对于付出，更看重结果</p></li><li><p>让结果说话。从经济学的角度来说就是，他们不会因为那些已经付出的沉没成本而痛苦纠结。从哲学角度来说，他们不会为打翻的牛奶而哭泣。</p></li><li><p>故事没有对错之分。只要能合乎逻辑，能够自圆其说，就是一个完整的故事。</p></li><li><p>到你的故事中充满积极、奋进的力量，这时你就是一个具有超高“成就需求”的人了，这才是一个奋斗者应该有的姿态。</p></li><li><p>“颜值”并不一定很重要，但是你的形体绝对很重要。</p></li><li><p>不要说经济紧张，不要说没有时间，这都是阻碍你奋斗的借口。</p></li><li><p>为形象管理所做的付出不是消费，不是享受，而是投资，是迈向成功的重要一环。有条件要做，没有条件就要创造条件去做。</p></li><li><p>人和衣服有两种关系：一种是衣服能提升人的气质，另一种是衣服的品质要靠人的气质来烘托。</p></li><li><p>哪怕条件再艰苦也要保证有一个能挂衣服的地方。</p></li></ul><h4 id="思考感悟-1"><a href="#思考感悟-1" class="headerlink" title="思考感悟"></a>思考感悟</h4><h3 id="第三章：怎么做才能让自己变的“值钱”"><a href="#第三章：怎么做才能让自己变的“值钱”" class="headerlink" title="第三章：怎么做才能让自己变的“值钱”"></a>第三章：怎么做才能让自己变的“值钱”</h3><h4 id="思维导图-2"><a href="#思维导图-2" class="headerlink" title="思维导图"></a>思维导图</h4><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://upload-images.jianshu.io/upload_images/3084894-1323d06224a04a7c.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="从受欢迎到被需要第三章" title>                </div>                <div class="image-caption">从受欢迎到被需要第三章</div>            </figure><h4 id="核心观点-2"><a href="#核心观点-2" class="headerlink" title="核心观点"></a>核心观点</h4><ul><li><p>利他思维产生链接</p></li><li><p>想成为什么人就跟什么人站到一起</p></li><li><p>成为想成为的那类人就变的值钱了</p></li></ul><h4 id="语句摘录-2"><a href="#语句摘录-2" class="headerlink" title="语句摘录"></a>语句摘录</h4><ul><li><p>学会的最高标准是会教。</p></li><li><p>不管面对什么样的问题，不要着急动手，先想想这是个什么问题，是认知上的还是实操上的。如果是认知上的问题，这就需要你捅破那层窗户纸；如果是实操上的问题，那么你需要的就是一个工具。</p></li><li><p>什么是利他思维？</p></li></ul><p>就是在考虑问题的时候，站在他人利益的角度，以维护和满足他人的需求为出发点。这</p><ul><li><p>我把完成这些事情所需要的时间和精力叫作无差别资源，也就是说这些事情由他去办或者由你去办，再或者由别人来办，产生的效果都是一样的。只要付出时间和精力就好，至于是谁来付出，产生的结果没有本质上的区别。</p></li><li><p>你越是担心什么就越会发生什么。</p></li><li><p>就是做事情像射击打靶一样，瞄准目标直接开枪。</p></li><li><p>破局的方法。</p><ul><li><p>1．直接询问／用心观察</p><p>  那些把事情办得很漂亮的人从来都不会直接开口询问，而是用心观察，从细节看出端倪，答案就在自己心中</p></li><li><p>2．只盯着目标本身／关心他所关心的一切</p><p>  能够把目光从目标本身发散开来，覆盖到目标所覆盖的一切。</p></li><li><p>3．如果你能……／如果你需要的话……</p><p>  这话语当中满满的交换意味会让对方觉得受到了威胁，这就注定了接下来事情的走向不会向好的方向发展。</p></li></ul></li></ul><p>我最近刚好在做……有一些富裕的……这个对……来说挺有好处的，您看看身边认识的人当中有没有需要的。如果您需要的话……不然浪费了挺可惜的。</p><ul><li><p>成功学之父吉米·罗恩说过一句话：“你就是和你最常来往的五个人的平均值。”</p></li><li><p>还有一句话叫“再穷也要站在富人堆里”</p></li><li><p>“富人”是指那些资历雄厚、资源强大的牛人，他们是未来有可能为你提供助力的贵人。</p></li><li><p>人脉不是角色，人脉的本质是资源，是可以帮你解决问题的资源。</p></li><li><p>而资源的定义是什么？是人，是机会，是财富，是信息。用高情商积累人脉，是为了让人脉为你所用，让你能够从中获取资源，提升人生效率，实现人生目标。</p></li><li><p>就是指像项链上那根把珍珠穿在一起的绳子一样，用自己的圈层把资历和资源优于自己的人连接在一起，使自己拥有跟他们一样的身价。</p></li><li><p>绳律的核心并不是圈层也不是串联，而是我们在温图尔的故事中所看到的“利他”。</p></li><li><p>站在富人堆里的正确方式是主动为他们提供帮助。</p></li><li><p>尽量做到以下三个关键：首先，斜杠一下。其次，不断精进。最后，穿针引线。</p></li><li><p>利他思维做这件事，就像上文所述，把单纯请人帮忙这件事变成双赢或者多赢。</p></li><li><p>绳律，付出是一种心态，利他是一个角度，能助人是一种能力，三根支柱缺一不可。第三步：主场转换，把主动权交给对方；第四步：麻烦一下别人，让感情在相互帮助中升温</p></li><li><p>这种强关系，可以按照以下几步来建立：第一步：给对方足够的安全感；转化陌生人脉的第一步，就是要化解这种不信任感。第二步：热情，但是要有分寸</p></li><li><p>要想把握好分寸，就要善用微笑的表情、赞美的语言，保持自信、放松的对话状态，不要把对方当成陌生人，而要像平常和朋友聊天一样，慢慢地，对方就会接收到这一点，和你一样放松下来。</p></li><li><p>千万不要给别人添麻烦。不过，在修炼高情商的道路上，不仅不要害怕给别人添麻烦，而且在某种意义上，人情债绝对称得上是“关系神器”。</p></li><li><p>俗话说得好：只有相互欠着的两个人才会念念不忘。</p></li><li><p>亲近关系就在这个互相帮助、互相麻烦的过程中慢慢形成了。</p></li><li><p>你可以通过为自己和对方打上同样的标签，把对方迅速变成“自己人”。</p></li><li><p>人脉饥渴症其实并不是人脉真的不够，而是你感觉不够。</p></li><li><p>就是“10/20/150法则”和年度人脉关系管理系统。学会了这两个方法，你就不会轻易陷入“明明身边有大把的资源，却总因为资源太少而焦虑”的困境。</p><ul><li><p>10人管理法则，这10个人是你的至亲至爱，他们是永远不会跟你翻脸的人。</p></li><li><p>20人管理法则，这20人跟你今年要实现的主要目标相关。</p></li><li><p>150人管理法则。我们每年都会认识很多人，但不是所有人都要成为你的朋友。150人是20人的候补。</p></li></ul></li><li><p>六度人脉关系管理系统是根据年度目标建立的，它属于未来你要实现目标的间接性实现方式。</p></li><li><p>标记对象时你可以留意两个范畴。第一个范畴是对方个人的基本情况，如生日、喜好等，这里面有五个具体的标记点。1．你跟对方是什么关系。2．对方的生日，这里要记得做特殊标注。3．对方的父母和子女的情况，他的父母和子女分别是谁。4．喜好问题，即对方真正爱好什么。5．对对方来说非常重要的日子。</p></li></ul><h4 id="思考感悟-2"><a href="#思考感悟-2" class="headerlink" title="思考感悟"></a>思考感悟</h4><ul><li><p>想成为什么人就去跟他们产生链接，哪怕自己的付出没有回报也要竭尽全力去产生链接。</p></li><li><p>能帮助别人获利，那么你们的关系也就开始建立了，有了人情就有了关系。</p></li></ul><h3 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h3><h4 id="思维导图-3"><a href="#思维导图-3" class="headerlink" title="思维导图"></a>思维导图</h4><h4 id="核心观点-3"><a href="#核心观点-3" class="headerlink" title="核心观点"></a>核心观点</h4><h4 id="语句摘录-3"><a href="#语句摘录-3" class="headerlink" title="语句摘录"></a>语句摘录</h4><h4 id="思考感悟-3"><a href="#思考感悟-3" class="headerlink" title="思考感悟"></a>思考感悟</h4><blockquote><p><a href="https://www.jianshu.com/u/354cc1548a33" target="_blank" rel="noopener">【1】简书主页·share猿</a><br><a href="https://juejin.im/user/5a8e759851882524d842d174" target="_blank" rel="noopener">【2】掘金主页·share猿</a></p></blockquote><hr><p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>                </div>                <div class="image-caption"></div>            </figure></p><p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;从受欢迎到被需要&quot;&gt;&lt;a href=&quot;#从受欢迎到被需要&quot; class=&quot;headerlink&quot; title=&quot;从受欢迎到被需要&quot;&gt;&lt;/a&gt;从受欢迎到被需要&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;https://upload-images.jianshu.io/uplo
-      
-    
-    </summary>
-    
-      <category term="读书" scheme="https://lywlefan.github.io/categories/%E8%AF%BB%E4%B9%A6/"/>
-    
-    
-      <category term="读书笔记" scheme="https://lywlefan.github.io/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
-    
-      <category term="2019年读书" scheme="https://lywlefan.github.io/tags/2019%E5%B9%B4%E8%AF%BB%E4%B9%A6/"/>
-    
-      <category term="7月读书" scheme="https://lywlefan.github.io/tags/7%E6%9C%88%E8%AF%BB%E4%B9%A6/"/>
+      <category term="NOSQL" scheme="https://lywlefan.github.io/tags/NOSQL/"/>
     
   </entry>
   
   <entry>
     <title>MPP(大规模并行处理)简介</title>
-    <link href="https://lywlefan.github.io/2019/07/19/%E6%95%B0%E6%8D%AE%E5%BA%93/MBPP%E6%95%B0%E6%8D%AE%E5%BA%93/MPP(%E5%A4%A7%E8%A7%84%E6%A8%A1%E5%B9%B6%E8%A1%8C%E5%A4%84%E7%90%86)%E7%AE%80%E4%BB%8B/"/>
-    <id>https://lywlefan.github.io/2019/07/19/数据库/MBPP数据库/MPP(大规模并行处理)简介/</id>
+    <link href="https://lywlefan.github.io/2019/07/19/%E5%90%8E%E7%AB%AF/%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/MBPP%E6%95%B0%E6%8D%AE%E5%BA%93/MPP(%E5%A4%A7%E8%A7%84%E6%A8%A1%E5%B9%B6%E8%A1%8C%E5%A4%84%E7%90%86)%E7%AE%80%E4%BB%8B/"/>
+    <id>https://lywlefan.github.io/2019/07/19/后端/数据存储/MBPP数据库/MPP(大规模并行处理)简介/</id>
     <published>2019-07-18T16:00:00.000Z</published>
-    <updated>2019-07-19T09:15:28.267Z</updated>
+    <updated>2019-10-15T06:42:25.849Z</updated>
     
     <content type="html"><![CDATA[<blockquote><p>&emsp;&emsp;实践一门技术的最好方式就是深入理解它的思想，然后造一个出来！</p></blockquote><h3 id="1、-什么是MPP？"><a href="#1、-什么是MPP？" class="headerlink" title="1、 什么是MPP？"></a>1、 什么是MPP？</h3><p>MPP (Massively Parallel Processing)，即大规模并行处理，在数据库非共享集群中，每个节点都有独立的磁盘存储系统和内存系统，业务数据根据数据库模型和应用特点划分到各个节点上，每台数据节点通过专用网络或者商业通用网络互相连接，彼此协同计算，作为整体提供数据库服务。非共享数据库集群有完全的可伸缩性、高可用、高性能、优秀的性价比、资源共享等优势。</p><p>简单来说，MPP是将任务并行的分散到多个服务器和节点上，在每个节点上计算完成后，将各自部分的结果汇总在一起得到最终的结果(与Hadoop相似)。</p><h3 id="2、MPP-大规模并行处理-架构"><a href="#2、MPP-大规模并行处理-架构" class="headerlink" title="2、MPP(大规模并行处理)架构"></a>2、MPP(大规模并行处理)架构</h3><p><img src="https://img-blog.csdn.net/20180607153205548?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMTg5MDgz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt>                                         (MPP架构)</p><h3 id="3、-MPP架构特征"><a href="#3、-MPP架构特征" class="headerlink" title="3、 MPP架构特征"></a>3、 MPP架构特征</h3><p>● 任务并行执行;</p><p>● 数据分布式存储(本地化);</p><p>● 分布式计算;</p><p>● 私有资源;</p><p>● 横向扩展;</p><p>● Shared Nothing架构。</p><h3 id="4、-MPP服务器架构"><a href="#4、-MPP服务器架构" class="headerlink" title="4、 MPP服务器架构"></a>4、 MPP服务器架构</h3><p>它由多个SMP服务器通过一定的节点互联网络进行连接，协同工作，完成相同的任务，从用户的角度来看是一个服务器系统。其基本特征是由多个SMP服务器(每个SMP服务器称节点)通过节点互联网络连接而成，每个节点只访问自己的本地资源(内存、存储等)，是一种完全无共享(Share Nothing)结构，因而扩展能力最好，理论上其扩展无限制。</p><h3 id="5、MPPDB"><a href="#5、MPPDB" class="headerlink" title="5、MPPDB"></a>5、MPPDB</h3><p>MPPDB是一款 Shared Nothing 架构的分布式并行结构化数据库集群，具备高性能、高可用、高扩展特性，可以为超大规模数据管理提供高性价比的通用计算平台，并广泛地用于支撑各类数据仓库系统、BI 系统和决策支持系统</p><h3 id="6、MPPDB架构"><a href="#6、MPPDB架构" class="headerlink" title="6、MPPDB架构"></a>6、MPPDB架构</h3><p>MPP 采用完全并行的MPP + Shared Nothing 的分布式扁平架构，这种架构中的每一个节点（node）都是独立的、自给的、节点之间对等，而且整个系统中不存在单点瓶颈，具有非常强的扩展性。</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://img-blog.csdn.net/20180607153236902?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMTg5MDgz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt title>                </div>                <div class="image-caption"></div>            </figure><h3 id="7、-MPPDB特征"><a href="#7、-MPPDB特征" class="headerlink" title="7、 MPPDB特征"></a>7、 MPPDB特征</h3><p>MPP 具备以下技术特征：</p><p>1) 低硬件成本：完全使用 x86 架构的 PC Server，不需要昂贵的 Unix 服务器和磁盘阵列；</p><p>2) 集群架构与部署：完全并行的 MPP + Shared Nothing 的分布式架构，采用 Non-Master 部署，节点对等的扁平结构；</p><p>3) 海量数据分布压缩存储：可处理 PB 级别以上的结构化数据，采用 hash分布、random 存储策略进行数据存储；同时采用先进的压缩算法，减少存储数据所需的空间，可以将所用空间减少 1~20 倍，并相应地提高 I/O 性能；</p><p>4) 数据加载高效性：基于策略的数据加载模式，集群整体加载速度可达2TB/h；</p><p>5) 高扩展、高可靠：支持集群节点的扩容和缩容，支持全量、增量的备份/恢复;</p><p>6) 高可用、易维护：数据通过副本提供冗余保护，自动故障探测和管理，自动同步元数据和业务数据。提供图形化工具，以简化管理员对数据库的管理工作；</p><p>7) 高并发：读写不互斥，支持数据的边加载边查询，单个节点并发能力大于 300 用户；</p><p>8) 行列混合存储：提供行列混合存储方案，从而提高了列存数据库特殊查询场景的查询响应耗时；</p><p>9) 标准化：支持SQL92 标准，支持 C API、ODBC、JDBC、ADO.NET 等接口规范。</p><h3 id="8、-常见MPPDB"><a href="#8、-常见MPPDB" class="headerlink" title="8、 常见MPPDB"></a>8、 常见MPPDB</h3><p>● GREENPLUM(EMC)</p><p>● Asterdata(Teradata)</p><p>● Nettezza(IBM)</p><p>● Vertica(HP)</p><p>● GBase 8a MPP cluster(南大通用)</p><h3 id="9、-MPPDB、Hadoop与传统数据库技术对比与适用场景"><a href="#9、-MPPDB、Hadoop与传统数据库技术对比与适用场景" class="headerlink" title="9、 MPPDB、Hadoop与传统数据库技术对比与适用场景"></a>9、 MPPDB、Hadoop与传统数据库技术对比与适用场景</h3><p>MPPDB与Hadoop都是将运算分布到节点中独立运算后进行结果合并(分布式计算)，但由于依据的理论和采用的技术路线不同而有各自的优缺点和适用范围。两种技术以及传统数据库技术的对比如下：</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://i.loli.net/2019/07/19/5d3189cc48dc124520.png" alt title>                </div>                <div class="image-caption"></div>            </figure><p>综合而言，Hadoop和MPP两种技术的特定和适用场景为：</p><p>● Hadoop在处理非结构化和半结构化数据上具备优势，尤其适合海量数据批处理等应用要求。</p><p>● MPP适合替代现有关系数据机构下的大数据处理，具有较高的效率。</p><p>MPP适合多维度数据自助分析、数据集市等；Hadoop适合海量数据存储查询、批量数据ETL、非机构化数据分析(日志分析、文本分析)等。</p><p>由上述对比可预见未来大数据存储与处理趋势：MPPDB+Hadoop混搭使用，用MPP处理PB级别的、高质量的结构化数据，同时为应用提供丰富的SQL和事物支持能力；用Hadoop实现半结构化、非结构化数据处理。这样可以同时满足结构化、半结构化和非结构化数据的高效处理需求。</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://img-blog.csdn.net/20180607153301340?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMTg5MDgz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt title>                </div>                <div class="image-caption"></div>            </figure><blockquote><p><a href="https://www.jianshu.com/u/354cc1548a33" target="_blank" rel="noopener">【1】简书主页·share猿</a>﻿<br><a href="https://juejin.im/user/5a8e759851882524d842d174" target="_blank" rel="noopener">【2】掘金主页·share猿</a>﻿﻿</p></blockquote><p>—﻿</p><p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong>﻿</p><p><img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt>﻿﻿</p><p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>]]></content>
     
@@ -499,21 +450,21 @@
     
     </summary>
     
-      <category term="数据库" scheme="https://lywlefan.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+      <category term="后端" scheme="https://lywlefan.github.io/categories/%E5%90%8E%E7%AB%AF/"/>
     
     
-      <category term="数据库" scheme="https://lywlefan.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+      <category term="数据存储" scheme="https://lywlefan.github.io/tags/%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/"/>
     
-      <category term="MBPP" scheme="https://lywlefan.github.io/tags/MBPP/"/>
+      <category term="MBPP数据库" scheme="https://lywlefan.github.io/tags/MBPP%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
     
   </entry>
   
   <entry>
     <title>理财书籍收集</title>
-    <link href="https://lywlefan.github.io/2019/07/18/%E8%AF%BB%E4%B9%A6/%E4%B9%A6%E5%8D%95/%E7%90%86%E8%B4%A2%E4%B9%A6%E7%B1%8D%E6%94%B6%E9%9B%86/%E7%90%86%E8%B4%A2%E4%B9%A6%E7%B1%8D%E6%94%B6%E9%9B%86/"/>
-    <id>https://lywlefan.github.io/2019/07/18/读书/书单/理财书籍收集/理财书籍收集/</id>
+    <link href="https://lywlefan.github.io/2019/07/18/%E8%AF%BB%E4%B9%A6%E7%9C%8B%E6%8A%A5/%E4%B9%A6%E5%8D%95/%E7%90%86%E8%B4%A2%E4%B9%A6%E7%B1%8D%E6%94%B6%E9%9B%86/%E7%90%86%E8%B4%A2%E4%B9%A6%E7%B1%8D%E6%94%B6%E9%9B%86/"/>
+    <id>https://lywlefan.github.io/2019/07/18/读书看报/书单/理财书籍收集/理财书籍收集/</id>
     <published>2019-07-17T16:00:00.000Z</published>
-    <updated>2019-07-18T03:35:38.802Z</updated>
+    <updated>2019-10-15T08:11:12.693Z</updated>
     
     <content type="html"><![CDATA[<blockquote><p>多读书，多看报，少吃零食，少睡觉！</p></blockquote><h2 id="理财书籍汇集"><a href="#理财书籍汇集" class="headerlink" title="理财书籍汇集"></a>理财书籍汇集</h2><h3 id="未读"><a href="#未读" class="headerlink" title="未读"></a>未读</h3><ul><li><p>《谁动了我的奶酪》 </p></li><li><p>《小狗钱钱》</p></li><li><p>《富爸爸，穷爸爸》，《财务自由之路》和《投资指南》 </p></li><li><p>《一分钟百万富翁》 </p></li><li><p>《怎样启迪你头脑中的金融意识》 </p></li><li><p>《财源滚滚》</p></li><li><p>《钻石就在你家后院》</p></li><li><p>《我的百万富翁兄弟》</p></li></ul><h3 id="已读"><a href="#已读" class="headerlink" title="已读"></a>已读</h3><blockquote><p><a href="https://www.jianshu.com/u/354cc1548a33" target="_blank" rel="noopener">【1】简书主页·share猿</a><br><a href="https://juejin.im/user/5a8e759851882524d842d174" target="_blank" rel="noopener">【2】掘金主页·share猿</a></p></blockquote><hr><p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>                </div>                <div class="image-caption"></div>            </figure></p><p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>]]></content>
     
@@ -529,55 +480,59 @@
     
     </summary>
     
-      <category term="读书" scheme="https://lywlefan.github.io/categories/%E8%AF%BB%E4%B9%A6/"/>
+      <category term="读书看报" scheme="https://lywlefan.github.io/categories/%E8%AF%BB%E4%B9%A6%E7%9C%8B%E6%8A%A5/"/>
     
     
-      <category term="读书" scheme="https://lywlefan.github.io/tags/%E8%AF%BB%E4%B9%A6/"/>
+      <category term="书单" scheme="https://lywlefan.github.io/tags/%E4%B9%A6%E5%8D%95/"/>
     
-      <category term="收集" scheme="https://lywlefan.github.io/tags/%E6%94%B6%E9%9B%86/"/>
+      <category term="理财" scheme="https://lywlefan.github.io/tags/%E7%90%86%E8%B4%A2/"/>
     
   </entry>
   
   <entry>
-    <title>如果你不愿自己去学习和提升，生活会慢慢教会你！</title>
-    <link href="https://lywlefan.github.io/2019/07/11/%E6%80%9D%E8%80%83/2019/7/%E5%A6%82%E6%9E%9C%E4%BD%A0%E4%B8%8D%E6%84%BF%E8%87%AA%E5%B7%B1%E5%8E%BB%E5%AD%A6%E4%B9%A0%E5%92%8C%E6%8F%90%E5%8D%87%EF%BC%8C%E7%94%9F%E6%B4%BB%E4%BC%9A%E6%85%A2%E6%85%A2%E6%95%99%E4%BC%9A%E4%BD%A0%EF%BC%81/"/>
-    <id>https://lywlefan.github.io/2019/07/11/思考/2019/7/如果你不愿自己去学习和提升，生活会慢慢教会你！/</id>
+    <title>财务词汇</title>
+    <link href="https://lywlefan.github.io/2019/07/11/%E8%AF%BB%E4%B9%A6%E7%9C%8B%E6%8A%A5/%E8%AF%8D%E6%B1%87/%E8%B4%A2%E5%8A%A1/%E8%B4%A2%E5%8A%A1%E8%AF%8D%E6%B1%87/"/>
+    <id>https://lywlefan.github.io/2019/07/11/读书看报/词汇/财务/财务词汇/</id>
     <published>2019-07-10T16:00:00.000Z</published>
-    <updated>2019-07-19T10:19:11.863Z</updated>
+    <updated>2019-10-15T08:11:12.525Z</updated>
     
-    <content type="html"><![CDATA[<blockquote><p>在实践中思考感悟,在思考感悟后实践,一切伟大源于不断的思考和实践。</p></blockquote><h3 id="开篇语"><a href="#开篇语" class="headerlink" title="开篇语"></a>开篇语</h3><p>在这个偌大的世界里，我们的家教和我们的环境决定了我们的认知和格局,家庭出身我们没得选,更多的应该是感恩和爱,上天赐予我们亲爱的父母亲,他们默默无私不求回报,每每想起总让人热泪盈眶,这是世界上最伟大的爱,没有之一。</p><p>但是,成年后的我们的思维格局由我们自己决定,你愿不愿意正视自己,正视以前那个傻傻的自己,洗礼自己的一些思想,革新骨子里的各种观念。我相信,你会选择去改变,因为你有梦想。</p><p>上周听了一位财商老师的课,在课上有位50多岁的大叔问了怎么每年赚100万的问题。</p><p>老师说为什么要转一百万?</p><p>大叔说,我还有梦想,我现在每天摆地摊,我起早贪黑,我不怕苦不怕累。</p><p>老师沉默了许久,然后说我建议你不要有梦想,人生是短暂的,大半辈子已经过去了,你开开心心陪家人过完余生也是一种莫大的幸福,梦想这件事很痛,我怕你承受不起。</p><p>听到这里,我内心就像是被猛击了一下,趁着年轻放手去做自己喜欢的事,去追逐自己的梦想,做历练自己,有些事年轻的时候不学会,老了,没有力气了,生活会慢慢教你,会让你痛不欲生,因为这就是你年轻时的选择!</p><h4 id="是不是每次都说自己没钱-是不是想尽办法去赚钱到头却发现花的总比赚的多"><a href="#是不是每次都说自己没钱-是不是想尽办法去赚钱到头却发现花的总比赚的多" class="headerlink" title="是不是每次都说自己没钱,是不是想尽办法去赚钱到头却发现花的总比赚的多"></a>是不是每次都说自己没钱,是不是想尽办法去赚钱到头却发现花的总比赚的多</h4><p>一次无意的刷快手,听了零首付买房,花了298,抱着学习的态度去听了这堂财商课。虽然演讲的老师讲的有点浮夸,但他说的道理,说的思想却极大的震撼了我的内心,让我明白一个人穷不是没钱而是思想上的贫穷,见识上的贫穷,观念上的贫穷,知识上的贫穷。</p><p>时代的发展会把机会摆在每个人的面前,谁能抓住这些机会?谁能牢牢的握住它?谁能把这个机会发挥出巨大的价值?这跟什么有关系?</p><p>究其原因,我个人认为把握机会的前提是能看到机会,能理解这种机会,没有这种意识和格局,别人说你都听不懂,可能还会说人家是骗子,若干年过去后却发现自己是傻逼。</p><p>每一次革新中,都有巨大的机会存在,人口红利必然会导致房屋需求增加,城镇化发展会不断加速,谁能看到,在合适的时机把握机会,时代会把你推向浪潮之巅,抓不住又是为什么???</p><blockquote><p><a href="https://www.jianshu.com/u/354cc1548a33" target="_blank" rel="noopener">【1】简书主页·share猿</a><br><a href="https://juejin.im/user/5a8e759851882524d842d174" target="_blank" rel="noopener">【2】掘金主页·share猿</a></p></blockquote><hr><p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>                </div>                <div class="image-caption"></div>            </figure></p><p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>]]></content>
+    <content type="html"><![CDATA[<blockquote><p>先有词汇量,然后再能好好说话,好好做事。</p></blockquote><ul><li><p>重要</p></li><li><p>不重要</p></li><li><p>理解</p></li><li><p>未理解</p></li></ul><h2 id="2019年"><a href="#2019年" class="headerlink" title="2019年"></a>2019年</h2><h3 id="7月份词汇"><a href="#7月份词汇" class="headerlink" title="7月份词汇"></a>7月份词汇</h3><h4 id="重要理解词汇"><a href="#重要理解词汇" class="headerlink" title="重要理解词汇"></a>重要理解词汇</h4><ul><li>资产</li></ul><blockquote><p>G:如何获得资产？<br>a.加杠杆购买资产，产生源源不断的现金流<br>b.花时间创造资产</p></blockquote><ul><li><p>负债</p></li><li><p>现值</p></li></ul><p>是在给定的利率水平下，未来的资金折现到现在时刻的价值。</p><ul><li><p>现金流</p><ul><li><p>经营性现金流</p></li><li><p>投资性现金流</p></li><li><p>融资性现金流</p></li></ul></li><li><p>资产负债表</p></li><li><p>损益表</p></li><li><p>所有者权益变动表</p></li><li><p>财务报表附注</p></li><li><p>审查报表</p></li><li><p>预算盈余</p></li><li><p>净现值法（NPV）</p><ul><li><p>净现值</p><p>未来资金流现值与未来资金流出现值差额。</p></li></ul></li><li><p>折现率</p></li></ul><p>折现率是指将未来有限期预期收益折算成现值的比率。</p><ul><li>内部收益率（IRR）</li></ul><h4 id="不重要理解词汇"><a href="#不重要理解词汇" class="headerlink" title="不重要理解词汇"></a>不重要理解词汇</h4><ul><li><p>直线法折旧</p></li><li><p>双倍余额递减法折旧（年折旧率=2÷预计的折旧年限×100％）</p></li></ul><h4 id="重要不理解词汇"><a href="#重要不理解词汇" class="headerlink" title="重要不理解词汇"></a>重要不理解词汇</h4><h4 id="不重要不理解词汇"><a href="#不重要不理解词汇" class="headerlink" title="不重要不理解词汇"></a>不重要不理解词汇</h4><ul><li><p>借款人</p></li><li><p>信贷人员</p></li><li><p>银行流水</p></li></ul><blockquote><p><a href="https://www.jianshu.com/u/354cc1548a33" target="_blank" rel="noopener">【1】简书主页·share猿</a><br><a href="https://juejin.im/user/5a8e759851882524d842d174" target="_blank" rel="noopener">【2】掘金主页·share猿</a></p></blockquote><hr><p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>                </div>                <div class="image-caption"></div>            </figure></p><p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>]]></content>
     
     <summary type="html">
     
       
       
         &lt;blockquote&gt;
-&lt;p&gt;在实践中思考感悟,在思考感悟后实践,一切伟大源于不断的思考和实践。&lt;/p&gt;
+&lt;p&gt;先有词汇量,然后再能好好说话,好好做事。&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h3 id=&quot;开篇语&quot;&gt;&lt;a href=&quot;#开篇语&quot; class=&quot;headerlink&quot; title=&quot;开篇语&quot;&gt;&lt;/a&gt;开篇语&lt;/h3&gt;&lt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;重要&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;不重要&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;理解&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;未理解&lt;/p&gt;
+&lt;/li
       
     
     </summary>
     
-      <category term="思考" scheme="https://lywlefan.github.io/categories/%E6%80%9D%E8%80%83/"/>
+      <category term="读书看报" scheme="https://lywlefan.github.io/categories/%E8%AF%BB%E4%B9%A6%E7%9C%8B%E6%8A%A5/"/>
     
     
-      <category term="思考" scheme="https://lywlefan.github.io/tags/%E6%80%9D%E8%80%83/"/>
+      <category term="词汇" scheme="https://lywlefan.github.io/tags/%E8%AF%8D%E6%B1%87/"/>
     
-      <category term="2019年" scheme="https://lywlefan.github.io/tags/2019%E5%B9%B4/"/>
-    
-      <category term="7月" scheme="https://lywlefan.github.io/tags/7%E6%9C%88/"/>
-    
-      <category term="生活" scheme="https://lywlefan.github.io/tags/%E7%94%9F%E6%B4%BB/"/>
+      <category term="财务" scheme="https://lywlefan.github.io/tags/%E8%B4%A2%E5%8A%A1/"/>
     
   </entry>
   
   <entry>
     <title>研发英文词汇收集</title>
-    <link href="https://lywlefan.github.io/2019/07/11/%E8%AF%8D%E6%B1%87/%E8%BD%AF%E4%BB%B6/%E7%A0%94%E5%8F%91%E8%8B%B1%E6%96%87%E8%AF%8D%E6%B1%87%E6%94%B6%E9%9B%86/"/>
-    <id>https://lywlefan.github.io/2019/07/11/词汇/软件/研发英文词汇收集/</id>
+    <link href="https://lywlefan.github.io/2019/07/11/%E8%AF%BB%E4%B9%A6%E7%9C%8B%E6%8A%A5/%E8%AF%8D%E6%B1%87/%E8%BD%AF%E4%BB%B6/%E7%A0%94%E5%8F%91%E8%8B%B1%E6%96%87%E8%AF%8D%E6%B1%87%E6%94%B6%E9%9B%86/"/>
+    <id>https://lywlefan.github.io/2019/07/11/读书看报/词汇/软件/研发英文词汇收集/</id>
     <published>2019-07-10T16:00:00.000Z</published>
-    <updated>2019-07-29T09:38:03.716Z</updated>
+    <updated>2019-10-15T08:11:12.316Z</updated>
     
     <content type="html"><![CDATA[<blockquote><p>先有词汇量,然后再能好好说话,好好做事。</p></blockquote><h2 id="java相关词汇"><a href="#java相关词汇" class="headerlink" title="java相关词汇"></a>java相关词汇</h2><h3 id="框架"><a href="#框架" class="headerlink" title="框架"></a>框架</h3><h3 id="存储"><a href="#存储" class="headerlink" title="存储"></a>存储</h3><h4 id="关系型"><a href="#关系型" class="headerlink" title="关系型"></a>关系型</h4><h4 id="非关系型"><a href="#非关系型" class="headerlink" title="非关系型"></a>非关系型</h4><h5 id="newSql"><a href="#newSql" class="headerlink" title="newSql"></a>newSql</h5><h6 id="redis相关词汇"><a href="#redis相关词汇" class="headerlink" title="redis相关词汇"></a>redis相关词汇</h6><ul><li><p>内存数据库:in-memory data structure store</p></li><li><p>消息代理:message broker</p></li></ul><blockquote><p><a href="https://www.jianshu.com/u/354cc1548a33" target="_blank" rel="noopener">【1】简书主页·share猿</a><br><a href="https://juejin.im/user/5a8e759851882524d842d174" target="_blank" rel="noopener">【2】掘金主页·share猿</a></p></blockquote><hr><p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>                </div>                <div class="image-caption"></div>            </figure></p><p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>]]></content>
     
@@ -593,12 +548,78 @@
     
     </summary>
     
-      <category term="软件" scheme="https://lywlefan.github.io/categories/%E8%BD%AF%E4%BB%B6/"/>
+      <category term="读书看报" scheme="https://lywlefan.github.io/categories/%E8%AF%BB%E4%B9%A6%E7%9C%8B%E6%8A%A5/"/>
     
     
-      <category term="词汇" scheme="https://lywlefan.github.io/tags/%E8%AF%8D%E6%B1%87/"/>
+      <category term="软件" scheme="https://lywlefan.github.io/tags/%E8%BD%AF%E4%BB%B6/"/>
     
-      <category term="专业英文词汇" scheme="https://lywlefan.github.io/tags/%E4%B8%93%E4%B8%9A%E8%8B%B1%E6%96%87%E8%AF%8D%E6%B1%87/"/>
+      <category term="英文" scheme="https://lywlefan.github.io/tags/%E8%8B%B1%E6%96%87/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>软件中未知词汇收集</title>
+    <link href="https://lywlefan.github.io/2019/07/11/%E8%AF%BB%E4%B9%A6%E7%9C%8B%E6%8A%A5/%E8%AF%8D%E6%B1%87/%E8%BD%AF%E4%BB%B6/%E8%BD%AF%E4%BB%B6%E4%B8%AD%E6%9C%AA%E7%9F%A5%E8%AF%8D%E6%B1%87%E6%94%B6%E9%9B%86/"/>
+    <id>https://lywlefan.github.io/2019/07/11/读书看报/词汇/软件/软件中未知词汇收集/</id>
+    <published>2019-07-10T16:00:00.000Z</published>
+    <updated>2019-10-15T08:11:12.472Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>先有词汇量,然后再能好好说话,好好做事。</p></blockquote><h3 id="2019年词汇"><a href="#2019年词汇" class="headerlink" title="2019年词汇"></a>2019年词汇</h3><h4 id="7月词汇"><a href="#7月词汇" class="headerlink" title="7月词汇"></a>7月词汇</h4><h5 id="二方库"><a href="#二方库" class="headerlink" title="二方库"></a>二方库</h5><ul><li>一方库：本工程中的各模块的相互依赖</li><li>二方库：公司内部的依赖库，一般指公司内部的其他项目发布的jar包</li><li>三方库：公司之外的开源库， 比如apache、ibm、google等发布的依赖</li></ul><h5 id="mock数据"><a href="#mock数据" class="headerlink" title="mock数据"></a>mock数据</h5><p>在前后端分离开发过程中，后端为前端请求制造的模拟数据。常见制造模拟数据的方法有如下几种：</p><ul><li><p><a href="https://www.google.com/search?q=easymock&amp;oq=easymock&amp;aqs=chrome..69i57&amp;sourceid=chrome&amp;ie=UTF-8" target="_blank" rel="noopener">easymock</a></p></li><li><p><a href="http://mockjs.com/" target="_blank" rel="noopener">Mock.js</a></p></li><li><p><a href="https://www.npmjs.com/package/server-mock" target="_blank" rel="noopener">server-mock</a></p></li></ul><h5 id="SOA"><a href="#SOA" class="headerlink" title="SOA"></a>SOA</h5><p>面向服务架构（Service-Oriented Architecture，SOA）又称“面向服务的体系结构”，是Gartner于2O世纪9O年代中期提出的面向服务架构的概念。 </p><h5 id="打tag"><a href="#打tag" class="headerlink" title="打tag"></a>打tag</h5><p>说白了就是给你的项目打个标签，立个里程碑，这样就可以去方便的回溯每个版本的代码了。如何打tag，命令如下：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"># 打tag -a 后面是tag名称 -m 后面是注释（这里我们可以写我们这个版本做了什么？）</span><br><span class="line">git tag -a v3.2.1 -m &apos;线上版本&apos;</span><br><span class="line"></span><br><span class="line"># 将标签提交到远程仓库</span><br><span class="line">git push origin v3.2.1</span><br></pre></td></tr></table></figure><h5 id="qps"><a href="#qps" class="headerlink" title="qps"></a>qps</h5><p>每秒查询率QPS是对一个特定的查询服务器在规定时间内所处理流量多少的衡量标准，在因特网上，作为域名系统服务器的机器的性能经常用每秒查询率来衡量。</p><ul><li>吞吐量</li></ul><p>吞吐量是指系统在单位时间内处理请求的数量。</p><ul><li>并发用户数 </li></ul><p>并发用户数是指系统可以同时承载的正常使用系统功能的用户的数量。</p><h5 id="IO线程"><a href="#IO线程" class="headerlink" title="IO线程"></a>IO线程</h5><h5 id="VisualVM"><a href="#VisualVM" class="headerlink" title="VisualVM"></a>VisualVM</h5><p>VisualVM是JDK自带的一款全能型性能监控和故障分析工具,包括对CPU使用、JVM堆内存消耗、线程、类加载的实时监控,内存dump文件分析,垃圾回收运行情况的可视化分析等,对故障排查和性能调优很有帮助。</p><h5 id="包装类"><a href="#包装类" class="headerlink" title="包装类"></a>包装类</h5><p>包装类（Wrapper Class）： Java是一个面向对象的编程语言，但是Java中的八种基本数据类型却是不面向对象的，为了使用方便和解决这个不足，在设计类时为每个基本数据类型设计了一个对应的类进行代表，这样八种基本数据类型对应的类统称为包装类(Wrapper Class)，包装类均位于java.lang包。</p><h5 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h5><p>栈就像枪的梭子一样,先进后出.</p><h4 id="8月词汇"><a href="#8月词汇" class="headerlink" title="8月词汇"></a>8月词汇</h4><h5 id="TDD"><a href="#TDD" class="headerlink" title="TDD"></a>TDD</h5><p>TDD是测试驱动开发（Test-Driven Development）的英文简称，是敏捷开发中的一项核心实践和技术，也是一种设计方法论。</p><h5 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h5><p>一个算法中的所有语句执行次数之和称为语句频度或时间频度,记为T(n)。</p><h5 id="空间复杂度"><a href="#空间复杂度" class="headerlink" title="空间复杂度"></a>空间复杂度</h5><p>如果算法执行所需要的临时空间不随着某个变量n的大小而变化，即此算法空间复杂度为一个常量，可表示为 O(1)</p><h5 id="哑结点"><a href="#哑结点" class="headerlink" title="哑结点"></a>哑结点</h5><p>说白了就是无用的节点,一般处在链表的头部.是一个被人为创建的节点，虽然其内容为NULL，但是它在堆中有占有一定的空间。哑节点的使用可以避免边界问题的处理，达到简化代码与减少代码出错可能性的目的。</p><blockquote><p><a href="https://www.jianshu.com/u/354cc1548a33" target="_blank" rel="noopener">【1】简书主页·share猿</a><br><a href="https://juejin.im/user/5a8e759851882524d842d174" target="_blank" rel="noopener">【2】掘金主页·share猿</a></p></blockquote><hr><p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>                </div>                <div class="image-caption"></div>            </figure></p><p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;blockquote&gt;
+&lt;p&gt;先有词汇量,然后再能好好说话,好好做事。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;2019年词汇&quot;&gt;&lt;a href=&quot;#2019年词汇&quot; class=&quot;headerlink&quot; title=&quot;2019年词汇&quot;&gt;&lt;/a&gt;2019年词汇&lt;/h
+      
+    
+    </summary>
+    
+      <category term="读书看报" scheme="https://lywlefan.github.io/categories/%E8%AF%BB%E4%B9%A6%E7%9C%8B%E6%8A%A5/"/>
+    
+    
+      <category term="软件" scheme="https://lywlefan.github.io/tags/%E8%BD%AF%E4%BB%B6/"/>
+    
+      <category term="新词" scheme="https://lywlefan.github.io/tags/%E6%96%B0%E8%AF%8D/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>02.Java内存模型：看Java如何解决可见性和有序性问题</title>
+    <link href="https://lywlefan.github.io/2019/07/03/%E5%90%8E%E7%AB%AF/%E9%AB%98%E5%B9%B6%E5%8F%91/java/%E4%B9%A6%E7%B1%8D/java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E5%AE%9E%E6%88%98-%E7%8E%8B%E5%AE%9D%E4%BB%A4/02.Java%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B%EF%BC%9A%E7%9C%8BJava%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E5%8F%AF%E8%A7%81%E6%80%A7%E5%92%8C%E6%9C%89%E5%BA%8F%E6%80%A7%E9%97%AE%E9%A2%98%20/"/>
+    <id>https://lywlefan.github.io/2019/07/03/后端/高并发/java/书籍/java并发编程实战-王宝令/02.Java内存模型：看Java如何解决可见性和有序性问题 /</id>
+    <published>2019-07-02T16:00:00.000Z</published>
+    <updated>2019-10-15T06:46:35.928Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="阅读笔记"><a href="#阅读笔记" class="headerlink" title="阅读笔记"></a>阅读笔记</h2><ul><li><p>java内存模型</p></li><li><p>volatile</p></li><li><p>Happens-Before规则</p></li></ul><h3 id="什么是java内存模型？"><a href="#什么是java内存模型？" class="headerlink" title="什么是java内存模型？"></a>什么是java内存模型？</h3><p>java内存模型说的直白一点就是java程序使用内存的规范，让java语言在各种系统和平台中能保持数据的一致性。</p><h4 id="Happens-Before规则（6项规则）"><a href="#Happens-Before规则（6项规则）" class="headerlink" title="Happens-Before规则（6项规则）"></a>Happens-Before规则（6项规则）</h4><p>前一个操作对后一个操作是可见的。假如有一个公有变量，a方法先引用然后b方法再引用，那么我们称a方法的操作对b方法可见。</p><h5 id="程序顺序性规则"><a href="#程序顺序性规则" class="headerlink" title="程序顺序性规则"></a>程序顺序性规则</h5><p>假如有一个公有变量，a方法先引用然后b方法再引用，那么我们称a方法的操作对b方法可见。</p><h5 id="volatile变量规则"><a href="#volatile变量规则" class="headerlink" title="volatile变量规则"></a>volatile变量规则</h5><p>volatile变量的写操作对volatile变量读操作可见。说白了读之前，我要知道是谁写的，不然我不读。</p><h5 id="传递性"><a href="#传递性" class="headerlink" title="传递性"></a>传递性</h5><p>如果A对B可见，B对C可见，那么A对C可见。</p><h5 id="管程中锁的规则"><a href="#管程中锁的规则" class="headerlink" title="管程中锁的规则"></a>管程中锁的规则</h5><p>管程是一种通用的同步原语，在java中指的是synchronized,synchronized是java里对管程的实现。</p><p>对变量进行加锁，执行完再继续。</p><h5 id="线程smart-规则"><a href="#线程smart-规则" class="headerlink" title="线程smart()规则"></a>线程smart()规则</h5><p>它是指主线程 A 启动子线程 B 后，子线程 B 能够看到主线程在启动子线程 B 前的操作。</p><blockquote><p>G:说白了就是主线程要优于子线程。</p></blockquote><h5 id="线程join-规则"><a href="#线程join-规则" class="headerlink" title="线程join()规则"></a>线程join()规则</h5><h3 id="关键词解析"><a href="#关键词解析" class="headerlink" title="关键词解析"></a>关键词解析</h3><h4 id="volatile"><a href="#volatile" class="headerlink" title="volatile"></a>volatile</h4><p>这个关键词可以禁用cpu缓存。禁用了cpu缓存，那么我们的变量只能从内存中进行读写。</p><h4 id="Happens-Before规则"><a href="#Happens-Before规则" class="headerlink" title="Happens-Before规则"></a>Happens-Before规则</h4><p>Happens-Before规则说白了就是定义java内存模型的一种约束或者规则。</p><blockquote><p>推荐书单</p></blockquote><p>-《Java并发编程实战》作者阵容可谓大师云集，也包括Doug Lea</p><p>-《Java并发编程的艺术》讲解并发包内部实现原理，能读明白，内功大增</p><p>-《图解Java多线程设计模式》并发编程设计模式方面的经典书籍</p><p>-《操作系统：精髓与设计原理》经典操作系统教材</p><ul><li><p><a href="http://ifeve.com" target="_blank" rel="noopener">http://ifeve.com</a> 国内专业并发编程网站</p></li><li><p><a href="http://www.cs.umd.edu/~pugh/java/memoryModel/" target="_blank" rel="noopener">http://www.cs.umd.edu/~pugh/java/memoryModel/</a> 很多并发编程的早期资料都在这里</p></li></ul><blockquote><p><strong>参考文档</strong></p></blockquote><blockquote><p><a href="https://www.jianshu.com/u/354cc1548a33" target="_blank" rel="noopener">【1】简书主页·share猿</a></p></blockquote><blockquote><p><a href="https://juejin.im/user/5a8e759851882524d842d174" target="_blank" rel="noopener">【2】掘金主页·share猿</a></p></blockquote><hr><p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>                </div>                <div class="image-caption"></div>            </figure></p><p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;阅读笔记&quot;&gt;&lt;a href=&quot;#阅读笔记&quot; class=&quot;headerlink&quot; title=&quot;阅读笔记&quot;&gt;&lt;/a&gt;阅读笔记&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;java内存模型&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;volatile&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;H
+      
+    
+    </summary>
+    
+      <category term="后端" scheme="https://lywlefan.github.io/categories/%E5%90%8E%E7%AB%AF/"/>
+    
+    
+      <category term="java" scheme="https://lywlefan.github.io/tags/java/"/>
+    
+      <category term="高并发" scheme="https://lywlefan.github.io/tags/%E9%AB%98%E5%B9%B6%E5%8F%91/"/>
+    
+      <category term="java并发编程实战-王宝令" scheme="https://lywlefan.github.io/tags/java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E5%AE%9E%E6%88%98-%E7%8E%8B%E5%AE%9D%E4%BB%A4/"/>
+    
+      <category term="读书笔记" scheme="https://lywlefan.github.io/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   

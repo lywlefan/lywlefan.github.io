@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>02.Java内存模型：看Java如何解决可见性和有序性问题 | share猿 | https://lywlefan.github.io/</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="java,高并发,java并发编程实战-王宝令,读书笔记">
+    <meta name="description" content="阅读笔记 java内存模型  volatile  Happens-Before规则   什么是java内存模型？java内存模型说的直白一点就是java程序使用内存的规范，让java语言在各种系统和平台中能保持数据的一致性。 Happens-Before规则（6项规则）前一个操作对后一个操作是可见的。假如有一个公有变量，a方法先引用然后b方法再引用，那么我们称a方法的操作对b方法可见。 程序顺序性">
+<meta name="keywords" content="java,高并发,java并发编程实战-王宝令,读书笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="02.Java内存模型：看Java如何解决可见性和有序性问题">
+<meta property="og:url" content="https://lywlefan.github.io/2019/07/03/后端/高并发/java/书籍/java并发编程实战-王宝令/02.Java内存模型：看Java如何解决可见性和有序性问题 /index.html">
+<meta property="og:site_name" content="share猿">
+<meta property="og:description" content="阅读笔记 java内存模型  volatile  Happens-Before规则   什么是java内存模型？java内存模型说的直白一点就是java程序使用内存的规范，让java语言在各种系统和平台中能保持数据的一致性。 Happens-Before规则（6项规则）前一个操作对后一个操作是可见的。假如有一个公有变量，a方法先引用然后b方法再引用，那么我们称a方法的操作对b方法可见。 程序顺序性">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-10-15T06:46:35.928Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="02.Java内存模型：看Java如何解决可见性和有序性问题">
+<meta name="twitter:description" content="阅读笔记 java内存模型  volatile  Happens-Before规则   什么是java内存模型？java内存模型说的直白一点就是java程序使用内存的规范，让java语言在各种系统和平台中能保持数据的一致性。 Happens-Before规则（6项规则）前一个操作对后一个操作是可见的。假如有一个公有变量，a方法先引用然后b方法再引用，那么我们称a方法的操作对b方法可见。 程序顺序性">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+    
+        <link rel="alternate" type="application/atom+xml" title="share猿" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">share猿</h5>
+          <a href="mailto:330334064@qq.com" title="330334064@qq.com" class="mail">330334064@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/lywlefan" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                GitHub
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/atom">
+                <i class="icon icon-lg icon-rss"></i>
+                订阅
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">02.Java内存模型：看Java如何解决可见性和有序性问题</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">02.Java内存模型：看Java如何解决可见性和有序性问题</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-07-02T16:00:00.000Z" itemprop="datePublished" class="page-time">
+  2019-07-03
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/后端/">后端</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#阅读笔记"><span class="post-toc-number">1.</span> <span class="post-toc-text">阅读笔记</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#什么是java内存模型？"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">什么是java内存模型？</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Happens-Before规则（6项规则）"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">Happens-Before规则（6项规则）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#程序顺序性规则"><span class="post-toc-number">1.1.1.1.</span> <span class="post-toc-text">程序顺序性规则</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#volatile变量规则"><span class="post-toc-number">1.1.1.2.</span> <span class="post-toc-text">volatile变量规则</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#传递性"><span class="post-toc-number">1.1.1.3.</span> <span class="post-toc-text">传递性</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#管程中锁的规则"><span class="post-toc-number">1.1.1.4.</span> <span class="post-toc-text">管程中锁的规则</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#线程smart-规则"><span class="post-toc-number">1.1.1.5.</span> <span class="post-toc-text">线程smart()规则</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#线程join-规则"><span class="post-toc-number">1.1.1.6.</span> <span class="post-toc-text">线程join()规则</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#关键词解析"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">关键词解析</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#volatile"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">volatile</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Happens-Before规则"><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">Happens-Before规则</span></a></li></ol></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-后端/高并发/java/书籍/java并发编程实战-王宝令/02.Java内存模型：看Java如何解决可见性和有序性问题 " class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">02.Java内存模型：看Java如何解决可见性和有序性问题</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-07-03 00:00:00" datetime="2019-07-02T16:00:00.000Z" itemprop="datePublished">2019-07-03</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/后端/">后端</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h2 id="阅读笔记"><a href="#阅读笔记" class="headerlink" title="阅读笔记"></a>阅读笔记</h2><ul>
+<li><p>java内存模型</p>
+</li>
+<li><p>volatile</p>
+</li>
+<li><p>Happens-Before规则</p>
+</li>
+</ul>
+<h3 id="什么是java内存模型？"><a href="#什么是java内存模型？" class="headerlink" title="什么是java内存模型？"></a>什么是java内存模型？</h3><p>java内存模型说的直白一点就是java程序使用内存的规范，让java语言在各种系统和平台中能保持数据的一致性。</p>
+<h4 id="Happens-Before规则（6项规则）"><a href="#Happens-Before规则（6项规则）" class="headerlink" title="Happens-Before规则（6项规则）"></a>Happens-Before规则（6项规则）</h4><p>前一个操作对后一个操作是可见的。假如有一个公有变量，a方法先引用然后b方法再引用，那么我们称a方法的操作对b方法可见。</p>
+<h5 id="程序顺序性规则"><a href="#程序顺序性规则" class="headerlink" title="程序顺序性规则"></a>程序顺序性规则</h5><p>假如有一个公有变量，a方法先引用然后b方法再引用，那么我们称a方法的操作对b方法可见。</p>
+<h5 id="volatile变量规则"><a href="#volatile变量规则" class="headerlink" title="volatile变量规则"></a>volatile变量规则</h5><p>volatile变量的写操作对volatile变量读操作可见。说白了读之前，我要知道是谁写的，不然我不读。</p>
+<h5 id="传递性"><a href="#传递性" class="headerlink" title="传递性"></a>传递性</h5><p>如果A对B可见，B对C可见，那么A对C可见。</p>
+<h5 id="管程中锁的规则"><a href="#管程中锁的规则" class="headerlink" title="管程中锁的规则"></a>管程中锁的规则</h5><p>管程是一种通用的同步原语，在java中指的是synchronized,synchronized是java里对管程的实现。</p>
+<p>对变量进行加锁，执行完再继续。</p>
+<h5 id="线程smart-规则"><a href="#线程smart-规则" class="headerlink" title="线程smart()规则"></a>线程smart()规则</h5><p>它是指主线程 A 启动子线程 B 后，子线程 B 能够看到主线程在启动子线程 B 前的操作。</p>
+<blockquote>
+<p>G:说白了就是主线程要优于子线程。</p>
+</blockquote>
+<h5 id="线程join-规则"><a href="#线程join-规则" class="headerlink" title="线程join()规则"></a>线程join()规则</h5><h3 id="关键词解析"><a href="#关键词解析" class="headerlink" title="关键词解析"></a>关键词解析</h3><h4 id="volatile"><a href="#volatile" class="headerlink" title="volatile"></a>volatile</h4><p>这个关键词可以禁用cpu缓存。禁用了cpu缓存，那么我们的变量只能从内存中进行读写。</p>
+<h4 id="Happens-Before规则"><a href="#Happens-Before规则" class="headerlink" title="Happens-Before规则"></a>Happens-Before规则</h4><p>Happens-Before规则说白了就是定义java内存模型的一种约束或者规则。</p>
+<blockquote>
+<p>推荐书单</p>
+</blockquote>
+<p>-《Java并发编程实战》作者阵容可谓大师云集，也包括Doug Lea</p>
+<p>-《Java并发编程的艺术》讲解并发包内部实现原理，能读明白，内功大增</p>
+<p>-《图解Java多线程设计模式》并发编程设计模式方面的经典书籍</p>
+<p>-《操作系统：精髓与设计原理》经典操作系统教材</p>
+<ul>
+<li><p><a href="http://ifeve.com" target="_blank" rel="noopener">http://ifeve.com</a> 国内专业并发编程网站</p>
+</li>
+<li><p><a href="http://www.cs.umd.edu/~pugh/java/memoryModel/" target="_blank" rel="noopener">http://www.cs.umd.edu/~pugh/java/memoryModel/</a> 很多并发编程的早期资料都在这里</p>
+</li>
+</ul>
+<blockquote>
+<p><strong>参考文档</strong></p>
+</blockquote>
+<blockquote>
+<p><a href="https://www.jianshu.com/u/354cc1548a33" target="_blank" rel="noopener">【1】简书主页·share猿</a></p>
+</blockquote>
+<blockquote>
+<p><a href="https://juejin.im/user/5a8e759851882524d842d174" target="_blank" rel="noopener">【2】掘金主页·share猿</a></p>
+</blockquote>
+<hr>
+<p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
+<p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-10-15T06:46:35.928Z" itemprop="dateUpdated">2019-10-15 14:46:35</time>
+</span><br>
+
+
+        
+        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2019/07/03/后端/高并发/java/书籍/java并发编程实战-王宝令/02.Java内存模型：看Java如何解决可见性和有序性问题 /" target="_blank" rel="external">https://lywlefan.github.io/2019/07/03/后端/高并发/java/书籍/java并发编程实战-王宝令/02.Java内存模型：看Java如何解决可见性和有序性问题 /</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://lywlefan.github.io">
+            <img src="/img/avatar.png" alt="share猿">
+            share猿
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java并发编程实战-王宝令/">java并发编程实战-王宝令</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/高并发/">高并发</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://lywlefan.github.io/2019/07/03/后端/高并发/java/书籍/java并发编程实战-王宝令/02.Java内存模型：看Java如何解决可见性和有序性问题 /&title=《02.Java内存模型：看Java如何解决可见性和有序性问题》 — share猿&pic=https://lywlefan.github.io/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://lywlefan.github.io/2019/07/03/后端/高并发/java/书籍/java并发编程实战-王宝令/02.Java内存模型：看Java如何解决可见性和有序性问题 /&title=《02.Java内存模型：看Java如何解决可见性和有序性问题》 — share猿&source=分享有价值的内容,你我共同成长!" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://lywlefan.github.io/2019/07/03/后端/高并发/java/书籍/java并发编程实战-王宝令/02.Java内存模型：看Java如何解决可见性和有序性问题 /" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《02.Java内存模型：看Java如何解决可见性和有序性问题》 — share猿&url=https://lywlefan.github.io/2019/07/03/后端/高并发/java/书籍/java并发编程实战-王宝令/02.Java内存模型：看Java如何解决可见性和有序性问题 /&via=https://lywlefan.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://lywlefan.github.io/2019/07/03/后端/高并发/java/书籍/java并发编程实战-王宝令/02.Java内存模型：看Java如何解决可见性和有序性问题 /" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2019/07/11/读书看报/词汇/软件/软件中未知词汇收集/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">软件中未知词汇收集</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/07/02/后端/中间件/消息中间件/kafka/读书笔记/kafka核心技术与实战-胡夕/12.客户端都有哪些不常见但是很高级的功能？/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">12.客户端都有哪些不常见但是很高级的功能？</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'true' == 'true',
+            verify: 'false' == 'true',
+            appId: "hQGVIAaJERVwyrWxj1uqgCqS-gzGzoHsz",
+            appKey: "l7FO5csTavNwXCGryJyOkkc1",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢赞赏!
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>share猿 &copy; 2015 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://lywlefan.github.io/2019/07/03/后端/高并发/java/书籍/java并发编程实战-王宝令/02.Java内存模型：看Java如何解决可见性和有序性问题 /&title=《02.Java内存模型：看Java如何解决可见性和有序性问题》 — share猿&pic=https://lywlefan.github.io/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://lywlefan.github.io/2019/07/03/后端/高并发/java/书籍/java并发编程实战-王宝令/02.Java内存模型：看Java如何解决可见性和有序性问题 /&title=《02.Java内存模型：看Java如何解决可见性和有序性问题》 — share猿&source=分享有价值的内容,你我共同成长!" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://lywlefan.github.io/2019/07/03/后端/高并发/java/书籍/java并发编程实战-王宝令/02.Java内存模型：看Java如何解决可见性和有序性问题 /" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《02.Java内存模型：看Java如何解决可见性和有序性问题》 — share猿&url=https://lywlefan.github.io/2019/07/03/后端/高并发/java/书籍/java并发编程实战-王宝令/02.Java内存模型：看Java如何解决可见性和有序性问题 /&via=https://lywlefan.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://lywlefan.github.io/2019/07/03/后端/高并发/java/书籍/java并发编程实战-王宝令/02.Java内存模型：看Java如何解决可见性和有序性问题 /" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAT4AAAE+CAAAAAAxUyPsAAAFLklEQVR42u3aUW7kOBAD0L7/pbMH2O0OyXIyC8zzV2PisawnAy6x/HrFx9ebIz//33/9/Pvzld+N9fnMdyMmMzod+PDhw4cPX0DzbpgcIv9fyTSeulqyAIkJPnz48OHDd+FLXvDtkMmUksLl80JuJdR2TXz48OHDh+/3+fKB2wig3cDnS5iPjg8fPnz48P3/+RLWtjDayC7lFz58+PDhw/ebfPnGfpvMFp1vS5KXU23MgQ8fPnz48N358nLh7/n98IEPHz58+PAFr+f8pZ4EEG2RcSk+kqInKZi+uTI+fPjw4cO3aBTN7PYztXug30YbSbx+b+rjw4cPHz58m0P7Or+31fPGdrJg7V+3cOSbkgUfPnz48OGL+doXfN5OfrYhnUyjDTLaQOGbhceHDx8+fPhKvksEsG3CW4hk3Jbv/ljgw4cPHz58Od/vBOvbBNoPy9q7vcQWr/bZwYcPHz58+KbCIh8smcwWHGxLmy9nUX7hw4cPHz58y8693uTnk9m27m3Dvj0zKUqSO8eHDx8+fPhavrb9fFmltgzaAvpoq18+QG//BR8+fPjw4Sv52g12jniJFZ4N8dv2/7YA+PDhw4cPX86XN4zvlPlHafcFy6+fx/3/MTo+fPjw4cN3aOe2r+22sNiC/vskt6Kkrv7w4cOHDx++4Mz807G2NNnO3Jja9nxb9Ly9N3z48OHDhy/maz8Ou7y7L1vxPGq/0NThAj58+PDhwzfxbQVBG6knn77ljfOk9Nma9D9S8eHDhw8fPnzlpn37vOweDeSBfp2UTGXNmHngw4cPHz58U3nx7Pb+c8mSlxT5hn/7RKCo/vDhw4cPH74pONje1Fvon4+eFyLbA5Gz4sOHDx8+fBe+dnOe3HReFrTjbmXQ5fpF6IAPHz58+PDFfO02PmG6NODvZUe75JeCDB8+fPjw4Uv4ko33pSmeb7kvjfAtpGgXBh8+fPjw4XuK71UeX8Fxv92tEGnbABcBfPjw4cOHb+p0v+5t7G3zf2ls51fL2+p5G/7VDowPHz58+PBNN7dtyLe44c8GGTk0Pnz48OHDl/NtDe9L0XMvHe4QW8Rf5w348OHDhw/fPYwup5GXOJcSJIke2ojh4dwFHz58+PDh+zhke7vPnpMHGZeS5dKkx4cPHz58+J7ia9/OeflyOXNrFbQfzOXNBnz48OHDh2/jy0uNrUBpmwH570sckBN/czV8+PDhw4ev5Mu39O2lt215ztrG609FD/jw4cOHD99P8z0FujWzt83/U0xReYQPHz58+PBNfG37/HJDbTO+nVILkSzA2zvEhw8fPnz4Yr6v8/GKj0szPo82LsR1nIEPHz58+PAtSfhjEXleBORN+pY7DybyIiy6c3z48OHDhy/mu39GlscB7Qb+cv1LYFEUavjw4cOHD9/0hViLmLfb89+XSV4a/3mR9NgziA8fPnz4/kq+re2dxwd34ryMaBsJbZP+ba8DHz58+PDhO7TJ82j+0ixv/9cWKLTFU54G4MOHDx8+fE/x5a3i+7RzlC1Sbx+OvDB65auHDx8+fPjwTQ75ZNripi0y2nvIQ412XHz48OHDh2/ja7fcbUDfhg6XAmJrgZ/GxYcPHz58+Ca+9kV+CdBPNdS5uHlqXHz48OHDh+/3+fKbyz8728L6Szs8/wCuqNrw4cOHDx++H+DbNt5J0bMF7vdIou5v4MOHDx8+fBNfWzTkUcKliHmqVHq2FTG2yfHhw4cPH75DSN1Or43dW7jkIcjHbYshfPjw4cOHL+D7B1O7uZmiwPWcAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '共同学习!共同进步!';
+            clearTimeout(titleTime);
+        } else {
+            document.title = 'Share猿社区官方';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>MPP(大规模并行处理)简介 | share猿 | https://lywlefan.github.io/</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="数据存储,MBPP数据库">
+    <meta name="description" content="&amp;emsp;&amp;emsp;实践一门技术的最好方式就是深入理解它的思想，然后造一个出来！  1、 什么是MPP？MPP (Massively Parallel Processing)，即大规模并行处理，在数据库非共享集群中，每个节点都有独立的磁盘存储系统和内存系统，业务数据根据数据库模型和应用特点划分到各个节点上，每台数据节点通过专用网络或者商业通用网络互相连接，彼此协同计算，作为整体提供数据库服务">
+<meta name="keywords" content="数据存储,MBPP数据库">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MPP(大规模并行处理)简介">
+<meta property="og:url" content="https://lywlefan.github.io/2019/07/19/后端/数据存储/MBPP数据库/MPP(大规模并行处理)简介/index.html">
+<meta property="og:site_name" content="share猿">
+<meta property="og:description" content="&amp;emsp;&amp;emsp;实践一门技术的最好方式就是深入理解它的思想，然后造一个出来！  1、 什么是MPP？MPP (Massively Parallel Processing)，即大规模并行处理，在数据库非共享集群中，每个节点都有独立的磁盘存储系统和内存系统，业务数据根据数据库模型和应用特点划分到各个节点上，每台数据节点通过专用网络或者商业通用网络互相连接，彼此协同计算，作为整体提供数据库服务">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://img-blog.csdn.net/20180607153205548?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMTg5MDgz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
+<meta property="og:image" content="https://img-blog.csdn.net/20180607153236902?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMTg5MDgz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
+<meta property="og:image" content="https://i.loli.net/2019/07/19/5d3189cc48dc124520.png">
+<meta property="og:image" content="https://img-blog.csdn.net/20180607153301340?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMTg5MDgz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-10-15T06:42:25.849Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MPP(大规模并行处理)简介">
+<meta name="twitter:description" content="&amp;emsp;&amp;emsp;实践一门技术的最好方式就是深入理解它的思想，然后造一个出来！  1、 什么是MPP？MPP (Massively Parallel Processing)，即大规模并行处理，在数据库非共享集群中，每个节点都有独立的磁盘存储系统和内存系统，业务数据根据数据库模型和应用特点划分到各个节点上，每台数据节点通过专用网络或者商业通用网络互相连接，彼此协同计算，作为整体提供数据库服务">
+<meta name="twitter:image" content="https://img-blog.csdn.net/20180607153205548?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMTg5MDgz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
+    
+        <link rel="alternate" type="application/atom+xml" title="share猿" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">share猿</h5>
+          <a href="mailto:330334064@qq.com" title="330334064@qq.com" class="mail">330334064@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/lywlefan" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                GitHub
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/atom">
+                <i class="icon icon-lg icon-rss"></i>
+                订阅
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">MPP(大规模并行处理)简介</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">MPP(大规模并行处理)简介</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-07-18T16:00:00.000Z" itemprop="datePublished" class="page-time">
+  2019-07-19
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/后端/">后端</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1、-什么是MPP？"><span class="post-toc-number">1.</span> <span class="post-toc-text">1、 什么是MPP？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2、MPP-大规模并行处理-架构"><span class="post-toc-number">2.</span> <span class="post-toc-text">2、MPP(大规模并行处理)架构</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3、-MPP架构特征"><span class="post-toc-number">3.</span> <span class="post-toc-text">3、 MPP架构特征</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4、-MPP服务器架构"><span class="post-toc-number">4.</span> <span class="post-toc-text">4、 MPP服务器架构</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#5、MPPDB"><span class="post-toc-number">5.</span> <span class="post-toc-text">5、MPPDB</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#6、MPPDB架构"><span class="post-toc-number">6.</span> <span class="post-toc-text">6、MPPDB架构</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#7、-MPPDB特征"><span class="post-toc-number">7.</span> <span class="post-toc-text">7、 MPPDB特征</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#8、-常见MPPDB"><span class="post-toc-number">8.</span> <span class="post-toc-text">8、 常见MPPDB</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#9、-MPPDB、Hadoop与传统数据库技术对比与适用场景"><span class="post-toc-number">9.</span> <span class="post-toc-text">9、 MPPDB、Hadoop与传统数据库技术对比与适用场景</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-后端/数据存储/MBPP数据库/MPP(大规模并行处理)简介" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">MPP(大规模并行处理)简介</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-07-19 00:00:00" datetime="2019-07-18T16:00:00.000Z" itemprop="datePublished">2019-07-19</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/后端/">后端</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <blockquote>
+<p>&emsp;&emsp;实践一门技术的最好方式就是深入理解它的思想，然后造一个出来！</p>
+</blockquote>
+<h3 id="1、-什么是MPP？"><a href="#1、-什么是MPP？" class="headerlink" title="1、 什么是MPP？"></a>1、 什么是MPP？</h3><p>MPP (Massively Parallel Processing)，即大规模并行处理，在数据库非共享集群中，每个节点都有独立的磁盘存储系统和内存系统，业务数据根据数据库模型和应用特点划分到各个节点上，每台数据节点通过专用网络或者商业通用网络互相连接，彼此协同计算，作为整体提供数据库服务。非共享数据库集群有完全的可伸缩性、高可用、高性能、优秀的性价比、资源共享等优势。</p>
+<p>简单来说，MPP是将任务并行的分散到多个服务器和节点上，在每个节点上计算完成后，将各自部分的结果汇总在一起得到最终的结果(与Hadoop相似)。</p>
+<h3 id="2、MPP-大规模并行处理-架构"><a href="#2、MPP-大规模并行处理-架构" class="headerlink" title="2、MPP(大规模并行处理)架构"></a>2、MPP(大规模并行处理)架构</h3><p><img src="https://img-blog.csdn.net/20180607153205548?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMTg5MDgz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt>                                         (MPP架构)</p>
+<h3 id="3、-MPP架构特征"><a href="#3、-MPP架构特征" class="headerlink" title="3、 MPP架构特征"></a>3、 MPP架构特征</h3><p>● 任务并行执行;</p>
+<p>● 数据分布式存储(本地化);</p>
+<p>● 分布式计算;</p>
+<p>● 私有资源;</p>
+<p>● 横向扩展;</p>
+<p>● Shared Nothing架构。</p>
+<h3 id="4、-MPP服务器架构"><a href="#4、-MPP服务器架构" class="headerlink" title="4、 MPP服务器架构"></a>4、 MPP服务器架构</h3><p>它由多个SMP服务器通过一定的节点互联网络进行连接，协同工作，完成相同的任务，从用户的角度来看是一个服务器系统。其基本特征是由多个SMP服务器(每个SMP服务器称节点)通过节点互联网络连接而成，每个节点只访问自己的本地资源(内存、存储等)，是一种完全无共享(Share Nothing)结构，因而扩展能力最好，理论上其扩展无限制。</p>
+<h3 id="5、MPPDB"><a href="#5、MPPDB" class="headerlink" title="5、MPPDB"></a>5、MPPDB</h3><p>MPPDB是一款 Shared Nothing 架构的分布式并行结构化数据库集群，具备高性能、高可用、高扩展特性，可以为超大规模数据管理提供高性价比的通用计算平台，并广泛地用于支撑各类数据仓库系统、BI 系统和决策支持系统</p>
+<h3 id="6、MPPDB架构"><a href="#6、MPPDB架构" class="headerlink" title="6、MPPDB架构"></a>6、MPPDB架构</h3><p>MPP 采用完全并行的MPP + Shared Nothing 的分布式扁平架构，这种架构中的每一个节点（node）都是独立的、自给的、节点之间对等，而且整个系统中不存在单点瓶颈，具有非常强的扩展性。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://img-blog.csdn.net/20180607153236902?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMTg5MDgz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h3 id="7、-MPPDB特征"><a href="#7、-MPPDB特征" class="headerlink" title="7、 MPPDB特征"></a>7、 MPPDB特征</h3><p>MPP 具备以下技术特征：</p>
+<p>1) 低硬件成本：完全使用 x86 架构的 PC Server，不需要昂贵的 Unix 服务器和磁盘阵列；</p>
+<p>2) 集群架构与部署：完全并行的 MPP + Shared Nothing 的分布式架构，采用 Non-Master 部署，节点对等的扁平结构；</p>
+<p>3) 海量数据分布压缩存储：可处理 PB 级别以上的结构化数据，采用 hash分布、random 存储策略进行数据存储；同时采用先进的压缩算法，减少存储数据所需的空间，可以将所用空间减少 1~20 倍，并相应地提高 I/O 性能；</p>
+<p>4) 数据加载高效性：基于策略的数据加载模式，集群整体加载速度可达2TB/h；</p>
+<p>5) 高扩展、高可靠：支持集群节点的扩容和缩容，支持全量、增量的备份/恢复;</p>
+<p>6) 高可用、易维护：数据通过副本提供冗余保护，自动故障探测和管理，自动同步元数据和业务数据。提供图形化工具，以简化管理员对数据库的管理工作；</p>
+<p>7) 高并发：读写不互斥，支持数据的边加载边查询，单个节点并发能力大于 300 用户；</p>
+<p>8) 行列混合存储：提供行列混合存储方案，从而提高了列存数据库特殊查询场景的查询响应耗时；</p>
+<p>9) 标准化：支持SQL92 标准，支持 C API、ODBC、JDBC、ADO.NET 等接口规范。</p>
+<h3 id="8、-常见MPPDB"><a href="#8、-常见MPPDB" class="headerlink" title="8、 常见MPPDB"></a>8、 常见MPPDB</h3><p>● GREENPLUM(EMC)</p>
+<p>● Asterdata(Teradata)</p>
+<p>● Nettezza(IBM)</p>
+<p>● Vertica(HP)</p>
+<p>● GBase 8a MPP cluster(南大通用)</p>
+<h3 id="9、-MPPDB、Hadoop与传统数据库技术对比与适用场景"><a href="#9、-MPPDB、Hadoop与传统数据库技术对比与适用场景" class="headerlink" title="9、 MPPDB、Hadoop与传统数据库技术对比与适用场景"></a>9、 MPPDB、Hadoop与传统数据库技术对比与适用场景</h3><p>MPPDB与Hadoop都是将运算分布到节点中独立运算后进行结果合并(分布式计算)，但由于依据的理论和采用的技术路线不同而有各自的优缺点和适用范围。两种技术以及传统数据库技术的对比如下：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/07/19/5d3189cc48dc124520.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>综合而言，Hadoop和MPP两种技术的特定和适用场景为：</p>
+<p>● Hadoop在处理非结构化和半结构化数据上具备优势，尤其适合海量数据批处理等应用要求。</p>
+<p>● MPP适合替代现有关系数据机构下的大数据处理，具有较高的效率。</p>
+<p>MPP适合多维度数据自助分析、数据集市等；Hadoop适合海量数据存储查询、批量数据ETL、非机构化数据分析(日志分析、文本分析)等。</p>
+<p>由上述对比可预见未来大数据存储与处理趋势：MPPDB+Hadoop混搭使用，用MPP处理PB级别的、高质量的结构化数据，同时为应用提供丰富的SQL和事物支持能力；用Hadoop实现半结构化、非结构化数据处理。这样可以同时满足结构化、半结构化和非结构化数据的高效处理需求。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://img-blog.csdn.net/20180607153301340?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMTg5MDgz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<blockquote>
+<p><a href="https://www.jianshu.com/u/354cc1548a33" target="_blank" rel="noopener">【1】简书主页·share猿</a>﻿<br><a href="https://juejin.im/user/5a8e759851882524d842d174" target="_blank" rel="noopener">【2】掘金主页·share猿</a>﻿﻿</p>
+</blockquote>
+<p>—﻿</p>
+<p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong>﻿</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt>﻿﻿</p>
+<p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-10-15T06:42:25.849Z" itemprop="dateUpdated">2019-10-15 14:42:25</time>
+</span><br>
+
+
+        
+        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2019/07/19/后端/数据存储/MBPP数据库/MPP(大规模并行处理)简介/" target="_blank" rel="external">https://lywlefan.github.io/2019/07/19/后端/数据存储/MBPP数据库/MPP(大规模并行处理)简介/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://lywlefan.github.io">
+            <img src="/img/avatar.png" alt="share猿">
+            share猿
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MBPP数据库/">MBPP数据库</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据存储/">数据存储</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://lywlefan.github.io/2019/07/19/后端/数据存储/MBPP数据库/MPP(大规模并行处理)简介/&title=《MPP(大规模并行处理)简介》 — share猿&pic=https://lywlefan.github.io/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://lywlefan.github.io/2019/07/19/后端/数据存储/MBPP数据库/MPP(大规模并行处理)简介/&title=《MPP(大规模并行处理)简介》 — share猿&source=分享有价值的内容,你我共同成长!" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://lywlefan.github.io/2019/07/19/后端/数据存储/MBPP数据库/MPP(大规模并行处理)简介/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《MPP(大规模并行处理)简介》 — share猿&url=https://lywlefan.github.io/2019/07/19/后端/数据存储/MBPP数据库/MPP(大规模并行处理)简介/&via=https://lywlefan.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://lywlefan.github.io/2019/07/19/后端/数据存储/MBPP数据库/MPP(大规模并行处理)简介/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2019/07/30/后端/数据存储/NOSQL/redis/02.redis的应用--布隆过滤器/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">02.redis的应用--布隆过滤器</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/07/18/读书看报/书单/理财书籍收集/理财书籍收集/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">理财书籍收集</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'true' == 'true',
+            verify: 'false' == 'true',
+            appId: "hQGVIAaJERVwyrWxj1uqgCqS-gzGzoHsz",
+            appKey: "l7FO5csTavNwXCGryJyOkkc1",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢赞赏!
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>share猿 &copy; 2015 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://lywlefan.github.io/2019/07/19/后端/数据存储/MBPP数据库/MPP(大规模并行处理)简介/&title=《MPP(大规模并行处理)简介》 — share猿&pic=https://lywlefan.github.io/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://lywlefan.github.io/2019/07/19/后端/数据存储/MBPP数据库/MPP(大规模并行处理)简介/&title=《MPP(大规模并行处理)简介》 — share猿&source=分享有价值的内容,你我共同成长!" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://lywlefan.github.io/2019/07/19/后端/数据存储/MBPP数据库/MPP(大规模并行处理)简介/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《MPP(大规模并行处理)简介》 — share猿&url=https://lywlefan.github.io/2019/07/19/后端/数据存储/MBPP数据库/MPP(大规模并行处理)简介/&via=https://lywlefan.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://lywlefan.github.io/2019/07/19/后端/数据存储/MBPP数据库/MPP(大规模并行处理)简介/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAADH0lEQVR42u3awW7rMAwEwPz/T+ddH1DEXZIKYLPjU5G2skY9sFzq9Yqf93/Pp+/+/Pp6tZ8rXz/JaocfbGxs7Iewk5flnyTHlOCTA73e1S8Hh42Njb2OnZel+VaufzcpS/maHz/HxsbGxh68vtpm5AeEjY2NjZ0vfb2hSfnpHSI2NjY2dhIq9YpH73AnezucpWFjY2Pfnp1PRe//9Vfm29jY2Ng3Zr+LTxIM5cPgXotyQIGNjY29iJ0XgGqQlAT6eeGZXAz6+JPY2NjYK9jVcpUgkygnD5iqZSz6BBsbG3sRO99QvulqcF8dD1cLZFQmsbGxsR/OziObvGxMwqPqytVgCxsbG3s3O186B0yi/17JjPaPjY2NvYg9X7raQlxvbtJRlYcH2NjY2A9nV8tPfmSTcWy1zcj3gI2Njb2PnWQsk/ajd0yT1fKLodjY2Ng72L1rMfmFm8k4OS9j1bdjY2Njb2LPB7dJwTsbY/UirXKiho2Njf0QdhLT97ZVDe57bU+zsGFjY2MvYlfbgKSQ9J5eQZ0MD7CxsbF3sHsj2GqoVB0D5xd6qoeOjY2NvY9dvRYz2XQv6J/ET79UbGxsbOx17OpBfAM2bzPyoQI2Njb2Dnb+T3+v2ZiPDZKRc/IubGxs7L/Ars4Q5sPg3uWeA4MHbGxs7HXsapOQl5P8gKqlKC9+HwcD2NjY2IvYvcFtUqKuP5+Xw94fBhsbG3sTuxfuV5uHydhgHiodmHVjY2NjP4Q9ifvzw+oNA6pHX/h5bGxs7EXsSeGpbjovVIXxbSuiwsbGxt7BrjJ6A+M81q8OAHp7xsbGxt7HrkY2+TWafBB7tjRGBQwbGxt7EbsX01Sj+UlT8Ro80X0lbGxs7Aey38UniZ/yw0rK2Deuh2JjY2NvYlcLwNlSVx0qT6Kr0QAYGxsb+/bsydLVU8xnznkrMrp2iY2Njb2Inb94coEyB8/HvdjY2NjY1bC+2t/M8ZPdYmNjY2PnW5yvnDQeyVuiKzvY2NjYj2X3rk4mW7le59TgNl8ZGxsbex87bxvmQ4VToX8V2by+g42NjX139j96XfcTUGNVDQAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '共同学习!共同进步!';
+            clearTimeout(titleTime);
+        } else {
+            document.title = 'Share猿社区官方';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
