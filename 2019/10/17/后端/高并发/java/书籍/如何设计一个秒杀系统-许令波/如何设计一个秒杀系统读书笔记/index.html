@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>如何设计一个秒杀系统读书笔记 | share猿 | https://lywlefan.github.io/</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="java,高并发,java并发编程实战-王宝令,读书笔记">
+    <meta name="description" content="阅读笔记秒杀系统关键点①我觉得作为一个程序员,你首先需要从高维度出发,从整体上思考问题。 1G:对整体要有高屋建瓴，要站在最高处俯瞰，在落实的时候要把握好细节，下绣花针功夫。 ②秒杀其实主要解决两个问题,一个是并发读,一个是并发写。并发读的核心优化理念是尽量减少用户到服务来“读”数据,或者让他们读更少的数据;并发写的处理原则也一样,它要求我们在数据库层面独立出来一个库,做特殊的处理。另外,我们还要">
+<meta name="keywords" content="java,高并发,java并发编程实战-王宝令,读书笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="如何设计一个秒杀系统读书笔记">
+<meta property="og:url" content="https://lywlefan.github.io/2019/10/17/后端/高并发/java/书籍/如何设计一个秒杀系统-许令波/如何设计一个秒杀系统读书笔记/index.html">
+<meta property="og:site_name" content="share猿">
+<meta property="og:description" content="阅读笔记秒杀系统关键点①我觉得作为一个程序员,你首先需要从高维度出发,从整体上思考问题。 1G:对整体要有高屋建瓴，要站在最高处俯瞰，在落实的时候要把握好细节，下绣花针功夫。 ②秒杀其实主要解决两个问题,一个是并发读,一个是并发写。并发读的核心优化理念是尽量减少用户到服务来“读”数据,或者让他们读更少的数据;并发写的处理原则也一样,它要求我们在数据库层面独立出来一个库,做特殊的处理。另外,我们还要">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://lywlefan.github.io/home/shareyuan/.config/Typora/typora-user-images/1571245479323.png">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-10-18T07:57:52.975Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="如何设计一个秒杀系统读书笔记">
+<meta name="twitter:description" content="阅读笔记秒杀系统关键点①我觉得作为一个程序员,你首先需要从高维度出发,从整体上思考问题。 1G:对整体要有高屋建瓴，要站在最高处俯瞰，在落实的时候要把握好细节，下绣花针功夫。 ②秒杀其实主要解决两个问题,一个是并发读,一个是并发写。并发读的核心优化理念是尽量减少用户到服务来“读”数据,或者让他们读更少的数据;并发写的处理原则也一样,它要求我们在数据库层面独立出来一个库,做特殊的处理。另外,我们还要">
+<meta name="twitter:image" content="https://lywlefan.github.io/home/shareyuan/.config/Typora/typora-user-images/1571245479323.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="share猿" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">share猿</h5>
+          <a href="mailto:330334064@qq.com" title="330334064@qq.com" class="mail">330334064@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/lywlefan" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                GitHub
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/atom">
+                <i class="icon icon-lg icon-rss"></i>
+                订阅
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">如何设计一个秒杀系统读书笔记</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">如何设计一个秒杀系统读书笔记</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-10-16T16:00:00.000Z" itemprop="datePublished" class="page-time">
+  2019-10-17
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/后端/">后端</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#阅读笔记"><span class="post-toc-number">1.</span> <span class="post-toc-text">阅读笔记</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#秒杀系统关键点"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">秒杀系统关键点</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#设计秒杀系统注意的5个架构原则"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">设计秒杀系统注意的5个架构原则</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#二八原则-有正对性的处理好系统的热点数据"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">二八原则:有正对性的处理好系统的热点数据</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#疑问"><span class="post-toc-number">2.</span> <span class="post-toc-text">疑问</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#如何减少用户来服务端读数据？？"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">如何减少用户来服务端读数据？？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#什么是兜底方案？？如何设计兜底？？"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">什么是兜底方案？？如何设计兜底？？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#什么是无状态化？？？"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">什么是无状态化？？？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#什么是”热点数据”"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">什么是”热点数据”???</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#如何分析发现热点数据"><span class="post-toc-number">2.4.1.</span> <span class="post-toc-text">如何分析发现热点数据??</span></a></li></ol></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-后端/高并发/java/书籍/如何设计一个秒杀系统-许令波/如何设计一个秒杀系统读书笔记" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">如何设计一个秒杀系统读书笔记</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-10-17 00:00:00" datetime="2019-10-16T16:00:00.000Z" itemprop="datePublished">2019-10-17</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/后端/">后端</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h2 id="阅读笔记"><a href="#阅读笔记" class="headerlink" title="阅读笔记"></a>阅读笔记</h2><h3 id="秒杀系统关键点"><a href="#秒杀系统关键点" class="headerlink" title="秒杀系统关键点"></a>秒杀系统关键点</h3><p>①我觉得作为一个程序员,你首先需要从高维度出发,从整体上思考问题。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">G:对整体要有高屋建瓴，要站在最高处俯瞰，在落实的时候要把握好细节，下绣花针功夫。</span><br></pre></td></tr></table></figure>
+<p>②秒杀其实主要解决两个问题,<strong>一个是并发读,一个是并发写</strong>。并发读的核心优化理念是尽量<strong>减少用户到服务来“读”数据</strong>,或者让他们读更少的数据;并发写的处理原则也一样,它<strong>要求我们在数据库层面独立出来一个库,做特殊的处理</strong>。另外,我们还要针对秒杀系统做一些保护,针对意料之外的情况<strong>设计兜底方案</strong>,以防止最坏的情况发生。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">G：两个疑问，见疑问区域</span><br></pre></td></tr></table></figure>
+<p>③从浏览器到服务端我们要遵循几个原则：</p>
+<ul>
+<li>请求数据尽量少</li>
+<li>请求数尽量少</li>
+<li>路径尽量短</li>
+<li>依赖尽量少</li>
+<li>不要有单点</li>
+</ul>
+<p><strong>④整体架构概括为几个字：稳、准、快</strong></p>
+<ul>
+<li>稳（高性能）：流量超出预期要保证稳定</li>
+<li>准（一致性）：秒杀多少个商品就是多少个，一台也不能多，一台也不能少</li>
+<li>快（高可用）：支撑大的流量，性能要好</li>
+</ul>
+<h3 id="设计秒杀系统注意的5个架构原则"><a href="#设计秒杀系统注意的5个架构原则" class="headerlink" title="设计秒杀系统注意的5个架构原则"></a>设计秒杀系统注意的5个架构原则</h3><p><strong>①“4要1不要”</strong></p>
+<ul>
+<li><p>数据尽量少：上传的数据和返回的数据</p>
+</li>
+<li><p>请求尽量少：</p>
+<ul>
+<li><p>合并CSS和JavaScript文件，多个合成一个</p>
+<p>在 URL 中用逗号隔开(<a href="https://g.xxx.com/tm/xx-b/4.0.94/mods/??module-preview/index.xtpl.js,module-jhs/index.xtpl.js,module-focus/index.xtpl.js)。这种方式在服务端仍然是单个文件各自存放,只是服务端会有一个组件解析这个" target="_blank" rel="noopener">https://g.xxx.com/tm/xx-b/4.0.94/mods/??module-preview/index.xtpl.js,module-jhs/index.xtpl.js,module-focus/index.xtpl.js)。这种方式在服务端仍然是单个文件各自存放,只是服务端会有一个组件解析这个</a> URL,然后动态把这些文件合并起来一起返回。</p>
+</li>
+</ul>
+</li>
+<li><p>路径尽量短</p>
+<ul>
+<li>缩短请求不仅可以增加可用性而且可以有效提升性能</li>
+<li>要缩短访问路径有一种办法,就是多个相互强依赖的应用合并部署在一起,把远程过程调用<br>(RPC)变成JVM内部之间的调用。</li>
+</ul>
+</li>
+<li><p>依赖尽量少</p>
+<ul>
+<li>系统分级（0级、1级、2级等等）</li>
+</ul>
+</li>
+<li><p>不要单点</p>
+<ul>
+<li>应用无状态化</li>
+<li>服务无状态化</li>
+</ul>
+</li>
+</ul>
+<p><strong>架构是一种平衡的艺术,而最好的架构一旦脱离了它所适应的场景,一切都将是空谈。</strong></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/home/shareyuan/.config/Typora/typora-user-images/1571245479323.png" alt="1571245479323" title>
+                </div>
+                <div class="image-caption">1571245479323</div>
+            </figure>
+<h3 id="二八原则-有正对性的处理好系统的热点数据"><a href="#二八原则-有正对性的处理好系统的热点数据" class="headerlink" title="二八原则:有正对性的处理好系统的热点数据"></a>二八原则:有正对性的处理好系统的热点数据</h3><h2 id="疑问"><a href="#疑问" class="headerlink" title="疑问"></a>疑问</h2><h3 id="如何减少用户来服务端读数据？？"><a href="#如何减少用户来服务端读数据？？" class="headerlink" title="如何减少用户来服务端读数据？？"></a>如何减少用户来服务端读数据？？</h3><h3 id="什么是兜底方案？？如何设计兜底？？"><a href="#什么是兜底方案？？如何设计兜底？？" class="headerlink" title="什么是兜底方案？？如何设计兜底？？"></a>什么是兜底方案？？如何设计兜底？？</h3><h3 id="什么是无状态化？？？"><a href="#什么是无状态化？？？" class="headerlink" title="什么是无状态化？？？"></a>什么是无状态化？？？</h3><h3 id="什么是”热点数据”"><a href="#什么是”热点数据”" class="headerlink" title="什么是”热点数据”???"></a>什么是”热点数据”???</h3><p>热点数据就是一个系统中,用户<strong>访问量最大的数据</strong>,比如:热点商品。热点数据又分为<strong>:静态热点数据</strong>和<strong>动态热点数据</strong>。</p>
+<h4 id="如何分析发现热点数据"><a href="#如何分析发现热点数据" class="headerlink" title="如何分析发现热点数据??"></a>如何分析发现热点数据??</h4><p><strong>静态热点数据的发现</strong></p>
+<p>提前通过统计这些数据,比如:热卖商品,我们可以通过TOP排行榜进行统计,秒杀商品可以让商家进行报名,提前对这些数据做好缓存和预处理。</p>
+<p><strong>动态数据的发现</strong></p>
+<blockquote>
+<p><strong>参考文档</strong></p>
+</blockquote>
+<blockquote>
+<p><a href="https://www.jianshu.com/u/354cc1548a33" target="_blank" rel="noopener">【1】简书主页·share猿</a></p>
+</blockquote>
+<blockquote>
+<p><a href="https://juejin.im/user/5a8e759851882524d842d174" target="_blank" rel="noopener">【2】掘金主页·share猿</a></p>
+</blockquote>
+<hr>
+<p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
+<p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-10-18T07:57:52.975Z" itemprop="dateUpdated">2019-10-18 15:57:52</time>
+</span><br>
+
+
+        
+        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2019/10/17/后端/高并发/java/书籍/如何设计一个秒杀系统-许令波/如何设计一个秒杀系统读书笔记/" target="_blank" rel="external">https://lywlefan.github.io/2019/10/17/后端/高并发/java/书籍/如何设计一个秒杀系统-许令波/如何设计一个秒杀系统读书笔记/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://lywlefan.github.io">
+            <img src="/img/avatar.png" alt="share猿">
+            share猿
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java并发编程实战-王宝令/">java并发编程实战-王宝令</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/高并发/">高并发</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://lywlefan.github.io/2019/10/17/后端/高并发/java/书籍/如何设计一个秒杀系统-许令波/如何设计一个秒杀系统读书笔记/&title=《如何设计一个秒杀系统读书笔记》 — share猿&pic=https://lywlefan.github.io/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://lywlefan.github.io/2019/10/17/后端/高并发/java/书籍/如何设计一个秒杀系统-许令波/如何设计一个秒杀系统读书笔记/&title=《如何设计一个秒杀系统读书笔记》 — share猿&source=分享有价值的内容,你我共同成长!" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://lywlefan.github.io/2019/10/17/后端/高并发/java/书籍/如何设计一个秒杀系统-许令波/如何设计一个秒杀系统读书笔记/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《如何设计一个秒杀系统读书笔记》 — share猿&url=https://lywlefan.github.io/2019/10/17/后端/高并发/java/书籍/如何设计一个秒杀系统-许令波/如何设计一个秒杀系统读书笔记/&via=https://lywlefan.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://lywlefan.github.io/2019/10/17/后端/高并发/java/书籍/如何设计一个秒杀系统-许令波/如何设计一个秒杀系统读书笔记/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2019/10/18/后端/框架/java/hibernate/jpa原生sql分页/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">jpa原生sql分页</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/10/15/后端/后端导航/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">后端导航</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'true' == 'true',
+            verify: 'false' == 'true',
+            appId: "hQGVIAaJERVwyrWxj1uqgCqS-gzGzoHsz",
+            appKey: "l7FO5csTavNwXCGryJyOkkc1",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢赞赏!
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>share猿 &copy; 2015 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://lywlefan.github.io/2019/10/17/后端/高并发/java/书籍/如何设计一个秒杀系统-许令波/如何设计一个秒杀系统读书笔记/&title=《如何设计一个秒杀系统读书笔记》 — share猿&pic=https://lywlefan.github.io/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://lywlefan.github.io/2019/10/17/后端/高并发/java/书籍/如何设计一个秒杀系统-许令波/如何设计一个秒杀系统读书笔记/&title=《如何设计一个秒杀系统读书笔记》 — share猿&source=分享有价值的内容,你我共同成长!" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://lywlefan.github.io/2019/10/17/后端/高并发/java/书籍/如何设计一个秒杀系统-许令波/如何设计一个秒杀系统读书笔记/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《如何设计一个秒杀系统读书笔记》 — share猿&url=https://lywlefan.github.io/2019/10/17/后端/高并发/java/书籍/如何设计一个秒杀系统-许令波/如何设计一个秒杀系统读书笔记/&via=https://lywlefan.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://lywlefan.github.io/2019/10/17/后端/高并发/java/书籍/如何设计一个秒杀系统-许令波/如何设计一个秒杀系统读书笔记/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASYAAAEmCAAAAADqr2IGAAAEjklEQVR42u3aS47bMBAFQN//0hMgqwCJx+91K4GolFYDjS2SJQNkf16v+Pr6ef369693fr//7vPvvjV78rt5vrt+H/HiCxMmTJgw3ZKpffT3C/t+QglWzrehzNeOCRMmTJiewTQ7BMym2x4Oku188wK+XzsmTJgwYfp/mJLh8217tp0nY82OL5gwYcKECVMbHheTKLOs+aFhlvDFhAkTJkzPY0oelyRDkzt5wLyByJ9zcS4cEyZMmDDdjGnWuPOMvy++MGHChAnTzZi+ymuWTm0TxPuNfHO4+cO3MGHChAnTsUxtsLqB+9tly7xNZ1bgxIQJEyZMJzLly94kQPNEbVuA3AS3xecxYcKECdPhTHnpMQloN5TtWBvuotkIEyZMmDAdztSmdxOIJMjMg882OE9GLI4smDBhwoTpEUwtxL4M2SZn2xTwJuCPhsGECRMmTLdnSrbStvEledpVm/0s3J0VSjFhwoQJ07lM+aaYhLuzbX6zpKsS0B+CcEyYMGHCdCDTbCNvW2ryKHKVii3D2uJAgAkTJkyYHsS0T8XOSpht6JuPPiuyrnLhmDBhwoTpZkxtajXZqjcHgra5pw1r889jwoQJE6bnMeXha8uaT7QlzimH6WBMmDBhwnQs0yYsbAdoA+y68+jSwurbsTBhwoQJ01FMM5Q8nZofIGZHh7zMOSuIFtE/JkyYMGG6JVM+0TbcbZOzs6ND+998LW9/U5gwYcKE6SimNrG7b4hpx7pqa8/X9eF3hAkTJkyYDmSaTWWTSJ2VGPchdL4uTJgwYcL0JKZ8c5217GwKivuDSL6uD+VMTJgwYcJ0LFMyQB6mJsu4NkxNDgR5g9Fr9v4xYcKECdMtmZJyYLIxbwqcsysPbts5v/0kJkyYMGE6kGmzZbZh536Tnj0hn9Xbl40JEyZMmI5laptgZq0zm8m1W3vbypOsAhMmTJgwncu02bzzkHIWDOef2dN/iHMxYcKECdOxTO3i82klU2yD0uTOZvTX5m1jwoQJE6ZbMu2nleNuQuj8u+2KorEwYcKECdODmJIJ5YvfBMObLX9zDPrD0zBhwoQJ07FM7Sb9obUlCDXbQPqqOznK2/lgwoQJE6YDmf5GonaT2M2PFLP2oJbplZ9KMGHChAnTUUyXtbmUgXTyyRzxqiYeTJgwYcJ0LtMmdJxtzG05M9mw9+NGCWJMmDBhwnQg0yyIXRUFF8nfWdtQ+zLq/iZMmDBhwnR7pnbq7f3kZbSgOd8meY0JEyZMmJ7ElC+yHbJ9JbPU7Sw8ju5gwoQJE6Zjma4api1A5jRXPXnWnPS69m1gwoQJE6Z/zvRVXteS5aXKYXJ2/VPAhAkTJkynM7Wb8ax9p31m3oizSeZeFZBjwoQJE6b7M20OAXugzTPb4mj+q8GECRMmTM9j2pQn/0142ZZL90nkon0HEyZMmDA9gmlT8szvtMeUWQC8iv4xYcKECdOjmfIgtt10rwq/k3RwO3NMmDBhwnQ602zrvWpJyZ32teXfjXAxYcKECdOxTPsEa5vkzVt/Ns03eUp3FRJjwoQJE6b7Mv0AG0/JKlZwYkcAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '共同学习!共同进步!';
+            clearTimeout(titleTime);
+        } else {
+            document.title = 'Share猿社区官方';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

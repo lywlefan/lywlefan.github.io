@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>jpa原生sql分页 | share猿 | https://lywlefan.github.io/</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="java,框架,hibernate">
+    <meta name="description" content="需求其实需求很简单,就是通过查询一个表得到数据列表,然后再对这个数据列表进行分页,自定义sql如下: 1234567891011121314151617181920212223SELECT	t.order_number AS orderNumber,	sum(t.coupon_amt) AS sum,	sum(		CASE		WHEN t.use_state = &apos;NOT_USE&apos; THEN">
+<meta name="keywords" content="java,框架,hibernate">
+<meta property="og:type" content="article">
+<meta property="og:title" content="jpa原生sql分页">
+<meta property="og:url" content="https://lywlefan.github.io/2019/10/18/后端/框架/java/hibernate/jpa原生sql分页/index.html">
+<meta property="og:site_name" content="share猿">
+<meta property="og:description" content="需求其实需求很简单,就是通过查询一个表得到数据列表,然后再对这个数据列表进行分页,自定义sql如下: 1234567891011121314151617181920212223SELECT	t.order_number AS orderNumber,	sum(t.coupon_amt) AS sum,	sum(		CASE		WHEN t.use_state = &apos;NOT_USE&apos; THEN">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-10-18T03:59:52.031Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="jpa原生sql分页">
+<meta name="twitter:description" content="需求其实需求很简单,就是通过查询一个表得到数据列表,然后再对这个数据列表进行分页,自定义sql如下: 1234567891011121314151617181920212223SELECT	t.order_number AS orderNumber,	sum(t.coupon_amt) AS sum,	sum(		CASE		WHEN t.use_state = &apos;NOT_USE&apos; THEN">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+    
+        <link rel="alternate" type="application/atom+xml" title="share猿" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">share猿</h5>
+          <a href="mailto:330334064@qq.com" title="330334064@qq.com" class="mail">330334064@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/lywlefan" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                GitHub
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/atom">
+                <i class="icon icon-lg icon-rss"></i>
+                订阅
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">jpa原生sql分页</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">jpa原生sql分页</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-10-17T16:00:00.000Z" itemprop="datePublished" class="page-time">
+  2019-10-18
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/后端/">后端</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#需求"><span class="post-toc-number">1.</span> <span class="post-toc-text">需求</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#解决办法"><span class="post-toc-number">2.</span> <span class="post-toc-text">解决办法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#方法一-通过jpa的原生sql分页查询"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">方法一:通过jpa的原生sql分页查询</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Repository"><span class="post-toc-number">2.1.1.</span> <span class="post-toc-text">Repository</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Service"><span class="post-toc-number">2.1.2.</span> <span class="post-toc-text">Service</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#方法二-通过jdbc原生sql拼接的方法进行分页"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">方法二:通过jdbc原生sql拼接的方法进行分页</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#抽象的jdbc分页类型"><span class="post-toc-number">2.2.1.</span> <span class="post-toc-text">抽象的jdbc分页类型</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Repository-1"><span class="post-toc-number">2.2.2.</span> <span class="post-toc-text">Repository</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Service-1"><span class="post-toc-number">2.2.3.</span> <span class="post-toc-text">Service</span></a></li></ol></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-后端/框架/java/hibernate/jpa原生sql分页" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">jpa原生sql分页</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-10-18 00:00:00" datetime="2019-10-17T16:00:00.000Z" itemprop="datePublished">2019-10-18</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/后端/">后端</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h2 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h2><p>其实需求很简单,就是通过查询一个表得到数据列表,然后再对这个数据列表进行分页,自定义sql如下:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">	t.order_number <span class="keyword">AS</span> orderNumber,</span><br><span class="line">	<span class="keyword">sum</span>(t.coupon_amt) <span class="keyword">AS</span> <span class="keyword">sum</span>,</span><br><span class="line">	<span class="keyword">sum</span>(</span><br><span class="line">		<span class="keyword">CASE</span></span><br><span class="line">		<span class="keyword">WHEN</span> t.use_state = <span class="string">'NOT_USE'</span> <span class="keyword">THEN</span></span><br><span class="line">			t.coupon_amt</span><br><span class="line">		<span class="keyword">ELSE</span></span><br><span class="line">			<span class="number">0</span></span><br><span class="line">		<span class="keyword">END</span></span><br><span class="line">	) <span class="keyword">AS</span> balance</span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">	open_oil_coupon t</span><br><span class="line"><span class="keyword">WHERE</span></span><br><span class="line">	t.user_id = ? <span class="number">1</span></span><br><span class="line"><span class="keyword">AND</span> t.app_id = ? <span class="number">2</span></span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span></span><br><span class="line">	t.order_id</span><br><span class="line"><span class="keyword">HAVING</span></span><br><span class="line">	balance = <span class="number">0</span></span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span></span><br><span class="line">	t.created_at <span class="keyword">DESC</span>,</span><br><span class="line">	balance <span class="keyword">DESC</span></span><br></pre></td></tr></table></figure>
+<h2 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h2><h3 id="方法一-通过jpa的原生sql分页查询"><a href="#方法一-通过jpa的原生sql分页查询" class="headerlink" title="方法一:通过jpa的原生sql分页查询"></a>方法一:通过jpa的原生sql分页查询</h3><h4 id="Repository"><a href="#Repository" class="headerlink" title="Repository"></a>Repository</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">OilCouponRepository</span> <span class="keyword">extends</span> <span class="title">JpaRepository</span>&lt;<span class="title">OilCoupon</span>,<span class="title">Long</span>&gt;,<span class="title">JpaSpecificationExecutor</span>&lt;<span class="title">OilCoupon</span>&gt; </span>&#123;</span><br><span class="line">    </span><br><span class="line"><span class="meta">@Query</span>(value = <span class="string">"SELECT t.order_number AS orderNumber, sum(t.coupon_amt) AS sum, sum(CASE WHEN t.use_state = 'NOT_USE' THEN t.coupon_amt ELSE 0 END ) AS balance FROM open_oil_coupon t WHERE t.user_id = ?1 AND t.app_id = ?2 GROUP BY t.order_number HAVING balance &gt; 0"</span>,nativeQuery = <span class="keyword">true</span>,</span><br><span class="line">            countQuery = <span class="string">"SELECT count(*) FROM (SELECT t.order_number AS orderNumber, sum(t.coupon_amt) AS sum, sum(CASE WHEN t.use_state = 'NOT_USE' THEN t.coupon_amt ELSE 0 END ) AS balance FROM open_oil_coupon t WHERE t.user_id = ?1 AND t.app_id = ?2 GROUP BY t.order_number HAVING balance = 0) T"</span>)</span><br><span class="line"><span class="function">Page&lt;Map&gt; <span class="title">getAllCouponsUsed</span><span class="params">(Long userId, String appId, Pageable pageable)</span></span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>注意</strong>:countQuery如果带有having等语句最好的办法是把@Query的sql复制一份把他查出来的结果当成表,然后对其进行count(*)查询。</p>
+<h4 id="Service"><a href="#Service" class="headerlink" title="Service"></a>Service</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> OpenPage&lt;CouponsVo&gt; <span class="title">getCouponsByOrderId</span><span class="params">(String appId, Long userId, CouponPageVo couponPageVo)</span></span>&#123;</span><br><span class="line">       Pageable pageable = <span class="keyword">new</span> PageRequest(couponPageVo.getPageNum(), couponPageVo.getPageSize(), Sort.Direction.DESC, <span class="string">"order_number"</span>);</span><br><span class="line">       OpenPage&lt;CouponsVo&gt; pages = <span class="keyword">new</span> OpenPage();</span><br><span class="line">       Page page2 = oilCouponRepository.getAllCouponsUsed(userId,appId,pageable);</span><br><span class="line">       List&lt;CouponsVo&gt; couponsVos = JSON.parseArray(JSON.toJSONString(page2.getContent()),CouponsVo.class);</span><br><span class="line">       pages.setContent(couponsVos);</span><br><span class="line">       pages.setPageNum(page2.getNumber());</span><br><span class="line">       pages.setPageSize(page2.getSize());</span><br><span class="line">       pages.setTotalElements(page2.getTotalElements());</span><br><span class="line">       pages.setTotalPages(page2.getTotalPages());</span><br><span class="line">       <span class="keyword">return</span> pages;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<p><strong>注意</strong>:排序的字段要用跟数据库里面一样的字段名称</p>
+<h3 id="方法二-通过jdbc原生sql拼接的方法进行分页"><a href="#方法二-通过jdbc原生sql拼接的方法进行分页" class="headerlink" title="方法二:通过jdbc原生sql拼接的方法进行分页"></a>方法二:通过jdbc原生sql拼接的方法进行分页</h3><h4 id="抽象的jdbc分页类型"><a href="#抽象的jdbc分页类型" class="headerlink" title="抽象的jdbc分页类型"></a>抽象的jdbc分页类型</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.winstar.config;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.winstar.util.OpenPage;</span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line"><span class="keyword">import</span> org.springframework.jdbc.core.JdbcTemplate;</span><br><span class="line"><span class="keyword">import</span> org.springframework.util.Assert;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.persistence.EntityManager;</span><br><span class="line"><span class="keyword">import</span> java.io.Serializable;</span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.Field;</span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.ParameterizedType;</span><br><span class="line"><span class="keyword">import</span> java.util.HashMap;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"><span class="keyword">import</span> java.util.Map;</span><br><span class="line"><span class="keyword">import</span> java.util.regex.Matcher;</span><br><span class="line"><span class="keyword">import</span> java.util.regex.Pattern;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 包:com.winstar.manager.repository</span></span><br><span class="line"><span class="comment"> * 类描述: jdbc父Dao封装</span></span><br><span class="line"><span class="comment"> * 创建人:shareyuan</span></span><br><span class="line"><span class="comment"> * 创建时间:2018/12/26 11:52</span></span><br><span class="line"><span class="comment"> * 版本:v1.0</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@SuppressWarnings</span>(<span class="string">"unchecked"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AbstractServerRepository</span>&lt;<span class="title">T</span>, <span class="title">PK</span> <span class="keyword">extends</span> <span class="title">Serializable</span>&gt;</span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">protected</span> JdbcTemplate jdbcTemplate;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    EntityManager entityManager;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">protected</span> Class&lt;T&gt; entityClass;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String EMPYT_STR = <span class="string">""</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Map&lt;String, String&gt; fieldClassNames = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">AbstractServerRepository</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.entityClass = (Class&lt;T&gt;) ((ParameterizedType) getClass()</span><br><span class="line">                .getGenericSuperclass()).getActualTypeArguments()[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">this</span>.initEntityFieldsClassNames();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initEntityFieldsClassNames</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        Field[] fields = <span class="keyword">this</span>.entityClass.getDeclaredFields();</span><br><span class="line">        <span class="keyword">this</span>.fieldClassNames = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span> (Field field : fields) &#123;</span><br><span class="line">            fieldClassNames.put(field.getName(), field.getType().getName());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * Description: 根据SQL查询数据并返回一个List&lt;Map&lt;String,Object&gt;&gt;,将其封装为 Page</span></span><br><span class="line"><span class="comment">    * Param: sql,pageNo,pageSize,values</span></span><br><span class="line"><span class="comment">    * return: Page</span></span><br><span class="line"><span class="comment">    * Author: shareyuan</span></span><br><span class="line"><span class="comment">    * Date: 2018/12/27</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> OpenPage <span class="title">findPageBySqlForListMap</span><span class="params">(<span class="keyword">final</span> String sql, <span class="keyword">final</span> <span class="keyword">int</span> pageNo,</span></span></span><br><span class="line"><span class="function"><span class="params">                                            <span class="keyword">final</span> <span class="keyword">int</span> pageSize, <span class="keyword">final</span> Object... values)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">final</span> String countSql = <span class="string">"SELECT count(1) FROM ("</span>+ removeOrders(sql) + <span class="string">") T"</span>;</span><br><span class="line">        <span class="keyword">final</span> <span class="keyword">long</span> totalCount = <span class="keyword">this</span>.getCountBySql(countSql, values);</span><br><span class="line">        <span class="keyword">if</span> (totalCount &lt; <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> OpenPage();</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">final</span> <span class="keyword">int</span> startIndex = OpenPage.getStartOfPage(pageNo, pageSize);</span><br><span class="line">            <span class="keyword">final</span> String querySql =getString( sql,<span class="string">" limit "</span>, startIndex,<span class="string">","</span>, pageSize);</span><br><span class="line">            List&lt;Map&lt;String,Object&gt;&gt; list = <span class="keyword">this</span>.jdbcTemplate.queryForList(querySql,values);</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> OpenPage(pageNo,pageSize, list,Integer.parseInt(String.valueOf(totalCount)));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * Description: 根据id获取唯一对象</span></span><br><span class="line"><span class="comment">    * Param: id</span></span><br><span class="line"><span class="comment">    * return: T</span></span><br><span class="line"><span class="comment">    * Author: shareyuan</span></span><br><span class="line"><span class="comment">    * Date: 2018/12/27</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> T <span class="title">findOne</span><span class="params">(<span class="keyword">final</span> PK id)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> entityManager.find(entityClass,id);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Description: 根据sql查询数据总数</span></span><br><span class="line"><span class="comment">     * Param:  sql,values</span></span><br><span class="line"><span class="comment">     * return:  Long</span></span><br><span class="line"><span class="comment">     * Author: shareyuan</span></span><br><span class="line"><span class="comment">     * Date: 2018/12/26</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> Long <span class="title">getCountBySql</span><span class="params">(<span class="keyword">final</span> String sql, <span class="keyword">final</span> Object... values)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> jdbcTemplate.queryForObject(sql, Long.class, values);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * Description: 组合传入字符串数组</span></span><br><span class="line"><span class="comment">    * Param: objs</span></span><br><span class="line"><span class="comment">    * return: String</span></span><br><span class="line"><span class="comment">    * Author: shareyuan</span></span><br><span class="line"><span class="comment">    * Date: 2018/12/26</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span>  String <span class="title">getString</span><span class="params">(Object... objs)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(objs != <span class="keyword">null</span> &amp;&amp; objs.length &gt; <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            StringBuilder sb = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; objs.length; i++) &#123;</span><br><span class="line">                sb.append(objs[i] == <span class="keyword">null</span> ? EMPYT_STR : objs[i].toString());</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> sb.toString();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> EMPYT_STR;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * Description: 去除sql的orderby 子句，用于分页查询</span></span><br><span class="line"><span class="comment">    * Param: sql</span></span><br><span class="line"><span class="comment">    * return: String</span></span><br><span class="line"><span class="comment">    * Author: shareyuan</span></span><br><span class="line"><span class="comment">    * Date: 2018/12/27</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> String <span class="title">removeOrders</span><span class="params">(String sql)</span> </span>&#123;</span><br><span class="line">        Pattern p = Pattern.compile(<span class="string">"order\\s*by[\\w|\\W|\\s|\\S]*"</span>,</span><br><span class="line">                Pattern.CASE_INSENSITIVE);</span><br><span class="line">        Matcher m = p.matcher(sql);</span><br><span class="line">        StringBuffer sb = <span class="keyword">new</span> StringBuffer();</span><br><span class="line">        <span class="keyword">while</span> (m.find()) &#123;</span><br><span class="line">            m.appendReplacement(sb, <span class="string">""</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        m.appendTail(sb);</span><br><span class="line">        <span class="keyword">return</span> sb.toString();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * Description: 去除sql的select 子句，未考虑union的情况</span></span><br><span class="line"><span class="comment">    * Param: sql</span></span><br><span class="line"><span class="comment">    * return: String</span></span><br><span class="line"><span class="comment">    * Author: shareyuan</span></span><br><span class="line"><span class="comment">    * Date: 2018/12/27</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> String <span class="title">removeSelect</span><span class="params">(String sql)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> beginPos = sql.toLowerCase().indexOf(<span class="string">"from "</span>);</span><br><span class="line">        Assert.isTrue(beginPos != -<span class="number">1</span>, <span class="string">" hql : "</span> + sql</span><br><span class="line">                + <span class="string">" must has a keyword 'from'"</span>);</span><br><span class="line">        <span class="keyword">return</span> sql.substring(beginPos);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="Repository-1"><a href="#Repository-1" class="headerlink" title="Repository"></a>Repository</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Repository</span>(<span class="string">"oilCouponJdbcRepository"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">OilCouponJdbcRepository</span> <span class="keyword">extends</span> <span class="title">AbstractServerRepository</span>&lt;<span class="title">OilCoupon</span>,<span class="title">Long</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="Service-1"><a href="#Service-1" class="headerlink" title="Service"></a>Service</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"> <span class="function"><span class="keyword">public</span> OpenPage&lt;Map&gt; <span class="title">getPage</span><span class="params">(String appId, Long userId, CouponPageVo couponPageVo)</span> </span>&#123;</span><br><span class="line">        StringBuffer sql = <span class="keyword">new</span> StringBuffer(<span class="string">"SELECT t.order_number AS orderNumber, sum(t.coupon_amt) AS sum, sum(CASE WHEN t.use_state = 'NOT_USE' THEN t.coupon_amt ELSE 0 END ) AS balance FROM open_oil_coupon t"</span>);</span><br><span class="line">        List params = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="keyword">if</span> (StringUtils.isNotEmpty(appId))&#123;</span><br><span class="line">            sql.append(<span class="string">" WHERE t.user_id = ?  "</span>);</span><br><span class="line">            params.add(userId);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (StringUtils.isNotEmpty(appId))&#123;</span><br><span class="line">            sql.append(<span class="string">" AND t.app_id = ? "</span>);</span><br><span class="line">            params.add(appId);</span><br><span class="line">        &#125;</span><br><span class="line">        sql.append(<span class="string">" GROUP BY t.order_number"</span>);</span><br><span class="line">        <span class="keyword">if</span> (StringUtils.equals(couponPageVo.getUseState(),CommonEnum.USED.getValue()))&#123;</span><br><span class="line">            sql.append(<span class="string">" HAVING balance = 0"</span>);</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span> (StringUtils.equals(couponPageVo.getUseState(),CommonEnum.NOT_USE.getValue()))&#123;</span><br><span class="line">            sql.append(<span class="string">" HAVING balance &gt; 0"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        sql.append(<span class="string">" ORDER BY t.created_at DESC,balance "</span>);</span><br><span class="line">        log.info(<span class="string">"分页sql为:&#123;&#125;,分页请求参数为:&#123;&#125;"</span>,sql,params.toArray());</span><br><span class="line">        <span class="keyword">return</span> oilCouponJdbcRepository.findPageBySqlForListMap(sql.toString(),couponPageVo.getPageNum(),couponPageVo.getPageSize(),params.toArray());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>说明</strong>:jdbc分页的好处就是可以多表进行联查自定义sql,相对来说比较灵活,对于复杂sql,我个人感觉可读性要比jpa的自定义sql要好一些。</p>
+<blockquote>
+<p><a href="https://www.jianshu.com/u/354cc1548a33" target="_blank" rel="noopener">【1】简书主页·share猿</a><br><a href="https://juejin.im/user/5a8e759851882524d842d174" target="_blank" rel="noopener">【2】掘金主页·share猿</a></p>
+</blockquote>
+<hr>
+<p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
+<p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-10-18T03:59:52.031Z" itemprop="dateUpdated">2019-10-18 11:59:52</time>
+</span><br>
+
+
+        
+        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2019/10/18/后端/框架/java/hibernate/jpa原生sql分页/" target="_blank" rel="external">https://lywlefan.github.io/2019/10/18/后端/框架/java/hibernate/jpa原生sql分页/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://lywlefan.github.io">
+            <img src="/img/avatar.png" alt="share猿">
+            share猿
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hibernate/">hibernate</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/框架/">框架</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://lywlefan.github.io/2019/10/18/后端/框架/java/hibernate/jpa原生sql分页/&title=《jpa原生sql分页》 — share猿&pic=https://lywlefan.github.io/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://lywlefan.github.io/2019/10/18/后端/框架/java/hibernate/jpa原生sql分页/&title=《jpa原生sql分页》 — share猿&source=分享有价值的内容,你我共同成长!" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://lywlefan.github.io/2019/10/18/后端/框架/java/hibernate/jpa原生sql分页/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《jpa原生sql分页》 — share猿&url=https://lywlefan.github.io/2019/10/18/后端/框架/java/hibernate/jpa原生sql分页/&via=https://lywlefan.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://lywlefan.github.io/2019/10/18/后端/框架/java/hibernate/jpa原生sql分页/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/10/17/后端/高并发/java/书籍/如何设计一个秒杀系统-许令波/如何设计一个秒杀系统读书笔记/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">如何设计一个秒杀系统读书笔记</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'true' == 'true',
+            verify: 'false' == 'true',
+            appId: "hQGVIAaJERVwyrWxj1uqgCqS-gzGzoHsz",
+            appKey: "l7FO5csTavNwXCGryJyOkkc1",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢赞赏!
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>share猿 &copy; 2015 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://lywlefan.github.io/2019/10/18/后端/框架/java/hibernate/jpa原生sql分页/&title=《jpa原生sql分页》 — share猿&pic=https://lywlefan.github.io/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://lywlefan.github.io/2019/10/18/后端/框架/java/hibernate/jpa原生sql分页/&title=《jpa原生sql分页》 — share猿&source=分享有价值的内容,你我共同成长!" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://lywlefan.github.io/2019/10/18/后端/框架/java/hibernate/jpa原生sql分页/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《jpa原生sql分页》 — share猿&url=https://lywlefan.github.io/2019/10/18/后端/框架/java/hibernate/jpa原生sql分页/&via=https://lywlefan.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://lywlefan.github.io/2019/10/18/后端/框架/java/hibernate/jpa原生sql分页/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAADL0lEQVR42u3aUW7jSgwEwNz/0t7f97CQ3c2xsRZT+gosR1KNgDBkz89PfDwujr/P/veTq7NX37m6V/JsP584sLGxsW/Cfjw9Evbzx01+vrrOyQt4sXzY2NjY69jPC0NbSNqHSwphskCJBRsbGxs7KTPny5ccbVHExsbGxm5bl7y85eOnf1bAsLGxsb+e3TKS27ejpWRQlUcRb5ulYWNjY389O09Fv//nj+Tb2NjY2F/MfpTHSTw8e56T6Pfy2bCxsbEXsU9G9rOB0clynFwHGxsbeys7GcS3Y6a8+OWbfs4X63+fYGNjY69mtwHqLDCYkfJI4MU1sbGxsX8Zu92OkxeSPAxONvQU18TGxsZexD4f9LctRxtCvGvsVce92NjY2Ddkt2fbqCBvIdp+oQ0qsLGxsfexZw3GbLSUj/5npTR/AdjY2Nib2LNbttFC8ljtyCkPIbCxsbF/A/skWM2HPsn137uIl8+AjY2NvYJ90gy8dzlmI6R8KHb5nrGxsbFvzk5KRb4tJr9CW3iS5c43/WBjY2NvZX9iS00eMDxfsllBjQoYNjY29s3Z7XacPL5tl6ydhLXFEhsbG3sr+2Q034YKeRWdjbHaRcTGxsbewc5JJ0uTXC0pe8mIKip42NjY2IvYJwUjebi8sZmFvrNoGRsbG3s3+xMDoJMNPe3SJ1E0NjY29j52O4JvW4Jz0myLT/F9bGxs7JuzT6LWlvfpwCCPMbCxsbE3sWcjntntk+8n90ranvrNY2NjY9+QPfun/3wYNIuQ80V/USaxsbGxF7GfV7bZ5pu28ZgN99srR0EvNjY29lJ221q0n7dL1rYul68NGxsbex37ZKiUNypJOcwX7mgoho2Njb2OnW9/mcHaZuZdAfMRBhsbG/vr2Y/yyAverBTlY6y2BcLGxsbeyj75m99u3GnDgzbEnZ3FxsbG3sGeFa327HlscNL81NUbGxsb+4bsWWyQg/PR0mzzUD2KwsbGxv717NnUfRY2zFqOF8uNjY2NjR3/7rsw7fadF9/HxsbGXsduA9p2PJQv0Cy4TYZT2NjY2FvZ+Qh+tuNllja3L6BtTrCxsbFXsP8A5e5T77TdC4MAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '共同学习!共同进步!';
+            clearTimeout(titleTime);
+        } else {
+            document.title = 'Share猿社区官方';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
