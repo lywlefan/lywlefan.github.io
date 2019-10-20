@@ -29,13 +29,13 @@
 <meta property="og:site_name" content="share猿">
 <meta property="og:description" content="阅读笔记秒杀系统关键点①我觉得作为一个程序员,你首先需要从高维度出发,从整体上思考问题。 1G:对整体要有高屋建瓴，要站在最高处俯瞰，在落实的时候要把握好细节，下绣花针功夫。 ②秒杀其实主要解决两个问题,一个是并发读,一个是并发写。并发读的核心优化理念是尽量减少用户到服务来“读”数据,或者让他们读更少的数据;并发写的处理原则也一样,它要求我们在数据库层面独立出来一个库,做特殊的处理。另外,我们还要">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://lywlefan.github.io/home/shareyuan/.config/Typora/typora-user-images/1571245479323.png">
+<meta property="og:image" content="https://lywlefan.github.io/2019/10/17/后端/高并发/java/书籍/如何设计一个秒杀系统-许令波/如何设计一个秒杀系统读书笔记/img/热点分析系统.jpg">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-10-18T07:57:52.975Z">
+<meta property="og:updated_time" content="2019-10-20T03:12:27.417Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="如何设计一个秒杀系统读书笔记">
 <meta name="twitter:description" content="阅读笔记秒杀系统关键点①我觉得作为一个程序员,你首先需要从高维度出发,从整体上思考问题。 1G:对整体要有高屋建瓴，要站在最高处俯瞰，在落实的时候要把握好细节，下绣花针功夫。 ②秒杀其实主要解决两个问题,一个是并发读,一个是并发写。并发读的核心优化理念是尽量减少用户到服务来“读”数据,或者让他们读更少的数据;并发写的处理原则也一样,它要求我们在数据库层面独立出来一个库,做特殊的处理。另外,我们还要">
-<meta name="twitter:image" content="https://lywlefan.github.io/home/shareyuan/.config/Typora/typora-user-images/1571245479323.png">
+<meta name="twitter:image" content="https://lywlefan.github.io/2019/10/17/后端/高并发/java/书籍/如何设计一个秒杀系统-许令波/如何设计一个秒杀系统读书笔记/img/热点分析系统.jpg">
     
         <link rel="alternate" type="application/atom+xml" title="share猿" href="/atom.xml">
     
@@ -170,7 +170,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#阅读笔记"><span class="post-toc-number">1.</span> <span class="post-toc-text">阅读笔记</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#秒杀系统关键点"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">秒杀系统关键点</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#设计秒杀系统注意的5个架构原则"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">设计秒杀系统注意的5个架构原则</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#二八原则-有正对性的处理好系统的热点数据"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">二八原则:有正对性的处理好系统的热点数据</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#疑问"><span class="post-toc-number">2.</span> <span class="post-toc-text">疑问</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#如何减少用户来服务端读数据？？"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">如何减少用户来服务端读数据？？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#什么是兜底方案？？如何设计兜底？？"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">什么是兜底方案？？如何设计兜底？？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#什么是无状态化？？？"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">什么是无状态化？？？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#什么是”热点数据”"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">什么是”热点数据”???</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#如何分析发现热点数据"><span class="post-toc-number">2.4.1.</span> <span class="post-toc-text">如何分析发现热点数据??</span></a></li></ol></li></ol></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#阅读笔记"><span class="post-toc-number">1.</span> <span class="post-toc-text">阅读笔记</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#秒杀系统关键点"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">秒杀系统关键点</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#设计秒杀系统注意的5个架构原则"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">设计秒杀系统注意的5个架构原则</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#二八原则-有正对性的处理好系统的热点数据"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">二八原则:有正对性的处理好系统的热点数据</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#疑问"><span class="post-toc-number">2.</span> <span class="post-toc-text">疑问</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#如何减少用户来服务端读数据？？"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">如何减少用户来服务端读数据？？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#什么是兜底方案？？如何设计兜底？？"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">什么是兜底方案？？如何设计兜底？？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#什么是无状态化？？？"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">什么是无状态化？？？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#什么是”热点数据”"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">什么是”热点数据”???</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#如何分析发现热点数据"><span class="post-toc-number">2.4.1.</span> <span class="post-toc-text">如何分析发现热点数据??</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#发现热点数据后如何处理热点数据"><span class="post-toc-number">2.4.2.</span> <span class="post-toc-text">发现热点数据后如何处理热点数据?</span></a></li></ol></li></ol></li></ol>
         </nav>
     </aside>
 
@@ -220,7 +220,7 @@
 <li><p>请求尽量少：</p>
 <ul>
 <li><p>合并CSS和JavaScript文件，多个合成一个</p>
-<p>在 URL 中用逗号隔开(<a href="https://g.xxx.com/tm/xx-b/4.0.94/mods/??module-preview/index.xtpl.js,module-jhs/index.xtpl.js,module-focus/index.xtpl.js)。这种方式在服务端仍然是单个文件各自存放,只是服务端会有一个组件解析这个" target="_blank" rel="noopener">https://g.xxx.com/tm/xx-b/4.0.94/mods/??module-preview/index.xtpl.js,module-jhs/index.xtpl.js,module-focus/index.xtpl.js)。这种方式在服务端仍然是单个文件各自存放,只是服务端会有一个组件解析这个</a> URL,然后动态把这些文件合并起来一起返回。</p>
+<p>在 URL 中用逗号隔开 (<a href="https://g.xxx.com/tm/xx-b/4.0.94/mods/??module-preview/index.xtpl.js,module-jhs/index.xtpl.js,module-focus/index.xtpl.js)。" target="_blank" rel="noopener">https://g.xxx.com/tm/xx-b/4.0.94/mods/??module-preview/index.xtpl.js,module-jhs/index.xtpl.js,module-focus/index.xtpl.js)。</a> 这种方式在服务端仍然是单个文件各自存放,只是服务端会有一个组件解析这个 URL,然后动态把这些文件合并起来一起返回。</p>
 </li>
 </ul>
 </li>
@@ -243,17 +243,47 @@
 </li>
 </ul>
 <p><strong>架构是一种平衡的艺术,而最好的架构一旦脱离了它所适应的场景,一切都将是空谈。</strong></p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/home/shareyuan/.config/Typora/typora-user-images/1571245479323.png" alt="1571245479323" title>
-                </div>
-                <div class="image-caption">1571245479323</div>
-            </figure>
-<h3 id="二八原则-有正对性的处理好系统的热点数据"><a href="#二八原则-有正对性的处理好系统的热点数据" class="headerlink" title="二八原则:有正对性的处理好系统的热点数据"></a>二八原则:有正对性的处理好系统的热点数据</h3><h2 id="疑问"><a href="#疑问" class="headerlink" title="疑问"></a>疑问</h2><h3 id="如何减少用户来服务端读数据？？"><a href="#如何减少用户来服务端读数据？？" class="headerlink" title="如何减少用户来服务端读数据？？"></a>如何减少用户来服务端读数据？？</h3><h3 id="什么是兜底方案？？如何设计兜底？？"><a href="#什么是兜底方案？？如何设计兜底？？" class="headerlink" title="什么是兜底方案？？如何设计兜底？？"></a>什么是兜底方案？？如何设计兜底？？</h3><h3 id="什么是无状态化？？？"><a href="#什么是无状态化？？？" class="headerlink" title="什么是无状态化？？？"></a>什么是无状态化？？？</h3><h3 id="什么是”热点数据”"><a href="#什么是”热点数据”" class="headerlink" title="什么是”热点数据”???"></a>什么是”热点数据”???</h3><p>热点数据就是一个系统中,用户<strong>访问量最大的数据</strong>,比如:热点商品。热点数据又分为<strong>:静态热点数据</strong>和<strong>动态热点数据</strong>。</p>
+<h3 id="二八原则-有正对性的处理好系统的热点数据"><a href="#二八原则-有正对性的处理好系统的热点数据" class="headerlink" title="二八原则:有正对性的处理好系统的热点数据"></a>二八原则:有正对性的处理好系统的热点数据</h3><p>把少部分访问速度高的数据隔离拆分出来做单独的处理,让大多数的请求正常运行。</p>
+<h2 id="疑问"><a href="#疑问" class="headerlink" title="疑问"></a>疑问</h2><h3 id="如何减少用户来服务端读数据？？"><a href="#如何减少用户来服务端读数据？？" class="headerlink" title="如何减少用户来服务端读数据？？"></a>如何减少用户来服务端读数据？？</h3><h3 id="什么是兜底方案？？如何设计兜底？？"><a href="#什么是兜底方案？？如何设计兜底？？" class="headerlink" title="什么是兜底方案？？如何设计兜底？？"></a>什么是兜底方案？？如何设计兜底？？</h3><h3 id="什么是无状态化？？？"><a href="#什么是无状态化？？？" class="headerlink" title="什么是无状态化？？？"></a>什么是无状态化？？？</h3><h3 id="什么是”热点数据”"><a href="#什么是”热点数据”" class="headerlink" title="什么是”热点数据”???"></a>什么是”热点数据”???</h3><p>热点数据就是一个系统中,用户<strong>访问量最大的数据</strong>,比如:热点商品。热点数据又分为<strong>:静态热点数据</strong>和<strong>动态热点数据</strong>。</p>
 <h4 id="如何分析发现热点数据"><a href="#如何分析发现热点数据" class="headerlink" title="如何分析发现热点数据??"></a>如何分析发现热点数据??</h4><p><strong>静态热点数据的发现</strong></p>
 <p>提前通过统计这些数据,比如:热卖商品,我们可以通过TOP排行榜进行统计,秒杀商品可以让商家进行报名,提前对这些数据做好缓存和预处理。</p>
 <p><strong>动态数据的发现</strong></p>
+<p>构建热点发现系统,用于在短时间内发现热点商品,从而做出相应的处理策略。</p>
+<ol>
+<li>构建一个<strong>异步的系统</strong>，它可以收集交易链路上各个环节中的中间件产品的热点 Key，如 Nginx、缓存、RPC 服务框架等这些中间件（一些中间件产品本身已经有<strong>热点统计模块</strong>）。</li>
+<li>建立一个<strong>热点上报和可以按照需求订阅的热点服务的下发规范</strong>，主要目的是通过交易链路上各个系统（包括详情、购物车、交易、优惠、库存、物流等）访问的时间差，<strong>把上游已经发现的热点透传给下游系统</strong>，提前做好保护。比如，对于大促高峰期，<strong>详情系统是最早知道的</strong>，在统一<strong>接入层上 Nginx 模块统计的热点 URL</strong>。</li>
+<li>将<strong>上游系统收集的热点数据发送到热点服务台</strong>，然后下游系统（如交易系统）就会知道哪些商品会被频繁调用，然后做热点保护。</li>
+</ol>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="img/热点分析系统.jpg" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">G:热点分析平台:它存在的主要作用就是从各个可能收集热点数据的地方(每台机器上的Agen把日志汇总)收集到热点数据,然后对这些数据进行分析(分析集群),把分析到的热点数据进行发布,相关服务订阅到热点数据后,提前对这些热点数据做好处理(填充到 Cache等手段)。</span><br></pre></td></tr></table></figure>
+<p><strong>热点分析系统构建注意事项:</strong></p>
+<ol>
+<li>这个热点服务后台抓取热点数据日志最好采用<strong>异步方式</strong>，因为“异步”一方面便于保证通用性，另一方面又不影响业务系统和中间件产品的主流程。</li>
+<li><strong>热点服务发现和中间件自身的热点保护模块并存</strong>，每个中间件和应用还需要保护自己。热点服务台提供热点数据的收集和订阅服务，便于把各个系统的热点数据透明出来。</li>
+<li>热点发现要做到接近实时（3s 内完成热点数据的发现），因为只有做到<strong>接近实时</strong>，动态发现才有意义，才能<strong>实时地对下游系统提供保护</strong>。</li>
+</ol>
+<h4 id="发现热点数据后如何处理热点数据"><a href="#发现热点数据后如何处理热点数据" class="headerlink" title="发现热点数据后如何处理热点数据?"></a>发现热点数据后如何处理热点数据?</h4><p><strong>优化</strong></p>
+<p><strong>LRU淘汰算法</strong>实时缓存热点数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LRU（Least recently used，最近最少使用）算法根据数据的历史访问记录来进行淘汰数据，其核心思想是“如果数据最近被访问过，那么将来被访问的几率也更高”。</span><br></pre></td></tr></table></figure>
+<p><strong>限制</strong></p>
+<p>限制更多的是一种保护机制，限制的办法也有很多，例如对被访问商品的 ID 做一致性 Hash，然后根据 Hash 做分桶，每个分桶设置一个处理队列，这样可以把热点商品限制在一个请求队列里，防止因某些热点商品占用太多的服务器资源，而使其他请求始终得不到服务器的处理资源。</p>
+<p><strong>隔离</strong></p>
+<p>不要让 1% 的请求影响到另外的 99%，隔离出来后也更方便对这 1% 的请求做针对性的优化。</p>
+<p>具体到“秒杀”业务，我们可以在以下几个层次实现隔离:</p>
+<ol>
+<li><strong>业务隔离</strong>。把秒杀做成一种营销活动，卖家要参加秒杀这种营销活动需要单独报名，从技术上来说，卖家报名后对我们来说就有了已知热点，因此可以<strong>提前做好预热</strong>。</li>
+<li><strong>系统隔离</strong>。系统隔离更多的是运行时的隔离，可以通过<strong>分组部署的方式和另外 99% 分开</strong>。秒杀可以申请单独的域名，目的也是让请求落到不同的集群中。</li>
+<li><strong>数据隔离</strong>。秒杀所调用的数据大部分都是热点数据，比如会启用单独的 Cache 集群或者 MySQL 数据库来放热点数据，目的也是不想 0.01% 的数据有机会影响 99.99% 数据。</li>
+</ol>
+<p>你可以按照用户来区分，给不同的用户分配不同的 Cookie，<strong>在接入层，路由到不同的服务接口</strong>中；</p>
+<p>你还可以在接入层针对 <strong>URL 中的不同 Path 来设置限流</strong>策略。</p>
+<p>服务层调用不同的服务接口，以及数据层通过给数据打标来区分等等这些措施，其目的都是<strong>把已经识别出来的热点请求和普通的请求区分</strong>开。</p>
 <blockquote>
 <p><strong>参考文档</strong></p>
 </blockquote>
@@ -280,7 +310,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2019-10-18T07:57:52.975Z" itemprop="dateUpdated">2019-10-18 15:57:52</time>
+    最后更新时间：<time datetime="2019-10-20T03:12:27.417Z" itemprop="dateUpdated">2019-10-20 11:12:27</time>
 </span><br>
 
 
