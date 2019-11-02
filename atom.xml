@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://lywlefan.github.io/"/>
-  <updated>2019-10-24T10:31:25.136Z</updated>
+  <updated>2019-11-02T13:04:42.004Z</updated>
   <id>https://lywlefan.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>初始corda</title>
+    <link href="https://lywlefan.github.io/2019/10/30/%E5%89%8D%E6%B2%BF%E6%8A%80%E6%9C%AF/%E5%8C%BA%E5%9D%97%E9%93%BE/corda/%E5%88%9D%E5%A7%8Bcorda/"/>
+    <id>https://lywlefan.github.io/2019/10/30/前沿技术/区块链/corda/初始corda/</id>
+    <published>2019-10-29T16:00:00.000Z</published>
+    <updated>2019-11-02T13:04:42.004Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="什么是corda"><a href="#什么是corda" class="headerlink" title="什么是corda??"></a>什么是corda??</h2><h3 id="是什么"><a href="#是什么" class="headerlink" title="是什么?"></a>是什么?</h3><p>corda是一个分布式账本平台。</p><h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><h4 id="corda网络"><a href="#corda网络" class="headerlink" title="corda网络"></a>corda网络</h4><h4 id="账本"><a href="#账本" class="headerlink" title="账本"></a>账本</h4><p>每个节点验证过交易的集合,账本是各个节点自有的。</p><p>每个节点维护一个已知事实的分离数据库。</p><p>没有一个节点知道整个账本。</p><h4 id="身份"><a href="#身份" class="headerlink" title="身份"></a>身份</h4><p>身份有两种:组织的法律身份、网络服务身份。</p><p>法律身份用于交易的当事人,如:现金拥有者。</p><p>网络服务身份用于提供与交易相关的服务,如公证服务或oracle服务。服务身份基于混合KEY。</p><p>身份证明的X.509证书由看门人或其他众所周知的身份签发。身份是众所周知的还是机密的,取决于X.509证书是否公开。</p><h4 id="应用节点"><a href="#应用节点" class="headerlink" title="应用节点"></a>应用节点</h4><h4 id="看门人"><a href="#看门人" class="headerlink" title="看门人"></a>看门人</h4><p>看门人服务可以理解为一个身份准入管理服务加上一个业务许可管理服务,它要求节点提供必要的信息,以及在接受进入网络前必须进行的了解客户的过程。</p><p>要想加入corda网络,节点必须联系看门人并提供必要的信息。看门人许可通过,会颁发TLS许可证书。</p><h4 id="cordaDapps"><a href="#cordaDapps" class="headerlink" title="cordaDapps"></a>cordaDapps</h4><h4 id="AMPQ-1-0协议"><a href="#AMPQ-1-0协议" class="headerlink" title="AMPQ/1.0协议"></a>AMPQ/1.0协议</h4><h4 id="公证节点"><a href="#公证节点" class="headerlink" title="公证节点"></a>公证节点</h4><p>公证节点保证账本更新的唯一性、可行性、正确性。</p><p>每个公证服务可以运行在一个节点或一组节点上。</p><h4 id="状态"><a href="#状态" class="headerlink" title="状态"></a>状态</h4><p>状态是表示账本上的事实,是一个不可变的对象,表示在特定时刻由一个或多个Corda节点所知的事实。</p><h4 id="状态序列"><a href="#状态序列" class="headerlink" title="状态序列"></a>状态序列</h4><p>状态的生命周期</p><h4 id="合约"><a href="#合约" class="headerlink" title="合约"></a>合约</h4><p>每个状态指向一个合约。</p><p>合约以交易作为输入,并根据合约的规则说明交易是否被认为有效。</p><p>交易只有在合约的每个输入和输出状态被确认为有效的情况下才有效。</p><p>合约代码可以用任意的JVM语言进行编写。</p><p>一个不被合约认可的交易不会作为更新账本的有效提案。</p><h4 id="合约沙箱"><a href="#合约沙箱" class="headerlink" title="合约沙箱"></a>合约沙箱</h4><h4 id="预言机"><a href="#预言机" class="headerlink" title="预言机"></a>预言机</h4><h4 id="女巫攻击"><a href="#女巫攻击" class="headerlink" title="女巫攻击"></a>女巫攻击</h4><hr><p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>                </div>                <div class="image-caption"></div>            </figure></p><p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;什么是corda&quot;&gt;&lt;a href=&quot;#什么是corda&quot; class=&quot;headerlink&quot; title=&quot;什么是corda??&quot;&gt;&lt;/a&gt;什么是corda??&lt;/h2&gt;&lt;h3 id=&quot;是什么&quot;&gt;&lt;a href=&quot;#是什么&quot; class=&quot;headerlink
+      
+    
+    </summary>
+    
+      <category term="前沿技术" scheme="https://lywlefan.github.io/categories/%E5%89%8D%E6%B2%BF%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="区块链" scheme="https://lywlefan.github.io/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/"/>
+    
+      <category term="corda" scheme="https://lywlefan.github.io/tags/corda/"/>
+    
+  </entry>
   
   <entry>
     <title>Vue基础</title>
@@ -572,44 +599,6 @@
       <category term="书单" scheme="https://lywlefan.github.io/tags/%E4%B9%A6%E5%8D%95/"/>
     
       <category term="理财" scheme="https://lywlefan.github.io/tags/%E7%90%86%E8%B4%A2/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>财务词汇</title>
-    <link href="https://lywlefan.github.io/2019/07/11/%E8%AF%BB%E4%B9%A6%E7%9C%8B%E6%8A%A5/%E8%AF%8D%E6%B1%87/%E8%B4%A2%E5%8A%A1/%E8%B4%A2%E5%8A%A1%E8%AF%8D%E6%B1%87/"/>
-    <id>https://lywlefan.github.io/2019/07/11/读书看报/词汇/财务/财务词汇/</id>
-    <published>2019-07-10T16:00:00.000Z</published>
-    <updated>2019-10-15T08:11:12.525Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>先有词汇量,然后再能好好说话,好好做事。</p></blockquote><ul><li><p>重要</p></li><li><p>不重要</p></li><li><p>理解</p></li><li><p>未理解</p></li></ul><h2 id="2019年"><a href="#2019年" class="headerlink" title="2019年"></a>2019年</h2><h3 id="7月份词汇"><a href="#7月份词汇" class="headerlink" title="7月份词汇"></a>7月份词汇</h3><h4 id="重要理解词汇"><a href="#重要理解词汇" class="headerlink" title="重要理解词汇"></a>重要理解词汇</h4><ul><li>资产</li></ul><blockquote><p>G:如何获得资产？<br>a.加杠杆购买资产，产生源源不断的现金流<br>b.花时间创造资产</p></blockquote><ul><li><p>负债</p></li><li><p>现值</p></li></ul><p>是在给定的利率水平下，未来的资金折现到现在时刻的价值。</p><ul><li><p>现金流</p><ul><li><p>经营性现金流</p></li><li><p>投资性现金流</p></li><li><p>融资性现金流</p></li></ul></li><li><p>资产负债表</p></li><li><p>损益表</p></li><li><p>所有者权益变动表</p></li><li><p>财务报表附注</p></li><li><p>审查报表</p></li><li><p>预算盈余</p></li><li><p>净现值法（NPV）</p><ul><li><p>净现值</p><p>未来资金流现值与未来资金流出现值差额。</p></li></ul></li><li><p>折现率</p></li></ul><p>折现率是指将未来有限期预期收益折算成现值的比率。</p><ul><li>内部收益率（IRR）</li></ul><h4 id="不重要理解词汇"><a href="#不重要理解词汇" class="headerlink" title="不重要理解词汇"></a>不重要理解词汇</h4><ul><li><p>直线法折旧</p></li><li><p>双倍余额递减法折旧（年折旧率=2÷预计的折旧年限×100％）</p></li></ul><h4 id="重要不理解词汇"><a href="#重要不理解词汇" class="headerlink" title="重要不理解词汇"></a>重要不理解词汇</h4><h4 id="不重要不理解词汇"><a href="#不重要不理解词汇" class="headerlink" title="不重要不理解词汇"></a>不重要不理解词汇</h4><ul><li><p>借款人</p></li><li><p>信贷人员</p></li><li><p>银行流水</p></li></ul><blockquote><p><a href="https://www.jianshu.com/u/354cc1548a33" target="_blank" rel="noopener">【1】简书主页·share猿</a><br><a href="https://juejin.im/user/5a8e759851882524d842d174" target="_blank" rel="noopener">【2】掘金主页·share猿</a></p></blockquote><hr><p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>                </div>                <div class="image-caption"></div>            </figure></p><p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;blockquote&gt;
-&lt;p&gt;先有词汇量,然后再能好好说话,好好做事。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;重要&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;不重要&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;理解&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;未理解&lt;/p&gt;
-&lt;/li
-      
-    
-    </summary>
-    
-      <category term="读书看报" scheme="https://lywlefan.github.io/categories/%E8%AF%BB%E4%B9%A6%E7%9C%8B%E6%8A%A5/"/>
-    
-    
-      <category term="词汇" scheme="https://lywlefan.github.io/tags/%E8%AF%8D%E6%B1%87/"/>
-    
-      <category term="财务" scheme="https://lywlefan.github.io/tags/%E8%B4%A2%E5%8A%A1/"/>
     
   </entry>
   
