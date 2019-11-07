@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>后端导航 | share猿 | https://lywlefan.github.io/</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="导航">
+    <meta name="description" content="企业区块链官方大企业导航壹账链·平安 )     趣链科技 学习资料收集CONTENTS INTRO 介绍 TUTORIAL 教程 PROJECT 项目 DOCUMENT 资料 APPLICATION 应用  INTRO 介绍Started 入门 （一）简单易懂地介绍什么是区块链 比特币区块链关键词讲解 （二）简单易懂地介绍什么是区块链（技术篇） 比特币区块链技术图解 一文看懂区块链：一步一步发明">
+<meta name="keywords" content="导航">
+<meta property="og:type" content="article">
+<meta property="og:title" content="后端导航">
+<meta property="og:url" content="https://lywlefan.github.io/2019/10/15/前沿技术/区块链/区块链导航/index.html">
+<meta property="og:site_name" content="share猿">
+<meta property="og:description" content="企业区块链官方大企业导航壹账链·平安 )     趣链科技 学习资料收集CONTENTS INTRO 介绍 TUTORIAL 教程 PROJECT 项目 DOCUMENT 资料 APPLICATION 应用  INTRO 介绍Started 入门 （一）简单易懂地介绍什么是区块链 比特币区块链关键词讲解 （二）简单易懂地介绍什么是区块链（技术篇） 比特币区块链技术图解 一文看懂区块链：一步一步发明">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-11-07T10:16:57.942Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="后端导航">
+<meta name="twitter:description" content="企业区块链官方大企业导航壹账链·平安 )     趣链科技 学习资料收集CONTENTS INTRO 介绍 TUTORIAL 教程 PROJECT 项目 DOCUMENT 资料 APPLICATION 应用  INTRO 介绍Started 入门 （一）简单易懂地介绍什么是区块链 比特币区块链关键词讲解 （二）简单易懂地介绍什么是区块链（技术篇） 比特币区块链技术图解 一文看懂区块链：一步一步发明">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+    
+        <link rel="alternate" type="application/atom+xml" title="share猿" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">share猿</h5>
+          <a href="mailto:330334064@qq.com" title="330334064@qq.com" class="mail">330334064@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/lywlefan" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                GitHub
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/atom">
+                <i class="icon icon-lg icon-rss"></i>
+                订阅
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">后端导航</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">后端导航</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-10-14T16:00:00.000Z" itemprop="datePublished" class="page-time">
+  2019-10-15
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/区块链/">区块链</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#企业区块链官方"><span class="post-toc-number">1.</span> <span class="post-toc-text">企业区块链官方</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#大企业导航"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">大企业导航</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#学习资料收集"><span class="post-toc-number">2.</span> <span class="post-toc-text">学习资料收集</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#CONTENTS"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">CONTENTS</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#INTRO-介绍"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">INTRO 介绍</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Started-入门"><span class="post-toc-number">2.2.1.</span> <span class="post-toc-text">Started 入门</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Ethereum-以太坊进阶"><span class="post-toc-number">2.2.2.</span> <span class="post-toc-text">Ethereum 以太坊进阶</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Fabric-联盟链进阶"><span class="post-toc-number">2.2.3.</span> <span class="post-toc-text">Fabric 联盟链进阶</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#TUTORIAL-教程"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">TUTORIAL 教程</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#BitCoin-比特币"><span class="post-toc-number">2.3.1.</span> <span class="post-toc-text">BitCoin 比特币</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Ethereum-以太坊"><span class="post-toc-number">2.3.2.</span> <span class="post-toc-text">Ethereum 以太坊</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Fabric-联盟链"><span class="post-toc-number">2.3.3.</span> <span class="post-toc-text">Fabric 联盟链</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Videos-视频"><span class="post-toc-number">2.3.4.</span> <span class="post-toc-text">Videos 视频</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#PROJECT-项目"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">PROJECT 项目</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Chain-区块链底层"><span class="post-toc-number">2.4.1.</span> <span class="post-toc-text">Chain 区块链底层</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#SDK-工具包"><span class="post-toc-number">2.4.2.</span> <span class="post-toc-text">SDK 工具包</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Research-最新研究"><span class="post-toc-number">2.4.3.</span> <span class="post-toc-text">Research 最新研究</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#DOCUMENT-资料"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">DOCUMENT 资料</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#BitCoin-比特币-1"><span class="post-toc-number">2.5.1.</span> <span class="post-toc-text">BitCoin 比特币</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Ethereum-以太坊-1"><span class="post-toc-number">2.5.2.</span> <span class="post-toc-text">Ethereum 以太坊</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Fabric-联盟链-1"><span class="post-toc-number">2.5.3.</span> <span class="post-toc-text">Fabric 联盟链</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#APPLICATION-应用"><span class="post-toc-number">2.6.</span> <span class="post-toc-text">APPLICATION 应用</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Explorer-链浏览"><span class="post-toc-number">2.6.1.</span> <span class="post-toc-text">Explorer 链浏览</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Wallet-钱包"><span class="post-toc-number">2.6.2.</span> <span class="post-toc-text">Wallet 钱包</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Exchange-交易所"><span class="post-toc-number">2.6.3.</span> <span class="post-toc-text">Exchange 交易所</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Game-游戏"><span class="post-toc-number">2.6.4.</span> <span class="post-toc-text">Game 游戏</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#IM-通信"><span class="post-toc-number">2.6.5.</span> <span class="post-toc-text">IM 通信</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Social-社会"><span class="post-toc-number">2.6.6.</span> <span class="post-toc-text">Social 社会</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Cross-Chain-跨链"><span class="post-toc-number">2.6.7.</span> <span class="post-toc-text">Cross Chain 跨链</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Token-代币"><span class="post-toc-number">2.6.8.</span> <span class="post-toc-text">Token 代币</span></a></li></ol></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-前沿技术/区块链/区块链导航" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">后端导航</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-10-15 00:00:00" datetime="2019-10-14T16:00:00.000Z" itemprop="datePublished">2019-10-15</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/区块链/">区块链</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="企业区块链官方"><a href="#企业区块链官方" class="headerlink" title="企业区块链官方"></a>企业区块链官方</h1><h2 id="大企业导航"><a href="#大企业导航" class="headerlink" title="大企业导航"></a>大企业导航</h2><p><a href="[https://baas.yizhangtong.com](https://baas.yizhangtong.com/">壹账链·平安</a> )     <a href="https://www.hyperchain.cn/" target="_blank" rel="noopener">趣链科技</a></p>
+<h1 id="学习资料收集"><a href="#学习资料收集" class="headerlink" title="学习资料收集"></a>学习资料收集</h1><h2 id="CONTENTS"><a href="#CONTENTS" class="headerlink" title="CONTENTS"></a>CONTENTS</h2><ul>
+<li><a href="https://github.com/chaozh/awesome-blockchain-cn#intro-介绍" target="_blank" rel="noopener">INTRO 介绍</a></li>
+<li><a href="https://github.com/chaozh/awesome-blockchain-cn#tutorial-教程" target="_blank" rel="noopener">TUTORIAL 教程</a></li>
+<li><a href="https://github.com/chaozh/awesome-blockchain-cn#project-项目" target="_blank" rel="noopener">PROJECT 项目</a></li>
+<li><a href="https://github.com/chaozh/awesome-blockchain-cn#document-资料" target="_blank" rel="noopener">DOCUMENT 资料</a></li>
+<li><a href="https://github.com/chaozh/awesome-blockchain-cn#application-应用" target="_blank" rel="noopener">APPLICATION 应用</a></li>
+</ul>
+<h2 id="INTRO-介绍"><a href="#INTRO-介绍" class="headerlink" title="INTRO 介绍"></a>INTRO 介绍</h2><h3 id="Started-入门"><a href="#Started-入门" class="headerlink" title="Started 入门"></a>Started 入门</h3><ul>
+<li><a href="https://zhuanlan.zhihu.com/p/22228902" target="_blank" rel="noopener">（一）简单易懂地介绍什么是区块链</a> 比特币区块链关键词讲解</li>
+<li><a href="https://zhuanlan.zhihu.com/p/23243289" target="_blank" rel="noopener">（二）简单易懂地介绍什么是区块链（技术篇）</a> 比特币区块链技术图解</li>
+<li><a href="https://charlesliuyx.github.io/2017/09/24/一文弄懂区块链-以比特币为例/" target="_blank" rel="noopener">一文看懂区块链：一步一步发明比特币</a></li>
+<li><a href="http://blog.csdn.net/jwter87/article/details/53322642" target="_blank" rel="noopener">一步一步学区块链</a> 按步骤的实际操作入门指南</li>
+<li><a href="https://yeasy.gitbooks.io/blockchain_guide" target="_blank" rel="noopener">区块链技术指南</a> 区块链领域比较系统的入门资料</li>
+<li><a href="http://blog.csdn.net/csolo/article/details/52858236" target="_blank" rel="noopener">理解区块链</a> 区块链关键技术要点讲解</li>
+<li><a href="http://www.8btc.com/ebook-blockchain" target="_blank" rel="noopener">一文看懂区块链架构设计</a> 从技术分层解构架构</li>
+<li><a href="https://charlesliuyx.github.io/2018/03/03/【区块链】如何解决拜占庭将军问题/" target="_blank" rel="noopener">共识算法与如何解决拜占庭将军问题</a></li>
+</ul>
+<h3 id="Ethereum-以太坊进阶"><a href="#Ethereum-以太坊进阶" class="headerlink" title="Ethereum 以太坊进阶"></a>Ethereum 以太坊进阶</h3><ul>
+<li><a href="http://ethfans.org/posts/block-chain-technology-smart-contracts-and-ethereum" target="_blank" rel="noopener">区块链技术-智能合约-以太坊</a> 以太坊智能合约入门概念</li>
+<li><a href="http://ethfans.org/wikis/以太坊白皮书" target="_blank" rel="noopener">以太坊白皮书</a></li>
+<li><a href="https://theethereum.wiki/w/index.php/Main_Page" target="_blank" rel="noopener">The Ethereum Wiki</a> <em>(English)</em></li>
+<li><a href="http://ethfans.org/posts/510" target="_blank" rel="noopener">以太坊设计原理</a></li>
+<li><a href="http://me.tryblockchain.org/getting-up-to-speed-on-ethereum.html" target="_blank" rel="noopener">以太坊Dapp开发入门</a></li>
+<li><a href="https://hackernoon.com/ether-purchase-power-df40a38c5a2f" target="_blank" rel="noopener">以太坊Gas使用</a> Calculating Costs in Ethereum Contracts <em>(English)</em></li>
+<li><a href="http://ethfans.org/topics/227" target="_blank" rel="noopener">以太坊代码剖析</a></li>
+<li><a href="http://www.cnblogs.com/baizx/category/1011749.html" target="_blank" rel="noopener">以太坊源码阅读</a></li>
+<li><a href="http://blog.csdn.net/jiange_zh/article/details/53386250" target="_blank" rel="noopener">Merkle Tree学习</a></li>
+<li><a href="https://github.com/laalaguer/ethereum-compass" target="_blank" rel="noopener">以太坊的指南针</a></li>
+</ul>
+<h3 id="Fabric-联盟链进阶"><a href="#Fabric-联盟链进阶" class="headerlink" title="Fabric 联盟链进阶"></a>Fabric 联盟链进阶</h3><ul>
+<li><a href="https://zhuanlan.zhihu.com/p/23356616" target="_blank" rel="noopener">Blockchain区块链架构设计之一：成员管理</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/23463699" target="_blank" rel="noopener">Blockchain区块链架构设计之二：分布式账本技术对比</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/23947372" target="_blank" rel="noopener">Blockchain区块链架构设计之三：Hyperledger Fabric介绍</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/24605987" target="_blank" rel="noopener">Blockchain区块链架构设计之四：Fabric多通道和下一代账本设计</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/25061575" target="_blank" rel="noopener">Blockchain区块链架构设计之五：让DLT产生协作，对Corda和GSL的思考</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/25119939" target="_blank" rel="noopener">Blockchain区块链架构设计之六：Fabric 1.0账本设计（1）</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/25295608" target="_blank" rel="noopener">Blockchain区块链架构设计之七：Fabric 1.0 Endorse背书策略</a></li>
+<li><a href="http://www.wanbizu.com/blockchain/201702078984.html" target="_blank" rel="noopener">Hyperledger架构解读：Hyperledger Fabric1.0架构概览</a></li>
+</ul>
+<h2 id="TUTORIAL-教程"><a href="#TUTORIAL-教程" class="headerlink" title="TUTORIAL 教程"></a>TUTORIAL 教程</h2><h3 id="BitCoin-比特币"><a href="#BitCoin-比特币" class="headerlink" title="BitCoin 比特币"></a>BitCoin 比特币</h3><ul>
+<li><a href="https://www.coursera.org/learn/cryptocurrency" target="_blank" rel="noopener">Bitcoin and Cryptocurrency Technologies</a> Cousera上的比特币教程 <em>(English)</em></li>
+</ul>
+<h3 id="Ethereum-以太坊"><a href="#Ethereum-以太坊" class="headerlink" title="Ethereum 以太坊"></a>Ethereum 以太坊</h3><ul>
+<li><a href="http://www.jianshu.com/p/220130b39e22" target="_blank" rel="noopener">以太坊从零开始入门</a></li>
+<li><a href="http://me.tryblockchain.org/getting-up-to-speed-on-ethereum.html" target="_blank" rel="noopener">以太坊开发入门经验</a></li>
+<li><a href="https://my.oschina.net/wtsoftware/blog/782057" target="_blank" rel="noopener">mac配置以太坊本地开发环境</a></li>
+<li><a href="http://ethfans.org/posts/101-noob-intro" target="_blank" rel="noopener">以太坊智能合约编程之菜鸟教程</a></li>
+<li><a href="http://8btc.com/thread-23195-1-1.html" target="_blank" rel="noopener">以太坊常见问题FAQ</a></li>
+<li><a href="http://www.toutiao.com/i6401418700217385473/?tt_from=weixin&amp;utm_campaign=client_share&amp;from=groupmessage&amp;app=news_article&amp;utm_source=weixin&amp;iid=8932715408&amp;utm_medium=toutiao_ios&amp;wxshare_count=2&amp;pbid=35867484354" target="_blank" rel="noopener">区块链语言Solidity校验椭圆曲线加密数字签名（附实例）</a></li>
+<li><a href="https://www.ethereum.org/token" target="_blank" rel="noopener">Create your own crypto-currency</a> 来自以太坊官方的代币创建教程 <em>(English)</em></li>
+<li><a href="http://truffleframework.com/tutorials/pet-shop" target="_blank" rel="noopener">ETHEREUM PET SHOP</a> Truffle框架逐步案例教程 <em>(English)</em></li>
+<li><a href="http://zeppelin.tryblockchain.org/robust-smart-contracts-with-openzeppelin.html" target="_blank" rel="noopener">ROBUST SMART CONTRACTS WITH OPENZEPPELIN</a> OpenZeppelin集成Truffle编写健壮安全的合约 <em>(English)</em></li>
+<li><a href="http://truffle.tryblockchain.org/truffle3.0-integrate-nodejs.html" target="_blank" rel="noopener">Truffle3.0案例教程</a> 集成NodeJS并完全跑通，附详细实例和可能的错误 <em>(English)</em></li>
+<li><a href="http://blog.csdn.net/wo541075754/article/category/6502432/1" target="_blank" rel="noopener">以太坊开发入门教程</a></li>
+</ul>
+<h3 id="Fabric-联盟链"><a href="#Fabric-联盟链" class="headerlink" title="Fabric 联盟链"></a>Fabric 联盟链</h3><ul>
+<li><a href="https://github.com/angrbrd/hyperledger-fabric-basics" target="_blank" rel="noopener">Fabric Basics</a> 使用Docker Toolbox来搭建Fabric的开发环境 <em>(English)</em></li>
+<li><a href="https://github.com/IBM-Blockchain/learn-chaincode" target="_blank" rel="noopener">Learn Chaincode</a> Fabric Chaincode入门 <em>(English)</em></li>
+<li><a href="https://github.com/IBM-Blockchain/marbles/blob/master/docs/tutorial_part1.md" target="_blank" rel="noopener">Marbles Project Tutorial: Part One</a> 官方Chaincode案例教程第一部分 <em>(English)</em></li>
+<li><a href="https://github.com/IBM-Blockchain/marbles/blob/master/docs/tutorial_part2.md" target="_blank" rel="noopener">Marbles Project Tutorial: Part Two</a> 官方Chaincode案例教程第二部分 <em>(English)</em></li>
+<li><a href="https://zhuanlan.zhihu.com/p/25070745" target="_blank" rel="noopener">Hyperledger Fabric V1.0– 开发者快速入门</a> 这个是基于baseos 0.2.2 的</li>
+<li><a href="http://blog.csdn.net/kojhliang/article/details/66971404" target="_blank" rel="noopener">搭建运行Fabric V1.0-alpha版本</a> 针对Fabric1.0版本的开发环境搭建指引</li>
+<li><a href="http://blog.csdn.net/remote_roamer/article/details/70228662" target="_blank" rel="noopener">Fabric v1.0-alpha 开发镜像编译</a> 使用Fabric源码编译v1.0-alpha版本的Docker镜像指引</li>
+<li><a href="http://www.jianshu.com/p/7bc258810b77" target="_blank" rel="noopener">Hyperledger Composer使用入门</a> 官方Fabric应用开发工具Hyperledger Composer入门</li>
+<li><a href="http://www.jianshu.com/p/ec7d4216c3cf" target="_blank" rel="noopener">Fabric-CA-1.0-Alpha小结</a></li>
+</ul>
+<h3 id="Videos-视频"><a href="#Videos-视频" class="headerlink" title="Videos 视频"></a>Videos 视频</h3><ul>
+<li><a href="https://www.youtube.com/watch?v=9_coM_g7Dbg&amp;list=PLH4m2oS2ratdoHFEkGvwvd7TkeTv4sa7Z" target="_blank" rel="noopener">Building Ethereum DApps using Solidity</a> 视频教程 <em>(English)</em></li>
+<li><a href="https://www.youtube.com/watch?v=_BvvUlKDqp0&amp;list=PLJqWcTqh_zKEjpSej3ddtDOKPRGl_7MhS" target="_blank" rel="noopener">Devcon 0 (Berlin, 2014) talks and videos</a> <em>(English)</em></li>
+<li><a href="https://www.youtube.com/watch?v=BUARih8_f68&amp;list=PLJqWcTqh_zKHQUFX4IaVjWjfT2tbS4NVk" target="_blank" rel="noopener">Devcon 1 (London, 2015) talks and videos</a> <em>(English)</em></li>
+<li><a href="https://www.youtube.com/watch?v=1wayaZ1-iBE&amp;list=PLaM7G4Llrb7xqzgOwbvNv63_KM7VH84Rd" target="_blank" rel="noopener">Devcon 2 (Shanghai, 2016) talks and videos</a> <em>(English)</em></li>
+<li><a href="http://ethereumfoundation.org/devcon3/" target="_blank" rel="noopener"><strong>Devcon 3</strong> (Cancún, 2017) website and registration</a> <em>(English)</em></li>
+</ul>
+<h2 id="PROJECT-项目"><a href="#PROJECT-项目" class="headerlink" title="PROJECT 项目"></a>PROJECT 项目</h2><h3 id="Chain-区块链底层"><a href="#Chain-区块链底层" class="headerlink" title="Chain 区块链底层"></a>Chain 区块链底层</h3><ul>
+<li><a href="https://github.com/mvs-org/metaverse" target="_blank" rel="noopener">Metaverse</a> 原界链源码</li>
+<li><a href="https://github.com/EOSIO/eos" target="_blank" rel="noopener">EOS</a> EOS链源码</li>
+<li><a href="https://github.com/Bytom/bytom" target="_blank" rel="noopener">BYTOM</a> 比原链源码</li>
+<li><a href="https://github.com/neo-project/neo" target="_blank" rel="noopener">NEO</a> NEO链源码</li>
+<li><a href="https://github.com/cryptape/cita" target="_blank" rel="noopener">CITA</a> cita联盟链的底层源码</li>
+<li><a href="https://github.com/nervosnetwork/ckb" target="_blank" rel="noopener">Nervos</a> 公链 Nervos CKB 的底层源码</li>
+<li><a href="https://github.com/fkysly/bitcoin0.1.0" target="_blank" rel="noopener">比特币0.1</a> 最原始的比特币代码</li>
+<li><a href="https://github.com/jpmorganchase/quorum" target="_blank" rel="noopener">Quorum</a> 来自JP Morgan基于Go-Ethereum数据隐私加强的以太坊实现</li>
+<li><a href="https://github.com/FISCO-BCOS/FISCO-BCOS" target="_blank" rel="noopener">FISCO-BCOS</a> 来自金链盟的聚焦金融行业的区块链底层平台</li>
+<li><a href="https://github.com/xiaoyao1991/presto-ethereum" target="_blank" rel="noopener">Presto-Ethereum</a> 以太坊增加Presto的SQL访问能力</li>
+<li><a href="https://github.com/ipfs/go-ipfs" target="_blank" rel="noopener">IPFS</a> IPFS的GO语言实现 <a href="https://github.com/ipfs/ipfs" target="_blank" rel="noopener">原理</a></li>
+</ul>
+<h3 id="SDK-工具包"><a href="#SDK-工具包" class="headerlink" title="SDK 工具包"></a>SDK 工具包</h3><ul>
+<li><a href="https://ethereum.github.io/browser-solidity/" target="_blank" rel="noopener">Remix</a> 在线以太坊编译器</li>
+<li><a href="https://github.com/trufflesuite/truffle" target="_blank" rel="noopener">Truffle</a> 以太坊Dapp开发脚手架</li>
+<li><a href="https://github.com/OpenZeppelin/zeppelin-solidity" target="_blank" rel="noopener">Zeppelin</a> 用于编写安全的以太坊合约框架</li>
+<li><a href="https://github.com/web3j/web3j" target="_blank" rel="noopener">Web3j</a> 以太坊官方Web3轻量级java SDK</li>
+<li><a href="https://github.com/embark-framework/embark" target="_blank" rel="noopener">Embark</a> 以太坊Dapp开发框架，支持IPFS、Whisper及Orbit调用</li>
+<li><a href="https://github.com/BANKEX/web3swift" target="_blank" rel="noopener">Web3Swift</a> 一个Web3的swift SDK</li>
+<li><a href="https://github.com/comaeio/porosity" target="_blank" rel="noopener">Porosity</a> 反编译以太坊智能合约工具</li>
+<li><a href="https://github.com/sc-forks/solidity-coverage" target="_blank" rel="noopener">Solidity-Coverage</a> 检测Solidity代码覆盖</li>
+<li><a href="https://github.com/hyperledger-archives/caliper" target="_blank" rel="noopener">Caliper</a> hyperledger区块链性能测试工具</li>
+<li><a href="https://github.com/hyperledger/composer" target="_blank" rel="noopener">Composer</a> 官方可视化Fabric应用开发框架</li>
+<li><a href="https://github.com/jpmorganchase/cakeshop" target="_blank" rel="noopener">Cakeshop</a> 来自JP Morgan的以太坊可视化管理工具</li>
+</ul>
+<h3 id="Research-最新研究"><a href="#Research-最新研究" class="headerlink" title="Research 最新研究"></a>Research 最新研究</h3><ul>
+<li><a href="https://github.com/ewasm/design" target="_blank" rel="noopener">eWASM</a> 让以太坊支持WebAssembly</li>
+<li><a href="https://cps-vo.org/group/SmartContracts" target="_blank" rel="noopener">FSolidM</a> 可视化智能合约生成工具 <a href="https://github.com/anmavrid/smart-contracts" target="_blank" rel="noopener">源码</a></li>
+<li><a href="https://github.com/MAIAN-tool/MAIAN" target="_blank" rel="noopener">Maian</a> 以太坊智能合约漏洞查找工具</li>
+<li><a href="https://github.com/melonproject/oyente" target="_blank" rel="noopener">Oyente</a> 以太坊智能合约分析工具</li>
+<li><a href="https://github.com/ooibc88/blockbench" target="_blank" rel="noopener">Blockbench</a> 区块链性能测试工具</li>
+<li><a href="https://github.com/JacobEberhardt/ZoKrates" target="_blank" rel="noopener">Zokrates</a> 以太坊使用zkSNARKS工具包(实验用)</li>
+<li><a href="https://github.com/scipr-lab/libsnark" target="_blank" rel="noopener">libsnark</a> zkSNARKS C++库</li>
+</ul>
+<h2 id="DOCUMENT-资料"><a href="#DOCUMENT-资料" class="headerlink" title="DOCUMENT 资料"></a>DOCUMENT 资料</h2><h3 id="BitCoin-比特币-1"><a href="#BitCoin-比特币-1" class="headerlink" title="BitCoin 比特币"></a>BitCoin 比特币</h3><ul>
+<li><a href="https://github.com/bitcoinbook/bitcoinbook" target="_blank" rel="noopener">精通比特币</a> 精通比特币开发Oreilly开源书 <a href="http://zhibimo.com/books/wang-miao/mastering-bitcoin" target="_blank" rel="noopener">中文翻译版</a></li>
+<li><a href="http://blockchaindev.org/" target="_blank" rel="noopener">blockchaindev.org</a> 区块链创业公司维优CTO的专栏</li>
+<li><a href="http://www.jianshu.com/u/30081a05cf95" target="_blank" rel="noopener">区块链研习社</a> 比特币源码解读</li>
+</ul>
+<h3 id="Ethereum-以太坊-1"><a href="#Ethereum-以太坊-1" class="headerlink" title="Ethereum 以太坊"></a>Ethereum 以太坊</h3><ul>
+<li><a href="https://github.com/ethereumbook/ethereumbook" target="_blank" rel="noopener">Mastering Ethereum</a> 精通以太坊开发Oreilly开源书</li>
+<li><a href="http://me.tryblockchain.org/" target="_blank" rel="noopener">区块链技术博客</a> 关注以太坊</li>
+<li><a href="http://gi1.cn/topics/category/solidity" target="_blank" rel="noopener">以太坊系列教程</a> solidity语言学习</li>
+<li><a href="http://www.tryblockchain.org/" target="_blank" rel="noopener">Solidity语言文档</a> 语言中文手册</li>
+<li><a href="http://web3.tryblockchain.org/" target="_blank" rel="noopener">Web3.JS接口文档</a> 接口中文手册</li>
+<li><a href="http://truffle.tryblockchain.org/" target="_blank" rel="noopener">Truffle框架文档</a> 框架中文手册</li>
+<li><a href="http://zeppelin.tryblockchain.org/" target="_blank" rel="noopener">Open Zeppelin框架文档</a> 框架中文手册</li>
+<li><a href="https://github.com/EverexIO/Ethplorer/wiki/Ethplorer-API?from=etop" target="_blank" rel="noopener">Ethplorer接口</a> Ethplorer接口文档</li>
+<li><a href="https://consensys.github.io/smart-contract-best-practices/" target="_blank" rel="noopener">Ethereum Smart Contract Security Best Practices</a> <em>(english)</em></li>
+<li><a href="http://8btc.com/thread-23195-1-1.html" target="_blank" rel="noopener">以太坊常见问题FAQ</a></li>
+<li><a href="https://github.com/Scanate/EthList" target="_blank" rel="noopener">EthList</a> 以太坊开发相关学习资料收集</li>
+</ul>
+<h3 id="Fabric-联盟链-1"><a href="#Fabric-联盟链-1" class="headerlink" title="Fabric 联盟链"></a>Fabric 联盟链</h3><ul>
+<li><a href="https://hyperledger-fabric.readthedocs.io/en/latest/" target="_blank" rel="noopener">Fabric Official Docs</a> Fabric官方最新文档</li>
+<li><a href="http://fubai.tech/" target="_blank" rel="noopener">浮白</a> Fabric开发环境搭建与codechain入门</li>
+<li><a href="http://blog.csdn.net/yeasy" target="_blank" rel="noopener">yeasy的专栏</a> IBM fabric核心开发者yeasy的专栏</li>
+<li><a href="http://blog.csdn.net/xjmtxwd24/" target="_blank" rel="noopener">菜鸟的博客</a> fabric0.6及1.0源码分析</li>
+<li><a href="http://blog.csdn.net/jiang_xinxing/article/category/6642179" target="_blank" rel="noopener">jiang_xinxing的博客</a> fabric0.6源码分析</li>
+</ul>
+<h2 id="APPLICATION-应用"><a href="#APPLICATION-应用" class="headerlink" title="APPLICATION 应用"></a>APPLICATION 应用</h2><h3 id="Explorer-链浏览"><a href="#Explorer-链浏览" class="headerlink" title="Explorer 链浏览"></a>Explorer 链浏览</h3><ul>
+<li><a href="https://blockchain.info/" target="_blank" rel="noopener">Blockchain</a> 比特币区块链浏览器</li>
+<li><a href="https://etherscan.io/" target="_blank" rel="noopener">Etherscan</a> 以太坊区块链浏览器</li>
+<li><a href="https://ethplorer.io/" target="_blank" rel="noopener">Ethplorer</a> 以太坊区块链浏览器，提供API调用</li>
+<li><a href="https://ethgasstation.info/index.php" target="_blank" rel="noopener">Eth Gas Station</a> 以太坊Gas目前定价</li>
+<li><a href="https://etherscope.io/" target="_blank" rel="noopener">Etherscope</a> 以太坊区块链浏览器</li>
+</ul>
+<h3 id="Wallet-钱包"><a href="#Wallet-钱包" class="headerlink" title="Wallet 钱包"></a>Wallet 钱包</h3><ul>
+<li><a href="https://myetherwallet.com/" target="_blank" rel="noopener">My Ether Wallet</a> 网页版以太坊钱包 <a href="https://github.com/kvhnuke/etherwallet" target="_blank" rel="noopener">源码</a></li>
+<li><a href="https://metamask.io/" target="_blank" rel="noopener">MetaMask</a> Chrome Extension浏览器插件版</li>
+<li><a href="https://jaxx.io/" target="_blank" rel="noopener">Multi-platform Jaxx Wallet</a> 同时兼容以太坊和比特币钱包</li>
+<li><a href="https://github.com/ethereum/mist/releases/latest" target="_blank" rel="noopener">Mist Wallet</a> 官方版轻量级钱包</li>
+<li><a href="https://github.com/paritytech/parity/releases/latest" target="_blank" rel="noopener">Parity Wallet</a></li>
+<li><a href="https://github.com/ether-camp/ethereum-harmony/releases/latest" target="_blank" rel="noopener">Harmony Wallet</a></li>
+<li><a href="https://token.im/" target="_blank" rel="noopener">imToken</a> 移动App版钱包</li>
+<li><a href="https://trustwalletapp.com/" target="_blank" rel="noopener">Trust</a> iOS / Android 原生钱包 + DApp 浏览器</li>
+<li><a href="https://www.cipherbrowser.com/" target="_blank" rel="noopener">Cipher</a> iOS / Android 钱包 + DApp 浏览器</li>
+<li><a href="https://theethereum.wiki/w/index.php/Ledger_Nano_S" target="_blank" rel="noopener">Ledger Nano S</a> 硬件钱包</li>
+<li><a href="https://blog.trezor.io/trezor-integration-with-myetherwallet-3e217a652e08" target="_blank" rel="noopener">Trezor</a> 硬件钱包</li>
+</ul>
+<h3 id="Exchange-交易所"><a href="#Exchange-交易所" class="headerlink" title="Exchange 交易所"></a>Exchange 交易所</h3><ul>
+<li><a href="https://www.0xproject.com/otc" target="_blank" rel="noopener">0x</a> 0x交易所平台 <a href="https://github.com/0xProject/contracts" target="_blank" rel="noopener">源码</a></li>
+<li><a href="https://idex.market/" target="_blank" rel="noopener">IDEX</a> IDEX交易所，目前最活跃 <a href="https://github.com/AuroraDAO" target="_blank" rel="noopener">源码</a></li>
+<li><a href="https://etherdelta.github.io/#ZRX-ETH" target="_blank" rel="noopener">ethdelf</a> etherdelta交易所 <a href="https://github.com/etherdelta/smart_contract" target="_blank" rel="noopener">源码</a></li>
+<li><a href="https://forkdelta.github.io/" target="_blank" rel="noopener">forkdelta</a> forkdelta交易所,较活跃 <a href="https://github.com/forkdelta/smart_contract" target="_blank" rel="noopener">源码</a></li>
+<li><a href="https://kyber.network/" target="_blank" rel="noopener">kyber</a> kyber交易所 <a href="https://github.com/kyberNetwork/smart_contract" target="_blank" rel="noopener">源码</a></li>
+<li><a href="https://dmarket.io/" target="_blank" rel="noopener">Dmarket</a> dmarket交易所 <a href="https://github.com/suntechsoft/dmarket-smartcontract" target="_blank" rel="noopener">源码</a></li>
+<li><a href="https://augur.net/" target="_blank" rel="noopener">augur</a> 对赌交易所 <a href="https://github.com/AugurProject" target="_blank" rel="noopener">源码</a></li>
+<li><a href="https://melonport.com/" target="_blank" rel="noopener">melonport</a> 数字资产交易所 <a href="https://github.com/melonproject" target="_blank" rel="noopener">源码</a></li>
+</ul>
+<h3 id="Game-游戏"><a href="#Game-游戏" class="headerlink" title="Game 游戏"></a>Game 游戏</h3><ul>
+<li><a href="https://www.cryptokitties.co/" target="_blank" rel="noopener">CryptoKitties</a> 以太猫</li>
+<li><a href="https://www.etheremon.com/#/" target="_blank" rel="noopener">Etheremon</a> 以太神奇宝贝</li>
+<li><a href="https://www.edgeless.io/" target="_blank" rel="noopener">Edgeless</a> 虚拟币在线赌场 <a href="https://github.com/EdgelessCasino/Smart-Contracts" target="_blank" rel="noopener">源码</a></li>
+</ul>
+<h3 id="IM-通信"><a href="#IM-通信" class="headerlink" title="IM 通信"></a>IM 通信</h3><ul>
+<li><a href="https://github.com/status-im/status-network-token" target="_blank" rel="noopener">status-im</a> status.im项目开源代码</li>
+</ul>
+<h3 id="Social-社会"><a href="#Social-社会" class="headerlink" title="Social 社会"></a>Social 社会</h3><ul>
+<li><a href="http://docs.oraclize.it/#background" target="_blank" rel="noopener">Oraclize</a> 第三方信息提供</li>
+<li><a href="https://aragon.one/" target="_blank" rel="noopener">Aragon</a> 公司业务 <a href="https://github.com/aragon/aragon-core/tree/master/contracts" target="_blank" rel="noopener">源码</a></li>
+<li><a href="https://dharma.io/" target="_blank" rel="noopener">dharma</a> 第三方增信 <a href="https://github.com/dharmaprotocol/dharma-cli" target="_blank" rel="noopener">源码</a></li>
+<li><a href="https://chronobank.io/" target="_blank" rel="noopener">Chronobank</a> 共享机制</li>
+<li><a href="https://slock.it/" target="_blank" rel="noopener">slockit</a> 租借智能设备 <a href="https://github.com/slockit/smart-contract" target="_blank" rel="noopener">源码</a></li>
+<li><a href="https://github.com/slockit/DAO" target="_blank" rel="noopener">DAO</a> DAO提案</li>
+</ul>
+<h3 id="Cross-Chain-跨链"><a href="#Cross-Chain-跨链" class="headerlink" title="Cross Chain 跨链"></a>Cross Chain 跨链</h3><ul>
+<li><a href="https://cosmos.network/" target="_blank" rel="noopener">Cosmos</a> cosmos跨链交易，包括BTC到ETH <a href="https://github.com/cosmos" target="_blank" rel="noopener">源码</a></li>
+<li><a href="https://polkadot.io/" target="_blank" rel="noopener">polkadot</a> polkadot跨链，实现了一个轻量级以太坊客户端 <a href="https://github.com/paritytech/parity" target="_blank" rel="noopener">源码</a></li>
+</ul>
+<h3 id="Token-代币"><a href="#Token-代币" class="headerlink" title="Token 代币"></a>Token 代币</h3><ul>
+<li><a href="https://github.com/ethereum/EIPs/pull/610" target="_blank" rel="noopener">ERC20</a> 以太坊的ICO代币标准</li>
+<li><a href="http://vitalik.ca/general/2017/06/09/sales.html" target="_blank" rel="noopener">Token Sale</a> 代币销售模型</li>
+<li><a href="https://makerdao.com/" target="_blank" rel="noopener">maker</a> Dai代币</li>
+</ul>
+<hr>
+<p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
+<p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-11-07T10:16:57.942Z" itemprop="dateUpdated">2019-11-07 18:16:57</time>
+</span><br>
+
+
+        
+        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2019/10/15/前沿技术/区块链/区块链导航/" target="_blank" rel="external">https://lywlefan.github.io/2019/10/15/前沿技术/区块链/区块链导航/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://lywlefan.github.io">
+            <img src="/img/avatar.png" alt="share猿">
+            share猿
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/导航/">导航</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://lywlefan.github.io/2019/10/15/前沿技术/区块链/区块链导航/&title=《后端导航》 — share猿&pic=https://lywlefan.github.io/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://lywlefan.github.io/2019/10/15/前沿技术/区块链/区块链导航/&title=《后端导航》 — share猿&source=分享有价值的内容,你我共同成长!" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://lywlefan.github.io/2019/10/15/前沿技术/区块链/区块链导航/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《后端导航》 — share猿&url=https://lywlefan.github.io/2019/10/15/前沿技术/区块链/区块链导航/&via=https://lywlefan.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://lywlefan.github.io/2019/10/15/前沿技术/区块链/区块链导航/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2019/10/17/后端/高并发/java/书籍/如何设计一个秒杀系统-许令波/如何设计一个秒杀系统读书笔记/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">如何设计一个秒杀系统读书笔记</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/10/15/后端/后端导航/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">后端导航</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'true' == 'true',
+            verify: 'false' == 'true',
+            appId: "hQGVIAaJERVwyrWxj1uqgCqS-gzGzoHsz",
+            appKey: "l7FO5csTavNwXCGryJyOkkc1",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢赞赏!
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>share猿 &copy; 2015 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://lywlefan.github.io/2019/10/15/前沿技术/区块链/区块链导航/&title=《后端导航》 — share猿&pic=https://lywlefan.github.io/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://lywlefan.github.io/2019/10/15/前沿技术/区块链/区块链导航/&title=《后端导航》 — share猿&source=分享有价值的内容,你我共同成长!" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://lywlefan.github.io/2019/10/15/前沿技术/区块链/区块链导航/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《后端导航》 — share猿&url=https://lywlefan.github.io/2019/10/15/前沿技术/区块链/区块链导航/&via=https://lywlefan.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://lywlefan.github.io/2019/10/15/前沿技术/区块链/区块链导航/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACuElEQVR42u3awU4DMQwEUP7/p+GKVLWdsZMKpLcnBCWbl0Ps2v76ip/vX8/j7x8/8/g8W+1xhfztxx48PDy8xdZfvzjhvd7Wa1K+fn6UeHh4ePd4z27UdhOvr/48AOSH8mZlPDw8vH/FS3Ld/IDw8PDw/i8vufr3AaBNvvHw8PA+z2sv4ra0mpR082BzpdaCh4eHF/Pyzf2dn6/09/Dw8PDWXfU2tc0LCvvybrQyHh4e3gVeW3LdtMHa0YFkcCFK3PHw8PCu8fIwMGvqt4eVI9+shoeHh3eUlye4myR4s9psKCHq0eHh4eGNeKe2lV/oyeXeDloVeDw8PLxDvM2pJONT7TBB8vYiYODh4eEd5eWbmLW7ZuvkaXfR38PDw8M7ysu/xbeNrrwZlh9xsUM8PDy8a7w2MOTbOpum1wUUPDw8vMu8dpx00zybFW3bT+Lh4eHd4CV/btv8Law9jqRCi4eHh/cZ3uxyr182OrK2YbaqB+Ph4eGNkDmsLdTmQ1dnCxx4eHh4p3gtKWn/tweRBJU2oX9aa8HDw8M7xMtv0T1jk8TX+8HDw8O7wIsaSGWzfxY22kGBYuAADw8P7ygvuXZnIwXtagmvTtDx8PDwLvDyQuqm2d+uNuthDavUeHh4eCNemxDPwkaSpm+S7zffGPDw8PAu8PJ/zltQbWk4HyMoQgseHh7eR3iz0m1yZPkQQF6SeJOO4+Hh4V3mzV6TY/YlieR509/Dw8PDW/BmramknHpqBKEtNOPh4eHd5rVX7Z56tpi7Gd7Cw8PD2/DyYNBe5bP2/6aogYeHh/dJXlvezdPoJKi0hYzDZVw8PDy8D/Jmrak2+U5KD08PBQ8PD+/P8PJRgE1oSYZlh3EDDw8Pb81rm15tqMjbWvsxVjw8PLzbvNkX/k0rKy8B58221cAWHh4eXsr7AR+BFtt9D2F3AAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '共同学习!共同进步!';
+            clearTimeout(titleTime);
+        } else {
+            document.title = 'Share猿社区官方';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

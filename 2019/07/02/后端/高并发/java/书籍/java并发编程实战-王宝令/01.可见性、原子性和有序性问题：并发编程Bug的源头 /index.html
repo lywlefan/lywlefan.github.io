@@ -20,9 +20,9 @@
     <meta name="theme-color" content="#3F51B5">
     
     
-    <meta name="keywords" content="java,高并发,java并发编程实战-王宝令,读书笔记">
+    <meta name="keywords" content="读书笔记,java,高并发,java并发编程实战-王宝令">
     <meta name="description" content="阅读笔记 可见性  原子性  有序性   并发幕后的故事这些年，我们的 CPU、内存、I/O 设备都在不断迭代，不断朝着更快的方向努力。但是，在这个快速发展的过程中，有一个核心矛盾一直存在，就是这三者的速度差异。 CPU和内存速度差异可以形象描述:CPU是天上一天，内存是地上一年。内存和I/O设备速度差异就更大了，内存是天山一天，I/O设备是地上十年。 大部分程序是需要访问内存，有些还要访问I/O">
-<meta name="keywords" content="java,高并发,java并发编程实战-王宝令,读书笔记">
+<meta name="keywords" content="读书笔记,java,高并发,java并发编程实战-王宝令">
 <meta property="og:type" content="article">
 <meta property="og:title" content="01.可见性、原子性和有序性问题：并发编程Bug的源头">
 <meta property="og:url" content="https://lywlefan.github.io/2019/07/02/后端/高并发/java/书籍/java并发编程实战-王宝令/01.可见性、原子性和有序性问题：并发编程Bug的源头 /index.html">
@@ -32,7 +32,7 @@
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/3084894-daaffaf66a9ac336.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/3084894-e90b1d6bad3f4d22.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-10-15T06:46:35.994Z">
+<meta property="og:updated_time" content="2019-11-05T01:42:33.101Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="01.可见性、原子性和有序性问题：并发编程Bug的源头">
 <meta name="twitter:description" content="阅读笔记 可见性  原子性  有序性   并发幕后的故事这些年，我们的 CPU、内存、I/O 设备都在不断迭代，不断朝着更快的方向努力。但是，在这个快速发展的过程中，有一个核心矛盾一直存在，就是这三者的速度差异。 CPU和内存速度差异可以形象描述:CPU是天上一天，内存是地上一年。内存和I/O设备速度差异就更大了，内存是天山一天，I/O设备是地上十年。 大部分程序是需要访问内存，有些还要访问I/O">
@@ -343,6 +343,7 @@
 <p>北桥所支持的频率我们称之为前端总线速度（Front Side Bus,FSB），而每次传输的位数则是总线宽度。所以总线频宽 = FSB x 总线宽度，也就是每秒钟可传送的最大数据量，目前常见的总线宽度有32为和64位。</p>
 <p>例如前端总线的最高速度可达1600MHZ。我们看到内存和北桥的频宽为12.8GB/S，也就是1600MHZ x 64Bit =1600MHZ x 8Bytes = 12800MHZ = 12.8GB/S。</p>
 <p>与总线宽度相似，cpu每次能处理的数据量称为字组大小，字组大小依据cpu的设计而有32位与64位。我们现在所称的计算机是32位或64位主要依据cpu解析的字组大小而来的！早期的32位cpu中，因为cpu每次能够解析的数据量有限，因此由内存传来的数据量就有所限制了。这也导致32位的cpu最多只能支持最大到4GB的内存。</p>
+<p>​    </p>
 <blockquote>
 <p>推荐书单</p>
 </blockquote>
@@ -382,7 +383,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2019-10-15T06:46:35.994Z" itemprop="dateUpdated">2019-10-15 14:46:35</time>
+    最后更新时间：<time datetime="2019-11-05T01:42:33.101Z" itemprop="dateUpdated">2019-11-05 09:42:33</time>
 </span><br>
 
 

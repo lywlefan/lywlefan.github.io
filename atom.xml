@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://lywlefan.github.io/"/>
-  <updated>2019-11-02T13:04:42.004Z</updated>
+  <updated>2019-11-05T01:42:33.047Z</updated>
   <id>https://lywlefan.github.io/</id>
   
   <author>
@@ -17,11 +17,151 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>初始corda</title>
-    <link href="https://lywlefan.github.io/2019/10/30/%E5%89%8D%E6%B2%BF%E6%8A%80%E6%9C%AF/%E5%8C%BA%E5%9D%97%E9%93%BE/corda/%E5%88%9D%E5%A7%8Bcorda/"/>
-    <id>https://lywlefan.github.io/2019/10/30/前沿技术/区块链/corda/初始corda/</id>
+    <title></title>
+    <link href="https://lywlefan.github.io/2019/11/05/%E5%89%8D%E7%AB%AF/idea/webstorm/%E5%9C%A8Ubuntu%E4%B8%8B%E5%AE%89%E8%A3%85webstorm/"/>
+    <id>https://lywlefan.github.io/2019/11/05/前端/idea/webstorm/在Ubuntu下安装webstorm/</id>
+    <published>2019-11-05T01:42:33.047Z</published>
+    <updated>2019-11-05T01:42:33.047Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="https://lywlefan.github.io/2019/11/05/%E5%89%8D%E7%AB%AF/idea/fiddler/%E6%8A%93%E5%8C%85%E5%B7%A5%E5%85%B7%E5%AD%A6%E4%B9%A0/"/>
+    <id>https://lywlefan.github.io/2019/11/05/前端/idea/fiddler/抓包工具学习/</id>
+    <published>2019-11-05T01:42:33.044Z</published>
+    <updated>2019-11-05T01:42:33.044Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>去中心化应用</title>
+    <link href="https://lywlefan.github.io/2019/11/05/%E5%89%8D%E6%B2%BF%E6%8A%80%E6%9C%AF/%E5%8C%BA%E5%9D%97%E9%93%BE/%E5%BA%94%E7%94%A8/%E5%8E%BB%E4%B8%AD%E5%BF%83%E5%8C%96%E5%BA%94%E7%94%A8/"/>
+    <id>https://lywlefan.github.io/2019/11/05/前沿技术/区块链/应用/去中心化应用/</id>
+    <published>2019-11-04T16:00:00.000Z</published>
+    <updated>2019-11-05T05:54:58.638Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="去中心化应用"><a href="#去中心化应用" class="headerlink" title="去中心化应用"></a>去中心化应用</h2><hr><p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>                </div>                <div class="image-caption"></div>            </figure></p><p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;去中心化应用&quot;&gt;&lt;a href=&quot;#去中心化应用&quot; class=&quot;headerlink&quot; title=&quot;去中心化应用&quot;&gt;&lt;/a&gt;去中心化应用&lt;/h2&gt;&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;扫描以下公众号关注小猿↓↓↓↓↓↓↓↓&lt;/strong&gt;&lt;br&gt;&lt;figure c
+      
+    
+    </summary>
+    
+      <category term="前沿技术" scheme="https://lywlefan.github.io/categories/%E5%89%8D%E6%B2%BF%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="区块链" scheme="https://lywlefan.github.io/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/"/>
+    
+      <category term="应用" scheme="https://lywlefan.github.io/tags/%E5%BA%94%E7%94%A8/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>如何和别人进行合作协调</title>
+    <link href="https://lywlefan.github.io/2019/11/05/%E7%AE%A1%E7%90%86/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E6%A8%AA%E5%90%91%E9%A2%86%E5%AF%BC%E5%8A%9B/%E5%A6%82%E4%BD%95%E5%92%8C%E5%88%AB%E4%BA%BA%E8%BF%9B%E8%A1%8C%E5%90%88%E4%BD%9C%E5%8D%8F%E8%B0%83/"/>
+    <id>https://lywlefan.github.io/2019/11/05/管理/读书笔记/横向领导力/如何和别人进行合作协调/</id>
+    <published>2019-11-04T16:00:00.000Z</published>
+    <updated>2019-11-05T01:42:33.108Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="合作中常见的问题"><a href="#合作中常见的问题" class="headerlink" title="合作中常见的问题"></a>合作中常见的问题</h2><h3 id="合作不佳"><a href="#合作不佳" class="headerlink" title="合作不佳"></a>合作不佳</h3><h3 id="找不到一个人解决问题"><a href="#找不到一个人解决问题" class="headerlink" title="找不到一个人解决问题"></a>找不到一个人解决问题</h3><h2 id="改善团队表现需要解决的三个问题"><a href="#改善团队表现需要解决的三个问题" class="headerlink" title="改善团队表现需要解决的三个问题"></a>改善团队表现需要解决的三个问题</h2><h3 id="个人技能有限的问题"><a href="#个人技能有限的问题" class="headerlink" title="个人技能有限的问题"></a>个人技能有限的问题</h3><p>打铁还得自身硬，要想领导团队自身能力要硬，要有好的德行。要有解决解决复杂问题的能力和思维，要有带领团队克服困难的勇气，要积极向上，做好团队的能量石，也做好团队的敲打棒。</p><h3 id="对一个好的合作缺乏清晰的认识"><a href="#对一个好的合作缺乏清晰的认识" class="headerlink" title="对一个好的合作缺乏清晰的认识"></a>对一个好的合作缺乏清晰的认识</h3><p>要对好的团队有清晰的认识，团队要有清晰的目标，领导人要划分清晰的职责，及时处理团队的矛盾，团队成员共同成长，相互提升，把相互teview当做团队的一种文化，团队协作形成一些标准的规范。领导人要为团队争取更多的福利。</p><h3 id="大多数人都不知道怎么影响别人"><a href="#大多数人都不知道怎么影响别人" class="headerlink" title="大多数人都不知道怎么影响别人"></a>大多数人都不知道怎么影响别人</h3><ul><li>自我成长</li><li>德行</li><li>清晰目标</li><li>职责分配清晰</li><li>及时沟通，当面表扬，私下批评</li><li>积极争取福利</li></ul><h2 id="团队协作的方法"><a href="#团队协作的方法" class="headerlink" title="团队协作的方法"></a>团队协作的方法</h2><h3 id="培养、锻炼自己独立工作的"><a href="#培养、锻炼自己独立工作的" class="headerlink" title="培养、锻炼自己独立工作的"></a>培养、锻炼自己独立工作的</h3><p>自己独立工作的能力，有计划，有目标，有方向，有解决问题思维方式，有处理问题的策略。</p><h3 id="对共同工作的战略目标有清晰的认识"><a href="#对共同工作的战略目标有清晰的认识" class="headerlink" title="对共同工作的战略目标有清晰的认识"></a>对共同工作的战略目标有清晰的认识</h3><p>深刻理解目标，对目标有清晰的认识。</p><h3 id="学习一些领导方法"><a href="#学习一些领导方法" class="headerlink" title="学习一些领导方法"></a>学习一些领导方法</h3><h4 id="参与式领导方法"><a href="#参与式领导方法" class="headerlink" title="参与式领导方法"></a>参与式领导方法</h4><ul><li>提问</li><li>说出自己的想法邀请别人接受、运用或者修改想法</li><li>想法付诸实践，然后改进</li></ul><hr><p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>                </div>                <div class="image-caption"></div>            </figure></p><p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;合作中常见的问题&quot;&gt;&lt;a href=&quot;#合作中常见的问题&quot; class=&quot;headerlink&quot; title=&quot;合作中常见的问题&quot;&gt;&lt;/a&gt;合作中常见的问题&lt;/h2&gt;&lt;h3 id=&quot;合作不佳&quot;&gt;&lt;a href=&quot;#合作不佳&quot; class=&quot;headerlink&quot; 
+      
+    
+    </summary>
+    
+      <category term="管理" scheme="https://lywlefan.github.io/categories/%E7%AE%A1%E7%90%86/"/>
+    
+    
+      <category term="读书笔记" scheme="https://lywlefan.github.io/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="横向领导力" scheme="https://lywlefan.github.io/tags/%E6%A8%AA%E5%90%91%E9%A2%86%E5%AF%BC%E5%8A%9B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>corda基础架构</title>
+    <link href="https://lywlefan.github.io/2019/10/30/%E5%89%8D%E6%B2%BF%E6%8A%80%E6%9C%AF/%E5%8C%BA%E5%9D%97%E9%93%BE/corda/corda%E5%9F%BA%E7%A1%80%E6%9E%B6%E6%9E%84/"/>
+    <id>https://lywlefan.github.io/2019/10/30/前沿技术/区块链/corda/corda基础架构/</id>
     <published>2019-10-29T16:00:00.000Z</published>
-    <updated>2019-11-02T13:04:42.004Z</updated>
+    <updated>2019-11-05T01:42:32.994Z</updated>
+    
+    <content type="html"><![CDATA[<hr><p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>                </div>                <div class="image-caption"></div>            </figure></p><p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;扫描以下公众号关注小猿↓↓↓↓↓↓↓↓&lt;/strong&gt;&lt;br&gt;&lt;figure class=&quot;image-bubble&quot;&gt;
+                &lt;div class=&quot;img-lightbox&quot;&gt;
+                   
+      
+    
+    </summary>
+    
+      <category term="前沿技术" scheme="https://lywlefan.github.io/categories/%E5%89%8D%E6%B2%BF%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="区块链" scheme="https://lywlefan.github.io/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/"/>
+    
+      <category term="corda" scheme="https://lywlefan.github.io/tags/corda/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>企业在落地区块链时要考虑的点</title>
+    <link href="https://lywlefan.github.io/2019/10/30/%E5%89%8D%E6%B2%BF%E6%8A%80%E6%9C%AF/%E5%8C%BA%E5%9D%97%E9%93%BE/%E5%BA%94%E7%94%A8/%E4%BC%81%E4%B8%9A%E5%9C%A8%E8%90%BD%E5%9C%B0%E5%8C%BA%E5%9D%97%E9%93%BE%E6%97%B6%E8%A6%81%E8%80%83%E8%99%91%E7%9A%84%E7%82%B9/"/>
+    <id>https://lywlefan.github.io/2019/10/30/前沿技术/区块链/应用/企业在落地区块链时要考虑的点/</id>
+    <published>2019-10-29T16:00:00.000Z</published>
+    <updated>2019-11-05T05:53:11.974Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="业务"><a href="#业务" class="headerlink" title="业务"></a>业务</h2><h3 id="人才团队建设"><a href="#人才团队建设" class="headerlink" title="人才团队建设"></a>人才团队建设</h3><h3 id="业务场景选择"><a href="#业务场景选择" class="headerlink" title="业务场景选择"></a>业务场景选择</h3><h3 id="业务流程化"><a href="#业务流程化" class="headerlink" title="业务流程化"></a>业务流程化</h3><h3 id="应用开发模式"><a href="#应用开发模式" class="headerlink" title="应用开发模式"></a>应用开发模式</h3><h3 id="可视化与分析"><a href="#可视化与分析" class="headerlink" title="可视化与分析"></a>可视化与分析</h3><h3 id="数据模块管理"><a href="#数据模块管理" class="headerlink" title="数据模块管理"></a>数据模块管理</h3><h2 id="技术"><a href="#技术" class="headerlink" title="技术"></a>技术</h2><h3 id="技术方案选型"><a href="#技术方案选型" class="headerlink" title="技术方案选型"></a>技术方案选型</h3><h3 id="平台设计实施"><a href="#平台设计实施" class="headerlink" title="平台设计实施"></a>平台设计实施</h3><h3 id="高可用与灾备"><a href="#高可用与灾备" class="headerlink" title="高可用与灾备"></a>高可用与灾备</h3><h3 id="安全合规治理"><a href="#安全合规治理" class="headerlink" title="安全合规治理"></a>安全合规治理</h3><h3 id="平台应用运维"><a href="#平台应用运维" class="headerlink" title="平台应用运维"></a>平台应用运维</h3><h2 id="运营"><a href="#运营" class="headerlink" title="运营"></a>运营</h2><h3 id="市场营销宣传"><a href="#市场营销宣传" class="headerlink" title="市场营销宣传"></a>市场营销宣传</h3><h3 id="生态系统参与"><a href="#生态系统参与" class="headerlink" title="生态系统参与"></a>生态系统参与</h3><hr><p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>                </div>                <div class="image-caption"></div>            </figure></p><p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;业务&quot;&gt;&lt;a href=&quot;#业务&quot; class=&quot;headerlink&quot; title=&quot;业务&quot;&gt;&lt;/a&gt;业务&lt;/h2&gt;&lt;h3 id=&quot;人才团队建设&quot;&gt;&lt;a href=&quot;#人才团队建设&quot; class=&quot;headerlink&quot; title=&quot;人才团队建设&quot;&gt;&lt;/a&gt;人
+      
+    
+    </summary>
+    
+      <category term="前沿技术" scheme="https://lywlefan.github.io/categories/%E5%89%8D%E6%B2%BF%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="区块链" scheme="https://lywlefan.github.io/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/"/>
+    
+      <category term="应用" scheme="https://lywlefan.github.io/tags/%E5%BA%94%E7%94%A8/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>初始corda</title>
+    <link href="https://lywlefan.github.io/2019/10/30/%E5%89%8D%E6%B2%BF%E6%8A%80%E6%9C%AF/%E5%8C%BA%E5%9D%97%E9%93%BE/corda/cord%E4%B8%AD%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5%E6%80%BB%E7%BB%93/"/>
+    <id>https://lywlefan.github.io/2019/10/30/前沿技术/区块链/corda/cord中的基本概念总结/</id>
+    <published>2019-10-29T16:00:00.000Z</published>
+    <updated>2019-11-05T01:42:33.002Z</updated>
     
     <content type="html"><![CDATA[<h2 id="什么是corda"><a href="#什么是corda" class="headerlink" title="什么是corda??"></a>什么是corda??</h2><h3 id="是什么"><a href="#是什么" class="headerlink" title="是什么?"></a>是什么?</h3><p>corda是一个分布式账本平台。</p><h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><h4 id="corda网络"><a href="#corda网络" class="headerlink" title="corda网络"></a>corda网络</h4><h4 id="账本"><a href="#账本" class="headerlink" title="账本"></a>账本</h4><p>每个节点验证过交易的集合,账本是各个节点自有的。</p><p>每个节点维护一个已知事实的分离数据库。</p><p>没有一个节点知道整个账本。</p><h4 id="身份"><a href="#身份" class="headerlink" title="身份"></a>身份</h4><p>身份有两种:组织的法律身份、网络服务身份。</p><p>法律身份用于交易的当事人,如:现金拥有者。</p><p>网络服务身份用于提供与交易相关的服务,如公证服务或oracle服务。服务身份基于混合KEY。</p><p>身份证明的X.509证书由看门人或其他众所周知的身份签发。身份是众所周知的还是机密的,取决于X.509证书是否公开。</p><h4 id="应用节点"><a href="#应用节点" class="headerlink" title="应用节点"></a>应用节点</h4><h4 id="看门人"><a href="#看门人" class="headerlink" title="看门人"></a>看门人</h4><p>看门人服务可以理解为一个身份准入管理服务加上一个业务许可管理服务,它要求节点提供必要的信息,以及在接受进入网络前必须进行的了解客户的过程。</p><p>要想加入corda网络,节点必须联系看门人并提供必要的信息。看门人许可通过,会颁发TLS许可证书。</p><h4 id="cordaDapps"><a href="#cordaDapps" class="headerlink" title="cordaDapps"></a>cordaDapps</h4><h4 id="AMPQ-1-0协议"><a href="#AMPQ-1-0协议" class="headerlink" title="AMPQ/1.0协议"></a>AMPQ/1.0协议</h4><h4 id="公证节点"><a href="#公证节点" class="headerlink" title="公证节点"></a>公证节点</h4><p>公证节点保证账本更新的唯一性、可行性、正确性。</p><p>每个公证服务可以运行在一个节点或一组节点上。</p><h4 id="状态"><a href="#状态" class="headerlink" title="状态"></a>状态</h4><p>状态是表示账本上的事实,是一个不可变的对象,表示在特定时刻由一个或多个Corda节点所知的事实。</p><h4 id="状态序列"><a href="#状态序列" class="headerlink" title="状态序列"></a>状态序列</h4><p>状态的生命周期</p><h4 id="合约"><a href="#合约" class="headerlink" title="合约"></a>合约</h4><p>每个状态指向一个合约。</p><p>合约以交易作为输入,并根据合约的规则说明交易是否被认为有效。</p><p>交易只有在合约的每个输入和输出状态被确认为有效的情况下才有效。</p><p>合约代码可以用任意的JVM语言进行编写。</p><p>一个不被合约认可的交易不会作为更新账本的有效提案。</p><h4 id="合约沙箱"><a href="#合约沙箱" class="headerlink" title="合约沙箱"></a>合约沙箱</h4><h4 id="预言机"><a href="#预言机" class="headerlink" title="预言机"></a>预言机</h4><h4 id="女巫攻击"><a href="#女巫攻击" class="headerlink" title="女巫攻击"></a>女巫攻击</h4><hr><p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>                </div>                <div class="image-caption"></div>            </figure></p><p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>]]></content>
     
@@ -40,6 +180,121 @@
       <category term="区块链" scheme="https://lywlefan.github.io/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/"/>
     
       <category term="corda" scheme="https://lywlefan.github.io/tags/corda/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>企业在落地区块链时要考虑的点</title>
+    <link href="https://lywlefan.github.io/2019/10/30/%E5%89%8D%E6%B2%BF%E6%8A%80%E6%9C%AF/%E5%8C%BA%E5%9D%97%E9%93%BE/fabric/Hyperledger%20Composer%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/"/>
+    <id>https://lywlefan.github.io/2019/10/30/前沿技术/区块链/fabric/Hyperledger Composer学习总结/</id>
+    <published>2019-10-29T16:00:00.000Z</published>
+    <updated>2019-11-05T01:42:33.026Z</updated>
+    
+    <content type="html"><![CDATA[<hr><p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>                </div>                <div class="image-caption"></div>            </figure></p><p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;扫描以下公众号关注小猿↓↓↓↓↓↓↓↓&lt;/strong&gt;&lt;br&gt;&lt;figure class=&quot;image-bubble&quot;&gt;
+                &lt;div class=&quot;img-lightbox&quot;&gt;
+                   
+      
+    
+    </summary>
+    
+      <category term="前沿技术" scheme="https://lywlefan.github.io/categories/%E5%89%8D%E6%B2%BF%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="区块链" scheme="https://lywlefan.github.io/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/"/>
+    
+      <category term="fabric" scheme="https://lywlefan.github.io/tags/fabric/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>fabric架构</title>
+    <link href="https://lywlefan.github.io/2019/10/30/%E5%89%8D%E6%B2%BF%E6%8A%80%E6%9C%AF/%E5%8C%BA%E5%9D%97%E9%93%BE/fabric/fabric%E6%9E%B6%E6%9E%84/"/>
+    <id>https://lywlefan.github.io/2019/10/30/前沿技术/区块链/fabric/fabric架构/</id>
+    <published>2019-10-29T16:00:00.000Z</published>
+    <updated>2019-11-04T01:41:11.198Z</updated>
+    
+    <content type="html"><![CDATA[<hr><p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>                </div>                <div class="image-caption"></div>            </figure></p><p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;扫描以下公众号关注小猿↓↓↓↓↓↓↓↓&lt;/strong&gt;&lt;br&gt;&lt;figure class=&quot;image-bubble&quot;&gt;
+                &lt;div class=&quot;img-lightbox&quot;&gt;
+                   
+      
+    
+    </summary>
+    
+      <category term="前沿技术" scheme="https://lywlefan.github.io/categories/%E5%89%8D%E6%B2%BF%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="区块链" scheme="https://lywlefan.github.io/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/"/>
+    
+      <category term="fabric" scheme="https://lywlefan.github.io/tags/fabric/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>初始corda</title>
+    <link href="https://lywlefan.github.io/2019/10/30/%E5%89%8D%E6%B2%BF%E6%8A%80%E6%9C%AF/%E5%8C%BA%E5%9D%97%E9%93%BE/corda/%E5%88%9D%E5%A7%8Bcorda/"/>
+    <id>https://lywlefan.github.io/2019/10/30/前沿技术/区块链/corda/初始corda/</id>
+    <published>2019-10-29T16:00:00.000Z</published>
+    <updated>2019-11-05T01:42:33.022Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="什么是corda"><a href="#什么是corda" class="headerlink" title="什么是corda??"></a>什么是corda??</h2><h3 id="是什么"><a href="#是什么" class="headerlink" title="是什么?"></a>是什么?</h3><p>corda是一个分布式账本平台。</p><h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><h4 id="corda网络"><a href="#corda网络" class="headerlink" title="corda网络"></a>corda网络</h4><h4 id="账本"><a href="#账本" class="headerlink" title="账本"></a>账本</h4><p>每个节点验证过交易的集合,账本是各个节点自有的。</p><p>每个节点维护一个已知事实的分离数据库。</p><p>没有一个节点知道整个账本。</p><h4 id="身份"><a href="#身份" class="headerlink" title="身份"></a>身份</h4><p>身份有两种:组织的法律身份、网络服务身份。</p><p>法律身份用于交易的当事人,如:现金拥有者。</p><p>网络服务身份用于提供与交易相关的服务,如公证服务或oracle服务。服务身份基于混合KEY。</p><p>身份证明的X.509证书由看门人或其他众所周知的身份签发。身份是众所周知的还是机密的,取决于X.509证书是否公开。</p><h4 id="应用节点"><a href="#应用节点" class="headerlink" title="应用节点"></a>应用节点</h4><h4 id="看门人"><a href="#看门人" class="headerlink" title="看门人"></a>看门人</h4><p>看门人服务可以理解为一个身份准入管理服务加上一个业务许可管理服务,它要求节点提供必要的信息,以及在接受进入网络前必须进行的了解客户的过程。</p><p>要想加入corda网络,节点必须联系看门人并提供必要的信息。看门人许可通过,会颁发TLS许可证书。</p><h4 id="cordaDapps"><a href="#cordaDapps" class="headerlink" title="cordaDapps"></a>cordaDapps</h4><h4 id="AMPQ-1-0协议"><a href="#AMPQ-1-0协议" class="headerlink" title="AMPQ/1.0协议"></a>AMPQ/1.0协议</h4><h4 id="公证节点"><a href="#公证节点" class="headerlink" title="公证节点"></a>公证节点</h4><p>公证节点保证账本更新的唯一性、可行性、正确性。</p><p>每个公证服务可以运行在一个节点或一组节点上。</p><h4 id="状态"><a href="#状态" class="headerlink" title="状态"></a>状态</h4><p>状态是表示账本上的事实,是一个不可变的对象,表示在特定时刻由一个或多个Corda节点所知的事实。</p><h4 id="状态序列"><a href="#状态序列" class="headerlink" title="状态序列"></a>状态序列</h4><p>状态的生命周期</p><h4 id="合约"><a href="#合约" class="headerlink" title="合约"></a>合约</h4><p>每个状态指向一个合约。</p><p>合约以交易作为输入,并根据合约的规则说明交易是否被认为有效。</p><p>交易只有在合约的每个输入和输出状态被确认为有效的情况下才有效。</p><p>合约代码可以用任意的JVM语言进行编写。</p><p>一个不被合约认可的交易不会作为更新账本的有效提案。</p><h4 id="合约沙箱"><a href="#合约沙箱" class="headerlink" title="合约沙箱"></a>合约沙箱</h4><h4 id="预言机"><a href="#预言机" class="headerlink" title="预言机"></a>预言机</h4><h4 id="女巫攻击"><a href="#女巫攻击" class="headerlink" title="女巫攻击"></a>女巫攻击</h4><hr><p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>                </div>                <div class="image-caption"></div>            </figure></p><p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;什么是corda&quot;&gt;&lt;a href=&quot;#什么是corda&quot; class=&quot;headerlink&quot; title=&quot;什么是corda??&quot;&gt;&lt;/a&gt;什么是corda??&lt;/h2&gt;&lt;h3 id=&quot;是什么&quot;&gt;&lt;a href=&quot;#是什么&quot; class=&quot;headerlink
+      
+    
+    </summary>
+    
+      <category term="前沿技术" scheme="https://lywlefan.github.io/categories/%E5%89%8D%E6%B2%BF%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="区块链" scheme="https://lywlefan.github.io/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/"/>
+    
+      <category term="corda" scheme="https://lywlefan.github.io/tags/corda/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>redis基础总结</title>
+    <link href="https://lywlefan.github.io/2019/10/30/%E5%90%8E%E7%AB%AF/%E7%BC%93%E5%AD%98/redis/redis%E5%9F%BA%E7%A1%80%E6%80%BB%E7%BB%93/"/>
+    <id>https://lywlefan.github.io/2019/10/30/后端/缓存/redis/redis基础总结/</id>
+    <published>2019-10-29T16:00:00.000Z</published>
+    <updated>2019-11-04T10:29:33.531Z</updated>
+    
+    <content type="html"><![CDATA[<p>redis附加功能</p><p>“附加功能”部分介绍了Redis在数据结构的基础上为用户提供的额外功能，包括管理数据结构的数据库管理功能和自动过期功能，将数据结构持久化至硬盘从而避免数据丢失的持久化功能，提高多条命令执行效率的流水线功能，保证命令安全性的事务和Lua脚本功能，以及扩展服务器特性的模块功能等。</p><p>Redis的PING命令接受一条可选的消息作为参数，这个命令通常用于测试客户端和服务器之间的连接是否正常:</p><ul><li>连接正常的情况下，将向客户端返回PONG</li><li>如果服务器与客户端的连接不正常，那么客户端将返回一个错误</li></ul><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-- 客户端未能连接服务器，返回一个连接错误</span><br><span class="line">        127.0.0.1:6379&gt; PING</span><br><span class="line">        Could not connect to Redis at 127.0.0.1:6379: Connection refused</span><br></pre></td></tr></table></figure><p>更换端口号:</p><p>Redis服务器默认使用6379作为端口号，但如果你想使用10086而不是6379作为端口号，那么可以在启动Redis服务器时通过设定port可选项来指定想要的端口号：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ redis-server --port 10086</span><br></pre></td></tr></table></figure><p>第二种方法是在启动Redis服务器的时候为其提供配置文件，并将想要修改的配置选项写在配置文件中</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ redis-server /path/to/your/file</span><br></pre></td></tr></table></figure><p>例如，为了将Redis服务器的端口号改为12345，我们可以在当前文件夹中创建配置文件myredis.conf，并在文件中包含以下内容：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">port 12345</span><br></pre></td></tr></table></figure><p>然后在启动Redis服务器时向其提供该配置文件：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ redis-server myredis.conf</span><br></pre></td></tr></table></figure><hr><p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>                </div>                <div class="image-caption"></div>            </figure></p><p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;redis附加功能&lt;/p&gt;
+&lt;p&gt;“附加功能”部分介绍了Redis在数据结构的基础上为用户提供的额外功能，包括管理数据结构的数据库管理功能和自动过期功能，将数据结构持久化至硬盘从而避免数据丢失的持久化功能，提高多条命令执行效率的流水线功能，保证命令安全性的事务和Lua脚本功
+      
+    
+    </summary>
+    
+      <category term="后端" scheme="https://lywlefan.github.io/categories/%E5%90%8E%E7%AB%AF/"/>
+    
+    
+      <category term="redis" scheme="https://lywlefan.github.io/tags/redis/"/>
+    
+      <category term="缓存" scheme="https://lywlefan.github.io/tags/%E7%BC%93%E5%AD%98/"/>
     
   </entry>
   
@@ -119,13 +374,38 @@
       <category term="后端" scheme="https://lywlefan.github.io/categories/%E5%90%8E%E7%AB%AF/"/>
     
     
+      <category term="读书笔记" scheme="https://lywlefan.github.io/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    
       <category term="java" scheme="https://lywlefan.github.io/tags/java/"/>
     
       <category term="高并发" scheme="https://lywlefan.github.io/tags/%E9%AB%98%E5%B9%B6%E5%8F%91/"/>
     
       <category term="java并发编程实战-王宝令" scheme="https://lywlefan.github.io/tags/java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E5%AE%9E%E6%88%98-%E7%8E%8B%E5%AE%9D%E4%BB%A4/"/>
     
-      <category term="读书笔记" scheme="https://lywlefan.github.io/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+  </entry>
+  
+  <entry>
+    <title>后端导航</title>
+    <link href="https://lywlefan.github.io/2019/10/15/%E5%89%8D%E6%B2%BF%E6%8A%80%E6%9C%AF/%E5%8C%BA%E5%9D%97%E9%93%BE/%E5%8C%BA%E5%9D%97%E9%93%BE%E5%AF%BC%E8%88%AA/"/>
+    <id>https://lywlefan.github.io/2019/10/15/前沿技术/区块链/区块链导航/</id>
+    <published>2019-10-14T16:00:00.000Z</published>
+    <updated>2019-11-07T10:16:57.942Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="企业区块链官方"><a href="#企业区块链官方" class="headerlink" title="企业区块链官方"></a>企业区块链官方</h1><h2 id="大企业导航"><a href="#大企业导航" class="headerlink" title="大企业导航"></a>大企业导航</h2><p><a href="[https://baas.yizhangtong.com](https://baas.yizhangtong.com/">壹账链·平安</a> )     <a href="https://www.hyperchain.cn/" target="_blank" rel="noopener">趣链科技</a></p><h1 id="学习资料收集"><a href="#学习资料收集" class="headerlink" title="学习资料收集"></a>学习资料收集</h1><h2 id="CONTENTS"><a href="#CONTENTS" class="headerlink" title="CONTENTS"></a>CONTENTS</h2><ul><li><a href="https://github.com/chaozh/awesome-blockchain-cn#intro-介绍" target="_blank" rel="noopener">INTRO 介绍</a></li><li><a href="https://github.com/chaozh/awesome-blockchain-cn#tutorial-教程" target="_blank" rel="noopener">TUTORIAL 教程</a></li><li><a href="https://github.com/chaozh/awesome-blockchain-cn#project-项目" target="_blank" rel="noopener">PROJECT 项目</a></li><li><a href="https://github.com/chaozh/awesome-blockchain-cn#document-资料" target="_blank" rel="noopener">DOCUMENT 资料</a></li><li><a href="https://github.com/chaozh/awesome-blockchain-cn#application-应用" target="_blank" rel="noopener">APPLICATION 应用</a></li></ul><h2 id="INTRO-介绍"><a href="#INTRO-介绍" class="headerlink" title="INTRO 介绍"></a>INTRO 介绍</h2><h3 id="Started-入门"><a href="#Started-入门" class="headerlink" title="Started 入门"></a>Started 入门</h3><ul><li><a href="https://zhuanlan.zhihu.com/p/22228902" target="_blank" rel="noopener">（一）简单易懂地介绍什么是区块链</a> 比特币区块链关键词讲解</li><li><a href="https://zhuanlan.zhihu.com/p/23243289" target="_blank" rel="noopener">（二）简单易懂地介绍什么是区块链（技术篇）</a> 比特币区块链技术图解</li><li><a href="https://charlesliuyx.github.io/2017/09/24/一文弄懂区块链-以比特币为例/" target="_blank" rel="noopener">一文看懂区块链：一步一步发明比特币</a></li><li><a href="http://blog.csdn.net/jwter87/article/details/53322642" target="_blank" rel="noopener">一步一步学区块链</a> 按步骤的实际操作入门指南</li><li><a href="https://yeasy.gitbooks.io/blockchain_guide" target="_blank" rel="noopener">区块链技术指南</a> 区块链领域比较系统的入门资料</li><li><a href="http://blog.csdn.net/csolo/article/details/52858236" target="_blank" rel="noopener">理解区块链</a> 区块链关键技术要点讲解</li><li><a href="http://www.8btc.com/ebook-blockchain" target="_blank" rel="noopener">一文看懂区块链架构设计</a> 从技术分层解构架构</li><li><a href="https://charlesliuyx.github.io/2018/03/03/【区块链】如何解决拜占庭将军问题/" target="_blank" rel="noopener">共识算法与如何解决拜占庭将军问题</a></li></ul><h3 id="Ethereum-以太坊进阶"><a href="#Ethereum-以太坊进阶" class="headerlink" title="Ethereum 以太坊进阶"></a>Ethereum 以太坊进阶</h3><ul><li><a href="http://ethfans.org/posts/block-chain-technology-smart-contracts-and-ethereum" target="_blank" rel="noopener">区块链技术-智能合约-以太坊</a> 以太坊智能合约入门概念</li><li><a href="http://ethfans.org/wikis/以太坊白皮书" target="_blank" rel="noopener">以太坊白皮书</a></li><li><a href="https://theethereum.wiki/w/index.php/Main_Page" target="_blank" rel="noopener">The Ethereum Wiki</a> <em>(English)</em></li><li><a href="http://ethfans.org/posts/510" target="_blank" rel="noopener">以太坊设计原理</a></li><li><a href="http://me.tryblockchain.org/getting-up-to-speed-on-ethereum.html" target="_blank" rel="noopener">以太坊Dapp开发入门</a></li><li><a href="https://hackernoon.com/ether-purchase-power-df40a38c5a2f" target="_blank" rel="noopener">以太坊Gas使用</a> Calculating Costs in Ethereum Contracts <em>(English)</em></li><li><a href="http://ethfans.org/topics/227" target="_blank" rel="noopener">以太坊代码剖析</a></li><li><a href="http://www.cnblogs.com/baizx/category/1011749.html" target="_blank" rel="noopener">以太坊源码阅读</a></li><li><a href="http://blog.csdn.net/jiange_zh/article/details/53386250" target="_blank" rel="noopener">Merkle Tree学习</a></li><li><a href="https://github.com/laalaguer/ethereum-compass" target="_blank" rel="noopener">以太坊的指南针</a></li></ul><h3 id="Fabric-联盟链进阶"><a href="#Fabric-联盟链进阶" class="headerlink" title="Fabric 联盟链进阶"></a>Fabric 联盟链进阶</h3><ul><li><a href="https://zhuanlan.zhihu.com/p/23356616" target="_blank" rel="noopener">Blockchain区块链架构设计之一：成员管理</a></li><li><a href="https://zhuanlan.zhihu.com/p/23463699" target="_blank" rel="noopener">Blockchain区块链架构设计之二：分布式账本技术对比</a></li><li><a href="https://zhuanlan.zhihu.com/p/23947372" target="_blank" rel="noopener">Blockchain区块链架构设计之三：Hyperledger Fabric介绍</a></li><li><a href="https://zhuanlan.zhihu.com/p/24605987" target="_blank" rel="noopener">Blockchain区块链架构设计之四：Fabric多通道和下一代账本设计</a></li><li><a href="https://zhuanlan.zhihu.com/p/25061575" target="_blank" rel="noopener">Blockchain区块链架构设计之五：让DLT产生协作，对Corda和GSL的思考</a></li><li><a href="https://zhuanlan.zhihu.com/p/25119939" target="_blank" rel="noopener">Blockchain区块链架构设计之六：Fabric 1.0账本设计（1）</a></li><li><a href="https://zhuanlan.zhihu.com/p/25295608" target="_blank" rel="noopener">Blockchain区块链架构设计之七：Fabric 1.0 Endorse背书策略</a></li><li><a href="http://www.wanbizu.com/blockchain/201702078984.html" target="_blank" rel="noopener">Hyperledger架构解读：Hyperledger Fabric1.0架构概览</a></li></ul><h2 id="TUTORIAL-教程"><a href="#TUTORIAL-教程" class="headerlink" title="TUTORIAL 教程"></a>TUTORIAL 教程</h2><h3 id="BitCoin-比特币"><a href="#BitCoin-比特币" class="headerlink" title="BitCoin 比特币"></a>BitCoin 比特币</h3><ul><li><a href="https://www.coursera.org/learn/cryptocurrency" target="_blank" rel="noopener">Bitcoin and Cryptocurrency Technologies</a> Cousera上的比特币教程 <em>(English)</em></li></ul><h3 id="Ethereum-以太坊"><a href="#Ethereum-以太坊" class="headerlink" title="Ethereum 以太坊"></a>Ethereum 以太坊</h3><ul><li><a href="http://www.jianshu.com/p/220130b39e22" target="_blank" rel="noopener">以太坊从零开始入门</a></li><li><a href="http://me.tryblockchain.org/getting-up-to-speed-on-ethereum.html" target="_blank" rel="noopener">以太坊开发入门经验</a></li><li><a href="https://my.oschina.net/wtsoftware/blog/782057" target="_blank" rel="noopener">mac配置以太坊本地开发环境</a></li><li><a href="http://ethfans.org/posts/101-noob-intro" target="_blank" rel="noopener">以太坊智能合约编程之菜鸟教程</a></li><li><a href="http://8btc.com/thread-23195-1-1.html" target="_blank" rel="noopener">以太坊常见问题FAQ</a></li><li><a href="http://www.toutiao.com/i6401418700217385473/?tt_from=weixin&amp;utm_campaign=client_share&amp;from=groupmessage&amp;app=news_article&amp;utm_source=weixin&amp;iid=8932715408&amp;utm_medium=toutiao_ios&amp;wxshare_count=2&amp;pbid=35867484354" target="_blank" rel="noopener">区块链语言Solidity校验椭圆曲线加密数字签名（附实例）</a></li><li><a href="https://www.ethereum.org/token" target="_blank" rel="noopener">Create your own crypto-currency</a> 来自以太坊官方的代币创建教程 <em>(English)</em></li><li><a href="http://truffleframework.com/tutorials/pet-shop" target="_blank" rel="noopener">ETHEREUM PET SHOP</a> Truffle框架逐步案例教程 <em>(English)</em></li><li><a href="http://zeppelin.tryblockchain.org/robust-smart-contracts-with-openzeppelin.html" target="_blank" rel="noopener">ROBUST SMART CONTRACTS WITH OPENZEPPELIN</a> OpenZeppelin集成Truffle编写健壮安全的合约 <em>(English)</em></li><li><a href="http://truffle.tryblockchain.org/truffle3.0-integrate-nodejs.html" target="_blank" rel="noopener">Truffle3.0案例教程</a> 集成NodeJS并完全跑通，附详细实例和可能的错误 <em>(English)</em></li><li><a href="http://blog.csdn.net/wo541075754/article/category/6502432/1" target="_blank" rel="noopener">以太坊开发入门教程</a></li></ul><h3 id="Fabric-联盟链"><a href="#Fabric-联盟链" class="headerlink" title="Fabric 联盟链"></a>Fabric 联盟链</h3><ul><li><a href="https://github.com/angrbrd/hyperledger-fabric-basics" target="_blank" rel="noopener">Fabric Basics</a> 使用Docker Toolbox来搭建Fabric的开发环境 <em>(English)</em></li><li><a href="https://github.com/IBM-Blockchain/learn-chaincode" target="_blank" rel="noopener">Learn Chaincode</a> Fabric Chaincode入门 <em>(English)</em></li><li><a href="https://github.com/IBM-Blockchain/marbles/blob/master/docs/tutorial_part1.md" target="_blank" rel="noopener">Marbles Project Tutorial: Part One</a> 官方Chaincode案例教程第一部分 <em>(English)</em></li><li><a href="https://github.com/IBM-Blockchain/marbles/blob/master/docs/tutorial_part2.md" target="_blank" rel="noopener">Marbles Project Tutorial: Part Two</a> 官方Chaincode案例教程第二部分 <em>(English)</em></li><li><a href="https://zhuanlan.zhihu.com/p/25070745" target="_blank" rel="noopener">Hyperledger Fabric V1.0– 开发者快速入门</a> 这个是基于baseos 0.2.2 的</li><li><a href="http://blog.csdn.net/kojhliang/article/details/66971404" target="_blank" rel="noopener">搭建运行Fabric V1.0-alpha版本</a> 针对Fabric1.0版本的开发环境搭建指引</li><li><a href="http://blog.csdn.net/remote_roamer/article/details/70228662" target="_blank" rel="noopener">Fabric v1.0-alpha 开发镜像编译</a> 使用Fabric源码编译v1.0-alpha版本的Docker镜像指引</li><li><a href="http://www.jianshu.com/p/7bc258810b77" target="_blank" rel="noopener">Hyperledger Composer使用入门</a> 官方Fabric应用开发工具Hyperledger Composer入门</li><li><a href="http://www.jianshu.com/p/ec7d4216c3cf" target="_blank" rel="noopener">Fabric-CA-1.0-Alpha小结</a></li></ul><h3 id="Videos-视频"><a href="#Videos-视频" class="headerlink" title="Videos 视频"></a>Videos 视频</h3><ul><li><a href="https://www.youtube.com/watch?v=9_coM_g7Dbg&amp;list=PLH4m2oS2ratdoHFEkGvwvd7TkeTv4sa7Z" target="_blank" rel="noopener">Building Ethereum DApps using Solidity</a> 视频教程 <em>(English)</em></li><li><a href="https://www.youtube.com/watch?v=_BvvUlKDqp0&amp;list=PLJqWcTqh_zKEjpSej3ddtDOKPRGl_7MhS" target="_blank" rel="noopener">Devcon 0 (Berlin, 2014) talks and videos</a> <em>(English)</em></li><li><a href="https://www.youtube.com/watch?v=BUARih8_f68&amp;list=PLJqWcTqh_zKHQUFX4IaVjWjfT2tbS4NVk" target="_blank" rel="noopener">Devcon 1 (London, 2015) talks and videos</a> <em>(English)</em></li><li><a href="https://www.youtube.com/watch?v=1wayaZ1-iBE&amp;list=PLaM7G4Llrb7xqzgOwbvNv63_KM7VH84Rd" target="_blank" rel="noopener">Devcon 2 (Shanghai, 2016) talks and videos</a> <em>(English)</em></li><li><a href="http://ethereumfoundation.org/devcon3/" target="_blank" rel="noopener"><strong>Devcon 3</strong> (Cancún, 2017) website and registration</a> <em>(English)</em></li></ul><h2 id="PROJECT-项目"><a href="#PROJECT-项目" class="headerlink" title="PROJECT 项目"></a>PROJECT 项目</h2><h3 id="Chain-区块链底层"><a href="#Chain-区块链底层" class="headerlink" title="Chain 区块链底层"></a>Chain 区块链底层</h3><ul><li><a href="https://github.com/mvs-org/metaverse" target="_blank" rel="noopener">Metaverse</a> 原界链源码</li><li><a href="https://github.com/EOSIO/eos" target="_blank" rel="noopener">EOS</a> EOS链源码</li><li><a href="https://github.com/Bytom/bytom" target="_blank" rel="noopener">BYTOM</a> 比原链源码</li><li><a href="https://github.com/neo-project/neo" target="_blank" rel="noopener">NEO</a> NEO链源码</li><li><a href="https://github.com/cryptape/cita" target="_blank" rel="noopener">CITA</a> cita联盟链的底层源码</li><li><a href="https://github.com/nervosnetwork/ckb" target="_blank" rel="noopener">Nervos</a> 公链 Nervos CKB 的底层源码</li><li><a href="https://github.com/fkysly/bitcoin0.1.0" target="_blank" rel="noopener">比特币0.1</a> 最原始的比特币代码</li><li><a href="https://github.com/jpmorganchase/quorum" target="_blank" rel="noopener">Quorum</a> 来自JP Morgan基于Go-Ethereum数据隐私加强的以太坊实现</li><li><a href="https://github.com/FISCO-BCOS/FISCO-BCOS" target="_blank" rel="noopener">FISCO-BCOS</a> 来自金链盟的聚焦金融行业的区块链底层平台</li><li><a href="https://github.com/xiaoyao1991/presto-ethereum" target="_blank" rel="noopener">Presto-Ethereum</a> 以太坊增加Presto的SQL访问能力</li><li><a href="https://github.com/ipfs/go-ipfs" target="_blank" rel="noopener">IPFS</a> IPFS的GO语言实现 <a href="https://github.com/ipfs/ipfs" target="_blank" rel="noopener">原理</a></li></ul><h3 id="SDK-工具包"><a href="#SDK-工具包" class="headerlink" title="SDK 工具包"></a>SDK 工具包</h3><ul><li><a href="https://ethereum.github.io/browser-solidity/" target="_blank" rel="noopener">Remix</a> 在线以太坊编译器</li><li><a href="https://github.com/trufflesuite/truffle" target="_blank" rel="noopener">Truffle</a> 以太坊Dapp开发脚手架</li><li><a href="https://github.com/OpenZeppelin/zeppelin-solidity" target="_blank" rel="noopener">Zeppelin</a> 用于编写安全的以太坊合约框架</li><li><a href="https://github.com/web3j/web3j" target="_blank" rel="noopener">Web3j</a> 以太坊官方Web3轻量级java SDK</li><li><a href="https://github.com/embark-framework/embark" target="_blank" rel="noopener">Embark</a> 以太坊Dapp开发框架，支持IPFS、Whisper及Orbit调用</li><li><a href="https://github.com/BANKEX/web3swift" target="_blank" rel="noopener">Web3Swift</a> 一个Web3的swift SDK</li><li><a href="https://github.com/comaeio/porosity" target="_blank" rel="noopener">Porosity</a> 反编译以太坊智能合约工具</li><li><a href="https://github.com/sc-forks/solidity-coverage" target="_blank" rel="noopener">Solidity-Coverage</a> 检测Solidity代码覆盖</li><li><a href="https://github.com/hyperledger-archives/caliper" target="_blank" rel="noopener">Caliper</a> hyperledger区块链性能测试工具</li><li><a href="https://github.com/hyperledger/composer" target="_blank" rel="noopener">Composer</a> 官方可视化Fabric应用开发框架</li><li><a href="https://github.com/jpmorganchase/cakeshop" target="_blank" rel="noopener">Cakeshop</a> 来自JP Morgan的以太坊可视化管理工具</li></ul><h3 id="Research-最新研究"><a href="#Research-最新研究" class="headerlink" title="Research 最新研究"></a>Research 最新研究</h3><ul><li><a href="https://github.com/ewasm/design" target="_blank" rel="noopener">eWASM</a> 让以太坊支持WebAssembly</li><li><a href="https://cps-vo.org/group/SmartContracts" target="_blank" rel="noopener">FSolidM</a> 可视化智能合约生成工具 <a href="https://github.com/anmavrid/smart-contracts" target="_blank" rel="noopener">源码</a></li><li><a href="https://github.com/MAIAN-tool/MAIAN" target="_blank" rel="noopener">Maian</a> 以太坊智能合约漏洞查找工具</li><li><a href="https://github.com/melonproject/oyente" target="_blank" rel="noopener">Oyente</a> 以太坊智能合约分析工具</li><li><a href="https://github.com/ooibc88/blockbench" target="_blank" rel="noopener">Blockbench</a> 区块链性能测试工具</li><li><a href="https://github.com/JacobEberhardt/ZoKrates" target="_blank" rel="noopener">Zokrates</a> 以太坊使用zkSNARKS工具包(实验用)</li><li><a href="https://github.com/scipr-lab/libsnark" target="_blank" rel="noopener">libsnark</a> zkSNARKS C++库</li></ul><h2 id="DOCUMENT-资料"><a href="#DOCUMENT-资料" class="headerlink" title="DOCUMENT 资料"></a>DOCUMENT 资料</h2><h3 id="BitCoin-比特币-1"><a href="#BitCoin-比特币-1" class="headerlink" title="BitCoin 比特币"></a>BitCoin 比特币</h3><ul><li><a href="https://github.com/bitcoinbook/bitcoinbook" target="_blank" rel="noopener">精通比特币</a> 精通比特币开发Oreilly开源书 <a href="http://zhibimo.com/books/wang-miao/mastering-bitcoin" target="_blank" rel="noopener">中文翻译版</a></li><li><a href="http://blockchaindev.org/" target="_blank" rel="noopener">blockchaindev.org</a> 区块链创业公司维优CTO的专栏</li><li><a href="http://www.jianshu.com/u/30081a05cf95" target="_blank" rel="noopener">区块链研习社</a> 比特币源码解读</li></ul><h3 id="Ethereum-以太坊-1"><a href="#Ethereum-以太坊-1" class="headerlink" title="Ethereum 以太坊"></a>Ethereum 以太坊</h3><ul><li><a href="https://github.com/ethereumbook/ethereumbook" target="_blank" rel="noopener">Mastering Ethereum</a> 精通以太坊开发Oreilly开源书</li><li><a href="http://me.tryblockchain.org/" target="_blank" rel="noopener">区块链技术博客</a> 关注以太坊</li><li><a href="http://gi1.cn/topics/category/solidity" target="_blank" rel="noopener">以太坊系列教程</a> solidity语言学习</li><li><a href="http://www.tryblockchain.org/" target="_blank" rel="noopener">Solidity语言文档</a> 语言中文手册</li><li><a href="http://web3.tryblockchain.org/" target="_blank" rel="noopener">Web3.JS接口文档</a> 接口中文手册</li><li><a href="http://truffle.tryblockchain.org/" target="_blank" rel="noopener">Truffle框架文档</a> 框架中文手册</li><li><a href="http://zeppelin.tryblockchain.org/" target="_blank" rel="noopener">Open Zeppelin框架文档</a> 框架中文手册</li><li><a href="https://github.com/EverexIO/Ethplorer/wiki/Ethplorer-API?from=etop" target="_blank" rel="noopener">Ethplorer接口</a> Ethplorer接口文档</li><li><a href="https://consensys.github.io/smart-contract-best-practices/" target="_blank" rel="noopener">Ethereum Smart Contract Security Best Practices</a> <em>(english)</em></li><li><a href="http://8btc.com/thread-23195-1-1.html" target="_blank" rel="noopener">以太坊常见问题FAQ</a></li><li><a href="https://github.com/Scanate/EthList" target="_blank" rel="noopener">EthList</a> 以太坊开发相关学习资料收集</li></ul><h3 id="Fabric-联盟链-1"><a href="#Fabric-联盟链-1" class="headerlink" title="Fabric 联盟链"></a>Fabric 联盟链</h3><ul><li><a href="https://hyperledger-fabric.readthedocs.io/en/latest/" target="_blank" rel="noopener">Fabric Official Docs</a> Fabric官方最新文档</li><li><a href="http://fubai.tech/" target="_blank" rel="noopener">浮白</a> Fabric开发环境搭建与codechain入门</li><li><a href="http://blog.csdn.net/yeasy" target="_blank" rel="noopener">yeasy的专栏</a> IBM fabric核心开发者yeasy的专栏</li><li><a href="http://blog.csdn.net/xjmtxwd24/" target="_blank" rel="noopener">菜鸟的博客</a> fabric0.6及1.0源码分析</li><li><a href="http://blog.csdn.net/jiang_xinxing/article/category/6642179" target="_blank" rel="noopener">jiang_xinxing的博客</a> fabric0.6源码分析</li></ul><h2 id="APPLICATION-应用"><a href="#APPLICATION-应用" class="headerlink" title="APPLICATION 应用"></a>APPLICATION 应用</h2><h3 id="Explorer-链浏览"><a href="#Explorer-链浏览" class="headerlink" title="Explorer 链浏览"></a>Explorer 链浏览</h3><ul><li><a href="https://blockchain.info/" target="_blank" rel="noopener">Blockchain</a> 比特币区块链浏览器</li><li><a href="https://etherscan.io/" target="_blank" rel="noopener">Etherscan</a> 以太坊区块链浏览器</li><li><a href="https://ethplorer.io/" target="_blank" rel="noopener">Ethplorer</a> 以太坊区块链浏览器，提供API调用</li><li><a href="https://ethgasstation.info/index.php" target="_blank" rel="noopener">Eth Gas Station</a> 以太坊Gas目前定价</li><li><a href="https://etherscope.io/" target="_blank" rel="noopener">Etherscope</a> 以太坊区块链浏览器</li></ul><h3 id="Wallet-钱包"><a href="#Wallet-钱包" class="headerlink" title="Wallet 钱包"></a>Wallet 钱包</h3><ul><li><a href="https://myetherwallet.com/" target="_blank" rel="noopener">My Ether Wallet</a> 网页版以太坊钱包 <a href="https://github.com/kvhnuke/etherwallet" target="_blank" rel="noopener">源码</a></li><li><a href="https://metamask.io/" target="_blank" rel="noopener">MetaMask</a> Chrome Extension浏览器插件版</li><li><a href="https://jaxx.io/" target="_blank" rel="noopener">Multi-platform Jaxx Wallet</a> 同时兼容以太坊和比特币钱包</li><li><a href="https://github.com/ethereum/mist/releases/latest" target="_blank" rel="noopener">Mist Wallet</a> 官方版轻量级钱包</li><li><a href="https://github.com/paritytech/parity/releases/latest" target="_blank" rel="noopener">Parity Wallet</a></li><li><a href="https://github.com/ether-camp/ethereum-harmony/releases/latest" target="_blank" rel="noopener">Harmony Wallet</a></li><li><a href="https://token.im/" target="_blank" rel="noopener">imToken</a> 移动App版钱包</li><li><a href="https://trustwalletapp.com/" target="_blank" rel="noopener">Trust</a> iOS / Android 原生钱包 + DApp 浏览器</li><li><a href="https://www.cipherbrowser.com/" target="_blank" rel="noopener">Cipher</a> iOS / Android 钱包 + DApp 浏览器</li><li><a href="https://theethereum.wiki/w/index.php/Ledger_Nano_S" target="_blank" rel="noopener">Ledger Nano S</a> 硬件钱包</li><li><a href="https://blog.trezor.io/trezor-integration-with-myetherwallet-3e217a652e08" target="_blank" rel="noopener">Trezor</a> 硬件钱包</li></ul><h3 id="Exchange-交易所"><a href="#Exchange-交易所" class="headerlink" title="Exchange 交易所"></a>Exchange 交易所</h3><ul><li><a href="https://www.0xproject.com/otc" target="_blank" rel="noopener">0x</a> 0x交易所平台 <a href="https://github.com/0xProject/contracts" target="_blank" rel="noopener">源码</a></li><li><a href="https://idex.market/" target="_blank" rel="noopener">IDEX</a> IDEX交易所，目前最活跃 <a href="https://github.com/AuroraDAO" target="_blank" rel="noopener">源码</a></li><li><a href="https://etherdelta.github.io/#ZRX-ETH" target="_blank" rel="noopener">ethdelf</a> etherdelta交易所 <a href="https://github.com/etherdelta/smart_contract" target="_blank" rel="noopener">源码</a></li><li><a href="https://forkdelta.github.io/" target="_blank" rel="noopener">forkdelta</a> forkdelta交易所,较活跃 <a href="https://github.com/forkdelta/smart_contract" target="_blank" rel="noopener">源码</a></li><li><a href="https://kyber.network/" target="_blank" rel="noopener">kyber</a> kyber交易所 <a href="https://github.com/kyberNetwork/smart_contract" target="_blank" rel="noopener">源码</a></li><li><a href="https://dmarket.io/" target="_blank" rel="noopener">Dmarket</a> dmarket交易所 <a href="https://github.com/suntechsoft/dmarket-smartcontract" target="_blank" rel="noopener">源码</a></li><li><a href="https://augur.net/" target="_blank" rel="noopener">augur</a> 对赌交易所 <a href="https://github.com/AugurProject" target="_blank" rel="noopener">源码</a></li><li><a href="https://melonport.com/" target="_blank" rel="noopener">melonport</a> 数字资产交易所 <a href="https://github.com/melonproject" target="_blank" rel="noopener">源码</a></li></ul><h3 id="Game-游戏"><a href="#Game-游戏" class="headerlink" title="Game 游戏"></a>Game 游戏</h3><ul><li><a href="https://www.cryptokitties.co/" target="_blank" rel="noopener">CryptoKitties</a> 以太猫</li><li><a href="https://www.etheremon.com/#/" target="_blank" rel="noopener">Etheremon</a> 以太神奇宝贝</li><li><a href="https://www.edgeless.io/" target="_blank" rel="noopener">Edgeless</a> 虚拟币在线赌场 <a href="https://github.com/EdgelessCasino/Smart-Contracts" target="_blank" rel="noopener">源码</a></li></ul><h3 id="IM-通信"><a href="#IM-通信" class="headerlink" title="IM 通信"></a>IM 通信</h3><ul><li><a href="https://github.com/status-im/status-network-token" target="_blank" rel="noopener">status-im</a> status.im项目开源代码</li></ul><h3 id="Social-社会"><a href="#Social-社会" class="headerlink" title="Social 社会"></a>Social 社会</h3><ul><li><a href="http://docs.oraclize.it/#background" target="_blank" rel="noopener">Oraclize</a> 第三方信息提供</li><li><a href="https://aragon.one/" target="_blank" rel="noopener">Aragon</a> 公司业务 <a href="https://github.com/aragon/aragon-core/tree/master/contracts" target="_blank" rel="noopener">源码</a></li><li><a href="https://dharma.io/" target="_blank" rel="noopener">dharma</a> 第三方增信 <a href="https://github.com/dharmaprotocol/dharma-cli" target="_blank" rel="noopener">源码</a></li><li><a href="https://chronobank.io/" target="_blank" rel="noopener">Chronobank</a> 共享机制</li><li><a href="https://slock.it/" target="_blank" rel="noopener">slockit</a> 租借智能设备 <a href="https://github.com/slockit/smart-contract" target="_blank" rel="noopener">源码</a></li><li><a href="https://github.com/slockit/DAO" target="_blank" rel="noopener">DAO</a> DAO提案</li></ul><h3 id="Cross-Chain-跨链"><a href="#Cross-Chain-跨链" class="headerlink" title="Cross Chain 跨链"></a>Cross Chain 跨链</h3><ul><li><a href="https://cosmos.network/" target="_blank" rel="noopener">Cosmos</a> cosmos跨链交易，包括BTC到ETH <a href="https://github.com/cosmos" target="_blank" rel="noopener">源码</a></li><li><a href="https://polkadot.io/" target="_blank" rel="noopener">polkadot</a> polkadot跨链，实现了一个轻量级以太坊客户端 <a href="https://github.com/paritytech/parity" target="_blank" rel="noopener">源码</a></li></ul><h3 id="Token-代币"><a href="#Token-代币" class="headerlink" title="Token 代币"></a>Token 代币</h3><ul><li><a href="https://github.com/ethereum/EIPs/pull/610" target="_blank" rel="noopener">ERC20</a> 以太坊的ICO代币标准</li><li><a href="http://vitalik.ca/general/2017/06/09/sales.html" target="_blank" rel="noopener">Token Sale</a> 代币销售模型</li><li><a href="https://makerdao.com/" target="_blank" rel="noopener">maker</a> Dai代币</li></ul><hr><p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>                </div>                <div class="image-caption"></div>            </figure></p><p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;企业区块链官方&quot;&gt;&lt;a href=&quot;#企业区块链官方&quot; class=&quot;headerlink&quot; title=&quot;企业区块链官方&quot;&gt;&lt;/a&gt;企业区块链官方&lt;/h1&gt;&lt;h2 id=&quot;大企业导航&quot;&gt;&lt;a href=&quot;#大企业导航&quot; class=&quot;headerlink&quot; ti
+      
+    
+    </summary>
+    
+      <category term="区块链" scheme="https://lywlefan.github.io/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/"/>
+    
+    
+      <category term="导航" scheme="https://lywlefan.github.io/tags/%E5%AF%BC%E8%88%AA/"/>
     
   </entry>
   
@@ -134,15 +414,15 @@
     <link href="https://lywlefan.github.io/2019/10/15/%E5%90%8E%E7%AB%AF/%E5%90%8E%E7%AB%AF%E5%AF%BC%E8%88%AA/"/>
     <id>https://lywlefan.github.io/2019/10/15/后端/后端导航/</id>
     <published>2019-10-14T16:00:00.000Z</published>
-    <updated>2019-10-17T01:48:18.792Z</updated>
+    <updated>2019-11-05T01:42:33.079Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="网站直达"><a href="#网站直达" class="headerlink" title="网站直达"></a>网站直达</h1><h2 id="官网"><a href="#官网" class="headerlink" title="官网"></a>官网</h2><h2 id="团队博客"><a href="#团队博客" class="headerlink" title="团队博客"></a>团队博客</h2><p><a href="https://tech.meituan.com/" target="_blank" rel="noopener">美团技术团队</a>&emsp;<a href="https://blog.didiyun.com/index.php/category/development/" target="_blank" rel="noopener">滴滴技术团队</a>&emsp;<a href="http://jm.taobao.org/" target="_blank" rel="noopener">阿里中间件团队博客</a> &emsp;<a href="https://www.baidu.com/link?url=jqkSj1_Ki_48KWDAFwel7BJIu8Bmjq8e3F0W_6qg7PjVfpgUKYRia9PNGma1xz7y&amp;wd=&amp;eqid=b52783800040a54d000000035da73d69" target="_blank" rel="noopener"><em>阿里</em>云系统组<em>技术博客</em></a>&emsp; <a href="https://cloud.tencent.com/developer" target="_blank" rel="noopener">腾讯云+社区</a>&emsp;</p><h2 id="个人博客"><a href="#个人博客" class="headerlink" title="个人博客"></a>个人博客</h2><p><a href="http://jijiangshe.com" target="_blank" rel="noopener">技匠社</a> &emsp;<a href="https://sspai.com" target="_blank" rel="noopener">少数派</a>&emsp;<a href="https://me.csdn.net/qq_27093465" target="_blank" rel="noopener">李学凯</a>&emsp;<a href="http://blog.didispace.com/" target="_blank" rel="noopener">程序员DD</a> &emsp;<a href="http://itmuch.com/" target="_blank" rel="noopener">周立|Spring Cloud</a> &emsp;<a href="http://www.bysocket.com/" target="_blank" rel="noopener">泥瓦匠BYSocket的博客</a> &emsp;<a href="http://kailing.pub/" target="_blank" rel="noopener">KL博客</a> <a href="http://edisonxu.org/" target="_blank" rel="noopener">Edison Xu’s Blog</a> &emsp;<a href="http://blog.720ui.com/" target="_blank" rel="noopener">梁桂钊的博客</a> &emsp;<a href="http://www.icnws.com/" target="_blank" rel="noopener">城南往事</a> &emsp;<a href="http://www.ictgu.cn/" target="_blank" rel="noopener">Any-Video</a> <a href="http://blog.54im.com/" target="_blank" rel="noopener">钿畑的博客</a>&emsp; <a href="http://cmsblogs.com/" target="_blank" rel="noopener">chenssy</a> &emsp;<a href="https://www.cnkirito.moe/" target="_blank" rel="noopener">徐靖峰|个人博客</a> &emsp;<a href="http://cxytiandi.com/" target="_blank" rel="noopener">猿天地</a> <a href="https://crossoverjie.top/" target="_blank" rel="noopener">crossoverjie</a>&emsp; <a href="http://www.iocoder.cn/" target="_blank" rel="noopener">芋道源码</a> &emsp;<a href="https://purewhite.io/" target="_blank" rel="noopener">Pure White</a> &emsp;<a href="https://blog.52itstyle.vip/" target="_blank" rel="noopener">小柒</a>&emsp; <a href="https://www.cnblogs.com/netfocus/archive/2012/02/12/2347919.html" target="_blank" rel="noopener">汤雪华的博客</a>&emsp; <a href="https://www.cnblogs.com/huxi2b/" target="_blank" rel="noopener">kafka核心技术讲解作者·huxihx</a> &emsp;<a href="https://blog.csdn.net/a724888" target="_blank" rel="noopener">黄小斜</a> <a href="https://github.com/h2pl/" target="_blank" rel="noopener">黄小斜github</a>&emsp;<a href="https://www.cnblogs.com/wayfarer/" target="_blank" rel="noopener">张逸的博客(ThoughtWorks架构师)</a>&emsp;<a href="https://nndl.github.io/" target="_blank" rel="noopener">神经网络与深度学习·邱锡鹏</a>&emsp;</p><blockquote><p><a href="https://www.jianshu.com/u/354cc1548a33" target="_blank" rel="noopener">【1】简书主页·share猿</a><br><a href="https://juejin.im/user/5a8e759851882524d842d174" target="_blank" rel="noopener">【2】掘金主页·share猿</a></p></blockquote><hr><p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>                </div>                <div class="image-caption"></div>            </figure></p><p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>]]></content>
+    <content type="html"><![CDATA[<h1 id="官网导航"><a href="#官网导航" class="headerlink" title="官网导航"></a>官网导航</h1><h2 id="java"><a href="#java" class="headerlink" title="java"></a>java</h2><h2 id="前沿技术"><a href="#前沿技术" class="headerlink" title="前沿技术"></a>前沿技术</h2><h4 id="人工智能技术"><a href="#人工智能技术" class="headerlink" title="人工智能技术"></a>人工智能技术</h4><p><a href="https://www.nvidia.com" target="_blank" rel="noopener">人工智能图片补全</a></p><h1 id="博客汇总"><a href="#博客汇总" class="headerlink" title="博客汇总"></a>博客汇总</h1><h2 id="团队博客"><a href="#团队博客" class="headerlink" title="团队博客"></a>团队博客</h2><p><a href="https://tech.meituan.com/" target="_blank" rel="noopener">美团技术团队</a>&emsp;<a href="https://blog.didiyun.com/index.php/category/development/" target="_blank" rel="noopener">滴滴技术团队</a>&emsp;<a href="http://jm.taobao.org/" target="_blank" rel="noopener">阿里中间件团队博客</a> &emsp;<a href="https://www.baidu.com/link?url=jqkSj1_Ki_48KWDAFwel7BJIu8Bmjq8e3F0W_6qg7PjVfpgUKYRia9PNGma1xz7y&amp;wd=&amp;eqid=b52783800040a54d000000035da73d69" target="_blank" rel="noopener"><em>阿里</em>云系统组<em>技术博客</em></a>&emsp; <a href="https://cloud.tencent.com/developer" target="_blank" rel="noopener">腾讯云+社区</a>  <a href="https://qcon.infoq.cn" target="_blank" rel="noopener">Qcon</a>    <a href="https://www.geekbang.org/" target="_blank" rel="noopener">极客邦</a>&emsp;</p><h2 id="个人博客"><a href="#个人博客" class="headerlink" title="个人博客"></a>个人博客</h2><h3 id="必看博主"><a href="#必看博主" class="headerlink" title="必看博主"></a>必看博主</h3><p><a href="https://coolshell.cn/" target="_blank" rel="noopener">酷壳</a>  <a href="http://www.ruanyifeng.com/blog/" target="_blank" rel="noopener">阮一峰的网络日志</a>  </p><h3 id="领域博主"><a href="#领域博主" class="headerlink" title="领域博主"></a>领域博主</h3><h4 id="区块链领域"><a href="#区块链领域" class="headerlink" title="区块链领域"></a>区块链领域</h4><p><a href="https://www.wanchain.org/zh/blog/" target="_blank" rel="noopener">万维链博客</a></p><h4 id="其他领域"><a href="#其他领域" class="headerlink" title="其他领域"></a>其他领域</h4><p><a href="http://jijiangshe.com" target="_blank" rel="noopener"> 技匠社</a> &emsp;<a href="https://sspai.com" target="_blank" rel="noopener">少数派</a>&emsp;<a href="https://me.csdn.net/qq_27093465" target="_blank" rel="noopener">李学凯</a>&emsp;<a href="http://blog.didispace.com/" target="_blank" rel="noopener">程序员DD</a> &emsp;<a href="http://itmuch.com/" target="_blank" rel="noopener">周立|Spring Cloud</a> &emsp;<a href="http://www.bysocket.com/" target="_blank" rel="noopener">泥瓦匠BYSocket的博客</a> &emsp;<a href="http://kailing.pub/" target="_blank" rel="noopener">KL博客</a> <a href="http://edisonxu.org/" target="_blank" rel="noopener">Edison Xu’s Blog</a> &emsp;<a href="http://blog.720ui.com/" target="_blank" rel="noopener">梁桂钊的博客</a> &emsp;<a href="http://www.icnws.com/" target="_blank" rel="noopener">城南往事</a> &emsp;<a href="http://www.ictgu.cn/" target="_blank" rel="noopener">Any-Video</a> <a href="http://blog.54im.com/" target="_blank" rel="noopener">钿畑的博客</a>&emsp; <a href="http://cmsblogs.com/" target="_blank" rel="noopener">chenssy</a> &emsp;<a href="https://www.cnkirito.moe/" target="_blank" rel="noopener">徐靖峰|个人博客</a> &emsp;<a href="http://cxytiandi.com/" target="_blank" rel="noopener">猿天地</a> <a href="https://crossoverjie.top/" target="_blank" rel="noopener">crossoverjie</a>&emsp; <a href="http://www.iocoder.cn/" target="_blank" rel="noopener">芋道源码</a> &emsp;<a href="https://purewhite.io/" target="_blank" rel="noopener">Pure White</a> &emsp;<a href="https://blog.52itstyle.vip/" target="_blank" rel="noopener">小柒</a>&emsp; <a href="https://www.cnblogs.com/netfocus/archive/2012/02/12/2347919.html" target="_blank" rel="noopener">汤雪华的博客</a>&emsp; <a href="https://www.cnblogs.com/huxi2b/" target="_blank" rel="noopener">kafka核心技术讲解作者·huxihx</a> &emsp;<a href="https://blog.csdn.net/a724888" target="_blank" rel="noopener">黄小斜</a> <a href="https://github.com/h2pl/" target="_blank" rel="noopener">黄小斜github</a>&emsp;<a href="https://www.cnblogs.com/wayfarer/" target="_blank" rel="noopener">张逸的博客(ThoughtWorks架构师)</a>&emsp;<a href="https://nndl.github.io/" target="_blank" rel="noopener">神经网络与深度学习·邱锡鹏</a>&emsp;</p><blockquote><p><a href="https://www.jianshu.com/u/354cc1548a33" target="_blank" rel="noopener">【1】简书主页·share猿</a><br><a href="https://juejin.im/user/5a8e759851882524d842d174" target="_blank" rel="noopener">【2】掘金主页·share猿</a></p></blockquote><hr><p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>                </div>                <div class="image-caption"></div>            </figure></p><p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;h1 id=&quot;网站直达&quot;&gt;&lt;a href=&quot;#网站直达&quot; class=&quot;headerlink&quot; title=&quot;网站直达&quot;&gt;&lt;/a&gt;网站直达&lt;/h1&gt;&lt;h2 id=&quot;官网&quot;&gt;&lt;a href=&quot;#官网&quot; class=&quot;headerlink&quot; title=&quot;官网&quot;&gt;&lt;/a&gt;官网&lt;/h
+        &lt;h1 id=&quot;官网导航&quot;&gt;&lt;a href=&quot;#官网导航&quot; class=&quot;headerlink&quot; title=&quot;官网导航&quot;&gt;&lt;/a&gt;官网导航&lt;/h1&gt;&lt;h2 id=&quot;java&quot;&gt;&lt;a href=&quot;#java&quot; class=&quot;headerlink&quot; title=&quot;java&quot;&gt;&lt;/a
       
     
     </summary>
@@ -215,36 +495,6 @@
   </entry>
   
   <entry>
-    <title>try-with-resources和multiple catch的学习</title>
-    <link href="https://lywlefan.github.io/2019/09/03/%E5%90%8E%E7%AB%AF/%E5%9F%BA%E7%A1%80%E5%B7%A9%E5%9B%BA/java/%E5%BC%82%E5%B8%B8/try-with-resources%E5%92%8Cmultiple%20catch%E7%9A%84%E5%AD%A6%E4%B9%A0/"/>
-    <id>https://lywlefan.github.io/2019/09/03/后端/基础巩固/java/异常/try-with-resources和multiple catch的学习/</id>
-    <published>2019-09-02T16:00:00.000Z</published>
-    <updated>2019-10-15T06:42:24.753Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>万丈高楼平地起的前提是地基好.</p></blockquote><h1 id="try-with-resources"><a href="#try-with-resources" class="headerlink" title="try-with-resources"></a>try-with-resources</h1><h2 id="是什么"><a href="#是什么" class="headerlink" title="是什么?"></a>是什么?</h2><p>在Java编程过程中，如果打开了外部资源（文件、数据库连接、网络连接等），我们必须在这些外部资源使用完毕后，手动关闭它们。因为外部资源不由JVM管理，无法享用JVM的垃圾回收机制，如果我们不在编程时确保在正确的时机关闭外部资源，就会导致外部资源泄露，紧接着就会出现文件被异常占用，数据库连接过多导致连接池溢出等诸多很严重的问题。</p><p>为了确保外部资源一定要被关闭，通常关闭代码被写入finally代码块中，当然我们还必须注意到关闭资源时可能抛出的异常，于是变有了下面的经典代码：</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    FileInputStream inputStream = <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        inputStream = <span class="keyword">new</span> FileInputStream(<span class="keyword">new</span> File(<span class="string">"test"</span>));</span><br><span class="line">        System.out.println(inputStream.read());</span><br><span class="line">    &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(e.getMessage(), e);</span><br><span class="line">    &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (inputStream != <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                inputStream.close();</span><br><span class="line">            &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">                <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(e.getMessage(), e);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h1 id="multiple-catch"><a href="#multiple-catch" class="headerlink" title="multiple catch"></a>multiple catch</h1><h2 id="是什么-1"><a href="#是什么-1" class="headerlink" title="是什么?"></a>是什么?</h2><blockquote><p><a href="https://www.jianshu.com/u/354cc1548a33" target="_blank" rel="noopener">【1】简书主页·share猿</a><br><a href="https://juejin.im/user/5a8e759851882524d842d174" target="_blank" rel="noopener">【2】掘金主页·share猿</a></p></blockquote><hr><p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>                </div>                <div class="image-caption"></div>            </figure></p><p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;blockquote&gt;
-&lt;p&gt;万丈高楼平地起的前提是地基好.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h1 id=&quot;try-with-resources&quot;&gt;&lt;a href=&quot;#try-with-resources&quot; class=&quot;headerlink&quot; title=&quot;try-wi
-      
-    
-    </summary>
-    
-      <category term="后端" scheme="https://lywlefan.github.io/categories/%E5%90%8E%E7%AB%AF/"/>
-    
-    
-      <category term="基础" scheme="https://lywlefan.github.io/tags/%E5%9F%BA%E7%A1%80/"/>
-    
-      <category term="java" scheme="https://lywlefan.github.io/tags/java/"/>
-    
-  </entry>
-  
-  <entry>
     <title>AOT,JIT学习总结</title>
     <link href="https://lywlefan.github.io/2019/09/03/%E5%90%8E%E7%AB%AF/%E5%9F%BA%E7%A1%80%E5%B7%A9%E5%9B%BA/java/jvm/AOT,JIT%E5%AD%A6%E4%B9%A0/"/>
     <id>https://lywlefan.github.io/2019/09/03/后端/基础巩固/java/jvm/AOT,JIT学习/</id>
@@ -275,20 +525,22 @@
   </entry>
   
   <entry>
-    <title>02.redis的线程IO和通讯协议</title>
-    <link href="https://lywlefan.github.io/2019/08/13/%E5%90%8E%E7%AB%AF/%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/NOSQL/redis/03.redis%E7%9A%84%E7%BA%BF%E7%A8%8BIO%E5%92%8C%E9%80%9A%E8%AE%AF%E5%8D%8F%E8%AE%AE/"/>
-    <id>https://lywlefan.github.io/2019/08/13/后端/数据存储/NOSQL/redis/03.redis的线程IO和通讯协议/</id>
-    <published>2019-08-12T16:00:00.000Z</published>
-    <updated>2019-10-15T06:42:25.278Z</updated>
+    <title>try-with-resources和multiple catch的学习</title>
+    <link href="https://lywlefan.github.io/2019/09/03/%E5%90%8E%E7%AB%AF/%E5%9F%BA%E7%A1%80%E5%B7%A9%E5%9B%BA/java/%E5%BC%82%E5%B8%B8/try-with-resources%E5%92%8Cmultiple%20catch%E7%9A%84%E5%AD%A6%E4%B9%A0/"/>
+    <id>https://lywlefan.github.io/2019/09/03/后端/基础巩固/java/异常/try-with-resources和multiple catch的学习/</id>
+    <published>2019-09-02T16:00:00.000Z</published>
+    <updated>2019-10-15T06:42:24.753Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="redis的线程IO"><a href="#redis的线程IO" class="headerlink" title="redis的线程IO"></a>redis的线程IO</h2><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://upload-images.jianshu.io/upload_images/3084894-bcf206af27739ea2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="线程IO" title>                </div>                <div class="image-caption">线程IO</div>            </figure><p>Redis是个单线程程序!但是他有高并发特性,单个节点可以支持10w的QPS。除了redis是单线程,Nginx也是单线程的。单线程为什么如此之快?单线程有如何处理多并发的客户端连接?下面让我们带着这些问题一起深究redis的线程IO。</p><h3 id="5种IO模型学习"><a href="#5种IO模型学习" class="headerlink" title="5种IO模型学习"></a>5种IO模型学习</h3><ul><li><p>阻塞IO模型</p></li><li><p>非阻塞IO模型</p></li><li><p>IO复用模型</p></li><li><p>信号驱动的IO模型</p></li><li><p>异步IO模型</p></li></ul><h4 id="阻塞IO模型"><a href="#阻塞IO模型" class="headerlink" title="阻塞IO模型"></a>阻塞IO模型</h4><p>进程发起IO系统调用后，进程被阻塞，转到内核空间处理，整个IO处理完毕后返回进程。操作成功则进程获取到数据。</p><h5 id="类比"><a href="#类比" class="headerlink" title="类比"></a>类比</h5><p>老李去火车站买票，排队三天买到一张退票。</p><p>耗费：在车站吃喝拉撒睡 3天，其他事一件没干。</p><h5 id="典型应用"><a href="#典型应用" class="headerlink" title="典型应用"></a>典型应用</h5><ul><li><p>阻塞socket</p></li><li><p>java BIO</p></li></ul><h5 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h5><ul><li><p>进程阻塞挂起不消耗CPU资源，及时响应每个操作；</p></li><li><p>实现难度低、开发应用较容易；</p></li><li><p>适用并发量小的网络应用开发；</p></li></ul><p>不适用并发量大的应用：因为一个请求IO会阻塞进程，所以，得为每请求分配一个处理进程（线程）以及时响应，系统开销大。</p><h4 id="非阻塞IO模型"><a href="#非阻塞IO模型" class="headerlink" title="非阻塞IO模型"></a>非阻塞IO模型</h4><p>进程发起IO系统调用后，如果内核缓冲区没有数据，需要到IO设备中读取，进程返回一个错误而不会被阻塞；进程发起IO系统调用后，如果内核缓冲区有数据，内核就会把数据返回进程。</p><h5 id="类比-1"><a href="#类比-1" class="headerlink" title="类比"></a>类比</h5><p> 老李去火车站买票，隔12小时去火车站问有没有退票，三天后买到一张票。</p><p> 耗费：往返车站6次，路上6小时，其他时间做了好多事。</p><h5 id="典型应用-1"><a href="#典型应用-1" class="headerlink" title="典型应用"></a>典型应用</h5><ul><li>socket是非阻塞的方式（设置为NONBLOCK）</li></ul><h5 id="特点-1"><a href="#特点-1" class="headerlink" title="特点"></a>特点</h5><ul><li><p>进程轮询（重复）调用，消耗CPU的资源；</p></li><li><p>实现难度低、开发应用相对阻塞IO模式较难；</p></li><li><p>适用并发量较小、且不需要及时响应的网络应用开发；</p></li></ul><h4 id="IO复用模型"><a href="#IO复用模型" class="headerlink" title="IO复用模型"></a>IO复用模型</h4><p>多个的进程的IO可以注册到一个复用器（select）上，然后用一个进程调用该select， select会监听所有注册进来的IO；</p><p>如果select没有监听的IO在内核缓冲区都没有可读数据，select调用进程会被阻塞；而当任一IO在内核缓冲区中有可数据时，select调用就会返回；</p><p>而后select调用进程可以自己或通知另外的进程（注册进程）来再次发起读取IO，读取内核中准备好的数据。</p><p>可以看到，多个进程注册IO后，只有另一个select调用进程被阻塞。</p><h5 id="类比-2"><a href="#类比-2" class="headerlink" title="类比"></a>类比</h5><p>是找一个宿管大妈来帮你监视下楼的女生, 这个期间你可以些其他的事情. 例如可以顺便看看其他妹子,玩玩王者荣耀, 上个厕所等等. IO复用又包括 select, poll, epoll 模式. 那么它们的区别是什么?</p><ul><li>select</li></ul><p>每一个女生下楼, select大妈都不知道这个是不是你的女神, 她需要一个一个询问, 并且select大妈能力还有限, 最多一次帮你监视1024个妹子</p><ul><li>poll</li></ul><p>不限制盯着女生的数量, 只要是经过宿舍楼门口的女生, 都会帮你去问是不是你女神</p><ul><li>epoll</li></ul><p>不限制盯着女生的数量, 并且也不需要一个一个去问. 那么如何做呢? epoll大妈会为每个进宿舍楼的女生脸上贴上一个大字条,上面写上女生自己的名字, 只要女生下楼了, epoll大妈就知道这个是不是你女神了, 然后大妈再通知你.</p><h5 id="典型应用-2"><a href="#典型应用-2" class="headerlink" title="典型应用"></a>典型应用</h5><ul><li><p>select</p></li><li><p>poll</p></li><li><p>epoll三种方案</p></li><li><p>nginx都可以选择使用这三个方案</p></li><li><p>Java NIO;</p></li></ul><h5 id="特点-2"><a href="#特点-2" class="headerlink" title="特点"></a>特点</h5><ul><li><p>专一进程解决多个进程IO的阻塞问题，性能好；Reactor模式;</p></li><li><p>实现、开发应用难度较大；</p></li><li><p>适用高并发服务应用开发：一个进程（线程）响应多个请求</p></li></ul><h5 id="形成原因"><a href="#形成原因" class="headerlink" title="形成原因"></a>形成原因</h5><p>如果一个I/O流进来，我们就开启一个进程处理这个I/O流。那么假设现在有一百万个I/O流进来，那我们就需要开启一百万个进程一一对应处理这些I/O流（——这就是传统意义下的多进程并发处理）。思考一下，一百万个进程，你的CPU占有率会多高，这个实现方式及其的不合理。所以人们提出了I/O多路复用这个模型，一个线程，通过记录I/O流的状态来同时管理多个I/O，可以提高服务器的吞吐能力。</p><h4 id="信号驱动的IO模型"><a href="#信号驱动的IO模型" class="headerlink" title="信号驱动的IO模型"></a>信号驱动的IO模型</h4><p>当进程发起一个IO操作，会向内核注册一个信号处理函数，然后进程返回不阻塞；当内核数据就绪时会发送一个信号给进程，进程便在信号处理函数中调用IO读取数据。</p><h5 id="特点-3"><a href="#特点-3" class="headerlink" title="特点"></a>特点</h5><ul><li>回调机制，实现、开发应用难度大；</li></ul><h4 id="异步IO模型"><a href="#异步IO模型" class="headerlink" title="异步IO模型"></a>异步IO模型</h4><p>当进程发起一个IO操作，进程返回（不阻塞），但也不能返回果结；内核把整个IO处理完后，会通知进程结果。如果IO操作成功则进程直接获取到数据。</p><h5 id="特点-4"><a href="#特点-4" class="headerlink" title="特点"></a>特点</h5><ul><li><p>不阻塞，数据一步到位；Proactor模式；</p></li><li><p>需要操作系统的底层支持，LINUX 2.5 版本内核首现，2.6 版本产品的内核标准特性；</p></li><li><p>实现、开发应用难度大；</p></li><li><p>非常适合高性能高并发应用</p></li></ul><h5 id="典型"><a href="#典型" class="headerlink" title="典型"></a>典型</h5><ul><li><p>JAVA7 AIO</p></li><li><p>高性能服务器应用</p></li></ul><p>通过学习5种IO模型,我们知道了Redis就是使用的IO复用模型里面的select。</p><h3 id="指令队列"><a href="#指令队列" class="headerlink" title="指令队列"></a>指令队列</h3><p>Redis 会将每个客户端套接字都关联一个指令队列。客户端的指令通过队列来排队进行顺序处理，先到先服务。 也就是说指令的请求顺序是通过队列来进行约束的。</p><h3 id="响应队列"><a href="#响应队列" class="headerlink" title="响应队列"></a>响应队列</h3><p>每个客户端关联一个响应队列。然后服务端通过响应队列将数据返回给客户端。</p><h3 id="定时任务"><a href="#定时任务" class="headerlink" title="定时任务"></a>定时任务</h3><p>服务器处理要响应 IO 事件外，还要处理其它事情。比如定时任务就是非常重要的一件事。如果线程阻塞在 select 系统调用上，定时任务将无法得到准时调度。那 Redis 是如何解决这个问题的呢？</p><blockquote><p>如果面试官问到这个问题我肯定是处于懵逼状态。老钱书中写到,redis会把定时任务记录到一个叫最小堆的数据结构中,每个周期循环redis会立即处理堆最上面的数据。  </p></blockquote><h2 id="redis的通讯协议"><a href="#redis的通讯协议" class="headerlink" title="redis的通讯协议"></a>redis的通讯协议</h2><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://upload-images.jianshu.io/upload_images/3084894-d8790174146ea545.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="通讯协议" title>                </div>                <div class="image-caption">通讯协议</div>            </figure><h3 id="RESP协议简介"><a href="#RESP协议简介" class="headerlink" title="RESP协议简介"></a>RESP协议简介</h3><p>Redis 的客户端和服务端之间采取了一种独立名为 RESP(REdis Serialization Protocol) 的协议，作者主要考虑了以下几个点：</p><ul><li>容易实现</li><li>解析快</li><li>人类可读</li></ul><p>注意：RESP 虽然是为 Redis 设计的，但是同样也可以用于其他 C/S 的软件。</p><h3 id="数据类型及示例"><a href="#数据类型及示例" class="headerlink" title="数据类型及示例"></a>数据类型及示例</h3><p>RESP 主要可以序列化以下几种类型：整数，单行回复(简单字符串)，数组，错误信息，多行字符串。Redis 客户端向服务端发送的是一组由执行的命令组成的字符串数组，服务端根据不同的命令回复不同类型的数据，但协议的每部分都是以 “\r\n” (CRLF) 结尾的。另外 RESP 是二进制安全的，不需要处理从一个进程到另一个进程的传输，因为它使用了前缀长度进行传输。</p><p>在 RESP 中, 一些数据的类型通过它的第一个字节进行判断：</p><ul><li><p>单行回复：回复的第一个字节是 “+”</p></li><li><p>错误信息：回复的第一个字节是 “-”</p></li><li><p>整形数字：回复的第一个字节是 “:”</p></li><li><p>多行字符串：回复的第一个字节是 “\$”</p></li><li><p>数组：回复的第一个字节是 “*”</p></li></ul><p>RESP 协议还是相对易于理解的，另外理解了协议也方便对 Redis 一些问题的定位及客户端的实现。</p><p>Redis 协议里有大量冗余的回车换行符，但是这不影响它成为互联网技术领域非常受欢迎的一个文本协议。有很多开源项目使用 RESP 作为它的通讯协议。在技术领域性能并不总是一切，还有简单性、易理解性和易实现性，这些都需要进行适当权衡。</p><blockquote><p><strong>参考文档</strong></p></blockquote><blockquote><p><a href="https://www.jianshu.com/u/354cc1548a33" target="_blank" rel="noopener">【1】简书主页·share猿</a></p></blockquote><blockquote><p><a href="https://juejin.im/user/5a8e759851882524d842d174" target="_blank" rel="noopener">【2】掘金主页·share猿</a></p></blockquote><blockquote><p><a href="https://redis.io" target="_blank" rel="noopener">【3】redis官网</a></p></blockquote><hr><p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>                </div>                <div class="image-caption"></div>            </figure></p><p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>]]></content>
+    <content type="html"><![CDATA[<blockquote><p>万丈高楼平地起的前提是地基好.</p></blockquote><h1 id="try-with-resources"><a href="#try-with-resources" class="headerlink" title="try-with-resources"></a>try-with-resources</h1><h2 id="是什么"><a href="#是什么" class="headerlink" title="是什么?"></a>是什么?</h2><p>在Java编程过程中，如果打开了外部资源（文件、数据库连接、网络连接等），我们必须在这些外部资源使用完毕后，手动关闭它们。因为外部资源不由JVM管理，无法享用JVM的垃圾回收机制，如果我们不在编程时确保在正确的时机关闭外部资源，就会导致外部资源泄露，紧接着就会出现文件被异常占用，数据库连接过多导致连接池溢出等诸多很严重的问题。</p><p>为了确保外部资源一定要被关闭，通常关闭代码被写入finally代码块中，当然我们还必须注意到关闭资源时可能抛出的异常，于是变有了下面的经典代码：</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    FileInputStream inputStream = <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        inputStream = <span class="keyword">new</span> FileInputStream(<span class="keyword">new</span> File(<span class="string">"test"</span>));</span><br><span class="line">        System.out.println(inputStream.read());</span><br><span class="line">    &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(e.getMessage(), e);</span><br><span class="line">    &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (inputStream != <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                inputStream.close();</span><br><span class="line">            &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">                <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(e.getMessage(), e);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h1 id="multiple-catch"><a href="#multiple-catch" class="headerlink" title="multiple catch"></a>multiple catch</h1><h2 id="是什么-1"><a href="#是什么-1" class="headerlink" title="是什么?"></a>是什么?</h2><blockquote><p><a href="https://www.jianshu.com/u/354cc1548a33" target="_blank" rel="noopener">【1】简书主页·share猿</a><br><a href="https://juejin.im/user/5a8e759851882524d842d174" target="_blank" rel="noopener">【2】掘金主页·share猿</a></p></blockquote><hr><p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>                </div>                <div class="image-caption"></div>            </figure></p><p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;h2 id=&quot;redis的线程IO&quot;&gt;&lt;a href=&quot;#redis的线程IO&quot; class=&quot;headerlink&quot; title=&quot;redis的线程IO&quot;&gt;&lt;/a&gt;redis的线程IO&lt;/h2&gt;&lt;figure class=&quot;image-bubble&quot;&gt;
-           
+        &lt;blockquote&gt;
+&lt;p&gt;万丈高楼平地起的前提是地基好.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&quot;try-with-resources&quot;&gt;&lt;a href=&quot;#try-with-resources&quot; class=&quot;headerlink&quot; title=&quot;try-wi
       
     
     </summary>
@@ -296,309 +548,9 @@
       <category term="后端" scheme="https://lywlefan.github.io/categories/%E5%90%8E%E7%AB%AF/"/>
     
     
-      <category term="redis" scheme="https://lywlefan.github.io/tags/redis/"/>
-    
-      <category term="数据存储" scheme="https://lywlefan.github.io/tags/%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/"/>
-    
-      <category term="NOSQL" scheme="https://lywlefan.github.io/tags/NOSQL/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>内功修炼-算法02</title>
-    <link href="https://lywlefan.github.io/2019/08/13/%E7%AE%97%E6%B3%95/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/%E5%8A%9B%E6%89%A3/%E5%86%85%E5%8A%9F%E4%BF%AE%E7%82%BC-%E7%AE%97%E6%B3%9502/"/>
-    <id>https://lywlefan.github.io/2019/08/13/算法/算法基础/力扣/内功修炼-算法02/</id>
-    <published>2019-08-12T16:00:00.000Z</published>
-    <updated>2019-10-15T08:11:12.416Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>万丈高楼平地起的前提是地基好.</p></blockquote><h2 id="题目-无重复字符的最长子串"><a href="#题目-无重复字符的最长子串" class="headerlink" title="题目:无重复字符的最长子串"></a>题目:无重复字符的最长子串</h2><h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>给定一个字符串，请你找出其中不含有重复字符的 <strong>最长子串</strong> 的长度。</p><p>示例 1:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">输入: &quot;abcabcbb&quot;</span><br><span class="line">输出: 3 </span><br><span class="line">解释: 因为无重复字符的最长子串是 &quot;abc&quot;，所以其长度为 3。</span><br><span class="line">示例 2:</span><br><span class="line"></span><br><span class="line">输入: &quot;bbbbb&quot;</span><br><span class="line">输出: 1</span><br><span class="line">解释: 因为无重复字符的最长子串是 &quot;b&quot;，所以其长度为 1。</span><br><span class="line">示例 3:</span><br><span class="line"></span><br><span class="line">输入: &quot;pwwkew&quot;</span><br><span class="line">输出: 3</span><br><span class="line">解释: 因为无重复字符的最长子串是 &quot;wke&quot;，所以其长度为 3。</span><br><span class="line">     请注意，你的答案必须是 子串 的长度，&quot;pwke&quot; 是一个子序列，不是子串。</span><br></pre></td></tr></table></figure><h3 id="题目分析"><a href="#题目分析" class="headerlink" title="题目分析"></a>题目分析</h3><h4 id="关键点"><a href="#关键点" class="headerlink" title="关键点"></a>关键点</h4><ul><li>不含有重复字符的最大字符串长度</li></ul><h4 id="思路梳理"><a href="#思路梳理" class="headerlink" title="思路梳理"></a>思路梳理</h4><h5 id="我的解题思路"><a href="#我的解题思路" class="headerlink" title="我的解题思路"></a>我的解题思路</h5><ul><li><p>1.把字符串转换为字符数组</p></li><li><p>2.把字符串逐个放入set集合(set),同时记录放入集合的数量(j)</p></li><li><p>2.如果set集合长度和放入数量不符,记录该长度(l),清空set集合,把j设置为0,放入刚才放入的值,继续循环</p></li><li><p>3.如果继续出现上述清空,和上面记录的长度进行对比,小于清空继续,大于更新记录长度</p></li></ul><p>总结:上述解题思路忽略了空格字符串的情况,存在问题.</p><h5 id="正确的解题思路-滑动窗口"><a href="#正确的解题思路-滑动窗口" class="headerlink" title="正确的解题思路:滑动窗口"></a>正确的解题思路:滑动窗口</h5><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://upload-images.jianshu.io/upload_images/3084894-676af09bd331705a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="时间窗移动原理" title>                </div>                <div class="image-caption">时间窗移动原理</div>            </figure><ul><li><p>1.定义一个map集合(map)，用于存储字符值和位置，key为字符，value为字符位置加1</p></li><li><p>2.定义一个变量ans,用于记录时间窗最大长度</p></li><li><p>3.定义时间窗起点start和时间窗结束点end</p></li><li><p>4.然后把end向右滑动,最大长度为（end-start+1），如果map集合中存在该元素,说明遇到了重复的元素</p><ul><li><p>4.1.记录时间窗最大值ans</p></li><li><p>4.2.移动时间窗start到重复元素第一个之后的位置</p></li></ul></li><li><p>5.继续滑动,直到j=字符串长度</p></li></ul><h3 id="题目解答"><a href="#题目解答" class="headerlink" title="题目解答"></a>题目解答</h3><h4 id="我的解答"><a href="#我的解答" class="headerlink" title="我的解答"></a>我的解答</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 思路一:</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> *      1.把字符串转换为字符数组</span></span><br><span class="line"><span class="comment"> *      2.把字符串逐个放入set集合(set),同时记录放入集合的数量(j)</span></span><br><span class="line"><span class="comment"> *      2.如果set集合长度和放入数量不符,记录该长度(l),清空set集合,把j设置为0,放入刚才放入的值,继续循环</span></span><br><span class="line"><span class="comment"> *      3.如果继续出现上述清空,和上面记录的长度进行对比,小于清空继续,大于更新记录长度</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> *      时间复杂度:T(N) 空间复杂度:O(1)</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * 测试情况:不通过</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * 总结分析:</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> *      1.没有考虑到空格字符串的情况</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">lengthOfLongestSubstring1</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">char</span> [] chars = s.toCharArray();</span><br><span class="line">    Set set = <span class="keyword">new</span> HashSet();</span><br><span class="line">    <span class="keyword">int</span> l=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>,j=<span class="number">0</span>;i&lt;chars.length;i++)&#123;</span><br><span class="line">       set.add(chars[i]);</span><br><span class="line">       j++;</span><br><span class="line">       <span class="keyword">if</span> (set.size()&lt;j)&#123;</span><br><span class="line">           l = Math.max(set.size(),l);</span><br><span class="line">           set.clear();</span><br><span class="line">           j = <span class="number">1</span>;</span><br><span class="line">           set.add(chars[i]);</span><br><span class="line">       &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> l;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h4 id="正确的解答"><a href="#正确的解答" class="headerlink" title="正确的解答"></a>正确的解答</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 思路二: 滑动窗口</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> *      1.定义一个map集合(map)，用于存储字符值和位置，key为字符，value为字符位置加1</span></span><br><span class="line"><span class="comment"> *      2.定义一个变量ans,用于记录时间窗最大长度</span></span><br><span class="line"><span class="comment"> *      3.定义时间窗起点start和时间窗结束点end</span></span><br><span class="line"><span class="comment"> *      4.然后把end向右滑动,最大长度为（end-start+1），如果map集合中存在该元素,说明遇到了重复的元素</span></span><br><span class="line"><span class="comment"> *          4.1.记录时间窗最大值ans</span></span><br><span class="line"><span class="comment"> *          4.2.移动时间窗start到重复元素第一个之后的位置</span></span><br><span class="line"><span class="comment"> *      5.继续滑动,直到j=字符串长度</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">lengthOfLongestSubstring2</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n = s.length(), ans = <span class="number">0</span>;</span><br><span class="line">    Map&lt;Character, Integer&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> end = <span class="number">0</span>, start = <span class="number">0</span>; end &lt; n; end++) &#123;</span><br><span class="line">        <span class="keyword">char</span> alpha = s.charAt(end);</span><br><span class="line">        <span class="keyword">if</span> (map.containsKey(alpha)) &#123;</span><br><span class="line">            start = Math.max(map.get(alpha), start);</span><br><span class="line">        &#125;</span><br><span class="line">        ans = Math.max(ans, end - start + <span class="number">1</span>);</span><br><span class="line">        map.put(s.charAt(end), end + <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="题目总结"><a href="#题目总结" class="headerlink" title="题目总结"></a>题目总结</h3><p>在做这道题目的过程中,没有考虑到空格字符串的情况,这是基础不扎实导致的,null/“”/“ “,这三个还是有很大的区别的,如果大家也遇到和我一样的问题,可以当做是一个教训。</p><p>还有就是滑动窗口,这个理解比较麻烦,最好可以看我上面画的那种图,或者你可以自己画一个出来,滑动窗口是一个常用的办法,我们要深入理解。记得在有一次做限流的时候也用到了滑动窗口的概念。</p><h3 id="问题讨论"><a href="#问题讨论" class="headerlink" title="问题讨论"></a>问题讨论</h3><ul><li>假如让你用滑动窗口实现一个简单的限流,如何实现?(加入星球看答案哦!里面有更多精彩内容!)</li></ul><blockquote><p><strong>参考文档</strong></p></blockquote><blockquote><p><a href="https://www.jianshu.com/u/354cc1548a33" target="_blank" rel="noopener">【1】简书主页·share猿</a></p></blockquote><blockquote><p><a href="https://juejin.im/user/5a8e759851882524d842d174" target="_blank" rel="noopener">【2】掘金主页·share猿</a></p></blockquote><blockquote><p><a href="https://github.com/azl397985856/leetcode" target="_blank" rel="noopener">【3】leetcode算法指南</a></p></blockquote><hr><p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>                </div>                <div class="image-caption"></div>            </figure></p><p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;blockquote&gt;
-&lt;p&gt;万丈高楼平地起的前提是地基好.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&quot;题目-无重复字符的最长子串&quot;&gt;&lt;a href=&quot;#题目-无重复字符的最长子串&quot; class=&quot;headerlink&quot; title=&quot;题目:无重复字符的最长子串&quot;&gt;&lt;
-      
-    
-    </summary>
-    
-      <category term="算法" scheme="https://lywlefan.github.io/categories/%E7%AE%97%E6%B3%95/"/>
-    
-    
-      <category term="力扣" scheme="https://lywlefan.github.io/tags/%E5%8A%9B%E6%89%A3/"/>
-    
       <category term="基础" scheme="https://lywlefan.github.io/tags/%E5%9F%BA%E7%A1%80/"/>
     
-  </entry>
-  
-  <entry>
-    <title>21.合并两个有序的链表</title>
-    <link href="https://lywlefan.github.io/2019/08/06/%E7%AE%97%E6%B3%95/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/%E5%8A%9B%E6%89%A3/21.%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E7%9A%84%E9%93%BE%E8%A1%A8/"/>
-    <id>https://lywlefan.github.io/2019/08/06/算法/算法基础/力扣/21.合并两个有序的链表/</id>
-    <published>2019-08-05T16:00:00.000Z</published>
-    <updated>2019-10-15T08:11:12.750Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>万丈高楼平地起的前提是地基好.</p></blockquote><h3 id="题目介绍"><a href="#题目介绍" class="headerlink" title="题目介绍"></a>题目介绍</h3><p>将两个有序链表合并为一个新的有序链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。 </p><p>示例 1:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：1-&gt;2-&gt;4, 1-&gt;3-&gt;4</span><br><span class="line">输出：1-&gt;1-&gt;2-&gt;3-&gt;4-&gt;4</span><br></pre></td></tr></table></figure><h3 id="题目解答"><a href="#题目解答" class="headerlink" title="题目解答"></a>题目解答</h3><h3 id="思路梳理"><a href="#思路梳理" class="headerlink" title="思路梳理"></a>思路梳理</h3><h3 id="题目实现"><a href="#题目实现" class="headerlink" title="题目实现"></a>题目实现</h3><h4 id="java"><a href="#java" class="headerlink" title="java"></a>java</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure><blockquote><p><strong>参考文档</strong></p></blockquote><blockquote><p><a href="https://www.jianshu.com/u/354cc1548a33" target="_blank" rel="noopener">【1】简书主页·share猿</a></p></blockquote><blockquote><p><a href="https://juejin.im/user/5a8e759851882524d842d174" target="_blank" rel="noopener">【2】掘金主页·share猿</a></p></blockquote><blockquote><p><a href="https://github.com/azl397985856/leetcode" target="_blank" rel="noopener">【3】leetcode算法指南</a></p></blockquote><hr><p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>                </div>                <div class="image-caption"></div>            </figure></p><p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;blockquote&gt;
-&lt;p&gt;万丈高楼平地起的前提是地基好.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&quot;题目介绍&quot;&gt;&lt;a href=&quot;#题目介绍&quot; class=&quot;headerlink&quot; title=&quot;题目介绍&quot;&gt;&lt;/a&gt;题目介绍&lt;/h3&gt;&lt;p&gt;将两个有序链表合并为一个
-      
-    
-    </summary>
-    
-      <category term="算法" scheme="https://lywlefan.github.io/categories/%E7%AE%97%E6%B3%95/"/>
-    
-    
-      <category term="力扣" scheme="https://lywlefan.github.io/tags/%E5%8A%9B%E6%89%A3/"/>
-    
-      <category term="基础" scheme="https://lywlefan.github.io/tags/%E5%9F%BA%E7%A1%80/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>22.括号的生成</title>
-    <link href="https://lywlefan.github.io/2019/08/05/%E7%AE%97%E6%B3%95/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/%E5%8A%9B%E6%89%A3/22.%E6%8B%AC%E5%8F%B7%E7%9A%84%E7%94%9F%E6%88%90/"/>
-    <id>https://lywlefan.github.io/2019/08/05/算法/算法基础/力扣/22.括号的生成/</id>
-    <published>2019-08-04T16:00:00.000Z</published>
-    <updated>2019-10-15T08:11:12.582Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>万丈高楼平地起的前提是地基好.</p></blockquote><h3 id="题目介绍"><a href="#题目介绍" class="headerlink" title="题目介绍"></a>题目介绍</h3><p>给出 n 代表生成括号的对数，请你写出一个函数，使其能够生成所有可能的并且有效的括号组合。</p><p>例如，给出 n = 3，生成结果为：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">[</span><br><span class="line">  &quot;((()))&quot;,</span><br><span class="line">  &quot;(()())&quot;,</span><br><span class="line">  &quot;(())()&quot;,</span><br><span class="line">  &quot;()(())&quot;,</span><br><span class="line">  &quot;()()()&quot;</span><br><span class="line">]</span><br></pre></td></tr></table></figure><h3 id="思路梳理"><a href="#思路梳理" class="headerlink" title="思路梳理"></a>思路梳理</h3><h4 id="关键点"><a href="#关键点" class="headerlink" title="关键点"></a>关键点</h4><ul><li><p>生成括号对数</p></li><li><p>生成括号不同对数</p></li><li><p>生成的括号必须要闭合</p></li><li><p>生成括号的类型要用大括号包住</p></li></ul><h4 id="如何实现哪"><a href="#如何实现哪" class="headerlink" title="如何实现哪??"></a>如何实现哪??</h4><h5 id="我的思路-分类法-X"><a href="#我的思路-分类法-X" class="headerlink" title="我的思路:分类法 (X)"></a>我的思路:分类法 (X)</h5><ul><li><p>第一种情况:括号中括号</p></li><li><p>第二种情况:括号中多个括号</p></li><li><p>第三种情况:分割括号,然后括号中括号(左右)</p></li><li><p>第四种情况:括号独立类型</p></li></ul><h5 id="官方思路"><a href="#官方思路" class="headerlink" title="官方思路:"></a>官方思路:</h5><h3 id="题目实现"><a href="#题目实现" class="headerlink" title="题目实现"></a>题目实现</h3><h4 id="我的实现"><a href="#我的实现" class="headerlink" title="我的实现"></a>我的实现</h4><h5 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h5><h5 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h5><h4 id="最优解实现"><a href="#最优解实现" class="headerlink" title="最优解实现"></a>最优解实现</h4><h5 id="分析-1"><a href="#分析-1" class="headerlink" title="分析"></a>分析</h5><h5 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h5><blockquote><p><strong>参考文档</strong></p></blockquote><blockquote><p><a href="https://www.jianshu.com/u/354cc1548a33" target="_blank" rel="noopener">【1】简书主页·share猿</a></p></blockquote><blockquote><p><a href="https://juejin.im/user/5a8e759851882524d842d174" target="_blank" rel="noopener">【2】掘金主页·share猿</a></p></blockquote><blockquote><p><a href="https://github.com/azl397985856/leetcode" target="_blank" rel="noopener">【3】leetcode算法指南</a></p></blockquote><hr><p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>                </div>                <div class="image-caption"></div>            </figure></p><p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;blockquote&gt;
-&lt;p&gt;万丈高楼平地起的前提是地基好.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&quot;题目介绍&quot;&gt;&lt;a href=&quot;#题目介绍&quot; class=&quot;headerlink&quot; title=&quot;题目介绍&quot;&gt;&lt;/a&gt;题目介绍&lt;/h3&gt;&lt;p&gt;给出 n 代表生成括号的
-      
-    
-    </summary>
-    
-      <category term="算法" scheme="https://lywlefan.github.io/categories/%E7%AE%97%E6%B3%95/"/>
-    
-    
-      <category term="力扣" scheme="https://lywlefan.github.io/tags/%E5%8A%9B%E6%89%A3/"/>
-    
-      <category term="基础" scheme="https://lywlefan.github.io/tags/%E5%9F%BA%E7%A1%80/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>20.有效的括号</title>
-    <link href="https://lywlefan.github.io/2019/08/02/%E7%AE%97%E6%B3%95/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/%E5%8A%9B%E6%89%A3/20.%E6%9C%89%E6%95%88%E7%9A%84%E6%8B%AC%E5%8F%B7/"/>
-    <id>https://lywlefan.github.io/2019/08/02/算法/算法基础/力扣/20.有效的括号/</id>
-    <published>2019-08-01T16:00:00.000Z</published>
-    <updated>2019-10-15T08:11:12.866Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>万丈高楼平地起的前提是地基好.</p></blockquote><h3 id="题目介绍"><a href="#题目介绍" class="headerlink" title="题目介绍"></a>题目介绍</h3><p>给定一个只包括 ‘(‘，’)’，’{‘，’}’，’[‘，’]’ 的字符串，判断字符串是否有效。</p><p>有效字符串需满足：</p><p>左括号必须用相同类型的右括号闭合。<br>左括号必须以正确的顺序闭合。<br>注意空字符串可被认为是有效字符串。</p><p>示例 1:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">输入: &quot;()&quot;</span><br><span class="line">输出: true</span><br><span class="line">示例 2:</span><br><span class="line"></span><br><span class="line">输入: &quot;()[]&#123;&#125;&quot;</span><br><span class="line">输出: true</span><br><span class="line">示例 3:</span><br><span class="line"></span><br><span class="line">输入: &quot;(]&quot;</span><br><span class="line">输出: false</span><br></pre></td></tr></table></figure><h3 id="题目解答"><a href="#题目解答" class="headerlink" title="题目解答"></a>题目解答</h3><h3 id="思路梳理"><a href="#思路梳理" class="headerlink" title="思路梳理"></a>思路梳理</h3><h4 id="哪些情况括号不闭合"><a href="#哪些情况括号不闭合" class="headerlink" title="哪些情况括号不闭合"></a>哪些情况括号不闭合</h4><ul><li><p>第一种:[(])</p></li><li><p>第二种:[)</p></li><li><p>第三种:[](</p></li></ul><h4 id="如何判断括号没有闭合"><a href="#如何判断括号没有闭合" class="headerlink" title="如何判断括号没有闭合"></a>如何判断括号没有闭合</h4><blockquote><p>注意：只包括括号，这是条件要注意！</p></blockquote><ul><li><p>1.获取每种类型左括号的第一次出现的位置</p></li><li><p>2.然后再找到每种类型右括号第一次出现的位置</p></li><li><p>3.如果存在以下情况则括号没有闭合</p><ul><li><p>a.类型左括号位置小于另一种类型括号右括号的位置,则括号没有闭合</p></li><li><p>b.任意类型括号不存在左括号或者右括号,则括号没有闭合</p></li></ul></li></ul><h4 id="最优解"><a href="#最优解" class="headerlink" title="最优解"></a>最优解</h4><ul><li>1.把左括号压入栈中</li><li>2.如果遇到右括号,取出栈最上面的元素去对应的值,判断和循环的元素是否相等,相等继续循环,否则返回false</li><li>3.循环结束,栈里面的元素依次被取出,说明括号串没啥问题,是闭合的. </li></ul><h3 id="题目实现"><a href="#题目实现" class="headerlink" title="题目实现"></a>题目实现</h3><h4 id="java"><a href="#java" class="headerlink" title="java"></a>java</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">static</span> Map&lt;Character, Character&gt; map = <span class="keyword">new</span> HashMap();</span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> &#123;</span><br><span class="line">    map.put(<span class="string">'('</span>, <span class="string">')'</span>);</span><br><span class="line">    map.put(<span class="string">'&#123;'</span>, <span class="string">'&#125;'</span>);</span><br><span class="line">    map.put(<span class="string">'['</span>, <span class="string">']'</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 方法一</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isValid</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">    Stack&lt;Character&gt; stack = <span class="keyword">new</span> Stack();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">char</span> in : s.toCharArray()) &#123;</span><br><span class="line">        <span class="comment">//左括号直接入栈</span></span><br><span class="line">        <span class="keyword">if</span> (map.keySet().contains(in)) &#123;</span><br><span class="line">            stack.push(in);</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (!stack.isEmpty() &amp;&amp; in == map.get(stack.pop())) <span class="keyword">continue</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> stack.isEmpty();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><blockquote><p><strong>参考文档</strong></p></blockquote><blockquote><p><a href="https://www.jianshu.com/u/354cc1548a33" target="_blank" rel="noopener">【1】简书主页·share猿</a></p></blockquote><blockquote><p><a href="https://juejin.im/user/5a8e759851882524d842d174" target="_blank" rel="noopener">【2】掘金主页·share猿</a></p></blockquote><blockquote><p><a href="https://github.com/azl397985856/leetcode" target="_blank" rel="noopener">【3】leetcode算法指南</a></p></blockquote><hr><p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>                </div>                <div class="image-caption"></div>            </figure></p><p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;blockquote&gt;
-&lt;p&gt;万丈高楼平地起的前提是地基好.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&quot;题目介绍&quot;&gt;&lt;a href=&quot;#题目介绍&quot; class=&quot;headerlink&quot; title=&quot;题目介绍&quot;&gt;&lt;/a&gt;题目介绍&lt;/h3&gt;&lt;p&gt;给定一个只包括 ‘(‘，
-      
-    
-    </summary>
-    
-      <category term="算法" scheme="https://lywlefan.github.io/categories/%E7%AE%97%E6%B3%95/"/>
-    
-    
-      <category term="力扣" scheme="https://lywlefan.github.io/tags/%E5%8A%9B%E6%89%A3/"/>
-    
-      <category term="基础" scheme="https://lywlefan.github.io/tags/%E5%9F%BA%E7%A1%80/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>算法导航</title>
-    <link href="https://lywlefan.github.io/2019/08/01/%E7%AE%97%E6%B3%95/%E7%AE%97%E6%B3%95%E5%AF%BC%E8%88%AA/"/>
-    <id>https://lywlefan.github.io/2019/08/01/算法/算法导航/</id>
-    <published>2019-07-31T16:00:00.000Z</published>
-    <updated>2019-10-15T08:11:12.814Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>万丈高楼平地起的前提是地基好.</p></blockquote><blockquote><p><strong>参考文档</strong></p></blockquote><blockquote><p><a href="https://www.jianshu.com/u/354cc1548a33" target="_blank" rel="noopener">【1】简书主页·share猿</a></p></blockquote><blockquote><p><a href="https://juejin.im/user/5a8e759851882524d842d174" target="_blank" rel="noopener">【2】掘金主页·share猿</a></p></blockquote><blockquote><p><a href="https://github.com/azl397985856/leetcode" target="_blank" rel="noopener">【3】leetcode算法指南</a></p></blockquote><hr><p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>                </div>                <div class="image-caption"></div>            </figure></p><p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;blockquote&gt;
-&lt;p&gt;万丈高楼平地起的前提是地基好.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;参考文档&lt;/strong&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;blockquote&gt;
-&lt;p&gt;&lt;a href=&quot;https://w
-      
-    
-    </summary>
-    
-      <category term="算法" scheme="https://lywlefan.github.io/categories/%E7%AE%97%E6%B3%95/"/>
-    
-    
-      <category term="导航" scheme="https://lywlefan.github.io/tags/%E5%AF%BC%E8%88%AA/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ab.exe压测工具的使用</title>
-    <link href="https://lywlefan.github.io/2019/07/31/%E6%B5%8B%E8%AF%95/%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95/ab.exe%E5%8E%8B%E6%B5%8B%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8/"/>
-    <id>https://lywlefan.github.io/2019/07/31/测试/压力测试/ab.exe压测工具的使用/</id>
-    <published>2019-07-30T16:00:00.000Z</published>
-    <updated>2019-10-15T08:11:12.259Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>工欲善其事，必先利器！</p></blockquote><h3 id="ad-exe介绍"><a href="#ad-exe介绍" class="headerlink" title="ad.exe介绍"></a>ad.exe介绍</h3><p>ab.exe是一个性能检测工具，是apache server中的一个小组件，使用简单，方便</p><h3 id="ad-exe下载"><a href="#ad-exe下载" class="headerlink" title="ad.exe下载"></a>ad.exe下载</h3><p><a href="http://files.cnblogs.com/files/gossip/ab.zip" target="_blank" rel="noopener">下载地址</a></p><h3 id="ad-exe使用步骤"><a href="#ad-exe使用步骤" class="headerlink" title="ad.exe使用步骤"></a>ad.exe使用步骤</h3><h4 id="打开cmd"><a href="#打开cmd" class="headerlink" title="打开cmd"></a>打开cmd</h4><h4 id="进入ab-exe所在的路径（默认放在d盘根目录下）"><a href="#进入ab-exe所在的路径（默认放在d盘根目录下）" class="headerlink" title="进入ab.exe所在的路径（默认放在d盘根目录下）"></a>进入ab.exe所在的路径（默认放在d盘根目录下）</h4><h4 id="命令示例"><a href="#命令示例" class="headerlink" title="命令示例"></a>命令示例</h4> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"> </span><br><span class="line">#介绍ab的命令</span><br><span class="line">ab help</span><br><span class="line">#ab命令请求（一共请求10次,10个并发同时请求）</span><br><span class="line">ab -n 10 -c 10 http://www.cnblogs.com/</span><br><span class="line">#ab命令超时请求（一共请求50次,50个并发同时请求，超时时间设为100秒， 当出现timeout时，可以设置超时时间）</span><br><span class="line">ab -n 50 -c 50 -t 100 http://www.cnblogs.com/</span><br></pre></td></tr></table></figure><h3 id="ab命令使用场景"><a href="#ab命令使用场景" class="headerlink" title="ab命令使用场景"></a>ab命令使用场景</h3><ul><li>可以测试网关的限流</li></ul><blockquote><p><a href="https://www.jianshu.com/u/354cc1548a33" target="_blank" rel="noopener">【1】简书主页·share猿</a><br><a href="https://juejin.im/user/5a8e759851882524d842d174" target="_blank" rel="noopener">【2】掘金主页·share猿</a></p></blockquote><hr><p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>                </div>                <div class="image-caption"></div>            </figure></p><p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;blockquote&gt;
-&lt;p&gt;工欲善其事，必先利器！&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&quot;ad-exe介绍&quot;&gt;&lt;a href=&quot;#ad-exe介绍&quot; class=&quot;headerlink&quot; title=&quot;ad.exe介绍&quot;&gt;&lt;/a&gt;ad.exe介绍&lt;/h3&gt;&lt;p&gt;
-      
-    
-    </summary>
-    
-      <category term="测试" scheme="https://lywlefan.github.io/categories/%E6%B5%8B%E8%AF%95/"/>
-    
-    
-      <category term="压力测试" scheme="https://lywlefan.github.io/tags/%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>01.初始redis</title>
-    <link href="https://lywlefan.github.io/2019/07/30/%E5%90%8E%E7%AB%AF/%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/NOSQL/redis/01.%E5%88%9D%E5%A7%8Bredis/"/>
-    <id>https://lywlefan.github.io/2019/07/30/后端/数据存储/NOSQL/redis/01.初始redis/</id>
-    <published>2019-07-29T16:00:00.000Z</published>
-    <updated>2019-10-15T06:42:25.070Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="redis是什么"><a href="#redis是什么" class="headerlink" title="redis是什么?"></a>redis是什么?</h3><p>redis是一个内存型数据(in-memory data structure store)。Redis是用ANSI C编写的。</p><h4 id="官网对redis关键词描述"><a href="#官网对redis关键词描述" class="headerlink" title="官网对redis关键词描述"></a>官网对redis关键词描述</h4><ul><li><p>开源内存数据库</p></li><li><p>可以进行缓存和消息代理</p></li><li><p>支持的数据类型有：字符串/hash/list/set/bitmaps/hyperloglogs</p></li><li><p>可以对集合进行排序</p></li><li><p>地理位置范围半径查询</p></li><li><p>支持流</p></li><li><p>内置复制功能</p></li><li><p>支持lua脚本</p></li><li><p>LRU缓存淘汰算法</p></li><li><p>磁盘级的持久化</p></li><li><p>redis集群</p></li></ul><h3 id="redis支持什么数据类型"><a href="#redis支持什么数据类型" class="headerlink" title="redis支持什么数据类型"></a>redis支持什么数据类型</h3><h4 id="字符类型-strings"><a href="#字符类型-strings" class="headerlink" title="字符类型(strings)"></a>字符类型(strings)</h4><h4 id="哈希类型-hashes"><a href="#哈希类型-hashes" class="headerlink" title="哈希类型(hashes)"></a>哈希类型(hashes)</h4><h4 id="list集合类型-lists"><a href="#list集合类型-lists" class="headerlink" title="list集合类型(lists)"></a>list集合类型(lists)</h4><h4 id="set集合类型-sets"><a href="#set集合类型-sets" class="headerlink" title="set集合类型(sets)"></a>set集合类型(sets)</h4><ul><li><p>不允许重复</p></li><li><p>无序</p></li></ul><h4 id="sorted-set集合类型-sorted-sets"><a href="#sorted-set集合类型-sorted-sets" class="headerlink" title="sorted set集合类型(sorted sets)"></a>sorted set集合类型(sorted sets)</h4><ul><li><p>不允许重复</p></li><li><p>有序(通过设置分数进行排序)</p></li></ul><h4 id="位图-bitmaps"><a href="#位图-bitmaps" class="headerlink" title="位图(bitmaps)"></a>位图(bitmaps)</h4><ul><li><p>按位进行标识</p></li><li><p>适合某个时间段状态只有两种的场景</p></li></ul><p>比如:签到,每天签到,状态就是签了或者没签</p><ul><li>占用内存小</li></ul><h4 id="hyperloglogs"><a href="#hyperloglogs" class="headerlink" title="hyperloglogs"></a>hyperloglogs</h4><ul><li><p>Redis 在 2.8.9 版本添加了 HyperLogLog 结构</p></li><li><p>Redis HyperLogLog 是用来做基数统计的算法，HyperLogLog 的优点是，在输入元素的数量或者体积非常非常大时，计算基数所需的空间总是固定 的、并且是很小的。</p></li><li><p>在 Redis 里面，每个 HyperLogLog 键只需要花费 12 KB 内存，就可以计算接近 2^64 个不同元素的基数。这和计算基数时，元素越多耗费内存就越多的集合形成鲜明对比。</p></li><li><p>因为 HyperLogLog 只会根据输入元素来计算基数，而不会储存输入元素本身，所以 HyperLogLog 不能像集合那样，返回输入的各个元素。</p></li><li><p>HyperLogLog是一种算法，并非redis独有</p></li><li><p>目的是做基数统计，故不是集合，不会保存元数据，只记录数量而不是数值。</p></li><li><p>耗空间极小，支持输入非常体积的数据量</p></li><li><p>核心是基数估算算法，主要表现为计算时内存的使用和数据合并的处理。最终数值存在一定误差</p></li><li><p>redis中每个hyperloglog key占用了12K的内存用于标记基数（官方文档）</p></li><li><p>pfadd命令并不会一次性分配12k内存，而是随着基数的增加而逐渐增加内存分配；而pfmerge操作则会将sourcekey合并后存储在12k大小的key中，这由hyperloglog合并操作的原理（两个hyperloglog合并时需要单独比较每个桶的值）可以很容易理解。</p></li><li><p>误差说明：基数估计的结果是一个带有 0.81% 标准错误（standard error）的近似值。是可接受的范围</p></li><li><p>Redis 对 HyperLogLog 的存储进行了优化，在计数比较小时，它的存储空间采用稀疏矩阵存储，空间占用很小，仅仅在计数慢慢变大，稀疏矩阵占用空间渐渐超过了阈值时才会一次性转变成稠密矩阵，才会占用 12k 的空间</p></li></ul><h5 id="数据结构描述"><a href="#数据结构描述" class="headerlink" title="数据结构描述"></a>数据结构描述</h5><h5 id="特征"><a href="#特征" class="headerlink" title="特征"></a>特征</h5><ul><li><p>基数统计(不允许重复的数据)</p></li><li><p>占用12k空间</p></li></ul><h5 id="适用场景"><a href="#适用场景" class="headerlink" title="适用场景"></a>适用场景</h5><ul><li><p>统计注册 IP 数</p></li><li><p>统计每日访问 IP 数</p></li><li><p>统计页面实时 UV 数</p></li><li><p>统计在线用户数</p></li><li><p>统计用户每天搜索不同词条的个数</p></li></ul><blockquote><p><strong>参考文档</strong></p></blockquote><blockquote><p><a href="https://www.jianshu.com/u/354cc1548a33" target="_blank" rel="noopener">【1】简书主页·share猿</a></p></blockquote><blockquote><p><a href="https://juejin.im/user/5a8e759851882524d842d174" target="_blank" rel="noopener">【2】掘金主页·share猿</a></p></blockquote><blockquote><p><a href="https://redis.io" target="_blank" rel="noopener">【3】redis官网</a></p></blockquote><hr><p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>                </div>                <div class="image-caption"></div>            </figure></p><p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h3 id=&quot;redis是什么&quot;&gt;&lt;a href=&quot;#redis是什么&quot; class=&quot;headerlink&quot; title=&quot;redis是什么?&quot;&gt;&lt;/a&gt;redis是什么?&lt;/h3&gt;&lt;p&gt;redis是一个内存型数据(in-memory data structure store
-      
-    
-    </summary>
-    
-      <category term="后端" scheme="https://lywlefan.github.io/categories/%E5%90%8E%E7%AB%AF/"/>
-    
-    
-      <category term="redis" scheme="https://lywlefan.github.io/tags/redis/"/>
-    
-      <category term="数据存储" scheme="https://lywlefan.github.io/tags/%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/"/>
-    
-      <category term="NOSQL" scheme="https://lywlefan.github.io/tags/NOSQL/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>02.redis的应用--布隆过滤器</title>
-    <link href="https://lywlefan.github.io/2019/07/30/%E5%90%8E%E7%AB%AF/%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/NOSQL/redis/02.redis%E7%9A%84%E5%BA%94%E7%94%A8--%E5%B8%83%E9%9A%86%E8%BF%87%E6%BB%A4%E5%99%A8/"/>
-    <id>https://lywlefan.github.io/2019/07/30/后端/数据存储/NOSQL/redis/02.redis的应用--布隆过滤器/</id>
-    <published>2019-07-29T16:00:00.000Z</published>
-    <updated>2019-10-15T06:42:26.043Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="布隆过滤器"><a href="#布隆过滤器" class="headerlink" title="布隆过滤器"></a>布隆过滤器</h3><h4 id="思维导图"><a href="#思维导图" class="headerlink" title="思维导图"></a>思维导图</h4><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://upload-images.jianshu.io/upload_images/3084894-1be30bea723ccf8a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="布隆过滤器" title>                </div>                <div class="image-caption">布隆过滤器</div>            </figure><h3 id="布隆过滤器应用"><a href="#布隆过滤器应用" class="headerlink" title="布隆过滤器应用"></a>布隆过滤器应用</h3><h4 id="新闻推送去重"><a href="#新闻推送去重" class="headerlink" title="新闻推送去重"></a>新闻推送去重</h4><h4 id="垃圾邮件去重"><a href="#垃圾邮件去重" class="headerlink" title="垃圾邮件去重"></a>垃圾邮件去重</h4><h4 id="插件安装"><a href="#插件安装" class="headerlink" title="插件安装"></a>插件安装</h4><h5 id="下载插件"><a href="#下载插件" class="headerlink" title="下载插件"></a>下载插件</h5><p><a href="https://github.com/RedisBloom/RedisBloom/releases" target="_blank" rel="noopener">点击该地址选择合适的版本</a></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#下载</span><br><span class="line">wget https://github.com/RedisLabsModules/rebloom/archive/v1.1.1.tar.gz</span><br><span class="line">#解压</span><br><span class="line">tar zxvf v1.1.1.tar.gz</span><br><span class="line">cd rebloom-1.1.1</span><br><span class="line"># 编译</span><br><span class="line">make</span><br></pre></td></tr></table></figure><h4 id="配置插件"><a href="#配置插件" class="headerlink" title="配置插件"></a>配置插件</h4><p>在redis配置文件(redis.conf)中加入该模块即可</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">loadmodule /usr/local/web/redis/RedisBloom-1.1.1/rebloom.so</span><br></pre></td></tr></table></figure><p>或者启动的时候加载进去：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">redis-server /etc/redis/redis.conf --loadmodule /opt/redis/RedisBloom-2.0.1/src/rebloom.so INITIAL_SIZE 10000000 ERROR_RATE 0.0001</span><br></pre></td></tr></table></figure><h4 id="执行相关命令测试"><a href="#执行相关命令测试" class="headerlink" title="执行相关命令测试"></a>执行相关命令测试</h4><blockquote><p>以上就是我安装的步骤，但是安装完成后还是出现了问题，记录下来，后续慢慢解决。</p></blockquote><blockquote><p><strong>参考文档</strong></p></blockquote><blockquote><p><a href="https://www.jianshu.com/u/354cc1548a33" target="_blank" rel="noopener">【1】简书主页·share猿</a></p></blockquote><blockquote><p><a href="https://juejin.im/user/5a8e759851882524d842d174" target="_blank" rel="noopener">【2】掘金主页·share猿</a></p></blockquote><blockquote><p><a href="https://redis.io" target="_blank" rel="noopener">【3】redis官网</a></p></blockquote><blockquote><p><a href="https://github.com/RedisBloom/RedisBloom" target="_blank" rel="noopener">【4】布隆过滤器插件下载地址</a></p></blockquote><hr><p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>                </div>                <div class="image-caption"></div>            </figure></p><p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h3 id=&quot;布隆过滤器&quot;&gt;&lt;a href=&quot;#布隆过滤器&quot; class=&quot;headerlink&quot; title=&quot;布隆过滤器&quot;&gt;&lt;/a&gt;布隆过滤器&lt;/h3&gt;&lt;h4 id=&quot;思维导图&quot;&gt;&lt;a href=&quot;#思维导图&quot; class=&quot;headerlink&quot; title=&quot;思维导图&quot;
-      
-    
-    </summary>
-    
-      <category term="后端" scheme="https://lywlefan.github.io/categories/%E5%90%8E%E7%AB%AF/"/>
-    
-    
-      <category term="redis" scheme="https://lywlefan.github.io/tags/redis/"/>
-    
-      <category term="数据存储" scheme="https://lywlefan.github.io/tags/%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/"/>
-    
-      <category term="NOSQL" scheme="https://lywlefan.github.io/tags/NOSQL/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>MPP(大规模并行处理)简介</title>
-    <link href="https://lywlefan.github.io/2019/07/19/%E5%90%8E%E7%AB%AF/%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/MBPP%E6%95%B0%E6%8D%AE%E5%BA%93/MPP(%E5%A4%A7%E8%A7%84%E6%A8%A1%E5%B9%B6%E8%A1%8C%E5%A4%84%E7%90%86)%E7%AE%80%E4%BB%8B/"/>
-    <id>https://lywlefan.github.io/2019/07/19/后端/数据存储/MBPP数据库/MPP(大规模并行处理)简介/</id>
-    <published>2019-07-18T16:00:00.000Z</published>
-    <updated>2019-10-15T06:42:25.849Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>&emsp;&emsp;实践一门技术的最好方式就是深入理解它的思想，然后造一个出来！</p></blockquote><h3 id="1、-什么是MPP？"><a href="#1、-什么是MPP？" class="headerlink" title="1、 什么是MPP？"></a>1、 什么是MPP？</h3><p>MPP (Massively Parallel Processing)，即大规模并行处理，在数据库非共享集群中，每个节点都有独立的磁盘存储系统和内存系统，业务数据根据数据库模型和应用特点划分到各个节点上，每台数据节点通过专用网络或者商业通用网络互相连接，彼此协同计算，作为整体提供数据库服务。非共享数据库集群有完全的可伸缩性、高可用、高性能、优秀的性价比、资源共享等优势。</p><p>简单来说，MPP是将任务并行的分散到多个服务器和节点上，在每个节点上计算完成后，将各自部分的结果汇总在一起得到最终的结果(与Hadoop相似)。</p><h3 id="2、MPP-大规模并行处理-架构"><a href="#2、MPP-大规模并行处理-架构" class="headerlink" title="2、MPP(大规模并行处理)架构"></a>2、MPP(大规模并行处理)架构</h3><p><img src="https://img-blog.csdn.net/20180607153205548?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMTg5MDgz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt>                                         (MPP架构)</p><h3 id="3、-MPP架构特征"><a href="#3、-MPP架构特征" class="headerlink" title="3、 MPP架构特征"></a>3、 MPP架构特征</h3><p>● 任务并行执行;</p><p>● 数据分布式存储(本地化);</p><p>● 分布式计算;</p><p>● 私有资源;</p><p>● 横向扩展;</p><p>● Shared Nothing架构。</p><h3 id="4、-MPP服务器架构"><a href="#4、-MPP服务器架构" class="headerlink" title="4、 MPP服务器架构"></a>4、 MPP服务器架构</h3><p>它由多个SMP服务器通过一定的节点互联网络进行连接，协同工作，完成相同的任务，从用户的角度来看是一个服务器系统。其基本特征是由多个SMP服务器(每个SMP服务器称节点)通过节点互联网络连接而成，每个节点只访问自己的本地资源(内存、存储等)，是一种完全无共享(Share Nothing)结构，因而扩展能力最好，理论上其扩展无限制。</p><h3 id="5、MPPDB"><a href="#5、MPPDB" class="headerlink" title="5、MPPDB"></a>5、MPPDB</h3><p>MPPDB是一款 Shared Nothing 架构的分布式并行结构化数据库集群，具备高性能、高可用、高扩展特性，可以为超大规模数据管理提供高性价比的通用计算平台，并广泛地用于支撑各类数据仓库系统、BI 系统和决策支持系统</p><h3 id="6、MPPDB架构"><a href="#6、MPPDB架构" class="headerlink" title="6、MPPDB架构"></a>6、MPPDB架构</h3><p>MPP 采用完全并行的MPP + Shared Nothing 的分布式扁平架构，这种架构中的每一个节点（node）都是独立的、自给的、节点之间对等，而且整个系统中不存在单点瓶颈，具有非常强的扩展性。</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://img-blog.csdn.net/20180607153236902?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMTg5MDgz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt title>                </div>                <div class="image-caption"></div>            </figure><h3 id="7、-MPPDB特征"><a href="#7、-MPPDB特征" class="headerlink" title="7、 MPPDB特征"></a>7、 MPPDB特征</h3><p>MPP 具备以下技术特征：</p><p>1) 低硬件成本：完全使用 x86 架构的 PC Server，不需要昂贵的 Unix 服务器和磁盘阵列；</p><p>2) 集群架构与部署：完全并行的 MPP + Shared Nothing 的分布式架构，采用 Non-Master 部署，节点对等的扁平结构；</p><p>3) 海量数据分布压缩存储：可处理 PB 级别以上的结构化数据，采用 hash分布、random 存储策略进行数据存储；同时采用先进的压缩算法，减少存储数据所需的空间，可以将所用空间减少 1~20 倍，并相应地提高 I/O 性能；</p><p>4) 数据加载高效性：基于策略的数据加载模式，集群整体加载速度可达2TB/h；</p><p>5) 高扩展、高可靠：支持集群节点的扩容和缩容，支持全量、增量的备份/恢复;</p><p>6) 高可用、易维护：数据通过副本提供冗余保护，自动故障探测和管理，自动同步元数据和业务数据。提供图形化工具，以简化管理员对数据库的管理工作；</p><p>7) 高并发：读写不互斥，支持数据的边加载边查询，单个节点并发能力大于 300 用户；</p><p>8) 行列混合存储：提供行列混合存储方案，从而提高了列存数据库特殊查询场景的查询响应耗时；</p><p>9) 标准化：支持SQL92 标准，支持 C API、ODBC、JDBC、ADO.NET 等接口规范。</p><h3 id="8、-常见MPPDB"><a href="#8、-常见MPPDB" class="headerlink" title="8、 常见MPPDB"></a>8、 常见MPPDB</h3><p>● GREENPLUM(EMC)</p><p>● Asterdata(Teradata)</p><p>● Nettezza(IBM)</p><p>● Vertica(HP)</p><p>● GBase 8a MPP cluster(南大通用)</p><h3 id="9、-MPPDB、Hadoop与传统数据库技术对比与适用场景"><a href="#9、-MPPDB、Hadoop与传统数据库技术对比与适用场景" class="headerlink" title="9、 MPPDB、Hadoop与传统数据库技术对比与适用场景"></a>9、 MPPDB、Hadoop与传统数据库技术对比与适用场景</h3><p>MPPDB与Hadoop都是将运算分布到节点中独立运算后进行结果合并(分布式计算)，但由于依据的理论和采用的技术路线不同而有各自的优缺点和适用范围。两种技术以及传统数据库技术的对比如下：</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://i.loli.net/2019/07/19/5d3189cc48dc124520.png" alt title>                </div>                <div class="image-caption"></div>            </figure><p>综合而言，Hadoop和MPP两种技术的特定和适用场景为：</p><p>● Hadoop在处理非结构化和半结构化数据上具备优势，尤其适合海量数据批处理等应用要求。</p><p>● MPP适合替代现有关系数据机构下的大数据处理，具有较高的效率。</p><p>MPP适合多维度数据自助分析、数据集市等；Hadoop适合海量数据存储查询、批量数据ETL、非机构化数据分析(日志分析、文本分析)等。</p><p>由上述对比可预见未来大数据存储与处理趋势：MPPDB+Hadoop混搭使用，用MPP处理PB级别的、高质量的结构化数据，同时为应用提供丰富的SQL和事物支持能力；用Hadoop实现半结构化、非结构化数据处理。这样可以同时满足结构化、半结构化和非结构化数据的高效处理需求。</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://img-blog.csdn.net/20180607153301340?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMTg5MDgz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt title>                </div>                <div class="image-caption"></div>            </figure><blockquote><p><a href="https://www.jianshu.com/u/354cc1548a33" target="_blank" rel="noopener">【1】简书主页·share猿</a>﻿<br><a href="https://juejin.im/user/5a8e759851882524d842d174" target="_blank" rel="noopener">【2】掘金主页·share猿</a>﻿﻿</p></blockquote><p>—﻿</p><p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong>﻿</p><p><img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt>﻿﻿</p><p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;blockquote&gt;
-&lt;p&gt;&amp;emsp;&amp;emsp;实践一门技术的最好方式就是深入理解它的思想，然后造一个出来！&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&quot;1、-什么是MPP？&quot;&gt;&lt;a href=&quot;#1、-什么是MPP？&quot; class=&quot;headerlink&quot; ti
-      
-    
-    </summary>
-    
-      <category term="后端" scheme="https://lywlefan.github.io/categories/%E5%90%8E%E7%AB%AF/"/>
-    
-    
-      <category term="数据存储" scheme="https://lywlefan.github.io/tags/%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/"/>
-    
-      <category term="MBPP数据库" scheme="https://lywlefan.github.io/tags/MBPP%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>理财书籍收集</title>
-    <link href="https://lywlefan.github.io/2019/07/18/%E8%AF%BB%E4%B9%A6%E7%9C%8B%E6%8A%A5/%E4%B9%A6%E5%8D%95/%E7%90%86%E8%B4%A2%E4%B9%A6%E7%B1%8D%E6%94%B6%E9%9B%86/%E7%90%86%E8%B4%A2%E4%B9%A6%E7%B1%8D%E6%94%B6%E9%9B%86/"/>
-    <id>https://lywlefan.github.io/2019/07/18/读书看报/书单/理财书籍收集/理财书籍收集/</id>
-    <published>2019-07-17T16:00:00.000Z</published>
-    <updated>2019-10-15T08:11:12.693Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>多读书，多看报，少吃零食，少睡觉！</p></blockquote><h2 id="理财书籍汇集"><a href="#理财书籍汇集" class="headerlink" title="理财书籍汇集"></a>理财书籍汇集</h2><h3 id="未读"><a href="#未读" class="headerlink" title="未读"></a>未读</h3><ul><li><p>《谁动了我的奶酪》 </p></li><li><p>《小狗钱钱》</p></li><li><p>《富爸爸，穷爸爸》，《财务自由之路》和《投资指南》 </p></li><li><p>《一分钟百万富翁》 </p></li><li><p>《怎样启迪你头脑中的金融意识》 </p></li><li><p>《财源滚滚》</p></li><li><p>《钻石就在你家后院》</p></li><li><p>《我的百万富翁兄弟》</p></li></ul><h3 id="已读"><a href="#已读" class="headerlink" title="已读"></a>已读</h3><blockquote><p><a href="https://www.jianshu.com/u/354cc1548a33" target="_blank" rel="noopener">【1】简书主页·share猿</a><br><a href="https://juejin.im/user/5a8e759851882524d842d174" target="_blank" rel="noopener">【2】掘金主页·share猿</a></p></blockquote><hr><p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>                </div>                <div class="image-caption"></div>            </figure></p><p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;blockquote&gt;
-&lt;p&gt;多读书，多看报，少吃零食，少睡觉！&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&quot;理财书籍汇集&quot;&gt;&lt;a href=&quot;#理财书籍汇集&quot; class=&quot;headerlink&quot; title=&quot;理财书籍汇集&quot;&gt;&lt;/a&gt;理财书籍汇集&lt;/h2&gt;&lt;h3 i
-      
-    
-    </summary>
-    
-      <category term="读书看报" scheme="https://lywlefan.github.io/categories/%E8%AF%BB%E4%B9%A6%E7%9C%8B%E6%8A%A5/"/>
-    
-    
-      <category term="书单" scheme="https://lywlefan.github.io/tags/%E4%B9%A6%E5%8D%95/"/>
-    
-      <category term="理财" scheme="https://lywlefan.github.io/tags/%E7%90%86%E8%B4%A2/"/>
+      <category term="java" scheme="https://lywlefan.github.io/tags/java/"/>
     
   </entry>
   
