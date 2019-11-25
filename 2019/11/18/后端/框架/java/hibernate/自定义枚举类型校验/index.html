@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>自定义枚举类型校验 | share猿 | https://lywlefan.github.io/</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="java,框架,hibernate">
+    <meta name="description" content="需求自定义了如下枚举类型,需要对其vo进行校验: 123456789101112131415161718192021222324252627public interface ValidateEnum &amp;#123;    /**     * 证件类型     */    @Getter    @AllArgsConstructor    enum CertTypeEnum implements Va">
+<meta name="keywords" content="java,框架,hibernate">
+<meta property="og:type" content="article">
+<meta property="og:title" content="自定义枚举类型校验">
+<meta property="og:url" content="https://lywlefan.github.io/2019/11/18/后端/框架/java/hibernate/自定义枚举类型校验/index.html">
+<meta property="og:site_name" content="share猿">
+<meta property="og:description" content="需求自定义了如下枚举类型,需要对其vo进行校验: 123456789101112131415161718192021222324252627public interface ValidateEnum &amp;#123;    /**     * 证件类型     */    @Getter    @AllArgsConstructor    enum CertTypeEnum implements Va">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-11-25T09:13:51.961Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="自定义枚举类型校验">
+<meta name="twitter:description" content="需求自定义了如下枚举类型,需要对其vo进行校验: 123456789101112131415161718192021222324252627public interface ValidateEnum &amp;#123;    /**     * 证件类型     */    @Getter    @AllArgsConstructor    enum CertTypeEnum implements Va">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+    
+        <link rel="alternate" type="application/atom+xml" title="share猿" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">share猿</h5>
+          <a href="mailto:330334064@qq.com" title="330334064@qq.com" class="mail">330334064@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/lywlefan" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                GitHub
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/atom">
+                <i class="icon icon-lg icon-rss"></i>
+                订阅
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">自定义枚举类型校验</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">自定义枚举类型校验</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-11-17T16:00:00.000Z" itemprop="datePublished" class="page-time">
+  2019-11-18
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/后端/">后端</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#需求"><span class="post-toc-number">1.</span> <span class="post-toc-text">需求</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#实现"><span class="post-toc-number">2.</span> <span class="post-toc-text">实现</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#自定义枚举校验注解"><span class="post-toc-number">2.0.1.</span> <span class="post-toc-text">自定义枚举校验注解</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#枚举注解处理类"><span class="post-toc-number">2.0.2.</span> <span class="post-toc-text">枚举注解处理类</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#定义枚举类型接口"><span class="post-toc-number">2.0.3.</span> <span class="post-toc-text">定义枚举类型接口</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#使用枚举校验注解"><span class="post-toc-number">2.0.4.</span> <span class="post-toc-text">使用枚举校验注解</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-后端/框架/java/hibernate/自定义枚举类型校验" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">自定义枚举类型校验</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-11-18 00:00:00" datetime="2019-11-17T16:00:00.000Z" itemprop="datePublished">2019-11-18</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/后端/">后端</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h2 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h2><p>自定义了如下枚举类型,需要对其vo进行校验:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">ValidateEnum</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 证件类型</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Getter</span></span><br><span class="line">    <span class="meta">@AllArgsConstructor</span></span><br><span class="line">    <span class="keyword">enum</span> CertTypeEnum implements ValidateEnum &#123;</span><br><span class="line">        CERT_TYPE(<span class="string">"身份证"</span>,<span class="string">"0"</span>),</span><br><span class="line">        PROTECTION_TYPE(<span class="string">"护照"</span>,<span class="string">"1"</span>),</span><br><span class="line">        OFFICER_TYPE(<span class="string">"军官证"</span>,<span class="string">"2"</span>),</span><br><span class="line">        SOLDIERS_TYPE(<span class="string">"士兵证"</span>,<span class="string">"3"</span>),</span><br><span class="line">        REENTRY_PERMIT_TYPE(<span class="string">"回乡证"</span>,<span class="string">"4"</span>),</span><br><span class="line">        INTERIM_IDENTITY_CARD_TYPE(<span class="string">"临时身份证"</span>,<span class="string">"5"</span>),</span><br><span class="line">        RESIDENCE_BOOKLET_TYPE(<span class="string">"户口簿"</span>,<span class="string">"6"</span>),</span><br><span class="line">        POLICE_OFFICER_TYPE(<span class="string">"警官证"</span>,<span class="string">"7"</span>),</span><br><span class="line">        TAIWAN_COMPATRIOTS_TYPE(<span class="string">"台胞证"</span>,<span class="string">"8"</span>),</span><br><span class="line">        BUSINESS_LICENSE_TYPE(<span class="string">"营业执照"</span>,<span class="string">"9"</span>),</span><br><span class="line">        OTHERS_TYPE(<span class="string">"其他证件"</span>,<span class="string">"10"</span>),</span><br><span class="line">        HONG_KONG_TYPE(<span class="string">"港澳台居民来往内地通行证"</span>,<span class="string">"11"</span>),</span><br><span class="line">        TAIWAN_TYPE(<span class="string">"台湾居民来往大陆通行证"</span>,<span class="string">"12"</span>);</span><br><span class="line">        <span class="keyword">private</span> String name;</span><br><span class="line">        <span class="keyword">private</span> String value;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><h4 id="自定义枚举校验注解"><a href="#自定义枚举校验注解" class="headerlink" title="自定义枚举校验注解"></a>自定义枚举校验注解</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Documented</span></span><br><span class="line"><span class="meta">@Retention</span>(RetentionPolicy.RUNTIME)</span><br><span class="line"><span class="meta">@Target</span>(&#123;ElementType.FIELD, ElementType.METHOD&#125;)</span><br><span class="line"><span class="meta">@Constraint</span>(validatedBy = EnumValidatorClass.class)</span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> EnumValidator &#123;</span><br><span class="line">    Class&lt;?&gt; value();</span><br><span class="line"></span><br><span class="line">    <span class="function">String <span class="title">message</span><span class="params">()</span> <span class="keyword">default</span> "入参值不在正确枚举中"</span>;</span><br><span class="line"></span><br><span class="line">    Class&lt;?&gt;[] groups() <span class="keyword">default</span> &#123;&#125;;</span><br><span class="line"></span><br><span class="line">    Class&lt;? extends Payload&gt;[] payload() <span class="keyword">default</span> &#123;&#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="枚举注解处理类"><a href="#枚举注解处理类" class="headerlink" title="枚举注解处理类"></a>枚举注解处理类</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">EnumValidatorClass</span> <span class="keyword">implements</span> <span class="title">ConstraintValidator</span>&lt;<span class="title">EnumValidator</span>, <span class="title">Object</span>&gt;, <span class="title">Annotation</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Logger log = LoggerFactory.getLogger(<span class="keyword">this</span>.getClass());</span><br><span class="line">    <span class="keyword">private</span> List&lt;Object&gt; values = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">initialize</span><span class="params">(EnumValidator enumValidator)</span> </span>&#123;</span><br><span class="line">        Class&lt;?&gt; clz = enumValidator.value();</span><br><span class="line">        Object[] ojects = clz.getEnumConstants();</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            Method method = clz.getMethod(<span class="string">"getValue"</span>);</span><br><span class="line">            <span class="keyword">if</span> (Objects.isNull(method)) &#123;</span><br><span class="line">                <span class="keyword">throw</span> <span class="keyword">new</span> Exception(String.format(<span class="string">"枚举对象&#123;&#125;缺少字段名为value的字段"</span>,</span><br><span class="line">                        clz.getName()));</span><br><span class="line">            &#125;</span><br><span class="line">            Object value = <span class="keyword">null</span>;</span><br><span class="line">            <span class="keyword">for</span> (Object obj : ojects) &#123;</span><br><span class="line">                value = method.invoke(obj);</span><br><span class="line">                values.add(value);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            log.error(<span class="string">"[处理枚举校验异常]"</span>, e);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> Class&lt;? extends Annotation&gt; annotationType() &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isValid</span><span class="params">(Object value, ConstraintValidatorContext constraintValidatorContext)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> Objects.isNull(value) || values.contains(value) ? <span class="keyword">true</span> : <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="定义枚举类型接口"><a href="#定义枚举类型接口" class="headerlink" title="定义枚举类型接口"></a>定义枚举类型接口</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">public interface ValidateEnum &#123;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 证件类型</span><br><span class="line">     */</span><br><span class="line">    @Getter</span><br><span class="line">    @AllArgsConstructor</span><br><span class="line">    enum CertTypeEnum implements ValidateEnum &#123;</span><br><span class="line">        CERT_TYPE(&quot;身份证&quot;,&quot;0&quot;),</span><br><span class="line">        PROTECTION_TYPE(&quot;护照&quot;,&quot;1&quot;),</span><br><span class="line">        OFFICER_TYPE(&quot;军官证&quot;,&quot;2&quot;),</span><br><span class="line">        SOLDIERS_TYPE(&quot;士兵证&quot;,&quot;3&quot;),</span><br><span class="line">        REENTRY_PERMIT_TYPE(&quot;回乡证&quot;,&quot;4&quot;),</span><br><span class="line">        INTERIM_IDENTITY_CARD_TYPE(&quot;临时身份证&quot;,&quot;5&quot;),</span><br><span class="line">        RESIDENCE_BOOKLET_TYPE(&quot;户口簿&quot;,&quot;6&quot;),</span><br><span class="line">        POLICE_OFFICER_TYPE(&quot;警官证&quot;,&quot;7&quot;),</span><br><span class="line">        TAIWAN_COMPATRIOTS_TYPE(&quot;台胞证&quot;,&quot;8&quot;),</span><br><span class="line">        BUSINESS_LICENSE_TYPE(&quot;营业执照&quot;,&quot;9&quot;),</span><br><span class="line">        OTHERS_TYPE(&quot;其他证件&quot;,&quot;10&quot;),</span><br><span class="line">        HONG_KONG_TYPE(&quot;港澳台居民来往内地通行证&quot;,&quot;11&quot;),</span><br><span class="line">        TAIWAN_TYPE(&quot;台湾居民来往大陆通行证&quot;,&quot;12&quot;);</span><br><span class="line">        private String name;</span><br><span class="line">        private String value;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="使用枚举校验注解"><a href="#使用枚举校验注解" class="headerlink" title="使用枚举校验注解"></a>使用枚举校验注解</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 证件类型(0:身份证, 1:护照, 2:军官证, 3:士兵证, 4:回乡证, 5:临时身份证, 6:户口簿, 7:警官证, 8:台胞证, 9:营业执照, 10:其他证件, 11:港澳台居民来往内地通行证, 12:台湾居民来往大陆通行证)</span><br><span class="line"> */</span><br><span class="line">@EnumValidator(message = &quot;证件类型不在指定类型中&quot;, value = ValidateEnum.CertTypeEnum.class)</span><br><span class="line">private String certType;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><a href="https://www.jianshu.com/u/354cc1548a33" target="_blank" rel="noopener">【1】简书主页·share猿</a><br><a href="https://juejin.im/user/5a8e759851882524d842d174" target="_blank" rel="noopener">【2】掘金主页·share猿</a></p>
+</blockquote>
+<hr>
+<p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
+<p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-11-25T09:13:51.961Z" itemprop="dateUpdated">2019-11-25 17:13:51</time>
+</span><br>
+
+
+        
+        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2019/11/18/后端/框架/java/hibernate/自定义枚举类型校验/" target="_blank" rel="external">https://lywlefan.github.io/2019/11/18/后端/框架/java/hibernate/自定义枚举类型校验/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://lywlefan.github.io">
+            <img src="/img/avatar.png" alt="share猿">
+            share猿
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hibernate/">hibernate</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/框架/">框架</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://lywlefan.github.io/2019/11/18/后端/框架/java/hibernate/自定义枚举类型校验/&title=《自定义枚举类型校验》 — share猿&pic=https://lywlefan.github.io/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://lywlefan.github.io/2019/11/18/后端/框架/java/hibernate/自定义枚举类型校验/&title=《自定义枚举类型校验》 — share猿&source=分享有价值的内容,你我共同成长!" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://lywlefan.github.io/2019/11/18/后端/框架/java/hibernate/自定义枚举类型校验/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《自定义枚举类型校验》 — share猿&url=https://lywlefan.github.io/2019/11/18/后端/框架/java/hibernate/自定义枚举类型校验/&via=https://lywlefan.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://lywlefan.github.io/2019/11/18/后端/框架/java/hibernate/自定义枚举类型校验/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2019/11/25/后端/框架/java/hibernate/jpa参数为空查询报错问题/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">jpa参数为空查询报错问题</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/11/05/前沿技术/区块链/应用/去中心化应用/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">去中心化应用</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'true' == 'true',
+            verify: 'false' == 'true',
+            appId: "hQGVIAaJERVwyrWxj1uqgCqS-gzGzoHsz",
+            appKey: "l7FO5csTavNwXCGryJyOkkc1",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢赞赏!
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>share猿 &copy; 2015 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://lywlefan.github.io/2019/11/18/后端/框架/java/hibernate/自定义枚举类型校验/&title=《自定义枚举类型校验》 — share猿&pic=https://lywlefan.github.io/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://lywlefan.github.io/2019/11/18/后端/框架/java/hibernate/自定义枚举类型校验/&title=《自定义枚举类型校验》 — share猿&source=分享有价值的内容,你我共同成长!" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://lywlefan.github.io/2019/11/18/后端/框架/java/hibernate/自定义枚举类型校验/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《自定义枚举类型校验》 — share猿&url=https://lywlefan.github.io/2019/11/18/后端/框架/java/hibernate/自定义枚举类型校验/&via=https://lywlefan.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://lywlefan.github.io/2019/11/18/后端/框架/java/hibernate/自定义枚举类型校验/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAADM0lEQVR42u3ay5IiMQwEQP7/p9mIubI0VfIwgU36RPBoOs1BSOXbLV73n/X4zOPzz169P6z2+tffdXvHwsbGxt6Efb9cj5e+vsXr66x8Krmf4h6wsbGxj2NfF4brgtRuTV4Cc1hd5LCxsbG/kp00Kitl6bq8tcUMGxsbG3tWwNrx00q5wsbGxsZuh0o5bFaWZjHA22dp2NjY2B/PboPeT378xnwbGxsb+yPZ93LlX5OEB21wOxtg/UeBjY2NfRD7OpRNMMmN/tZ2JC1N8SNhY2NjH8Se/UtPjubMwt3ZEZ+VoBobGxt7d3Y+TE8Cg7zNaJuZdluxsbGxv4GdF6RZq9Buaxs8J9Sn4yRsbGzsI9jtX/z3jZ+SjchHVPUgCRsbG3tzdlty8gYg4bXFrP1GbGxs7LPZs6Mz+RbcypWPn/L2CRsbG/vb2Cv4vHVJrrMSA7wYS2FjY2MfxM4LwHqUm0TI601O0QhhY2NjH8qe8dp3ro+QZsEDNjY29nnsPHbN25W2pLVRwewxNjY29jew2wB4dhAnfyYfGOVHfIrsAhsbG3sTdltgkqH8LCROXs1/hkiKjY2NfRB7vYDNRvlJAVv/AYYLGxsbeyt2csAlKXL5SGhWOGdl70Uqgo2NjX0QOy8n+WathL4rI6ro/djY2NhHsNcPO+aD+3y4n7dDyXpRsbGxsbE3Z7d/7meHcpYahrJ1+YWhEjY2NvZW7FlRyTclHzO9I9Z9emVsbGzs49hJaJr/6W/LWBsM5HHv08fY2NjYB7HzwXo70M/jgZWNy+MNbGxs7FPZs6LShrv5DbWRc/6epx0YNjY29ubs9Q+vFKQ8Wl5pXbCxsbHPZv/9IZt86JO3RnWpw8bGxj6OPQtN8wihvdFZCSy2HhsbG/s49t9HuUn80LZD189HPQo2Njb2huy2dLWxaxswtGOsKMFe2QJsbGzsTdj5TSSXzgdJbWOz/jNgY2Njn81eYay0KOuHe/KiG82lsLGxsY9m5wP92eGb2VYOQwVsbGxs7NGr+UGcvNYMgwFsbGzs49jtsH5WcnJki2mLKDY2NvZJ7Dbo/a0xU7s1bWuUBxvY2NjY27L/ATz7v4OXMtY1AAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '共同学习!共同进步!';
+            clearTimeout(titleTime);
+        } else {
+            document.title = 'Share猿社区官方';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
