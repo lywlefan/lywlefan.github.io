@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>初始Knative | share猿 | https://lywlefan.github.io/</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="容器管理,Knative">
+    <meta name="description" content="函数即服务（FaaS）  平台即服务（PaaS）  无服务器架构（serverless）  路由（routing）  事件（eventing）  build（构建）    什么是Knative??Knative的目标 Knative 的目标是在基于 Kubernetes 之上为整个开发生命周期提供帮助 。 具体实现 作为开发人员能够以你想要的语言和以你想要的方式来编写代码 其次帮助你构建和打包应">
+<meta name="keywords" content="容器管理,Knative">
+<meta property="og:type" content="article">
+<meta property="og:title" content="初始Knative">
+<meta property="og:url" content="https://lywlefan.github.io/2019/11/27/后端/容器管理/Knative/初始Knative/index.html">
+<meta property="og:site_name" content="share猿">
+<meta property="og:description" content="函数即服务（FaaS）  平台即服务（PaaS）  无服务器架构（serverless）  路由（routing）  事件（eventing）  build（构建）    什么是Knative??Knative的目标 Knative 的目标是在基于 Kubernetes 之上为整个开发生命周期提供帮助 。 具体实现 作为开发人员能够以你想要的语言和以你想要的方式来编写代码 其次帮助你构建和打包应">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-11-27T08:10:41.334Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="初始Knative">
+<meta name="twitter:description" content="函数即服务（FaaS）  平台即服务（PaaS）  无服务器架构（serverless）  路由（routing）  事件（eventing）  build（构建）    什么是Knative??Knative的目标 Knative 的目标是在基于 Kubernetes 之上为整个开发生命周期提供帮助 。 具体实现 作为开发人员能够以你想要的语言和以你想要的方式来编写代码 其次帮助你构建和打包应">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+    
+        <link rel="alternate" type="application/atom+xml" title="share猿" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">share猿</h5>
+          <a href="mailto:330334064@qq.com" title="330334064@qq.com" class="mail">330334064@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/lywlefan" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                GitHub
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/atom">
+                <i class="icon icon-lg icon-rss"></i>
+                订阅
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">初始Knative</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">初始Knative</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-11-26T16:00:00.000Z" itemprop="datePublished" class="page-time">
+  2019-11-27
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/后端/">后端</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#什么是Knative"><span class="post-toc-number">1.</span> <span class="post-toc-text">什么是Knative??</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Knative的目标"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">Knative的目标</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#具体实现"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">具体实现</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#关键组件"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">关键组件</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#一些新的概念"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">一些新的概念</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#无服务器架构-serverless"><span class="post-toc-number">1.4.1.</span> <span class="post-toc-text">无服务器架构(serverless)</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#划重点"><span class="post-toc-number">1.4.1.1.</span> <span class="post-toc-text">划重点</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#Kubernetes遇到的问题"><span class="post-toc-number">1.4.1.2.</span> <span class="post-toc-text">Kubernetes遇到的问题</span></a></li></ol></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Knative组件学习"><span class="post-toc-number">2.</span> <span class="post-toc-text">Knative组件学习</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Serving（服务）"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">Serving（服务）</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-后端/容器管理/Knative/初始Knative" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">初始Knative</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-11-27 00:00:00" datetime="2019-11-26T16:00:00.000Z" itemprop="datePublished">2019-11-27</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/后端/">后端</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <ul>
+<li>函数即服务（FaaS） </li>
+<li>平台即服务（PaaS） </li>
+<li>无服务器架构（serverless） </li>
+<li>路由（routing） </li>
+<li>事件（eventing） </li>
+<li><em>build（构建）</em> </li>
+</ul>
+<hr>
+<h2 id="什么是Knative"><a href="#什么是Knative" class="headerlink" title="什么是Knative??"></a>什么是Knative??</h2><h3 id="Knative的目标"><a href="#Knative的目标" class="headerlink" title="Knative的目标"></a>Knative的目标</h3><p> Knative 的目标是在基于 Kubernetes 之上为整个开发生命周期提供帮助 。</p>
+<h3 id="具体实现"><a href="#具体实现" class="headerlink" title="具体实现"></a>具体实现</h3><ul>
+<li>作为开发人员能够以你<strong>想要的语言和以你想要的方式来编写代码</strong></li>
+<li>其次帮助你<strong>构建和打包</strong>应用程序</li>
+<li>最后帮助你<strong>运行和伸缩</strong>应用程序 </li>
+</ul>
+<h3 id="关键组件"><a href="#关键组件" class="headerlink" title="关键组件"></a>关键组件</h3><ul>
+<li><em>build（构建）</em>你的应用程序</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">通过灵活的插件化的构建系统将用户源代码构建成容器。目前已经支持多个构建系统，比如 Google 的 Kaniko，它无需运行 Docker daemon 就可以在 Kubernetes 集群上构建容器镜像。</span><br></pre></td></tr></table></figure>
+<ul>
+<li><em>serving（服务）</em>为其提供流量 </li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">基于负载自动伸缩，包括在没有负载时缩减到零。允许你为多个修订版本（revision）应用创建流量策略，从而能够通过 URL 轻松路由到目标应用程序。</span><br></pre></td></tr></table></figure>
+<ul>
+<li><em>event（事件）</em>确保应用程序能够轻松地生产和消费。 </li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">使得生产和消费事件变得容易。抽象出事件源，并允许操作人员使用自己选择的消息传递层。</span><br></pre></td></tr></table></figure>
+<p><strong>综上所述</strong>:Knative是一个可以让Kubernetes<strong>更好用,扩展性更好的轮子</strong>。</p>
+<h3 id="一些新的概念"><a href="#一些新的概念" class="headerlink" title="一些新的概念"></a>一些新的概念</h3><h4 id="无服务器架构-serverless"><a href="#无服务器架构-serverless" class="headerlink" title="无服务器架构(serverless)"></a>无服务器架构(serverless)</h4><h5 id="划重点"><a href="#划重点" class="headerlink" title="划重点"></a>划重点</h5><ul>
+<li>以前需要编写大型/单一应用程序,现在<strong>只需要编写通过事件来调用小型/单一用途的函数即可</strong>。</li>
+<li>对于托管服务来说,<strong>意味着只需要为活跃期间的计算付费</strong>,而不是一台7×24小时运行的虚拟机付费。</li>
+<li>代码在需要时就运行,不需要时就停止。</li>
+</ul>
+<h5 id="Kubernetes遇到的问题"><a href="#Kubernetes遇到的问题" class="headerlink" title="Kubernetes遇到的问题"></a>Kubernetes遇到的问题</h5><ul>
+<li>如何保证一致性</li>
+<li>谁负责给所有东西打补丁</li>
+<li>如何根据需求伸缩</li>
+<li>如何实现零停机部署</li>
+<li>如何管理多个事件类型一致性</li>
+<li><p>如何定义事件源和目标</p>
+<p>Knative 构建在 Kubernetes 的基础上，并<strong>为构建和部署无服务器架构（serverless）和基于事件驱动的应用程序提供了一致的标准模式</strong>。Knative 减少了这种新的软件开发方法所产生的开销，同时还<strong>把路由（routing）和事件（eventing）的复杂性抽象出来</strong>。 </p>
+</li>
+</ul>
+<h2 id="Knative组件学习"><a href="#Knative组件学习" class="headerlink" title="Knative组件学习"></a>Knative组件学习</h2><h3 id="Serving（服务）"><a href="#Serving（服务）" class="headerlink" title="Serving（服务）"></a>Serving（服务）</h3><blockquote>
+<p><a href="https://www.jianshu.com/u/354cc1548a33" target="_blank" rel="noopener">【1】简书主页·share猿</a>﻿<br><a href="https://juejin.im/user/5a8e759851882524d842d174" target="_blank" rel="noopener">【2】掘金主页·share猿</a>﻿﻿</p>
+<p><a href="https://www.servicemesher.com/getting-started-with-knative/" target="_blank" rel="noopener">【3】Knative入门——构建基于 Kubernetes 的现代化Serverless应用</a>﻿﻿</p>
+</blockquote>
+<hr>
+<p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong>﻿</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt>﻿﻿</p>
+<p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-11-27T08:10:41.334Z" itemprop="dateUpdated">2019-11-27 16:10:41</time>
+</span><br>
+
+
+        
+        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2019/11/27/后端/容器管理/Knative/初始Knative/" target="_blank" rel="external">https://lywlefan.github.io/2019/11/27/后端/容器管理/Knative/初始Knative/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://lywlefan.github.io">
+            <img src="/img/avatar.png" alt="share猿">
+            share猿
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Knative/">Knative</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/容器管理/">容器管理</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://lywlefan.github.io/2019/11/27/后端/容器管理/Knative/初始Knative/&title=《初始Knative》 — share猿&pic=https://lywlefan.github.io/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://lywlefan.github.io/2019/11/27/后端/容器管理/Knative/初始Knative/&title=《初始Knative》 — share猿&source=分享有价值的内容,你我共同成长!" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://lywlefan.github.io/2019/11/27/后端/容器管理/Knative/初始Knative/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《初始Knative》 — share猿&url=https://lywlefan.github.io/2019/11/27/后端/容器管理/Knative/初始Knative/&via=https://lywlefan.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://lywlefan.github.io/2019/11/27/后端/容器管理/Knative/初始Knative/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/11/25/后端/框架/java/hibernate/jpa参数为空查询报错问题/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">jpa参数为空查询报错问题</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'true' == 'true',
+            verify: 'false' == 'true',
+            appId: "hQGVIAaJERVwyrWxj1uqgCqS-gzGzoHsz",
+            appKey: "l7FO5csTavNwXCGryJyOkkc1",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢赞赏!
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>share猿 &copy; 2015 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://lywlefan.github.io/2019/11/27/后端/容器管理/Knative/初始Knative/&title=《初始Knative》 — share猿&pic=https://lywlefan.github.io/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://lywlefan.github.io/2019/11/27/后端/容器管理/Knative/初始Knative/&title=《初始Knative》 — share猿&source=分享有价值的内容,你我共同成长!" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://lywlefan.github.io/2019/11/27/后端/容器管理/Knative/初始Knative/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《初始Knative》 — share猿&url=https://lywlefan.github.io/2019/11/27/后端/容器管理/Knative/初始Knative/&via=https://lywlefan.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://lywlefan.github.io/2019/11/27/后端/容器管理/Knative/初始Knative/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACrklEQVR42u3aQVLEMAwEQP7/aXgAkJ2R7IVD55Ragp3OwVJJ+viIr89fru/PPN8/r/nbas/rHLjw8PDwDr3691d8/uvzys+/JIDkfX5YAQ8PD+8aL1ku2bgNAO0nzt8ZDw8P7z/zkkO/Tbs3oQgPDw/vP/PyUkISKvbJNx4eHt47eW06+/xLGyraMu6VWgseHh5ezMu7SP/n/kp/Dw8PD2/dVc/Lr/v18wBTrImHh4d3gbcp0c6aZLNRqjxdxsPDw3snLzmOz+JPlRte/IKHh4d3lJentskG+VhVDs7ZdZ8NDw8Pb8E7WzhoW2vJ88NSLx4eHt4F3qmmV75Z+4HaEHKlp4eHh4e3OI7PfoI2BR8WLPDw8PCO8tpDvC0r5GEg/4jDzh4eHh7eBV5y7Obt/CS05CWJJL3+YUc8PDy8C7z8kG3LCkmRYjawtWmk4eHh4Z3ltUNOm6GopNyQjwtEHwsPDw/vEK8dFEhGtfJXnz1flIPx8PDw/oi3Ga6aFWHzAsSLAgceHh7eNV77b3nzPi/Utg2wKE3Hw8PDu8xrk+NNd37DLtJrPDw8vAu8BNAGibYo3IaKeuAADw8P7wIvfzR/xVmZuF3/wNAVHh4e3ojXBobhcbwoRrSjXXh4eHh/xctT2/Yo36xTjyzg4eHhXeMlm+XH9yzhboNNFIrw8PDwLvM2RdUWkK+QB5If3hMPDw/vMq+931yzkkSdlOPh4eEd5X2WVxJO8vS6LV7Uw1h4eHh4F3izQ/w5FZ41+M/e4+Hh4d3m5UNRs1R4v34eGOrEGg8PD2/Ba2sYLawND7NiRN2Rw8PDw3sLbzNekBzobRtsqMfDw8N7O29WemjHFJJ9X4QoPDw8vGu8ZJtNctwOWrUrvJiMwMPDwzvK2+elbaG2LWfUBQg8PDy8W7wvNmtUubuKK98AAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '共同学习!共同进步!';
+            clearTimeout(titleTime);
+        } else {
+            document.title = 'Share猿社区官方';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
