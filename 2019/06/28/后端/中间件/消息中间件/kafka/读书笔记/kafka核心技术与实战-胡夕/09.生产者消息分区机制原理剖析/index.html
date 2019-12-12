@@ -14,7 +14,7 @@
     
     
     
-    <title>09.生产者消息分区机制原理剖析 | share猿 | https://lywlefan.github.io/</title>
+    <title>No title | share猿 | https://lywlefan.github.io/</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="theme-color" content="#3F51B5">
@@ -24,15 +24,15 @@
     <meta name="description" content="阅读笔记生产者消息分区机制原理剖析 如何将大的数据均匀的分配到Kafka的各个Broker上？  为什么分区？   为什么分区？ 三级结构：主题-分区-消息  主题下的每条消息只会保存在某一个分区中，而不会在多个分区中被保存多份    疑问:为什么kafka要这样设计？有什么好处？  回答:我们设想一个问题，我们在学校找一个学生，如果我们直接把学生集中在一起去找是不是很麻烦，很低效。换种方式，每5">
 <meta name="keywords" content="读书笔记,kafka,kafka核心技术与实战-胡夕">
 <meta property="og:type" content="article">
-<meta property="og:title" content="09.生产者消息分区机制原理剖析">
+<meta property="og:title" content="No title">
 <meta property="og:url" content="https://lywlefan.github.io/2019/06/28/后端/中间件/消息中间件/kafka/读书笔记/kafka核心技术与实战-胡夕/09.生产者消息分区机制原理剖析/index.html">
 <meta property="og:site_name" content="share猿">
 <meta property="og:description" content="阅读笔记生产者消息分区机制原理剖析 如何将大的数据均匀的分配到Kafka的各个Broker上？  为什么分区？   为什么分区？ 三级结构：主题-分区-消息  主题下的每条消息只会保存在某一个分区中，而不会在多个分区中被保存多份    疑问:为什么kafka要这样设计？有什么好处？  回答:我们设想一个问题，我们在学校找一个学生，如果我们直接把学生集中在一起去找是不是很麻烦，很低效。换种方式，每5">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-10-15T06:42:25.322Z">
+<meta property="og:updated_time" content="2019-11-29T03:25:10.864Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="09.生产者消息分区机制原理剖析">
+<meta name="twitter:title" content="No title">
 <meta name="twitter:description" content="阅读笔记生产者消息分区机制原理剖析 如何将大的数据均匀的分配到Kafka的各个Broker上？  为什么分区？   为什么分区？ 三级结构：主题-分区-消息  主题下的每条消息只会保存在某一个分区中，而不会在多个分区中被保存多份    疑问:为什么kafka要这样设计？有什么好处？  回答:我们设想一个问题，我们在学校找一个学生，如果我们直接把学生集中在一起去找是不是很麻烦，很低效。换种方式，每5">
 <meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
     
@@ -122,7 +122,7 @@
         <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
           <i class="icon icon-lg icon-navicon"></i>
         </a>
-        <div class="flex-col header-title ellipsis">09.生产者消息分区机制原理剖析</div>
+        <div class="flex-col header-title ellipsis">No title</div>
         
         <div class="search-wrap" id="search-wrap">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
@@ -144,7 +144,7 @@
 <header class="content-header post-header">
 
     <div class="container fade-scale">
-        <h1 class="title">09.生产者消息分区机制原理剖析</h1>
+        <h1 class="title">No title</h1>
         <h5 class="subtitle">
             
                 <time datetime="2019-06-27T16:00:00.000Z" itemprop="datePublished" class="page-time">
@@ -177,7 +177,7 @@
 <article id="post-后端/中间件/消息中间件/kafka/读书笔记/kafka核心技术与实战-胡夕/09.生产者消息分区机制原理剖析" class="post-article article-type-post fade" itemprop="blogPost">
 
     <div class="post-card">
-        <h1 class="post-card-title">09.生产者消息分区机制原理剖析</h1>
+        <h1 class="post-card-title">No title</h1>
         <div class="post-meta">
             <time class="post-time" title="2019-06-28 00:00:00" datetime="2019-06-27T16:00:00.000Z" itemprop="datePublished">2019-06-28</time>
 
@@ -239,7 +239,23 @@
 <p>轮询是kafka默认的消息存储策略，新增的消息会依次进入1/2/3/4/….对应的分区。轮询策略有非常优秀的负载均衡表现，它总能保证消息最大限度地平均分配到所有分区上，故默认情况下它是最合理的分区策略，也是我们常用的分区策略之一。</p>
 </li>
 <li><p>随机策略(Randomness)</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">List&lt;PartitionInfo&gt; partitions = cluster.partitionsForTopic(topic);</span><br><span class="line"><span class="keyword">return</span> ThreadLocalRandom.current().nextInt(partitions.size());</span><br><span class="line">``` </span><br><span class="line">实现比较简单，先计算出该主题总的分区数，然后随机地返回一个小于它的正整数。</span><br><span class="line"></span><br><span class="line">该策略是kafka老版本的策略，追求数据均匀分布还是轮询策略比较好。</span><br><span class="line"></span><br><span class="line">- 按消息键保序策略</span><br><span class="line"></span><br><span class="line">    - 同一个消息key的消息进入同一个分区</span><br><span class="line">    </span><br><span class="line">    - 一个分区只能被同一个消费组（ConsumerGroup）内的一个消费者消费</span><br><span class="line">    </span><br><span class="line">    这里我们可以给我们的消息以时间的维度定义key，如此同一时间的消息就进入了同一个分区，同一个分区下的消息也有了顺序性。</span><br><span class="line">    </span><br><span class="line">    - 每个分区消息都是有顺序的</span><br><span class="line">    </span><br><span class="line">    - 代码实现</span><br><span class="line">    </span><br><span class="line">    ```java</span><br><span class="line">    List&lt;PartitionInfo&gt; partitions = cluster.partitionsForTopic(topic);</span><br><span class="line">    <span class="keyword">return</span> Math.abs(key.hashCode()) % partitions.size();</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">List&lt;PartitionInfo&gt; partitions = cluster.partitionsForTopic(topic);</span><br><span class="line"><span class="keyword">return</span> ThreadLocalRandom.current().nextInt(partitions.size());</span><br></pre></td></tr></table></figure>
+<p>实现比较简单，先计算出该主题总的分区数，然后随机地返回一个小于它的正整数。</p>
+<p>该策略是kafka老版本的策略，追求数据均匀分布还是轮询策略比较好。</p>
+</li>
+<li><p>按消息键保序策略</p>
+<ul>
+<li><p>同一个消息key的消息进入同一个分区</p>
+</li>
+<li><p>一个分区只能被同一个消费组（ConsumerGroup）内的一个消费者消费</p>
+<p>这里我们可以给我们的消息以时间的维度定义key，如此同一时间的消息就进入了同一个分区，同一个分区下的消息也有了顺序性。</p>
+</li>
+<li><p>每个分区消息都是有顺序的</p>
+</li>
+<li><p>代码实现</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">List&lt;PartitionInfo&gt; partitions = cluster.partitionsForTopic(topic);</span><br><span class="line"><span class="keyword">return</span> Math.abs(key.hashCode()) % partitions.size();</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
 </li>
 <li><p>其他分区策略(比如：基于地理位置的分区策略)</p>
 <ul>
@@ -295,7 +311,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2019-10-15T06:42:25.322Z" itemprop="dateUpdated">2019-10-15 14:42:25</time>
+    最后更新时间：<time datetime="2019-11-29T03:25:10.864Z" itemprop="dateUpdated">2019-11-29 11:25:10</time>
 </span><br>
 
 
@@ -331,7 +347,7 @@
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://lywlefan.github.io/2019/06/28/后端/中间件/消息中间件/kafka/读书笔记/kafka核心技术与实战-胡夕/09.生产者消息分区机制原理剖析/&title=《09.生产者消息分区机制原理剖析》 — share猿&pic=https://lywlefan.github.io/img/avatar.png" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://lywlefan.github.io/2019/06/28/后端/中间件/消息中间件/kafka/读书笔记/kafka核心技术与实战-胡夕/09.生产者消息分区机制原理剖析/&title=《No title》 — share猿&pic=https://lywlefan.github.io/img/avatar.png" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -341,7 +357,7 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://lywlefan.github.io/2019/06/28/后端/中间件/消息中间件/kafka/读书笔记/kafka核心技术与实战-胡夕/09.生产者消息分区机制原理剖析/&title=《09.生产者消息分区机制原理剖析》 — share猿&source=分享有价值的内容,你我共同成长!" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://lywlefan.github.io/2019/06/28/后端/中间件/消息中间件/kafka/读书笔记/kafka核心技术与实战-胡夕/09.生产者消息分区机制原理剖析/&title=《No title》 — share猿&source=分享有价值的内容,你我共同成长!" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
@@ -351,7 +367,7 @@
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《09.生产者消息分区机制原理剖析》 — share猿&url=https://lywlefan.github.io/2019/06/28/后端/中间件/消息中间件/kafka/读书笔记/kafka核心技术与实战-胡夕/09.生产者消息分区机制原理剖析/&via=https://lywlefan.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《No title》 — share猿&url=https://lywlefan.github.io/2019/06/28/后端/中间件/消息中间件/kafka/读书笔记/kafka核心技术与实战-胡夕/09.生产者消息分区机制原理剖析/&via=https://lywlefan.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
@@ -379,18 +395,18 @@
 <nav class="post-nav flex-row flex-justify-between">
   
     <div class="waves-block waves-effect prev">
-      <a href="/2019/06/28/后端/数据存储/NOSQL/redis/FAQ/" id="post-prev" class="post-nav-link">
+      <a href="/2019/06/28/后端/中间件/消息中间件/kafka/读书笔记/kafka核心技术与实战-胡夕/10.生产者压缩算法面面观/" id="post-prev" class="post-nav-link">
         <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">redis的FAQ</h4>
+        <h4 class="title">10.生产者压缩算法面面观</h4>
       </a>
     </div>
   
 
   
     <div class="waves-block waves-effect next">
-      <a href="/2019/06/28/后端/搜索引擎/es/VERSION/" id="post-next" class="post-nav-link">
+      <a href="/2019/06/28/后端/中间件/消息中间件/kafka/实践问题/kafka如何处理消息重复的问题/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">es的VERSION</h4>
+        <h4 class="title">09.生产者消息分区机制原理剖析</h4>
       </a>
     </div>
   
@@ -513,7 +529,7 @@
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://lywlefan.github.io/2019/06/28/后端/中间件/消息中间件/kafka/读书笔记/kafka核心技术与实战-胡夕/09.生产者消息分区机制原理剖析/&title=《09.生产者消息分区机制原理剖析》 — share猿&pic=https://lywlefan.github.io/img/avatar.png" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://lywlefan.github.io/2019/06/28/后端/中间件/消息中间件/kafka/读书笔记/kafka核心技术与实战-胡夕/09.生产者消息分区机制原理剖析/&title=《No title》 — share猿&pic=https://lywlefan.github.io/img/avatar.png" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -523,7 +539,7 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://lywlefan.github.io/2019/06/28/后端/中间件/消息中间件/kafka/读书笔记/kafka核心技术与实战-胡夕/09.生产者消息分区机制原理剖析/&title=《09.生产者消息分区机制原理剖析》 — share猿&source=分享有价值的内容,你我共同成长!" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://lywlefan.github.io/2019/06/28/后端/中间件/消息中间件/kafka/读书笔记/kafka核心技术与实战-胡夕/09.生产者消息分区机制原理剖析/&title=《No title》 — share猿&source=分享有价值的内容,你我共同成长!" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
@@ -533,7 +549,7 @@
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《09.生产者消息分区机制原理剖析》 — share猿&url=https://lywlefan.github.io/2019/06/28/后端/中间件/消息中间件/kafka/读书笔记/kafka核心技术与实战-胡夕/09.生产者消息分区机制原理剖析/&via=https://lywlefan.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《No title》 — share猿&url=https://lywlefan.github.io/2019/06/28/后端/中间件/消息中间件/kafka/读书笔记/kafka核心技术与实战-胡夕/09.生产者消息分区机制原理剖析/&via=https://lywlefan.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>

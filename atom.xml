@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://lywlefan.github.io/"/>
-  <updated>2019-11-27T08:10:41.334Z</updated>
+  <updated>2019-12-06T03:35:00.093Z</updated>
   <id>https://lywlefan.github.io/</id>
   
   <author>
@@ -15,6 +15,59 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>java类初始化</title>
+    <link href="https://lywlefan.github.io/2019/12/06/%E5%90%8E%E7%AB%AF/%E5%9F%BA%E7%A1%80%E5%B7%A9%E5%9B%BA/java/jvm/java%E7%B1%BB%E5%88%9D%E5%A7%8B%E5%8C%96/"/>
+    <id>https://lywlefan.github.io/2019/12/06/后端/基础巩固/java/jvm/java类初始化/</id>
+    <published>2019-12-05T16:00:00.000Z</published>
+    <updated>2019-12-06T03:35:00.093Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p><a href="https://www.jianshu.com/u/354cc1548a33" target="_blank" rel="noopener">【1】简书主页·share猿</a><br><a href="https://juejin.im/user/5a8e759851882524d842d174" target="_blank" rel="noopener">【2】掘金主页·share猿</a></p></blockquote><hr><p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>                </div>                <div class="image-caption"></div>            </figure></p><p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.jianshu.com/u/354cc1548a33&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;【1】简书主页·share猿&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://jueji
+      
+    
+    </summary>
+    
+      <category term="后端" scheme="https://lywlefan.github.io/categories/%E5%90%8E%E7%AB%AF/"/>
+    
+    
+      <category term="基础" scheme="https://lywlefan.github.io/tags/%E5%9F%BA%E7%A1%80/"/>
+    
+      <category term="java" scheme="https://lywlefan.github.io/tags/java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>vue中是如何自定义组件的.</title>
+    <link href="https://lywlefan.github.io/2019/12/06/%E5%89%8D%E7%AB%AF/vue/vue%E4%B8%AD%E6%98%AF%E5%A6%82%E4%BD%95%E8%87%AA%E5%AE%9A%E4%B9%89%E7%BB%84%E4%BB%B6%E7%9A%84/"/>
+    <id>https://lywlefan.github.io/2019/12/06/前端/vue/vue中是如何自定义组件的/</id>
+    <published>2019-12-05T16:00:00.000Z</published>
+    <updated>2019-12-06T02:11:56.010Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="如何自定义组件"><a href="#如何自定义组件" class="headerlink" title="如何自定义组件??"></a>如何自定义组件??</h3><h3 id="父子组件之间是如何交互的"><a href="#父子组件之间是如何交互的" class="headerlink" title="父子组件之间是如何交互的??"></a>父子组件之间是如何交互的??</h3><hr><p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>                </div>                <div class="image-caption"></div>            </figure></p><p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;如何自定义组件&quot;&gt;&lt;a href=&quot;#如何自定义组件&quot; class=&quot;headerlink&quot; title=&quot;如何自定义组件??&quot;&gt;&lt;/a&gt;如何自定义组件??&lt;/h3&gt;&lt;h3 id=&quot;父子组件之间是如何交互的&quot;&gt;&lt;a href=&quot;#父子组件之间是如何交互的&quot; cla
+      
+    
+    </summary>
+    
+      <category term="前端" scheme="https://lywlefan.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="vue" scheme="https://lywlefan.github.io/tags/vue/"/>
+    
+  </entry>
   
   <entry>
     <title>初始Knative</title>
@@ -165,6 +218,61 @@
   </entry>
   
   <entry>
+    <title>企业在落地区块链时要考虑的点</title>
+    <link href="https://lywlefan.github.io/2019/10/30/%E5%89%8D%E6%B2%BF%E6%8A%80%E6%9C%AF/%E5%8C%BA%E5%9D%97%E9%93%BE/%E5%BA%94%E7%94%A8/%E4%BC%81%E4%B8%9A%E5%9C%A8%E8%90%BD%E5%9C%B0%E5%8C%BA%E5%9D%97%E9%93%BE%E6%97%B6%E8%A6%81%E8%80%83%E8%99%91%E7%9A%84%E7%82%B9/"/>
+    <id>https://lywlefan.github.io/2019/10/30/前沿技术/区块链/应用/企业在落地区块链时要考虑的点/</id>
+    <published>2019-10-29T16:00:00.000Z</published>
+    <updated>2019-11-25T11:25:32.105Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="业务"><a href="#业务" class="headerlink" title="业务"></a>业务</h2><h3 id="人才团队建设"><a href="#人才团队建设" class="headerlink" title="人才团队建设"></a>人才团队建设</h3><h3 id="业务场景选择"><a href="#业务场景选择" class="headerlink" title="业务场景选择"></a>业务场景选择</h3><h3 id="业务流程化"><a href="#业务流程化" class="headerlink" title="业务流程化"></a>业务流程化</h3><h3 id="应用开发模式"><a href="#应用开发模式" class="headerlink" title="应用开发模式"></a>应用开发模式</h3><h3 id="可视化与分析"><a href="#可视化与分析" class="headerlink" title="可视化与分析"></a>可视化与分析</h3><h3 id="数据模块管理"><a href="#数据模块管理" class="headerlink" title="数据模块管理"></a>数据模块管理</h3><h2 id="技术"><a href="#技术" class="headerlink" title="技术"></a>技术</h2><h3 id="技术方案选型"><a href="#技术方案选型" class="headerlink" title="技术方案选型"></a>技术方案选型</h3><h3 id="平台设计实施"><a href="#平台设计实施" class="headerlink" title="平台设计实施"></a>平台设计实施</h3><h3 id="高可用与灾备"><a href="#高可用与灾备" class="headerlink" title="高可用与灾备"></a>高可用与灾备</h3><h3 id="安全合规治理"><a href="#安全合规治理" class="headerlink" title="安全合规治理"></a>安全合规治理</h3><h3 id="平台应用运维"><a href="#平台应用运维" class="headerlink" title="平台应用运维"></a>平台应用运维</h3><h2 id="运营"><a href="#运营" class="headerlink" title="运营"></a>运营</h2><h3 id="市场营销宣传"><a href="#市场营销宣传" class="headerlink" title="市场营销宣传"></a>市场营销宣传</h3><h3 id="生态系统参与"><a href="#生态系统参与" class="headerlink" title="生态系统参与"></a>生态系统参与</h3><hr><p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>                </div>                <div class="image-caption"></div>            </figure></p><p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;业务&quot;&gt;&lt;a href=&quot;#业务&quot; class=&quot;headerlink&quot; title=&quot;业务&quot;&gt;&lt;/a&gt;业务&lt;/h2&gt;&lt;h3 id=&quot;人才团队建设&quot;&gt;&lt;a href=&quot;#人才团队建设&quot; class=&quot;headerlink&quot; title=&quot;人才团队建设&quot;&gt;&lt;/a&gt;人
+      
+    
+    </summary>
+    
+      <category term="前沿技术" scheme="https://lywlefan.github.io/categories/%E5%89%8D%E6%B2%BF%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="区块链" scheme="https://lywlefan.github.io/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/"/>
+    
+      <category term="应用" scheme="https://lywlefan.github.io/tags/%E5%BA%94%E7%94%A8/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>redis基础总结</title>
+    <link href="https://lywlefan.github.io/2019/10/30/%E5%90%8E%E7%AB%AF/%E7%BC%93%E5%AD%98/redis/redis%E5%9F%BA%E7%A1%80%E6%80%BB%E7%BB%93/"/>
+    <id>https://lywlefan.github.io/2019/10/30/后端/缓存/redis/redis基础总结/</id>
+    <published>2019-10-29T16:00:00.000Z</published>
+    <updated>2019-11-25T11:23:40.994Z</updated>
+    
+    <content type="html"><![CDATA[<p>redis附加功能</p><p>“附加功能”部分介绍了Redis在数据结构的基础上为用户提供的额外功能，包括管理数据结构的数据库管理功能和自动过期功能，将数据结构持久化至硬盘从而避免数据丢失的持久化功能，提高多条命令执行效率的流水线功能，保证命令安全性的事务和Lua脚本功能，以及扩展服务器特性的模块功能等。</p><p>Redis的PING命令接受一条可选的消息作为参数，这个命令通常用于测试客户端和服务器之间的连接是否正常:</p><ul><li>连接正常的情况下，将向客户端返回PONG</li><li>如果服务器与客户端的连接不正常，那么客户端将返回一个错误</li></ul><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-- 客户端未能连接服务器，返回一个连接错误</span><br><span class="line">        127.0.0.1:6379&gt; PING</span><br><span class="line">        Could not connect to Redis at 127.0.0.1:6379: Connection refused</span><br></pre></td></tr></table></figure><p>更换端口号:</p><p>Redis服务器默认使用6379作为端口号，但如果你想使用10086而不是6379作为端口号，那么可以在启动Redis服务器时通过设定port可选项来指定想要的端口号：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ redis-server --port 10086</span><br></pre></td></tr></table></figure><p>第二种方法是在启动Redis服务器的时候为其提供配置文件，并将想要修改的配置选项写在配置文件中</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ redis-server /path/to/your/file</span><br></pre></td></tr></table></figure><p>例如，为了将Redis服务器的端口号改为12345，我们可以在当前文件夹中创建配置文件myredis.conf，并在文件中包含以下内容：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">port 12345</span><br></pre></td></tr></table></figure><p>然后在启动Redis服务器时向其提供该配置文件：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ redis-server myredis.conf</span><br></pre></td></tr></table></figure><hr><p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>                </div>                <div class="image-caption"></div>            </figure></p><p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;redis附加功能&lt;/p&gt;
+&lt;p&gt;“附加功能”部分介绍了Redis在数据结构的基础上为用户提供的额外功能，包括管理数据结构的数据库管理功能和自动过期功能，将数据结构持久化至硬盘从而避免数据丢失的持久化功能，提高多条命令执行效率的流水线功能，保证命令安全性的事务和Lua脚本功
+      
+    
+    </summary>
+    
+      <category term="后端" scheme="https://lywlefan.github.io/categories/%E5%90%8E%E7%AB%AF/"/>
+    
+    
+      <category term="redis" scheme="https://lywlefan.github.io/tags/redis/"/>
+    
+      <category term="缓存" scheme="https://lywlefan.github.io/tags/%E7%BC%93%E5%AD%98/"/>
+    
+  </entry>
+  
+  <entry>
     <title>fabric架构</title>
     <link href="https://lywlefan.github.io/2019/10/30/%E5%89%8D%E6%B2%BF%E6%8A%80%E6%9C%AF/%E5%8C%BA%E5%9D%97%E9%93%BE/fabric/fabric%E6%9E%B6%E6%9E%84/"/>
     <id>https://lywlefan.github.io/2019/10/30/前沿技术/区块链/fabric/fabric架构/</id>
@@ -252,33 +360,6 @@
   </entry>
   
   <entry>
-    <title>初始corda</title>
-    <link href="https://lywlefan.github.io/2019/10/30/%E5%89%8D%E6%B2%BF%E6%8A%80%E6%9C%AF/%E5%8C%BA%E5%9D%97%E9%93%BE/corda/cord%E4%B8%AD%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5%E6%80%BB%E7%BB%93/"/>
-    <id>https://lywlefan.github.io/2019/10/30/前沿技术/区块链/corda/cord中的基本概念总结/</id>
-    <published>2019-10-29T16:00:00.000Z</published>
-    <updated>2019-11-05T01:42:33.002Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="什么是corda"><a href="#什么是corda" class="headerlink" title="什么是corda??"></a>什么是corda??</h2><h3 id="是什么"><a href="#是什么" class="headerlink" title="是什么?"></a>是什么?</h3><p>corda是一个分布式账本平台。</p><h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><h4 id="corda网络"><a href="#corda网络" class="headerlink" title="corda网络"></a>corda网络</h4><h4 id="账本"><a href="#账本" class="headerlink" title="账本"></a>账本</h4><p>每个节点验证过交易的集合,账本是各个节点自有的。</p><p>每个节点维护一个已知事实的分离数据库。</p><p>没有一个节点知道整个账本。</p><h4 id="身份"><a href="#身份" class="headerlink" title="身份"></a>身份</h4><p>身份有两种:组织的法律身份、网络服务身份。</p><p>法律身份用于交易的当事人,如:现金拥有者。</p><p>网络服务身份用于提供与交易相关的服务,如公证服务或oracle服务。服务身份基于混合KEY。</p><p>身份证明的X.509证书由看门人或其他众所周知的身份签发。身份是众所周知的还是机密的,取决于X.509证书是否公开。</p><h4 id="应用节点"><a href="#应用节点" class="headerlink" title="应用节点"></a>应用节点</h4><h4 id="看门人"><a href="#看门人" class="headerlink" title="看门人"></a>看门人</h4><p>看门人服务可以理解为一个身份准入管理服务加上一个业务许可管理服务,它要求节点提供必要的信息,以及在接受进入网络前必须进行的了解客户的过程。</p><p>要想加入corda网络,节点必须联系看门人并提供必要的信息。看门人许可通过,会颁发TLS许可证书。</p><h4 id="cordaDapps"><a href="#cordaDapps" class="headerlink" title="cordaDapps"></a>cordaDapps</h4><h4 id="AMPQ-1-0协议"><a href="#AMPQ-1-0协议" class="headerlink" title="AMPQ/1.0协议"></a>AMPQ/1.0协议</h4><h4 id="公证节点"><a href="#公证节点" class="headerlink" title="公证节点"></a>公证节点</h4><p>公证节点保证账本更新的唯一性、可行性、正确性。</p><p>每个公证服务可以运行在一个节点或一组节点上。</p><h4 id="状态"><a href="#状态" class="headerlink" title="状态"></a>状态</h4><p>状态是表示账本上的事实,是一个不可变的对象,表示在特定时刻由一个或多个Corda节点所知的事实。</p><h4 id="状态序列"><a href="#状态序列" class="headerlink" title="状态序列"></a>状态序列</h4><p>状态的生命周期</p><h4 id="合约"><a href="#合约" class="headerlink" title="合约"></a>合约</h4><p>每个状态指向一个合约。</p><p>合约以交易作为输入,并根据合约的规则说明交易是否被认为有效。</p><p>交易只有在合约的每个输入和输出状态被确认为有效的情况下才有效。</p><p>合约代码可以用任意的JVM语言进行编写。</p><p>一个不被合约认可的交易不会作为更新账本的有效提案。</p><h4 id="合约沙箱"><a href="#合约沙箱" class="headerlink" title="合约沙箱"></a>合约沙箱</h4><h4 id="预言机"><a href="#预言机" class="headerlink" title="预言机"></a>预言机</h4><h4 id="女巫攻击"><a href="#女巫攻击" class="headerlink" title="女巫攻击"></a>女巫攻击</h4><hr><p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>                </div>                <div class="image-caption"></div>            </figure></p><p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;什么是corda&quot;&gt;&lt;a href=&quot;#什么是corda&quot; class=&quot;headerlink&quot; title=&quot;什么是corda??&quot;&gt;&lt;/a&gt;什么是corda??&lt;/h2&gt;&lt;h3 id=&quot;是什么&quot;&gt;&lt;a href=&quot;#是什么&quot; class=&quot;headerlink
-      
-    
-    </summary>
-    
-      <category term="前沿技术" scheme="https://lywlefan.github.io/categories/%E5%89%8D%E6%B2%BF%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="区块链" scheme="https://lywlefan.github.io/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/"/>
-    
-      <category term="corda" scheme="https://lywlefan.github.io/tags/corda/"/>
-    
-  </entry>
-  
-  <entry>
     <title>corda基础架构</title>
     <link href="https://lywlefan.github.io/2019/10/30/%E5%89%8D%E6%B2%BF%E6%8A%80%E6%9C%AF/%E5%8C%BA%E5%9D%97%E9%93%BE/corda/corda%E5%9F%BA%E7%A1%80%E6%9E%B6%E6%9E%84/"/>
     <id>https://lywlefan.github.io/2019/10/30/前沿技术/区块链/corda/corda基础架构/</id>
@@ -309,19 +390,19 @@
   </entry>
   
   <entry>
-    <title>企业在落地区块链时要考虑的点</title>
-    <link href="https://lywlefan.github.io/2019/10/30/%E5%89%8D%E6%B2%BF%E6%8A%80%E6%9C%AF/%E5%8C%BA%E5%9D%97%E9%93%BE/%E5%BA%94%E7%94%A8/%E4%BC%81%E4%B8%9A%E5%9C%A8%E8%90%BD%E5%9C%B0%E5%8C%BA%E5%9D%97%E9%93%BE%E6%97%B6%E8%A6%81%E8%80%83%E8%99%91%E7%9A%84%E7%82%B9/"/>
-    <id>https://lywlefan.github.io/2019/10/30/前沿技术/区块链/应用/企业在落地区块链时要考虑的点/</id>
+    <title>初始corda</title>
+    <link href="https://lywlefan.github.io/2019/10/30/%E5%89%8D%E6%B2%BF%E6%8A%80%E6%9C%AF/%E5%8C%BA%E5%9D%97%E9%93%BE/corda/cord%E4%B8%AD%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5%E6%80%BB%E7%BB%93/"/>
+    <id>https://lywlefan.github.io/2019/10/30/前沿技术/区块链/corda/cord中的基本概念总结/</id>
     <published>2019-10-29T16:00:00.000Z</published>
-    <updated>2019-11-25T11:25:32.105Z</updated>
+    <updated>2019-11-05T01:42:33.002Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="业务"><a href="#业务" class="headerlink" title="业务"></a>业务</h2><h3 id="人才团队建设"><a href="#人才团队建设" class="headerlink" title="人才团队建设"></a>人才团队建设</h3><h3 id="业务场景选择"><a href="#业务场景选择" class="headerlink" title="业务场景选择"></a>业务场景选择</h3><h3 id="业务流程化"><a href="#业务流程化" class="headerlink" title="业务流程化"></a>业务流程化</h3><h3 id="应用开发模式"><a href="#应用开发模式" class="headerlink" title="应用开发模式"></a>应用开发模式</h3><h3 id="可视化与分析"><a href="#可视化与分析" class="headerlink" title="可视化与分析"></a>可视化与分析</h3><h3 id="数据模块管理"><a href="#数据模块管理" class="headerlink" title="数据模块管理"></a>数据模块管理</h3><h2 id="技术"><a href="#技术" class="headerlink" title="技术"></a>技术</h2><h3 id="技术方案选型"><a href="#技术方案选型" class="headerlink" title="技术方案选型"></a>技术方案选型</h3><h3 id="平台设计实施"><a href="#平台设计实施" class="headerlink" title="平台设计实施"></a>平台设计实施</h3><h3 id="高可用与灾备"><a href="#高可用与灾备" class="headerlink" title="高可用与灾备"></a>高可用与灾备</h3><h3 id="安全合规治理"><a href="#安全合规治理" class="headerlink" title="安全合规治理"></a>安全合规治理</h3><h3 id="平台应用运维"><a href="#平台应用运维" class="headerlink" title="平台应用运维"></a>平台应用运维</h3><h2 id="运营"><a href="#运营" class="headerlink" title="运营"></a>运营</h2><h3 id="市场营销宣传"><a href="#市场营销宣传" class="headerlink" title="市场营销宣传"></a>市场营销宣传</h3><h3 id="生态系统参与"><a href="#生态系统参与" class="headerlink" title="生态系统参与"></a>生态系统参与</h3><hr><p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>                </div>                <div class="image-caption"></div>            </figure></p><p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>]]></content>
+    <content type="html"><![CDATA[<h2 id="什么是corda"><a href="#什么是corda" class="headerlink" title="什么是corda??"></a>什么是corda??</h2><h3 id="是什么"><a href="#是什么" class="headerlink" title="是什么?"></a>是什么?</h3><p>corda是一个分布式账本平台。</p><h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><h4 id="corda网络"><a href="#corda网络" class="headerlink" title="corda网络"></a>corda网络</h4><h4 id="账本"><a href="#账本" class="headerlink" title="账本"></a>账本</h4><p>每个节点验证过交易的集合,账本是各个节点自有的。</p><p>每个节点维护一个已知事实的分离数据库。</p><p>没有一个节点知道整个账本。</p><h4 id="身份"><a href="#身份" class="headerlink" title="身份"></a>身份</h4><p>身份有两种:组织的法律身份、网络服务身份。</p><p>法律身份用于交易的当事人,如:现金拥有者。</p><p>网络服务身份用于提供与交易相关的服务,如公证服务或oracle服务。服务身份基于混合KEY。</p><p>身份证明的X.509证书由看门人或其他众所周知的身份签发。身份是众所周知的还是机密的,取决于X.509证书是否公开。</p><h4 id="应用节点"><a href="#应用节点" class="headerlink" title="应用节点"></a>应用节点</h4><h4 id="看门人"><a href="#看门人" class="headerlink" title="看门人"></a>看门人</h4><p>看门人服务可以理解为一个身份准入管理服务加上一个业务许可管理服务,它要求节点提供必要的信息,以及在接受进入网络前必须进行的了解客户的过程。</p><p>要想加入corda网络,节点必须联系看门人并提供必要的信息。看门人许可通过,会颁发TLS许可证书。</p><h4 id="cordaDapps"><a href="#cordaDapps" class="headerlink" title="cordaDapps"></a>cordaDapps</h4><h4 id="AMPQ-1-0协议"><a href="#AMPQ-1-0协议" class="headerlink" title="AMPQ/1.0协议"></a>AMPQ/1.0协议</h4><h4 id="公证节点"><a href="#公证节点" class="headerlink" title="公证节点"></a>公证节点</h4><p>公证节点保证账本更新的唯一性、可行性、正确性。</p><p>每个公证服务可以运行在一个节点或一组节点上。</p><h4 id="状态"><a href="#状态" class="headerlink" title="状态"></a>状态</h4><p>状态是表示账本上的事实,是一个不可变的对象,表示在特定时刻由一个或多个Corda节点所知的事实。</p><h4 id="状态序列"><a href="#状态序列" class="headerlink" title="状态序列"></a>状态序列</h4><p>状态的生命周期</p><h4 id="合约"><a href="#合约" class="headerlink" title="合约"></a>合约</h4><p>每个状态指向一个合约。</p><p>合约以交易作为输入,并根据合约的规则说明交易是否被认为有效。</p><p>交易只有在合约的每个输入和输出状态被确认为有效的情况下才有效。</p><p>合约代码可以用任意的JVM语言进行编写。</p><p>一个不被合约认可的交易不会作为更新账本的有效提案。</p><h4 id="合约沙箱"><a href="#合约沙箱" class="headerlink" title="合约沙箱"></a>合约沙箱</h4><h4 id="预言机"><a href="#预言机" class="headerlink" title="预言机"></a>预言机</h4><h4 id="女巫攻击"><a href="#女巫攻击" class="headerlink" title="女巫攻击"></a>女巫攻击</h4><hr><p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>                </div>                <div class="image-caption"></div>            </figure></p><p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;h2 id=&quot;业务&quot;&gt;&lt;a href=&quot;#业务&quot; class=&quot;headerlink&quot; title=&quot;业务&quot;&gt;&lt;/a&gt;业务&lt;/h2&gt;&lt;h3 id=&quot;人才团队建设&quot;&gt;&lt;a href=&quot;#人才团队建设&quot; class=&quot;headerlink&quot; title=&quot;人才团队建设&quot;&gt;&lt;/a&gt;人
+        &lt;h2 id=&quot;什么是corda&quot;&gt;&lt;a href=&quot;#什么是corda&quot; class=&quot;headerlink&quot; title=&quot;什么是corda??&quot;&gt;&lt;/a&gt;什么是corda??&lt;/h2&gt;&lt;h3 id=&quot;是什么&quot;&gt;&lt;a href=&quot;#是什么&quot; class=&quot;headerlink
       
     
     </summary>
@@ -331,35 +412,32 @@
     
       <category term="区块链" scheme="https://lywlefan.github.io/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/"/>
     
-      <category term="应用" scheme="https://lywlefan.github.io/tags/%E5%BA%94%E7%94%A8/"/>
+      <category term="corda" scheme="https://lywlefan.github.io/tags/corda/"/>
     
   </entry>
   
   <entry>
-    <title>redis基础总结</title>
-    <link href="https://lywlefan.github.io/2019/10/30/%E5%90%8E%E7%AB%AF/%E7%BC%93%E5%AD%98/redis/redis%E5%9F%BA%E7%A1%80%E6%80%BB%E7%BB%93/"/>
-    <id>https://lywlefan.github.io/2019/10/30/后端/缓存/redis/redis基础总结/</id>
-    <published>2019-10-29T16:00:00.000Z</published>
-    <updated>2019-11-25T11:23:40.994Z</updated>
+    <title>Vue基础</title>
+    <link href="https://lywlefan.github.io/2019/10/24/%E5%89%8D%E7%AB%AF/vue/vue%E5%9F%BA%E7%A1%80/"/>
+    <id>https://lywlefan.github.io/2019/10/24/前端/vue/vue基础/</id>
+    <published>2019-10-23T16:00:00.000Z</published>
+    <updated>2019-10-24T10:31:25.136Z</updated>
     
-    <content type="html"><![CDATA[<p>redis附加功能</p><p>“附加功能”部分介绍了Redis在数据结构的基础上为用户提供的额外功能，包括管理数据结构的数据库管理功能和自动过期功能，将数据结构持久化至硬盘从而避免数据丢失的持久化功能，提高多条命令执行效率的流水线功能，保证命令安全性的事务和Lua脚本功能，以及扩展服务器特性的模块功能等。</p><p>Redis的PING命令接受一条可选的消息作为参数，这个命令通常用于测试客户端和服务器之间的连接是否正常:</p><ul><li>连接正常的情况下，将向客户端返回PONG</li><li>如果服务器与客户端的连接不正常，那么客户端将返回一个错误</li></ul><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-- 客户端未能连接服务器，返回一个连接错误</span><br><span class="line">        127.0.0.1:6379&gt; PING</span><br><span class="line">        Could not connect to Redis at 127.0.0.1:6379: Connection refused</span><br></pre></td></tr></table></figure><p>更换端口号:</p><p>Redis服务器默认使用6379作为端口号，但如果你想使用10086而不是6379作为端口号，那么可以在启动Redis服务器时通过设定port可选项来指定想要的端口号：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ redis-server --port 10086</span><br></pre></td></tr></table></figure><p>第二种方法是在启动Redis服务器的时候为其提供配置文件，并将想要修改的配置选项写在配置文件中</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ redis-server /path/to/your/file</span><br></pre></td></tr></table></figure><p>例如，为了将Redis服务器的端口号改为12345，我们可以在当前文件夹中创建配置文件myredis.conf，并在文件中包含以下内容：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">port 12345</span><br></pre></td></tr></table></figure><p>然后在启动Redis服务器时向其提供该配置文件：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ redis-server myredis.conf</span><br></pre></td></tr></table></figure><hr><p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>                </div>                <div class="image-caption"></div>            </figure></p><p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>]]></content>
+    <content type="html"><![CDATA[<h2 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h2><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><h4 id="什么是Vue？？"><a href="#什么是Vue？？" class="headerlink" title="什么是Vue？？"></a>什么是Vue？？</h4><p>开发web界面的前端库</p><h4 id="vue特性"><a href="#vue特性" class="headerlink" title="vue特性"></a>vue特性</h4><ul><li>具有<strong>响应式编程</strong>（保持状态和视图同步）</li><li>组件化</li><li>轻量级</li><li>易上手</li></ul><p><strong>MVC</strong>：MVC 模式代表 Model-View-Controller（模型-视图-控制器） 模式。</p><p><strong>MVP</strong>：MVP是Model-View-Presenter的简称，即模型-视图-表现层的缩写。MVP是由MVC模式进化而来的，MVP改进了MVC中的控制器过于臃肿的问题。</p><table><thead><tr><th></th><th>MVC</th><th></th><th>MVP</th></tr></thead><tbody><tr><td>Model</td><td>业务逻辑和实体模型</td><td>Model</td><td>业务逻辑和实体模型</td></tr><tr><td>View</td><td>对应布局文件</td><td>View</td><td>对应Activity，负责view的绘制与用户交互</td></tr><tr><td>Controller</td><td>对应Activity等</td><td>Presenter</td><td>负责完成view与model的交互，处理程序逻辑</td></tr></tbody></table><p><strong>MVVM</strong>：</p><p><strong>MVM</strong>：</p><h4 id="理念"><a href="#理念" class="headerlink" title="理念"></a>理念</h4><p>一切都是组件！</p><h4 id="为什么用vue"><a href="#为什么用vue" class="headerlink" title="为什么用vue"></a>为什么用vue</h4><ul><li>轻量，易上手</li><li>阿里支持，开源weex</li><li>抛弃IE8支持</li><li>Android支持到4.2+</li><li>ios支持到7+</li><li>适用前后端分离项目</li><li>压缩后仅有18KB，不依赖其他</li></ul><h3 id="前端框架基本逻辑"><a href="#前端框架基本逻辑" class="headerlink" title="前端框架基本逻辑"></a>前端框架基本逻辑</h3><ul><li>模板渲染</li><li>事件绑定</li><li>用户交互处理</li></ul><h3 id="实例及选项"><a href="#实例及选项" class="headerlink" title="实例及选项"></a>实例及选项</h3><p>一个Vue实例相当于一个MVVM模式中的ViewModel，实例化的时候传入一个<strong>选项对象</strong>（包括数据、模板、挂载元素、方法、生命周期钩子等）</p><h4 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h4><h5 id="el"><a href="#el" class="headerlink" title="el"></a>el</h5><p><strong>为实例提供挂载元素</strong>，类型为字符串。在初始化指定el，实例将立即进入编译过程。</p><h5 id="template"><a href="#template" class="headerlink" title="template"></a>template</h5><p>配置挂载 </p><hr><p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>                </div>                <div class="image-caption"></div>            </figure></p><p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;p&gt;redis附加功能&lt;/p&gt;
-&lt;p&gt;“附加功能”部分介绍了Redis在数据结构的基础上为用户提供的额外功能，包括管理数据结构的数据库管理功能和自动过期功能，将数据结构持久化至硬盘从而避免数据丢失的持久化功能，提高多条命令执行效率的流水线功能，保证命令安全性的事务和Lua脚本功
+        &lt;h2 id=&quot;基础&quot;&gt;&lt;a href=&quot;#基础&quot; class=&quot;headerlink&quot; title=&quot;基础&quot;&gt;&lt;/a&gt;基础&lt;/h2&gt;&lt;h3 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简介&quot;&gt;&lt;/a&gt;简介&lt;/h3&gt;&lt;h4 id
       
     
     </summary>
     
-      <category term="后端" scheme="https://lywlefan.github.io/categories/%E5%90%8E%E7%AB%AF/"/>
+      <category term="前端" scheme="https://lywlefan.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
     
     
-      <category term="redis" scheme="https://lywlefan.github.io/tags/redis/"/>
-    
-      <category term="缓存" scheme="https://lywlefan.github.io/tags/%E7%BC%93%E5%AD%98/"/>
+      <category term="vue" scheme="https://lywlefan.github.io/tags/vue/"/>
     
   </entry>
   
@@ -420,31 +498,6 @@
       <category term="idea" scheme="https://lywlefan.github.io/tags/idea/"/>
     
       <category term="webstorm" scheme="https://lywlefan.github.io/tags/webstorm/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Vue基础</title>
-    <link href="https://lywlefan.github.io/2019/10/24/%E5%89%8D%E7%AB%AF/vue/vue%E5%9F%BA%E7%A1%80/"/>
-    <id>https://lywlefan.github.io/2019/10/24/前端/vue/vue基础/</id>
-    <published>2019-10-23T16:00:00.000Z</published>
-    <updated>2019-10-24T10:31:25.136Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h2><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><h4 id="什么是Vue？？"><a href="#什么是Vue？？" class="headerlink" title="什么是Vue？？"></a>什么是Vue？？</h4><p>开发web界面的前端库</p><h4 id="vue特性"><a href="#vue特性" class="headerlink" title="vue特性"></a>vue特性</h4><ul><li>具有<strong>响应式编程</strong>（保持状态和视图同步）</li><li>组件化</li><li>轻量级</li><li>易上手</li></ul><p><strong>MVC</strong>：MVC 模式代表 Model-View-Controller（模型-视图-控制器） 模式。</p><p><strong>MVP</strong>：MVP是Model-View-Presenter的简称，即模型-视图-表现层的缩写。MVP是由MVC模式进化而来的，MVP改进了MVC中的控制器过于臃肿的问题。</p><table><thead><tr><th></th><th>MVC</th><th></th><th>MVP</th></tr></thead><tbody><tr><td>Model</td><td>业务逻辑和实体模型</td><td>Model</td><td>业务逻辑和实体模型</td></tr><tr><td>View</td><td>对应布局文件</td><td>View</td><td>对应Activity，负责view的绘制与用户交互</td></tr><tr><td>Controller</td><td>对应Activity等</td><td>Presenter</td><td>负责完成view与model的交互，处理程序逻辑</td></tr></tbody></table><p><strong>MVVM</strong>：</p><p><strong>MVM</strong>：</p><h4 id="理念"><a href="#理念" class="headerlink" title="理念"></a>理念</h4><p>一切都是组件！</p><h4 id="为什么用vue"><a href="#为什么用vue" class="headerlink" title="为什么用vue"></a>为什么用vue</h4><ul><li>轻量，易上手</li><li>阿里支持，开源weex</li><li>抛弃IE8支持</li><li>Android支持到4.2+</li><li>ios支持到7+</li><li>适用前后端分离项目</li><li>压缩后仅有18KB，不依赖其他</li></ul><h3 id="前端框架基本逻辑"><a href="#前端框架基本逻辑" class="headerlink" title="前端框架基本逻辑"></a>前端框架基本逻辑</h3><ul><li>模板渲染</li><li>事件绑定</li><li>用户交互处理</li></ul><h3 id="实例及选项"><a href="#实例及选项" class="headerlink" title="实例及选项"></a>实例及选项</h3><p>一个Vue实例相当于一个MVVM模式中的ViewModel，实例化的时候传入一个<strong>选项对象</strong>（包括数据、模板、挂载元素、方法、生命周期钩子等）</p><h4 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h4><h5 id="el"><a href="#el" class="headerlink" title="el"></a>el</h5><p><strong>为实例提供挂载元素</strong>，类型为字符串。在初始化指定el，实例将立即进入编译过程。</p><h5 id="template"><a href="#template" class="headerlink" title="template"></a>template</h5><p>配置挂载 </p><hr><p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>                </div>                <div class="image-caption"></div>            </figure></p><p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;基础&quot;&gt;&lt;a href=&quot;#基础&quot; class=&quot;headerlink&quot; title=&quot;基础&quot;&gt;&lt;/a&gt;基础&lt;/h2&gt;&lt;h3 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简介&quot;&gt;&lt;/a&gt;简介&lt;/h3&gt;&lt;h4 id
-      
-    
-    </summary>
-    
-      <category term="前端" scheme="https://lywlefan.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
-    
-    
-      <category term="vue" scheme="https://lywlefan.github.io/tags/vue/"/>
     
   </entry>
   
@@ -511,31 +564,6 @@
   
   <entry>
     <title>后端导航</title>
-    <link href="https://lywlefan.github.io/2019/10/15/%E5%90%8E%E7%AB%AF/%E5%90%8E%E7%AB%AF%E5%AF%BC%E8%88%AA/"/>
-    <id>https://lywlefan.github.io/2019/10/15/后端/后端导航/</id>
-    <published>2019-10-14T16:00:00.000Z</published>
-    <updated>2019-11-27T07:30:26.923Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="官网导航"><a href="#官网导航" class="headerlink" title="官网导航"></a>官网导航</h1><h2 id="java"><a href="#java" class="headerlink" title="java"></a>java</h2><h2 id="前沿技术"><a href="#前沿技术" class="headerlink" title="前沿技术"></a>前沿技术</h2><h4 id="人工智能技术"><a href="#人工智能技术" class="headerlink" title="人工智能技术"></a>人工智能技术</h4><p><a href="https://www.nvidia.com" target="_blank" rel="noopener">人工智能图片补全</a></p><h1 id="博客汇总"><a href="#博客汇总" class="headerlink" title="博客汇总"></a>博客汇总</h1><h2 id="团队博客"><a href="#团队博客" class="headerlink" title="团队博客"></a>团队博客</h2><p><a href="https://tech.meituan.com/" target="_blank" rel="noopener">美团技术团队</a>&emsp;<a href="https://blog.didiyun.com/index.php/category/development/" target="_blank" rel="noopener">滴滴技术团队</a>&emsp;<a href="http://jm.taobao.org/" target="_blank" rel="noopener">阿里中间件团队博客</a> &emsp;<a href="https://www.baidu.com/link?url=jqkSj1_Ki_48KWDAFwel7BJIu8Bmjq8e3F0W_6qg7PjVfpgUKYRia9PNGma1xz7y&amp;wd=&amp;eqid=b52783800040a54d000000035da73d69" target="_blank" rel="noopener"><em>阿里</em>云系统组<em>技术博客</em></a>&emsp; <a href="https://cloud.tencent.com/developer" target="_blank" rel="noopener">腾讯云+社区</a>  <a href="https://qcon.infoq.cn" target="_blank" rel="noopener">Qcon</a>    <a href="https://www.geekbang.org/" target="_blank" rel="noopener">极客邦</a>&emsp;</p><h2 id="个人博客"><a href="#个人博客" class="headerlink" title="个人博客"></a>个人博客</h2><h3 id="必看博主"><a href="#必看博主" class="headerlink" title="必看博主"></a>必看博主</h3><p><a href="https://coolshell.cn/" target="_blank" rel="noopener">酷壳</a>  <a href="http://www.ruanyifeng.com/blog/" target="_blank" rel="noopener">阮一峰的网络日志</a>  <a href="https://skyao.io/" target="_blank" rel="noopener">敖小剑的博客</a></p><h3 id="领域博主"><a href="#领域博主" class="headerlink" title="领域博主"></a>领域博主</h3><h4 id="区块链领域"><a href="#区块链领域" class="headerlink" title="区块链领域"></a>区块链领域</h4><p><a href="https://www.wanchain.org/zh/blog/" target="_blank" rel="noopener">万维链博客</a></p><h4 id="其他领域"><a href="#其他领域" class="headerlink" title="其他领域"></a>其他领域</h4><p><a href="http://jijiangshe.com" target="_blank" rel="noopener"> 技匠社</a> &emsp;<a href="https://sspai.com" target="_blank" rel="noopener">少数派</a>&emsp;<a href="https://me.csdn.net/qq_27093465" target="_blank" rel="noopener">李学凯</a>&emsp;<a href="http://blog.didispace.com/" target="_blank" rel="noopener">程序员DD</a> &emsp;<a href="http://itmuch.com/" target="_blank" rel="noopener">周立|Spring Cloud</a> &emsp;<a href="http://www.bysocket.com/" target="_blank" rel="noopener">泥瓦匠BYSocket的博客</a> &emsp;<a href="http://kailing.pub/" target="_blank" rel="noopener">KL博客</a> <a href="http://edisonxu.org/" target="_blank" rel="noopener">Edison Xu’s Blog</a> &emsp;<a href="http://blog.720ui.com/" target="_blank" rel="noopener">梁桂钊的博客</a> &emsp;<a href="http://www.icnws.com/" target="_blank" rel="noopener">城南往事</a> &emsp;<a href="http://www.ictgu.cn/" target="_blank" rel="noopener">Any-Video</a> <a href="http://blog.54im.com/" target="_blank" rel="noopener">钿畑的博客</a>&emsp; <a href="http://cmsblogs.com/" target="_blank" rel="noopener">chenssy</a> &emsp;<a href="https://www.cnkirito.moe/" target="_blank" rel="noopener">徐靖峰|个人博客</a> &emsp;<a href="http://cxytiandi.com/" target="_blank" rel="noopener">猿天地</a> <a href="https://crossoverjie.top/" target="_blank" rel="noopener">crossoverjie</a>&emsp; <a href="http://www.iocoder.cn/" target="_blank" rel="noopener">芋道源码</a> &emsp;<a href="https://purewhite.io/" target="_blank" rel="noopener">Pure White</a> &emsp;<a href="https://blog.52itstyle.vip/" target="_blank" rel="noopener">小柒</a>&emsp; <a href="https://www.cnblogs.com/netfocus/archive/2012/02/12/2347919.html" target="_blank" rel="noopener">汤雪华的博客</a>&emsp; <a href="https://www.cnblogs.com/huxi2b/" target="_blank" rel="noopener">kafka核心技术讲解作者·huxihx</a> &emsp;<a href="https://blog.csdn.net/a724888" target="_blank" rel="noopener">黄小斜</a> <a href="https://github.com/h2pl/" target="_blank" rel="noopener">黄小斜github</a>&emsp;<a href="https://www.cnblogs.com/wayfarer/" target="_blank" rel="noopener">张逸的博客(ThoughtWorks架构师)</a>&emsp;<a href="https://nndl.github.io/" target="_blank" rel="noopener">神经网络与深度学习·邱锡鹏</a>&emsp;</p><blockquote><p><a href="https://www.jianshu.com/u/354cc1548a33" target="_blank" rel="noopener">【1】简书主页·share猿</a><br><a href="https://juejin.im/user/5a8e759851882524d842d174" target="_blank" rel="noopener">【2】掘金主页·share猿</a></p></blockquote><hr><p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>                </div>                <div class="image-caption"></div>            </figure></p><p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;官网导航&quot;&gt;&lt;a href=&quot;#官网导航&quot; class=&quot;headerlink&quot; title=&quot;官网导航&quot;&gt;&lt;/a&gt;官网导航&lt;/h1&gt;&lt;h2 id=&quot;java&quot;&gt;&lt;a href=&quot;#java&quot; class=&quot;headerlink&quot; title=&quot;java&quot;&gt;&lt;/a
-      
-    
-    </summary>
-    
-      <category term="后端" scheme="https://lywlefan.github.io/categories/%E5%90%8E%E7%AB%AF/"/>
-    
-    
-      <category term="导航" scheme="https://lywlefan.github.io/tags/%E5%AF%BC%E8%88%AA/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>后端导航</title>
     <link href="https://lywlefan.github.io/2019/10/15/%E5%89%8D%E6%B2%BF%E6%8A%80%E6%9C%AF/%E5%8C%BA%E5%9D%97%E9%93%BE/%E5%8C%BA%E5%9D%97%E9%93%BE%E5%AF%BC%E8%88%AA/"/>
     <id>https://lywlefan.github.io/2019/10/15/前沿技术/区块链/区块链导航/</id>
     <published>2019-10-14T16:00:00.000Z</published>
@@ -556,38 +584,6 @@
     
     
       <category term="导航" scheme="https://lywlefan.github.io/tags/%E5%AF%BC%E8%88%AA/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>如何把订单均匀分布到分片表里面</title>
-    <link href="https://lywlefan.github.io/2019/09/29/%E5%90%8E%E7%AB%AF/%E4%B8%AD%E9%97%B4%E4%BB%B6/%E5%88%86%E5%BA%93%E5%88%86%E8%A1%A8/sharding-jdbc/%E5%A6%82%E4%BD%95%E6%8A%8A%E8%AE%A2%E5%8D%95%E5%9D%87%E5%8C%80%E5%88%86%E5%B8%83%E5%88%B0%E5%88%86%E7%89%87%E8%A1%A8%E9%87%8C%E9%9D%A2/"/>
-    <id>https://lywlefan.github.io/2019/09/29/后端/中间件/分库分表/sharding-jdbc/如何把订单均匀分布到分片表里面/</id>
-    <published>2019-09-28T16:00:00.000Z</published>
-    <updated>2019-10-15T06:42:25.684Z</updated>
-    
-    <content type="html"><![CDATA[<p>这几天学习了数据库的中间件—-sharding-jdbc,</p><blockquote><p><strong>参考文档</strong></p></blockquote><blockquote><p><a href="https://shardingsphere.apache.org" target="_blank" rel="noopener">官方文档</a></p></blockquote><hr><p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>                </div>                <div class="image-caption"></div>            </figure></p><p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;这几天学习了数据库的中间件—-sharding-jdbc,&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;参考文档&lt;/strong&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;blockquote&gt;
-&lt;p&gt;&lt;a href=&quot;https://shardingsphere
-      
-    
-    </summary>
-    
-      <category term="后端" scheme="https://lywlefan.github.io/categories/%E5%90%8E%E7%AB%AF/"/>
-    
-    
-      <category term="分库分表" scheme="https://lywlefan.github.io/tags/%E5%88%86%E5%BA%93%E5%88%86%E8%A1%A8/"/>
-    
-      <category term="sharding-jdbc" scheme="https://lywlefan.github.io/tags/sharding-jdbc/"/>
     
   </entry>
   
