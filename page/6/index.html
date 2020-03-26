@@ -158,7 +158,73 @@
     <ul class="post-list">
     
         <li class="post-list-item fade">
-            <article id="post-后端/中间件/消息中间件/kafka/读书笔记/kafka核心技术与实战-胡夕/09.生产者消息分区机制原理剖析" class="article-card article-type-post" itemprop="blogPost">
+            <article id="post-后端/搜索引擎/es/FAQ" class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2019-06-28 00:00:00" datetime="2019-06-27T16:00:00.000Z" itemprop="datePublished">2019-06-28</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/中间件/">中间件</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2019/06/28/后端/搜索引擎/es/FAQ/">es的FAQ</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        问题整理
+参考文档
+
+
+【1】简书主页·share猿
+
+
+【2】掘金主页·share猿
+
+
+【3】redis官网
+
+
+扫描以下公众号关注小猿↓↓↓↓↓↓↓↓
+                
+                    
+                    
+                
+                
+            
+更多资讯请在简书、微博、...
+    
+
+        <a href="/2019/06/28/后端/搜索引擎/es/FAQ/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/redis/">redis</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/学习笔记/">学习笔记</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-后端/中间件/消息中间件/kafka/实践问题/kafka如何处理消息重复的问题" class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
         <time class="post-time" title="2019-06-28 00:00:00" datetime="2019-06-27T16:00:00.000Z" itemprop="datePublished">2019-06-28</time>
@@ -175,7 +241,7 @@
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2019/06/28/后端/中间件/消息中间件/kafka/读书笔记/kafka核心技术与实战-胡夕/09.生产者消息分区机制原理剖析/">No title</a>
+      <a class="post-title-link" href="/2019/06/28/后端/中间件/消息中间件/kafka/实践问题/kafka如何处理消息重复的问题/">09.生产者消息分区机制原理剖析</a>
     </h3>
   
 
@@ -185,32 +251,18 @@
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        阅读笔记生产者消息分区机制原理剖析
-如何将大的数据均匀的分配到Kafka的各个Broker上？
-
-为什么分区？
-
-
-为什么分区？
-三级结构：主题-分区-消息
-
-主题下的每条消息只会保存在某一个分区中，而不会在多个分区中被保存多份
-
-
-
-疑问:为什么kafka要这样设计？有什么好处？
-
-回答:我们设想一个问题，我们在学校找一个学生，如果我们直接把学生集中在一起去找是不是很麻烦，很低效。换种方式...
+        背景kafka没有重试机制不支持消息重试，也没有死信队列，因此使用kafka做消息队列时，如果遇到了消息在业务处理时出现异常，就会很难进行下一步处理。应对这种场景，需要自己实现消息重试的功能。
+如果不想自己实现消息重试机制，建议使用RocketMQ作为消息队列，RocketMQ的消息重试机制相当完善，对于开发者使用也非常友好，详见https://help.aliyun.com/documen...
     
 
-        <a href="/2019/06/28/后端/中间件/消息中间件/kafka/读书笔记/kafka核心技术与实战-胡夕/09.生产者消息分区机制原理剖析/" class="post-more waves-effect waves-button">
+        <a href="/2019/06/28/后端/中间件/消息中间件/kafka/实践问题/kafka如何处理消息重复的问题/" class="post-more waves-effect waves-button">
             阅读全文…
         </a>
     </div>
     
     <div class="post-footer">
         
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/kafka/">kafka</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/kafka核心技术与实战-胡夕/">kafka核心技术与实战-胡夕</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/kafka/">kafka</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/实践问题/">实践问题</a></li></ul>
 
     </div>
     
@@ -288,7 +340,7 @@ v1（kafka 0.11.0之前）:message set, message ,v2（kafka 0.11.0以后）...
         </li>
     
         <li class="post-list-item fade">
-            <article id="post-后端/搜索引擎/es/COLLECTION" class="article-card article-type-post" itemprop="blogPost">
+            <article id="post-后端/数据存储/NOSQL/redis/FAQ" class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
         <time class="post-time" title="2019-06-28 00:00:00" datetime="2019-06-27T16:00:00.000Z" itemprop="datePublished">2019-06-28</time>
@@ -305,76 +357,7 @@ v1（kafka 0.11.0之前）:message set, message ,v2（kafka 0.11.0以后）...
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2019/06/28/后端/搜索引擎/es/COLLECTION/">es的COLLECTION</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        学习基础学习
-1.Elasticsearch学习，请先看这一篇！
-
-2.Elasticsearch 权威指南（中文版）
-
-
-视频文章考试考试导航文章
-Elastic认证考试，请先看这一篇！
-
-视频备考学习
-参考文档
-
-
-【1】简书主页·share猿
-
-
-【2】掘金主页·share猿
-
-
-【3】elasticsearch官网
-
-
-扫描以下公众号关注小猿↓↓↓↓↓↓↓↓
-            ...
-    
-
-        <a href="/2019/06/28/后端/搜索引擎/es/COLLECTION/" class="post-more waves-effect waves-button">
-            阅读全文…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/es/">es</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/搜索引擎/">搜索引擎</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-后端/数据存储/NOSQL/redis/VERSION" class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2019-06-28 00:00:00" datetime="2019-06-27T16:00:00.000Z" itemprop="datePublished">2019-06-28</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/后端/">后端</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2019/06/28/后端/数据存储/NOSQL/redis/VERSION/">redis的VERSION</a>
+      <a class="post-title-link" href="/2019/06/28/后端/数据存储/NOSQL/redis/FAQ/">redis的FAQ</a>
     </h3>
   
 
@@ -407,7 +390,7 @@ Elastic认证考试，请先看这一篇！
 更多资讯请在简书、微博、...
     
 
-        <a href="/2019/06/28/后端/数据存储/NOSQL/redis/VERSION/" class="post-more waves-effect waves-button">
+        <a href="/2019/06/28/后端/数据存储/NOSQL/redis/FAQ/" class="post-more waves-effect waves-button">
             阅读全文…
         </a>
     </div>
@@ -528,7 +511,7 @@ CountDownLatchCountDownLatch类位于java.util.concurrent包下，利用它可�
         </li>
     
         <li class="post-list-item fade">
-            <article id="post-后端/基础巩固/java/线程/自定义线程池" class="article-card article-type-post" itemprop="blogPost">
+            <article id="post-后端/高并发/java/并发框架/disruptor/2.disruptor应用" class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
         <time class="post-time" title="2019-06-26 00:00:00" datetime="2019-06-25T16:00:00.000Z" itemprop="datePublished">2019-06-26</time>
@@ -545,56 +528,7 @@ CountDownLatchCountDownLatch类位于java.util.concurrent包下，利用它可�
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2019/06/26/后端/基础巩固/java/线程/自定义线程池/">自定义线程池</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        
-万丈高楼平地起的前提是地基好.
-
-为什么要定义线程池??如果并发的线程数量很多，并且每个线程都是执行一个时间很短的任务就结束了，这样频繁创建线程就会大大降低系统的效率，因为频繁创建线程和销毁线程需要时间。那么有没有一种办法使得线程可以复用，就是执行完一个任务，并不被销毁，而是可以继续执行其他的任务？在Java中可以通过线程池来达到这样的效果。首先我们从最核心的ThreadPoolExecu...
-    
-
-        <a href="/2019/06/26/后端/基础巩固/java/线程/自定义线程池/" class="post-more waves-effect waves-button">
-            阅读全文…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/基础/">基础</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-后端/高并发/java/并发框架/disruptor/1.disruptor初识" class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2019-06-26 00:00:00" datetime="2019-06-25T16:00:00.000Z" itemprop="datePublished">2019-06-26</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/后端/">后端</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2019/06/26/后端/高并发/java/并发框架/disruptor/1.disruptor初识/">1.disruptor初识</a>
+      <a class="post-title-link" href="/2019/06/26/后端/高并发/java/并发框架/disruptor/2.disruptor应用/">2.disruptor应用</a>
     </h3>
   
 
@@ -607,12 +541,24 @@ CountDownLatchCountDownLatch类位于java.util.concurrent包下，利用它可�
         
 disruptor号称能够在一个线程里每秒处理6百万订单,业务逻辑处理器完全是运行在内存中，使用事件源驱动方式。
 
-要学的概念乐观锁打个比方理解乐观锁就是到桥头再看有没有车来过此桥,没有的话快速过桥.
-悲观锁打个比方理解悲观锁说白了就是先发制人,我的车要过桥,但是我担心桥上有其他车,所以我提前把桥口加一个锁,我到桥头了在开锁过桥,过去了再把锁子接触了.
-死锁打个比方理解简单的比方,两俩车同...
+本节导航
+Disruptor核心链路场景应用讲解
+
+并行计算- 串行操作
+
+并行计算- 并行操作
+
+并行计算- 多遍形高端操作
+
+并行计算- 多生产者消费模型
+
+并行计算- 多消费者消费模型
+
+
+Disruptor核心链路场景应用讲解概念啥是核心链路?就拿京东来说,下单支付就...
     
 
-        <a href="/2019/06/26/后端/高并发/java/并发框架/disruptor/1.disruptor初识/" class="post-more waves-effect waves-button">
+        <a href="/2019/06/26/后端/高并发/java/并发框架/disruptor/2.disruptor应用/" class="post-more waves-effect waves-button">
             阅读全文…
         </a>
     </div>
@@ -708,7 +654,7 @@ Zookeeper
         </li>
     
         <li class="post-list-item fade">
-            <article id="post-后端/高并发/java/并发框架/disruptor/2.disruptor应用" class="article-card article-type-post" itemprop="blogPost">
+            <article id="post-后端/高并发/java/并发框架/disruptor/1.disruptor初识" class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
         <time class="post-time" title="2019-06-26 00:00:00" datetime="2019-06-25T16:00:00.000Z" itemprop="datePublished">2019-06-26</time>
@@ -725,7 +671,7 @@ Zookeeper
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2019/06/26/后端/高并发/java/并发框架/disruptor/2.disruptor应用/">2.disruptor应用</a>
+      <a class="post-title-link" href="/2019/06/26/后端/高并发/java/并发框架/disruptor/1.disruptor初识/">1.disruptor初识</a>
     </h3>
   
 
@@ -738,24 +684,12 @@ Zookeeper
         
 disruptor号称能够在一个线程里每秒处理6百万订单,业务逻辑处理器完全是运行在内存中，使用事件源驱动方式。
 
-本节导航
-Disruptor核心链路场景应用讲解
-
-并行计算- 串行操作
-
-并行计算- 并行操作
-
-并行计算- 多遍形高端操作
-
-并行计算- 多生产者消费模型
-
-并行计算- 多消费者消费模型
-
-
-Disruptor核心链路场景应用讲解概念啥是核心链路?就拿京东来说,下单支付就...
+要学的概念乐观锁打个比方理解乐观锁就是到桥头再看有没有车来过此桥,没有的话快速过桥.
+悲观锁打个比方理解悲观锁说白了就是先发制人,我的车要过桥,但是我担心桥上有其他车,所以我提前把桥口加一个锁,我到桥头了在开锁过桥,过去了再把锁子接触了.
+死锁打个比方理解简单的比方,两俩车同...
     
 
-        <a href="/2019/06/26/后端/高并发/java/并发框架/disruptor/2.disruptor应用/" class="post-more waves-effect waves-button">
+        <a href="/2019/06/26/后端/高并发/java/并发框架/disruptor/1.disruptor初识/" class="post-more waves-effect waves-button">
             阅读全文…
         </a>
     </div>
@@ -763,6 +697,55 @@ Disruptor核心链路场景应用讲解概念啥是核心链路?就拿京东来�
     <div class="post-footer">
         
 	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/disruptor/">disruptor</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/高并发/">高并发</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-业务/交易所/撮合系统设计" class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2019-06-26 00:00:00" datetime="2019-06-25T16:00:00.000Z" itemprop="datePublished">2019-06-26</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/业务场景/">业务场景</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2019/06/26/业务/交易所/撮合系统设计/">撮合系统设计</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        
+摘要：撮合技术主要是从数据库撮合技术向内存撮合技术发展，这是因为数据库撮合技术越来越无法满足金融交易对于高可靠性、高性能、强安全性、可扩展性以及易维护性的需求。本文来自中生代技术群的34期分享，将和大家讨论基于内存的撮合的系统设计。李伟山，毕业于国防科技大学，曾就职于华为、阿里巴巴，目前人江苏大圆银泰技术总监，对于高并发、大数据架构设计有深刻的了解。1.概述
+
+随着信息技术的日新月异和金融...
+    
+
+        <a href="/2019/06/26/业务/交易所/撮合系统设计/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/交易所/">交易所</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/撮合/">撮合</a></li></ul>
 
     </div>
     

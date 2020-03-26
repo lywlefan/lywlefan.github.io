@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>Hive的安装 | share猿 | https://lywlefan.github.io/</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="大数据,hive">
+    <meta name="description" content="Hive下载安装下载地址下载地址 安装步骤解压hive到指定文件夹1$ tar -xzvf apache-hive-3.1.2-bin.tar.gz 在/conf文件夹下配置hive-site.xml12345678910111213141516171819202122232425262728&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8">
+<meta name="keywords" content="大数据,hive">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hive的安装">
+<meta property="og:url" content="https://lywlefan.github.io/2020/03/25/后端/大数据/存储/hive/Hive的安装/index.html">
+<meta property="og:site_name" content="share猿">
+<meta property="og:description" content="Hive下载安装下载地址下载地址 安装步骤解压hive到指定文件夹1$ tar -xzvf apache-hive-3.1.2-bin.tar.gz 在/conf文件夹下配置hive-site.xml12345678910111213141516171819202122232425262728&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="d:/myworkspace/blog-build/source/_posts/img/1585207863239.png">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2020-03-26T08:27:57.902Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hive的安装">
+<meta name="twitter:description" content="Hive下载安装下载地址下载地址 安装步骤解压hive到指定文件夹1$ tar -xzvf apache-hive-3.1.2-bin.tar.gz 在/conf文件夹下配置hive-site.xml12345678910111213141516171819202122232425262728&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8">
+<meta name="twitter:image" content="d:/myworkspace/blog-build/source/_posts/img/1585207863239.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="share猿" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">share猿</h5>
+          <a href="mailto:330334064@qq.com" title="330334064@qq.com" class="mail">330334064@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/lywlefan" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                GitHub
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/atom">
+                <i class="icon icon-lg icon-rss"></i>
+                订阅
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Hive的安装</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Hive的安装</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2020-03-24T16:00:00.000Z" itemprop="datePublished" class="page-time">
+  2020-03-25
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/后端/">后端</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Hive下载安装"><span class="post-toc-number">1.</span> <span class="post-toc-text">Hive下载安装</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#下载地址"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">下载地址</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#安装步骤"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">安装步骤</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#解压hive到指定文件夹"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">解压hive到指定文件夹</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#在-conf文件夹下配置hive-site-xml"><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">在/conf文件夹下配置hive-site.xml</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#导入mysql驱动到lib文件夹"><span class="post-toc-number">1.2.3.</span> <span class="post-toc-text">导入mysql驱动到lib文件夹</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#初始化hive在mysql中的表"><span class="post-toc-number">1.2.4.</span> <span class="post-toc-text">初始化hive在mysql中的表</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#启动hive"><span class="post-toc-number">1.2.5.</span> <span class="post-toc-text">启动hive</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#测试"><span class="post-toc-number">1.2.6.</span> <span class="post-toc-text">测试</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#在hive中创建一个库"><span class="post-toc-number">1.2.6.1.</span> <span class="post-toc-text">在hive中创建一个库</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#查看hive中的库"><span class="post-toc-number">1.2.6.2.</span> <span class="post-toc-text">查看hive中的库</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#切换到创建的库上"><span class="post-toc-number">1.2.6.3.</span> <span class="post-toc-text">切换到创建的库上</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#在当前库创建一张表"><span class="post-toc-number">1.2.6.4.</span> <span class="post-toc-text">在当前库创建一张表</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#查看当前库里面所有的表"><span class="post-toc-number">1.2.6.5.</span> <span class="post-toc-text">查看当前库里面所有的表</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#通过mysql查询创建的表"><span class="post-toc-number">1.2.6.6.</span> <span class="post-toc-text">通过mysql查询创建的表</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#通过hsfs的web界面查看我们创建的表"><span class="post-toc-number">1.2.6.7.</span> <span class="post-toc-text">通过hsfs的web界面查看我们创建的表</span></a></li></ol></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#遇到问题"><span class="post-toc-number">2.</span> <span class="post-toc-text">遇到问题</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#启动hive报错"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">启动hive报错</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#报错详情"><span class="post-toc-number">2.1.1.</span> <span class="post-toc-text">报错详情</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#错误原因"><span class="post-toc-number">2.1.2.</span> <span class="post-toc-text">错误原因</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#错误解决"><span class="post-toc-number">2.1.3.</span> <span class="post-toc-text">错误解决</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#创建库报错"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">创建库报错</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#错误详情"><span class="post-toc-number">2.2.1.</span> <span class="post-toc-text">错误详情</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#错误原因-1"><span class="post-toc-number">2.2.2.</span> <span class="post-toc-text">错误原因</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#hive数据库格式化失败"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">hive数据库格式化失败</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#错误详情-1"><span class="post-toc-number">2.3.1.</span> <span class="post-toc-text">错误详情</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#错误原因-2"><span class="post-toc-number">2.3.2.</span> <span class="post-toc-text">错误原因</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#错误解决-1"><span class="post-toc-number">2.3.3.</span> <span class="post-toc-text">错误解决</span></a></li></ol></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-后端/大数据/存储/hive/Hive的安装" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Hive的安装</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2020-03-25 00:00:00" datetime="2020-03-24T16:00:00.000Z" itemprop="datePublished">2020-03-25</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/后端/">后端</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="Hive下载安装"><a href="#Hive下载安装" class="headerlink" title="Hive下载安装"></a>Hive下载安装</h1><h2 id="下载地址"><a href="#下载地址" class="headerlink" title="下载地址"></a>下载地址</h2><p><a href="http://mirror.bit.edu.cn/apache/hive/" target="_blank" rel="noopener">下载地址</a></p>
+<h2 id="安装步骤"><a href="#安装步骤" class="headerlink" title="安装步骤"></a>安装步骤</h2><h3 id="解压hive到指定文件夹"><a href="#解压hive到指定文件夹" class="headerlink" title="解压hive到指定文件夹"></a>解压hive到指定文件夹</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ tar -xzvf apache-hive-3.1.2-bin.tar.gz</span><br></pre></td></tr></table></figure>
+<h3 id="在-conf文件夹下配置hive-site-xml"><a href="#在-conf文件夹下配置hive-site-xml" class="headerlink" title="在/conf文件夹下配置hive-site.xml"></a>在/conf文件夹下配置hive-site.xml</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot;?&gt;</span><br><span class="line">&lt;?xml-stylesheet type=&quot;text/xsl&quot; href=&quot;configuration.xsl&quot;?&gt;</span><br><span class="line">&lt;configuration&gt;</span><br><span class="line">        &lt;property&gt;</span><br><span class="line">                &lt;name&gt;javax.jdo.option.ConnectionURL&lt;/name&gt;</span><br><span class="line">                &lt;value&gt;jdbc:mysql://192.168.118.8:23306/hive_test&lt;/value&gt;</span><br><span class="line">        &lt;/property&gt;</span><br><span class="line"></span><br><span class="line">        &lt;property&gt;</span><br><span class="line">                &lt;name&gt;javax.jdo.option.ConnectionDriverName&lt;/name&gt;</span><br><span class="line">                &lt;value&gt;com.mysql.jdbc.Driver&lt;/value&gt;</span><br><span class="line">        &lt;/property&gt;</span><br><span class="line"></span><br><span class="line">        &lt;property&gt;</span><br><span class="line">                &lt;name&gt;javax.jdo.option.ConnectionUserName&lt;/name&gt;</span><br><span class="line">                &lt;value&gt;root&lt;/value&gt;</span><br><span class="line">        &lt;/property&gt;</span><br><span class="line"></span><br><span class="line">        &lt;property&gt;</span><br><span class="line">                &lt;name&gt;javax.jdo.option.ConnectionPassword&lt;/name&gt;</span><br><span class="line">                &lt;value&gt;123456&lt;/value&gt;</span><br><span class="line">        &lt;/property&gt;</span><br><span class="line"></span><br><span class="line">        &lt;property&gt;</span><br><span class="line">                &lt;name&gt;hive.metastore.schema.verification&lt;/name&gt;</span><br><span class="line">                &lt;value&gt;false&lt;/value&gt;</span><br><span class="line">        &lt;/property&gt;</span><br><span class="line">&lt;/configuration&gt;</span><br></pre></td></tr></table></figure>
+<p>如果没有该文件,直接新建即可!该配置文件主要配置了mysql 的连接地址!</p>
+<h3 id="导入mysql驱动到lib文件夹"><a href="#导入mysql驱动到lib文件夹" class="headerlink" title="导入mysql驱动到lib文件夹"></a>导入mysql驱动到lib文件夹</h3><p>导入mysql-connector-java-5.1.20.jar到hive的lib文件夹下。</p>
+<h3 id="初始化hive在mysql中的表"><a href="#初始化hive在mysql中的表" class="headerlink" title="初始化hive在mysql中的表"></a>初始化hive在mysql中的表</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ schematool -dbType mysql -initSchema</span><br></pre></td></tr></table></figure>
+<h3 id="启动hive"><a href="#启动hive" class="headerlink" title="启动hive"></a>启动hive</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hive</span><br></pre></td></tr></table></figure>
+<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><h4 id="在hive中创建一个库"><a href="#在hive中创建一个库" class="headerlink" title="在hive中创建一个库"></a>在hive中创建一个库</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1 hive&gt; create database hive_1;</span><br><span class="line">2 OK</span><br><span class="line">3 Time taken: 1.432 seconds</span><br></pre></td></tr></table></figure>
+<h4 id="查看hive中的库"><a href="#查看hive中的库" class="headerlink" title="查看hive中的库"></a>查看hive中的库</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1 hive&gt; create database hive_1;</span><br><span class="line">2 OK</span><br><span class="line">3 Time taken: 1.432 seconds</span><br></pre></td></tr></table></figure>
+<h4 id="切换到创建的库上"><a href="#切换到创建的库上" class="headerlink" title="切换到创建的库上"></a>切换到创建的库上</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1 hive&gt; create database hive_1;</span><br><span class="line">2 OK</span><br><span class="line">3 Time taken: 1.432 seconds</span><br></pre></td></tr></table></figure>
+<h4 id="在当前库创建一张表"><a href="#在当前库创建一张表" class="headerlink" title="在当前库创建一张表"></a>在当前库创建一张表</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1 hive&gt; create database hive_1;</span><br><span class="line">2 OK</span><br><span class="line">3 Time taken: 1.432 seconds</span><br></pre></td></tr></table></figure>
+<h4 id="查看当前库里面所有的表"><a href="#查看当前库里面所有的表" class="headerlink" title="查看当前库里面所有的表"></a>查看当前库里面所有的表</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hive&gt; show tables;</span><br><span class="line">OK</span><br><span class="line">hive_01</span><br><span class="line">Time taken: 0.107 seconds, Fetched: 1 row(s)</span><br></pre></td></tr></table></figure>
+<h4 id="通过mysql查询创建的表"><a href="#通过mysql查询创建的表" class="headerlink" title="通过mysql查询创建的表"></a>通过mysql查询创建的表</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from TBLS;</span><br></pre></td></tr></table></figure>
+<h4 id="通过hsfs的web界面查看我们创建的表"><a href="#通过hsfs的web界面查看我们创建的表" class="headerlink" title="通过hsfs的web界面查看我们创建的表"></a>通过hsfs的web界面查看我们创建的表</h4><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="D:\myworkspace\blog-build\source\_posts\img\1585207863239.png" alt="1585207863239" title>
+                </div>
+                <div class="image-caption">1585207863239</div>
+            </figure>
+<p>以上就是hive 的安装步骤!!!</p>
+<h1 id="遇到问题"><a href="#遇到问题" class="headerlink" title="遇到问题"></a>遇到问题</h1><h2 id="启动hive报错"><a href="#启动hive报错" class="headerlink" title="启动hive报错"></a>启动hive报错</h2><h3 id="报错详情"><a href="#报错详情" class="headerlink" title="报错详情"></a>报错详情</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">SLF4J: Class path contains multiple SLF4J bindings.</span><br><span class="line">SLF4J: Found binding in [jar:file:/opt/software/hive/apache-hive-3.1.2-bin/lib/log4j-slf4j-impl-2.10.0.jar!/org/slf4j/impl/StaticLoggerBinder.class]</span><br><span class="line">SLF4J: Found binding in [jar:file:/opt/software/hadoop/hadoop-3.1.3/share/hadoop/common/lib/slf4j-log4j12-1.7.25.jar!/org/slf4j/impl/StaticLoggerBinder.class]</span><br><span class="line">SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.</span><br><span class="line">SLF4J: Actual binding is of type [org.apache.logging.slf4j.Log4jLoggerFactory]</span><br><span class="line">Exception in thread &quot;main&quot; java.lang.NoSuchMethodError: com.google.common.base.Preconditions.checkArgument(ZLjava/lang/String;Ljava/lang/Object;)V</span><br><span class="line">	at org.apache.hadoop.conf.Configuration.set(Configuration.java:1357)</span><br><span class="line">	at org.apache.hadoop.conf.Configuration.set(Configuration.java:1338)</span><br><span class="line">	at org.apache.hadoop.mapred.JobConf.setJar(JobConf.java:518)</span><br><span class="line">	at org.apache.hadoop.mapred.JobConf.setJarByClass(JobConf.java:536)</span><br><span class="line">	at org.apache.hadoop.mapred.JobConf.&lt;init&gt;(JobConf.java:430)</span><br><span class="line">	at org.apache.hadoop.hive.conf.HiveConf.initialize(HiveConf.java:5141)</span><br><span class="line">	at org.apache.hadoop.hive.conf.HiveConf.&lt;init&gt;(HiveConf.java:5104)</span><br><span class="line">	at org.apache.hive.beeline.HiveSchemaTool.&lt;init&gt;(HiveSchemaTool.java:96)</span><br><span class="line">	at org.apache.hive.beeline.HiveSchemaTool.main(HiveSchemaTool.java:1473)</span><br><span class="line">	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)</span><br><span class="line">	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)</span><br><span class="line">	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)</span><br><span class="line">	at java.lang.reflect.Method.invoke(Method.java:498)</span><br><span class="line">	at org.apache.hadoop.util.RunJar.run(RunJar.java:318)</span><br><span class="line">	at org.apache.hadoop.util.RunJar.main(RunJar.java:232)</span><br></pre></td></tr></table></figure>
+<h3 id="错误原因"><a href="#错误原因" class="headerlink" title="错误原因"></a>错误原因</h3><p>guava版本太低造成的。</p>
+<h3 id="错误解决"><a href="#错误解决" class="headerlink" title="错误解决"></a>错误解决</h3><p>提升版本，删除lib文件夹下的guava原jar包，然后去maven仓库下载最新jar包放入即可！</p>
+<h2 id="创建库报错"><a href="#创建库报错" class="headerlink" title="创建库报错"></a>创建库报错</h2><h3 id="错误详情"><a href="#错误详情" class="headerlink" title="错误详情"></a>错误详情</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FAILED: HiveException java.lang.RuntimeException: Unable to instantiate org.apache.hadoop.hive.ql.metadata.SessionHiveMetaStoreClient</span><br></pre></td></tr></table></figure>
+<h3 id="错误原因-1"><a href="#错误原因-1" class="headerlink" title="错误原因"></a>错误原因</h3><h2 id="hive数据库格式化失败"><a href="#hive数据库格式化失败" class="headerlink" title="hive数据库格式化失败"></a>hive数据库格式化失败</h2><h3 id="错误详情-1"><a href="#错误详情-1" class="headerlink" title="错误详情"></a>错误详情</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">SLF4J: Class path contains multiple SLF4J bindings.</span><br><span class="line">SLF4J: Found binding in [jar:file:/opt/software/hive/apache-hive-3.1.2-bin/lib/log4j-slf4j-impl-2.10.0.jar!/org/slf4j/impl/StaticLoggerBinder.class]</span><br><span class="line">SLF4J: Found binding in [jar:file:/opt/software/hadoop/hadoop-3.1.3/share/hadoop/common/lib/slf4j-log4j12-1.7.25.jar!/org/slf4j/impl/StaticLoggerBinder.class]</span><br><span class="line">SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.</span><br><span class="line">SLF4J: Actual binding is of type [org.apache.logging.slf4j.Log4jLoggerFactory]</span><br><span class="line">Metastore connection URL:	 jdbc:mysql://219.145.62.237:23306/hive_test</span><br><span class="line">Metastore Connection Driver :	 com.MySQL.jdbc.Driver</span><br><span class="line">Metastore connection User:	 root</span><br><span class="line">org.apache.hadoop.hive.metastore.HiveMetaException: Failed to load driver</span><br><span class="line">Underlying cause: java.lang.ClassNotFoundException : com.MySQL.jdbc.Driver</span><br><span class="line">Use --verbose for detailed stacktrace.</span><br><span class="line">*** schemaTool failed ***</span><br></pre></td></tr></table></figure>
+<h3 id="错误原因-2"><a href="#错误原因-2" class="headerlink" title="错误原因"></a>错误原因</h3><p>hive/lib文件夹下面没有导入mysql 的驱动。</p>
+<p>还有可能是配置文件错误了。</p>
+<h3 id="错误解决-1"><a href="#错误解决-1" class="headerlink" title="错误解决"></a>错误解决</h3><p>导入mysql驱动，用官方的配置文件，不要在网上乱粘！！！</p>
+<blockquote>
+<p><strong>参考文档</strong></p>
+</blockquote>
+<blockquote>
+<p><a href="https://shardingsphere.apache.org" target="_blank" rel="noopener">官方文档</a></p>
+</blockquote>
+<hr>
+<p><strong>扫描以下公众号关注小猿↓↓↓↓↓↓↓↓</strong><br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/3084894-e6e9a10cf3e08bba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
+<p>更多资讯请在<strong>简书、微博、今日头条、掘金、CSDN</strong>都可以通过搜索<strong>“Share猿”</strong>找到小猿哦！！！</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2020-03-26T08:27:57.902Z" itemprop="dateUpdated">2020-03-26 16:27:57</time>
+</span><br>
+
+
+        
+        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2020/03/25/后端/大数据/存储/hive/Hive的安装/" target="_blank" rel="external">https://lywlefan.github.io/2020/03/25/后端/大数据/存储/hive/Hive的安装/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://lywlefan.github.io">
+            <img src="/img/avatar.png" alt="share猿">
+            share猿
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hive/">hive</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/大数据/">大数据</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://lywlefan.github.io/2020/03/25/后端/大数据/存储/hive/Hive的安装/&title=《Hive的安装》 — share猿&pic=https://lywlefan.github.io/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://lywlefan.github.io/2020/03/25/后端/大数据/存储/hive/Hive的安装/&title=《Hive的安装》 — share猿&source=分享有价值的内容,你我共同成长!" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://lywlefan.github.io/2020/03/25/后端/大数据/存储/hive/Hive的安装/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Hive的安装》 — share猿&url=https://lywlefan.github.io/2020/03/25/后端/大数据/存储/hive/Hive的安装/&via=https://lywlefan.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://lywlefan.github.io/2020/03/25/后端/大数据/存储/hive/Hive的安装/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2020/03/25/后端/大数据/集群/VMware的系统安装/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">vmware的安装</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/12/06/前端/vue/vue中是如何自定义组件的/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">vue中是如何自定义组件的.</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'true' == 'true',
+            verify: 'false' == 'true',
+            appId: "hQGVIAaJERVwyrWxj1uqgCqS-gzGzoHsz",
+            appKey: "l7FO5csTavNwXCGryJyOkkc1",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢赞赏!
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>share猿 &copy; 2015 - 2020</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://lywlefan.github.io/2020/03/25/后端/大数据/存储/hive/Hive的安装/&title=《Hive的安装》 — share猿&pic=https://lywlefan.github.io/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://lywlefan.github.io/2020/03/25/后端/大数据/存储/hive/Hive的安装/&title=《Hive的安装》 — share猿&source=分享有价值的内容,你我共同成长!" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://lywlefan.github.io/2020/03/25/后端/大数据/存储/hive/Hive的安装/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Hive的安装》 — share猿&url=https://lywlefan.github.io/2020/03/25/后端/大数据/存储/hive/Hive的安装/&via=https://lywlefan.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://lywlefan.github.io/2020/03/25/后端/大数据/存储/hive/Hive的安装/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACvUlEQVR42u3ay07DQAwF0P7/T8MWCZJcP6Z0cbKqAqQ+gzTj2H694uvrx3V/J/mr5Pn5TxcuPDw8vEHov6/7sH4/Z/7kq0W8v3+5BHh4eHjHePfh5l9zz8vvX8WQx4yHh4f3mbxeTps8v3dQ4eHh4X0arxf6pOTRK2rg4eHhvYeXbMTVYuvkc/WgWqi14OHh4cW8fMv+nM9H+nt4eHh44656b/O9b2jdb/G9RtplhHh4eHgHeNVNuRpWXmiYpM4PkeDh4eEd5lVf9Se/M2l3FdJuPDw8vAO8/FV/PkBQHedKjqgofjw8PLxVXj4ONUmUJ4XjvJBxmVLj4eHhLfGS0POhq/lYVb5A5ZkIPDw8vCVenv72irbVsmxenMXDw8P7L96kbJoENF+salPt8l0BDw8Pb4k3ad7PC7W9llv5+Xh4eHirvPs2fzXhnjfVqt/18BkPDw/vAG+yQee/Uw2ul+5HFRc8PDy8Jd7p4uy8JTYZ9sLDw8M7x5u0qXYXbj4uEM2U4eHh4bV4vbR1krnn9ydlXzw8PLxzvF4xIj8q8qB74wX5wYOHh4e3y6sG9xpc1XJwsnwPDTk8PDy8VV6vYd87QqoberUlFg1d4eHh4Y15SUo9GZCajAjkC11A4uHh4Y151YJCddCqOnbQGxR4GLfCw8PDW+W9M4FORgfyJSun0Xh4eHhLvN4GPT8eeoXj8lLi4eHhHeDlbfu8AdYr0TYnHZJDAg8PD2+V91W8qtl6b+F6deio1oKHh4c35lWHpZIUNk++ewWIheoLHh4e3pjXOwyq6fIWqVwsxsPDwzvGmzT785Pn/iCpts2iZcXDw8P7V151LCAf6to6Eh4aYHh4eHhv51WPjZxUHWIolHHx8PDwjvHyYkT1CJksU/Xf8McdPDw8vAO83qt+dUCq2n/Lj4dmTw8PDw+vw/sGIG8r8JBmXwwAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '共同学习!共同进步!';
+            clearTimeout(titleTime);
+        } else {
+            document.title = 'Share猿社区官方';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
