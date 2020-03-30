@@ -158,10 +158,10 @@
     <ul class="post-list">
     
         <li class="post-list-item fade">
-            <article id="post-后端/大数据/集群/Hadoop安装" class="article-card article-type-post" itemprop="blogPost">
+            <article id="post-后端/大数据/存储/hive/Hive中导入csv数据" class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2020-03-25 00:00:00" datetime="2020-03-24T16:00:00.000Z" itemprop="datePublished">2020-03-25</time>
+        <time class="post-time" title="2020-03-30 00:00:00" datetime="2020-03-29T16:00:00.000Z" itemprop="datePublished">2020-03-30</time>
 
         
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/后端/">后端</a></li></ul>
@@ -175,7 +175,7 @@
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2020/03/25/后端/大数据/集群/Hadoop安装/">Hadoop的安装</a>
+      <a class="post-title-link" href="/2020/03/30/后端/大数据/存储/hive/Hive中导入csv数据/">Hive中导入csv数据</a>
     </h3>
   
 
@@ -185,29 +185,199 @@
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        Hadoop的安装配置下载下载地址点击下载
-下载步骤进入首页找到对应版本的Hadoop
-
-                
-                    
-                    
-                
-                1585021309825
-            
-然后点击进入
-
-                
-        ...
+        Hive中导入csv数据常规表导入数据在hive中创建表通过查看csv的数据结构,在hive中创建一个对应的表,建表语句(以下创建的是内部表,也可以创建外部表)如下:
+123456789101112create table if not exists wdc_user_01(id string,number string,type string,name String,archiveNumb...
     
 
-        <a href="/2020/03/25/后端/大数据/集群/Hadoop安装/" class="post-more waves-effect waves-button">
+        <a href="/2020/03/30/后端/大数据/存储/hive/Hive中导入csv数据/" class="post-more waves-effect waves-button">
             阅读全文…
         </a>
     </div>
     
     <div class="post-footer">
         
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/大数据/">大数据</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/集群/">集群</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hive/">hive</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/大数据/">大数据</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-后端/大数据/存储/hive/Hive语法详解" class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2020-03-30 00:00:00" datetime="2020-03-29T16:00:00.000Z" itemprop="datePublished">2020-03-30</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/后端/">后端</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2020/03/30/后端/大数据/存储/hive/Hive语法详解/">Hive语法详解</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        基础语法建表内部表特点
+未被external修饰的是内部表（managed table） 
+
+内部表数据由Hive自身管理，外部表数据由HDFS管理
+
+内部表数据存储的位置是hive.metastore.warehouse.dir（默认：/user/hive/warehouse） 
+
+删除内部表会直接删除元数据（metadata）及存储数据 
+
+脚本1234567891011create t...
+    
+
+        <a href="/2020/03/30/后端/大数据/存储/hive/Hive语法详解/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hive/">hive</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/大数据/">大数据</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-后端/大数据/存储/hive/Hive的配置文件学习" class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2020-03-28 00:00:00" datetime="2020-03-27T16:00:00.000Z" itemprop="datePublished">2020-03-28</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/后端/">后端</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2020/03/28/后端/大数据/存储/hive/Hive的配置文件学习/">Hive的配置文件学习</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        hive-site.xml配置文件数据库配置配置数据库地址
+参考文档
+
+
+官方文档
+
+
+扫描以下公众号关注小猿↓↓↓↓↓↓↓↓
+                
+                    
+                    
+                
+                
+            
+更多资讯请在简书、微博、今日头条、掘金、CSDN都可以...
+    
+
+        <a href="/2020/03/28/后端/大数据/存储/hive/Hive的配置文件学习/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hive/">hive</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/大数据/">大数据</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-后端/搜索引擎/es/ES的Mapping学习总结" class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2020-03-26 00:00:00" datetime="2020-03-25T16:00:00.000Z" itemprop="datePublished">2020-03-26</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/后端/">后端</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2020/03/26/后端/搜索引擎/es/ES的Mapping学习总结/">ES的Mapping学习总结</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        
+参考文档
+
+
+【1】简书主页·share猿
+
+
+【2】掘金主页·share猿
+
+
+【3】elasticsearch官网
+
+
+扫描以下公众号关注小猿↓↓↓↓↓↓↓↓
+                
+                    
+                    
+                
+                
+            
+更多资讯请在简书...
+    
+
+        <a href="/2020/03/26/后端/搜索引擎/es/ES的Mapping学习总结/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/es/">es</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/搜索引擎/">搜索引擎</a></li></ul>
 
     </div>
     
@@ -256,116 +426,6 @@
     <div class="post-footer">
         
 	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hive/">hive</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/大数据/">大数据</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-后端/大数据/集群/VMware的系统安装" class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2020-03-25 00:00:00" datetime="2020-03-24T16:00:00.000Z" itemprop="datePublished">2020-03-25</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/后端/">后端</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2020/03/25/后端/大数据/集群/VMware的系统安装/">vmware的安装</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        VMware的下载下载地址安装步骤虚拟机创建新建虚拟机
-                
-                    
-                    
-                
-                1584933905477
-            
-打开VMware,然后点击创建虚拟机,如上图所示。
-点击“下一步”
-                ...
-    
-
-        <a href="/2020/03/25/后端/大数据/集群/VMware的系统安装/" class="post-more waves-effect waves-button">
-            阅读全文…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/大数据/">大数据</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/集群/">集群</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-前端/vue/vue中是如何自定义组件的" class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2019-12-06 00:00:00" datetime="2019-12-05T16:00:00.000Z" itemprop="datePublished">2019-12-06</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端/">前端</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2019/12/06/前端/vue/vue中是如何自定义组件的/">vue中是如何自定义组件的.</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        如何自定义组件??父子组件之间是如何交互的??
-扫描以下公众号关注小猿↓↓↓↓↓↓↓↓
-                
-                    
-                    
-                
-                
-            
-更多资讯请在简书、微博、今日头条、掘金、CSDN都可以通过搜索“Share猿”找到小猿哦！！！
-
-    
-
-        <a href="/2019/12/06/前端/vue/vue中是如何自定义组件的/" class="post-more waves-effect waves-button">
-            阅读全文…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue/">vue</a></li></ul>
 
     </div>
     
@@ -423,6 +483,61 @@
     <div class="post-footer">
         
 	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/基础/">基础</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-前端/vue/vue中是如何自定义组件的" class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2019-12-06 00:00:00" datetime="2019-12-05T16:00:00.000Z" itemprop="datePublished">2019-12-06</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端/">前端</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2019/12/06/前端/vue/vue中是如何自定义组件的/">vue中是如何自定义组件的.</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        如何自定义组件??父子组件之间是如何交互的??
+扫描以下公众号关注小猿↓↓↓↓↓↓↓↓
+                
+                    
+                    
+                
+                
+            
+更多资讯请在简书、微博、今日头条、掘金、CSDN都可以通过搜索“Share猿”找到小猿哦！！！
+
+    
+
+        <a href="/2019/12/06/前端/vue/vue中是如何自定义组件的/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue/">vue</a></li></ul>
 
     </div>
     
@@ -576,108 +691,6 @@ build（构建）
     <div class="post-footer">
         
 	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hibernate/">hibernate</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/框架/">框架</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-管理/读书笔记/横向领导力/如何和别人进行合作协调" class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2019-11-05 00:00:00" datetime="2019-11-04T16:00:00.000Z" itemprop="datePublished">2019-11-05</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/管理/">管理</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2019/11/05/管理/读书笔记/横向领导力/如何和别人进行合作协调/">如何和别人进行合作协调</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        合作中常见的问题合作不佳找不到一个人解决问题改善团队表现需要解决的三个问题个人技能有限的问题打铁还得自身硬，要想领导团队自身能力要硬，要有好的德行。要有解决解决复杂问题的能力和思维，要有带领团队克服困难的勇气，要积极向上，做好团队的能量石，也做好团队的敲打棒。
-对一个好的合作缺乏清晰的认识要对好的团队有清晰的认识，团队要有清晰的目标，领导人要划分清晰的职责，及时处理团队的矛盾，团队成员共同成...
-    
-
-        <a href="/2019/11/05/管理/读书笔记/横向领导力/如何和别人进行合作协调/" class="post-more waves-effect waves-button">
-            阅读全文…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/横向领导力/">横向领导力</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-前沿技术/区块链/应用/去中心化应用" class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2019-11-05 00:00:00" datetime="2019-11-04T16:00:00.000Z" itemprop="datePublished">2019-11-05</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前沿技术/">前沿技术</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2019/11/05/前沿技术/区块链/应用/去中心化应用/">去中心化应用</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        去中心化应用
-扫描以下公众号关注小猿↓↓↓↓↓↓↓↓
-                
-                    
-                    
-                
-                
-            
-更多资讯请在简书、微博、今日头条、掘金、CSDN都可以通过搜索“Share猿”找到小猿哦！！！
-
-    
-
-        <a href="/2019/11/05/前沿技术/区块链/应用/去中心化应用/" class="post-more waves-effect waves-button">
-            阅读全文…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/区块链/">区块链</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/应用/">应用</a></li></ul>
 
     </div>
     
